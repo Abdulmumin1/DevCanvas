@@ -1,0 +1,112 @@
+<script>
+	import { current_key } from '$lib/index.js';
+	import { onMount } from 'svelte';
+	const options = [
+		'javascript',
+		'python',
+		'html',
+		'css',
+		'java',
+		'c++',
+		'ruby',
+		'swift',
+		'typescript',
+		'c#',
+		'php',
+		'go',
+		'rust',
+		'kotlin',
+		'sql',
+		'shell/bash',
+		'json',
+		'yaml',
+		'markdown',
+		'xml',
+		'r',
+		'perl',
+		'objective-c',
+		'dart',
+		'scala',
+		'haskell',
+		'lua',
+		'matlab',
+		'powershell',
+		'groovy',
+		'coffeescript',
+		'elixir',
+		'f#',
+		'vb.net',
+		'crystal',
+		'julia',
+		'typescriptreact',
+		'jsx',
+		'kotlinandroid',
+		'swiftios',
+		'matlab',
+		'matlabsession',
+		'ini',
+		'toml',
+		'perl6',
+		'swiftpm',
+		'yaml',
+		'diff',
+		'http',
+		'makefile',
+		'rubyirb',
+		'docker',
+		'raku',
+		'rspec',
+		'http',
+		'haskellcabal',
+		'apacheconf',
+		'nginx',
+		'smalltalk',
+		'cmake',
+		'webassembly',
+		'glsl',
+		'shellsession',
+		'shell',
+		'plaintext'
+	];
+
+	let searchTerm = '';
+	let filteredOptions = options;
+	let selectedOption = 'javascript';
+
+	function filterOptions() {
+		filteredOptions = options.filter((option) =>
+			option.toLowerCase().includes(searchTerm.toLowerCase())
+		);
+	}
+
+	function selectOption(event) {
+		const _selectedOption = event.target.value;
+		console.log('Selected Option:', _selectedOption);
+		current_key.set({
+			code: $current_key.code,
+			key: $current_key.key,
+			lang: _selectedOption
+		});
+		// You can do further processing with the selected option here
+	}
+
+	onMount(() => {
+		selectedOption = $current_key.lang;
+	});
+</script>
+
+<div class=" max-w-md w-[24rem] flex flex-col gap-3">
+	<input
+		type="text"
+		class="w-full p-1"
+		placeholder="Search..."
+		bind:value={searchTerm}
+		on:input={filterOptions}
+	/>
+
+	<select class="w-full rounded p-1" bind:value={selectedOption} on:change={selectOption}>
+		{#each filteredOptions as option}
+			<option value={option}>{option}</option>
+		{/each}
+	</select>
+</div>

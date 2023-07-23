@@ -1,5 +1,5 @@
 import { error } from '@sveltejs/kit';
-import { loadJson } from '$lib/index.js';
+// import { current_key } from '$lib/index.js';
 // import myData from '$lib/data.json';
 // async function getFile(file) {
 // 	const fileResponse = await fetch(file.download_url);

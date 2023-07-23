@@ -8,7 +8,7 @@ export let code_data = writable({
 	}
 });
 
-export const current_key = writable('new');
+export const current_key = writable({});
 
 export async function loadJson(url) {
 	try {
@@ -42,4 +42,22 @@ export function generateRandomKey() {
 	} while (keyExists);
 
 	return randomKey;
+}
+
+export function getLastPartOfUrl(url) {
+	const parts = url.split('/');
+	return parts[parts.length - 1];
+}
+
+export function saveToLocalStorage(itemsArray) {
+	localStorage.setItem('owner', JSON.stringify(itemsArray));
+}
+
+export function getFromLocalStorage() {
+	try {
+		const savedItems = JSON.parse(localStorage.getItem('owner'));
+		return savedItems;
+	} catch {
+		return [];
+	}
 }
