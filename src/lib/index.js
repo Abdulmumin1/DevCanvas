@@ -8,18 +8,8 @@ export let code_data = writable({
 	}
 });
 
-export const current_key = writable({});
-
-export async function loadJson(url) {
-	try {
-		const response = await import(url);
-		const jsonData = await response;
-		return jsonData;
-	} catch (error) {
-		console.error('Error loading JSON:', error);
-		throw error;
-	}
-}
+export const current_data = writable({});
+export const user = writable(false);
 
 export function generateRandomKey() {
 	// Define the characters to be used in the random key

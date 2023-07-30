@@ -1,6 +1,7 @@
 <script>
-	import { current_key } from '$lib/index.js';
 	import { onMount } from 'svelte';
+	import { current_data } from '$lib/index.js';
+
 	const options = [
 		'javascript',
 		'python',
@@ -72,6 +73,7 @@
 	let searchTerm = '';
 	let filteredOptions = options;
 	let selectedOption = 'javascript';
+	$: lang = '';
 
 	function filterOptions() {
 		filteredOptions = options.filter((option) =>
@@ -82,20 +84,20 @@
 	function selectOption(event) {
 		const _selectedOption = event.target.value;
 		console.log('Selected Option:', _selectedOption);
-		current_key.set({
-			code: $current_key.code,
-			key: $current_key.key,
-			lang: _selectedOption
+		lang = _selectedOption;
+		current_data.update((cur) => {
+			return { ...cur, lang: _selectedOption };
 		});
+		console.log($current_data);
 		// You can do further processing with the selected option here
 	}
 
 	onMount(() => {
-		selectedOption = $current_key.lang;
+		lang = $current_data.lang;
 	});
 </script>
 
-<div class=" max-w-md w-[24rem] flex flex-col gap-3">
+<div class=" max-w-md w-[24rem] flex flex-col gap-3 px-4">
 	<input
 		type="text"
 		class="w-full p-1"
@@ -109,4 +111,8 @@
 			<option value={option}>{option}</option>
 		{/each}
 	</select>
+	<p class="font-bold text-lg">Language:</p>
+	<div class="bg-sky-100 p-2 rounded-md">
+		<span>{lang}</span>
+	</div>
 </div>
