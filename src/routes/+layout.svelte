@@ -16,7 +16,7 @@
 		user.set(session?.user);
 	});
 
-	// console.log(supabase);
+	// console.log($user.id);
 </script>
 
 <main>

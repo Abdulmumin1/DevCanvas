@@ -73,7 +73,7 @@
 	let searchTerm = '';
 	let filteredOptions = options;
 	let selectedOption = 'javascript';
-	$: lang = '';
+	export let lang;
 
 	function filterOptions() {
 		filteredOptions = options.filter((option) =>
@@ -92,9 +92,9 @@
 		// You can do further processing with the selected option here
 	}
 
-	onMount(() => {
-		lang = $current_data.lang;
-	});
+	// onMount(() => {
+	// 	lang = $current_data.lang;
+	// });
 </script>
 
 <div class=" max-w-md w-[24rem] flex flex-col gap-3 px-4">
@@ -106,7 +106,11 @@
 		on:input={filterOptions}
 	/>
 
-	<select class="w-full rounded p-1" bind:value={selectedOption} on:change={selectOption}>
+	<select
+		class="w-full rounded p-1 outline-none focus:outline-none"
+		bind:value={selectedOption}
+		on:change={selectOption}
+	>
 		{#each filteredOptions as option}
 			<option value={option}>{option}</option>
 		{/each}

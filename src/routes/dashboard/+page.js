@@ -5,7 +5,7 @@ import { supabase } from '$lib/supabase.js';
 export async function load({ params }) {
 	let slug = params['slug'];
 	console.log(slug);
-	let { data, error } = await supabase.from('snips').select('*').eq('project_key', slug);
+	let { data, error } = await supabase.from('snips').select('*');
 
 	if (error) {
 		console.error(error);
@@ -19,6 +19,8 @@ export async function load({ params }) {
 	// console.log(...data);
 	// let d = { ...data };
 	// console.log(d['0']);
-	console.log({ ...data, isFound: data.length > 0 });
-	return { ...data, isFound: data.length > 0 };
+	for (let i = 0; i < data.length; i++) {
+		console.log(data[i]);
+	}
+	return { data, isFound: data.length > 0 };
 }
