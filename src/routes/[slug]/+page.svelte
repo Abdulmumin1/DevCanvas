@@ -42,7 +42,7 @@
 		<Nav />
 
 		<div class="flex h-full gap-5 flex-col lg:flex-row p-4">
-			<div class="w-full min-h-[400px] md:h-full bg-gray-50 rounded-xl p-3">
+			<div class="w-full  min-h-[400px] md:h-full max-h-[500px] md:max-h-[900px] bg-gray-50 rounded-xl p-3">
 				<CodeText inputContent={data['0'].code} on:contentChange={handleContentChange} />
 			</div>
 			<LanguageSelect lang={data['0'].lang} />
