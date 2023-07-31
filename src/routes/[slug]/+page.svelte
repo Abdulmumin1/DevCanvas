@@ -37,12 +37,12 @@
 	});
 </script>
 
-<article class="h-screen flex flex-col gap-4">
+<article class="min-h-screen flex flex-col gap-4">
 	{#if data.isFound}
 		<Nav />
 
 		<div class="flex h-full gap-5 flex-col lg:flex-row p-4">
-			<div class="w-full min-h-[500px] md:h-full bg-gray-50 rounded-xl p-3">
+			<div class="w-full min-h-[400px] md:h-full bg-gray-50 rounded-xl p-3">
 				<CodeText inputContent={data['0'].code} on:contentChange={handleContentChange} />
 			</div>
 			<LanguageSelect lang={data['0'].lang} />
