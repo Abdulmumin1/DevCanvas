@@ -2,7 +2,8 @@
 	import LanguageSelect from '../../components/languageSelect..svelte';
 	import Nav from '../../components/nav.svelte';
 	import CodeText from '../../components/codeText.svelte';
-	import { current_data } from '$lib/index.js';
+	import { current_data,   previewMode } from '$lib/index.js';
+	import {supabase} from '$lib/supabase.js'
 	import { onMount } from 'svelte';
 
 	export let data;
@@ -17,9 +18,22 @@
 
 	// Subscribe to the content store to update the input when necessary
 
+
+	const setPreview = (user) => {
+		console.log(user.id, data['0'].user_id)
+		
+		if (user.id == data['0'].user_id){
+			previewMode.set(false)
+		}else{
+			previewMode.set(true)
+		}
+	}
+
+	// console.log(user)
 	onMount(() => {
 		current_data.set(data['0']);
 		console.log(data);
+		// getUser()
 	});
 </script>
 
@@ -28,7 +42,7 @@
 		<Nav />
 
 		<div class="flex h-full gap-5 flex-col lg:flex-row p-4">
-			<div class="w-full h-fit md:h-full bg-red-500 rounded-xl p-3">
+			<div class="w-full min-h-[500px] md:h-full bg-gray-50 rounded-xl p-3">
 				<CodeText inputContent={data['0'].code} on:contentChange={handleContentChange} />
 			</div>
 			<LanguageSelect lang={data['0'].lang} />

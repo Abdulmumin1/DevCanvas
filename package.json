@@ -26,6 +26,7 @@
 	"dependencies": {
 		"@fortawesome/free-brands-svg-icons": "^6.4.0",
 		"@fortawesome/free-solid-svg-icons": "^6.4.0",
+		"@supabase/auth-helpers-sveltekit": "^0.10.1",
 		"@supabase/supabase-js": "^2.31.0",
 		"svelte-fa": "^3.0.4"
 	}

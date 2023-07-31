@@ -8,7 +8,13 @@
 	// console.log(supabase.auth.getUser());
 
 	async function getUser() {
-		await supabase.auth.getUser();
+			console.log('Getting USer[')
+		try {	
+			return await supabase.auth.getUser();
+		} catch (error) {
+			console.log('error')
+			return false
+		}
 	}
 	user.set(getUser());
 

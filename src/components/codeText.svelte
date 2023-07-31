@@ -1,5 +1,7 @@
 <script>
 	import { createEventDispatcher, onMount } from 'svelte';
+	import { previewMode } from '$lib/index.js';
+
 	// Create a writable store to hold the input content
 	export let inputContent;
 	const dispatch = createEventDispatcher();
@@ -13,8 +15,20 @@
 </script>
 
 <!-- Use the textarea element to capture user input -->
+
+{#if !$previewMode}
+	
 <textarea
 	bind:value={inputContent}
 	on:input={handleInputChange}
+	spellcheck="false"
 	class="bg-inherit focus:outline-none w-full h-full"
 />
+{:else}
+<textarea
+	bind:value={inputContent}
+	disabled
+	spellcheck="false"
+	class="bg-inherit focus:outline-none w-full h-full"
+/>
+{/if}

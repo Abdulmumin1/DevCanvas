@@ -5,7 +5,7 @@
 	export let card;
 </script>
 
-<div class="bg-white rounded-lg p-4 shadow-md">
+<div class="bg-white rounded-lg p-4 shadow-md border-t border-sky-300">
 	<h2 class="text-lg mb-2 rounded-xl bg-sky-300 w-fit px-3 p-1">{card.lang}</h2>
 	<p>{card.code.slice(0, 50)}...</p>
 	<a href="/{card.project_key}" class="w-full justify-end items-end flex"> View </a>

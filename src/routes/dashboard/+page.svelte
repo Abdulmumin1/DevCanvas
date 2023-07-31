@@ -1,18 +1,21 @@
 <script>
 	import { supabase } from '$lib/supabase.js';
-	import { generateRandomKey } from '$lib/index.js';
+	import { generateRandomKey, user, previewMode } from '$lib/index.js';
 	import Fa from 'svelte-fa';
 	import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons';
 	import RecentCard from '../../components/recentCard.svelte';
 
+
+	
 	$: loading = false;
 	const create_new = async () => {
 		let code = '// your code here';
 		let lang = 'javascript';
 		let key = generateRandomKey();
+		let user_id = $user.id
 		const { data, error } = await supabase
 			.from('snips')
-			.insert([{ code: code, lang: lang, project_key: key }]);
+			.insert([{ code, lang, project_key: key, user_id }]);
 		console.log(data);
 		if (error) {
 			console.error(error);
@@ -24,7 +27,7 @@
 	export let data;
 </script>
 
-<div class="flex items-center justify-center h-screen flex-col gap-2 overflow-scroll">
+<div class="flex items-center justify-center min-h-screen flex-col gap-2 overflow-scroll">
 	<h1 class="text-6xl">Snippets</h1>
 	<button class="bg-sky-300 px-5 py-2 rounded-lg shadow-md mb-4" on:click={create_new}>new</button>
 
