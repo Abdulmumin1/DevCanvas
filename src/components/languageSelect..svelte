@@ -97,7 +97,7 @@
 	// });
 </script>
 
-<div class=" max-w-md w-[24rem] flex flex-col gap-3 px-4">
+<div class=" max-w-full w-full md:max-w-md md:w-[24rem] flex flex-col gap-3 px-4">
 	{#if !$previewMode}
 	<input
 		type="text"

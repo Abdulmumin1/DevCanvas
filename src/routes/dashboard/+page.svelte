@@ -27,7 +27,7 @@
 	export let data;
 </script>
 
-<div class="flex items-center justify-center min-h-screen flex-col gap-2 overflow-scroll">
+<div class="flex items-center justify-center min-h-screen flex-col gap-2 overflow-scroll p-4">
 	<h1 class="text-6xl">Snippets</h1>
 	<button class="bg-sky-300 px-5 py-2 rounded-lg shadow-md mb-4" on:click={create_new}>new</button>
 
