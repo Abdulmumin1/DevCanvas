@@ -22,13 +22,13 @@
 	bind:value={inputContent}
 	on:input={handleInputChange}
 	spellcheck="false"
-	class="bg-inherit focus:outline-none w-full h-full"
+	class="bg-inherit focus:outline-none w-full h-[400px] min-h-[400px] max-h-[500px] md:max-h-[600px] text-lg  md:text-lg"
 />
 {:else}
 <textarea
 	bind:value={inputContent}
 	disabled
 	spellcheck="false"
-	class="bg-inherit focus:outline-none w-full h-full"
+	class="bg-inherit focus:outline-none w-full h-[400px] min-h-[400px] max-h-[500px] md:max-h-[600px] text-base md:text-lg"
 />
 {/if}
