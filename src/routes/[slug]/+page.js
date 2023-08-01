@@ -1,4 +1,4 @@
-import { error } from '@sveltejs/kit';
+// import { error } from '@sveltejs/kit';
 import { supabase } from '$lib/supabase.js';
 // import { current_data } from '$lib/index.js';
 

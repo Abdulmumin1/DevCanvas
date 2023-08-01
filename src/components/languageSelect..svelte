@@ -97,25 +97,25 @@
 	// });
 </script>
 
-<div class=" max-w-full w-full md:max-w-md md:w-[24rem] flex flex-col gap-3 px-4 mb-4">
+<div class=" max-w-full w-full md:max-w-md md:w-[24rem] flex flex-col gap-3 px-2 lg:px-4 mb-4">
 	{#if !$previewMode}
-	<input
-		type="text"
-		class="w-full p-1"
-		placeholder="Search..."
-		bind:value={searchTerm}
-		on:input={filterOptions}
-	/>
-		
-	<select
-		class="w-full rounded p-1 outline-none focus:outline-none"
-		bind:value={selectedOption}
-		on:change={selectOption}
-	>
-		{#each filteredOptions as option}
-			<option value={option}>{option}</option>
-		{/each}
-	</select>
+		<input
+			type="text"
+			class="w-full p-1 outline-none rounded-md focus:outline-none border focus:border-2 border-sky-300 transition-all duration-100"
+			placeholder="Search..."
+			bind:value={searchTerm}
+			on:input={filterOptions}
+		/>
+
+		<select
+			class="w-full rounded p-1 outline-none focus:outline-none"
+			bind:value={selectedOption}
+			on:change={selectOption}
+		>
+			{#each filteredOptions as option}
+				<option value={option}>{option}</option>
+			{/each}
+		</select>
 	{/if}
 	<p class="font-bold text-lg">Language:</p>
 	<div class="bg-sky-100 p-2 rounded-md">

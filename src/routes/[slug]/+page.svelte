@@ -2,9 +2,9 @@
 	import LanguageSelect from '../../components/languageSelect..svelte';
 	import Nav from '../../components/nav.svelte';
 	import CodeText from '../../components/codeText.svelte';
-	import { current_data, previewMode } from '$lib/index.js';
+	import { current_data, user, previewMode } from '$lib/index.js';
 	import { supabase } from '$lib/supabase.js';
-	import { onMount } from 'svelte';
+	import { onMount, afterUpdate } from 'svelte';
 
 	previewMode.set(true);
 
@@ -36,6 +36,13 @@
 		console.log(data);
 		// getUser()
 	});
+
+	// afterUpdate(() => {
+	// 	// This will handle the redirection if the user logs out on another page
+	// 	if (!$user) {
+	// 		window.location.href = '/sigin'; // Replace '/login' with your desired login page URL
+	// 	}
+	// });
 </script>
 
 <article class="min-h-screen flex flex-col gap-4">
