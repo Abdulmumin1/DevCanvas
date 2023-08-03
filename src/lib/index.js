@@ -11,6 +11,7 @@ export let code_data = writable({
 export const current_data = writable({});
 export const user = writable(false);
 export const previewMode = writable(true);
+export const dashboardLoading = writable(true);
 
 export function generateRandomKey() {
 	// Define the characters to be used in the random key
