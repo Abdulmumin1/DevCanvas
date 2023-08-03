@@ -33,7 +33,8 @@
 		<div
 			class="absolute top-5 right-0 z-10 bg-white mt-2 w-60 p-3 rounded-md shadow-lg text-left"
 			use:clickOutside
-			transition:scale
+			in:scale={{ duration: 200, transformOrigin: 'top right' }}
+			out:scale={{ duration: 200, transformOrigin: 'top right' }}
 			on:click_outside={closeDropdown}
 		>
 			<ul>

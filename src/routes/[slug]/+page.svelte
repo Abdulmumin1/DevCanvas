@@ -3,7 +3,6 @@
 	import Nav from '../../components/nav.svelte';
 	import CodeText from '../../components/codeText.svelte';
 	import { current_data, user, previewMode } from '$lib/index.js';
-	import { supabase } from '$lib/supabase.js';
 	import { onMount, afterUpdate } from 'svelte';
 
 	previewMode.set(true);
