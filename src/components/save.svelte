@@ -1,5 +1,5 @@
 <script>
-	import { current_data, user, clickOutside } from '$lib/index.js';
+	import { current_data, user, previewMode, clickOutside } from '$lib/index.js';
 	import { supabase } from '$lib/supabase.js';
 	import { faEllipsis, faSpinner } from '@fortawesome/free-solid-svg-icons';
 	import Fa from 'svelte-fa';
@@ -17,6 +17,7 @@
 			console.log(error);
 		}
 		spinner = false;
+		previewMode.set(true);
 	}
 </script>
 
