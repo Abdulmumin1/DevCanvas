@@ -67,6 +67,6 @@
 			</div>
 		</div>
 	{:else}
-		<Fa icon={faSpinner} class="animate-spin" />
+		<Fa icon={faSpinner} class="animate-spin text-xl" />
 	{/if}
 </div>

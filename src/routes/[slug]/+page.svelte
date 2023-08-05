@@ -47,18 +47,17 @@
 <article class="min-h-screen flex flex-col gap-4">
 	{#if data.isFound}
 		<Nav />
-
 		<div class="flex h-full gap-5 flex-col lg:flex-row p-1 md:p-4">
-			<div class="w-full min-h-[400px] md:h-full max-h-[500px] md:max-h-[900px] p-0 md:p-3">
+			<div class="w-full h-full p-0 md:p-3">
 				<CodeText inputContent={data['0'].code} lang={data['0'].lang} />
 			</div>
 			<LanguageSelect lang={data['0'].lang} />
 		</div>
 	{:else}
-		<div class="font-bold">
-			<h1 class="text-xl">404</h1>
+		<div class=" h-screen flex items-center justify-center flex-col">
+			<h1 class="text-4xl md:text-5xl font-bold">404</h1>
 			<p>Not found</p>
-			{data.isFound}
+			<a class="bg-sky-300 rounded-md p-1" href="/dashboard">Home</a>
 		</div>
 	{/if}
 </article>

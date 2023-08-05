@@ -26,5 +26,7 @@
 		class="bg-inherit focus:outline-none w-full h-[400px] min-h-[400px] max-h-[500px] md:max-h-[600px] text-lg md:text-lg"
 	/>
 {:else} -->
-<CodeHighlight initialCode={inputContent} {lang} />
+<div>
+	<CodeHighlight initialCode={inputContent} {lang} />
+</div>
 <!-- {/if} -->
