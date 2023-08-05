@@ -1,6 +1,8 @@
 <script>
 	import { onMount } from 'svelte';
-	import { current_data, previewMode } from '$lib/index.js';
+	import { current_data, previewMode, user } from '$lib/index.js';
+	import { faCheck, faE, faEdit } from '@fortawesome/free-solid-svg-icons';
+	import Fa from 'svelte-fa';
 
 	const options = [
 		'javascript',
@@ -74,6 +76,17 @@
 	let filteredOptions = options;
 	let selectedOption = 'javascript';
 	export let lang;
+	$: language = lang;
+	$: editIcon = faEdit;
+	let notEditable = true;
+
+	const removePreview = () => {
+		if ($user.id == $current_data.user_id) {
+			// console.log('jfdkjafdlka');
+			notEditable = !notEditable;
+			editIcon = notEditable ? faEdit : faCheck;
+		}
+	};
 
 	function filterOptions() {
 		filteredOptions = options.filter((option) =>
@@ -84,7 +97,7 @@
 	function selectOption(event) {
 		const _selectedOption = event.target.value;
 		console.log('Selected Option:', _selectedOption);
-		lang = _selectedOption;
+		language = _selectedOption;
 		current_data.update((cur) => {
 			return { ...cur, lang: _selectedOption };
 		});
@@ -97,8 +110,13 @@
 	// });
 </script>
 
-<div class=" max-w-full w-full md:max-w-md md:w-[24rem] flex flex-col gap-3 px-2 lg:px-4 mb-4">
-	{#if !$previewMode}
+<div class=" max-w-full w-full md:max-w-md md:w-[24rem] flex flex-col gap-3 px-3 lg:px-4 mb-4">
+	<p class="font-bold text-lg flex items-center justify-center gap-2 w-fit">
+		Language: <button on:click={removePreview} class="flex items-center justify-center text-lg">
+			<Fa icon={editIcon} class="transition-transform duration-150 hover:scale-110" /></button
+		>
+	</p>
+	{#if !notEditable}
 		<input
 			type="text"
 			class="w-full p-1 outline-none rounded-md focus:outline-none border focus:border-2 border-sky-300 transition-all duration-100"
@@ -117,8 +135,8 @@
 			{/each}
 		</select>
 	{/if}
-	<p class="font-bold text-lg">Language:</p>
+
 	<div class="bg-sky-100 p-2 rounded-md">
-		<span>{lang}</span>
+		<span>{language}</span>
 	</div>
 </div>

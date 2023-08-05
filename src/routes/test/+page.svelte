@@ -28,12 +28,12 @@
 	// });
 </script>
 
-<article class="min-h-screen flex flex-col gap-4">
+<article class="min-h-screen h-screen flex flex-col gap-4">
 	{#if data.isFound}
 		<Nav />
 
-		<div class="flex h-full gap-5 flex-col lg:flex-row p-4">
-			<div class="w-full h-full p-3 shadow-md">
+		<div class="flex h-full bg-sky-100 gap-5 flex-col lg:flex-row p-0 md:p-1">
+			<div class="w-full h-full bg-sky-300 p-0 md:p-1 shadow-md">
 				<CodeText inputContent={data.code} lang={data.lang} />
 			</div>
 			<LanguageSelect lang={data.lang} />

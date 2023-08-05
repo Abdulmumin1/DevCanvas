@@ -1,7 +1,7 @@
 <script>
 	import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 	import { onMount } from 'svelte';
-	import { current_data, previewMode } from '$lib/index.js';
+	import { current_data, previewMode, user } from '$lib/index.js';
 	import Fa from 'svelte-fa';
 	// import * as monaco from 'monaco-editor';
 	let editorContanier;
@@ -15,9 +15,19 @@
 }`;
 
 	function handleContentChange(data) {
-		current_data.update((cur) => {
-			return { ...cur, code: data };
-		});
+		try {
+			if ($user.id == $current_data.user_id) {
+				previewMode.set(false);
+				current_data.update((cur) => {
+					// console.log(cur);
+					return { ...cur, code: data };
+				});
+			} else {
+				console.log('lier');
+			}
+		} catch (error) {
+			console.log('err');
+		}
 		// console.log($current_data);datadata
 		// console.log(data);
 	}
@@ -35,11 +45,8 @@
 			// Attach an event listener for changes in the code
 			editor.onDidChangeModelContent(() => {
 				try {
-					console.log(editor.getValue());
-					if (!$previewMode) {
-						console.log('owner');
-						handleContentChange(editor.getValue());
-					}
+					// console.log(editor.getValue());
+					handleContentChange(editor.getValue());
 				} catch {
 					console.log('err');
 				}
@@ -60,14 +67,14 @@
 		<Fa icon={faSpinner} class="animate-spin text-2xl" />
 	</div>
 {:else}
-	<div class="editor-container p-2" bind:this={editorContanier} />
+	<div class="editor-container h-full z-50" bind:this={editorContanier} />
 {/if}
 
 <style>
 	/* Set the height of the editor container */
 	.editor-container {
-		height: 450px;
-		max-height: 700px;
+		height: 100%;
+		/* max-height: 700px; */
 		width: 100%;
 	}
 </style>
