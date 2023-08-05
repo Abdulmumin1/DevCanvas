@@ -1,8 +1,6 @@
 <script>
 	import { createEventDispatcher, onMount } from 'svelte';
 	import { previewMode } from '$lib/index.js';
-	import 'prismjs/themes/prism-tomorrow.css';
-	import Prism from 'prismjs';
 	import CodeHighlight from './codeHighlight.svelte';
 
 	// Create a writable store to hold the input content
@@ -20,13 +18,13 @@
 
 <!-- Use the textarea element to capture user input -->
 
-{#if !$previewMode}
+<!-- {#if !$previewMode}
 	<textarea
 		bind:value={inputContent}
 		on:input={handleInputChange}
 		spellcheck="false"
 		class="bg-inherit focus:outline-none w-full h-[400px] min-h-[400px] max-h-[500px] md:max-h-[600px] text-lg md:text-lg"
 	/>
-{:else}
-	<CodeHighlight code={inputContent} language={lang} />
-{/if}
+{:else} -->
+<CodeHighlight initialCode={inputContent} {lang} />
+<!-- {/if} -->

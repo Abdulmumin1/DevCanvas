@@ -9,13 +9,13 @@
 
 	export let data;
 
-	function handleContentChange(event) {
-		current_data.update((cur) => {
-			return { ...cur, code: event.detail };
-		});
-		console.log($current_data);
-		console.log(event.detail);
-	}
+	// function handleContentChange(event) {
+	// 	current_data.update((cur) => {
+	// 		return { ...cur, code: event.detail };
+	// 	});
+	// 	console.log($current_data);
+	// 	console.log(event.detail);
+	// }
 
 	// Subscribe to the content store to update the input when necessary
 
@@ -48,15 +48,9 @@
 	{#if data.isFound}
 		<Nav />
 
-		<div class="flex h-full gap-5 flex-col lg:flex-row p-4">
-			<div
-				class="w-full min-h-[400px] md:h-full max-h-[500px] md:max-h-[900px] bg-stone-800 rounded-xl p-3"
-			>
-				<CodeText
-					inputContent={data['0'].code}
-					lang={data['0'].lang}
-					on:contentChange={handleContentChange}
-				/>
+		<div class="flex h-full gap-5 flex-col lg:flex-row p-1 md:p-4">
+			<div class="w-full min-h-[400px] md:h-full max-h-[500px] md:max-h-[900px] p-0 md:p-3">
+				<CodeText inputContent={data['0'].code} lang={data['0'].lang} />
 			</div>
 			<LanguageSelect lang={data['0'].lang} />
 		</div>

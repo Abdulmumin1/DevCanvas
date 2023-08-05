@@ -4,7 +4,6 @@
 	import CodeText from '../../components/codeText.svelte';
 	import { current_data, user, previewMode } from '$lib/index.js';
 	import { onMount, afterUpdate } from 'svelte';
-	import { shiki, getHighlighter } from 'shiki';
 	previewMode.set(true);
 
 	let data = {
@@ -47,11 +46,6 @@
 	// 		window.location.href = '/sigin'; // Replace '/login' with your desired login page URL
 	// 	}
 	// });
-	getHighlighter({
-		theme: 'nord'
-	}).then((highlighter) => {
-		console.log(highlighter.codeToHtml(`console.log('shiki');`, { lang: 'js' }));
-	});
 </script>
 
 <article class="min-h-screen flex flex-col gap-4">
@@ -60,9 +54,13 @@
 
 		<div class="flex h-full gap-5 flex-col lg:flex-row p-4">
 			<div
-				class="w-full min-h-[400px] md:h-full max-h-[500px] md:max-h-[900px] bg-gray-50 rounded-xl p-3 shadow-md"
+				class="w-full min-h-[400px] md:h-full max-h-[500px] md:max-h-[900px] rounded-xl p-3 shadow-md"
 			>
-				<CodeText inputContent={data.code} on:contentChange={handleContentChange} />
+				<CodeText
+					inputContent={data.code}
+					lang={data.lang}
+					on:contentChange={handleContentChange}
+				/>
 			</div>
 			<LanguageSelect lang={data.lang} />
 		</div>
