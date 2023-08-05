@@ -56,7 +56,9 @@
 </script>
 
 {#if loading}
-	<Fa icon={faSpinner} class="animate-spin" />
+	<div class="h-full flex justify-center items-center">
+		<Fa icon={faSpinner} class="animate-spin text-2xl" />
+	</div>
 {:else}
 	<div class="editor-container p-2" bind:this={editorContanier} />
 {/if}

@@ -13,26 +13,6 @@
 		isFound: true
 	};
 
-	function handleContentChange(event) {
-		current_data.update((cur) => {
-			return { ...cur, code: event.detail };
-		});
-		console.log($current_data);
-		console.log(event.detail);
-	}
-
-	// Subscribe to the content store to update the input when necessary
-
-	const setPreview = (user) => {
-		console.log(user.id, data['0'].user_id);
-
-		if (user.id == data['0'].user_id) {
-			previewMode.set(false);
-		} else {
-			previewMode.set(true);
-		}
-	};
-
 	// console.log(user)
 	onMount(() => {
 		current_data.set(data['0']);
@@ -53,14 +33,8 @@
 		<Nav />
 
 		<div class="flex h-full gap-5 flex-col lg:flex-row p-4">
-			<div
-				class="w-full min-h-[400px] md:h-full max-h-[500px] md:max-h-[900px] rounded-xl p-3 shadow-md"
-			>
-				<CodeText
-					inputContent={data.code}
-					lang={data.lang}
-					on:contentChange={handleContentChange}
-				/>
+			<div class="w-full h-full p-3 shadow-md">
+				<CodeText inputContent={data.code} lang={data.lang} />
 			</div>
 			<LanguageSelect lang={data.lang} />
 		</div>
