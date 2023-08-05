@@ -12,15 +12,21 @@
 			previewMode.update((cur) => !cur);
 		}
 	};
+
+	function shareCode(event) {
+		console.log(event.target);
+	}
 </script>
 
 <nav class=" w-full">
 	<ul class="w-full flex justify-between items-center p-4 shadow">
 		<li class="text-2xl text-sky-400 font-bold">Snippets</li>
 		<ul class="flex gap-3 items-center justify-center">
-			<li class="bg-sky-300 px-3 shadow-sm py-2 rounded-lg cursor-pointer">
-				<button class="w-full h-full flex items-center justify-center gap-2"
-					><Fa icon={faArrowUpFromBracket} />Share</button
+			<li class="bg-sky-300 px-3 shadow-sm py-2 rounded-lg cursor-pointer group">
+				<button
+					class="w-full h-full flex items-center justify-center gap-2 share-btn"
+					on:click={shareCode}
+					><Fa icon={faArrowUpFromBracket} class="group-hover:animate-bounce" />Share</button
 				>
 			</li>
 			<li>
