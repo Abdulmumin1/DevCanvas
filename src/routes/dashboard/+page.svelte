@@ -51,21 +51,34 @@
 	class="flex items-center justify-center min-h-screen flex-col gap-2 overflow-scroll p-4 px-7 md:px-4"
 >
 	{#if !loading}
-		<h1 class="text-6xl">Snippets</h1>
-		<button
-			class="bg-sky-300 px-5 py-2 rounded-lg shadow-md mb-4 flex items-center justify-center gap-2"
-			on:click={create_new}
-		>
-			New <Fa icon={faAdd} /></button
-		>
+		<!-- Dashboard.svelte -->
 
-		<div class="container mx-auto px-4 sm:px-6 lg:px-8">
-			<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-				{#each data.data as card}
-					<RecentCard {card} />
-				{/each}
+		<main class=" min-h-screen flex items-center justify-center">
+			<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+				<!-- <Sm -->
+				<!-- Create New Code Snippet button -->
+				<div class="text-right mb-4">
+					<button
+						class="bg-sky-500 hover:bg-sky-600 text-white font-semibold py-3 px-6 rounded-lg shadow"
+						on:click={create_new}
+					>
+						Create New Code Snippet
+					</button>
+				</div>
+
+				<!-- Code Snippet Cards -->
+				<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+					{#each data.data as snippet}
+						<!-- <div class="bg-white rounded-lg p-4 shadow-md">
+							<h3 class="text-xl font-semibold mb-2">{snippet.lang}</h3>
+							<code class="block bg-gray-100 p-2 rounded-lg shadow-inner">{snippet.code}</code>
+							Add any additional information or actions here
+						</div> -->
+						<RecentCard card={snippet} />
+					{/each}
+				</div>
 			</div>
-		</div>
+		</main>
 	{:else}
 		<Fa icon={faSpinner} class="animate-spin text-xl" />
 	{/if}

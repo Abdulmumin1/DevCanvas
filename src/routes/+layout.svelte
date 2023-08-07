@@ -36,6 +36,17 @@
 					window.location.href = '/signin';
 				}
 			}
+		} else if ($page.route.id == '/signin') {
+			console.log('to the dashboard');
+			if (!$user) {
+				// dashboardLoading.set(false);
+				console.log('Log In');
+			} else {
+				if (browser) {
+					// to prevent error window is not defined, because it's SSR
+					window.location.href = '/dashboard';
+				}
+			}
 		}
 	});
 
