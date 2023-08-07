@@ -74,7 +74,6 @@
 	/* Set the height of the editor container */
 	.editor-container {
 		height: 100%;
-		/* max-height: 700px; */
 		width: 100%;
 	}
 </style>

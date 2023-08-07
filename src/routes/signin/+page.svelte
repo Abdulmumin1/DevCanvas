@@ -4,6 +4,8 @@
 	import { user, current_data } from '$lib/index.js';
 	import Fa from 'svelte-fa';
 	import { faExclamationCircle, faSearch, faSpinner } from '@fortawesome/free-solid-svg-icons';
+	import { scale, slide } from 'svelte/transition';
+	import { browser } from '$app/environment';
 
 	$: loading = false;
 	let email;
@@ -23,11 +25,14 @@
 
 	if ($user) {
 		console.log($user.id);
-		// window.href.location = `${$current_data.project_key}`;
+		if (browser) {
+			window.location.href = '/dashboard';
+		}
 	}
 </script>
 
 <form
+	transition:slide
 	on:submit|preventDefault={handleSubmit}
 	class=" flex flex-col justify-center items-center h-screen px-6"
 >
