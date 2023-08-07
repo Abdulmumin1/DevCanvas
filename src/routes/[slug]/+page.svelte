@@ -44,11 +44,11 @@
 	// });
 </script>
 
-<article class="min-h-screen flex flex-col gap-4">
+<article class="min-h-screen h-screen flex flex-col gap-4">
 	{#if data.isFound}
 		<Nav />
-		<div class="flex h-full gap-5 flex-col lg:flex-row p-1 md:p-4">
-			<div class="w-full h-full p-0 md:p-3">
+		<div class="flex h-full gap-5 flex-col lg:flex-row p-0 md:p-1">
+			<div class="w-full h-full p-0 md:p-1">
 				<CodeText inputContent={data['0'].code} lang={data['0'].lang} />
 			</div>
 			<LanguageSelect lang={data['0'].lang} />

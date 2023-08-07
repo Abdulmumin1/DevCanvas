@@ -588,6 +588,10 @@ video {
   z-index: 10;
 }
 
+.z-50 {
+  z-index: 50;
+}
+
 .m-1 {
   margin: 0.25rem;
 }
@@ -673,6 +677,16 @@ video {
 
 .rotate-90 {
   --tw-rotate: 90deg;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.scale-105 {
+  --tw-scale-x: 1.05;
+  --tw-scale-y: 1.05;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.transform {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
@@ -809,11 +823,6 @@ video {
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
-.bg-orange-900 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(124 45 18 / var(--tw-bg-opacity));
-}
-
 .p-0 {
   padding: 0px;
 }
@@ -878,6 +887,11 @@ video {
   padding-bottom: 0.5rem;
 }
 
+.py-3 {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
 .text-left {
   text-align: left;
 }
@@ -921,14 +935,18 @@ video {
   font-weight: 700;
 }
 
+.font-semibold {
+  font-weight: 600;
+}
+
 .text-sky-400 {
   --tw-text-opacity: 1;
   color: rgb(56 189 248 / var(--tw-text-opacity));
 }
 
-.text-sky-300 {
+.text-white {
   --tw-text-opacity: 1;
-  color: rgb(125 211 252 / var(--tw-text-opacity));
+  color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
 .shadow {
@@ -1037,16 +1055,8 @@ video {
 }
 
 @media (min-width: 768px) {
-  .md\:h-full {
-    height: 100%;
-  }
-
   .md\:max-h-\[600px\] {
     max-height: 600px;
-  }
-
-  .md\:max-h-\[900px\] {
-    max-height: 900px;
   }
 
   .md\:w-\[24rem\] {
@@ -1061,12 +1071,8 @@ video {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
-  .md\:p-3 {
-    padding: 0.75rem;
-  }
-
-  .md\:p-4 {
-    padding: 1rem;
+  .md\:p-1 {
+    padding: 0.25rem;
   }
 
   .md\:px-4 {

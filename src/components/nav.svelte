@@ -3,15 +3,7 @@
 	import Save from './save.svelte';
 	import { previewMode, user, current_data } from '$lib/index.js';
 	import Fa from 'svelte-fa';
-	import { faArrowUpFromBracket, faPenToSquare, faPencil } from '@fortawesome/free-solid-svg-icons';
-
-	$: editIcon = faPenToSquare;
-	const removePreview = () => {
-		if ($user.id == $current_data.user_id) {
-			console.log('jfdkjafdlka');
-			previewMode.update((cur) => !cur);
-		}
-	};
+	import { faArrowUpFromBracket } from '@fortawesome/free-solid-svg-icons';
 
 	function shareCode(event) {
 		console.log(event.target);
@@ -34,11 +26,7 @@
 					<Save />
 				{/if}
 			</li>
-			<li>
-				<button on:click={removePreview} class="flex items-center justify-center text-lg">
-					<Fa icon={editIcon} class="transition-transform duration-150 hover:scale-110" /></button
-				>
-			</li>
+
 			<li>
 				<Msdropdown />
 			</li>
