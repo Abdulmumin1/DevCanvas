@@ -1,6 +1,6 @@
 # Snippets
 
-![Snippets Logo](./path/to/logo.png)
+![Snippets Logo](./src/lib/Snippets.png)
 
 Snippets is an open-source platform for sharing and collaborating on code snippets. It provides a simple and intuitive interface for developers to share, discover, and discuss code snippets across various programming languages and use cases.
 
