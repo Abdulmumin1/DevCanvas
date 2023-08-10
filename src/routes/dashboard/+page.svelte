@@ -6,15 +6,15 @@
 	import { faAdd, faMoon, faSpinner, faSun } from '@fortawesome/free-solid-svg-icons';
 	import RecentCard from '../../components/recentCard.svelte';
 	import { scale } from 'svelte/transition';
+	import NewSnippet from '../../components/newSnippet.svelte';
 
 	// if (!$user) {
 	// 	window.location.href = '/signin';
 	// }
 	$: loading = $dashboardLoading;
-	const create_new = async () => {
+	const create_new = async (lang) => {
 		console.log($user);
 		let code = '// your code here';
-		let lang = 'javascript';
 		let key = generateRandomKey();
 		let user_id = $user.id;
 		const { data, error } = await supabase
@@ -28,6 +28,10 @@
 			window.location.href = `/${key}`;
 		}
 	};
+
+	function handleNew(event) {
+		create_new(event.detail.lang);
+	}
 	export let data;
 
 	onMount(() => {
@@ -48,26 +52,30 @@
 </script>
 
 <div
-	class="flex items-center justify-center min-h-screen flex-col gap-2 overflow-scroll p-4 px-7 md:px-4"
+	class="flex items-center justify-center min-h-screen flex-col gap-2 p-4 px-7 md:px-4 bg-sky-50"
 >
 	{#if !loading}
 		<!-- Dashboard.svelte -->
 
 		<main class=" min-h-screen flex items-center justify-center">
-			<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+			<div class="max-w-4xl mx-auto px-1 sm:px-6 lg:px-8 py-12">
 				<!-- <Sm -->
 				<!-- Create New Code Snippet button -->
-				<div class="text-right mb-4">
-					<button
-						class="bg-sky-500 hover:bg-sky-600 text-white font-semibold py-3 px-6 rounded-lg shadow"
-						on:click={create_new}
+				<div class="text-center mb-4 flex items-center justify-center flex-col">
+					<p class="text-4xl md:text-5xl my-6">Snippets</p>
+					<div
+						class="bg-sky-500 hover:bg-sky-600 text-white font-semibold py-3 px-6 rounded-lg shadow flex items-center justify-center gap-2"
 					>
-						Create New Code Snippet
-					</button>
+						<Fa icon={faAdd} />
+						<NewSnippet on:newsnippet={handleNew} />
+					</div>
 				</div>
 
 				<!-- Code Snippet Cards -->
-				<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+				<div>
+					<p class="text-lg md:text-xl font-bold py-6">Your Collections</p>
+				</div>
+				<div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-6 rounded-lg">
 					{#each data.data as snippet}
 						<!-- <div class="bg-white rounded-lg p-4 shadow-md">
 							<h3 class="text-xl font-semibold mb-2">{snippet.lang}</h3>
