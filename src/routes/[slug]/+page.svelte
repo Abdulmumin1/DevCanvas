@@ -4,6 +4,9 @@
 	import CodeText from '../../components/codeText.svelte';
 	import { current_data, user, previewMode } from '$lib/index.js';
 	import { onMount, afterUpdate } from 'svelte';
+	import Fa from 'svelte-fa';
+	import { faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
+	import { slide } from 'svelte/transition';
 
 	previewMode.set(true);
 
@@ -29,6 +32,7 @@
 		}
 	};
 
+	let showDetails = false;
 	// console.log(user)
 	onMount(() => {
 		current_data.set(data['0']);
@@ -42,6 +46,12 @@
 	// 		window.location.href = '/sigin'; // Replace '/login' with your desired login page URL
 	// 	}
 	// });
+
+	function formatDate(inputDate) {
+		const options = { year: 'numeric', month: 'long', day: 'numeric' };
+		const date = new Date(inputDate);
+		return date.toLocaleDateString('en-US', options);
+	}
 </script>
 
 <article class="min-h-screen h-screen flex flex-col gap-4">
@@ -51,7 +61,29 @@
 			<div class="w-full h-full p-0 md:p-1">
 				<CodeText inputContent={data['0'].code} lang={data['0'].lang} />
 			</div>
-			<LanguageSelect lang={data['0'].lang} />
+			<div
+				class=" max-w-full w-full md:max-w-md md:w-[24rem] flex flex-col gap-3 px-3 lg:px-4 mb-4"
+			>
+				<LanguageSelect lang={data['0'].lang} />
+				<button
+					class="w-fit justify-center items-center flex gap-2 text-xl"
+					on:click={() => {
+						showDetails = !showDetails;
+					}}>Details <Fa icon={faExclamationCircle} /></button
+				>
+				{#if showDetails}
+					<div transition:slide>
+						<p class="text-lg">Last Edited:</p>
+						<p class="text-gray-700">
+							{formatDate(data['0'].created_at)}
+						</p>
+						<p class="text-lg">Description:</p>
+						<p class="text-gray-700">
+							{data['0'].description}
+						</p>
+					</div>
+				{/if}
+			</div>
 		</div>
 	{:else}
 		<div class=" h-screen flex items-center justify-center flex-col">
