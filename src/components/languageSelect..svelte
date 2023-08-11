@@ -110,8 +110,8 @@
 	// });
 </script>
 
-<div class=" max-w-full w-full md:max-w-md md:w-[24rem] flex flex-col gap-3 px-3 lg:px-4 mb-4">
-	<p class="font-bold text-lg flex items-center justify-center gap-2 w-fit">
+<div class="flex flex-col gap-3">
+	<p class=" text-xl flex items-center justify-center gap-2 w-fit">
 		Language: <button on:click={removePreview} class="flex items-center justify-center text-lg">
 			<Fa icon={editIcon} class="transition-transform duration-150 hover:scale-110" /></button
 		>

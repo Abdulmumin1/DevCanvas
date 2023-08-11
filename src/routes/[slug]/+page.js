@@ -19,6 +19,6 @@ export async function load({ params }) {
 	// console.log(...data);
 	// let d = { ...data };
 	// console.log(d['0']);
-	console.log({ ...data, isFound: data.length > 0 });
+	// console.log({ ...data, isFound: data.length > 0 });
 	return { ...data, isFound: data.length > 0 };
 }

@@ -12,14 +12,14 @@
 	// 	window.location.href = '/signin';
 	// }
 	$: loading = $dashboardLoading;
-	const create_new = async (lang) => {
+	const create_new = async (lang, description) => {
 		console.log($user);
 		let code = '// your code here';
 		let key = generateRandomKey();
 		let user_id = $user.id;
 		const { data, error } = await supabase
 			.from('snips')
-			.insert([{ code, lang, project_key: key, user_id }]);
+			.insert([{ code, lang, project_key: key, user_id, description }]);
 		// console.log(data);
 		if (error) {
 			console.error(error);
@@ -30,7 +30,13 @@
 	};
 
 	function handleNew(event) {
-		create_new(event.detail.lang);
+		let lang, description;
+		lang = event.detail.lang;
+		description = event.detail.description
+			? event.detail.description
+			: `New ${selectedValue} project`;
+
+		create_new(lang, description);
 	}
 	export let data;
 
@@ -64,9 +70,8 @@
 				<div class="text-center mb-4 flex items-center justify-center flex-col">
 					<p class="text-4xl md:text-5xl my-6">Snippets</p>
 					<div
-						class="bg-sky-500 hover:bg-sky-600 text-white font-semibold py-3 px-6 rounded-lg shadow flex items-center justify-center gap-2"
+						class="bg-sky-500 hover:bg-sky-600 text-white font-semibold py-3 px-6 rounded-lg shadow"
 					>
-						<Fa icon={faAdd} />
 						<NewSnippet on:newsnippet={handleNew} />
 					</div>
 				</div>
