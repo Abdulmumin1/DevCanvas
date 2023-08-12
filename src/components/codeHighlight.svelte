@@ -2,6 +2,7 @@
 	import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 	import { onMount } from 'svelte';
 	import { current_data, previewMode, user } from '$lib/index.js';
+	import { browser } from '$app/environment';
 	import Fa from 'svelte-fa';
 	// import * as monaco from 'monaco-editor';
 	let editorContanier;
@@ -13,7 +14,23 @@
 	export let initialCode = `function greet(name) {
 	return 'Hello, ' + name + '!';
 }`;
+	let editorConfig;
+	if (browser) {
+		editorConfig = {
+			value: initialCode,
+			language: lang,
+			minimap: { enabled: false },
+			...(window.innerWidth <= 600 && { fontSize: 12, wordWrap: 'on' })
+		};
+	}
 
+	function handleKeyDown(event) {
+		if (event.ctrlKey && event.key === 's') {
+			// Handle Ctrl+S action here
+			console.log('save');
+			event.preventDefault(); // Prevent default browser behavior (save page)
+		}
+	}
 	function handleContentChange(data) {
 		try {
 			if ($user.id == $current_data.user_id) {
@@ -36,11 +53,7 @@
 		import('monaco-editor').then((monaco) => {
 			// Use monaco here...
 			// Initialize the editor
-			editor = monaco.editor.create(editorContanier, {
-				value: initialCode,
-				language: lang,
-				theme: 'hc-dark'
-			});
+			editor = monaco.editor.create(editorContanier, editorConfig);
 
 			// Attach an event listener for changes in the code
 			editor.onDidChangeModelContent(() => {
@@ -51,6 +64,8 @@
 					console.log('err');
 				}
 			});
+
+			editor.onKeyDown(handleKeyDown);
 		});
 
 		window.addEventListener('resize', () => {
