@@ -66,18 +66,18 @@
 			>
 				<LanguageSelect lang={data['0'].lang} />
 				<button
-					class="w-fit justify-center items-center flex gap-2 text-xl"
+					class="w-fit justify-center items-center flex gap-2 text-lg"
 					on:click={() => {
 						showDetails = !showDetails;
 					}}>Details <Fa icon={faExclamationCircle} /></button
 				>
 				{#if showDetails}
 					<div transition:slide>
-						<p class="text-lg">Last Edited:</p>
+						<p class="">Last Edited:</p>
 						<p class="text-gray-700">
 							{formatDate(data['0'].created_at)}
 						</p>
-						<p class="text-lg">Description:</p>
+						<p class="">Description:</p>
 						<p class="text-gray-700">
 							{data['0'].description}
 						</p>

@@ -1,5 +1,5 @@
 <script>
-	import { faAdd, faClose, faSpinner } from '@fortawesome/free-solid-svg-icons';
+	import { faAdd, faClose, faExclamation, faSpinner } from '@fortawesome/free-solid-svg-icons';
 	import { createEventDispatcher } from 'svelte';
 	import Fa from 'svelte-fa';
 	import { scale, slide } from 'svelte/transition';
@@ -77,15 +77,22 @@
 	let clickedNew = false;
 	let description;
 
+	let descriptionEnter = true;
 	const dispatch = createEventDispatcher();
 
-	const handleClick = () => {
+	const handleClick = (event) => {
 		// alert('Button clicked!, ' + `${selectedValue}`);
-		dispatch('newsnippet', {
-			lang: selectedValue,
-			description
-		});
 		clickedNew = true;
+		try {
+			dispatch('newsnippet', {
+				lang: selectedValue,
+				description
+			});
+			event.target.disabled = true;
+		} catch {
+			clickedNew = false;
+			descriptionEnter = false;
+		}
 	};
 
 	const handleDropdownChange = (event) => {
@@ -113,13 +120,13 @@
 			class="tooltip-content m-4 w-[300px] md:w-[600px] bg-white p-4 shadow top-14 z-10 flex justify-center items-center gap-4 rounded-lg flex-col"
 		>
 			<div class="w-full gap-2">
-				<p class="text-black text-left w-full">Enter Description</p>
+				<p class="text-black text-left w-full font-semibold">Enter Description</p>
 				<textarea
 					bind:value={description}
 					class="text-black text-left border border-sky-200 rounded-lg outline-sky-200 w-full p-2"
 					placeholder="describe your code here (just a few words you can recognise later!)"
 				/>
-				<p class="text-black text-left w-full">Select language:</p>
+				<p class="text-black text-left w-full font-semibold">Select language:</p>
 				<select
 					on:change={handleDropdownChange}
 					class="select select-bordered w-full p-2 text-black outline-sky-200 mb-2"
@@ -130,12 +137,20 @@
 				</select>
 				<button
 					on:click={handleClick}
-					class=" mb-2 w-full p-2 bg-sky-500 rounded-lg shadow flex items-center justify-center gap-3"
+					class=" mb-2 w-full p-2 bg-sky-500 hover:bg-sky-600 transition-colors duration-200 rounded-lg shadow flex items-center justify-center gap-3"
 					>Create
 					{#if clickedNew}
 						<Fa icon={faSpinner} class="animate-spin" />
 					{/if}
 				</button>
+				{#if !descriptionEnter}
+					<p
+						transition:scale={{ duration: 150 }}
+						class="bg-rose-200 p-1 rounded-md text-black flex items-center justify-center gap-2"
+					>
+						<Fa icon={faExclamation} /> No description entered
+					</p>
+				{/if}
 			</div>
 		</div>
 	{/if}
