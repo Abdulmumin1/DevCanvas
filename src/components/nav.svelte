@@ -12,7 +12,7 @@
 
 <nav class=" w-full">
 	<ul class="w-full flex justify-between items-center p-4 shadow">
-		<li class="text-2xl text-sky-400 font-bold">Snippets</li>
+		<li class="text-2xl text-sky-400 font-bold"><a href="/signin">Snippets</a></li>
 		<ul class="flex gap-3 items-center justify-center">
 			<li class="bg-sky-300 px-3 shadow-sm py-2 rounded-lg cursor-pointer group">
 				<button
