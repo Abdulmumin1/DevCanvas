@@ -2,7 +2,11 @@
 export default {
 	content: ['./src/**/*.{html,js,svelte}'],
 	theme: {
-		extend: {}
+		extend: {
+			animation: {
+				'spin-fast': 'spin .2s linear'
+			}
+		}
 	},
 	plugins: []
 };
