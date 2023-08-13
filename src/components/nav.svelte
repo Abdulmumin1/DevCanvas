@@ -8,7 +8,7 @@
 
 <nav class=" w-full">
 	<ul class="w-full flex justify-between items-center p-4 shadow">
-		<li class="text-2xl text-sky-400 font-bold"><a href="/signin">Snippets</a></li>
+		<li class="text-2xl text-sky-400 font-bold"><a href="/">Snippets</a></li>
 		<ul class="flex gap-3 items-center justify-center">
 			<li>
 				<ShareBtn />

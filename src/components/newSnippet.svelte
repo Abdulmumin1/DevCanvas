@@ -124,7 +124,7 @@
 				<textarea
 					bind:value={description}
 					class="text-black text-left border border-sky-200 rounded-lg outline-sky-200 w-full p-2"
-					placeholder="describe your code here (just a few words you can recognise later!)"
+					placeholder="describe your code here (just a few words!)"
 				/>
 				<p class="text-black text-left w-full font-semibold">Select language:</p>
 				<select

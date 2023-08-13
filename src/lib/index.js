@@ -19,6 +19,7 @@ export const SnippetsDescription = readable({
 	imageUrl: 'https://raw.githubusercontent.com/Abdulmumin1/snippets/main/static/snippetsPreview.png'
 });
 
+export const showToast = writable(false);
 export function generateRandomKey() {
 	// Define the characters to be used in the random key
 	const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';

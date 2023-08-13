@@ -4,7 +4,7 @@ export default {
 	theme: {
 		extend: {
 			animation: {
-				'spin-fast': 'spin .2s linear'
+				'bounce-fast': 'spin .5s linear'
 			}
 		}
 	},
