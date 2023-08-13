@@ -2,6 +2,17 @@
 	import CodeHighlight from '../components/codeHighlight.svelte';
 </script>
 
+<svelte:head>
+	<!-- HTML Meta Tags -->
+	<title>Snippets</title>
+
+	<!-- Facebook Meta Tags -->
+	<meta property="og:title" content="Snippets" />
+
+	<!-- Twitter Meta Tags -->
+	<meta name="twitter:title" content="Snippets" />
+</svelte:head>
+
 <main class="bg-skyblue-500 min-h-screen flex items-center justify-center">
 	<div class="max-w-4xl mx-auto px-8 sm:px-6 lg:px-8 py-12 rounded-lg">
 		<!-- Add your landing page content here -->
