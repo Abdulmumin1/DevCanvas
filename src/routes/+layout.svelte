@@ -3,7 +3,7 @@
 	import '../app.css';
 	import { supabase } from '$lib/supabase.js';
 	import { onMount } from 'svelte';
-	import { user, dashboardLoading } from '$lib/index.js';
+	import { user, dashboardLoading, SnippetsDescription } from '$lib/index.js';
 	import { page } from '$app/stores';
 	import { redirect } from '@sveltejs/kit';
 	import { browser } from '$app/environment';
@@ -53,6 +53,24 @@
 	// onMount(() => {});
 </script>
 
+<svelte:head>
+	<!-- HTML Meta Tags -->
+
+	<meta name="description" content={$SnippetsDescription.des} />
+
+	<!-- Facebook Meta Tags -->
+	<meta property="og:url" content={$SnippetsDescription.url} />
+	<meta property="og:type" content="website" />
+	<meta property="og:description" content={$SnippetsDescription.des} />
+	<meta property="og:image" content={$SnippetsDescription.imageUrl} />
+
+	<!-- Twitter Meta Tags -->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta property="twitter:domain" content="snippets" />
+	<meta property="twitter:url" content={$SnippetsDescription.url} />
+	<meta name="twitter:description" content={$SnippetsDescription.des} />
+	<meta name="twitter:image" content={$SnippetsDescription.imageUrl} />
+</svelte:head>
 <main>
 	<slot />
 </main>

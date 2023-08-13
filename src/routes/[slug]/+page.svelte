@@ -57,22 +57,12 @@
 <svelte:head>
 	<!-- HTML Meta Tags -->
 	<title>{data['0'].description}</title>
-	<meta name="description" content={$SnippetsDescription.des} />
 
 	<!-- Facebook Meta Tags -->
-	<meta property="og:url" content={$SnippetsDescription.url} />
-	<meta property="og:type" content="website" />
 	<meta property="og:title" content={data['0'].description} />
-	<meta property="og:description" content={$SnippetsDescription.des} />
-	<meta property="og:image" content={$SnippetsDescription.imageUrl} />
 
 	<!-- Twitter Meta Tags -->
-	<meta name="twitter:card" content="summary_large_image" />
-	<meta property="twitter:domain" content="snippets" />
-	<meta property="twitter:url" content={$SnippetsDescription.url} />
 	<meta name="twitter:title" content={data['0'].description} />
-	<meta name="twitter:description" content={$SnippetsDescription.des} />
-	<meta name="twitter:image" content={$SnippetsDescription.imageUrl} />
 </svelte:head>
 
 <article class="min-h-screen h-screen flex flex-col gap-4">
