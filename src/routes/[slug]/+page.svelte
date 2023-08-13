@@ -68,7 +68,7 @@
 
 	<!-- Twitter Meta Tags -->
 	<meta name="twitter:card" content="summary_large_image" />
-	<meta property="twitter:domain" content="yaqeen.me" />
+	<meta property="twitter:domain" content="snippets" />
 	<meta property="twitter:url" content={$SnippetsDescription.url} />
 	<meta name="twitter:title" content={data['0'].description} />
 	<meta name="twitter:description" content={$SnippetsDescription.des} />
