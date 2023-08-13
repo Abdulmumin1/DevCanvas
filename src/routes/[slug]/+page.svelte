@@ -2,7 +2,7 @@
 	import LanguageSelect from '../../components/languageSelect..svelte';
 	import Nav from '../../components/nav.svelte';
 	import CodeText from '../../components/codeText.svelte';
-	import { current_data, user, previewMode } from '$lib/index.js';
+	import { current_data, user, previewMode, SnippetsDescription } from '$lib/index.js';
 	import { onMount, afterUpdate } from 'svelte';
 	import Fa from 'svelte-fa';
 	import { faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
@@ -53,6 +53,27 @@
 		return date.toLocaleDateString('en-US', options);
 	}
 </script>
+
+<svelte:head>
+	<!-- HTML Meta Tags -->
+	<title>{data['0'].description}</title>
+	<meta name="description" content={$SnippetsDescription.des} />
+
+	<!-- Facebook Meta Tags -->
+	<meta property="og:url" content={$SnippetsDescription.url} />
+	<meta property="og:type" content="website" />
+	<meta property="og:title" content={data['0'].description} />
+	<meta property="og:description" content={$SnippetsDescription.des} />
+	<meta property="og:image" content={$SnippetsDescription.imageUrl} />
+
+	<!-- Twitter Meta Tags -->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta property="twitter:domain" content="snippets" />
+	<meta property="twitter:url" content={$SnippetsDescription.url} />
+	<meta name="twitter:title" content={data['0'].description} />
+	<meta name="twitter:description" content={$SnippetsDescription.des} />
+	<meta name="twitter:image" content={$SnippetsDescription.imageUrl} />
+</svelte:head>
 
 <article class="min-h-screen h-screen flex flex-col gap-4">
 	{#if data.isFound}

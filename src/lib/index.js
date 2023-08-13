@@ -1,5 +1,5 @@
 // place files you want to import through the `$lib` alias in this folder.
-import { writable } from 'svelte/store';
+import { readable, writable } from 'svelte/store';
 import existingKeys from '$lib/data.json';
 export let code_data = writable({
 	abc: {
@@ -12,6 +12,12 @@ export const current_data = writable({});
 export const user = writable(false);
 export const previewMode = writable(true);
 export const dashboardLoading = writable(true);
+export const SnippetsDescription = readable({
+	name: 'Snippets',
+	des: 'Snippets is an open-source platform for sharing and collaborating on code snippets. It provides a simple and intuitive interface for developers to share, discover, and discuss code snippets across various programming languages and use cases.',
+	url: 'https://snippet-bice.vercel.app',
+	imageUrl: 'https://raw.githubusercontent.com/Abdulmumin1/snippets/main/static/snippetsPreview.png'
+});
 
 export function generateRandomKey() {
 	// Define the characters to be used in the random key
