@@ -78,7 +78,7 @@
 
 				<!-- Code Snippet Cards -->
 				<div>
-					<p class="text-lg md:text-xl font-bold py-6">Your Collections</p>
+					<p class="text-lg md:text-xl font-bold py-6">Collections</p>
 				</div>
 				<div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-6 rounded-lg">
 					{#each data.data as snippet}

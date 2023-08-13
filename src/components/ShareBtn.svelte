@@ -3,12 +3,12 @@
 	import Fa from 'svelte-fa';
 	import { slide } from 'svelte/transition';
 	import { browser } from '$app/environment';
+	import { showToast } from '$lib/index.js';
 
 	let isClicked = false;
 	function shareCode(event) {
 		event.target.disabled = true;
 		isClicked = true;
-		console.log(event.target);
 		let fullUrl;
 		if (browser) {
 			fullUrl = window.location.href;
@@ -23,7 +23,7 @@
 	async function copyToClipboard(text) {
 		try {
 			await navigator.clipboard.writeText(text);
-			console.log('Text copied to clipboard.');
+			showToast.set({ message: 'Link copied to clipboard.' });
 		} catch (error) {
 			console.error('Unable to copy text to clipboard:', error);
 		}
@@ -36,8 +36,8 @@
 	class:scale-90={isClicked}
 >
 	<!-- {#if isClicked} -->
-	<div transition:slide class:animate-spin-fast={isClicked} class="transition-all duration-1000">
-		<Fa icon={faArrowUpFromBracket} class="" />
+	<div transition:slide class:animate-bounce-fast={isClicked} class="transition-all duration-300">
+		<Fa icon={faArrowUpFromBracket} class="transition-all duration-300" />
 	</div>
 	<!-- {/if} -->
 

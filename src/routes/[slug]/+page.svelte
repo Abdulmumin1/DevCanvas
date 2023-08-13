@@ -2,11 +2,12 @@
 	import LanguageSelect from '../../components/languageSelect..svelte';
 	import Nav from '../../components/nav.svelte';
 	import CodeText from '../../components/codeText.svelte';
-	import { current_data, user, previewMode, SnippetsDescription } from '$lib/index.js';
+	import { current_data, user, previewMode, SnippetsDescription, showToast } from '$lib/index.js';
 	import { onMount, afterUpdate } from 'svelte';
 	import Fa from 'svelte-fa';
 	import { faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
 	import { slide } from 'svelte/transition';
+	import Toast from '../../components/toast.svelte';
 
 	previewMode.set(true);
 
@@ -95,6 +96,9 @@
 					</div>
 				{/if}
 			</div>
+			{#if $showToast}
+				<Toast message={$showToast.message} />
+			{/if}
 		</div>
 	{:else}
 		<div class=" h-screen flex items-center justify-center flex-col">
