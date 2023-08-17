@@ -1,7 +1,8 @@
 <script>
-	import { current_data, user, clickOutside, previewMode } from '$lib/index.js';
+	import { current_data, user, clickOutside } from '$lib/index.js';
 	import { supabase } from '$lib/supabase.js';
 	import { faBars, faEllipsis } from '@fortawesome/free-solid-svg-icons';
+	import { onMount } from 'svelte';
 	import Fa from 'svelte-fa';
 	import { scale } from 'svelte/transition';
 	const signOut = () => {
@@ -9,6 +10,7 @@
 		console.log($user);
 	};
 
+	$: showDelete = false;
 	let isOpen = false;
 
 	const toggleDropdown = () => {
@@ -22,6 +24,19 @@
 	const goto = (path) => {
 		window.location.href = path;
 	};
+
+	const removePreview = () => {
+		if ($user.id == $current_data.user_id) {
+			// console.log('jfdkjafdlka');
+			showDelete = true;
+		}
+	};
+
+	onMount(() => {
+		setInterval(() => {
+			removePreview();
+		}, 2000);
+	});
 </script>
 
 <div class="relative flex text-left items-center justify-center">
@@ -46,7 +61,7 @@
 							>Dashboard</button
 						>
 					</li>
-					{#if !$previewMode}
+					{#if showDelete}
 						<li class="py-2 px-4 hover:bg-red-100 cursor-pointer">Delete</li>
 					{/if}
 					<li class="bg-rose-300 px-4 m-1 py-2 rounded-xl cursor-pointer">
