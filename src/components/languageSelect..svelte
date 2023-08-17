@@ -1,8 +1,10 @@
 <script>
 	import { onMount } from 'svelte';
 	import { current_data, previewMode, user } from '$lib/index.js';
-	import { faCheck, faE, faEdit } from '@fortawesome/free-solid-svg-icons';
+	import { faCheck, faEdit, faSpinner } from '@fortawesome/free-solid-svg-icons';
 	import Fa from 'svelte-fa';
+	import { supabase } from '$lib/supabase.js';
+	import { scale } from 'svelte/transition';
 
 	const options = [
 		'javascript',
@@ -79,15 +81,37 @@
 	$: language = lang;
 	$: editIcon = faEdit;
 	let notEditable = true;
+	$: showEditIcon = false;
+
+	$: spinner = false;
+	async function save() {
+		spinner = true;
+		console.log($user.id);
+		console.log($current_data.id);
+		const { error } = await supabase
+			.from('snips')
+			.update({ code: $current_data.code, lang: $current_data.lang })
+			.eq('id', $current_data.id);
+		if (error) {
+			console.log(error);
+		}
+		spinner = false;
+	}
 
 	const removePreview = () => {
 		if ($user.id == $current_data.user_id) {
 			// console.log('jfdkjafdlka');
 			notEditable = !notEditable;
+			update_lang();
 			editIcon = notEditable ? faEdit : faCheck;
 		}
 	};
 
+	function update_lang() {
+		if (editIcon == faCheck) {
+			save();
+		}
+	}
 	function filterOptions() {
 		filteredOptions = options.filter((option) =>
 			option.toLowerCase().includes(searchTerm.toLowerCase())
@@ -105,16 +129,29 @@
 		// You can do further processing with the selected option here
 	}
 
-	// onMount(() => {
-	// 	lang = $current_data.lang;
-	// });
+	onMount(() => {
+		setInterval(() => {
+			if ($user.id == $current_data.user_id) {
+				// console.log('jfdkjafdlka');
+				showEditIcon = true;
+			}
+		}, 3000);
+	});
 </script>
 
 <div class="flex flex-col gap-3">
 	<p class=" text-lg flex items-center justify-center gap-2 w-fit">
-		Language: <button on:click={removePreview} class="flex items-center justify-center text-lg">
-			<Fa icon={editIcon} class="transition-transform duration-150 hover:scale-110" /></button
-		>
+		Language:
+		{#if showEditIcon}
+			<button in:scale on:click={removePreview} class="flex items-center justify-center text-lg">
+				<div class="flex items-center justify-center gap-2">
+					<Fa icon={editIcon} class="transition-transform duration-150 hover:scale-110" />
+					{#if spinner}
+						<Fa icon={faSpinner} class="animate-spin" /> saving ..
+					{/if}
+				</div>
+			</button>
+		{/if}
 	</p>
 	{#if !notEditable}
 		<input
