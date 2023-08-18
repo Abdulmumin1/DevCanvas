@@ -19,6 +19,11 @@ export const SnippetsDescription = readable({
 	imageUrl: 'https://raw.githubusercontent.com/Abdulmumin1/snippets/main/static/snippetsPreview.png'
 });
 
+export const saved_spinner = writable(false);
+
+export const pageCount = writable(0);
+export const pageLimit = writable(3);
+
 export const showToast = writable(false);
 export function generateRandomKey() {
 	// Define the characters to be used in the random key

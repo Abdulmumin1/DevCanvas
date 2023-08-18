@@ -1,13 +1,13 @@
 <script>
 	import { supabase } from '$lib/supabase.js';
 	import { afterUpdate, onMount } from 'svelte';
-	import { generateRandomKey, user, previewMode, dashboardLoading } from '$lib/index.js';
+	import { generateRandomKey, user, previewMode, dashboardLoading, pageCount } from '$lib/index.js';
 	import Fa from 'svelte-fa';
 	import { faAdd, faMoon, faSpinner, faSun } from '@fortawesome/free-solid-svg-icons';
-	import RecentCard from '../../components/recentCard.svelte';
 	import { scale } from 'svelte/transition';
 	import NewSnippet from '../../components/newSnippet.svelte';
 	import Search from '../../components/search.svelte';
+	import CollectionPage from '../../components/collectionPage.svelte';
 
 	// if (!$user) {
 	// 	window.location.href = '/signin';
@@ -42,10 +42,11 @@
 	export let data;
 
 	onMount(() => {
-		console.log($user);
+		// console.log($user);
 		// if (!getUser()) {
 		// 	console.log('failure');
 		// }
+		pageCount.set(6);
 	});
 
 	// afterUpdate(() => {
@@ -81,16 +82,7 @@
 				<div>
 					<p class="text-lg md:text-xl font-bold py-6">Collections</p>
 				</div>
-				<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 rounded-lg">
-					{#each data.data as snippet}
-						<!-- <div class="bg-white rounded-lg p-4 shadow-md">
-							<h3 class="text-xl font-semibold mb-2">{snippet.lang}</h3>
-							<code class="block bg-gray-100 p-2 rounded-lg shadow-inner">{snippet.code}</code>
-							Add any additional information or actions here
-						</div> -->
-						<RecentCard card={snippet} />
-					{/each}
-				</div>
+				<CollectionPage rawcollection={data} />
 			</div>
 		</main>
 	{:else}

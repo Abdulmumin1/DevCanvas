@@ -4,6 +4,8 @@
 	import { previewMode } from '$lib/index.js';
 
 	import ShareBtn from './ShareBtn.svelte';
+
+	export let saveButtonRef;
 </script>
 
 <nav class=" w-full">
@@ -15,7 +17,7 @@
 			</li>
 			<li>
 				{#if !$previewMode}
-					<Save />
+					<Save bind:this={saveButtonRef} />
 				{/if}
 			</li>
 

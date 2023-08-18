@@ -8,6 +8,7 @@
 	import { faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
 	import { slide } from 'svelte/transition';
 	import Toast from '../../components/toast.svelte';
+	import Shortcuts from '../../components/shortcuts.svelte';
 
 	previewMode.set(true);
 
@@ -95,6 +96,7 @@
 						</p>
 					</div>
 				{/if}
+				<Shortcuts />
 			</div>
 			{#if $showToast}
 				<Toast message={$showToast.message} />
