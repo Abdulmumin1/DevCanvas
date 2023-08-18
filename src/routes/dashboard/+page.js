@@ -77,7 +77,11 @@ export async function load({ params }) {
 	// 		project_key: 'xIJa6X'
 	// 	}
 	// ];
-	let { data, error } = await supabase.from('snips').select('*');
+	let { data, error } = await supabase
+		.from('snips')
+		.select('*')
+		.order('created_at', { ascending: false })
+		.limit(6);
 
 	if (error) {
 		console.error(error);

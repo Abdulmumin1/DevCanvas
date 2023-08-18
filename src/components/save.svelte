@@ -1,12 +1,11 @@
 <script>
-	import { current_data, user, previewMode, clickOutside } from '$lib/index.js';
+	import { current_data, user, previewMode, clickOutside, saved_spinner } from '$lib/index.js';
 	import { supabase } from '$lib/supabase.js';
 	import { faEllipsis, faFloppyDisk, faSpinner } from '@fortawesome/free-solid-svg-icons';
 	import Fa from 'svelte-fa';
 
-	$: spinner = false;
 	async function save() {
-		spinner = true;
+		saved_spinner.set(true);
 		console.log($user.id);
 		console.log($current_data.id);
 		const { error } = await supabase
@@ -16,7 +15,7 @@
 		if (error) {
 			console.log(error);
 		}
-		spinner = false;
+		saved_spinner.set(false);
 		previewMode.set(true);
 	}
 </script>
@@ -28,7 +27,7 @@
 >
 	<Fa icon={faFloppyDisk} />
 	Save
-	{#if spinner}
+	{#if $saved_spinner}
 		<Fa icon={faSpinner} class="animate-spin" />
 	{/if}
 </button>

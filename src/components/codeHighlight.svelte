@@ -1,10 +1,13 @@
 <script>
 	import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 	import { onMount } from 'svelte';
-	import { current_data, previewMode, user } from '$lib/index.js';
+	import { current_data, previewMode, user, saved_spinner } from '$lib/index.js';
 	import { browser } from '$app/environment';
 	import Fa from 'svelte-fa';
 	// import * as monaco from 'monaco-editor';
+
+	import { supabase } from '$lib/supabase.js';
+
 	let editorContanier;
 	let editor;
 	let loading = true;
@@ -31,6 +34,37 @@
 			event.preventDefault(); // Prevent default browser behavior (save page)
 		}
 	}
+
+	// Define a custom action for saving
+
+	// Register the save action
+	// editor.addAction(saveAction);
+	let saved = true;
+
+	async function save() {
+		saved = false;
+		saved_spinner.set(true);
+		console.log($user.id);
+		console.log($current_data.id);
+		const { error } = await supabase
+			.from('snips')
+			.update({ code: $current_data.code, lang: $current_data.lang })
+			.eq('id', $current_data.id);
+		if (error) {
+			console.log(error);
+		}
+		saved = true;
+		saved_spinner.set(false);
+		previewMode.set(true);
+	}
+
+	// Define your save function
+	function saveDocument() {
+		if (saved) {
+			save();
+		}
+	}
+
 	function handleContentChange(data) {
 		try {
 			if ($user.id == $current_data.user_id) {
@@ -64,8 +98,24 @@
 					console.log('err');
 				}
 			});
+			var saveAction = {
+				id: 'saveAction',
+				label: 'Save',
+				keybindings: [
+					monaco.KeyMod.CtrlCmd | monaco.KeyCode.KeyS // Ctrl + S
+				],
+				precondition: null,
+				keybindingContext: null,
+				contextMenuGroupId: 'navigation',
+				contextMenuOrder: 1.5,
+				run: function (ed, editor, context) {
+					// Prevent the default browser behavior (e.g., save dialog)
+					// Define the behavior of the save action here
+					saveDocument(); // Call your save function here
+				}
+			};
 
-			editor.onKeyDown(handleKeyDown);
+			editor.addAction(saveAction);
 		});
 
 		window.addEventListener('resize', () => {
