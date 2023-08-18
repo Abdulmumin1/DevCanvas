@@ -7,6 +7,7 @@
 	import RecentCard from '../../components/recentCard.svelte';
 	import { scale } from 'svelte/transition';
 	import NewSnippet from '../../components/newSnippet.svelte';
+	import Search from '../../components/search.svelte';
 
 	// if (!$user) {
 	// 	window.location.href = '/signin';
@@ -62,7 +63,7 @@
 >
 	{#if !loading}
 		<!-- Dashboard.svelte -->
-
+		<Search />
 		<main class=" min-h-screen flex items-center justify-center">
 			<div class="max-w-4xl mx-auto px-1 sm:px-6 lg:px-8 py-12">
 				<!-- <Sm -->
@@ -80,7 +81,7 @@
 				<div>
 					<p class="text-lg md:text-xl font-bold py-6">Collections</p>
 				</div>
-				<div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-6 rounded-lg">
+				<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 rounded-lg">
 					{#each data.data as snippet}
 						<!-- <div class="bg-white rounded-lg p-4 shadow-md">
 							<h3 class="text-xl font-semibold mb-2">{snippet.lang}</h3>
