@@ -32,7 +32,7 @@
 				<div>
 					<span class="bg-gray-100 shadow px-2 py-1 rounded">f1</span>
 				</div>
-				<div class="bg-gray-100 shadow px-2 py-1 rounded">Action center</div>
+				<div class="bg-gray-50 shadow px-2 py-1 rounded">Command Palette</div>
 			</li>
 
 			<li class="flex gap-4 items-center">

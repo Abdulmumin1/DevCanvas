@@ -82,3 +82,7 @@ export function clickOutside(node) {
 		}
 	};
 }
+
+export const goto = (path) => {
+	window.location.href = path;
+};

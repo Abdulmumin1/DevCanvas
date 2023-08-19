@@ -8,7 +8,7 @@
 
 	let loading = false;
 	async function fetchPaginatedRows(pageNumber, pageSize) {
-		let loading = true;
+		loading = true;
 		const off = (pageNumber - 1) * pageSize;
 		const { data, error } = await supabase
 			.from('snips')
@@ -33,7 +33,7 @@
 			console.log('no more');
 			return;
 		}
-		let loading = false;
+		loading = false;
 		collection = [...collection, ...result];
 		pageCount.update((cur) => {
 			return cur + 6;
@@ -59,10 +59,10 @@
 	</div>
 	{#if showMore}
 		<button
-			class="w-full p-2 flex justify-center items-center gap-2"
+			class="bg-orange p-2 flex justify-center items-center gap-2 w-fit"
 			id="more"
 			on:click={more}
-			class:animate-bounce={loading}>More <Fa icon={faAngleDoubleRight} /></button
+			>More <div class:animate-ping={loading}><Fa icon={faAngleDoubleRight} /></div></button
 		>
 	{/if}
 </div>
