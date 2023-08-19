@@ -36,7 +36,7 @@
 	class:scale-90={isClicked}
 >
 	<!-- {#if isClicked} -->
-	<div transition:slide class:animate-bounce-fast={isClicked} class="transition-all duration-300">
+	<div transition:slide class:scale-110={isClicked} class="transition-all duration-300">
 		<Fa icon={faArrowUpFromBracket} class="transition-all duration-300" />
 	</div>
 	<!-- {/if} -->
