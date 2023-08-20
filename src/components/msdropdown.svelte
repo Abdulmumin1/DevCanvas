@@ -57,9 +57,7 @@
 				<!-- <li class="py-2 px-4 hover:bg-blue-100 cursor-pointer">Option 1</li> -->
 
 				<li class="py-2 px-4 hover:bg-blue-100 cursor-pointer rounded-lg">
-					<button class="w-full h-full text-left" on:click={() => goto('/dashboard')}
-						>Dashboard</button
-					>
+					<a class="w-full h-full text-left" href="/dashboard">Dashboard</a>
 				</li>
 				{#if showDelete}
 					<li class="py-2 px-4 hover:bg-red-100 cursor-pointer">

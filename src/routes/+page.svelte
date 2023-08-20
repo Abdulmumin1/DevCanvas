@@ -1,5 +1,6 @@
 <script>
-	import CodeHighlight from '../components/codeHighlight.svelte';
+	import Footer from '../components/footer.svelte';
+	import LandingCodeEditor from '../components/landingCodeEditor.svelte';
 </script>
 
 <svelte:head>
@@ -13,21 +14,30 @@
 	<meta name="twitter:title" content="Snippets" />
 </svelte:head>
 
-<main class="bg-skyblue-500 min-h-screen flex items-center justify-center">
-	<div class="max-w-4xl mx-auto px-8 sm:px-6 lg:px-8 py-12 rounded-lg">
+<main class="bg-skyblue-500 relative min-h-screen flex items-center justify-center">
+	<div class="w-full mx-auto py-12 rounded-lg flex flex-col gap-4">
 		<!-- Add your landing page content here -->
-		<h1 class="text-4xl font-bold mb-6 text-center">Welcome to Snippets</h1>
-		<p class="text-xl text-gray-700 mb-8 text-center">
+		<h1 class="text-5xl md:text-6xl font-bold mb-3 text-center">
+			Welcome to <span class="text-sky-400">Snippets</span>
+		</h1>
+		<p class="text-xl text-gray-700 text-center">
 			Share and discover code snippets for various programming languages and use cases.
 		</p>
-		<div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+		<div class="text-center">
+			<a
+				href="/signin"
+				class="inline-block bg-sky-500 hover:bg-sky-600 text-white font-semibold py-3 px-6 rounded-lg"
+				>Get Started</a
+			>
+		</div>
+		<div class="w-full bg-sky-300">
 			<!-- Add your features or benefits here -->
-			<div class="bg-white rounded-lg p-4 shadow-md">
-				<h2 class="text-xl font-semibold mb-2">Easy Code Sharing</h2>
-				<p>Share your code with just a few clicks and get help from the community.</p>
+			<div class=" p-4 h-[60vh] flex flex-col justify-center">
+				<h2 class="text-4xl md:text-5xl font-semibold mb-2">Easy Code Sharing</h2>
+				<p>Share your exciting code snippets with just a few clicks</p>
 			</div>
-			<div class="bg-white rounded-lg p-4 shadow-md">
-				<h2 class="text-xl font-semibold mb-2">Explore Code Snippets</h2>
+			<div class="p-4 h-[60vh] flex flex-col justify-center bg-purple-400 text-right">
+				<h2 class=" font-semibold mb-2 text-4xl md:text-5xl">Explore Code Snippets</h2>
 				<p>
 					Discover code snippets contributed by the community and find solutions to coding
 					challenges.
@@ -35,26 +45,25 @@
 			</div>
 		</div>
 		<!-- Add a call-to-action button or signup form -->
-		<div class="mt-10 text-center">
-			<a
-				href="/signin"
-				class="inline-block bg-sky-500 hover:bg-sky-600 text-white font-semibold py-3 px-6 rounded-lg shadow-md"
-				>Get Started</a
-			>
-		</div>
 
 		<!-- Add code editor section -->
-		<div class="mt-12 bg-white shadow rounded-lg p-6">
-			<h2 class="text-2xl font-semibold mb-4 text-center">A Powerfull Code Editor</h2>
-			<div class="code-editor p-4 h-24">
+		<div class="flex flex-col mb-12 gap-3 h-[60vh] md:h-[90vh] justify-center items-center">
+			<h2 class="text-4xl md:text-5xl font-semibold text-center">A Powerfull Code Editor</h2>
+			<div class="code-editor h-full bg-white w-full p-3">
 				<!-- Your code editor component or integration goes here -->
 				<!-- Replace the textarea below with your code editor component -->
-				<CodeHighlight />
+				<div class="h-full flex flex-col p-2 gap-2">
+					<div class="text-right">
+						<button class="bg-sky-100 px-2 py-1 rounded-full text-sm">python</button>
+					</div>
+					<LandingCodeEditor />
+					<p class="text-gray-600 text-sm md:text-base text-center mt-2">
+						Share the editor link with others to collaborate. <a href="/signin">Getting Started</a>
+					</p>
+				</div>
 			</div>
-			<p class="text-gray-600 text-center mt-2">
-				Share the editor link with others to collaborate. <a href="/signin">Getting Started</a>
-			</p>
 		</div>
+		<Footer />
 	</div>
 </main>
 
