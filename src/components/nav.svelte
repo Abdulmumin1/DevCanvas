@@ -1,7 +1,7 @@
 <script>
 	import Msdropdown from './msdropdown.svelte';
 	import Save from './save.svelte';
-	import { previewMode, user, goto } from '$lib/index.js';
+	import { previewMode, user } from '$lib/index.js';
 
 	import ShareBtn from './ShareBtn.svelte';
 	import { faUserGroup } from '@fortawesome/free-solid-svg-icons';
@@ -28,12 +28,12 @@
 					<li
 						class="bg-sky-400 px-3 shadow-sm shadow-sky-800 py-2 rounded-lg hover:scale-105 transition-transform duration-300"
 					>
-						<button
+						<a
+							href="/signin"
 							class="w-full h-full cursor-pointer flex items-center justify-center gap-2"
-							on:click={() => goto('/signin')}
 						>
 							<Fa icon={faUserGroup} /> Join
-						</button>
+						</a>
 					</li>
 				{/if}
 			</li>
