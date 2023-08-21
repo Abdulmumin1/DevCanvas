@@ -43,23 +43,27 @@
 					challenges.
 				</p>
 			</div>
-		</div>
-		<!-- Add a call-to-action button or signup form -->
-
-		<!-- Add code editor section -->
-		<div class="flex flex-col mb-12 gap-3 h-[60vh] md:h-[90vh] justify-center items-center">
-			<h2 class="text-4xl md:text-5xl font-semibold text-center">A Powerfull Code Editor</h2>
-			<div class="code-editor h-full bg-white w-full p-3">
-				<!-- Your code editor component or integration goes here -->
-				<!-- Replace the textarea below with your code editor component -->
-				<div class="h-full flex flex-col p-2 gap-2">
-					<div class="text-right">
-						<button class="bg-sky-100 px-2 py-1 rounded-full text-sm">python</button>
+			<!-- Add code editor section -->
+			<div
+				class="flex p-6 flex-col md:flex-row mb-12 gap-3 h-[60vh] md:h-[90vh] justify-center items-center bg-white"
+			>
+				<h2 class="text-4xl md:text-5xl font-semibold text-center">A Powerfull Code Editor</h2>
+				<div class="code-editor h-full w-full p-3">
+					<!-- Your code editor component or integration goes here -->
+					<!-- Replace the textarea below with your code editor component -->
+					<div class="h-full flex flex-col p-2 gap-2">
+						<div class="h-full w-full">
+							<img
+								src="https://raw.githubusercontent.com/Abdulmumin1/media/main/snippetCodeEditorPreview.gif"
+								alt="Editor Preview"
+								class="h-full w-full object-scale-down rounded-md"
+							/>
+						</div>
+						<p class="text-gray-600 text-sm md:text-base text-center mt-2">
+							Share the editor link with others to collaborate. <a href="/signin">Getting Started</a
+							>
+						</p>
 					</div>
-					<LandingCodeEditor />
-					<p class="text-gray-600 text-sm md:text-base text-center mt-2">
-						Share the editor link with others to collaborate. <a href="/signin">Getting Started</a>
-					</p>
 				</div>
 			</div>
 		</div>
@@ -71,12 +75,5 @@
 	/* Add Tailwind CSS styles here or import your main CSS file */
 	main {
 		background-color: #f0f4f8;
-	}
-	.code-editor {
-		/* Add styles for the code editor here */
-		border: 1px solid #e2e8f0;
-		border-radius: 0.5rem;
-		min-height: 300px;
-		font-family: 'Fira Code', monospace;
 	}
 </style>
