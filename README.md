@@ -2,12 +2,45 @@
 
 ![Snippets Logo](/static/snippetsPreview.png)
 
-Snippets is an open-source platform for sharing and collaborating on code snippets. It provides a simple and intuitive interface for developers to share, discover, and discuss code snippets across various programming languages and use cases.
+Snippets is an open-source platform for sharing code snippets. It provides a simple and intuitive interface for developers to share, discover, and discuss code snippets across various programming languages and use cases.
+
+## Stack
+
+<table>
+
+<tbody>
+
+<tr>
+
+<td align="Center" width="25%">
+
+<a href="https://kit.svelte.dev" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/svelte-colored.svg" width="36" height="36" alt="Svelte" /></a>
+<br>Svelte
+
+</td>
+
+<td align="Center" width="25%">
+
+<a href="https://www.typescriptlang.org/" target="_blank" rel="noreferrer"><img src="https://cf.appdrag.com/dashboard-openvm-clo-b2d42c/uploads/supabase-TAiY.png" width="36" height="36" alt="Supabase" /></a>
+<br>Supabase
+
+</td>
+<td align="Center" width="25%">
+
+<a href="https://www.typescriptlang.org/" target="_blank" rel="noreferrer"><img src="https://img.icons8.com/color/144/000000/tailwindcss.png" width="36" height="36" alt="TailWind" /></a>
+<br>Tailwind CSS
+
+</td>
+</tr>
+
+</tbody>
+
+</table>
 
 ## Table of Contents
 
 - [Features](#features)
-- [Installation](#Installation-'Locally')
+- [Installation](<#installation-'(locally)'>)
 - [Usage](#usage)
 - [Collaborative Code Editor](#collaborative-code-editor)
 - [Contributing](#contributing)
@@ -18,9 +51,9 @@ Snippets is an open-source platform for sharing and collaborating on code snippe
 
 - Easy code snippet sharing with the community.
 - Discover and explore a wide range of code snippets.
-- Collaborative code editor for real-time code collaboration.
+- A powerfull editor for a smooth coding experience.
 - Support for multiple programming languages.
-- User profiles with personal code snippet collections.
+- User profiles with personal code snippet collections. - (Loading...)
 
 ## Installation (Locally)
 
@@ -35,7 +68,7 @@ Snippets is an open-source platform for sharing and collaborating on code snippe
 
 ## Collaborative Code Editor
 
-Snippets features a built-in collaborative code editor powered by Monaco Editor. Collaborate with other developers in real-time by sharing the editor link.
+Snippets features a built-in collaborative code editor powered by Monaco Editor. Collaborate with other developers by sharing the editor link.
 
 ## Contributing
 
