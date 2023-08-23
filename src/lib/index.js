@@ -1,6 +1,5 @@
 // place files you want to import through the `$lib` alias in this folder.
 import { readable, writable } from 'svelte/store';
-import existingKeys from '$lib/data.json';
 export let code_data = writable({
 	abc: {
 		code: 'lfjfldsflaf',
