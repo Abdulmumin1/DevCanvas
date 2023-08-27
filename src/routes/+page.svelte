@@ -31,6 +31,11 @@
 				class="inline-block bg-sky-500 hover:bg-sky-600 text-white font-semibold py-3 px-6 rounded-lg"
 				>Get Started</a
 			>
+			<a
+				href="/explore"
+				class="inline-block bg-sky-600 hover:bg-sky-700 text-white font-semibold py-3 px-6 rounded-lg"
+				>Explore</a
+			>
 		</div>
 		<div class="w-full">
 			<!-- Add your features or benefits here -->
