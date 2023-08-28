@@ -72,7 +72,7 @@
 				<div class="text-center mb-4 flex items-center justify-center flex-col">
 					<p class="text-4xl md:text-5xl my-6">Snippets</p>
 					<div
-						class="bg-sky-500 hover:bg-sky-600 text-white py-3 px-6 rounded-lg shadow transition-all duration-300"
+						class="bg-sky-500 hover:bg-sky-600 text-white py-3 px-3 md:px-6 rounded-lg shadow transition-all duration-300"
 					>
 						<NewSnippet on:newsnippet={handleNew} />
 					</div>
