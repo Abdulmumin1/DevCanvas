@@ -30,19 +30,13 @@ export function generateRandomKey() {
 	const keyLength = 6; // You can adjust the length of the key as per your requirement
 
 	let randomKey;
-	let keyExists;
 
-	// Generate a random key until it doesn't exist in the data object
-
-	do {
-		randomKey = '';
-		for (let i = 0; i < keyLength; i++) {
-			const randomIndex = Math.floor(Math.random() * characters.length);
-			randomKey += characters[randomIndex];
-		}
-
-		keyExists = existingKeys.hasOwnProperty(randomKey);
-	} while (keyExists);
+	// Generate a random key
+	randomKey = '';
+	for (let i = 0; i < keyLength; i++) {
+		const randomIndex = Math.floor(Math.random() * characters.length);
+		randomKey += characters[randomIndex];
+	}
 
 	return randomKey;
 }
