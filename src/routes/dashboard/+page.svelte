@@ -8,6 +8,7 @@
 	import NewSnippet from '../../components/newSnippet.svelte';
 	import Search from '../../components/search.svelte';
 	import CollectionPage from '../../components/collectionPage.svelte';
+	import InnerNav from '../../components/innerNav.svelte';
 
 	// if (!$user) {
 	// 	window.location.href = '/signin';
@@ -64,6 +65,7 @@
 >
 	{#if !loading}
 		<!-- Dashboard.svelte -->
+		<InnerNav />
 		<Search />
 		<main class=" min-h-screen flex items-center justify-center">
 			<div class="max-w-4xl mx-auto px-1 sm:px-6 lg:px-8 py-12">

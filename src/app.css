@@ -658,6 +658,10 @@ video {
   display: contents;
 }
 
+.h-\[20vh\] {
+  height: 20vh;
+}
+
 .h-\[400px\] {
   height: 400px;
 }
@@ -814,6 +818,10 @@ video {
 
 .rounded-3xl {
   border-radius: 1.5rem;
+}
+
+.rounded-full {
+  border-radius: 9999px;
 }
 
 .rounded-lg {
