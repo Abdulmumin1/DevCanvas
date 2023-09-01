@@ -9,6 +9,7 @@
 	import { slide } from 'svelte/transition';
 	import Toast from '../../components/toast.svelte';
 	import Shortcuts from '../../components/shortcuts.svelte';
+	import { browser } from '$app/environment';
 
 	previewMode.set(true);
 
@@ -54,28 +55,47 @@
 		const date = new Date(inputDate);
 		return date.toLocaleDateString('en-US', options);
 	}
+	let mobileDetails;
+	if (browser) {
+		mobileDetails = window.innerWidth <= 760;
+	}
+
+	function hideShowDetails() {
+		mobileDetails = !mobileDetails;
+	}
 </script>
 
 <svelte:head>
 	<!-- HTML Meta Tags -->
-	<title>{data['0'].description}</title>
+	<!-- <title>{data['0'].description}</title> -->
 
 	<!-- Facebook Meta Tags -->
-	<meta property="og:title" content={data['0'].description} />
+	<!-- <meta property="og:title" content={data['0'].description} /> -->
 
 	<!-- Twitter Meta Tags -->
-	<meta name="twitter:title" content={data['0'].description} />
+	<!-- <meta name="twitter:title" content={data['0'].description} /> -->
 </svelte:head>
 
 <article class="min-h-screen h-screen flex flex-col gap-4">
 	{#if data.isFound}
 		<Nav />
-		<div class="flex h-full gap-5 flex-col lg:flex-row p-0 md:p-1">
-			<div class="w-full h-full p-0 md:p-1">
+		<div class="relative flex h-full gap-5 flex-col lg:flex-row p-0 md:p-1">
+			<div class="w-full h-full p-0 md:p-1 pb-2 md:pb-1">
 				<CodeText inputContent={data['0'].code} lang={data['0'].lang} />
 			</div>
+
+			<div>
+				<button
+					class="flex sm:hidden fixed bottom-3 right-3 p-3 bg-sky-300 rounded-full transition-transform duration-300 hover:scale-105"
+					on:click={hideShowDetails}
+				>
+					<Fa icon={faExclamationCircle} />
+				</button>
+			</div>
 			<div
-				class=" max-w-full w-full md:max-w-md md:w-[24rem] flex flex-col gap-3 px-3 lg:px-4 mb-4"
+				in:slide
+				class="max-w-full w-full md:max-w-md md:w-[24rem] flex flex-col gap-3 px-3 lg:px-4 mb-4"
+				class:hidden={mobileDetails}
 			>
 				<LanguageSelect lang={data['0'].lang} />
 				<button

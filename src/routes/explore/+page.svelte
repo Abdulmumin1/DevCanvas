@@ -1,10 +1,7 @@
 <script>
-	import { supabase } from '$lib/supabase.js';
 	import { afterUpdate, onMount } from 'svelte';
 	import { generateRandomKey, user, previewMode, dashboardLoading, pageCount } from '$lib/index.js';
-	import Fa from 'svelte-fa';
-	import { faAdd, faMoon, faSpinner, faSun } from '@fortawesome/free-solid-svg-icons';
-	import { scale } from 'svelte/transition';
+
 	import Search from '../../components/search.svelte';
 	import CollectionPage from '../../components/collectionPage.svelte';
 	import InnerNav from '../../components/innerNav.svelte';
@@ -44,7 +41,7 @@
 			<!-- <Sm -->
 			<!-- Create New Code Snippet button -->
 			<div class="text-center mb-4 flex items-center justify-center flex-col">
-				<p class="text-4xl md:text-5xl my-6">Snippets</p>
+				<p class="text-4xl md:text-5xl my-6">{$user.id}</p>
 				<div
 					class="bg-sky-500 hover:bg-sky-600 cursor-pointer text-white py-3 px-6 rounded-lg shadow transition-all duration-300"
 				>

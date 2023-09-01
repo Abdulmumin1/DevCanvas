@@ -1,19 +1,14 @@
 <script>
 	import { current_data, user, clickOutside, goto } from '$lib/index.js';
-	import { supabase } from '$lib/supabase.js';
 	import { faBars, faEllipsis } from '@fortawesome/free-solid-svg-icons';
 	import { onMount } from 'svelte';
 	import Fa from 'svelte-fa';
 	import { scale } from 'svelte/transition';
-	const signOut = () => {
-		supabase.auth.signOut();
-		console.log($user);
-	};
 
 	async function DeleteEntry() {
-		const { data, error } = await supabase.from('snips').delete().eq('id', $current_data.id);
-		if (error) throw error;
-		if (!error) goto('/dashboard');
+		// const { data, error } = await supabase.from('snips').delete().eq('id', $current_data.id);
+		// if (error) throw error;
+		// if (!error) goto('/dashboard');
 	}
 	$: showDelete = false;
 	let isOpen = false;
@@ -64,9 +59,11 @@
 						<button class="w-full text-left" on:click={DeleteEntry}>Delete</button>
 					</li>
 				{/if}
-				<li class="bg-rose-300 px-4 m-1 py-2 rounded-xl cursor-pointer">
-					<button on:click={signOut} class="w-full"> Logout </button>
-				</li>
+				<form action="/auth/signout" method="post">
+					<li class="bg-rose-300 px-4 m-1 py-2 rounded-xl cursor-pointer">
+						<button type="submit" class="w-full"> Logout </button>
+					</li>
+				</form>
 			</ul>
 		</div>
 	{/if}

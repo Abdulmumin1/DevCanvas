@@ -75,7 +75,7 @@
 	];
 	let selectedValue = options[0];
 	let clickedNew = false;
-	let description;
+	let description = '';
 
 	let descriptionEnter = true;
 	const dispatch = createEventDispatcher();
@@ -83,13 +83,8 @@
 	const handleClick = (event) => {
 		// alert('Button clicked!, ' + `${selectedValue}`);
 		clickedNew = true;
-		try {
-			dispatch('newsnippet', {
-				lang: selectedValue,
-				description
-			});
-			event.target.disabled = true;
-		} catch {
+		if (!description) {
+			event.preventDefault();
 			clickedNew = false;
 			descriptionEnter = false;
 		}
@@ -115,19 +110,23 @@
 	</button>
 
 	{#if isTooltipVisible}
-		<div
+		<form
+			method="POST"
+			action="/db/create"
 			transition:slide
-			class="tooltip-content m-4 w-[300px] md:w-[600px] bg-white p-4 shadow top-14 z-10 flex justify-center items-center gap-4 rounded-lg flex-col"
+			class="tooltip-content m-0 md:m-4 w-[300px] md:w-[600px] bg-white p-4 shadow top-14 z-10 flex justify-center items-center gap-4 rounded-lg flex-col"
 		>
 			<div class="w-full gap-2">
 				<p class="text-black text-left w-full font-semibold">Enter Description</p>
 				<textarea
+					name="description"
 					bind:value={description}
 					class="text-black text-left border border-sky-200 rounded-lg outline-sky-200 w-full p-2"
 					placeholder="describe your code here (just a few words!)"
 				/>
 				<p class="text-black text-left w-full font-semibold">Select language:</p>
 				<select
+					name="lang"
 					on:change={handleDropdownChange}
 					class="select select-bordered w-full p-2 text-black outline-sky-200 mb-2"
 				>
@@ -135,7 +134,9 @@
 						<option value={option}>{option}</option>
 					{/each}
 				</select>
+				<!-- <input type="text" name="user_id" value="{user}"> -->
 				<button
+					type="submit"
 					on:click={handleClick}
 					class=" mb-2 w-full p-2 bg-sky-500 hover:bg-sky-600 transition-colors duration-200 rounded-lg shadow flex items-center justify-center gap-3"
 					>Create
@@ -152,7 +153,7 @@
 					</p>
 				{/if}
 			</div>
-		</div>
+		</form>
 	{/if}
 </div>
 

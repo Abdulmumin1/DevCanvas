@@ -1,12 +1,10 @@
 <script>
 	import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 	import { onMount } from 'svelte';
-	import { current_data, previewMode, user, saved_spinner } from '$lib/index.js';
+	import { current_data, previewMode, user, saved_spinner, saveData } from '$lib/index.js';
 	import { browser } from '$app/environment';
 	import Fa from 'svelte-fa';
 	// import * as monaco from 'monaco-editor';
-
-	import { supabase } from '$lib/supabase.js';
 
 	let editorContanier;
 	let editor;
@@ -44,15 +42,7 @@
 	async function save() {
 		saved = false;
 		saved_spinner.set(true);
-		console.log($user.id);
-		console.log($current_data.id);
-		const { error } = await supabase
-			.from('snips')
-			.update({ code: $current_data.code, lang: $current_data.lang })
-			.eq('id', $current_data.id);
-		if (error) {
-			console.log(error);
-		}
+		saveData($current_data, 'code');
 		saved = true;
 		saved_spinner.set(false);
 		previewMode.set(true);

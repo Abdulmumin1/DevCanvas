@@ -1,9 +1,8 @@
 <script>
 	import { onMount } from 'svelte';
-	import { current_data, previewMode, user } from '$lib/index.js';
+	import { current_data, previewMode, user, saveData } from '$lib/index.js';
 	import { faCheck, faEdit, faSpinner } from '@fortawesome/free-solid-svg-icons';
 	import Fa from 'svelte-fa';
-	import { supabase } from '$lib/supabase.js';
 	import { scale } from 'svelte/transition';
 
 	const options = [
@@ -86,15 +85,7 @@
 	$: spinner = false;
 	async function save() {
 		spinner = true;
-		console.log($user.id);
-		console.log($current_data.id);
-		const { error } = await supabase
-			.from('snips')
-			.update({ code: $current_data.code, lang: $current_data.lang })
-			.eq('id', $current_data.id);
-		if (error) {
-			console.log(error);
-		}
+		saveData($current_data, 'lang');
 		spinner = false;
 	}
 
