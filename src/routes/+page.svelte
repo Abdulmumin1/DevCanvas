@@ -6,6 +6,8 @@
 	import { faAngleDown, faRightLong, faStar } from '@fortawesome/free-solid-svg-icons';
 	import Fa from 'svelte-fa';
 	import newImg from '$lib/snippetsLandEditorPreview.png';
+	import SectionCard from '../components/landing/sectionCard.svelte';
+	import Accodion from '../components/landing/accodion.svelte';
 </script>
 
 <svelte:head>
@@ -51,45 +53,39 @@
 			>
 			<a
 				href="/explore"
-				class="inline-block bg-sky-600 hover:bg-sky-700 text-white font-semibold py-3 px-6 rounded-lg"
+				class="inline-block bg-secondary-dark text-white font-semibold py-3 px-6 rounded-lg"
 				>Explore</a
 			>
 		</div>
 		<div class="w-full">
 			<!-- Add your features or benefits here -->
-			<div class="p-4 h-fit md:h-[80vh] flex items-center justify-center">
-				<div
-					class="h-full flex flex-col-reverse md:flex-row gap-3 md:gap-6 items-center text-right"
-				>
-					<div class="h-full">
-						<img src={Explore} alt="ga" class="h-full object-contain" />
-					</div>
-					<div class="">
-						<h2 class=" font-semibold mb-2 text-4xl md:text-5xl">Explore Code Snippets</h2>
-						<p class="max-w-md">
-							Explore a diverse library of code snippets contributed by developers like you. From
-							simple solutions to complex algorithms, SnippetLand is your go-to resource for finding
-							inspiration, solving problems, and learning new techniques
-						</p>
-					</div>
+			<SectionCard>
+				<div class="h-full">
+					<img src={Explore} alt="ga" class="h-full object-contain" />
 				</div>
-			</div>
+				<div class="">
+					<h2 class=" font-semibold mb-2 text-4xl md:text-5xl">Explore Code Snippets</h2>
+					<p class="max-w-md">
+						Explore a diverse library of code snippets contributed by developers like you. From
+						simple solutions to complex algorithms, SnippetLand is your go-to resource for finding
+						inspiration, solving problems, and learning new techniques
+					</p>
+				</div>
+			</SectionCard>
 
-			<div class="p-4 h-fit md:h-[80vh] flex items-center justify-center">
-				<div class="h-full flex flex-col md:flex-row gap-3 md:gap-6 items-center">
-					<div class="flex flex-col justify-center">
-						<h2 class="text-4xl md:text-5xl font-semibold mb-2">Easy Code Sharing</h2>
-						<p class="max-w-md">
-							Got a brilliant code snippet that could help others? Share it with the community! Our
-							intuitive interface lets you upload your code snippets in a snap. From JavaScript to
-							Python, HTML to CSS, we support a wide range of programming languages
-						</p>
-					</div>
-					<div class="h-full">
-						<img src={CodeSharingJpeg} alt="ga" class=" h-full object-contain" />
-					</div>
+			<SectionCard>
+				<div class="flex flex-col justify-center">
+					<h2 class="text-4xl md:text-5xl font-semibold mb-2">Easy Code Sharing</h2>
+					<p class="max-w-md">
+						Got a brilliant code snippet that could help others? Share it with the community! Our
+						intuitive interface lets you upload your code snippets in a snap. From JavaScript to
+						Python, HTML to CSS, we support a wide range of programming languages
+					</p>
 				</div>
-			</div>
+				<div class="h-full">
+					<img src={CodeSharingJpeg} alt="ga" class=" h-full object-contain" />
+				</div>
+			</SectionCard>
 
 			<!-- Add code editor section -->
 			<div class="px-4 h-fit md:h-screen flex items-center justify-center">
@@ -114,8 +110,8 @@
 			<div class=" bg-secondary-dark h-fit md:h-[400px] flex items-center p-7 py-9">
 				<div class="h-full flex flex-col gap-3 md:gap-6 items-center justify-center">
 					<div class="">
-						<h2 class=" font-semibold mb-2 text-light text-4xl md:text-6xl">The Idea</h2>
-						<p class="max-w-md text-light text-xl">
+						<h2 class=" font-semibold mb-2 text-light text-5xl md:text-6xl">The Idea</h2>
+						<p class="max-w-md text-light text-base md:text-lg">
 							You're working on some project, you wrote a really interesting piece & you want to
 							share it with the community. <br />
 							Or, maybe you want some help on something you're working on and you're requested to share
@@ -123,7 +119,7 @@
 						</p>
 						<a
 							href="/signin"
-							class="flex items-center justify-center gap-2 px-7 py-4 mt-3 bg-sky-400 rounded-lg"
+							class="flex w-fit items-center justify-center gap-2 px-7 py-4 mt-3 bg-sky-400 rounded-lg"
 							>Get Started <Fa icon={faRightLong} /></a
 						>
 					</div>
@@ -139,18 +135,17 @@
 							Here are list of question we think you might want answers for.
 						</p>
 
-						<ul class=" text-xl md:text-2xl flex gap-6 flex-col">
-							<li class="flex gap-2 items-center justify-center">
-								Can the editor execute code? <Fa icon={faAngleDown} />
-							</li>
+						<ul class=" flex gap-6 flex-col">
+							<Accodion title="Can the editor execute code?" content="Still Building!" />
 
-							<li class="flex gap-2 items-center justify-center">
-								Is it a language specific platform? <Fa icon={faAngleDown} />
-							</li>
+							<Accodion title="Is it a language specific platform?" content="Still Building!" />
 
-							<li class="flex gap-2 items-center justify-center">
-								Why not just github instead of SnippetLand? <Fa icon={faAngleDown} />
-							</li>
+							<Accodion
+								title="Why not just github instead of SnippetLand?"
+								content="Still Building!"
+							/>
+
+							<Accodion title="Is snippetsLand 100% open source?" content="Still Building	" />
 						</ul>
 					</div>
 				</div>
