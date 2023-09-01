@@ -1,7 +1,8 @@
 // import { error } from '@sveltejs/kit';
 // import { current_data } from '$lib/index.js';
 
-export async function load({ locals: { supabase } }) {
+export async function load({ parent }) {
+	const { supabase } = await parent();
 	let { data, error } = await supabase
 		.from('snips')
 		.select('*')
