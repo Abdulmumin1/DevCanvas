@@ -7,5 +7,5 @@ export async function POST({ locals: { supabase } }) {
 	if (err) {
 		throw error(500, 'Unable to complete action');
 	}
-	return redirect(303, '/');
+	throw redirect(303, '/');
 }
