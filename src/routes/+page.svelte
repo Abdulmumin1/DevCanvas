@@ -3,7 +3,7 @@
 	import Explore from '$lib/discover.gif';
 	import CodeSharingJpeg from '$lib/codeSharing.gif';
 	import InnerNav from '../components/innerNav.svelte';
-	import { faStar } from '@fortawesome/free-solid-svg-icons';
+	import { faAngleDown, faRightLong, faStar } from '@fortawesome/free-solid-svg-icons';
 	import Fa from 'svelte-fa';
 	import newImg from '$lib/snippetsLandEditorPreview.png';
 </script>
@@ -92,20 +92,66 @@
 			</div>
 
 			<!-- Add code editor section -->
-			<div class="p-4 h-fit md:h-[80vh] flex items-center justify-center">
+			<div class="px-4 h-fit md:h-screen flex items-center justify-center">
 				<div class="h-full flex flex-col gap-3 md:gap-6 items-center">
-					<div class="">
-						<h2 class=" font-semibold mb-2 text-4xl md:text-5xl">A Powerfull Code Editor</h2>
-						<p class="max-w-md">
+					<div class="flex flex-col items-center justify-center">
+						<h2 class=" font-semibold mb-2 text-4xl md:text-6xl">A Powerfull Code Editor</h2>
+						<p class="max-w-lg text-center">
 							Bring your coding projects to life with real-time collaboration. Our built-in
 							collaborative code editor powered by VSCode lets you write code more seamlessly, Every
 							of your vscode thingy just works.
 						</p>
 					</div>
 
-					<div class=" h-full w-full rounded-3xl">
+					<div class="rounded-t-3xl overflow-hidden">
 						<!-- src="https://raw.githubusercontent.com/Abdulmumin1/media/main/snippetCodeEditorPreview.gif" -->
-						<img src={newImg} alt="Editor Preview" class="h-full rounded-4xl object-scale-down" />
+						<img src={newImg} alt="Editor Preview" class="  rounded-4xl" />
+					</div>
+				</div>
+			</div>
+
+			<!-- The Idea-->
+			<div class=" bg-secondary-dark h-fit md:h-[400px] flex items-center p-7 py-9">
+				<div class="h-full flex flex-col gap-3 md:gap-6 items-center justify-center">
+					<div class="">
+						<h2 class=" font-semibold mb-2 text-light text-4xl md:text-6xl">The Idea</h2>
+						<p class="max-w-md text-light text-xl">
+							You're working on some project, you wrote a really interesting piece & you want to
+							share it with the community. <br />
+							Or, maybe you want some help on something you're working on and you're requested to share
+							the code snippet so they can have a look
+						</p>
+						<a
+							href="/signin"
+							class="flex items-center justify-center gap-2 px-7 py-4 mt-3 bg-sky-400 rounded-lg"
+							>Get Started <Fa icon={faRightLong} /></a
+						>
+					</div>
+				</div>
+			</div>
+
+			<!-- The Idea-->
+			<div class=" h-fit flex items-center justify-center p-7 py-9">
+				<div class="h-full flex flex-col gap-3 md:gap-6 items-center justify-center">
+					<div class="flex flex-col items-center justify-center gap-6">
+						<h2 class="max-w-lg text-center font-semibold mb-2 text-4xl md:text-6xl">Wondering?</h2>
+						<p class="max-w-lg text-center text-sky-dark text-xl">
+							Here are list of question we think you might want answers for.
+						</p>
+
+						<ul class=" text-xl md:text-2xl flex gap-6 flex-col">
+							<li class="flex gap-2 items-center justify-center">
+								Can the editor execute code? <Fa icon={faAngleDown} />
+							</li>
+
+							<li class="flex gap-2 items-center justify-center">
+								Is it a language specific platform? <Fa icon={faAngleDown} />
+							</li>
+
+							<li class="flex gap-2 items-center justify-center">
+								Why not just github instead of SnippetLand? <Fa icon={faAngleDown} />
+							</li>
+						</ul>
 					</div>
 				</div>
 			</div>
