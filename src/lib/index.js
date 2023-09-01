@@ -79,3 +79,34 @@ export function clickOutside(node) {
 export const goto = (path) => {
 	window.location.href = path;
 };
+
+function appendJSONToFormData(json, formData, which) {
+	for (const key in json) {
+		if (which == key || which == true) {
+			formData.append(key, json[key]);
+		}
+	}
+	formData.append('id', json['id']);
+}
+
+export async function saveData(json_data, all = true) {
+	let formData = new FormData();
+
+	saved_spinner.set(true);
+	appendJSONToFormData(json_data, formData, all);
+
+	const response = await fetch('?/update', {
+		method: 'POST',
+		body: formData
+	});
+
+	if (response.ok) {
+		// Handle save success
+		console.log('full');
+	} else {
+		// Handle save failed
+		console.log('failed');
+	}
+	saved_spinner.set(false);
+	previewMode.set(true);
+}

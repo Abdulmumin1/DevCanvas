@@ -5,8 +5,8 @@
 </script>
 
 <div
-	class="group rounded-3xl flex items-center justify-center bg-white px-3 py-2 w-fit transition-transform duration-300 gap-2 hover:scale-105"
+	class="group bg-sky-50 rounded-3xl flex items-center justify-center px-3 py-2 w-fit transition-transform duration-300 gap-2 hover:scale-105"
 >
 	<Fa icon={faSearch} />
-	<input type="text" class="outline-none" placeholder="Search for Tags, Langauges .." />
+	<input type="text" class="outline-none bg-inherit" placeholder="Search for Tags, Langauges .." />
 </div>

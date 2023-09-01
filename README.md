@@ -12,20 +12,20 @@ Snippets is an open-source platform for sharing code snippets. It provides a sim
 
 <tr>
 
-<td align="Center" width="25%">
+<td align="Center" width="30%">
 
 <a href="https://kit.svelte.dev" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/svelte-colored.svg" width="36" height="36" alt="Svelte" /></a>
-<br>Svelte
+<br>Sveltekit
 
 </td>
 
-<td align="Center" width="25%">
+<td align="Center" width="30%">
 
 <a href="https://www.typescriptlang.org/" target="_blank" rel="noreferrer"><img src="https://cf.appdrag.com/dashboard-openvm-clo-b2d42c/uploads/supabase-TAiY.png" width="36" height="36" alt="Supabase" /></a>
 <br>Supabase
 
 </td>
-<td align="Center" width="25%">
+<td align="Center" width="30%">
 
 <a href="https://www.typescriptlang.org/" target="_blank" rel="noreferrer"><img src="https://img.icons8.com/color/144/000000/tailwindcss.png" width="36" height="36" alt="TailWind" /></a>
 <br>Tailwind CSS

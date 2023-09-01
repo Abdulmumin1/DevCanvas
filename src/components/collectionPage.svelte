@@ -2,7 +2,7 @@
 	import Fa from 'svelte-fa';
 	import RecentCard from './recentCard.svelte';
 	import { faAngleDoubleRight } from '@fortawesome/free-solid-svg-icons';
-	import { supabase } from '$lib/supabase.js';
+	// import { supabase } from '$lib/supabase.js';
 	import { browser } from '$app/environment';
 	import { pageCount } from '$lib/index.js';
 

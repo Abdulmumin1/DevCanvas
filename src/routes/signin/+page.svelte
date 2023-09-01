@@ -1,45 +1,33 @@
 <script>
-	import { redirect } from '@sveltejs/kit';
-	import { supabase } from '$lib/supabase.js';
 	import { user, current_data } from '$lib/index.js';
 	import Fa from 'svelte-fa';
-	import { faExclamationCircle, faSearch, faSpinner } from '@fortawesome/free-solid-svg-icons';
-	import { scale, slide } from 'svelte/transition';
-	import { browser } from '$app/environment';
+	import { faExclamationCircle, faSpinner } from '@fortawesome/free-solid-svg-icons';
+	import { slide } from 'svelte/transition';
 
 	$: loading = false;
 	let email;
 	const handleSubmit = async () => {
-		if (!email) return;
-		loading = true;
-		try {
-			const { error } = await supabase.auth.signInWithOtp({ email });
-
-			if (error) throw error;
-			alert('Check your inbox for the magik link');
-		} catch (error) {
-			console.error(error);
-		}
 		loading = false;
 	};
-
-	if ($user) {
-		console.log($user.id);
-		if (browser) {
-			window.location.href = '/dashboard';
-		}
-	}
 </script>
 
 <form
 	transition:slide
-	on:submit|preventDefault={handleSubmit}
+	action="?/signin"
+	method="post"
+	on:submit={handleSubmit}
 	class=" flex flex-col justify-center items-center h-screen px-6"
 >
 	<h2 class="text-3xl md:text-5xl py-11">Snippets</h2>
 	<div class="flex flex-col shadow-md rounded-md p-6 gap-4 min-w-[300px] border-t border-sky-300">
 		<label for="email" class="text-xl">Email</label>
-		<input type="email" id="email" bind:value={email} class="border border-sky-200 p-2 rounded" />
+		<input
+			name="email"
+			type="email"
+			id="email"
+			bind:value={email}
+			class="border border-sky-200 p-2 rounded"
+		/>
 		<button type="submit" class="p-2 rounded-md flex items-center justify-center gap-2"
 			>Signin
 

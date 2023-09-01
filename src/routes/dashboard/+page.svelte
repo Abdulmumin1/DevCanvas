@@ -1,5 +1,4 @@
 <script>
-	import { supabase } from '$lib/supabase.js';
 	import { afterUpdate, onMount } from 'svelte';
 	import { generateRandomKey, user, previewMode, dashboardLoading, pageCount } from '$lib/index.js';
 	import Fa from 'svelte-fa';
@@ -10,37 +9,40 @@
 	import CollectionPage from '../../components/collectionPage.svelte';
 	import InnerNav from '../../components/innerNav.svelte';
 
+	export let data;
+
+	let loading = false;
+	// let supabase = data.supabase;
 	// if (!$user) {
 	// 	window.location.href = '/signin';
 	// }
-	$: loading = $dashboardLoading;
-	const create_new = async (lang, description) => {
-		console.log($user);
-		let code = '// your code here';
-		let key = generateRandomKey();
-		let user_id = $user.id;
-		const { data, error } = await supabase
-			.from('snips')
-			.insert([{ code, lang, project_key: key, user_id, description }]);
-		// console.log(data);
-		if (error) {
-			console.error(error);
-		} else {
-			console.log(data);
-			window.location.href = `/${key}`;
-		}
-	};
+	// $: loading = false;
+	// const create_new = async (lang, description) => {
+	// 	console.log($user);
+	// 	let code = '// your code here';
 
-	function handleNew(event) {
-		let lang, description;
-		lang = event.detail.lang;
-		description = event.detail.description
-			? event.detail.description
-			: `New ${selectedValue} project`;
+	// 	let user_id = $user.id;
+	// 	const { data, error } = await supabase
+	// 		.from('snips')
+	// 		.insert([{ code, lang, project_key: key, user_id, description }]);
+	// 	// console.log(data);
+	// 	if (error) {
+	// 		console.error(error);
+	// 	} else {
+	// 		console.log(data);
+	// 		window.location.href = `/${key}`;
+	// 	}
+	// };
 
-		create_new(lang, description);
-	}
-	export let data;
+	// function handleNew(event) {
+	// 	let lang, description;
+	// 	lang = event.detail.lang;
+	// 	description = event.detail.description
+	// 		? event.detail.description
+	// 		: `New ${selectedValue} project`;
+
+	// 	create_new(lang, description);
+	// }
 
 	onMount(() => {
 		// console.log($user);
@@ -61,10 +63,11 @@
 </script>
 
 <div
-	class="flex items-center justify-center min-h-screen flex-col gap-2 p-4 px-7 md:px-4 bg-sky-50"
+	class="flex items-center justify-center min-h-screen flex-col gap-2 p-4 px-7 md:px-4 bg-gradient-to-r from-bg-sky-50 to-bg-sky-300"
 >
 	{#if !loading}
 		<!-- Dashboard.svelte -->
+
 		<InnerNav />
 		<Search />
 		<main class=" min-h-screen flex items-center justify-center">
@@ -72,17 +75,16 @@
 				<!-- <Sm -->
 				<!-- Create New Code Snippet button -->
 				<div class="text-center mb-4 flex items-center justify-center flex-col">
-					<p class="text-4xl md:text-5xl my-6">Snippets</p>
 					<div
 						class="bg-sky-500 hover:bg-sky-600 text-white py-3 px-3 md:px-6 rounded-lg shadow transition-all duration-300"
 					>
-						<NewSnippet on:newsnippet={handleNew} />
+						<NewSnippet />
 					</div>
 				</div>
 
 				<!-- Code Snippet Cards -->
 				<div>
-					<p class="text-lg md:text-xl font-bold py-6">Collections</p>
+					<p class="text-lg md:text-xl font-bold py-6">Your Collections</p>
 				</div>
 				<CollectionPage rawcollection={data} />
 			</div>
