@@ -41,7 +41,6 @@
 			<!-- <Sm -->
 			<!-- Create New Code Snippet button -->
 			<div class="text-center mb-4 flex items-center justify-center flex-col">
-				<p class="text-4xl md:text-5xl my-6">{$user.id}</p>
 				<div
 					class="bg-sky-500 hover:bg-sky-600 cursor-pointer text-white py-3 px-6 rounded-lg shadow transition-all duration-300"
 				>

@@ -56,6 +56,9 @@
 	}
 
 	function handleContentChange(data) {
+		if (!user) {
+			return;
+		}
 		try {
 			if ($user.id == $current_data.user_id) {
 				previewMode.set(false);
