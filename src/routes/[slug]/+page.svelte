@@ -39,7 +39,6 @@
 	// console.log(user)
 	onMount(() => {
 		current_data.set(data['0']);
-		console.log(data);
 		// getUser()
 	});
 
