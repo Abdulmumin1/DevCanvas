@@ -3,77 +3,12 @@
 	import { createEventDispatcher } from 'svelte';
 	import Fa from 'svelte-fa';
 	import { scale, slide } from 'svelte/transition';
+	import { supportedLanguages } from '$lib/index.js';
 
 	let isTooltipVisible = false;
 
-	const options = [
-		'javascript',
-		'python',
-		'html',
-		'css',
-		'java',
-		'c++',
-		'ruby',
-		'swift',
-		'typescript',
-		'c#',
-		'php',
-		'go',
-		'rust',
-		'kotlin',
-		'sql',
-		'shell/bash',
-		'json',
-		'yaml',
-		'markdown',
-		'xml',
-		'r',
-		'perl',
-		'objective-c',
-		'dart',
-		'scala',
-		'haskell',
-		'lua',
-		'matlab',
-		'powershell',
-		'groovy',
-		'coffeescript',
-		'elixir',
-		'f#',
-		'vb.net',
-		'crystal',
-		'julia',
-		'typescriptreact',
-		'jsx',
-		'kotlinandroid',
-		'swiftios',
-		'matlab',
-		'matlabsession',
-		'ini',
-		'toml',
-		'perl6',
-		'swiftpm',
-		'yaml',
-		'diff',
-		'http',
-		'makefile',
-		'rubyirb',
-		'docker',
-		'raku',
-		'rspec',
-		'http',
-		'haskellcabal',
-		'apacheconf',
-		'nginx',
-		'smalltalk',
-		'cmake',
-		'webassembly',
-		'glsl',
-		'shellsession',
-		'shell',
-		'plaintext'
-	];
-	let selectedValue = options[0];
+	const options = supportedLanguages;
+	let selectedValue = 'javascript';
 	let clickedNew = false;
 	let description = '';
 
@@ -138,7 +73,7 @@
 				<button
 					type="submit"
 					on:click={handleClick}
-					class=" mb-2 w-full p-2 bg-sky-500 hover:bg-sky-600 transition-colors duration-200 rounded-lg shadow flex items-center justify-center gap-3"
+					class=" mb-2 w-full p-2 bg-secondary-dark hover:bg-sky-600 transition-colors duration-200 rounded-lg shadow flex items-center justify-center gap-3"
 					>Create
 					{#if clickedNew}
 						<Fa icon={faSpinner} class="animate-spin" />
