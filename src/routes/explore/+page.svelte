@@ -30,11 +30,11 @@
 	// });
 </script>
 
+<InnerNav />
 <div
 	class="flex items-center justify-center min-h-screen flex-col gap-2 p-4 px-7 md:px-4 bg-sky-50"
 >
 	<!-- Dashboard.svelte -->
-	<InnerNav />
 	<Search />
 	<main class=" min-h-screen flex items-center justify-center">
 		<div class="max-w-4xl mx-auto px-1 sm:px-6 lg:px-8 py-12">

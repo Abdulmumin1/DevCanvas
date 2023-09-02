@@ -11,7 +11,6 @@
 		'html',
 		'css',
 		'java',
-		'c++',
 		'ruby',
 		'swift',
 		'typescript',
@@ -70,8 +69,10 @@
 		'glsl',
 		'shellsession',
 		'shell',
-		'plaintext'
-	];
+		'plaintext',
+		'c',
+		'cpp'
+	].sort();
 
 	let searchTerm = '';
 	let filteredOptions = options;
@@ -116,7 +117,7 @@
 		current_data.update((cur) => {
 			return { ...cur, lang: _selectedOption };
 		});
-		console.log($current_data);
+		// console.log($current_data);
 		// You can do further processing with the selected option here
 	}
 
