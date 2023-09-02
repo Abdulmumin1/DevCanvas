@@ -15,7 +15,7 @@
 		<li>
 			<ul class="flex gap-2 items-center">
 				<li class="bg-secondary-dark text-light rounded-full py-2 px-3">
-					<a class="flex gap-2 items-center justify-center" href="/explore" target="_blank">
+					<a class="flex gap-2 items-center justify-center" href="/explore">
 						Explore <Fa icon={faWpexplorer} class="" /></a
 					>
 				</li>
