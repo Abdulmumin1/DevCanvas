@@ -113,7 +113,7 @@
 
 		window.addEventListener('resize', () => {
 			if (editor) {
-				console.log(editor.layout());
+				editor.layout();
 			}
 		});
 		loading = false;
