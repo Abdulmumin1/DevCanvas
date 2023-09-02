@@ -1,78 +1,11 @@
 <script>
 	import { onMount } from 'svelte';
-	import { current_data, previewMode, user, saveData } from '$lib/index.js';
+	import { current_data, supportedLanguages, user, saveData } from '$lib/index.js';
 	import { faCheck, faEdit, faSpinner } from '@fortawesome/free-solid-svg-icons';
 	import Fa from 'svelte-fa';
 	import { scale } from 'svelte/transition';
 
-	const options = [
-		'javascript',
-		'python',
-		'html',
-		'css',
-		'java',
-		'ruby',
-		'swift',
-		'typescript',
-		'c#',
-		'php',
-		'go',
-		'rust',
-		'kotlin',
-		'sql',
-		'shell/bash',
-		'json',
-		'yaml',
-		'markdown',
-		'xml',
-		'r',
-		'perl',
-		'objective-c',
-		'dart',
-		'scala',
-		'haskell',
-		'lua',
-		'matlab',
-		'powershell',
-		'groovy',
-		'coffeescript',
-		'elixir',
-		'f#',
-		'vb.net',
-		'crystal',
-		'julia',
-		'typescriptreact',
-		'jsx',
-		'kotlinandroid',
-		'swiftios',
-		'matlab',
-		'matlabsession',
-		'ini',
-		'toml',
-		'perl6',
-		'swiftpm',
-		'yaml',
-		'diff',
-		'http',
-		'makefile',
-		'rubyirb',
-		'docker',
-		'raku',
-		'rspec',
-		'http',
-		'haskellcabal',
-		'apacheconf',
-		'nginx',
-		'smalltalk',
-		'cmake',
-		'webassembly',
-		'glsl',
-		'shellsession',
-		'shell',
-		'plaintext',
-		'c',
-		'cpp'
-	].sort();
+	const options = supportedLanguages;
 
 	let searchTerm = '';
 	let filteredOptions = options;

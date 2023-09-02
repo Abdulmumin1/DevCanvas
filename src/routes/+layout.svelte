@@ -4,6 +4,7 @@
 	import { onMount } from 'svelte';
 	import { user, dashboardLoading, SnippetsDescription } from '$lib/index.js';
 	import { invalidateAll } from '$app/navigation';
+	import PageTransition from './transition.svelte';
 
 	// console.log(supabase.auth.getUser());
 
@@ -44,5 +45,7 @@
 	<meta name="twitter:image" content={$SnippetsDescription.imageUrl} />
 </svelte:head>
 <main>
-	<slot />
+	<PageTransition url={data.url}>
+		<slot />
+	</PageTransition>
 </main>

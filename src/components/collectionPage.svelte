@@ -6,6 +6,11 @@
 	import { browser } from '$app/environment';
 	import { pageCount } from '$lib/index.js';
 
+	export let supabase;
+	export let rawcollection;
+	export let dashboard = false;
+
+	let collection = rawcollection;
 	let loading = false;
 	async function fetchPaginatedRows(pageNumber, pageSize) {
 		loading = true;
@@ -42,8 +47,6 @@
 			window.location.href = '#more';
 		}
 	}
-	export let rawcollection;
-	let collection = rawcollection.data;
 </script>
 
 <div class="gap-6 flex flex-col">
@@ -54,7 +57,8 @@
                 <code class="block bg-gray-100 p-2 rounded-lg shadow-inner">{snippet.code}</code>
                 Add any additional information or actions here
             </div> -->
-			<RecentCard card={snippet} />
+
+			<RecentCard card={snippet} editIcons={dashboard} />
 		{/each}
 	</div>
 	{#if showMore}
