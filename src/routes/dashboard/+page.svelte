@@ -95,7 +95,7 @@
 			<Fa icon={faSpinner} class="animate-spin text-xl" />
 		</p>
 	{:then userSnippets}
-		<main class=" min-h-screen flex py-6 w-full justify-center">
+		<main class=" min-h-screen flex py-3 md:py-6 w-full justify-center bg-gray-100">
 			<div class="w-full px-4 max-w-4xl">
 				<!-- <Sm -->
 				<!-- Create New Code Snippet button -->
