@@ -6,9 +6,22 @@
 	import { scale } from 'svelte/transition';
 
 	async function DeleteEntry() {
-		// const { data, error } = await supabase.from('snips').delete().eq('id', $current_data.id);
-		// if (error) throw error;
-		// if (!error) goto('/dashboard');
+		let formData = new FormData();
+
+		formData.append('id', $current_data.id);
+		formData.append('user_id', $current_data.user_id);
+		const response = await fetch('/db/delete', {
+			method: 'POST',
+			body: formData
+		});
+
+		if (response.ok) {
+			// Handle save success
+			window.location.href = '/dashboard';
+		} else {
+			// Handle save failed
+			console.log('failed');
+		}
 	}
 	$: showDelete = false;
 	let isOpen = false;
