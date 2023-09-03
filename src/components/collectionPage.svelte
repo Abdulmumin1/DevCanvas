@@ -1,7 +1,7 @@
 <script>
 	import Fa from 'svelte-fa';
 	import RecentCard from './recentCard.svelte';
-	import { faAngleDoubleRight } from '@fortawesome/free-solid-svg-icons';
+	import { faAngleDoubleRight, faSpinner } from '@fortawesome/free-solid-svg-icons';
 	// import { supabase } from '$lib/supabase.js';
 	import { browser } from '$app/environment';
 	import { pageCount } from '$lib/index.js';
@@ -74,24 +74,28 @@
 	}
 </script>
 
-<div class="gap-6 flex flex-col w-full">
-	<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 rounded-lg">
-		{#each collection as snippet}
-			<!-- <div class="bg-white rounded-lg p-4 shadow-md">
-                <h3 class="text-xl font-semibold mb-2">{snippet.lang}</h3>
-                <code class="block bg-gray-100 p-2 rounded-lg shadow-inner">{snippet.code}</code>
-                Add any additional information or actions here
-            </div> -->
+<div class="flex flex-col gap-6 items-center">
+	<div class="gap-6 flex flex-col w-full bg-white rounded-lg shadow-md">
+		<div class="grid gap-6 rounded-lg divide-y-2 w-full">
+			{#each collection as snippet}
+				<!-- <div class="bg-white rounded-lg p-4 shadow-md">
+					<h3 class="text-xl font-semibold mb-2">{snippet.lang}</h3>
+					<code class="block bg-gray-100 p-2 rounded-lg shadow-inner">{snippet.code}</code>
+					Add any additional information or actions here
+				</div> -->
 
-			<RecentCard card={snippet} editIcons={dashboard} />
-		{/each}
+				<RecentCard card={snippet} editIcons={dashboard} />
+			{/each}
+		</div>
 	</div>
 	{#if showMore}
 		<button
-			class="bg-orange p-2 flex justify-center items-center gap-2 w-fit"
+			class="bg-gray-300 shadow rounded-lg p-2 flex justify-center items-center gap-2 w-fit"
 			id="more"
 			on:click={more}
-			>More <div class:animate-ping={loading}><Fa icon={faAngleDoubleRight} /></div></button
+			>Load more <div class:animate-spin={loading} class:hidden={!loading}>
+				<Fa icon={faSpinner} />
+			</div></button
 		>
 	{/if}
 </div>
