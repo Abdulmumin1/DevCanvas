@@ -93,9 +93,11 @@
 			class="bg-gray-300 shadow rounded-lg p-2 flex justify-center items-center gap-2 w-fit"
 			id="more"
 			on:click={more}
-			>Load more <div class:animate-spin={loading} class:hidden={!loading}>
+		>
+			<div class:animate-spin={loading} class:hidden={!loading}>
 				<Fa icon={faSpinner} />
-			</div></button
+			</div>
+			 Load more...</button
 		>
 	{/if}
 </div>
