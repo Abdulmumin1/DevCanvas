@@ -24,9 +24,11 @@
 			<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
 		</svg>
 	</button>
-	<div transition:slide class:hidden={!open}>
-		<div class="p-2 text-base md:text-lg bg-white border-t">{content}</div>
-	</div>
+	{#if open}
+		<div transition:slide>
+			<div class="p-2 text-base md:text-lg bg-white border-t">{content}</div>
+		</div>
+	{/if}
 </li>
 
 <style>
