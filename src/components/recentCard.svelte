@@ -19,7 +19,7 @@
 
 <div
 	in:scale
-	class="bg-white rounded-b-lg p-4 shadow hover:shadow-md border-t-2 border-secondary-dark flex flex-col gap-2 text-sm md:text-base"
+	class="w-full bg-white rounded-b-lg p-4 shadow-none md:shadow md:hover:shadow-md border-t-2 border-secondary-dark flex flex-col gap-2 text-sm md:text-base"
 >
 	<h2 class="text-sm mb-2 rounded-xl bg-sky-100 w-fit px-3 p-1">{card.lang}</h2>
 	<p class="text-lg md:text-xl font-semibold hover:opacity-80">

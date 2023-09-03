@@ -8,6 +8,7 @@
 	import newImg from '$lib/snippetsLandEditorPreview.png';
 	import SectionCard from '../components/landing/sectionCard.svelte';
 	import Accodion from '../components/landing/accodion.svelte';
+	import { fade } from 'svelte/transition';
 </script>
 
 <svelte:head>
@@ -78,8 +79,7 @@
 					<h2 class="text-4xl md:text-5xl font-semibold mb-2">Easy Code Sharing</h2>
 					<p class="max-w-md">
 						Got a brilliant code snippet that could help others? Share it with the community! Our
-						intuitive interface lets you upload your code snippets in a snap. From JavaScript to
-						Python, HTML to CSS, we support a wide range of programming languages
+						intuitive interface lets you upload your code snippets in a snap.
 					</p>
 				</div>
 				<div class="h-full">
@@ -87,6 +87,64 @@
 				</div>
 			</SectionCard>
 
+			<div class=" bg-secondary-dark h-fit md:h-[60vh] mb-8 flex p-7 py-9 justify-center">
+				<div class="w-full flex flex-col md:flex-row gap-6 justify-between max-w-5xl">
+					<div class="flex justify-center flex-col">
+						<h2 class="text-4xl md:text-5xl font-semibold mb-2 text-white">Support for</h2>
+						<p class="text-light">
+							From JavaScript to Python, HTML to CSS, SnippetLand support a wide range of
+							programming languages
+						</p>
+					</div>
+					<div>
+						<ul class="grid grid-cols-3 gap-6">
+							<li class="flex flex-col text-center text-xl shadow p-3 rounded-md bg-white">
+								Python
+								<img
+									class=" w-24 h-24"
+									src="https://cdn.svgporn.com/logos/python.svg"
+									alt="python"
+								/>
+							</li>
+							<li class="flex flex-col text-center text-xl shadow p-3 rounded-md bg-white">
+								JavaScript
+								<img
+									class=" w-24 h-24"
+									src="https://cdn.svgporn.com/logos/javascript.svg"
+									alt="python"
+								/>
+							</li>
+							<li class="flex flex-col text-center text-xl shadow p-3 rounded-md bg-white">
+								HTML
+								<img
+									class=" w-24 h-24"
+									src="https://cdn.svgporn.com/logos/html-5.svg"
+									alt="python"
+								/>
+							</li>
+							<li class="flex flex-col text-center text-xl shadow p-3 rounded-md bg-white">
+								CSS
+								<img
+									class=" w-24 h-24"
+									src="https://cdn.svgporn.com/logos/css-3.svg"
+									alt="python"
+								/>
+							</li>
+
+							<li class="flex flex-col text-center text-xl shadow p-3 rounded-md bg-white">
+								Rust
+								<img class=" w-24 h-24" src="https://cdn.svgporn.com/logos/rust.svg" alt="rust" />
+							</li>
+
+							<li class="flex flex-col justify-center text-2xl shadow p-3 rounded-md bg-white">
+								And<br />
+								More ..
+								<!-- <img class=" w-24 h-24" src="https://cdn.svgporn.com/logos/rust.svg" alt="rust" /> -->
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
 			<!-- Add code editor section -->
 			<div class="px-4 h-fit md:h-screen flex items-center justify-center">
 				<div class="h-full flex flex-col gap-3 md:gap-6 items-center">
@@ -110,7 +168,7 @@
 			<div class=" bg-secondary-dark h-fit md:h-[400px] flex items-center p-7 py-9">
 				<div class="h-full flex flex-col gap-3 md:gap-6 items-center justify-center">
 					<div class="">
-						<h2 class=" font-semibold mb-2 text-light text-5xl md:text-6xl">The Idea</h2>
+						<h2 class=" font-semibold mb-2 text-white text-5xl md:text-6xl">The Idea</h2>
 						<p class="max-w-md text-light text-base md:text-lg">
 							You're working on some project, you wrote a really interesting piece & you want to
 							share it with the community. <br />
@@ -119,7 +177,7 @@
 						</p>
 						<a
 							href="/signin"
-							class="flex w-fit items-center justify-center gap-2 px-7 py-4 mt-3 bg-sky-400 rounded-lg"
+							class="text-sm flex w-fit items-center justify-center gap-2 px-7 py-4 mt-3 bg-sky-400 rounded-lg hover:scale-110 transition-transform duration-300"
 							>Get Started <Fa icon={faRightLong} /></a
 						>
 					</div>

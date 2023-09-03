@@ -7,14 +7,14 @@
 	import { pageCount } from '$lib/index.js';
 
 	export let supabase;
+	export let session;
 	export let rawcollection;
 	export let dashboard = false;
 
 	let collection = rawcollection;
 	let loading = false;
-	async function fetchPaginatedRows(pageNumber, pageSize) {
-		loading = true;
-		const off = (pageNumber - 1) * pageSize;
+
+	async function fetchExplore(pageNumber, pageSize) {
 		const { data, error } = await supabase
 			.from('snips')
 			.select('*')
@@ -28,7 +28,32 @@
 		return data;
 	}
 
+	async function fetchDashboard(pageNumber, pageSize) {
+		const { data, error } = await supabase
+			.from('snips')
+			.select('*')
+			.eq('user_id', session.user.id)
+			.order('created_at', { ascending: false }) // Optional: Ordering the results
+			.range(pageNumber, pageSize);
+
+		if (error) {
+			console.error('Error fetching data:', error.message);
+			return;
+		}
+		return data;
+	}
+	async function fetchPaginatedRows(pageNumber, pageSize) {
+		loading = true;
+		const off = (pageNumber - 1) * pageSize;
+		if (dashboard) {
+			return fetchDashboard(pageNumber, pageSize);
+		} else {
+			return fetchExplore(pageNumber, pageSize);
+		}
+	}
+
 	let showMore = true;
+
 	async function more() {
 		console.log($pageCount);
 		let result = await fetchPaginatedRows($pageCount, $pageCount + 6 - 1);
@@ -49,7 +74,7 @@
 	}
 </script>
 
-<div class="gap-6 flex flex-col">
+<div class="gap-6 flex flex-col w-full">
 	<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 rounded-lg">
 		{#each collection as snippet}
 			<!-- <div class="bg-white rounded-lg p-4 shadow-md">

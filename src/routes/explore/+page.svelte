@@ -44,7 +44,7 @@
 	<div class="text-center mb-4 flex items-center justify-center flex-col gap-8 my-5">
 		<Search />
 		<div
-			class="bg-sky-500 hover:bg-sky-600 text-white py-3 px-3 md:px-6 rounded-lg shadow transition-all duration-300 mb-5"
+			class="bg-sky-500 text-secondary-dark hover:bg-sky-600 py-3 px-3 md:px-6 rounded-lg shadow transition-all duration-300 mb-5"
 		>
 			<a href="/signin">New Snippet</a>
 		</div>
@@ -52,8 +52,8 @@
 </div>
 <div class="flex items-center justify-center min-h-screen flex-col gap-2 p-4 px-7 md:px-4">
 	<!-- Dashboard.svelte -->
-	<main class=" min-h-screen flex items-center justify-center">
-		<div class="max-w-4xl mx-auto px-1 sm:px-6 lg:px-8 py-12">
+	<main class=" min-h-screen w-full flex items-center justify-center">
+		<div class="max-w-4xl w-full">
 			<!-- Code Snippet Cards -->
 			<div>
 				<p class="text-lg md:text-xl font-bold py-6">Collections</p>
