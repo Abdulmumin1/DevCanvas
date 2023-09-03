@@ -40,7 +40,10 @@
 <div
 	class="tooltip-container relative inline-block cursor-pointer transition-transform duration-300"
 >
-	<button on:click={showOptions} class="flex justify-center items-center gap-2 w-full">
+	<button
+		on:click={showOptions}
+		class="flex justify-center items-center gap-2 w-full text-secondary-dark"
+	>
 		<Fa icon={newCodeIcon} /> New Code Snippet
 	</button>
 

@@ -87,9 +87,7 @@
 		</div>
 	</div>
 </div>
-<div
-	class="flex items-center justify-center min-h-screen flex-col gap-2 p-4 px-7 md:px-4 bg-gradient-to-r from-bg-sky-50 to-bg-sky-300"
->
+<div class="flex items-center justify-center min-h-screen flex-col gap-2">
 	{#await loadIntialData()}
 		<!-- Dashboard.svelte -->
 		<p class="flex items-center justify-center gap-2 text-xl">
@@ -97,8 +95,8 @@
 			<Fa icon={faSpinner} class="animate-spin text-xl" />
 		</p>
 	{:then userSnippets}
-		<main class=" min-h-screen flex items-center justify-center">
-			<div class="max-w-4xl mx-auto px-1 sm:px-6 lg:px-8 py-12">
+		<main class=" min-h-screen flex py-6 w-full justify-center">
+			<div class="w-full px-4 max-w-4xl">
 				<!-- <Sm -->
 				<!-- Create New Code Snippet button -->
 
@@ -106,7 +104,12 @@
 				<div>
 					<p class="text-lg md:text-xl font-bold py-6">Your Collections</p>
 				</div>
-				<CollectionPage rawcollection={userSnippets} dashboard={true} supabase={data.supabase} />
+				<CollectionPage
+					rawcollection={userSnippets}
+					dashboard={true}
+					supabase={data.supabase}
+					session={data.session}
+				/>
 			</div>
 		</main>
 	{/await}

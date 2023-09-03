@@ -10,7 +10,9 @@
 
 <nav class=" w-full">
 	<ul class="w-full flex justify-between items-center p-4 shadow">
-		<li class="text-2xl text-sky-400 font-bold"><a href="/">Snippets</a></li>
+		<li class="text-xl text-sky-400 font-bold px-3 py-1">
+			<a href="/"><span class="text-secondary-dark">Snippets</span>Land</a>
+		</li>
 		<ul class="flex gap-2 items-center justify-center">
 			<li>
 				<ShareBtn />
