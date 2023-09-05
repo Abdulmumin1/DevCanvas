@@ -1,13 +1,6 @@
 <script>
-	import {
-		current_data,
-		saveData,
-		user,
-		previewMode,
-		clickOutside,
-		saved_spinner
-	} from '$lib/index.js';
-	import { faEllipsis, faFloppyDisk, faSpinner } from '@fortawesome/free-solid-svg-icons';
+	import { current_data, saveData, saved_spinner } from '$lib/index.js';
+	import { faFloppyDisk, faSpinner } from '@fortawesome/free-solid-svg-icons';
 	import Fa from 'svelte-fa';
 </script>
 

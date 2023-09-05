@@ -4,11 +4,13 @@ import { error } from '@sveltejs/kit';
 export const actions = {
 	update: async ({ locals: { supabase }, request }) => {
 		let body = Object.fromEntries(await request.formData());
-		console.log(body);
-		const { data, error: err } = await supabase.from('snips').update([body]).eq('id', body.id);
-
+		let id = body.id;
+		delete body['id'];
+		const { data, error: err } = await supabase.from('snips').update([body]).eq('id', id);
 		if (err) {
 			throw error(500, 'Opsie, error from our side');
+		} else {
+			console.log(data);
 		}
 	}
 };

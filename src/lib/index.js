@@ -93,6 +93,7 @@ export async function saveData(json_data, all = true) {
 	let formData = new FormData();
 
 	saved_spinner.set(true);
+	previewMode.set(false);
 	appendJSONToFormData(json_data, formData, all);
 
 	const response = await fetch('?/update', {

@@ -97,7 +97,7 @@
 			<div class:animate-spin={loading} class:hidden={!loading}>
 				<Fa icon={faSpinner} />
 			</div>
-			 Load more...</button
+			Load more...</button
 		>
 	{/if}
 </div>

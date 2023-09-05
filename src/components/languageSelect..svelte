@@ -60,7 +60,7 @@
 				// console.log('jfdkjafdlka');
 				showEditIcon = true;
 			}
-		}, 3000);
+		}, 2000);
 	});
 </script>
 
