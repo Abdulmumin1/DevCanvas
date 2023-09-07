@@ -67,7 +67,11 @@
 				</p> -->
 				<CollectionDummy />
 			{:then userSnippets}
-				<CollectionPage rawcollection={userSnippets} supabase={data.supabase} />
+				<CollectionPage
+					rawcollection={userSnippets}
+					supabase={data.supabase}
+					session={data.session}
+				/>
 			{/await}
 		</div>
 	</main>

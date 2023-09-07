@@ -5,6 +5,7 @@
 	// import { supabase } from '$lib/supabase.js';
 	import { browser } from '$app/environment';
 	import { pageCount } from '$lib/index.js';
+	import { fade } from 'svelte/transition';
 
 	export let supabase;
 	export let session;
@@ -63,6 +64,10 @@
 			console.log('no more');
 			return;
 		}
+		console.log(result.length);
+		if (result.length < 6) {
+			showMore = false;
+		}
 		loading = false;
 		collection = [...collection, ...result];
 		pageCount.update((cur) => {
@@ -74,7 +79,7 @@
 	}
 </script>
 
-<div class="flex flex-col gap-6 items-center">
+<div class="flex flex-col gap-6 items-center" transition:fade>
 	<div class="gap-6 flex flex-col w-full bg-white dark:bg-secondary-dark rounded-lg shadow-md">
 		<div class="grid gap-6 rounded-lg divide-y-2 dark:divide-primary w-full">
 			{#each collection as snippet}

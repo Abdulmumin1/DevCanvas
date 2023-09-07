@@ -41,7 +41,7 @@
 	</div>
 	<!-- {/if} -->
 
-	Share</button
+	<div class="hidden md:inline-block">Share</div></button
 >
 
 <style>

@@ -17,8 +17,8 @@
 	if (browser) {
 		darkModeState.set(localStorage.theme === 'dark');
 	}
-	$: {
-		if (browser) {
+	$: ({
+		if(browser) {
 			if ($darkModeState) {
 				document.documentElement.classList.add('dark');
 				localStorage.setItem('theme', 'dark');
@@ -30,7 +30,7 @@
 			// localStorage.setItem('theme', darkModeState ? 'light' : 'dark');
 			console.log('saved mode', localStorage.theme);
 		}
-	}
+	});
 	onMount(() => {
 		// darkModeState.set(localStorage.theme === 'dark');
 		const { data } = supabase.auth.onAuthStateChange((event, _session) => {
@@ -62,7 +62,7 @@
 	<meta name="twitter:description" content={$SnippetsDescription.des} />
 	<meta name="twitter:image" content={$SnippetsDescription.imageUrl} />
 </svelte:head>
-<main class="dark:bg-primary dark:text-white">
+<main class="dark:bg-primary dark:text-light transition-colors duration-300">
 	<PageTransition url={data.url}>
 		<slot />
 	</PageTransition>
