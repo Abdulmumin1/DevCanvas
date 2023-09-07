@@ -1,4 +1,4 @@
-<script>
+<!-- <script>
 	import LanguageSelect from '../../components/languageSelect..svelte';
 	import Nav from '../../components/nav.svelte';
 	import CodeText from '../../components/codeText.svelte';
@@ -45,4 +45,4 @@
 			{data.isFound}
 		</div>
 	{/if}
-</article>
+</article> -->
