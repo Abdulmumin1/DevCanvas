@@ -1,5 +1,5 @@
 <script>
-	import LanguageSelect from '../../components/languageSelect..svelte';
+	import DetailsEditor from '../../components/DetailsEditor.svelte';
 	import Nav from '../../components/nav.svelte';
 	import CodeText from '../../components/codeText.svelte';
 	import { current_data, user, previewMode, SnippetsDescription, showToast } from '$lib/index.js';
@@ -56,7 +56,7 @@
 	}
 	let mobileDetails;
 	if (browser) {
-		mobileDetails = window.innerWidth <= 760;
+		mobileDetails = window.innerWidth <= 768;
 	}
 
 	function hideShowDetails() {
@@ -75,11 +75,11 @@
 	<meta name="twitter:title" content={data['0'].description} />
 </svelte:head>
 
-<article class="min-h-screen h-screen flex flex-col gap-4">
+<article class="min-h-screen h-screen flex flex-col gap-2">
 	{#if data.isFound}
 		<Nav />
-		<div class="relative flex h-full gap-5 flex-col lg:flex-row p-0 md:p-1">
-			<div class="w-full h-full p-0 md:p-1 pb-2 md:pb-1">
+		<div class="relative flex h-full flex-col lg:flex-row p-0 md:p-1">
+			<div class="w-full h-full">
 				<CodeText inputContent={data['0'].code} lang={data['0'].lang} />
 			</div>
 
@@ -93,10 +93,10 @@
 			</div>
 			<div
 				in:slide
-				class="max-w-full w-full md:max-w-md md:w-[24rem] flex flex-col gap-3 px-3 lg:px-4 mb-4"
+				class="max-w-full w-full md:max-w-md md:w-[24rem] flex flex-col gap-3 px-3 lg:px-4 mb-3 dark:bg-secondary-dark mx-4 py-6 rounded-lg"
 				class:hidden={mobileDetails}
 			>
-				<LanguageSelect lang={data['0'].lang} />
+				<DetailsEditor lang={data['0'].lang} />
 				<button
 					class="w-fit justify-center items-center flex gap-2 text-lg"
 					on:click={() => {

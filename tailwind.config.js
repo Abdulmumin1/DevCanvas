@@ -1,6 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 export default {
 	content: ['./src/**/*.{html,js,svelte}'],
+	darkMode: 'class',
 	theme: {
 		extend: {
 			animation: {
@@ -9,6 +10,7 @@ export default {
 
 			colors: {
 				// Light Mode
+				primary: '#0e0e0e',
 				light: '#BEE3F8',
 				'text-light': '#0369A1',
 				secondary: '#FFFFFF',
@@ -22,7 +24,7 @@ export default {
 				// Dark Mode
 				'sky-dark': '#2C3E50',
 				'text-sky-dark': '#BEE3F8',
-				'secondary-dark': '#1E2833',
+				'secondary-dark': '#191919',
 				'text-secondary-dark': '#FFFFFF',
 				'accent-dark': '#FF6B81',
 				'button-bg-dark': '#34495E',

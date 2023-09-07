@@ -7,6 +7,7 @@ export let code_data = writable({
 	}
 });
 
+export const darkModeState = writable(false);
 export const current_data = writable({});
 export const user = writable(false);
 export const previewMode = writable(true);

@@ -6,12 +6,15 @@
 	import ShareBtn from './ShareBtn.svelte';
 	import { faUserGroup } from '@fortawesome/free-solid-svg-icons';
 	import Fa from 'svelte-fa';
+	import Darkmode from './darkmode.svelte';
 </script>
 
-<nav class=" w-full">
-	<ul class="w-full flex justify-between items-center p-4 shadow">
+<nav class=" w-full p-2">
+	<ul
+		class="w-full rounded-lg dark:bg-[#191919] flex justify-between items-center p-3 shadow text-black"
+	>
 		<li class="text-xl text-sky-400 font-bold px-3 py-1">
-			<a href="/"><span class="text-secondary-dark">Snippets</span>Land</a>
+			<a href="/"><span class="text-secondary-dark dark:text-white">Snippets</span>Land</a>
 		</li>
 		<ul class="flex gap-2 items-center justify-center">
 			<li>
@@ -22,7 +25,9 @@
 					<Save />
 				{/if}
 			</li>
-
+			<li>
+				<Darkmode />
+			</li>
 			<li>
 				{#if $user}
 					<Msdropdown />

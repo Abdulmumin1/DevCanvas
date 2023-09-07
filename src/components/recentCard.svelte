@@ -23,7 +23,9 @@
 >
 	<div class="flex h-fit gap-4 w-full">
 		<div class="min-w-[100px]">
-			<h2 class="text-sm mb-2 rounded-xl bg-sky-100 w-fit px-3 p-1 h-fit">{card.lang}</h2>
+			<h2 class="text-sm mb-2 rounded-xl text-secondary-dark bg-sky-100 w-fit px-3 p-1 h-fit">
+				{card.lang}
+			</h2>
 		</div>
 		<p class="text-lg md:text-xl font-semibold hover:opacity-80 w-full">
 			<a href="/{card.project_key}">{card.description}</a>

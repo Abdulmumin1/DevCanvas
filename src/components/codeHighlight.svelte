@@ -78,10 +78,25 @@
 
 	onMount(() => {
 		import('monaco-editor').then((monaco) => {
+			monaco.editor.defineTheme('myTheme', {
+				base: 'vs-dark',
+				inherit: true,
+				rules: [],
+				colors: {
+					'editor.foreground': '#f4eded',
+					'editor.background': '#191919',
+					'editorCursor.foreground': '#38bef7',
+					'editor.lineHighlightBackground': '#0e0e0e50',
+					'editorLineNumber.foreground': '#38bef7',
+					'editor.selectionBackground': '#38BEF710',
+					'editor.inactiveSelectionBackground': '#38BEF720'
+				}
+			});
 			// Use monaco here...
+
 			// Initialize the editor
 			editor = monaco.editor.create(editorContanier, editorConfig);
-
+			monaco.editor.setTheme('myTheme');
 			// Attach an event listener for changes in the code
 			editor.onDidChangeModelContent(() => {
 				try {
@@ -125,7 +140,9 @@
 		<Fa icon={faSpinner} class="animate-spin text-2xl" />
 	</div>
 {:else}
-	<div class="editor-container h-full z-50" bind:this={editorContanier} />
+	<div class="editor-container h-full py-5 bg-secondary-dark rounded-xl">
+		<div class="h-full w-full" bind:this={editorContanier} />
+	</div>
 {/if}
 
 <style>

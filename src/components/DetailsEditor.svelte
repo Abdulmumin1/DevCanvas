@@ -3,7 +3,7 @@
 	import { current_data, supportedLanguages, user, saveData } from '$lib/index.js';
 	import { faCheck, faEdit, faSpinner } from '@fortawesome/free-solid-svg-icons';
 	import Fa from 'svelte-fa';
-	import { scale } from 'svelte/transition';
+	import { scale, slide } from 'svelte/transition';
 
 	const options = supportedLanguages;
 
@@ -79,26 +79,28 @@
 		{/if}
 	</p>
 	{#if !notEditable}
-		<input
-			type="text"
-			class="w-full p-1 outline-none rounded-md focus:outline-none border focus:border-2 border-sky-300 transition-all duration-100"
-			placeholder="Search..."
-			bind:value={searchTerm}
-			on:input={filterOptions}
-		/>
+		<div transition:slide class="space-y-2">
+			<input
+				type="text"
+				class="w-full dark:bg-primary p-1 outline-none rounded-md focus:outline-none border focus:border-2 border-sky-300 transition-all duration-100"
+				placeholder="Search..."
+				bind:value={searchTerm}
+				on:input={filterOptions}
+			/>
 
-		<select
-			class="w-full rounded p-1 outline-none focus:outline-none"
-			bind:value={selectedOption}
-			on:change={selectOption}
-		>
-			{#each filteredOptions as option}
-				<option value={option}>{option}</option>
-			{/each}
-		</select>
+			<select
+				class="w-full rounded p-1 outline-none focus:outline-none dark:text-light dark:bg-primary"
+				bind:value={selectedOption}
+				on:change={selectOption}
+			>
+				{#each filteredOptions as option}
+					<option value={option}>{option}</option>
+				{/each}
+			</select>
+		</div>
 	{/if}
 
-	<div class="bg-sky-100 p-2 rounded-md">
+	<div class="bg-sky-200 dark:text-black p-2 rounded-md">
 		<span>{language}</span>
 	</div>
 </div>
