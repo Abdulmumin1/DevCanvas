@@ -1,15 +1,11 @@
 <script>
-	import DetailsEditor from '../../components/DetailsEditor.svelte';
 	import Nav from '../../components/nav.svelte';
 	import CodeText from '../../components/codeText.svelte';
 	import { current_data, user, previewMode, SnippetsDescription, showToast } from '$lib/index.js';
-	import { onMount, afterUpdate } from 'svelte';
-	import Fa from 'svelte-fa';
-	import { faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
-	import { slide } from 'svelte/transition';
+	import { onMount } from 'svelte';
 	import Toast from '../../components/toast.svelte';
-	import Shortcuts from '../../components/shortcuts.svelte';
 	import { browser } from '$app/environment';
+	import DetailsGrid from '../../components/DetailsGrid.svelte';
 
 	previewMode.set(true);
 
@@ -25,17 +21,6 @@
 
 	// Subscribe to the content store to update the input when necessary
 
-	const setPreview = (user) => {
-		console.log(user.id, data['0'].user_id);
-
-		if (user.id == data['0'].user_id) {
-			previewMode.set(false);
-		} else {
-			previewMode.set(true);
-		}
-	};
-
-	let showDetails = false;
 	// console.log(user)
 	onMount(() => {
 		current_data.set(data['0']);
@@ -49,18 +34,9 @@
 	// 	}
 	// });
 
-	function formatDate(inputDate) {
-		const options = { year: 'numeric', month: 'long', day: 'numeric' };
-		const date = new Date(inputDate);
-		return date.toLocaleDateString('en-US', options);
-	}
 	let mobileDetails;
 	if (browser) {
 		mobileDetails = window.innerWidth <= 768;
-	}
-
-	function hideShowDetails() {
-		mobileDetails = !mobileDetails;
 	}
 </script>
 
@@ -82,41 +58,7 @@
 			<div class="w-full h-full">
 				<CodeText inputContent={data['0'].code} lang={data['0'].lang} />
 			</div>
-
-			<div>
-				<button
-					class="flex sm:hidden fixed bottom-3 right-3 p-3 bg-sky-300 rounded-full transition-transform duration-300 hover:scale-105"
-					on:click={hideShowDetails}
-				>
-					<Fa icon={faExclamationCircle} />
-				</button>
-			</div>
-			<div
-				in:slide
-				class="max-w-full w-full md:max-w-md md:w-[24rem] flex flex-col gap-3 px-3 lg:px-4 mb-3 dark:bg-secondary-dark mx-4 py-6 rounded-lg"
-				class:hidden={mobileDetails}
-			>
-				<DetailsEditor lang={data['0'].lang} />
-				<button
-					class="w-fit justify-center items-center flex gap-2 text-lg"
-					on:click={() => {
-						showDetails = !showDetails;
-					}}>Details <Fa icon={faExclamationCircle} /></button
-				>
-				{#if showDetails}
-					<div transition:slide>
-						<p class="">Last Edited:</p>
-						<p class="text-gray-700">
-							{formatDate(data['0'].created_at)}
-						</p>
-						<p class="">Description:</p>
-						<p class="text-gray-700">
-							{data['0'].description}
-						</p>
-					</div>
-				{/if}
-				<Shortcuts />
-			</div>
+			<DetailsGrid details={data['0']} />
 			{#if $showToast}
 				<Toast message={$showToast.message} />
 			{/if}

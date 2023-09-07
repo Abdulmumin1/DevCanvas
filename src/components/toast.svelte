@@ -2,6 +2,8 @@
 	import { onMount } from 'svelte';
 	import { slide } from 'svelte/transition';
 	import { showToast } from '$lib/index.js';
+	import Fa from 'svelte-fa';
+	import { faClose } from '@fortawesome/free-solid-svg-icons';
 	export let message;
 
 	onMount(() => {
@@ -13,7 +15,11 @@
 
 <div
 	transition:slide
-	class="absolute bottom-0 right-0 m-2 shadow-md border-l-2 rounded-sm bg-white dark:bg-primary border-sky-500 p-2"
+	class="absolute bottom-0 inset-x-0 mx-auto w-fit m-2 shadow-md border-l-2 border-r-2 rounded-md bg-white dark:bg-primary border-sky-500 p-2"
 >
-	{message}
+	<div class="flex items-center justify-center gap-2">
+		{message}
+
+		<Fa icon={faClose} />
+	</div>
 </div>

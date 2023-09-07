@@ -10,8 +10,6 @@
 			return !cur;
 		});
 	}
-
-	onMount();
 </script>
 
 <button on:click={handleSwitchDarkMode} class="flex items-center justify-center dark:text-light">

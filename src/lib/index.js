@@ -1,11 +1,5 @@
 // place files you want to import through the `$lib` alias in this folder.
 import { readable, writable } from 'svelte/store';
-export let code_data = writable({
-	abc: {
-		code: 'lfjfldsflaf',
-		lang: 'python'
-	}
-});
 
 export const darkModeState = writable(false);
 export const current_data = writable({});
