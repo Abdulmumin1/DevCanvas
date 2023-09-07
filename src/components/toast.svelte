@@ -13,7 +13,7 @@
 
 <div
 	transition:slide
-	class="absolute bottom-0 right-0 m-2 shadow-md border-l-2 rounded-sm bg-white border-sky-500 p-2"
+	class="absolute bottom-0 right-0 m-2 shadow-md border-l-2 rounded-sm bg-white dark:bg-primary border-sky-500 p-2"
 >
 	{message}
 </div>
