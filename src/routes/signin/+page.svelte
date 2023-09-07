@@ -16,7 +16,7 @@
 	action="?/signin"
 	method="post"
 	on:submit={handleSubmit}
-	class=" flex flex-col justify-center items-center h-screen px-6"
+	class=" flex flex-col justify-center items-center h-screen px-6 bg-white dark:bg-secondary-dark"
 >
 	<h2 class="text-3xl md:text-5xl py-11">Snippets</h2>
 	<div class="flex flex-col shadow-md rounded-md p-6 gap-4 min-w-[300px] border-t border-sky-300">

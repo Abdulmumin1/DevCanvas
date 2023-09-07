@@ -23,7 +23,7 @@
 >
 	<div class="flex h-fit gap-4 w-full">
 		<div class="min-w-[100px]">
-			<h2 class="text-sm mb-2 rounded-xl text-secondary-dark bg-sky-100 w-fit px-3 p-1 h-fit">
+			<h2 class="text-sm mb-2 rounded-xl text-secondary-dark bg-light w-fit px-3 p-1 h-fit">
 				{card.lang}
 			</h2>
 		</div>

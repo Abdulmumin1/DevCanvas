@@ -5,7 +5,7 @@
 	import Darkmode from './darkmode.svelte';
 </script>
 
-<div class="h-[12vh] p-4 md:p-6 w-full bg-inherit">
+<div class="h-[12vh] p-3 md:p-6 w-full bg-inherit">
 	<ul class="flex w-full justify-between items-center">
 		<li
 			class="text-base md:text-lg py-2 px-3 gap-3 text-light bg-secondary-dark flex items-center justify-center rounded-3xl"
