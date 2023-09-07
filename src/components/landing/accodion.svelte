@@ -26,7 +26,7 @@
 	</button>
 	{#if open}
 		<div transition:slide>
-			<div class="p-2 text-base md:text-lg bg-white border-t">{content}</div>
+			<div class="p-2 text-base md:text-lg bg-white dark:bg-primary border-t">{content}</div>
 		</div>
 	{/if}
 </li>

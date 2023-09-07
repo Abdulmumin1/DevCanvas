@@ -1,14 +1,23 @@
 <script>
 	import SectionCard from './sectionCard.svelte';
-	import Explore from '$lib/discover.gif';
+	import Explore from '$lib/exploreNew.gif';
+	import ExploreDark from '$lib/exploreNewDark.gif';
+	import { darkModeState } from '$lib/index.js';
 </script>
 
 <SectionCard>
 	<div class="h-full">
-		<img src={Explore} alt="ga" class="h-full object-contain" />
+		<!-- image url https://storyset.com/illustration/journey/cuate/animate -->
+		{#if $darkModeState}
+			<img src={ExploreDark} alt="ga" class="h-full object-contain" />
+		{:else}
+			<img src={Explore} alt="ga" class="h-full object-contain" />
+		{/if}
 	</div>
 	<div class="">
-		<h2 class=" font-semibold mb-2 text-4xl md:text-5xl">Explore Code Snippets</h2>
+		<h2 class=" font-semibold mb-2 text-4xl md:text-5xl dark:text-sky-400">
+			Explore Code Snippets
+		</h2>
 		<p class="max-w-md">
 			Explore a diverse library of code snippets contributed by developers like you. From simple
 			solutions to complex algorithms, SnippetLand is your go-to resource for finding inspiration,
