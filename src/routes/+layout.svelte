@@ -2,9 +2,10 @@
 	import '../tailwind.css';
 	import '../app.css';
 	import { onMount } from 'svelte';
-	import { user, dashboardLoading, SnippetsDescription } from '$lib/index.js';
+	import { user, darkModeState, SnippetsDescription } from '$lib/index.js';
 	import { invalidateAll } from '$app/navigation';
 	import PageTransition from './transition.svelte';
+	import { browser } from '$app/environment';
 
 	// console.log(supabase.auth.getUser());
 
@@ -13,7 +14,25 @@
 	let { supabase, session } = data;
 	$: ({ supabase, session } = data);
 
+	if (browser) {
+		darkModeState.set(localStorage.theme === 'dark');
+	}
+	$: {
+		if (browser) {
+			if ($darkModeState) {
+				document.documentElement.classList.add('dark');
+				localStorage.setItem('theme', 'dark');
+			} else {
+				document.documentElement.classList.remove('dark');
+				localStorage.setItem('theme', 'light');
+			}
+
+			// localStorage.setItem('theme', darkModeState ? 'light' : 'dark');
+			console.log('saved mode', localStorage.theme);
+		}
+	}
 	onMount(() => {
+		// darkModeState.set(localStorage.theme === 'dark');
 		const { data } = supabase.auth.onAuthStateChange((event, _session) => {
 			user.set(_session?.user);
 			if (_session?.expires_at !== session?.expires_at) {
@@ -23,7 +42,6 @@
 
 		return () => data.subscription.unsubscribe();
 	});
-	// onMount(() => {});
 </script>
 
 <svelte:head>
@@ -44,7 +62,7 @@
 	<meta name="twitter:description" content={$SnippetsDescription.des} />
 	<meta name="twitter:image" content={$SnippetsDescription.imageUrl} />
 </svelte:head>
-<main>
+<main class="dark:bg-primary dark:text-white">
 	<PageTransition url={data.url}>
 		<slot />
 	</PageTransition>

@@ -6,7 +6,7 @@
 <p>
 	<a
 		href="https://github.com/Abdulmumin1/snippets"
-		class="flex items-center justify-center gap-2 rounded-3xl bg-sky-100 p-2 px-4"
+		class="flex items-center justify-center gap-2 rounded-3xl bg-sky-100 p-2 px-4 dark:text-sky-dark"
 	>
 		Star us on github <Fa icon={faStar} />
 	</a>

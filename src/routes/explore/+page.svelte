@@ -7,6 +7,7 @@
 	import InnerNav from '../../components/innerNav.svelte';
 	import Fa from 'svelte-fa';
 	import { faSpinner } from '@fortawesome/free-solid-svg-icons';
+	import CollectionDummy from '../../components/collectionDummy.svelte';
 	// if (!$user) {
 	// 	window.location.href = '/signin';
 	// }
@@ -60,10 +61,11 @@
 			</div>
 
 			{#await loadIntialData()}
-				<p class="flex items-center justify-center gap-2 text-xl h-[50vh]">
+				<!-- <p class="flex items-center justify-center gap-2 text-xl h-[50vh]">
 					Loading ...
 					<Fa icon={faSpinner} class="animate-spin text-xl" />
-				</p>
+				</p> -->
+				<CollectionDummy />
 			{:then userSnippets}
 				<CollectionPage rawcollection={userSnippets} supabase={data.supabase} />
 			{/await}

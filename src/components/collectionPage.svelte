@@ -75,8 +75,8 @@
 </script>
 
 <div class="flex flex-col gap-6 items-center">
-	<div class="gap-6 flex flex-col w-full bg-white rounded-lg shadow-md">
-		<div class="grid gap-6 rounded-lg divide-y-2 w-full">
+	<div class="gap-6 flex flex-col w-full bg-white dark:bg-secondary-dark rounded-lg shadow-md">
+		<div class="grid gap-6 rounded-lg divide-y-2 dark:divide-primary w-full">
 			{#each collection as snippet}
 				<!-- <div class="bg-white rounded-lg p-4 shadow-md">
 					<h3 class="text-xl font-semibold mb-2">{snippet.lang}</h3>
@@ -90,14 +90,14 @@
 	</div>
 	{#if showMore}
 		<button
-			class="bg-gray-300 shadow rounded-lg p-2 flex justify-center items-center gap-2 w-fit"
+			class="bg-gray-300 dark:bg-secondary-dark shadow rounded-lg py-2 px-4 flex justify-center items-center gap-2 w-fit"
 			id="more"
 			on:click={more}
 		>
 			<div class:animate-spin={loading} class:hidden={!loading}>
 				<Fa icon={faSpinner} />
 			</div>
-			 Load more...</button
+			Load more...</button
 		>
 	{/if}
 </div>

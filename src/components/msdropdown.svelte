@@ -48,14 +48,14 @@
 	});
 </script>
 
-<div class="relative flex text-left items-center justify-center">
-	<button on:click={toggleDropdown}>
+<div class="relative flex text-left items-center justify-center dark:text-light">
+	<button on:click={toggleDropdown} class="text-xl">
 		<Fa icon={faBars} class=" transition-transform duration-150 hover:scale-110" />
 	</button>
 
 	{#if isOpen}
 		<div
-			class="absolute top-5 right-0 z-10 bg-white mt-2 w-60 p-3 rounded-md shadow-lg text-left"
+			class="absolute top-5 right-0 z-10 bg-white dark:bg-primary mt-2 w-60 p-3 rounded-md shadow-lg text-left"
 			use:clickOutside
 			in:scale={{ duration: 200, transformOrigin: 'top right' }}
 			out:scale={{ duration: 200, transformOrigin: 'top right' }}
@@ -73,7 +73,7 @@
 					</li>
 				{/if}
 				<form action="/auth/signout" method="post">
-					<li class="bg-rose-300 px-4 m-1 py-2 rounded-xl cursor-pointer">
+					<li class="bg-error dark:text-black px-4 m-1 py-2 rounded-xl cursor-pointer">
 						<button type="submit" class="w-full"> Logout </button>
 					</li>
 				</form>

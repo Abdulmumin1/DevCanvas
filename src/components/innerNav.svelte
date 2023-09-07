@@ -2,6 +2,7 @@
 	import Fa from 'svelte-fa';
 	import { faGithub, faWpexplorer } from '@fortawesome/free-brands-svg-icons';
 	import logo from '$lib/logo.png';
+	import Darkmode from './darkmode.svelte';
 </script>
 
 <div class="h-[12vh] p-4 md:p-6 w-full bg-inherit">
@@ -18,6 +19,9 @@
 					<a class="flex gap-2 items-center justify-center" href="/explore">
 						Explore <Fa icon={faWpexplorer} class="" /></a
 					>
+				</li>
+				<li class="bg-secondary-dark text-light rounded-full">
+					<div class="flex gap-2 items-center justify-center"><Darkmode /></div>
 				</li>
 				<li class="bg-secondary-dark text-light rounded-full p-3">
 					<a

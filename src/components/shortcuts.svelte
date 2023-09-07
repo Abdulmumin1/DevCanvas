@@ -23,16 +23,16 @@
 		<ul transition:slide class="flex gap-2 flex-col">
 			<li class="flex gap-4 items-center">
 				<div>
-					<span class="bg-gray-100 shadow px-2 py-1 rounded">Ctrl</span> +
-					<span class="bg-gray-100 shadow px-2 py-1 rounded">S</span>
+					<span class="bg-gray-100 shadow px-2 py-1 rounded dark:text-black">Ctrl</span> +
+					<span class="bg-gray-100 shadow px-2 py-1 rounded dark:text-black">S</span>
 				</div>
-				<div class="bg-gray-100 shadow px-2 py-1 rounded">Save</div>
+				<div class="bg-gray-100 shadow px-2 py-1 rounded dark:text-black">Save</div>
 			</li>
 			<li class="flex gap-2 items-center">
 				<div>
-					<span class="bg-gray-100 shadow px-2 py-1 rounded">f1</span>
+					<span class="bg-gray-100 shadow px-2 py-1 rounded dark:text-black">f1</span>
 				</div>
-				<div class="bg-gray-50 shadow px-2 py-1 rounded">Command Palette</div>
+				<div class="bg-gray-50 shadow px-2 py-1 rounded dark:text-black">Command Palette</div>
 			</li>
 
 			<li class="flex gap-4 items-center">

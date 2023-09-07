@@ -8,6 +8,7 @@
 	import Search from '../../components/search.svelte';
 	import CollectionPage from '../../components/collectionPage.svelte';
 	import InnerNav from '../../components/innerNav.svelte';
+	import CollectionDummy from '../../components/collectionDummy.svelte';
 
 	export let data;
 
@@ -88,29 +89,26 @@
 	</div>
 </div>
 <div class="flex items-center justify-center min-h-screen flex-col gap-2">
-	{#await loadIntialData()}
-		<!-- Dashboard.svelte -->
-		<p class="flex items-center justify-center gap-2 text-xl">
-			Loading ...
-			<Fa icon={faSpinner} class="animate-spin text-xl" />
-		</p>
-	{:then userSnippets}
-		<main class=" min-h-screen flex py-3 md:py-6 w-full justify-center bg-gray-100">
-			<div class="w-full px-4 max-w-4xl">
+	<main class=" min-h-screen flex py-3 md:py-6 w-full justify-center">
+		<div class="w-full px-4 max-w-4xl">
+			<div>
+				<p class="text-lg md:text-xl font-bold py-6">Your Collections</p>
+			</div>
+			{#await loadIntialData()}
+				<CollectionDummy />
+			{:then userSnippets}
 				<!-- <Sm -->
 				<!-- Create New Code Snippet button -->
 
 				<!-- Code Snippet Cards -->
-				<div>
-					<p class="text-lg md:text-xl font-bold py-6">Your Collections</p>
-				</div>
+
 				<CollectionPage
 					rawcollection={userSnippets}
 					dashboard={true}
 					supabase={data.supabase}
 					session={data.session}
 				/>
-			</div>
-		</main>
-	{/await}
+			{/await}
+		</div>
+	</main>
 </div>

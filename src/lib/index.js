@@ -7,6 +7,7 @@ export let code_data = writable({
 	}
 });
 
+export const darkModeState = writable(false);
 export const current_data = writable({});
 export const user = writable(false);
 export const previewMode = writable(true);
@@ -93,6 +94,7 @@ export async function saveData(json_data, all = true) {
 	let formData = new FormData();
 
 	saved_spinner.set(true);
+	previewMode.set(false);
 	appendJSONToFormData(json_data, formData, all);
 
 	const response = await fetch('?/update', {
