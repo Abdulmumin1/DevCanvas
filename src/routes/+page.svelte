@@ -13,6 +13,7 @@
 	import CodeEditor from '../components/landing/codeEditor.svelte';
 	import Idea from '../components/landing/idea.svelte';
 	import Faq from '../components/landing/faq.svelte';
+	import EmbedSection from '../components/landing/embedSection.svelte';
 </script>
 
 <svelte:head>
@@ -39,6 +40,7 @@
 			<Explore />
 			<Discover />
 			<LanguageSupport />
+			<EmbedSection />
 			<!-- Add code editor section -->
 			<CodeEditor />
 			<!-- The Idea-->

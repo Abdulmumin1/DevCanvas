@@ -41,14 +41,16 @@
 </script>
 
 <svelte:head>
+	{#if data.isFound}
+		<title>{data['0'].description}</title>
+
+		<!-- Facebook Meta Tags -->
+		<meta property="og:title" content={data['0'].description} />
+
+		<!-- Twitter Meta Tags -->
+		<meta name="twitter:title" content={data['0'].description} />
+	{/if}
 	<!-- HTML Meta Tags -->
-	<title>{data['0'].description}</title>
-
-	<!-- Facebook Meta Tags -->
-	<meta property="og:title" content={data['0'].description} />
-
-	<!-- Twitter Meta Tags -->
-	<meta name="twitter:title" content={data['0'].description} />
 </svelte:head>
 
 <article class="min-h-screen h-screen flex flex-col gap-2">
