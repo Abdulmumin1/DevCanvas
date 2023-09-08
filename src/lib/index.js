@@ -175,3 +175,34 @@ export const supportedLanguages = [
 	'c',
 	'cpp'
 ].sort();
+
+export function copyTextToClipboard(text) {
+	if (!navigator.clipboard) {
+		// Fallback for browsers that do not support the Clipboard API
+		const textArea = document.createElement('textarea');
+		textArea.value = text;
+		textArea.style.position = 'fixed'; // Ensure it's off-screen
+		document.body.appendChild(textArea);
+		textArea.select();
+
+		try {
+			const successful = document.execCommand('copy');
+			const message = successful ? 'Copied to clipboard' : 'Unable to copy to clipboard';
+			alert(message);
+		} catch (err) {
+			console.error('Error copying text: ', err);
+		} finally {
+			document.body.removeChild(textArea);
+		}
+	} else {
+		// Use the Clipboard API if available
+		navigator.clipboard
+			.writeText(text)
+			.then(() => {
+				console.log('Text copied to clipboard');
+			})
+			.catch((err) => {
+				console.error('Error copying text: ', err);
+			});
+	}
+}

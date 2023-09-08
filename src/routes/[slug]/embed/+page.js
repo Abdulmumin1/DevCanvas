@@ -1,6 +1,6 @@
 import { error } from '@sveltejs/kit';
-// import { current_data } from '$lib/index.js';
 
+/** @type {import('./$types').PageLoad} */
 export async function load({ params, parent }) {
 	const { supabase } = await parent();
 	let slug = params['slug'];
@@ -12,5 +12,6 @@ export async function load({ params, parent }) {
 		// console.log('erejrejlreo rea fljsa fdoaf dsaf ');
 		throw error(404, 'Enhance your calm');
 	}
+
 	return { ...data, isFound: data.length > 0 };
 }
