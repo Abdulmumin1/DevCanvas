@@ -55,7 +55,7 @@
 	}
 
 	onMount(() => {
-		setInterval(() => {
+		setTimeout(() => {
 			if ($user.id == $current_data.user_id) {
 				// console.log('jfdkjafdlka');
 				showEditIcon = true;
@@ -100,7 +100,7 @@
 		</div>
 	{/if}
 
-	<div class="bg-sky-200 dark:text-black p-2 rounded-md">
+	<div class="bg-gray-100 dark:bg-sky-200 dark:text-black p-2 rounded-md">
 		<span>{language}</span>
 	</div>
 </div>
