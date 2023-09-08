@@ -5,6 +5,7 @@
 	import { slide } from 'svelte/transition';
 	import DetailsEditor from './DetailsEditor.svelte';
 	import { browser } from '$app/environment';
+	import GetEmbedCode from './getEmbedCode.svelte';
 
 	let mobileDetails;
 	let showDetails = false;
@@ -67,4 +68,6 @@
 		</div>
 	{/if}
 	<Shortcuts />
+
+	<GetEmbedCode />
 </div>

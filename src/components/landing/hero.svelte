@@ -6,7 +6,7 @@
 <p>
 	<a
 		href="https://github.com/Abdulmumin1/snippets"
-		class="flex items-center justify-center gap-2 rounded-3xl bg-sky-100 p-2 px-4 dark:text-sky-dark"
+		class="flex items-center justify-center gap-2 rounded-3xl bg-sky-100 dark:bg-light p-2 px-4 dark:text-sky-dark"
 	>
 		Star us on github <Fa icon={faStar} />
 	</a>
@@ -14,12 +14,12 @@
 <h1 class="text-5xl md:text-6xl font-bold mb-3 text-center">
 	Welcome to <span class="text-sky-400">SnippetLand</span>
 </h1>
-<p class="text-xl text-gray-700 text-center max-w-lg">
+<p class="text-xl text-gray-700 dark:text-light text-center max-w-lg mx-1">
 	The platform for effortlessly sharing, collaborating, and discovering code snippets. <span
 		class="text-rose-400">share</span
 	>,
 	<span class="text-orange-600">learn</span>, and
-	<span class="bg-sky-300">build together</span>.
+	<span class="bg-sky-300 text-primary">build together</span>.
 </p>
 <div class="text-center">
 	<a

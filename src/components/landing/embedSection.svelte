@@ -49,8 +49,7 @@ print("Is stack empty?", stack.is_empty())
 
 	let c = `
 <iframe
- src="http://localhost:5173/wswPQh/embed"
- sandbox="allow-scripts"
+ src="https://snippet-bice.vercel.app/v4H9dW/embed"
 />`;
 </script>
 
@@ -60,19 +59,16 @@ print("Is stack empty?", stack.is_empty())
 			<h2 class="text-3xl md:text-4xl text-black font-semibold mb-2 dark:text-sky-400">
 				Easily embed beautifully with just <span class="text-error">iframe</span>
 			</h2>
-			<pre class="text-[11px] bg-secondary-dark rounded-xl px-4 text-white">
+			<pre class="text-[9px] md:text-sm bg-secondary-dark rounded-xl px-4 text-white">
 				<code>{c}</code>
 			</pre>
 		</div>
-		<div class=" w-full">
+		<div class=" w-full h-full">
 			<iframe
 				title="embed"
 				src="https://snippet-bice.vercel.app/v4H9dW/embed"
 				width="100%"
-				height="80%"
-				allowfullscreen
-				sandbox="allow-scripts"
-				class="rounded-xl"
+				class="rounded-xl h-full md:h-[80%]"
 			>
 				<p>
 					<a href="/en-US/docs/Glossary"> Fallback link for browsers that don't support iframes </a>

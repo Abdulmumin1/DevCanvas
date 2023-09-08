@@ -22,11 +22,15 @@
 
 		<div class="flex items-center justify-center gap-2">
 			<div class="px-3 py-1 rounded-xl bg-primary text-light">{details.lang}</div>
-			<button class=" bg-primary text-light z-50 px-3 py-2 rounded-lg">
-				<a href="http://localhost:5173">
-					<Fa icon={faExpand} />
-				</a>
-			</button>
+
+			<a
+				href="https://snippet-bice.vercel.app"
+				target="_blank"
+				class=" bg-primary text-light z-50 px-3 py-2 rounded-lg"
+			>
+				<Fa icon={faExpand} />
+			</a>
+
 			<button class=" bg-primary text-light z-50 px-3 py-2 rounded-lg" on:click={CopyAction}
 				><Fa icon={faCopy} /></button
 			>

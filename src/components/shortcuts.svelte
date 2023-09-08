@@ -23,22 +23,17 @@
 		<ul transition:slide class="flex gap-2 flex-col">
 			<li class="flex gap-4 items-center">
 				<div>
-					<span class="bg-gray-100 shadow px-2 py-1 rounded dark:text-black dark:bg-sky-200"
-						>Ctrl</span
-					>
+					<span class="bg-gray-100 px-2 py-1 rounded dark:text-black dark:bg-sky-200">Ctrl</span>
 					+
-					<span class="bg-gray-100 shadow px-2 py-1 rounded dark:text-black dark:bg-sky-200">S</span
-					>
+					<span class="bg-gray-100 px-2 py-1 rounded dark:text-black dark:bg-sky-200">S</span>
 				</div>
-				<div class="bg-gray-100 shadow px-3 py-1 rounded dark:text-black dark:bg-sky-200">Save</div>
+				<div class="bg-gray-100 px-3 py-1 rounded dark:text-black dark:bg-sky-200">Save</div>
 			</li>
 			<li class="flex gap-2 items-center">
 				<div>
-					<span class="bg-gray-100 shadow px-2 py-1 rounded dark:text-black dark:bg-sky-200"
-						>f1</span
-					>
+					<span class="bg-gray-100 px-2 py-1 rounded dark:text-black dark:bg-sky-200">f1</span>
 				</div>
-				<div class="bg-gray-50 shadow px-2 py-1 rounded dark:text-black dark:bg-sky-200">
+				<div class="bg-gray-50 px-2 py-1 rounded dark:text-black dark:bg-sky-200">
 					Command Palette
 				</div>
 			</li>

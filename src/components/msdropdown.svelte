@@ -42,7 +42,7 @@
 	};
 
 	onMount(() => {
-		setInterval(() => {
+		setTimeout(() => {
 			removePreview();
 		}, 2000);
 	});

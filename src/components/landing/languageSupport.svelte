@@ -12,7 +12,7 @@
 		<div>
 			<ul class="grid grid-cols-3 gap-6">
 				<li
-					class="flex flex-col text-center text-lg shadow p-3 rounded-md bg-white dark:bg-primary md:text-xl"
+					class="flex flex-col items-center justify-center text-center text-lg shadow p-3 rounded-md bg-white dark:bg-primary md:text-xl"
 				>
 					Python
 					<img
@@ -22,7 +22,7 @@
 					/>
 				</li>
 				<li
-					class="flex flex-col text-center text-lg shadow p-3 rounded-md bg-white dark:bg-primary md:text-xl"
+					class="flex flex-col items-center justify-center text-center text-lg shadow p-3 rounded-md bg-white dark:bg-primary md:text-xl"
 				>
 					JavaScript
 					<img
@@ -32,7 +32,7 @@
 					/>
 				</li>
 				<li
-					class="flex flex-col text-center text-lg shadow p-3 rounded-md bg-white dark:bg-primary md:text-xl"
+					class="flex flex-col items-center justify-center text-center text-lg shadow p-3 rounded-md bg-white dark:bg-primary md:text-xl"
 				>
 					HTML
 					<img
@@ -42,7 +42,7 @@
 					/>
 				</li>
 				<li
-					class="flex flex-col text-center text-lg shadow p-3 rounded-md bg-white dark:bg-primary md:text-xl"
+					class="flex flex-col items-center justify-center text-center text-lg shadow p-3 rounded-md bg-white dark:bg-primary md:text-xl"
 				>
 					CSS
 					<img
@@ -53,11 +53,11 @@
 				</li>
 
 				<li
-					class="flex flex-col text-center text-lg shadow p-3 rounded-md bg-white dark:bg-primary md:text-xl"
+					class="flex flex-col items-center justify-center text-center text-lg shadow p-3 rounded-md bg-white dark:bg-primary md:text-xl"
 				>
 					Rust
 					<img
-						class="w-20 h-20 md:w-24 md:h-24"
+						class="w-20 h-20 md:w-24 md:h-24 dark:invert"
 						src="https://cdn.svgporn.com/logos/rust.svg"
 						alt="rust"
 					/>
