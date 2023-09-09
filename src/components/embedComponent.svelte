@@ -2,11 +2,18 @@
 	import { HighlightAuto, LineNumbers } from 'svelte-highlight';
 	import { copyTextToClipboard } from '$lib/index.js';
 
-	import { faCopy, faExpand } from '@fortawesome/free-solid-svg-icons';
+	import { faCheck, faCopy, faExpand } from '@fortawesome/free-solid-svg-icons';
 	import Fa from 'svelte-fa';
+
+	let copied = false;
+	$: iconCopy = copied ? faCheck : faCopy;
 	export let details;
 	function CopyAction() {
+		copied = true;
 		copyTextToClipboard(code);
+		setTimeout(() => {
+			copied = false;
+		}, 2000);
 	}
 	const code = details.code;
 </script>
@@ -32,7 +39,7 @@
 			</a>
 
 			<button class=" bg-primary text-light z-50 px-3 py-2 rounded-lg" on:click={CopyAction}
-				><Fa icon={faCopy} /></button
+				><Fa icon={iconCopy} /></button
 			>
 		</div>
 	</div>
