@@ -4,7 +4,7 @@
 	import Fa from 'svelte-fa';
 	import { darkModeState } from '$lib/index.js';
 	import { scale } from 'svelte/transition';
-
+	// import {page} from '$app/'
 	function handleSwitchDarkMode() {
 		darkModeState.update((cur) => {
 			return !cur;
