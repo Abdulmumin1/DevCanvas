@@ -1,6 +1,6 @@
 <script>
-	import { faL, faSpinner } from '@fortawesome/free-solid-svg-icons';
-	import { afterUpdate, onMount } from 'svelte';
+	import { faSpinner } from '@fortawesome/free-solid-svg-icons';
+	import { afterUpdate, onDestroy, onMount } from 'svelte';
 	import {
 		current_data,
 		previewMode,
@@ -11,8 +11,6 @@
 	} from '$lib/index.js';
 	import { browser } from '$app/environment';
 	import Fa from 'svelte-fa';
-	import { page } from '$app/stores';
-	// import * as monaco from 'monaco-editor';
 
 	let editorContanier;
 	let editor;
@@ -29,7 +27,7 @@
 		editorConfig = {
 			value: initialCode,
 			language: lang,
-			fontSize: 18,
+			fontSize: 15,
 			automaticLayout: true,
 			emmet: {
 				enabled: true // Enable Emmet support
@@ -39,10 +37,6 @@
 		};
 	}
 
-	// Define a custom action for saving
-
-	// Register the save action
-	// editor.addAction(saveAction);
 	let saved = true;
 
 	async function save() {
@@ -61,17 +55,6 @@
 		}
 	}
 
-	function setEditorTheme() {
-		const theme = $darkModeState ? 'myTheme' : 'vs-code'; // Adjust theme names accordingly
-
-		// Set the theme in Monaco Editor
-		try {
-			monacoModel.editor.setTheme(theme);
-		} catch (error) {
-			console.log(error);
-		}
-	}
-
 	function verifyUser() {
 		try {
 			if ($user.id == $current_data.user_id) {
@@ -79,7 +62,7 @@
 				return true;
 			} else {
 				console.log('lier');
-				return false;
+				return fals;
 			}
 		} catch (error) {
 			console.log('err');
@@ -89,8 +72,19 @@
 		verifyUser();
 		current_data.update((cur) => {
 			// console.log(cur);
-			return { ...cur, code: data };
+			return { ...cur, html: data };
 		});
+	}
+
+	function setEditorTheme() {
+		const theme = $darkModeState ? 'myTheme' : 'vs-code'; // Adjust theme names accordingly
+
+		// Set the theme in Monaco Editor
+		try {
+			monacoModel.editor.setTheme(theme);
+		} catch (error) {
+			console.log(error);
+		}
 	}
 
 	onMount(() => {
@@ -111,11 +105,27 @@
 				}
 			});
 			// Use monaco here...
-
+			setEditorTheme();
 			// Initialize the editor
 			editor = monacoModel.editor.create(editorContanier, editorConfig);
+			// Register the HTML language with Monaco Editor
+			monacoModel.languages.register({
+				id: 'html'
+			});
 
-			setEditorTheme();
+			// Import and configure the emmet-monaco-es package
+			import('emmet-monaco-es').then((emmet) => {
+				console.log(emmet);
+				const dispose = emmet.emmetHTML(
+					// monaco-editor it self. If not provided, will use window.monaco instead.
+					// This could make the plugin support both ESM and AMD loaded monaco-editor
+					monacoModel
+					// languages needs to support html markup emmet, should be lower case.
+				);
+			});
+			// if ($darkModeState) {
+			// 	monaco.editor.setTheme('myTheme');
+			// }
 			// Attach an event listener for changes in the code
 			editor.onDidChangeModelContent(() => {
 				try {
@@ -129,7 +139,7 @@
 				id: 'saveAction',
 				label: 'Save',
 				keybindings: [
-					monaco.KeyMod.CtrlCmd | monaco.KeyCode.KeyS // Ctrl + S
+					monacoModel.KeyMod.CtrlCmd | monacoModel.KeyCode.KeyS // Ctrl + S
 				],
 				precondition: null,
 				keybindingContext: null,
@@ -142,6 +152,15 @@
 				}
 			};
 
+			// // Register a completion item provider for HTML
+			// monaco.languages.registerCompletionItemProvider('html', {
+			// 	provideCompletionItems: (model, position) => {
+			// 		return {
+			// 			suggestions: customTags(monaco)
+			// 		};
+			// 	}
+			// });
+
 			editor.addAction(saveAction);
 		});
 
@@ -151,6 +170,13 @@
 			}
 		});
 		loading = false;
+	});
+	// Cleanup when the component is destroyed
+	onDestroy(() => {
+		// Dispose of the editor to prevent memory leaks
+		if (editor) {
+			editor.dispose();
+		}
 	});
 
 	afterUpdate(() => {
@@ -163,7 +189,7 @@
 		<Fa icon={faSpinner} class="animate-spin text-2xl" />
 	</div>
 {:else}
-	<div class="editor-container h-full py-5 rounded-xl" class:bg-secondary-dark={$darkModeState}>
+	<div class="editor-container h-full rounded-xl" class:bg-secondary-dark={$darkModeState}>
 		<div class="h-full w-full" bind:this={editorContanier} />
 	</div>
 {/if}
