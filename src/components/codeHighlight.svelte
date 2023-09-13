@@ -11,8 +11,11 @@
 	} from '$lib/index.js';
 	import { browser } from '$app/environment';
 	import Fa from 'svelte-fa';
-	import { page } from '$app/stores';
-	// import * as monaco from 'monaco-editor';
+	import editorWorker from 'monaco-editor/esm/vs/editor/editor.worker?worker';
+	import jsonWorker from 'monaco-editor/esm/vs/language/json/json.worker?worker';
+	import cssWorker from 'monaco-editor/esm/vs/language/css/css.worker?worker';
+	import htmlWorker from 'monaco-editor/esm/vs/language/html/html.worker?worker';
+	import tsWorker from 'monaco-editor/esm/vs/language/typescript/ts.worker?worker';
 
 	let editorContanier;
 	let editor;
@@ -29,7 +32,7 @@
 		editorConfig = {
 			value: initialCode,
 			language: lang,
-			fontSize: 18,
+			fontSize: 16,
 			automaticLayout: true,
 			emmet: {
 				enabled: true // Enable Emmet support
@@ -93,7 +96,24 @@
 		});
 	}
 
-	onMount(() => {
+	onMount(async () => {
+		self.MonacoEnvironment = {
+			getWorker: function (_moduleId, label) {
+				if (label === 'json') {
+					return new jsonWorker();
+				}
+				if (label === 'css' || label === 'scss' || label === 'less') {
+					return new cssWorker();
+				}
+				if (label === 'html' || label === 'handlebars' || label === 'razor') {
+					return new htmlWorker();
+				}
+				if (label === 'typescript' || label === 'javascript') {
+					return new tsWorker();
+				}
+				return new editorWorker();
+			}
+		};
 		import('monaco-editor').then((monaco) => {
 			monacoModel = monaco;
 			monacoModel.editor.defineTheme('myTheme', {

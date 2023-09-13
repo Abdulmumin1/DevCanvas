@@ -15,7 +15,7 @@
 
 <div
 	transition:slide
-	class="absolute bottom-0 inset-x-0 mx-auto w-fit m-2 shadow-md border-l-2 border-r-2 rounded-md bg-white dark:bg-primary border-sky-500 p-2"
+	class="absolute bottom-0 inset-x-0 mx-auto w-fit m-2 shadow-md border-l-2 border-r-2 bg-white dark:bg-primary border-sky-500 p-2"
 >
 	<div class="flex items-center justify-center gap-2">
 		{message}

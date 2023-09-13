@@ -6,6 +6,7 @@
 	import FeCodeEditor from '../../../components/fePlayground/feCodeEditor.svelte';
 	import FePlayGroungNav from '../../../components/fePlayground/fePlayGroungNav.svelte';
 	import CodeOutput from '../../../components/fePlayground/codeOutput.svelte';
+	import Resizable from '../../../components/fePlayground/resizable.svelte';
 
 	previewMode.set(true);
 
@@ -39,14 +40,18 @@
 
 <article class="min-h-screen h-screen flex flex-col">
 	{#if data.isFound}
-		<FePlayGroungNav />
+		<FePlayGroungNav title={data[0].description} />
 		<div class="relative flex h-full flex-col lg:flex-row">
-			<div class="w-full h-full">
-				<FeCodeEditor initialCode={data['0'].html} lang="html" />
-			</div>
-			<div class="w-full h-full">
-				<CodeOutput html={data['0'].html} />
-			</div>
+			<Resizable>
+				<div slot="left" class="w-full h-full">
+					<FeCodeEditor initialCode={data['0'].html} lang="html" />
+				</div>
+				<div slot="right" class="w-full h-full">
+					<CodeOutput html={data['0'].html} />
+				</div>
+			</Resizable>
+			<!-- <div class="w-full h-full"> -->
+			<!-- </div> -->
 			{#if $showToast}
 				<Toast message={$showToast.message} />
 			{/if}
