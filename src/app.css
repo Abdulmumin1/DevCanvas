@@ -897,12 +897,12 @@ video {
   resize: both;
 }
 
-.grid-cols-3 {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-}
-
 .grid-cols-1 {
   grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+
+.grid-cols-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .flex-col {
@@ -977,6 +977,10 @@ video {
   overflow: hidden;
 }
 
+.overflow-scroll {
+  overflow: scroll;
+}
+
 .rounded {
   border-radius: 0.25rem;
 }
@@ -1029,6 +1033,11 @@ video {
 
 .border-t {
   border-top-width: 1px;
+}
+
+.border-gray-300 {
+  --tw-border-opacity: 1;
+  border-color: rgb(209 213 219 / var(--tw-border-opacity));
 }
 
 .border-sky-200 {
@@ -1293,17 +1302,16 @@ video {
   line-height: 1.75rem;
 }
 
-.text-6xl {
-  font-size: 3.75rem;
-  line-height: 1;
-}
-
 .font-bold {
   font-weight: 700;
 }
 
 .font-semibold {
   font-weight: 600;
+}
+
+.leading-none {
+  line-height: 1;
 }
 
 .text-black {
@@ -1466,6 +1474,49 @@ video {
   transition-duration: 300ms;
 }
 
+.splitpanes.my-theme .splitpanes__pane {
+  background-color: #f8f8f8;
+}
+
+.splitpanes.my-theme .splitpanes__splitter {
+  background-color: #ccc;
+  position: relative;
+}
+
+.splitpanes.my-theme .splitpanes__splitter:before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  transition: opacity 0.4s;
+  opacity: 0;
+  z-index: 1;
+  --tw-bg-opacity: 1;
+  background-color: rgb(186 230 253 / var(--tw-bg-opacity));
+}
+
+.splitpanes.my-theme .splitpanes__splitter:hover:before {
+  opacity: 1;
+}
+
+.splitpanes.my-theme .splitpanes__splitter.splitpanes__splitter__active {
+  z-index: 2;
+}
+
+.my-theme.splitpanes--vertical > .splitpanes__splitter:before {
+  left: -30px;
+  right: -30px;
+  height: 100%;
+  cursor: col-resize;
+}
+
+.my-theme.splitpanes--horizontal > .splitpanes__splitter:before {
+  top: -30px;
+  bottom: -30px;
+  width: 100%;
+  cursor: row-resize;
+}
+
 .hover\:scale-105:hover {
   --tw-scale-x: 1.05;
   --tw-scale-y: 1.05;
@@ -1476,10 +1527,6 @@ video {
   --tw-scale-x: 1.1;
   --tw-scale-y: 1.1;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
-
-.hover\:gap-4:hover {
-  gap: 1rem;
 }
 
 .hover\:gap-6:hover {
@@ -1524,9 +1571,18 @@ video {
   outline-offset: 2px;
 }
 
+.focus\:outline-sky-300:focus {
+  outline-color: #7dd3fc;
+}
+
 :is(.dark .dark\:divide-primary) > :not([hidden]) ~ :not([hidden]) {
   --tw-divide-opacity: 1;
   border-color: rgb(14 14 14 / var(--tw-divide-opacity));
+}
+
+:is(.dark .dark\:border-primary) {
+  --tw-border-opacity: 1;
+  border-color: rgb(14 14 14 / var(--tw-border-opacity));
 }
 
 :is(.dark .dark\:border-secondary-dark) {
@@ -1584,6 +1640,11 @@ video {
   color: rgb(25 25 25 / var(--tw-text-opacity));
 }
 
+:is(.dark .dark\:text-sky-300) {
+  --tw-text-opacity: 1;
+  color: rgb(125 211 252 / var(--tw-text-opacity));
+}
+
 :is(.dark .dark\:text-sky-400) {
   --tw-text-opacity: 1;
   color: rgb(56 189 248 / var(--tw-text-opacity));
@@ -1599,24 +1660,24 @@ video {
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
-:is(.dark .dark\:shadow-sky-100) {
-  --tw-shadow-color: #e0f2fe;
-  --tw-shadow: var(--tw-shadow-colored);
+:is(.dark .dark\:shadow-lg) {
+  --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
-:is(.dark .dark\:shadow-stone-100) {
-  --tw-shadow-color: #f5f5f4;
-  --tw-shadow: var(--tw-shadow-colored);
-}
-
-:is(.dark .dark\:shadow-stone-900) {
-  --tw-shadow-color: #1c1917;
+:is(.dark .dark\:shadow-black) {
+  --tw-shadow-color: #000;
   --tw-shadow: var(--tw-shadow-colored);
 }
 
 :is(.dark .dark\:invert) {
   --tw-invert: invert(100%);
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+
+:is(.dark .focus\:dark\:outline-sky-400):focus {
+  outline-color: #38bdf8;
 }
 
 @media (min-width: 640px) {
@@ -1701,6 +1762,10 @@ video {
 
   .md\:gap-6 {
     gap: 1.5rem;
+  }
+
+  .md\:border-l {
+    border-left-width: 1px;
   }
 
   .md\:p-1 {
