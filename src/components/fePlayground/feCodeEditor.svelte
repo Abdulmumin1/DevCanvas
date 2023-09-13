@@ -115,10 +115,37 @@
 			monacoModel.editor.defineTheme('myTheme', {
 				base: 'vs-dark',
 				inherit: true,
-				rules: [],
+				rules: [
+					{
+						token: 'comment',
+						foreground: '#5c6370' // Comment color
+					},
+					{
+						token: 'string',
+						foreground: '#98c379' // String color
+					},
+					{
+						token: 'keyword',
+						foreground: '#c678dd' // Keyword color
+					},
+					{
+						token: 'tag',
+						foreground: '#e06c75' // HTML tag color
+					},
+					{
+						token: 'attribute.name',
+						foreground: '#abb2bf' // HTML attribute name color
+					},
+					{
+						token: 'attribute.value',
+						foreground: '#36A0D8' // HTML attribute value color
+					},
+					{}
+					// Add more rules as needed to match the Ayu Dark theme
+				],
 				colors: {
-					'editor.foreground': '#f4eded',
-					'editor.background': '#191919',
+					'editor.foreground': '#abb2bf',
+					'editor.background': '#0e0e0e',
 					'editorCursor.foreground': '#38bef7',
 					'editor.lineHighlightBackground': '#0e0e0e50',
 					'editorLineNumber.foreground': '#38bef7',

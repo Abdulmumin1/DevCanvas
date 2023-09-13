@@ -44,4 +44,10 @@
 		width: 100%;
 		cursor: row-resize;
 	}
+	.mtk4 {
+		color: brown !important;
+	}
+	.mtk12 {
+		color: blueviolet !important;
+	}
 }
