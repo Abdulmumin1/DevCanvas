@@ -69,7 +69,7 @@ https://cdn.jsdelivr.net/npm/tailwindcss@3.3.3/tailwind.min.css
 </script>
 
 <div
-	class="bg-white border-t md:border-l dark:border-primary border-gray-300 w-full h-full overflow-scroll text-black dark:text-white"
+	class="bg-white border-t md:border-l dark:border-primary border-gray-300 w-full h-full text-black dark:text-white"
 >
 	<iframe bind:this={iframeDoc} title="preview" id="preview-frame" class="w-full h-full" />
 </div>

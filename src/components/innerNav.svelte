@@ -14,6 +14,14 @@
 	}
 </script>
 
+<div class="w-full p-2 bg-sky-300 text-sky-dark text-sm md:text-lg">
+	SnippetLand is experimenting with an interactive HTML playground 🤩 <a
+		class="underline text-sky-900"
+		href="/html-playground"
+		>Try it
+	</a>
+	🚀
+</div>
 <div class="h-[12vh] p-3 md:p-6 w-full bg-inherit">
 	<ul class="hidden md:flex w-full justify-between items-center">
 		<li
