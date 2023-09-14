@@ -14,8 +14,9 @@ export const SnippetsDescription = readable({
 });
 
 export const saved_spinner = writable(false);
+export const isOwner = writable(false);
 
-export const pageCount = writable(0);
+export const pageCount = writable(6);
 export const pageLimit = writable(3);
 
 export const showToast = writable(false);

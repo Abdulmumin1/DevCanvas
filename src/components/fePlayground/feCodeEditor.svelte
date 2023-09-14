@@ -1,14 +1,8 @@
 <script>
 	import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 	import { afterUpdate, onDestroy, onMount } from 'svelte';
-	import {
-		current_data,
-		previewMode,
-		user,
-		saved_spinner,
-		saveData,
-		darkModeState
-	} from '$lib/index.js';
+	import { showSave, saveData, showLoginToSave } from '$lib/feEditor/store.js';
+	import { current_data, isOwner, saved_spinner, darkModeState } from '$lib/index.js';
 	import { browser } from '$app/environment';
 	import Fa from 'svelte-fa';
 	import editorWorker from 'monaco-editor/esm/vs/editor/editor.worker?worker';
@@ -47,10 +41,12 @@
 	async function save() {
 		saved = false;
 		saved_spinner.set(true);
-		saveData($current_data, 'code');
+		if (verifyUser()) {
+			saveData($current_data, 'html');
+		}
 		saved = true;
 		saved_spinner.set(false);
-		previewMode.set(true);
+		showSave.set(true);
 	}
 
 	// Define your save function
@@ -61,16 +57,9 @@
 	}
 
 	function verifyUser() {
-		try {
-			if ($user.id == $current_data.user_id) {
-				previewMode.set(false);
-				return true;
-			} else {
-				console.log('lier');
-				return fals;
-			}
-		} catch (error) {
-			console.log('err');
+		if ($isOwner) {
+			showSave.set(true);
+			return true;
 		}
 	}
 	function handleContentChange(data) {
@@ -172,6 +161,13 @@
 					// languages needs to support html markup emmet, should be lower case.
 				);
 			});
+
+			// Format the HTML code
+			var formatAction = editor.getAction('editor.action.formatDocument');
+			formatAction.run().then(function () {
+				// The code has been formatted
+				console.log('document formated');
+			});
 			// if ($darkModeState) {
 			// 	monaco.editor.setTheme('myTheme');
 			// }
@@ -242,7 +238,7 @@
 		<Fa icon={faSpinner} class="animate-spin text-2xl" />
 	</div>
 {:else}
-	<div class="editor-container h-full rounded-xl" class:bg-secondary-dark={$darkModeState}>
+	<div class="editor-container h-full bg-primary w-full" class:bg-secondary-dark={$darkModeState}>
 		<div class="h-full w-full" bind:this={editorContanier} />
 	</div>
 {/if}

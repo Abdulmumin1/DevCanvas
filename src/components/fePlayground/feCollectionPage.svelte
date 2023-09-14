@@ -1,8 +1,77 @@
 <script>
 	import { fade } from 'svelte/transition';
 	import FeCard from './feCard.svelte';
+	import { pageCount } from '$lib/index.js';
+	import { faSpinner } from '@fortawesome/free-solid-svg-icons';
+	import Fa from 'svelte-fa';
 
+	export let supabase;
+	export let session;
 	export let collection;
+	export let dashboard = false;
+	let loading = false;
+	async function fetchExplore(pageNumber, pageSize) {
+		const { data, error } = await supabase
+			.from('htmlPlayground')
+			.select('*')
+			.order('created_at', { ascending: false }) // Optional: Ordering the results
+			.range(pageNumber, pageSize);
+
+		if (error) {
+			console.error('Error fetching data:', error.message);
+			return;
+		}
+		return data;
+	}
+
+	async function fetchDashboard(pageNumber, pageSize) {
+		const { data, error } = await supabase
+			.from('htmlPlayground')
+			.select('*')
+			.eq('user_id', session.user.id)
+			.order('created_at', { ascending: false }) // Optional: Ordering the results
+			.range(pageNumber, pageSize);
+
+		if (error) {
+			console.error('Error fetching data:', error.message);
+			return;
+		}
+		return data;
+	}
+	async function fetchPaginatedRows(pageNumber, pageSize) {
+		loading = true;
+		const off = (pageNumber - 1) * pageSize;
+		if (dashboard) {
+			return fetchDashboard(pageNumber, pageSize);
+		} else {
+			return fetchExplore(pageNumber, pageSize);
+		}
+	}
+
+	let showMore = true;
+
+	async function more() {
+		console.log($pageCount);
+		let result = await fetchPaginatedRows($pageCount, $pageCount + 6 - 1);
+		console.log(result);
+		if (result.length == 0) {
+			showMore = false;
+			console.log('no more');
+			return;
+		}
+		console.log(result.length);
+		if (result.length < 6) {
+			showMore = false;
+		}
+		loading = false;
+		collection = [...collection, ...result];
+		pageCount.update((cur) => {
+			return cur + 6;
+		});
+		if (browser) {
+			window.location.href = '#more';
+		}
+	}
 </script>
 
 <div class="flex flex-col gap-6 items-center" transition:fade>
@@ -18,7 +87,7 @@
 			{/each}
 		</div>
 	</div>
-	<!-- {#if showMore}
+	{#if showMore}
 		<button
 			class="bg-gray-300 dark:bg-secondary-dark shadow rounded-lg py-2 px-4 flex justify-center items-center gap-2 w-fit"
 			id="more"
@@ -29,5 +98,5 @@
 			</div>
 			Load more...</button
 		>
-	{/if} -->
+	{/if}
 </div>

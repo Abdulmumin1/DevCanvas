@@ -8,7 +8,7 @@ export const actions = {
 		delete body['id'];
 		const { data, error: err } = await supabase.from('htmlPlayground').update([body]).eq('id', id);
 		if (err) {
-			throw error(500, 'Opsie, error from our side');
+			throw error(500, 'Opssie, error from our side');
 		} else {
 			console.log(data);
 		}

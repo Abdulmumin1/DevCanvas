@@ -2,6 +2,7 @@
 	import Fa from 'svelte-fa';
 	import InnerNav from '../../components/innerNav.svelte';
 	import { faRightLong } from '@fortawesome/free-solid-svg-icons';
+	import { pageCount } from '$lib/index.js';
 
 	import { onMount } from 'svelte';
 
@@ -47,11 +48,15 @@
 			.from('htmlPlayground')
 			.select('*')
 			.order('created_at', { ascending: false })
-			.limit(6);
+			.limit($pageCount);
 
 		if (error) {
 			console.error(error);
+			return;
 		}
+		// pageCount.update((cur) => {
+		// 	return cur + 6;
+		// });
 		return dt;
 	}
 
@@ -71,9 +76,9 @@
 		}
 	}
 
-	// onMount(() => {
-	// 	console.log(data);
-	// });
+	onMount(() => {
+		console.log(data);
+	});
 
 	// afterUpdate(() => {
 	// 	// This will handle the redirection if the user logs out on  page
@@ -111,7 +116,7 @@
 	<main class=" min-h-screen flex py-3 md:py-6 w-full justify-center">
 		<div class="w-full px-4 max-w-4xl">
 			<div>
-				<p class="text-lg md:text-xl font-bold py-6">Your Collections</p>
+				<p class="text-lg md:text-xl font-bold py-6">Recent Collections</p>
 			</div>
 			{#await loadIntialData()}
 				<CollectionDummy />
@@ -121,7 +126,11 @@
 
 				<!-- Code Snippet Cards -->
 
-				<FeCollectionPage collection={userSnippets} />
+				<FeCollectionPage
+					collection={userSnippets}
+					supabase={data.supabase}
+					session={data.session}
+				/>
 			{/await}
 		</div>
 	</main>

@@ -1,5 +1,6 @@
 <script>
-	import { current_data, user, previewMode, SnippetsDescription, showToast } from '$lib/index.js';
+	import { current_data, user, isOwner, SnippetsDescription, showToast } from '$lib/index.js';
+	import { showSave } from '$lib/feEditor/store.js';
 	import { onMount } from 'svelte';
 	import Toast from '../../../components/toast.svelte';
 	import { browser } from '$app/environment';
@@ -8,21 +9,33 @@
 	import CodeOutput from '../../../components/fePlayground/codeOutput.svelte';
 	import Resizable from '../../../components/fePlayground/resizable.svelte';
 
-	previewMode.set(true);
-
 	export let data;
 
 	// console.log(user)
-	// onMount(() => {
-	// 	// getUser()
-	// 	current_data.set(data['0']);
-	// });
 
 	let mobileDetails;
 	if (browser) {
 		mobileDetails = window.innerWidth <= 768;
 	}
 	current_data.set(data['0']);
+
+	onMount(() => {
+		// getUser()
+		showSave.set(false);
+		setTimeout(() => {
+			if ($user) {
+				if ($user.id == $current_data.user_id && $current_data.user_id != null) {
+					isOwner.set(true);
+					console.log('it is set to true');
+				} else {
+					isOwner.set(false);
+				}
+			}
+
+			console.log($user.id, $current_data.user_id);
+			console.log('The owner is ', $isOwner);
+		}, 1000);
+	});
 </script>
 
 <svelte:head>
@@ -47,7 +60,7 @@
 					<FeCodeEditor initialCode={data['0'].html} lang="html" />
 				</div>
 				<div slot="right" class="w-full h-full">
-					<CodeOutput html={data['0'].html} />
+					<CodeOutput />
 				</div>
 			</Resizable>
 			<!-- <div class="w-full h-full"> -->

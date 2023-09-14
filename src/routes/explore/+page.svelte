@@ -18,16 +18,16 @@
 			.from('snips')
 			.select('*')
 			.order('created_at', { ascending: false })
-			.limit(6);
+			.limit($pageCount);
 
 		if (error) {
 			console.error(error);
 		}
 		return dt;
 	}
-	onMount(() => {
-		pageCount.set(6);
-	});
+	// onMount(() => {
+	// 	pageCount.set(6);
+	// });
 
 	// afterUpdate(() => {
 	// 	// This will handle the redirection if the user logs out on  page
