@@ -2,11 +2,14 @@
 	import Msdropdown from './msdropdown.svelte';
 	import Save from './save.svelte';
 	import { previewMode, user } from '$lib/index.js';
+	import { page } from '$app/stores';
 
 	import ShareBtn from './ShareBtn.svelte';
 	import { faUserGroup } from '@fortawesome/free-solid-svg-icons';
 	import Fa from 'svelte-fa';
 	import Darkmode from './darkmode.svelte';
+
+	let signinURL = handleRedirectURL($page.url);
 </script>
 
 <nav class=" w-full p-2">
@@ -36,7 +39,7 @@
 						class="bg-sky-400 px-3 shadow-sm shadow-sky-800 py-2 rounded-lg hover:scale-105 transition-transform duration-300"
 					>
 						<a
-							href="/signin"
+							href={signinURL}
 							class="w-full h-full cursor-pointer flex items-center justify-center gap-2"
 						>
 							<Fa icon={faUserGroup} /> Join

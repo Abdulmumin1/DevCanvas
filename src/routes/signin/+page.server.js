@@ -3,12 +3,12 @@ export const actions = {
 	default: async ({ url, request, locals: { supabase } }) => {
 		let body = Object.fromEntries(await request.formData());
 		let email = body.email;
-		let redirectTo = `${url.origin}/${body.redirectTo}`;
+		let redirectTo = `${url.origin}${body.redirectTo}`;
 		console.log(redirectTo);
 		if (!email) return 'no mail';
 		const { error } = await supabase.auth.signInWithOtp({
 			email,
-			redirectTo: redirectTo
+			options: { emailRedirectTo: redirectTo }
 		});
 
 		if (error) throw error;
