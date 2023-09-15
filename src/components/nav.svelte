@@ -3,7 +3,7 @@
 	import Save from './save.svelte';
 	import { previewMode, user } from '$lib/index.js';
 	import { page } from '$app/stores';
-
+	import { handleRedirectURL } from '$lib/utils.js';
 	import ShareBtn from './ShareBtn.svelte';
 	import { faUserGroup } from '@fortawesome/free-solid-svg-icons';
 	import Fa from 'svelte-fa';
