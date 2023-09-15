@@ -31,9 +31,6 @@
 					isOwner.set(false);
 				}
 			}
-
-			console.log($user.id, $current_data.user_id);
-			console.log('The owner is ', $isOwner);
 		}, 1000);
 	});
 </script>
@@ -51,13 +48,13 @@
 	<!-- HTML Meta Tags -->
 </svelte:head>
 
+<FePlayGroungNav title={data[0].description} />
 <article class="min-h-screen h-screen flex flex-col">
 	{#if data.isFound}
-		<FePlayGroungNav title={data[0].description} />
 		<div class="relative flex h-full flex-col lg:flex-row">
 			<Resizable>
 				<div slot="left" class="w-full h-full">
-					<FeCodeEditor initialCode={data['0'].html} lang="html" />
+					<FeCodeEditor initialHTML={data['0'].html} initialCSS={data['0'].css} lang="html" />
 				</div>
 				<div slot="right" class="w-full h-full">
 					<CodeOutput />

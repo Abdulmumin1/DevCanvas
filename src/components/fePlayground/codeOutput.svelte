@@ -3,6 +3,7 @@
 	import { onMount } from 'svelte';
 
 	let code;
+	let css;
 	let documentCode = `
 <!DOCTYPE html>
 <html lang="en">
@@ -11,7 +12,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-	
+	<style>
+		${css}	
+	</style>
 </head>
 <body>
 
@@ -25,6 +28,7 @@
 	let iframeDoc;
 	$: {
 		code = $current_data.html;
+		css = $current_data.css;
 		documentCode = `
 <!DOCTYPE html>
 <html lang="en">
@@ -35,7 +39,9 @@
 	<link href="
 https://cdn.jsdelivr.net/npm/tailwindcss@3.3.3/tailwind.min.css
 " rel="stylesheet">
-	
+	<style>
+		${css}	
+	</style>
 </head>
 <body>
 
