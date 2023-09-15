@@ -9,6 +9,8 @@
 	import CollectionPage from '../../components/collectionPage.svelte';
 	import InnerNav from '../../components/innerNav.svelte';
 	import CollectionDummy from '../../components/collectionDummy.svelte';
+	import SnipsSideNav from '../../components/snips/snipsSideNav.svelte';
+	import NavWrapper from '../../components/snips/navWrapper.svelte';
 
 	export let data;
 
@@ -76,39 +78,30 @@
 	// });
 </script>
 
-<div class="bg-secondary-dark min-h-[50vh]">
-	<InnerNav />
-
-	<div class="text-center mb-4 flex items-center justify-center flex-col gap-8 my-5">
-		<Search />
-		<div
-			class="bg-sky-500 hover:bg-sky-600 text-white py-3 px-3 md:px-6 rounded-lg shadow transition-all duration-300 mb-5"
-		>
+<div class="flex min-h-screen gap-2">
+	<NavWrapper>
+		<main class=" min-h-screen flex py-3 md:py-6 w-full justify-center flex-col">
 			<NewSnippet />
-		</div>
-	</div>
-</div>
-<div class="flex items-center justify-center min-h-screen flex-col gap-2">
-	<main class=" min-h-screen flex py-3 md:py-6 w-full justify-center">
-		<div class="w-full px-4 max-w-4xl">
-			<div>
-				<p class="text-lg md:text-xl font-bold py-6">Your Collections</p>
+			<div class="w-full px-0 md:px-4 max-w-4xl">
+				<div>
+					<p class="text-lg md:text-xl font-bold py-6">Your Collections</p>
+				</div>
+				{#await loadIntialData()}
+					<CollectionDummy />
+				{:then userSnippets}
+					<!-- <Sm -->
+					<!-- Create New Code Snippet button -->
+
+					<!-- Code Snippet Cards -->
+
+					<CollectionPage
+						rawcollection={userSnippets}
+						dashboard={true}
+						supabase={data.supabase}
+						session={data.session}
+					/>
+				{/await}
 			</div>
-			{#await loadIntialData()}
-				<CollectionDummy />
-			{:then userSnippets}
-				<!-- <Sm -->
-				<!-- Create New Code Snippet button -->
-
-				<!-- Code Snippet Cards -->
-
-				<CollectionPage
-					rawcollection={userSnippets}
-					dashboard={true}
-					supabase={data.supabase}
-					session={data.session}
-				/>
-			{/await}
-		</div>
-	</main>
+		</main>
+	</NavWrapper>
 </div>
