@@ -8,6 +8,7 @@
 
 	import CollectionDummy from '../../components/collectionDummy.svelte';
 	import FeCollectionPage from '../../components/fePlayground/feCollectionPage.svelte';
+	import NavWrapper from '../../components/snips/navWrapper.svelte';
 
 	export let data;
 
@@ -101,37 +102,38 @@
 	<!-- HTML Meta Tags -->
 </svelte:head>
 
-<InnerNav />
-<article class=" h-[80vh] flex flex-col items-center justify-center">
-	<form action="/db/fe/create" method="post">
-		<input type="text" name="description" id="" value="Untitled Project" class="hidden" />
-		<button
-			type="submit"
-			class="bg-sky-500 hover:bg-sky-300 px-6 py-4 rounded-lg text-primary text-xl md:text-5xl flex transition-all duration-300 hover:gap-6 gap-4"
-			>Launch play ground <Fa icon={faRightLong} /></button
-		>
-	</form>
-</article>
-<div class="flex items-center justify-center min-h-screen flex-col gap-2">
-	<main class=" min-h-screen flex py-3 md:py-6 w-full justify-center">
-		<div class="w-full px-4 max-w-4xl">
-			<div>
-				<p class="text-lg md:text-xl font-bold py-6">Recent Collections</p>
+<NavWrapper>
+	<article class=" h-[80vh] flex flex-col items-center justify-center">
+		<form action="/db/fe/create" method="post">
+			<input type="text" name="description" id="" value="Untitled Project" class="hidden" />
+			<button
+				type="submit"
+				class="bg-sky-500 hover:bg-sky-300 px-6 py-4 rounded-lg text-primary text-xl md:text-5xl flex transition-all duration-300 hover:gap-6 gap-4"
+				>Launch play ground <Fa icon={faRightLong} /></button
+			>
+		</form>
+	</article>
+	<div class="flex items-center justify-center min-h-screen flex-col gap-2">
+		<main class=" min-h-screen flex py-3 md:py-6 w-full justify-center">
+			<div class="w-full px-4 max-w-4xl">
+				<div>
+					<p class="text-lg md:text-xl font-bold py-6">Recent Collections</p>
+				</div>
+				{#await loadIntialData()}
+					<CollectionDummy />
+				{:then userSnippets}
+					<!-- <Sm -->
+					<!-- Create New Code Snippet button -->
+
+					<!-- Code Snippet Cards -->
+
+					<FeCollectionPage
+						collection={userSnippets}
+						supabase={data.supabase}
+						session={data.session}
+					/>
+				{/await}
 			</div>
-			{#await loadIntialData()}
-				<CollectionDummy />
-			{:then userSnippets}
-				<!-- <Sm -->
-				<!-- Create New Code Snippet button -->
-
-				<!-- Code Snippet Cards -->
-
-				<FeCollectionPage
-					collection={userSnippets}
-					supabase={data.supabase}
-					session={data.session}
-				/>
-			{/await}
-		</div>
-	</main>
-</div>
+		</main>
+	</div>
+</NavWrapper>

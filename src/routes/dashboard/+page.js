@@ -12,6 +12,8 @@
 // 		.eq('user_id', session.user.id)
 // 		.order('created_at', { ascending: false })
 
+import { redirect } from '@sveltejs/kit';
+
 // 		.limit(6);
 
 // 	if (error) {
@@ -19,3 +21,10 @@
 // 	}
 // 	return { data, isFound: data.length > 0 };
 // }
+/** @type {import('./$types').PageLoad} */
+export async function load({ parent }) {
+	let { session } = await parent();
+	if (!session) {
+		throw redirect(304, '/signin?redirectTo=dashboard');
+	}
+}

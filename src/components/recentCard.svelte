@@ -1,9 +1,12 @@
 <script>
+	import { faEvernote } from '@fortawesome/free-brands-svg-icons';
 	import {
 		faArrowCircleRight,
 		faArrowLeftLong,
 		faArrowRightLong,
+		faArrowUpFromBracket,
 		faEdit,
+		faEye,
 		faTrash,
 		faTrashAlt,
 		faTrashArrowUp,
@@ -19,7 +22,7 @@
 
 <div
 	in:slide
-	class="w-full rounded-b-lg p-4 flex text-sm md:text-base items-center justify-between"
+	class="w-full p-4 border-y dark:border-primary flex text-sm md:text-base items-center justify-between"
 >
 	<div class="flex h-fit gap-4 w-full">
 		<!-- <div class="min-w-[100px]">
@@ -37,6 +40,10 @@
 
 	<div>
 		<div class="w-full flex gap-4 text-secondary-dark dark:text-white">
+			<span class="flex gap-2"><Fa icon={faEye} />12039</span>
+			<button class="hover:scale-105 transition-all duration-200"
+				><Fa icon={faArrowUpFromBracket} class="transition-all duration-300" /></button
+			>
 			{#if editIcons}
 				<a href="/{card.project_key}" class="hover:scale-105 transition-all duration-200">
 					<Fa icon={faEdit} />

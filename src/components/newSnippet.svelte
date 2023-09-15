@@ -43,7 +43,7 @@
 	<h1 class="text-6xl">Dashboard</h1>
 	<button
 		on:click={showOptions}
-		class="flex gap-2 w-full text-secondary-dark dark:text-white items-center text-lg md:text-xl"
+		class="flex gap-2 p-2 rounded-lg text-secondary-dark bg-sky-400 w-fit items-center text-lg md:text-xl"
 	>
 		<Fa icon={newCodeIcon} /> New Code Snippet
 	</button>
@@ -53,7 +53,7 @@
 			method="POST"
 			action="/db/create"
 			transition:slide
-			class="tooltip-contentw-[300px] md:w-[600px] bg-inherit p-4 top-14 z-10 flex justify-center items-center gap-4 rounded-lg flex-col"
+			class="tooltip-contentw-[300px] md:w-[600px] bg-inherit py-4 top-14 z-10 flex justify-center items-center gap-4 rounded-lg flex-col"
 		>
 			<div class="w-full gap-2 dark:text-white">
 				<p class="text-black text-left w-full font-semibold dark:text-white">Enter Description</p>
@@ -63,13 +63,11 @@
 					class="text-black text-left border border-sky-200 rounded-lg outline-sky-200 w-full p-2 dark:bg-primary dark:text-white"
 					placeholder="describe your code here (just a few words!)"
 				/>
-				<p class="text-black text-left w-full font-semibold dark:bg-primary dark:text-white">
-					Select language:
-				</p>
+				<p class="text-black text-left w-full font-semibold dark:text-white">Select language:</p>
 				<select
 					name="lang"
 					on:change={handleDropdownChange}
-					class="select select-bordered w-full p-2 text-black outline-sky-200 mb-2"
+					class="border-[.5px] w-full p-2 text-black outline-sky-200 mb-2 dark:bg-primary dark:text-white rounded-lg"
 				>
 					{#each options as option}
 						<option value={option}>{option}</option>
@@ -79,7 +77,7 @@
 				<button
 					type="submit"
 					on:click={handleClick}
-					class=" mb-2 w-full p-2 bg-secondary-dark hover:bg-sky-600 transition-colors duration-200 rounded-lg shadow flex items-center justify-center gap-3"
+					class=" mb-2 w-full p-2 bg-sky-500 hover:bg-sky-600 transition-colors duration-200 rounded-lg shadow flex items-center justify-center gap-3"
 					>Create
 					{#if clickedNew}
 						<Fa icon={faSpinner} class="animate-spin" />

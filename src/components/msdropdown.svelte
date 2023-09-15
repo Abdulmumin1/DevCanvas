@@ -4,6 +4,7 @@
 	import { onMount } from 'svelte';
 	import Fa from 'svelte-fa';
 	import { scale } from 'svelte/transition';
+	import Signout from './signout.svelte';
 
 	async function DeleteEntry() {
 		let formData = new FormData();
@@ -72,11 +73,9 @@
 						<button class="w-full text-left" on:click={DeleteEntry}>Delete</button>
 					</li>
 				{/if}
-				<form action="/auth/signout" method="post">
-					<li class="bg-error dark:text-black px-4 m-1 py-2 rounded-xl cursor-pointer">
-						<button type="submit" class="w-full"> Logout </button>
-					</li>
-				</form>
+				<li class="bg-error dark:text-black px-4 m-1 py-2 rounded-xl cursor-pointer">
+					<Signout />
+				</li>
 			</ul>
 		</div>
 	{/if}

@@ -6,6 +6,7 @@
 	import { browser } from '$app/environment';
 	import { pageCount } from '$lib/index.js';
 	import { fade } from 'svelte/transition';
+	import { HighlightAuto, LineNumbers } from 'svelte-highlight';
 
 	export let supabase;
 	export let session;
@@ -81,13 +82,23 @@
 
 <div class="flex flex-col gap-6 items-center" transition:fade>
 	<div class="gap-6 flex flex-col w-full bg-white dark:bg-secondary-dark">
-		<div class="grid gap-6 rounded-lg divide-y-2 dark:divide-primary w-full">
+		<div class="grid gap-6 rounded-lg w-full">
 			{#each collection as snippet}
 				<div class="bg-white dark:bg-secondary-dark rounded-lg p-2 md:p-4">
-					<h3 class="text-xl font-semibold mb-2">{snippet.lang}</h3>
-					<code class="block bg-gray-100 dark:bg-primary p-2 rounded-lg"
-						>{snippet.code.slice(0, 200)}....</code
+					<h3
+						class="text-xl px-3 py-1 mb-2 bg-sky-100 w-fit rounded-lg dark:text-primary dark:bg-sky-300"
 					>
+						{snippet.lang}
+					</h3>
+
+					<div class="bg-gray-100 flex md:hidden p-2 rounded-lg">
+						{snippet.code.slice(0, 200)}
+					</div>
+					<div class="bg-gray-100 dark:bg-primary w-full hidden md:flex">
+						<HighlightAuto code={snippet.code.slice(0, 200)} let:highlighted>
+							<LineNumbers {highlighted} hideBorder />
+						</HighlightAuto>
+					</div>
 				</div>
 
 				<RecentCard card={snippet} editIcons={dashboard} />
