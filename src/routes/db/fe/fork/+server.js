@@ -1,10 +1,11 @@
 import { generateRandomKey } from '$lib/index.js';
 import { fail, redirect } from '@sveltejs/kit';
+import { handleRedirectURL } from '$lib/utils';
 /** @type {import('./$types').RequestHandler} */
-export async function POST({ locals: { supabase, getSession }, request }) {
+export async function POST({ url, locals: { supabase, getSession }, request }) {
 	let session = await getSession();
 	if (!session) {
-		redirect(303, '/signin');
+		throw redirect(303, handleRedirectURL(url));
 	}
 	const body = Object.fromEntries(await request.formData());
 	let key = generateRandomKey();

@@ -1,6 +1,8 @@
 // src/hooks.server.ts
 import { createSupabaseServerClient } from '@supabase/auth-helpers-sveltekit';
 import { redirect } from '@sveltejs/kit';
+import { handleRedirect } from '$lib/utils';
+
 let PUBLIC_SUPABASE_URL = import.meta.env.VITE_PUBLIC_SUPABASE_URL;
 let PUBLIC_SUPABASE_ANON_KEY = import.meta.env.VITE_PUBLIC_SUPABASE_ANON_KEY;
 
@@ -10,7 +12,6 @@ export const handle = async ({ event, resolve }) => {
 		supabaseKey: PUBLIC_SUPABASE_ANON_KEY,
 		event
 	});
-
 	/**
 	 * A convenience helper so we can just call await getSession() instead const { data: { session } } = await supabase.auth.getSession()
 	 */
@@ -28,7 +29,7 @@ export const handle = async ({ event, resolve }) => {
 	} else if (event.url.pathname == '/dashboard') {
 		let session = await event.locals.getSession();
 		if (!session) {
-			throw redirect(307, '/signin');
+			throw redirect(307, handleRedirect(event));
 		}
 	}
 
