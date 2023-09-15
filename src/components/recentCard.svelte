@@ -22,11 +22,11 @@
 	class="w-full rounded-b-lg p-4 flex text-sm md:text-base items-center justify-between"
 >
 	<div class="flex h-fit gap-4 w-full">
-		<div class="min-w-[100px]">
+		<!-- <div class="min-w-[100px]">
 			<h2 class="text-sm mb-2 rounded-xl text-secondary-dark bg-light w-fit px-3 p-1 h-fit">
 				{card.lang}
 			</h2>
-		</div>
+		</div> -->
 		<p class="text-lg md:text-xl font-semibold hover:opacity-80 w-full">
 			<a href="/{card.project_key}">{card.description}</a>
 		</p>
@@ -36,7 +36,7 @@
 </p> -->
 
 	<div>
-		<div class="w-full flex gap-4 text-secondary-dark">
+		<div class="w-full flex gap-4 text-secondary-dark dark:text-white">
 			{#if editIcons}
 				<a href="/{card.project_key}" class="hover:scale-105 transition-all duration-200">
 					<Fa icon={faEdit} />

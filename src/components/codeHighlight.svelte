@@ -32,13 +32,12 @@
 		editorConfig = {
 			value: initialCode,
 			language: lang,
-			fontSize: 16,
 			automaticLayout: true,
 			emmet: {
 				enabled: true // Enable Emmet support
 			},
 			minimap: { enabled: false },
-			...(window.innerWidth <= 600 && { fontSize: 11, wordWrap: 'on' })
+			...(window.innerWidth <= 600 && { fontSize: 12, wordWrap: 'on' })
 		};
 	}
 
@@ -122,7 +121,7 @@
 				rules: [],
 				colors: {
 					'editor.foreground': '#f4eded',
-					'editor.background': '#191919',
+					'editor.background': '#0e0e0e',
 					'editorCursor.foreground': '#38bef7',
 					'editor.lineHighlightBackground': '#0e0e0e50',
 					'editorLineNumber.foreground': '#38bef7',
@@ -183,7 +182,7 @@
 		<Fa icon={faSpinner} class="animate-spin text-2xl" />
 	</div>
 {:else}
-	<div class="editor-container h-full py-5 rounded-xl" class:bg-secondary-dark={$darkModeState}>
+	<div class="editor-container h-full py-5 rounded-xl">
 		<div class="h-full w-full" bind:this={editorContanier} />
 	</div>
 {/if}

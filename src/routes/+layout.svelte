@@ -62,7 +62,7 @@
 	<meta name="twitter:description" content={$SnippetsDescription.des} />
 	<meta name="twitter:image" content={$SnippetsDescription.imageUrl} />
 </svelte:head>
-<main class=" bg-white dark:bg-primary dark:text-light transition-colors duration-300">
+<main class=" bg-white dark:bg-primary dark:text-white transition-colors duration-300">
 	<PageTransition url={data.url}>
 		<slot />
 	</PageTransition>
