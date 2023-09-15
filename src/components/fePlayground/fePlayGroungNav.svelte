@@ -5,7 +5,7 @@
 	import { showSave, showLoginToSave } from '$lib/feEditor/store.js';
 	import { user, isOwner } from '$lib/index.js';
 	import { handleRedirectURL } from '$lib/utils.js';
-	import { faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
+	import { faExclamationTriangle, faRightToBracket } from '@fortawesome/free-solid-svg-icons';
 	import { page } from '$app/stores';
 	import Fa from 'svelte-fa';
 	import FeFork from './feFork.svelte';
@@ -52,7 +52,12 @@
 			<li class="text-primary"><ShareBtn /></li>
 			<li class=" bg-primary rounded-lg"><Darkmode /></li>
 			{#if !$user}
-				<li class="bg-primary px-3 py-2 rounded-lg"><a href={signinURL}>Login</a></li>
+				<li class="bg-primary px-3 py-3 md:py-2 rounded-lg">
+					<a href={signinURL}>
+						<span class="flex md:hidden"><Fa icon={faRightToBracket} /></span>
+						<span class="hidden md:flex">Login</span>
+					</a>
+				</li>
 			{/if}
 		</ul>
 	</ul>
