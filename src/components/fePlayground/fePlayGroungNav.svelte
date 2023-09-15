@@ -15,26 +15,23 @@
 </script>
 
 <nav
-	class="w-full bg-white dark:bg-secondary-dark dark:shadow-black dark:shadow-lg h-10 px-4 py-10 flex items-center text-light border-b dark:border-secondary-dark"
+	class="w-full bg-white dark:bg-secondary-dark dark:shadow-black dark:shadow-lg h-10 px-4 py-10 flex items-center text-light border-b dark:border-primary"
 >
 	<ul class="w-full flex items-center justify-between">
 		<li class="leading-none">
-			<a href="/html-playground" class="text-3xl text-sky-400"
-				><span class="text-primary dark:text-light">Snippets</span>Land</a
-			>
+			<p class="text-3xl capitalize text-primary dark:text-white">{title}</p>
 			<div class="flex items-center">
 				<p
-					contenteditable=""
 					class="text-sky-400 dark:text-sky-300 outline-none focus:outline-sky-300 p-1 focus:dark:outline-sky-400 rounded-lg"
 					spellcheck="false"
 				>
-					{title}
+					by Abdulmumin Yaqeen
 				</p>
 				{#if $showLoginToSave}
 					<div class="flex items-center justify-center gap-2">
 						<span class="text-error"><Fa icon={faExclamationTriangle} /></span>
 						<span class="text-primary dark:text-light"
-							><a href="/signin" class="underline text-sky-500 dark:text-sky-300"> Login</a> to save
+							><a href={signinURL} class="underline text-sky-500 dark:text-sky-300"> Login</a> to save
 							progress</span
 						>
 					</div>

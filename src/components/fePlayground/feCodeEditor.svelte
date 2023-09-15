@@ -8,11 +8,11 @@
 
 <Splitpanes horizontal theme="my-theme">
 	<Pane snapSize={20}>
-		<p class="bg-white dark:bg-primary">HTML</p>
+		<p class="bg-white dark:bg-secondary-dark px-3">HTML</p>
 		<FeHtml {initialHTML} />
 	</Pane>
 	<Pane snapSize={10}>
-		<p class="bg-white dark:bg-primary">CSS</p>
+		<p class="bg-white dark:bg-secondary-dark px-3">CSS</p>
 		<FeCss {initialCSS} />
 	</Pane>
 </Splitpanes>

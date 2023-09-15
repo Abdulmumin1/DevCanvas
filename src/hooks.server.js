@@ -28,8 +28,10 @@ export const handle = async ({ event, resolve }) => {
 		}
 	} else if (event.url.pathname == '/dashboard') {
 		let session = await event.locals.getSession();
+		console.log('going to dashboard');
 		if (!session) {
-			throw redirect(307, handleRedirect(event));
+			console.log('liere');
+			throw redirect(304, '/signin');
 		}
 	}
 
