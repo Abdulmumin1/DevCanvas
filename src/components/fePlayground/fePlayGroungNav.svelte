@@ -4,10 +4,14 @@
 	import FeSave from './feSave.svelte';
 	import { showSave, showLoginToSave } from '$lib/feEditor/store.js';
 	import { user, isOwner } from '$lib/index.js';
+	import { handleRedirectURL } from '$lib/utils.js';
 	import { faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
+	import { page } from '$app/stores';
 	import Fa from 'svelte-fa';
 	import FeFork from './feFork.svelte';
 	export let title;
+
+	let signinURL = handleRedirectURL($page.url);
 </script>
 
 <nav
@@ -15,7 +19,7 @@
 >
 	<ul class="w-full flex items-center justify-between">
 		<li class="leading-none">
-			<a href="/html-playground" class="text-3xl text-sky-300"
+			<a href="/html-playground" class="text-3xl text-sky-400"
 				><span class="text-primary dark:text-light">Snippets</span>Land</a
 			>
 			<div class="flex items-center">
@@ -48,7 +52,7 @@
 			<li class="text-primary"><ShareBtn /></li>
 			<li class=" bg-primary rounded-lg"><Darkmode /></li>
 			{#if !$user}
-				<li class="bg-primary px-3 py-2 rounded-lg"><a href="/signin">Login</a></li>
+				<li class="bg-primary px-3 py-2 rounded-lg"><a href={signinURL}>Login</a></li>
 			{/if}
 		</ul>
 	</ul>
