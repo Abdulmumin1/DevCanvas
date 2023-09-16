@@ -1,5 +1,6 @@
 <script>
 	import Fa from 'svelte-fa';
+	import atomOneDark from 'svelte-highlight/styles/atom-one-dark';
 	import RecentCard from './recentCard.svelte';
 	import { faAngleDoubleRight, faSpinner } from '@fortawesome/free-solid-svg-icons';
 	// import { supabase } from '$lib/supabase.js';
@@ -7,6 +8,7 @@
 	import { pageCount } from '$lib/index.js';
 	import { fade } from 'svelte/transition';
 	import { HighlightAuto, LineNumbers } from 'svelte-highlight';
+	import { githubDark } from 'svelte-highlight/styles';
 
 	export let supabase;
 	export let session;
@@ -80,13 +82,22 @@
 	}
 </script>
 
+<svelte:head>
+	{@html githubDark}
+</svelte:head>
+<!-- {#if $DarmodeState}
+{#else}
+<svelte:head>
+	{@html github}
+</svelte:head>
+{/if} -->
 <div class="flex flex-col gap-6 items-center" transition:fade>
 	<div class="gap-6 flex flex-col w-full bg-white dark:bg-secondary-dark">
 		<div class="grid gap-6 rounded-lg w-full">
 			{#each collection as snippet}
 				<div class="bg-white dark:bg-secondary-dark rounded-lg p-2 md:p-4">
 					<h3
-						class="text-sm md:text-lg px-3 py-1 my-4 bg-sky-100 w-fit rounded-lg dark:text-primary dark:bg-sky-300"
+						class="text-sm md:text-base px-3 py-1 my-4 bg-[#0d1117] w-fit rounded-lg text-light cool"
 					>
 						{snippet.lang}
 					</h3>
@@ -94,8 +105,8 @@
 					<div class="bg-gray-100 dark:bg-primary flex md:hidden p-2 rounded-lg">
 						{snippet.code.slice(0, 200)}
 					</div>
-					<div class="bg-gray-100 dark:bg-primary w-full hidden md:flex">
-						<HighlightAuto code={snippet.code.slice(0, 200)} let:highlighted>
+					<div class="bg-[#0d1117] w-full hidden md:flex rounded-lg">
+						<HighlightAuto code={snippet.code.slice(0, 200) + '....'} let:highlighted>
 							<LineNumbers {highlighted} hideBorder />
 						</HighlightAuto>
 					</div>
@@ -118,3 +129,10 @@
 		>
 	{/if}
 </div>
+
+<style>
+	.cool {
+		font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono',
+			'Courier New', monospace;
+	}
+</style>

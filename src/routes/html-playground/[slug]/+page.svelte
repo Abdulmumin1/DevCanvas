@@ -62,9 +62,6 @@
 			</Resizable>
 			<!-- <div class="w-full h-full"> -->
 			<!-- </div> -->
-			{#if $showToast}
-				<Toast message={$showToast.message} />
-			{/if}
 		</div>
 	{:else}
 		<div class=" h-screen flex items-center justify-center flex-col">

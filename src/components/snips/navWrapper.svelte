@@ -8,6 +8,7 @@
 	import { handleRedirectURL } from '$lib/utils.js';
 	import Search from '../search.svelte';
 	import OverlayNav from '../overlayNav.svelte';
+	import ProfileCard from '../profileCard.svelte';
 
 	let signinURL = handleRedirectURL($page.url);
 </script>
@@ -26,9 +27,12 @@
 				<li><OverlayNav /></li>
 				<li class="w-full"><Search /></li>
 				<li><Darkmode /></li>
+
 				{#if !$user}
 					<li><a href={signinURL} class="bg-green-400 p-3 rounded-lg">Login</a></li>
 					<li><a href={signinURL} class="bg-sky-400 p-3 rounded-lg">Signup</a></li>
+				{:else}
+					<li><ProfileCard /></li>
 				{/if}
 			</ul>
 		</div>

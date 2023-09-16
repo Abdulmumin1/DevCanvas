@@ -2,10 +2,11 @@
 	import '../tailwind.css';
 	import '../app.css';
 	import { onMount } from 'svelte';
-	import { user, darkModeState, SnippetsDescription } from '$lib/index.js';
+	import { user, user_info, showToast, darkModeState, SnippetsDescription } from '$lib/index.js';
 	import { invalidateAll } from '$app/navigation';
 	import PageTransition from './transition.svelte';
 	import { browser } from '$app/environment';
+	import Toast from '../components/toast.svelte';
 
 	// console.log(supabase.auth.getUser());
 
@@ -31,6 +32,11 @@
 			console.log('saved mode', localStorage.theme);
 		}
 	});
+
+	$: {
+		user_info.set(data.user_info);
+	}
+
 	onMount(() => {
 		// darkModeState.set(localStorage.theme === 'dark');
 		const { data } = supabase.auth.onAuthStateChange((event, _session) => {
@@ -39,7 +45,6 @@
 				invalidateAll('supabase:auth');
 			}
 		});
-
 		return () => data.subscription.unsubscribe();
 	});
 </script>
@@ -63,6 +68,9 @@
 	<meta name="twitter:image" content={$SnippetsDescription.imageUrl} />
 </svelte:head>
 <main class=" bg-white dark:bg-primary dark:text-white transition-colors duration-300">
+	{#if $showToast}
+		<Toast message={$showToast.message} />
+	{/if}
 	<PageTransition url={data.url}>
 		<slot />
 	</PageTransition>

@@ -1,6 +1,7 @@
 // place files you want to import through the `$lib` alias in this folder.
 import { readable, writable } from 'svelte/store';
 
+export const user_info = writable([]);
 export const darkModeState = writable(false);
 export const current_data = writable({});
 export const user = writable(false);
@@ -117,7 +118,7 @@ export const supportedLanguages = [
 	'ruby',
 	'swift',
 	'typescript',
-	'c#',
+	'csharp',
 	'php',
 	'go',
 	'rust',
@@ -140,7 +141,7 @@ export const supportedLanguages = [
 	'groovy',
 	'coffeescript',
 	'elixir',
-	'f#',
+	'fsharp',
 	'vb.net',
 	'crystal',
 	'julia',

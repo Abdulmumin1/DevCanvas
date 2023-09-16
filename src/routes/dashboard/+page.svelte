@@ -80,7 +80,7 @@
 
 <div class="flex min-h-screen gap-2">
 	<NavWrapper>
-		<main class=" min-h-screen flex py-3 md:py-6 w-full justify-center flex-col">
+		<main class=" min-h-screen flex py-3 md:py-6 w-full flex-col">
 			<NewSnippet />
 			<div class="w-full px-0 md:px-4 max-w-4xl">
 				<div>

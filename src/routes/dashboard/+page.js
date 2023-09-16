@@ -25,6 +25,6 @@ import { redirect } from '@sveltejs/kit';
 export async function load({ parent }) {
 	let { session } = await parent();
 	if (!session) {
-		throw redirect(304, '/signin?redirectTo=dashboard');
+		throw redirect(302, '/signin?redirectTo=/');
 	}
 }

@@ -2,8 +2,7 @@
 	import Fa from 'svelte-fa';
 	import InnerNav from '../../components/innerNav.svelte';
 	import { faRightLong } from '@fortawesome/free-solid-svg-icons';
-	import { pageCount } from '$lib/index.js';
-
+	import { pageCount, user_info } from '$lib/index.js';
 	import { onMount } from 'svelte';
 
 	import CollectionDummy from '../../components/collectionDummy.svelte';
@@ -77,9 +76,10 @@
 		}
 	}
 
-	onMount(() => {
-		console.log(data);
-	});
+	$: {
+		console.log($user_info);
+	}
+	onMount(() => {});
 
 	// afterUpdate(() => {
 	// 	// This will handle the redirection if the user logs out on  page
