@@ -86,12 +86,12 @@
 			{#each collection as snippet}
 				<div class="bg-white dark:bg-secondary-dark rounded-lg p-2 md:p-4">
 					<h3
-						class="text-xl px-3 py-1 mb-2 bg-sky-100 w-fit rounded-lg dark:text-primary dark:bg-sky-300"
+						class="text-sm md:text-lg px-3 py-1 my-4 bg-sky-100 w-fit rounded-lg dark:text-primary dark:bg-sky-300"
 					>
 						{snippet.lang}
 					</h3>
 
-					<div class="bg-gray-100 flex md:hidden p-2 rounded-lg">
+					<div class="bg-gray-100 dark:bg-primary flex md:hidden p-2 rounded-lg">
 						{snippet.code.slice(0, 200)}
 					</div>
 					<div class="bg-gray-100 dark:bg-primary w-full hidden md:flex">

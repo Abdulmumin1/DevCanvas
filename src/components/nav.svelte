@@ -12,10 +12,8 @@
 	let signinURL = handleRedirectURL($page.url);
 </script>
 
-<nav class=" w-full p-2">
-	<ul
-		class="w-full rounded-lg bg-white dark:bg-[#191919] flex justify-between items-center p-3 shadow text-black"
-	>
+<nav class=" w-full border-b dark:border-secondary-dark">
+	<ul class="w-full rounded-lg flex justify-between items-center p-3 shadow text-black">
 		<li class="text-xl text-sky-400 font-bold px-3 py-1">
 			<a href="/"><span class="text-secondary-dark dark:text-white">Snippets</span>Land</a>
 		</li>

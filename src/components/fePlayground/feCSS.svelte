@@ -34,6 +34,18 @@
 	}
 
 	let saved = true;
+	let typingTimer; // Timer to track typing
+	const delay = 1000; // Adjust the delay as needed (in milliseconds)
+
+	// Function to handle text input
+	function handleAutoSave() {
+		clearTimeout(typingTimer); // Clear the previous timer
+
+		typingTimer = setTimeout(function () {
+			// This function will run after the delay (user has stopped typing)
+			save();
+		}, delay);
+	}
 
 	async function save() {
 		saved = false;
@@ -65,6 +77,7 @@
 			// console.log(cur);
 			return { ...cur, css: data };
 		});
+		handleAutoSave();
 	}
 
 	function setEditorTheme() {

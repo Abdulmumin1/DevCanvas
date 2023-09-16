@@ -1,20 +1,11 @@
 <script>
-	import Fa from 'svelte-fa';
-	import { faGithub, faWpexplorer } from '@fortawesome/free-brands-svg-icons';
-	import logo from '$lib/logo.png';
-	import { faBars, faClose, faWindowMaximize } from '@fortawesome/free-solid-svg-icons';
-	import { slide } from 'svelte/transition';
-	import { clickOutside, user } from '$lib/index.js';
+	import { user } from '$lib/index.js';
 	import { page } from '$app/stores';
 	import FeAccordion from '../fePlayground/feAccordion.svelte';
 	import { handleRedirectURL } from '$lib/utils.js';
 
 	import Signout from '../signout.svelte';
-	let openSideBar = false;
 
-	function toogleOpen() {
-		openSideBar = !openSideBar;
-	}
 	let signinURL = handleRedirectURL($page.url);
 </script>
 
@@ -52,29 +43,4 @@
 			</ul>
 		</ul>
 	</div>
-	<ul class="flex justify-between items-center md:hidden">
-		<li class="flex items-center justify-center gap-4 mt-14 mx-3 absolute">
-			<button on:click={toogleOpen}><Fa icon={faBars} /></button>
-		</li>
-		{#if openSideBar}
-			<li
-				transition:slide={{ axis: 'x' }}
-				use:clickOutside
-				on:click_outside={toogleOpen}
-				class="fixed top-0 left-0 w-full h-screen z-50 bg-white p-4 dark:bg-primary shadow-lg"
-			>
-				<ul class="flex justify-between items-end flex-col">
-					<li>
-						<button on:click={toogleOpen}><Fa icon={faClose} /></button>
-					</li>
-					<li class="w-full text-xl flex flex-col gap-4">
-						<ul class="w-full flex flex-col text-center items-center justify-center">
-							<li><a href="/explore">Explore</a></li>
-							<li><a href="/html-playground">HTML Playground</a></li>
-						</ul>
-					</li>
-				</ul>
-			</li>
-		{/if}
-	</ul>
 </div>
