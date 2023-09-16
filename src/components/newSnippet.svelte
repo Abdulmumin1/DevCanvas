@@ -3,7 +3,7 @@
 	import { createEventDispatcher } from 'svelte';
 	import Fa from 'svelte-fa';
 	import { scale, slide } from 'svelte/transition';
-	import { supportedLanguages } from '$lib/index.js';
+	import { supportedLanguages, user_info, showToast } from '$lib/index.js';
 
 	let isTooltipVisible = false;
 
@@ -34,6 +34,13 @@
 	const showOptions = () => {
 		isTooltipVisible = !isTooltipVisible;
 		newCodeIcon = isTooltipVisible ? faClose : faAdd;
+		// if ($user_info) {
+		// 	isTooltipVisible = !isTooltipVisible;
+		// 	newCodeIcon = isTooltipVisible ? faClose : faAdd;
+		// } else {
+		// 	showToast.set({ message: 'Configure Profile to continue' });
+		// }
+		// console.log($user_info[0]?.username);
 	};
 </script>
 

@@ -26,13 +26,6 @@ export const handle = async ({ event, resolve }) => {
 		if (session) {
 			throw redirect(307, '/dashboard');
 		}
-	} else if (event.url.pathname == '/dashboard') {
-		let session = await event.locals.getSession();
-		console.log('going to dashboard');
-		if (!session) {
-			console.log('liere');
-			throw redirect(304, '/signin');
-		}
 	}
 
 	return resolve(event, {

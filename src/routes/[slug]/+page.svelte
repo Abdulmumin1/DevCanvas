@@ -3,7 +3,6 @@
 	import CodeText from '../../components/codeText.svelte';
 	import { current_data, user, previewMode, SnippetsDescription, showToast } from '$lib/index.js';
 	import { onMount } from 'svelte';
-	import Toast from '../../components/toast.svelte';
 	import { browser } from '$app/environment';
 	import DetailsGrid from '../../components/DetailsGrid.svelte';
 
@@ -61,9 +60,6 @@
 				<CodeText inputContent={data['0'].code} lang={data['0'].lang} />
 			</div>
 			<DetailsGrid details={data['0']} />
-			{#if $showToast}
-				<Toast message={$showToast.message} />
-			{/if}
 		</div>
 	{:else}
 		<div class=" h-screen flex items-center justify-center flex-col">

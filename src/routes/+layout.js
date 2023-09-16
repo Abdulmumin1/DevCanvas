@@ -17,6 +17,11 @@ export const load = async ({ fetch, data, depends, url }) => {
 	const {
 		data: { session }
 	} = await supabase.auth.getSession();
+	// console.log(session);
+	const { data: UserInfo, error: err } = await supabase
+		.from('profiles')
+		.select('*')
+		.eq('user_id', session?.user?.id);
 
-	return { supabase, session, url: url.pathname };
+	return { supabase, session, url: url.pathname, user_info: UserInfo };
 };
