@@ -39,8 +39,8 @@
 </p> -->
 
 	<div>
-		<div class="w-full flex gap-4 text-secondary-dark dark:text-white">
-			<span class="flex gap-2"><Fa icon={faEye} />12039</span>
+		<div class="w-full flex gap-4 text-secondary-dark dark:text-white items-center">
+			<span class="flex gap-2 items-center"><Fa icon={faEye} />12039</span>
 			<button class="hover:scale-105 transition-all duration-200"
 				><Fa icon={faArrowUpFromBracket} class="transition-all duration-300" /></button
 			>

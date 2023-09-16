@@ -2,7 +2,7 @@
 	import anime from 'animejs';
 	import { browser } from '$app/environment';
 
-	var c;
+	var c = document.getElementById('c');
 	var ctx = c.getContext('2d');
 
 	var cH;
@@ -213,4 +213,4 @@
 	}
 </script>
 
-<canvas class="w-screen h-screen" bind:this={c} />
+<canvas class="w-screen h-screen" bind:this={c} id="c" />

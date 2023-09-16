@@ -7,6 +7,7 @@
 	import { page } from '$app/stores';
 	import { handleRedirectURL } from '$lib/utils.js';
 	import Search from '../search.svelte';
+	import OverlayNav from '../overlayNav.svelte';
 
 	let signinURL = handleRedirectURL($page.url);
 </script>
@@ -22,8 +23,8 @@
 		<!-- Upper nave -->
 		<div class="w-full px-3 py-3 border-b text-primary dark:border-secondary-dark">
 			<ul class="flex items-center justify-end w-full gap-2">
-				<!-- <li></li> -->
-				<li class="w-[32%] md:w-full"><Search /></li>
+				<li><OverlayNav /></li>
+				<li class="w-full"><Search /></li>
 				<li><Darkmode /></li>
 				{#if !$user}
 					<li><a href={signinURL} class="bg-green-400 p-3 rounded-lg">Login</a></li>

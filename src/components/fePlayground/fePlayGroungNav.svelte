@@ -9,6 +9,7 @@
 	import { page } from '$app/stores';
 	import Fa from 'svelte-fa';
 	import FeFork from './feFork.svelte';
+	import FePlaygroundTitle from './fePlaygroundTitle.svelte';
 	export let title;
 
 	let signinURL = handleRedirectURL($page.url);
@@ -18,9 +19,9 @@
 	class="w-full bg-white dark:bg-secondary-dark dark:shadow-black dark:shadow-lg h-10 px-4 py-10 flex items-center text-light border-b dark:border-primary"
 >
 	<ul class="w-full flex items-center justify-between">
-		<li class="leading-none">
-			<p class="text-3xl capitalize text-primary dark:text-white">{title}</p>
-			<div class="flex items-center">
+		<li class="w-full">
+			<div class="flex flex-col leading-none w-full">
+				<FePlaygroundTitle {title} />
 				<p
 					class="text-sky-400 dark:text-sky-300 outline-none focus:outline-sky-300 p-1 focus:dark:outline-sky-400 rounded-lg"
 					spellcheck="false"
