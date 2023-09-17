@@ -36,6 +36,7 @@
 			emmet: {
 				enabled: true // Enable Emmet support
 			},
+			renderIndentGuides: false,
 			minimap: { enabled: false },
 			...(window.innerWidth <= 600 && { fontSize: 12, wordWrap: 'on' })
 		};

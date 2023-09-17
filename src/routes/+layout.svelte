@@ -68,10 +68,10 @@
 	<meta name="twitter:image" content={$SnippetsDescription.imageUrl} />
 </svelte:head>
 <main class=" bg-white dark:bg-primary dark:text-white transition-colors duration-300">
-	{#if $showToast}
-		<Toast message={$showToast.message} />
-	{/if}
 	<PageTransition url={data.url}>
 		<slot />
 	</PageTransition>
+	{#if $showToast}
+		<Toast message={$showToast.message} />
+	{/if}
 </main>

@@ -2,6 +2,6 @@
 	import { user } from '$lib/index.js';
 </script>
 
-<div class="rounded-full bg-gray-100 p-2 dark:bg-secondary-dark dark:text-white">
+<div class="rounded-full bg-gray-300 p-2 dark:bg-primary dark:text-white text-primary">
 	<a class=" uppercase" href="/profile">{$user.email.slice(0, 2)}</a>
 </div>

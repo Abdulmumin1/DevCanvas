@@ -49,7 +49,7 @@
 	});
 </script>
 
-<div class="relative flex text-left items-center justify-center dark:text-light">
+<div class="relative flex text-left items-center justify-center dark:text-white">
 	<button on:click={toggleDropdown} class="text-xl">
 		<Fa icon={faBars} class=" transition-transform duration-150 hover:scale-110" />
 	</button>

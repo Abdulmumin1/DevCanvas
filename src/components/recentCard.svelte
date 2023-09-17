@@ -15,7 +15,6 @@
 	} from '@fortawesome/free-solid-svg-icons';
 	import Fa from 'svelte-fa';
 	import { scale, slide } from 'svelte/transition';
-
 	export let card;
 	export let editIcons;
 </script>
@@ -45,11 +44,11 @@
 				><Fa icon={faArrowUpFromBracket} class="transition-all duration-300" /></button
 			>
 			{#if editIcons}
-				<a href="/{card.project_key}" class="hover:scale-105 transition-all duration-200">
+				<a href="/{card.project_key}/edit" class="hover:scale-105 transition-all duration-200">
 					<Fa icon={faEdit} />
 				</a>
 
-				<a href="/{card.project_key}" class="hover:scale-105 transition-all duration-200">
+				<a href="/{card.project_key}/edit" class="hover:scale-105 transition-all duration-200">
 					<Fa icon={faTrash} />
 				</a>
 			{/if}

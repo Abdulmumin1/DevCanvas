@@ -13,8 +13,8 @@
 	<div
 		class="h-full hidden md:flex bg-inherit w-[200px] text-white fixed bg-primary dark:bg-secondary-dark"
 	>
-		<ul class="w-full h-full flex flex-col gap-4">
-			<ul class="w-full h-full flex flex-col gap-4">
+		<ul class="w-full h-full flex flex-col gap-4 pl-3">
+			<ul class="w-full h-full flex flex-col gap-4 transition-all duration-200">
 				<li class="py-12 px-2 border-b dark:border-primary">
 					<a href="/dashboard" class="text-3xl text-sky-400"
 						><span class="text-white dark:text-light">Snippets</span>Land</a
@@ -23,9 +23,28 @@
 						{$page.url.pathname}
 					</span>
 				</li>
-				<li><a href="/explore" class="text-lg px-2">Library</a></li>
-				<li><a href="/dashboard" class="text-lg px-2">Snips</a></li>
-				<li><a href="/html-playground" class="text-lg px-2">Online Editor</a></li>
+				<li>
+					<a
+						href="/explore"
+						class="text-lg px-2 w-full"
+						class:text-sky-400={$page.url.pathname == '/explore'}
+						>Library
+					</a>
+				</li>
+				<li>
+					<a
+						href="/dashboard"
+						class="text-lg px-2"
+						class:text-sky-400={$page.url.pathname == '/dashboard'}>Snips</a
+					>
+				</li>
+				<li>
+					<a
+						href="/html-playground"
+						class="text-lg px-2"
+						class:text-sky-400={$page.url.pathname == '/html-playground'}>Online Editor</a
+					>
+				</li>
 			</ul>
 
 			<ul class="w-full">

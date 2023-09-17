@@ -50,7 +50,7 @@
 >
 	<DetailsEditor lang={details.lang} />
 	<button
-		class="w-fit justify-center items-center flex gap-2 text-lg"
+		class="w-fit justify-center items-center flex gap-2"
 		on:click={() => {
 			showDetails = !showDetails;
 		}}>Details <Fa icon={faExclamationCircle} /></button

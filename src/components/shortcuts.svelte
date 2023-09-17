@@ -15,8 +15,8 @@
 	}
 </script>
 
-<div class="flex flex-col gap-2 mb-3">
-	<button on:click={expand} class="flex items-center justify-center w-fit gap-2 text-lg"
+<div class="flex flex-col gap-2">
+	<button on:click={expand} class="flex items-center justify-center w-fit gap-2"
 		>Shortcuts <Fa icon={s_icon} class="transition-all duration-300" /></button
 	>
 	{#if expanded}
