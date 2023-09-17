@@ -5,7 +5,7 @@
 </script>
 
 {#key url}
-	<div in:fade={{ duration: 200 }}>
+	<div in:fade={{ duration: 300 }}>
 		<slot />
 	</div>
 {/key}

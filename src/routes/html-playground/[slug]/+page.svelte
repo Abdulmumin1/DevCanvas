@@ -48,7 +48,7 @@
 	<!-- HTML Meta Tags -->
 </svelte:head>
 
-<FePlayGroungNav title={data[0].description} />
+<FePlayGroungNav />
 <article class="min-h-screen h-screen flex flex-col">
 	{#if data.isFound}
 		<div class="relative flex h-full flex-col lg:flex-row">

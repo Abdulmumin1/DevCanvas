@@ -67,14 +67,14 @@
 				<textarea
 					name="description"
 					bind:value={description}
-					class="text-black text-left border border-sky-200 rounded-lg outline-sky-200 w-full p-2 dark:bg-primary dark:text-white"
+					class="text-black text-left border border-sky-200 rounded-lg outline-sky-200 w-full p-2 dark:bg-secondary-dark dark:outline-none dark:focus:outline-none dark:border-0 dark:text-white"
 					placeholder="describe your code here (just a few words!)"
 				/>
 				<p class="text-black text-left w-full font-semibold dark:text-white">Select language:</p>
 				<select
 					name="lang"
 					on:change={handleDropdownChange}
-					class="border-[.5px] w-full p-2 text-black outline-sky-200 mb-2 dark:bg-primary dark:text-white rounded-lg"
+					class="border-[.5px] w-full p-2 text-black outline-sky-200 mb-2 dark:bg-secondary-dark dark:outline-none dark:focus:outline-none dark:border-0 dark:text-white rounded-lg"
 				>
 					{#each options as option}
 						<option value={option}>{option}</option>
@@ -84,7 +84,7 @@
 				<button
 					type="submit"
 					on:click={handleClick}
-					class=" mb-2 w-full p-2 bg-sky-500 hover:bg-sky-600 transition-colors duration-200 rounded-lg shadow flex items-center justify-center gap-3"
+					class=" mb-2 w-full p-2 bg-sky-500 hover:bg-sky-600 transition-colors duration-200 rounded-lg shadow flex items-center justify-center gap-3 text-primary"
 					>Create
 					{#if clickedNew}
 						<Fa icon={faSpinner} class="animate-spin" />
@@ -104,10 +104,6 @@
 </div>
 
 <style>
-	.tooltip-content {
-		min-width: 300px;
-	}
-
 	/* .tooltip-container .tooltip-content {
 		display: block;
 	} */

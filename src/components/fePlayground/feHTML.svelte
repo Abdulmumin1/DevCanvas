@@ -27,6 +27,8 @@
 			value: initialHTML,
 			language: lang,
 			automaticLayout: true,
+			renderIndentGuides: false,
+			tabSize: 1,
 			emmet: {
 				enabled: true // Enable Emmet support
 			},

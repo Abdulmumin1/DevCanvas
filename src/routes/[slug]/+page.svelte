@@ -1,41 +1,17 @@
 <script>
+	import { HighlightAuto, LineNumbers } from 'svelte-highlight';
 	import Nav from '../../components/nav.svelte';
-	import CodeText from '../../components/codeText.svelte';
-	import { current_data, user, previewMode, SnippetsDescription, showToast } from '$lib/index.js';
-	import { onMount } from 'svelte';
-	import { browser } from '$app/environment';
-	import DetailsGrid from '../../components/DetailsGrid.svelte';
-
-	previewMode.set(true);
+	import { darkModeState } from '$lib/index.js';
+	// import { d } from 'svelte-highlight/languages/index.js';
+	import { github, githubDark, atomOneDark } from 'svelte-highlight/styles';
+	import Fa from 'svelte-fa';
+	import { faPen } from '@fortawesome/free-solid-svg-icons';
+	import { setContext } from 'svelte';
 
 	export let data;
-
-	// function handleContentChange(event) {
-	// 	current_data.update((cur) => {
-	// 		return { ...cur, code: event.detail };
-	// 	});
-	// 	console.log($current_data);
-	// 	console.log(event.detail);
-	// }
-
-	// Subscribe to the content store to update the input when necessary
-
-	// console.log(user)
-	onMount(() => {
-		current_data.set(data['0']);
-		// getUser()
-	});
-
-	// afterUpdate(() => {
-	// 	// This will handle the redirection if the user logs out on another page
-	// 	if (!$user) {
-	// 		window.location.href = '/sigin'; // Replace '/login' with your desired login page URL
-	// 	}
-	// });
-
-	let mobileDetails;
-	if (browser) {
-		mobileDetails = window.innerWidth <= 768;
+	if (data.isFound) {
+		setContext('isOwner', data.session.user.id == data[0].user_id);
+		console.log(data.session.user.id == data[0].user_id);
 	}
 </script>
 
@@ -50,16 +26,28 @@
 		<meta name="twitter:title" content={data['0'].description} />
 	{/if}
 	<!-- HTML Meta Tags -->
+
+	{#if $darkModeState}
+		{@html githubDark}
+	{:else}
+		{@html github}
+	{/if}
 </svelte:head>
 
-<article class="min-h-screen h-screen flex flex-col gap-2">
+<article class="h-screen flex flex-col gap-2">
 	{#if data.isFound}
 		<Nav />
-		<div class="relative flex h-full flex-col lg:flex-row p-0 md:p-1">
-			<div class="w-full h-full">
-				<CodeText inputContent={data['0'].code} lang={data['0'].lang} />
+		<div class="h-full overflow-scroll p-4">
+			<!-- <Fa icon={faPen} /> -->
+			<div class="text-sm md:text-sm w-full items-center h-full flex justify-center">
+				<div
+					class="w-full md:w-[90%] bg-orange-100 p-4 rounded-lg dark:bg-[#0d1117] overflow-scroll h-full"
+				>
+					<HighlightAuto code={data[0].code} let:highlighted>
+						<LineNumbers {highlighted} hideBorder />
+					</HighlightAuto>
+				</div>
 			</div>
-			<DetailsGrid details={data['0']} />
 		</div>
 	{:else}
 		<div class=" h-screen flex items-center justify-center flex-col">

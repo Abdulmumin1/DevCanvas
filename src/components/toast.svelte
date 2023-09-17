@@ -14,8 +14,8 @@
 </script>
 
 <div
-	in:slide={{ axis: 'x' }}
-	class="absolute right-0 top-0 mx-auto w-fit m-2 shadow-md border-l-2 border-r-2 bg-white dark:bg-primary border-sky-500 p-2"
+	in:slide={{ axis: 'y' }}
+	class="absolute z-50 inset-x-0 right-0 bottom-0 mx-auto w-fit m-2 shadow-md border-l-2 border-r-2 bg-white dark:bg-primary border-sky-500 p-2"
 >
 	<div class="flex items-center justify-center gap-2">
 		{message}

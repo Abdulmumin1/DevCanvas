@@ -25,6 +25,7 @@
 			value: initialCSS,
 			language: lang,
 			automaticLayout: true,
+			renderIndentGuides: false,
 			emmet: {
 				enabled: true // Enable Emmet support
 			},

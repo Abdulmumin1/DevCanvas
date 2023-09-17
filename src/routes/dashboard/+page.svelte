@@ -82,7 +82,7 @@
 	<NavWrapper>
 		<main class=" min-h-screen flex py-3 md:py-6 w-full flex-col">
 			<NewSnippet />
-			<div class="w-full px-0 md:px-4 max-w-4xl">
+			<div class="w-full px-0 max-w-4xl">
 				<div>
 					<p class="text-lg md:text-xl font-bold py-6">Your Collections</p>
 				</div>

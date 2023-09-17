@@ -10,18 +10,18 @@
 	import Fa from 'svelte-fa';
 	import FeFork from './feFork.svelte';
 	import FePlaygroundTitle from './fePlaygroundTitle.svelte';
-	export let title;
+	import ProfileCard from '../profileCard.svelte';
 
 	let signinURL = handleRedirectURL($page.url);
 </script>
 
 <nav
-	class="w-full bg-white dark:bg-secondary-dark dark:shadow-black dark:shadow-lg h-10 px-4 py-10 flex items-center text-light border-b dark:border-primary"
+	class="w-full bg-white dark:bg-secondary-dark dark:shadow-black dark:shadow-lg h-10 px-4 py-10 flex items-center text-primary dark:text-white border-b dark:border-primary"
 >
 	<ul class="w-full flex items-center justify-between">
 		<li class="w-full">
 			<div class="flex flex-col leading-none w-full">
-				<FePlaygroundTitle {title} />
+				<FePlaygroundTitle />
 				<p
 					class="text-sky-400 dark:text-sky-300 outline-none focus:outline-sky-300 p-1 focus:dark:outline-sky-400 rounded-lg"
 					spellcheck="false"
@@ -39,7 +39,7 @@
 				{/if}
 			</div>
 		</li>
-		<ul class="flex gap-2 items-center justify-center">
+		<ul class="flex items-center justify-center gap-2">
 			{#if $isOwner}
 				{#if $showSave}
 					<li><FeSave /></li>
@@ -47,14 +47,18 @@
 			{:else}
 				<li><FeFork /></li>
 			{/if}
-			<li class="text-primary"><ShareBtn /></li>
-			<li class=" bg-primary rounded-lg"><Darkmode /></li>
+			<li class="dark:text-white"><ShareBtn /></li>
+			<li class=""><Darkmode /></li>
 			{#if !$user}
 				<li class="bg-primary px-3 py-3 md:py-2 rounded-lg">
 					<a href={signinURL}>
 						<span class="flex md:hidden"><Fa icon={faRightToBracket} /></span>
 						<span class="hidden md:flex">Login</span>
 					</a>
+				</li>
+			{:else}
+				<li>
+					<ProfileCard />
 				</li>
 			{/if}
 		</ul>
