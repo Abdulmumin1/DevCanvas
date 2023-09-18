@@ -33,6 +33,7 @@
 			value: initialCode,
 			language: lang,
 			automaticLayout: true,
+			formatOnPaste: true,
 			emmet: {
 				enabled: true // Enable Emmet support
 			},

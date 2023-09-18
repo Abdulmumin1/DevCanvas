@@ -1,6 +1,6 @@
 <script>
 	import { HighlightAuto, LineNumbers } from 'svelte-highlight';
-	import Nav from '../../components/nav.svelte';
+	import Nav from '../../../components/nav.svelte';
 	import { darkModeState } from '$lib/index.js';
 	// import { d } from 'svelte-highlight/languages/index.js';
 	import { github, githubDark, atomOneDark } from 'svelte-highlight/styles';

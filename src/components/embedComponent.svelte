@@ -1,6 +1,7 @@
 <script>
 	import { HighlightAuto, LineNumbers } from 'svelte-highlight';
 	import { copyTextToClipboard } from '$lib/index.js';
+	import logo from '$lib/logo.png';
 
 	import { faCheck, faCopy, faExpand } from '@fortawesome/free-solid-svg-icons';
 	import Fa from 'svelte-fa';
@@ -21,8 +22,10 @@
 <div class="flex flex-col">
 	<div class="fixed w-full bg-secondary-dark flex items-center justify-between p-2 z-50">
 		<div class="flex flex-col text-light">
-			<a href="https://snippet-bice.vercel.app" target="_blank">
-				<p class="text-2xl text-white">Snippets<span class="text-sky-300">Land</span></p>
+			<a href="https://snippet-bice.vercel.app" class="flex" target="_blank">
+				<img src={logo} class="h-6 w-6" alt="snippetsLand" />
+
+				<p class="text-xl text-white">Snippets<span class="text-sky-300">Land</span></p>
 			</a>
 			<!-- <a class="w-full" href="http://localhost:5173" target="_parent">go to page</a> -->
 		</div>
@@ -43,7 +46,7 @@
 			>
 		</div>
 	</div>
-	<div class="mt-12 text-sm md:text-base">
+	<div class="mt-12 text-sm">
 		<HighlightAuto {code} let:highlighted>
 			<LineNumbers {highlighted} hideBorder />
 		</HighlightAuto>

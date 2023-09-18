@@ -29,6 +29,7 @@
 			automaticLayout: true,
 			renderIndentGuides: false,
 			tabSize: 1,
+			formatOnPaste: true,
 			emmet: {
 				enabled: true // Enable Emmet support
 			},

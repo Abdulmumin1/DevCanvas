@@ -12,7 +12,7 @@ export async function POST({ url, locals: { supabase, getSession }, request }) {
 	let html = body.html;
 	let css = body.css;
 	let js = body.js;
-	let description = body.description;
+	let description = `Fork: ${body.description}`;
 	let user_id = session.user.id;
 	// console.log(session.user);
 	const { data, error: err } = await supabase

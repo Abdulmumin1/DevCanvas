@@ -1,7 +1,7 @@
 <script>
 	import { github, githubDark } from 'svelte-highlight/styles';
-	import EmbedComponent from '../../../components/embedComponent.svelte';
-	import Nav from '../../../components/nav.svelte';
+	import EmbedComponent from '../../../../components/embedComponent.svelte';
+	// import Nav from '../../../components/nav.svelte';
 	import { page } from '$app/stores';
 	export let data;
 

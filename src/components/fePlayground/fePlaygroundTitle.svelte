@@ -40,22 +40,25 @@
 </script>
 
 {#if $isOwner}
-	<div class="flex gap-2 items-center">
+	<div class="flex gap-2 items-center" style="margin-bottom: -7px;">
 		<p
 			contenteditable=""
 			on:keydown={handleKeyDown}
 			on:input={handleInput}
 			placeholder="Untitled Project"
-			class="w-fit text-base md:text-xl capitalize text-primary dark:text-white bg-inherit outline-none"
+			class="w-fit text-sm md:text-xl capitalize text-white bg-inherit outline-none"
 		>
 			{$current_data.description}
 		</p>
-		<span class="text-black dark:text-white">
+		<span class="text-white text-[11px] md:text-base">
 			<Fa icon={faPen} />
 		</span>
 	</div>
 {:else}
-	<p class="text-base md:text-xl capitalize text-primary dark:text-white bg-inherit outline-none">
+	<p
+		style="margin-bottom: -7px;"
+		class="text-sm md:text-xl capitalize text-primary dark:text-white bg-inherit outline-none"
+	>
 		{$current_data.description}
 	</p>
 {/if}

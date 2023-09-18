@@ -26,6 +26,7 @@
 			language: lang,
 			automaticLayout: true,
 			renderIndentGuides: false,
+			formatOnPaste: true,
 			emmet: {
 				enabled: true // Enable Emmet support
 			},

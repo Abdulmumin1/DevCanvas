@@ -4,6 +4,8 @@
 	import FeSave from './feSave.svelte';
 	import { showSave, showLoginToSave } from '$lib/feEditor/store.js';
 	import { user, isOwner } from '$lib/index.js';
+	import logo from '$lib/logo.png';
+
 	import { handleRedirectURL } from '$lib/utils.js';
 	import { faExclamationTriangle, faRightToBracket } from '@fortawesome/free-solid-svg-icons';
 	import { page } from '$app/stores';
@@ -11,23 +13,32 @@
 	import FeFork from './feFork.svelte';
 	import FePlaygroundTitle from './fePlaygroundTitle.svelte';
 	import ProfileCard from '../profileCard.svelte';
+	import FeGetEmbed from './feGetEmbed.svelte';
 
 	let signinURL = handleRedirectURL($page.url);
 </script>
 
 <nav
-	class="w-full bg-white dark:bg-secondary-dark dark:shadow-black dark:shadow-lg h-10 px-4 py-10 flex items-center text-primary dark:text-white border-b dark:border-primary"
+	class="w-full bg-secondary-dark h-10 px-2 py-8 flex items-center text-white border-b border-primary"
 >
 	<ul class="w-full flex items-center justify-between">
 		<li class="w-full">
-			<div class="flex flex-col leading-none w-full">
-				<FePlaygroundTitle />
-				<p
-					class="text-sky-400 dark:text-sky-300 outline-none focus:outline-sky-300 p-1 focus:dark:outline-sky-400 rounded-lg"
-					spellcheck="false"
-				>
-					by Abdulmumin Yaqeen
-				</p>
+			<div class="flex flex-col w-full">
+				<div class="flex items-center gap-2">
+					<a href="/">
+						<img src={logo} class="h-6 w-6" alt="snippetsLand" />
+					</a>
+
+					<div class="flex flex-col w-full">
+						<FePlaygroundTitle />
+						<p
+							class="text-sky-400 dark:text-sky-300 outline-none focus:outline-sky-300 p-1 focus:dark:outline-sky-400 rounded-lg text-sm"
+							spellcheck="false"
+						>
+							<a href="/html-playground">&larr;backHome</a>
+						</p>
+					</div>
+				</div>
 				{#if $showLoginToSave}
 					<div class="flex items-center justify-center gap-2">
 						<span class="text-error"><Fa icon={faExclamationTriangle} /></span>
@@ -47,7 +58,8 @@
 			{:else}
 				<li><FeFork /></li>
 			{/if}
-			<li class="dark:text-white"><ShareBtn /></li>
+			<li><FeGetEmbed /></li>
+			<li><ShareBtn /></li>
 			<li class=""><Darkmode /></li>
 			{#if !$user}
 				<li class="bg-primary px-3 py-3 md:py-2 rounded-lg">

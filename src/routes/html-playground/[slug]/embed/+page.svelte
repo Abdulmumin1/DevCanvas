@@ -1,11 +1,40 @@
 <script>
-	import github from 'svelte-highlight/styles/github';
+	import { githubDark } from 'svelte-highlight/styles';
 	import EmbedComponent from '../../../../components/embedComponent.svelte';
+	import { Splitpanes, Pane } from 'svelte-splitpanes';
+	import FeEmbedComponent from '../../../../components/fePlayground/feEmbedComponent.svelte';
+	import CodeOutput from '../../../../components/fePlayground/codeOutput.svelte';
+	import { current_data } from '$lib/index.js';
+	import Resizable from '../../../../components/fePlayground/resizable.svelte';
 	export let data;
+
+	current_data.set(data[0]);
 </script>
 
 <svelte:head>
-	{@html github}
+	{@html githubDark}
 </svelte:head>
+<div class="text-sm h-[500px] p-1 bg-whie">
+	<div class="h-full rounded-xl p-1">
+		<Resizable>
+			<div slot="left" class="w-full h-full bg-[#0d1117]">
+				<FeEmbedComponent details={data[0]} />
+			</div>
+			<div slot="right" class="w-full h-full">
+				<CodeOutput code={data[0].html} css={data[0].css} />
+			</div>
+		</Resizable>
+	</div>
+</div>
 
-<EmbedComponent details={{ code: data['0'].html, lang: 'html' }} />
+<style>
+	/* Hide the vertical scrollbar */
+	::-webkit-scrollbar {
+		width: 0;
+	}
+
+	/* Hide the horizontal scrollbar */
+	::-webkit-scrollbar {
+		height: 0;
+	}
+</style>

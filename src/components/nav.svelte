@@ -9,6 +9,9 @@
 	import Fa from 'svelte-fa';
 	import Darkmode from './darkmode.svelte';
 	import { getContext } from 'svelte';
+	import FeGetEmbed from './fePlayground/feGetEmbed.svelte';
+
+	import logo from '$lib/logo.png';
 
 	let signinURL = handleRedirectURL($page.url);
 
@@ -18,9 +21,11 @@
 	console.log(back);
 </script>
 
-<nav class=" w-full border-b dark:border-secondary-dark">
+<nav class=" w-full border-b dark:border-secondary-dark bg-">
 	<ul class="w-full rounded-lg flex justify-between items-center p-4 text-black">
-		<li class="text-xl md:text-3xl text-sky-400 px-3 py-1">
+		<li class="text-lg md:text-2xl text-sky-400 px-1 py-1 gap-1 flex items-center">
+			<img src={logo} class="h-6 w-6" alt="snippetsLand" />
+
 			<a href="/"><span class="text-secondary-dark dark:text-white">Snippets</span>Land</a>
 		</li>
 		<ul class="flex gap-2 items-center justify-center">
@@ -34,6 +39,9 @@
 					<a href={back}>Preview</a>
 				</li>
 			{/if}
+			<li>
+				<FeGetEmbed />
+			</li>
 			<li>
 				<ShareBtn />
 			</li>
