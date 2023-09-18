@@ -25,19 +25,11 @@
 		<li class="w-full">
 			<div class="flex flex-col w-full">
 				<div class="flex items-center gap-2">
-					<a href="/">
+					<a href="/html-playground">
 						<img src={logo} class="h-6 w-6" alt="snippetsLand" />
 					</a>
 
-					<div class="flex flex-col w-full">
-						<FePlaygroundTitle />
-						<p
-							class="text-sky-400 dark:text-sky-300 outline-none focus:outline-sky-300 p-1 focus:dark:outline-sky-400 rounded-lg text-sm"
-							spellcheck="false"
-						>
-							<a href="/html-playground">&larr;backHome</a>
-						</p>
-					</div>
+					<FePlaygroundTitle />
 				</div>
 				{#if $showLoginToSave}
 					<div class="flex items-center justify-center gap-2">

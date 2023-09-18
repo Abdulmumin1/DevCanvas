@@ -22,18 +22,22 @@
 		loading = true;
 
 		return async ({ update, result }) => {
-			console.log(result);
+			// console.log(result);
 			loading = false;
+			console.log(result.status);
 			if (result.status == 200) {
 				completed = true;
+				// data = result.data;
 				setTimeout(() => {
 					completed = false;
 				}, 3000);
-			} else if (result.status == 400) {
+			} else if (result.status == 402) {
 				serverErr = result.data;
 				setTimeout(() => {
 					serverErr = false;
 				}, 3000);
+			} else if (result.status == 400) {
+				form = result.data;
 			}
 			// details = result.data;
 			// console.log(details.username, details);
@@ -70,7 +74,7 @@
 					class:border-error={form?.errors?.username}
 				/>
 				{#if form?.errors?.username}
-					<p class="border-error">Username is required</p>
+					<p class="border-error">Invalid Username</p>
 				{/if}
 			</div>
 			<!-- Email -->
@@ -130,7 +134,7 @@
 							id="github"
 							name="github"
 							class="earance-none dark:bg-secondary-dark dark:border-0 border rounded w-full py-2 px-3 text-gray-700 dark:text-white leading-tight focus:outline-none focus:line"
-							placeholder="Github URL"
+							placeholder="Username"
 							value={details?.socials?.github}
 						/>
 					</div>
@@ -146,7 +150,7 @@
 							id="twitter"
 							name="twitter"
 							class="earance-none dark:bg-secondary-dark dark:border-0 border rounded w-full py-2 px-3 text-gray-700 dark:text-white leading-tight focus:outline-none focus:line"
-							placeholder="Twitter URL"
+							placeholder="@username"
 							value={details?.socials?.twitter}
 						/>
 					</div>
@@ -162,7 +166,7 @@
 							id="instagram"
 							name="instagram"
 							class="earance-none dark:bg-secondary-dark dark:border-0 border rounded w-full py-2 px-3 text-gray-700 dark:text-white leading-tight focus:outline-none focus:line"
-							placeholder="instagram URL"
+							placeholder="username"
 							value={details?.socials?.instagram}
 						/>
 					</div>

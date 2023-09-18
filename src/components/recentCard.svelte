@@ -13,10 +13,23 @@
 		faTrashCan,
 		faTrashRestore
 	} from '@fortawesome/free-solid-svg-icons';
+	import { user_info } from '$lib/index.js';
 	import Fa from 'svelte-fa';
 	import { scale, slide } from 'svelte/transition';
+	import { page } from '$app/stores';
+	import { getProfile } from '$lib/utils.js';
+	import { profile, prolog, protobuf } from 'svelte-highlight/languages';
 	export let card;
 	export let editIcons;
+	let supabase = $page.data.supabase;
+	let session = $page.data.session;
+
+	// let profile = getProfile(card.user_id, supabase);
+	// console.log(profile);
+	// console.log('jfdljafdjlkafdoamda coan');
+
+	let goto = editIcons ? `/${$user_info?.username}/${card.project_key}` : `/${card.project_key}`;
+	// let goto = `/${card.project_key}`;
 </script>
 
 <div
@@ -29,9 +42,30 @@
 				{card.lang}
 			</h2>
 		</div> -->
-		<p class="text-lg md:text-xl font-semibold hover:opacity-80 w-full">
-			<a href="/{card.project_key}">{card.description}</a>
-		</p>
+
+		{#await getProfile(card.user_id, supabase)}
+			<p class="text-lg md:text-xl font-semibold hover:opacity-80 w-full h-4" />
+		{:then profile}
+			{#if new Object(profile).length > 0}
+				<div>
+					<p class="text-lg md:text-xl font-semibold hover:opacity-80 w-full">
+						<a href={goto}>{card.description}</a>
+					</p>
+					<a class="hover:opacity-80" href={`/${profile[0].username}`}>@{profile[0].username}</a>
+				</div>
+			{:else}
+				<div>
+					<p class="text-lg md:text-xl font-semibold hover:opacity-80 w-full">
+						<a href={`/anonymous/${card.project_key}`}>{card.description}</a>
+					</p>
+					{#if card.user_id == session?.user?.id}
+						<a href="/profile">Configure you profile</a>
+					{:else}
+						<a class="hover:opacity-80" href="#">Anonymous</a>
+					{/if}
+				</div>
+			{/if}
+		{/await}
 	</div>
 	<!-- <p class="bg-gray-100 p-2 rounded-lg overflow-hidden">
 	{card.code.slice(0, 100)}...

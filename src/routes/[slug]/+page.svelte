@@ -7,24 +7,26 @@
 	import Fa from 'svelte-fa';
 	import { faPen } from '@fortawesome/free-solid-svg-icons';
 	import { setContext } from 'svelte';
+	import NavWrapper from '../../components/snips/navWrapper.svelte';
+	import { faGithub, faInstagram, faTwitter } from '@fortawesome/free-brands-svg-icons';
 
 	export let data;
-	setContext('isOwner', false);
-	if (data.isFound && data.session) {
-		setContext('isOwner', data.session.user.id == data[0].user_id);
-		console.log(data.session.user.id == data[0].user_id);
-	}
+	// setContext('isOwner', false);
+	// if (data.isFound && data.session) {
+	// 	setContext('isOwner', data.session.user.id == data[0].user_id);
+	// 	console.log(data.session.user.id == data[0].user_id);
+	// }
 </script>
 
 <svelte:head>
 	{#if data.isFound}
-		<title>{data['0'].description}</title>
+		<title>{data.details.name}</title>
 
 		<!-- Facebook Meta Tags -->
-		<meta property="og:title" content={data['0'].description} />
+		<!-- <meta property="og:title" content={data['0'].description} />-->
 
-		<!-- Twitter Meta Tags -->
-		<meta name="twitter:title" content={data['0'].description} />
+		<!-- Twitter Meta Tags  -->
+		<!-- <meta name="twitter:title" content={data['0'].description} /> -->
 	{/if}
 	<!-- HTML Meta Tags -->
 
@@ -37,24 +39,61 @@
 
 <article class="h-screen flex flex-col">
 	{#if data.isFound}
-		<Nav />
-		<div class="h-full overflow-scroll p-4 dark:bg-black">
-			<!-- <Fa icon={faPen} /> -->
-			<div class="text-sm md:text-sm w-full items-center h-full flex justify-center">
+		<NavWrapper>
+			<main class="flex flex-col items-center h-full p-3">
 				<div
-					class="w-full md:w-[90%] bg-orange-100 p-4 rounded-lg dark:bg-[#0d1117] overflow-scroll h-full"
+					id="userinfo"
+					class="flex items-center flex-col gap-3 w-full border-b-2 dark:border-secondary-dark py-2 md:py-4"
 				>
-					<HighlightAuto code={data[0].code} let:highlighted>
-						<LineNumbers {highlighted} hideBorder />
-					</HighlightAuto>
+					<div class="h-24 w-24 bg-sky-500" />
+					<h1 class="text-3xl capitalize">
+						{data.details.name}
+					</h1>
+
+					<div class="flex gap-2">
+						{#each Object.keys(data.details.socials) as site}
+							<!-- {site} -->
+
+							{#if data.details.socials[site]}
+								{#if site == 'github'}
+									<a href={`https://github.com/${data.details.socials[site]}`} target="_blank"
+										><Fa icon={faGithub} /></a
+									>
+								{/if}
+								{#if site == 'twitter'}
+									<a href={`https://twitter.com/${data.details.socials[site]}`} target="_blank"
+										><Fa icon={faTwitter} /></a
+									>
+								{/if}
+								{#if site == 'instagram'}
+									<a href={`https://instagram.com/${data.details.socials[site]}`} target="_blank"
+										><Fa icon={faInstagram} /></a
+									>
+								{/if}
+							{/if}
+						{/each}
+					</div>
 				</div>
-			</div>
-		</div>
+
+				<div id="collections" class="w-full">
+					<div class="h-full">
+						<h2 class="text-2xl">Collections</h2>
+						<div class="h-full w-full">
+							<p class="text-3xl">Apologies, Comming Soon 😋.....</p>
+						</div>
+					</div>
+				</div>
+				<!-- {JSON.stringify(data.details.socials)} -->
+
+				<!-- {#key data.details.socials} 
+					{}
+				{/key} -->
+			</main>
+		</NavWrapper>
 	{:else}
 		<div class=" h-screen flex items-center justify-center flex-col">
-			<h1 class="text-4xl md:text-5xl font-bold">404</h1>
-			<p>Not found</p>
-			<a class="bg-sky-300 rounded-md p-1" href="/dashboard">Home</a>
+			<h1 class="text-3xl">User not found</h1>
+			<a class="bg-sky-300 rounded-md py-1 px-3" href="/dashboard">Home</a>
 		</div>
 	{/if}
 </article>

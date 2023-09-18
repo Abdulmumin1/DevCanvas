@@ -1,16 +1,20 @@
-import { error } from '@sveltejs/kit';
-// import { current_data } from '$lib/index.js';
+// import { redirect } from '@sveltejs/kit';
 
-export async function load({ params, parent }) {
-	const { supabase } = await parent();
-	let slug = params['slug'];
-	console.log(slug);
-	let { data, error: err } = await supabase.from('snips').select('*').eq('project_key', slug);
+// import { redirect } from '@sveltejs/kit';
 
-	if (data.length <= 0) {
-		// console.error(error);
-		// console.log('erejrejlreo rea fljsa fdoaf dsaf ');
-		throw error(404, 'Enhance your calm');
+/**  @type {import('./$types').PageLoad} */
+export async function load({ url, parent }) {
+	let { supabase, session } = await parent();
+	let username = url.pathname.replace('/', '');
+	console.log(username);
+	const { data, error: err } = await supabase.from('profiles').select('*').eq('username', username);
+
+	// console.log(data, session.user.email);
+	if (err) throw err;
+	if (data.length > 0) {
+		data[0].socials = JSON.parse(data[0].socials);
 	}
-	return { ...data, isFound: data.length > 0 };
+	let details = data.length > 0 ? data[0] : data;
+	console.log(details);
+	return { details, isFound: data.length > 0 };
 }

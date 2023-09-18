@@ -56,8 +56,8 @@
 		}
 	}
 
-	let showMore = true;
-
+	let showMore = collection.length > 5;
+	// console.log();
 	async function more() {
 		console.log($pageCount);
 		let result = await fetchPaginatedRows($pageCount, $pageCount + 6 - 1);

@@ -76,9 +76,6 @@
 		}
 	}
 
-	$: {
-		console.log($user_info);
-	}
 	onMount(() => {});
 
 	// afterUpdate(() => {

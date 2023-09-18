@@ -1,6 +1,6 @@
 <script>
 	import { faAdd, faClose, faExclamation, faSpinner } from '@fortawesome/free-solid-svg-icons';
-	import { createEventDispatcher } from 'svelte';
+	import { createEventDispatcher, getContext, onMount } from 'svelte';
 	import Fa from 'svelte-fa';
 	import { scale, slide } from 'svelte/transition';
 	import { supportedLanguages, user_info, showToast } from '$lib/index.js';
@@ -32,6 +32,10 @@
 
 	let newCodeIcon = faAdd;
 	const showOptions = () => {
+		if (!username) {
+			showToast.set({ message: `Sorry 😮‍💨! please you profile to continue` });
+			return;
+		}
 		isTooltipVisible = !isTooltipVisible;
 		newCodeIcon = isTooltipVisible ? faClose : faAdd;
 		// if ($user_info) {
@@ -42,6 +46,12 @@
 		// }
 		// console.log($user_info[0]?.username);
 	};
+	$: username = $user_info?.username;
+	// onMount(() => {
+	// 	setTimeout(() => {
+	// 		username =
+	// 	}, 500);
+	// });
 </script>
 
 <div
@@ -80,6 +90,7 @@
 						<option value={option}>{option}</option>
 					{/each}
 				</select>
+				<input name="username" value={username} readonly class="hidden" />
 				<!-- <input type="text" name="user_id" value="{user}"> -->
 				<button
 					type="submit"

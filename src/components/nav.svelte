@@ -16,7 +16,7 @@
 	let signinURL = handleRedirectURL($page.url);
 
 	let showPreview = $page.url.pathname.endsWith('/edit');
-	let back = `/${$page.url.pathname.split('/')[1]}`;
+	let back = `${$page.url.pathname}`;
 	let showEdit = getContext('isOwner');
 	console.log(back);
 </script>
@@ -36,7 +36,7 @@
 			{/if}
 			{#if showPreview}
 				<li class="dark:text-white">
-					<a href={back}>Preview</a>
+					<a href={back.replace('/edit', '')}>Preview</a>
 				</li>
 			{/if}
 			<li>

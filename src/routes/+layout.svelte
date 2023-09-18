@@ -1,7 +1,7 @@
 <script>
 	import '../tailwind.css';
 	import '../app.css';
-	import { onMount } from 'svelte';
+	import { onMount, setContext } from 'svelte';
 	import { user, user_info, showToast, darkModeState, SnippetsDescription } from '$lib/index.js';
 	import { invalidateAll } from '$app/navigation';
 	import PageTransition from './transition.svelte';
@@ -12,8 +12,8 @@
 
 	export let data;
 
-	let { supabase, session } = data;
-	$: ({ supabase, session } = data);
+	let { supabase, session, userInfo } = data;
+	$: ({ supabase, session, userInfo } = data);
 
 	if (browser) {
 		darkModeState.set(localStorage.theme === 'dark');
@@ -33,11 +33,12 @@
 		}
 	});
 
-	$: {
-		user_info.set(data.user_info);
-	}
+	// setContext('userInfo', data.user_info);
 
+	// console.log('jfdklafdka fd afodamfd afdjaofdmaf dafodafmdas');
 	onMount(() => {
+		console.log(userInfo);
+		// user_info.set(userInfo[0]);
 		// darkModeState.set(localStorage.theme === 'dark');
 		const { data } = supabase.auth.onAuthStateChange((event, _session) => {
 			user.set(_session?.user);

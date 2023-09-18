@@ -18,10 +18,19 @@ export const load = async ({ fetch, data, depends, url }) => {
 		data: { session }
 	} = await supabase.auth.getSession();
 	// console.log(session);
-	const { data: UserInfo, error: err } = await supabase
-		.from('profiles')
-		.select('*')
-		.eq('user_id', session?.user?.id);
+	let user;
+	try {
+		const { data: UserInfo, error: err } = await supabase
+			.from('profiles')
+			.select('*')
+			.eq('user_id', session?.user?.id);
 
-	return { supabase, session, url: url.pathname, user_info: UserInfo };
+		user = UserInfo;
+	} catch (error) {
+		user = [];
+	}
+
+	// console.log(UserInfo);
+	// console.log([...UserInfo][0]);
+	return { supabase, session, url: url.pathname, userInfo: user };
 };
