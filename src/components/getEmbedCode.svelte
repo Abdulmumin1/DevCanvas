@@ -16,7 +16,7 @@
 		expanded = !expanded;
 	}
 
-	let embed_url = `${$page.url.origin}/${$current_data.project_key}/embed`;
+	let embed_url = `${$page.url.origin}${$page.url.pathname.replace('/edit', '')}/embed`;
 
 	function copyEmbedUrl(event) {
 		event.target.innerText = 'copied';

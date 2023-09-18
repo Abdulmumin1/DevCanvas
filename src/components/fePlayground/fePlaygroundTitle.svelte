@@ -3,6 +3,11 @@
 	import { saveData } from '$lib/feEditor/store.js';
 	import { faPen } from '@fortawesome/free-solid-svg-icons';
 	import Fa from 'svelte-fa';
+	import { getProfile } from '$lib/utils.js';
+
+	import { page } from '$app/stores';
+
+	let supabase = $page.data.supabase;
 
 	let typingTimer; // Timer to track typing
 	const delay = 1000; // Adjust the delay as needed (in milliseconds)
@@ -39,23 +44,49 @@
 	}
 </script>
 
-{#if $isOwner}
-	<div class="flex gap-2 items-center">
+<div class="flex flex-col w-full">
+	{#if $isOwner}
+		<div class="flex gap-2 items-center" style="margin-bottom: -7px;">
+			<p
+				contenteditable=""
+				on:keydown={handleKeyDown}
+				on:input={handleInput}
+				placeholder="Untitled Project"
+				class="w-fit text-sm md:text-xl capitalize text-white bg-inherit outline-none"
+			>
+				{$current_data.description}
+			</p>
+			<span class="text-white text-[11px] md:text-base">
+				<Fa icon={faPen} />
+			</span>
+		</div>
+	{:else}
 		<p
-			contenteditable=""
-			on:keydown={handleKeyDown}
-			on:input={handleInput}
-			placeholder="Untitled Project"
-			class="w-fit text-base md:text-xl capitalize text-primary dark:text-white bg-inherit outline-none"
+			style="margin-bottom: -7px;"
+			class="text-sm md:text-xl capitalize text-white bg-inherit outline-none"
 		>
 			{$current_data.description}
 		</p>
-		<span class="text-black dark:text-white">
-			<Fa icon={faPen} />
-		</span>
-	</div>
-{:else}
-	<p class="text-base md:text-xl capitalize text-primary dark:text-white bg-inherit outline-none">
-		{$current_data.description}
-	</p>
-{/if}
+	{/if}
+
+	{#await getProfile($current_data.user_id, supabase)}
+		<p class="text-lg md:text-xl font-semibold hover:opacity-80 w-full h-4" />
+	{:then profile}
+		{#if new Object(profile).length > 0}
+			<p
+				class="text-sky-400 dark:text-sky-300 outline-none focus:outline-sky-300 p-1 focus:dark:outline-sky-400 rounded-lg text-sm"
+				spellcheck="false"
+			>
+				<span>by</span>
+				<a href={`/${profile[0].username}`}>@{profile[0].username}</a>
+			</p>
+		{:else}
+			<p
+				class="text-sky-400 dark:text-sky-300 outline-none focus:outline-sky-300 p-1 focus:dark:outline-sky-400 rounded-lg text-sm"
+				spellcheck="false"
+			>
+				<a href="/html-playground">&larr;backHome</a>
+			</p>
+		{/if}
+	{/await}
+</div>

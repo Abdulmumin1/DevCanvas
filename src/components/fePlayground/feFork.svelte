@@ -13,11 +13,9 @@
 
 	<button
 		type="submit"
-		class="p-1 rounded-lg cursor-pointer flex gap-2 items-center justify-center text-primary dark:text-white"
+		class="p-1 rounded-md cursor-pointer flex gap-2 items-center justify-center text-primary bg-green-500 px-3 py-2"
 	>
 		<Fa icon={faCodeFork} />
-		{#if $saved_spinner}
-			<Fa icon={faSpinner} class="animate-spin" />
-		{/if}
+		<span class="hidden md:flex">Fork</span>
 	</button>
 </form>

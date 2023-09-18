@@ -73,6 +73,7 @@
 						rawcollection={userSnippets}
 						supabase={data.supabase}
 						session={data.session}
+						showMore={userSnippets.length > 6}
 					/>
 				{/await}
 			</div>

@@ -1,10 +1,10 @@
 <script>
-	import Nav from '../../../components/nav.svelte';
-	import CodeText from '../../../components/codeText.svelte';
+	import Nav from '../../../../components/nav.svelte';
+	import CodeText from '../../../../components/codeText.svelte';
 	import { current_data, user, previewMode, SnippetsDescription, showToast } from '$lib/index.js';
 	import { onMount } from 'svelte';
 	import { browser } from '$app/environment';
-	import DetailsGrid from '../../../components/DetailsGrid.svelte';
+	import DetailsGrid from '../../../../components/DetailsGrid.svelte';
 
 	previewMode.set(true);
 

@@ -2,8 +2,8 @@
 	import { current_data } from '$lib/index.js';
 	import { onMount } from 'svelte';
 
-	let code;
-	let css;
+	export let code;
+	export let css;
 	let documentCode = `
 <!DOCTYPE html>
 <html lang="en">
@@ -40,6 +40,15 @@
 https://cdn.jsdelivr.net/npm/tailwindcss@3.3.3/tailwind.min.css
 " rel="stylesheet">
 	<style>
+		/* Hide the vertical scrollbar */
+	::-webkit-scrollbar {
+		width: 0;
+	}
+
+	/* Hide the horizontal scrollbar */
+	::-webkit-scrollbar {
+		height: 0;
+	}
 		${css}	
 	</style>
 </head>
@@ -79,3 +88,6 @@ https://cdn.jsdelivr.net/npm/tailwindcss@3.3.3/tailwind.min.css
 >
 	<iframe bind:this={iframeDoc} title="preview" id="preview-frame" class="w-full h-full" />
 </div>
+
+<style>
+</style>

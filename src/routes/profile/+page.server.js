@@ -1,5 +1,7 @@
 import { fail } from '@sveltejs/kit';
-
+function hasSpace(str) {
+	return str.includes(' ');
+}
 function validateForm(body) {
 	// gather errors
 	let username = String(body.username);
@@ -13,6 +15,10 @@ function validateForm(body) {
 
 	if (!name || typeof name !== 'string') {
 		errors.fullname = 'required';
+	}
+
+	if (hasSpace(username.trim())) {
+		errors.username = 'required';
 	}
 
 	if (Object.keys(errors).length > 0) {
@@ -30,25 +36,29 @@ export const actions = {
 	create: async ({ request, locals: { getSession, supabase } }) => {
 		let session = await getSession();
 		let user_id = session.user.id;
+		let email = session.user.email;
 		let body = Object.fromEntries(await request.formData());
-		let username = body.username;
-		let name = body.fullname;
+		let username = body.username.trim();
+		let name = body.fullname.trim();
 		let socials = JSON.stringify({
-			github: body.github,
-			twitter: body.twitter,
-			instagram: body.instagram
+			github: body.github.trim(),
+			twitter: body.twitter.trim(),
+			instagram: body.instagram.trim()
 		});
 		let validate = validateForm(body);
 		if (validate[0] == 'success') {
 			const { data: profile, error: err } = await supabase
 				.from('profiles')
-				.insert([{ username, name, socials, user_id }]);
+				.insert([{ username, name, socials, user_id, email }]);
 
 			if (err) {
-				console.log(err);
-				fail(400, { message: err });
+				let message = 'Error updating your info';
+				if (err.code == 23505) {
+					message = 'username already taken';
+				}
+				console.log(message);
+				return fail(402, { message });
 			} else {
-				console.log('sucess');
 				return body;
 			}
 		} else {
@@ -86,7 +96,7 @@ export const actions = {
 					message = 'username already taken';
 				}
 				console.log(message);
-				return fail(400, { message });
+				return fail(402, { message });
 			} else {
 				return body;
 			}
