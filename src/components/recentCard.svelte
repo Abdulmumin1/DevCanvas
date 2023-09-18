@@ -49,7 +49,7 @@
 			{#if new Object(profile).length > 0}
 				<div>
 					<p class="text-lg md:text-xl font-semibold hover:opacity-80 w-full">
-						<a href={goto}>{card.description}</a>
+						<a href={`/${profile[0].username}/${card.project_key}`}>{card.description}</a>
 					</p>
 					<a class="hover:opacity-80" href={`/${profile[0].username}`}>@{profile[0].username}</a>
 				</div>
