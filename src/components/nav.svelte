@@ -21,7 +21,7 @@
 	console.log(back);
 </script>
 
-<nav class=" w-full border-b dark:border-secondary-dark bg-">
+<nav class=" w-full border-b dark:border-secondary-dark">
 	<ul class="w-full rounded-lg flex justify-between items-center p-4 text-black">
 		<li class="text-lg md:text-2xl text-sky-400 px-1 py-1 gap-1 flex items-center">
 			<img src={logo} class="h-6 w-6" alt="snippetsLand" />

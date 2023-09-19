@@ -25,7 +25,7 @@
 			<a href="https://snippet-bice.vercel.app" class="flex" target="_blank">
 				<img src={logo} class="h-6 w-6" alt="snippetsLand" />
 
-				<p class="text-xl text-white">Snippets<span class="text-sky-300">Land</span></p>
+				<p class="text-xl text-white">{details.description}</p>
 			</a>
 			<!-- <a class="w-full" href="http://localhost:5173" target="_parent">go to page</a> -->
 		</div>

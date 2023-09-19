@@ -14,6 +14,8 @@
 		setContext('isOwner', data.session.user.id == data[0].user_id);
 		console.log(data.session.user.id == data[0].user_id);
 	}
+
+	let username = new Object(data.username) > 0 ? data.username[0].username : 'unknown user';
 </script>
 
 <svelte:head>
@@ -40,7 +42,11 @@
 		<Nav />
 		<div class="h-full overflow-scroll p-4 dark:bg-black">
 			<!-- <Fa icon={faPen} /> -->
-			<div class="text-sm md:text-sm w-full items-center h-full flex justify-center">
+			<div class="text-sm md:text-sm w-full items-center h-full flex justify-center flex-col">
+				<div class="flex flex-col items-center justify-center mb-2">
+					<h1 class="text-xl">{data[0].description}</h1>
+					<p>Shared by: <a href="/{username}">{username}</a></p>
+				</div>
 				<div
 					class="w-full md:w-[90%] bg-orange-100 p-4 rounded-lg dark:bg-[#0d1117] overflow-scroll h-full"
 				>

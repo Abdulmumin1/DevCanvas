@@ -32,10 +32,10 @@
 
 	let newCodeIcon = faAdd;
 	const showOptions = () => {
-		if (!username) {
-			showToast.set({ message: `Sorry 😮‍💨! please you profile to continue` });
-			return;
-		}
+		// if (!username) {
+		// 	showToast.set({ message: `Sorry 😮‍💨! please you profile to continue` });
+		// 	return;
+		// }
 		isTooltipVisible = !isTooltipVisible;
 		newCodeIcon = isTooltipVisible ? faClose : faAdd;
 		// if ($user_info) {
@@ -46,7 +46,7 @@
 		// }
 		// console.log($user_info[0]?.username);
 	};
-	$: username = $user_info?.username;
+	// $: username = $user_info?.username;
 	// onMount(() => {
 	// 	setTimeout(() => {
 	// 		username =
@@ -90,7 +90,7 @@
 						<option value={option}>{option}</option>
 					{/each}
 				</select>
-				<input name="username" value={username} readonly class="hidden" />
+				<!-- <input name="username" value={username} readonly class="hidden" /> -->
 				<!-- <input type="text" name="user_id" value="{user}"> -->
 				<button
 					type="submit"

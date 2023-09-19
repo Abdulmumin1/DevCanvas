@@ -36,9 +36,9 @@
 	// setContext('userInfo', data.user_info);
 
 	// console.log('jfdklafdka fd afodamfd afdjaofdmaf dafodafmdas');
-	onMount(() => {
-		console.log(userInfo);
-		// user_info.set(userInfo[0]);
+	onMount(async () => {
+		// user_info.set(await userInfo());
+		// console.log(userInfo);
 		// darkModeState.set(localStorage.theme === 'dark');
 		const { data } = supabase.auth.onAuthStateChange((event, _session) => {
 			user.set(_session?.user);

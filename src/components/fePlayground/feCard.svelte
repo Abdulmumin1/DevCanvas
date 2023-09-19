@@ -16,7 +16,7 @@
 	</div> -->
 	<div>{details.description}</div>
 
-	{#if details.user_id == session.user.id}
+	{#if details.user_id == session?.user?.id}
 		<p
 			in:fade
 			class="text-sky-400 dark:text-sky-300 outline-none focus:outline-sky-300 focus:dark:outline-sky-400 rounded-lg text-sm"

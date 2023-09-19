@@ -29,7 +29,4 @@ export async function load({ parent }) {
 	if (!session) {
 		throw redirect(302, '/signin?redirectTo=/gEtHAndShAkE?whereto=/profile');
 	}
-	if (user.length <= 0) {
-		throw redirect(302, '/profile');
-	}
 }
