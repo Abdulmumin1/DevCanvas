@@ -18,7 +18,7 @@
 		<div class=" w-full h-full">
 			<iframe
 				title="embed"
-				src="https://snippet-bice.vercel.app/v4H9dW/embed"
+				src="https://snippet-bice.vercel.app/anonymous/0S6jpq/embed"
 				width="100%"
 				class="rounded-xl h-full md:h-[80%]"
 			>

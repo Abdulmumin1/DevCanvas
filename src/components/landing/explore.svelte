@@ -14,9 +14,9 @@
 			<img src={Explore} alt="ga" class="h-full object-contain" />
 		{/if}
 	</div>
-	<div class="">
+	<div class=" max-w-md">
 		<h2 class=" font-semibold mb-2 text-4xl md:text-5xl dark:text-sky-400">
-			Explore Code Snippets
+			Inspiration at Your Fingertips
 		</h2>
 		<p class="max-w-md">
 			Explore a diverse library of code snippets contributed by developers like you. From simple

@@ -31,7 +31,7 @@
 	<div class="w-full">
 		<InnerNav />
 	</div>
-	<div class="w-full mx-auto py-12 rounded-lg flex flex-col gap-4 justify-center items-center">
+	<div class="w-full mx-auto rounded-lg flex flex-col gap-4 justify-center items-center">
 		<!-- Add your landing page content here -->
 		<Hero />
 		<div class="w-full">
@@ -44,7 +44,7 @@
 			<!-- Add code editor section -->
 			<CodeEditor />
 			<!-- The Idea-->
-			<Idea />
+			<!-- <Idea /> -->
 			<!-- The Idea-->
 			<Faq />
 		</div>

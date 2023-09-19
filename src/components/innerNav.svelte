@@ -6,6 +6,7 @@
 	import { faBars, faClose, faWindowMaximize } from '@fortawesome/free-solid-svg-icons';
 	import { slide } from 'svelte/transition';
 	import { clickOutside } from '$lib/index.js';
+	import { page } from '$app/stores';
 
 	let openSideBar = false;
 
@@ -22,7 +23,12 @@
 	</a>
 	🚀
 </div>
-<div class="h-[12vh] p-3 w-full bg-inherit">
+<div
+	class="h-[12vh] p-3 w-full bg-inherit"
+	class:bg-sky-500={$page.url.pathname == '/'}
+	class:border-b-2={$page.url.pathname == '/'}
+	class:border-primary={$page.url.pathname == '/'}
+>
 	<ul class="hidden md:flex w-full justify-between items-center">
 		<li
 			class="text-base md:text-lg py-2 px-3 gap-3 text-light bg-secondary-dark flex items-center justify-center rounded-3xl"
@@ -67,7 +73,7 @@
 		</li>
 
 		<li class="flex items-center justify-center gap-4">
-			<div class="bg-secondary-dark text-light rounded-xl">
+			<div class="bg-secondary-dark rounded-xl">
 				<Darkmode />
 			</div>
 			<button on:click={toogleOpen}><Fa icon={faBars} /></button>
