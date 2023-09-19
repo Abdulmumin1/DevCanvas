@@ -4,7 +4,9 @@
 	import { pageCount } from '$lib/index.js';
 	import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 	import Fa from 'svelte-fa';
+	import { onMount } from 'svelte';
 
+	import { getProfile } from '$lib/utils';
 	export let supabase;
 	export let session;
 	export let collection;
@@ -53,7 +55,7 @@
 	async function more() {
 		console.log($pageCount);
 		let result = await fetchPaginatedRows($pageCount, $pageCount + 6 - 1);
-		console.log(result);
+
 		if (result.length == 0) {
 			showMore = false;
 			console.log('no more');
@@ -63,15 +65,40 @@
 		if (result.length < 6) {
 			showMore = false;
 		}
-		loading = false;
-		collection = [...collection, ...result];
+		let result_with_profile_data = await returnDataWithProfile(result, supabase);
+		collection = [...collection, ...result_with_profile_data];
+
 		pageCount.update((cur) => {
 			return cur + 6;
 		});
-		if (browser) {
-			window.location.href = '#more';
-		}
+
+		window.location.href = '#more';
+
+		loading = false;
 	}
+	async function returnDataWithProfile(collection, supabase) {
+		// console.log('jlfdajkfda fda fda fda ');
+		const newData = [];
+
+		for (const element of collection) {
+			try {
+				const user_name = await getProfile(element.user_id, supabase);
+				// Assuming getProfile returns an object with a 'user_name' property
+				console.log(user_name);
+				if (new Object(user_name).length > 0) {
+					newData.push({ ...element, profile: user_name[0].username });
+				}
+			} catch (error) {
+				console.error(`Error fetching profile for user_id ${element.user_id}: ${error.message}`);
+			}
+		}
+
+		return newData;
+	}
+
+	onMount(async () => {
+		collection = await returnDataWithProfile(collection, supabase);
+	});
 </script>
 
 <div class="flex flex-col gap-6 items-center" transition:fade>

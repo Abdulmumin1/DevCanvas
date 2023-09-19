@@ -4,7 +4,6 @@
 	import { page } from '$app/stores';
 	import { fade } from 'svelte/transition';
 
-	let supabase = $page.data.supabase;
 	let session = $page.data.session;
 	export let details;
 </script>
@@ -16,44 +15,32 @@
 		{@html details.html}
 	</div> -->
 	<div>{details.description}</div>
-	{#await getProfile(details.user_id, supabase)}
-		<p class="text-lg md:text-xl font-semibold hover:opacity-80 w-full h-4" />
-	{:then profile}
-		{#if new Object(profile).length > 0}
-			{#if details.user_id == session.user.id}
-				<p
-					in:fade
-					class="text-sky-400 dark:text-sky-300 outline-none focus:outline-sky-300 focus:dark:outline-sky-400 rounded-lg text-sm"
-					spellcheck="false"
-				>
-					<a href="/html-playground">You</a>
-				</p>
-			{:else}
-				<p
-					in:fade
-					class="text-sky-400 dark:text-sky-300 outline-none focus:outline-sky-300 focus:dark:outline-sky-400 rounded-lg text-sm"
-					spellcheck="false"
-				>
-					<a href={`/${profile[0].username}`}>@{profile[0].username}</a>
-				</p>
-			{/if}
-		{:else if details.user_id == session.user.id}
-			<p
-				in:fade
-				class="text-sky-400 dark:text-sky-300 outline-none focus:outline-sky-300 focus:dark:outline-sky-400 rounded-lg text-sm"
-				spellcheck="false"
-			>
-				<a href="/html-playground">You</a>
-			</p>
-		{:else}
-			<p
-				in:fade
-				class="text-sky-400 dark:text-sky-300 outline-none focus:outline-sky-300 focus:dark:outline-sky-400 rounded-lg text-sm"
-				spellcheck="false"
-			>
-				<a href="/html-playground">Anonymous</a>
-			</p>
-		{/if}
-	{/await}
+
+	{#if details.user_id == session.user.id}
+		<p
+			in:fade
+			class="text-sky-400 dark:text-sky-300 outline-none focus:outline-sky-300 focus:dark:outline-sky-400 rounded-lg text-sm"
+			spellcheck="false"
+		>
+			<a href="/html-playground">You</a>
+		</p>
+	{:else if details?.profile}
+		<p
+			in:fade
+			class="text-sky-400 dark:text-sky-300 outline-none focus:outline-sky-300 focus:dark:outline-sky-400 rounded-lg text-sm"
+			spellcheck="false"
+		>
+			<a href={`/${details.profile}`}>@{details.profile}</a>
+		</p>
+	{:else}
+		<p
+			in:fade
+			class="text-sky-400 dark:text-sky-300 outline-none focus:outline-sky-300 focus:dark:outline-sky-400 rounded-lg text-sm"
+			spellcheck="false"
+		>
+			<a href={`/anon`}>Anonymous user</a>
+		</p>
+	{/if}
+
 	<a href="/html-playground/{details.project_key}">Goto </a>
 </div>
