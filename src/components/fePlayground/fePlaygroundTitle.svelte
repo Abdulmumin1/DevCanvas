@@ -6,8 +6,10 @@
 	import { getProfile } from '$lib/utils.js';
 
 	import { page } from '$app/stores';
+	import { onMount } from 'svelte';
 
 	let supabase = $page.data.supabase;
+	let session = $page.data.session;
 
 	let typingTimer; // Timer to track typing
 	const delay = 1000; // Adjust the delay as needed (in milliseconds)
@@ -42,6 +44,22 @@
 			event.preventDefault();
 		}
 	}
+
+	$: profile = [];
+
+	onMount(async () => {
+		console.log('mounted');
+		if ($current_data.user_id == session.user.id) return;
+		try {
+			let profile_data = await getProfile($current_data.user_id, supabase);
+			console.log(profile_data);
+			if (profile_data.length > 0) {
+				profile = profile_data;
+			}
+		} catch (error) {
+			throw error;
+		}
+	});
 </script>
 
 <div class="flex flex-col w-full">
@@ -69,24 +87,20 @@
 		</p>
 	{/if}
 
-	{#await getProfile($current_data.user_id, supabase)}
-		<p class="text-lg md:text-xl font-semibold hover:opacity-80 w-full h-4" />
-	{:then profile}
-		{#if new Object(profile).length > 0}
-			<p
-				class="text-sky-400 dark:text-sky-300 outline-none focus:outline-sky-300 p-1 focus:dark:outline-sky-400 rounded-lg text-sm"
-				spellcheck="false"
-			>
-				<span>by</span>
-				<a href={`/${profile[0].username}`}>@{profile[0].username}</a>
-			</p>
-		{:else}
-			<p
-				class="text-sky-400 dark:text-sky-300 outline-none focus:outline-sky-300 p-1 focus:dark:outline-sky-400 rounded-lg text-sm"
-				spellcheck="false"
-			>
-				<a href="/html-playground">&larr;backHome</a>
-			</p>
-		{/if}
-	{/await}
+	{#if profile.length > 0}
+		<p
+			class="text-sky-400 dark:text-sky-300 outline-none focus:outline-sky-300 p-1 focus:dark:outline-sky-400 rounded-lg text-sm"
+			spellcheck="false"
+		>
+			<span>by</span>
+			<a href={`/${profile[0].username}`}>@{profile[0].username}</a>
+		</p>
+	{:else}
+		<p
+			class="text-sky-400 dark:text-sky-300 outline-none focus:outline-sky-300 p-1 focus:dark:outline-sky-400 rounded-lg text-sm"
+			spellcheck="false"
+		>
+			<a href="/html-playground">&larr;backHome</a>
+		</p>
+	{/if}
 </div>
