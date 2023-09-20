@@ -52,9 +52,9 @@
 			{/if}
 			<li><FeGetEmbed /></li>
 			<li><ShareBtn /></li>
-			<li class=""><Darkmode /></li>
+			<li><Darkmode /></li>
 			{#if !$user}
-				<li class="bg-primary px-3 py-3 md:py-2 rounded-lg">
+				<li class="bg-green-500 px-3 py-3 md:py-2 rounded text-primary">
 					<a href={signinURL}>
 						<span class="flex md:hidden"><Fa icon={faRightToBracket} /></span>
 						<span class="hidden md:flex">Login</span>

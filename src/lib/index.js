@@ -13,6 +13,8 @@ export const SnippetsDescription = readable({
 	url: 'https://snippet-bice.vercel.app',
 	imageUrl: 'https://raw.githubusercontent.com/Abdulmumin1/snippets/main/static/snippetsPreview.png'
 });
+export const pageCountPl = writable(6);
+export const pageCountSnips = writable(6);
 
 export const saved_spinner = writable(false);
 export const isOwner = writable(false);

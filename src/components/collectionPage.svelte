@@ -5,7 +5,7 @@
 	import { faAngleDoubleRight, faSpinner } from '@fortawesome/free-solid-svg-icons';
 	// import { supabase } from '$lib/supabase.js';
 	import { browser } from '$app/environment';
-	import { pageCount } from '$lib/index.js';
+	import { pageCountSnips } from '$lib/index.js';
 	import { fade } from 'svelte/transition';
 	import { HighlightAuto, LineNumbers } from 'svelte-highlight';
 	import { githubDark } from 'svelte-highlight/styles';
@@ -62,8 +62,8 @@
 	let showMore = collection.length > 5;
 	// console.log();
 	async function more() {
-		console.log($pageCount);
-		let result = await fetchPaginatedRows($pageCount, $pageCount + 6 - 1);
+		console.log($pageCountSnips);
+		let result = await fetchPaginatedRows($pageCountSnips, $pageCountSnips + 6 - 1);
 		// console.log(result);
 		if (result.length == 0) {
 			showMore = false;
@@ -77,7 +77,7 @@
 		loading = false;
 		let collection_attached_with_creatorname = await returnDataWithProfile(result, supabase);
 		collection = [...collection, ...collection_attached_with_creatorname];
-		pageCount.update((cur) => {
+		pageCountSnips.update((cur) => {
 			return cur + 6;
 		});
 		if (browser) {

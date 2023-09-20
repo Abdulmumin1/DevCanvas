@@ -49,7 +49,7 @@
 
 	onMount(async () => {
 		console.log('mounted');
-		if ($current_data.user_id == session.user.id) return;
+		if ($current_data.user_id == session?.user?.id) return;
 		try {
 			let profile_data = await getProfile($current_data.user_id, supabase);
 			console.log(profile_data);

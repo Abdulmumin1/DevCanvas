@@ -14,7 +14,7 @@
 
 <button
 	on:click={handleSwitchDarkMode}
-	class="flex p-1 items-center justify-center text-primary dark:text-white"
+	class="flex p-1 items-center justify-center dark:text-white"
 >
 	{#if $darkModeState}
 		<div in:scale class=" cursor-pointer self-center hover-animate">

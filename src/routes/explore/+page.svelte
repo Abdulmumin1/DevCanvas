@@ -1,15 +1,11 @@
 <script>
-	import { afterUpdate, onMount } from 'svelte';
-	import { generateRandomKey, user, previewMode, dashboardLoading, pageCount } from '$lib/index.js';
+	import { pageCountSnips, pageCountPl } from '$lib/index.js';
 
-	import Search from '../../components/search.svelte';
 	import CollectionPage from '../../components/collectionPage.svelte';
-	import InnerNav from '../../components/innerNav.svelte';
-	import Fa from 'svelte-fa';
-	import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 	import CollectionDummy from '../../components/collectionDummy.svelte';
-	import SnipsSideNav from '../../components/snips/snipsSideNav.svelte';
 	import NavWrapper from '../../components/snips/navWrapper.svelte';
+	import FeCollectionPage from '../../components/fePlayground/feCollectionPage.svelte';
+	import { fade, slide } from 'svelte/transition';
 	// if (!$user) {
 	// 	window.location.href = '/signin';
 	// }
@@ -20,7 +16,7 @@
 			.from('snips')
 			.select('*')
 			.order('created_at', { ascending: false })
-			.limit($pageCount);
+			.limit($pageCountSnips);
 
 		if (error) {
 			console.error(error);
@@ -38,7 +34,30 @@
 	// 	} else {
 	// 		loading = false;
 	// 	}
+
 	// });
+
+	async function loadPlaygroundData() {
+		let { data: dt, error } = await supabase
+			.from('htmlPlayground')
+			.select('*')
+			.order('created_at', { ascending: false })
+			.limit($pageCountPl);
+
+		if (error) {
+			console.error(error);
+			return;
+		}
+		// pageCount.update((cur) => {
+		// 	return cur + 6;
+		// });
+		return dt;
+	}
+
+	let showOther = false;
+	function toogle() {
+		showOther = !showOther;
+	}
 </script>
 
 <!-- <div class="bg-secondary-dark min-h-[50vh]">
@@ -58,23 +77,51 @@
 		<main class=" min-h-screen w-full flex">
 			<div class="max-w-4xl w-full">
 				<!-- Code Snippet Cards -->
-				<div>
-					<p class="text-xl md:text-2xl font-bold py-6">Collections</p>
+				<div class="w-full py-6 px-2 flex gap-2 text-primary dark:text-white text-xl md:text-3xl">
+					<button
+						class="border-primary dark:border-secondary-dark"
+						on:click={toogle}
+						class:border-b-2={!showOther}>Playground</button
+					>
+					<button
+						class="border-primary dark:border-secondary-dark"
+						on:click={toogle}
+						class:border-b-2={showOther}>Snippets</button
+					>
 				</div>
+				{#await loadPlaygroundData()}
+					<CollectionDummy />
+				{:then userSnippets}
+					<!-- <Sm -->
+					<!-- Create New Code Snippet button -->
 
-				{#await loadIntialData()}
-					<!-- <p class="flex items-center justify-center gap-2 text-xl h-[50vh]">
+					<!-- Code Snippet Cards -->
+					<div transition:fade class:hidden={showOther} class="hidden h-full">
+						<FeCollectionPage
+							collection={userSnippets}
+							supabase={data.supabase}
+							session={data.session}
+						/>
+					</div>
+
+					{#await loadIntialData()}
+						<!-- <p class="flex items-center justify-center gap-2 text-xl h-[50vh]">
 						Loading ...
 						<Fa icon={faSpinner} class="animate-spin text-xl" />
 					</p> -->
-					<CollectionDummy />
-				{:then userSnippets}
-					<CollectionPage
-						rawcollection={userSnippets}
-						supabase={data.supabase}
-						session={data.session}
-						showMore={userSnippets.length > 6}
-					/>
+						<CollectionDummy />
+					{:then userSnippets}
+						<div transition:fade class:hidden={!showOther} class="hidden h-full">
+							<CollectionPage
+								rawcollection={userSnippets}
+								supabase={data.supabase}
+								session={data.session}
+								showMore={userSnippets.length > 6}
+							/>
+						</div>
+
+						<!-- <FeCollectionPage -->
+					{/await}
 				{/await}
 			</div>
 		</main>

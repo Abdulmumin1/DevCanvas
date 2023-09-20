@@ -3,6 +3,8 @@
 
 	import { page } from '$app/stores';
 	import { fade } from 'svelte/transition';
+	import html2canvas from 'html2canvas';
+	import { onMount } from 'svelte';
 
 	let session = $page.data.session;
 	export let details;
@@ -11,9 +13,18 @@
 <div
 	class="bg-sky-100 hover:scale-105 duration-300 transition-all rounded-xl p-1 dark:bg-secondary-dark"
 >
-	<!-- <div class="w-full rounded-xl overflow-hidden">
-		{@html details.html}
+	<!-- <div class=" rounded-xl bg-white w-full" bind:this={letsee}>
+		<img src={capturedImageUrl} alt="" srcset="" />
 	</div> -->
+	<iframe
+		src="{$page.url.origin}/html-playground/{details.project_key}/preview"
+		title="fs"
+		height="200"
+		frameborder="0"
+		class="w-full overflow-hidden"
+	/>
+	<!-- {#if !capturedImageUrl}
+	{/if} -->
 	<div>{details.description}</div>
 
 	{#if details.user_id == session?.user?.id}
