@@ -11,6 +11,7 @@
 	export let session;
 	export let collection;
 	export let dashboard = false;
+
 	let loading = false;
 	async function fetchExplore(pageNumber, pageSize) {
 		const { data, error } = await supabase
@@ -84,11 +85,13 @@
 			try {
 				const user_name = await getProfile(element.user_id, supabase);
 				// Assuming getProfile returns an object with a 'user_name' property
-				console.log(user_name);
 				if (new Object(user_name).length > 0) {
 					newData.push({ ...element, profile: user_name[0].username });
+				} else {
+					newData.push({ ...element });
 				}
 			} catch (error) {
+				newData.push({ ...element });
 				console.error(`Error fetching profile for user_id ${element.user_id}: ${error.message}`);
 			}
 		}

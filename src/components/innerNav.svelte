@@ -48,7 +48,7 @@
 						HTML Playground <Fa icon={faWindowMaximize} class="" /></a
 					>
 				</li>
-				<li class="bg-secondary-dark text-light rounded-full">
+				<li class="bg-secondary-dark p-2 rounded-full" class:landing={$page.url.pathname == '/'}>
 					<div class="flex gap-2 items-center justify-center"><Darkmode /></div>
 				</li>
 				<li class="bg-secondary-dark text-light rounded-full p-3">
@@ -73,9 +73,7 @@
 		</li>
 
 		<li class="flex items-center justify-center gap-4">
-			<div class="bg-secondary-dark rounded-xl">
-				<Darkmode />
-			</div>
+			<Darkmode />
 			<button on:click={toogleOpen}><Fa icon={faBars} /></button>
 		</li>
 		{#if openSideBar}
@@ -100,3 +98,10 @@
 		{/if}
 	</ul>
 </div>
+
+<style>
+	.landing:first-child {
+		color: aliceblue !important;
+		/* font-size: 1000px; */
+	}
+</style>
