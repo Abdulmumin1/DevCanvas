@@ -1,7 +1,7 @@
 <script>
 	import { fade } from 'svelte/transition';
 	import FeCard from './feCard.svelte';
-	import { pageCount } from '$lib/index.js';
+	import { pageCountPl } from '$lib/index.js';
 	import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 	import Fa from 'svelte-fa';
 	import { onMount } from 'svelte';
@@ -54,8 +54,8 @@
 	let showMore = true;
 
 	async function more() {
-		console.log($pageCount);
-		let result = await fetchPaginatedRows($pageCount, $pageCount + 6 - 1);
+		console.log($pageCountPl);
+		let result = await fetchPaginatedRows($pageCountPl, $pageCountPl + 6 - 1);
 
 		if (result.length == 0) {
 			showMore = false;
@@ -69,7 +69,7 @@
 		let result_with_profile_data = await returnDataWithProfile(result, supabase);
 		collection = [...collection, ...result_with_profile_data];
 
-		pageCount.update((cur) => {
+		pageCountPl.update((cur) => {
 			return cur + 6;
 		});
 
@@ -106,7 +106,7 @@
 
 <div class="flex flex-col gap-6 items-center" transition:fade>
 	<div class="gap-6 flex flex-col w-full">
-		<div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 rounded-lg w-full">
+		<div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-6 rounded-lg w-full">
 			{#each collection as snippet}
 				<!-- <div class="bg-white rounded-lg p-4 shadow-md">
 					<h3 class="text-xl font-semibold mb-2">{snippet.lang}</h3>

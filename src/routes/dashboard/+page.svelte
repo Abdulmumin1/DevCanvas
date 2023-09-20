@@ -1,15 +1,9 @@
 <script>
 	import { afterUpdate, onMount } from 'svelte';
-	import { generateRandomKey, user, previewMode, dashboardLoading, pageCount } from '$lib/index.js';
-	import Fa from 'svelte-fa';
-	import { faAdd, faMoon, faSpinner, faSun } from '@fortawesome/free-solid-svg-icons';
-	import { scale } from 'svelte/transition';
+	import { pageCountSnips } from '$lib/index.js';
 	import NewSnippet from '../../components/newSnippet.svelte';
-	import Search from '../../components/search.svelte';
 	import CollectionPage from '../../components/collectionPage.svelte';
-	import InnerNav from '../../components/innerNav.svelte';
 	import CollectionDummy from '../../components/collectionDummy.svelte';
-	import SnipsSideNav from '../../components/snips/snipsSideNav.svelte';
 	import NavWrapper from '../../components/snips/navWrapper.svelte';
 
 	export let data;
@@ -52,7 +46,7 @@
 			.select('*')
 			.eq('user_id', data.session.user.id)
 			.order('created_at', { ascending: false })
-			.limit($pageCount);
+			.limit($pageCountSnips);
 
 		if (error) {
 			console.error(error);
@@ -61,11 +55,7 @@
 	}
 
 	// onMount(() => {
-	// 	// console.log($user);
-	// 	// if (!getUser()) {
-	// 	console.log(data);
-	// 	// }
-	// 	pageCount.set(6);
+	// 	pageCountSnips.set(6);
 	// });
 
 	// afterUpdate(() => {
