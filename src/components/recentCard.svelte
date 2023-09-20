@@ -21,14 +21,13 @@
 	import { profile, prolog, protobuf } from 'svelte-highlight/languages';
 	export let card;
 	export let editIcons;
-	let supabase = $page.data.supabase;
 	let session = $page.data.session;
 
 	// let profile = getProfile(card.user_id, supabase);
 	// console.log(profile);
 	// console.log('jfdljafdjlkafdoamda coan');
 
-	let goto = editIcons ? `/${$user_info?.username}/${card.project_key}` : `/${card.project_key}`;
+	// let goto = editIcons ? `/${$user_info?.username}/${card.project_key}` : `/${card.project_key}`;
 	// let goto = `/${card.project_key}`;
 </script>
 
@@ -43,29 +42,25 @@
 			</h2>
 		</div> -->
 
-		{#await getProfile(card.user_id, supabase)}
-			<p class="text-lg md:text-xl font-semibold hover:opacity-80 w-full h-4" />
-		{:then profile}
-			{#if new Object(profile).length > 0}
-				<div>
-					<p class="text-lg md:text-xl font-semibold hover:opacity-80 w-full">
-						<a href={`/${profile[0].username}/${card.project_key}`}>{card.description}</a>
-					</p>
-					<a class="hover:opacity-80" href={`/${profile[0].username}`}>@{profile[0].username}</a>
-				</div>
-			{:else}
-				<div>
-					<p class="text-lg md:text-xl font-semibold hover:opacity-80 w-full">
-						<a href={`/anonymous/${card.project_key}`}>{card.description}</a>
-					</p>
-					{#if card.user_id == session?.user?.id}
-						<a href="/profile">Configure you profile</a>
-					{:else}
-						<a class="hover:opacity-80" href="#">Anonymous</a>
-					{/if}
-				</div>
-			{/if}
-		{/await}
+		{#if card?.profile}
+			<div>
+				<p class="text-lg md:text-xl font-semibold hover:opacity-80 w-full">
+					<a href={`/${card.profile}/${card.project_key}`}>{card.description}</a>
+				</p>
+				<a class="hover:opacity-80" href={`/${card.profile}`}>@{card.profile}</a>
+			</div>
+		{:else}
+			<div>
+				<p class="text-lg md:text-xl font-semibold hover:opacity-80 w-full">
+					<a href={`/anonymous/${card.project_key}`}>{card.description}</a>
+				</p>
+				{#if card.user_id == session?.user?.id}
+					<a href="/profile">Configure you profile</a>
+				{:else}
+					<a class="hover:opacity-80" href="#">....</a>
+				{/if}
+			</div>
+		{/if}
 	</div>
 	<!-- <p class="bg-gray-100 p-2 rounded-lg overflow-hidden">
 	{card.code.slice(0, 100)}...

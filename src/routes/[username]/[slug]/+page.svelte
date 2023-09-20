@@ -15,7 +15,8 @@
 		console.log(data.session.user.id == data[0].user_id);
 	}
 
-	let username = new Object(data.username) > 0 ? data.username[0].username : 'unknown user';
+	let username = data.username.length > 0 ? data.username[0].username : 'unknown user';
+	// console.log(data.username.length);
 </script>
 
 <svelte:head>

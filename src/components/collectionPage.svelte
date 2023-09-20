@@ -9,6 +9,9 @@
 	import { fade } from 'svelte/transition';
 	import { HighlightAuto, LineNumbers } from 'svelte-highlight';
 	import { githubDark } from 'svelte-highlight/styles';
+	import { onMount } from 'svelte';
+
+	import { getProfile } from '$lib/utils.js';
 
 	export let supabase;
 	export let session;
@@ -61,18 +64,19 @@
 	async function more() {
 		console.log($pageCount);
 		let result = await fetchPaginatedRows($pageCount, $pageCount + 6 - 1);
-		console.log(result);
+		// console.log(result);
 		if (result.length == 0) {
 			showMore = false;
 			console.log('no more');
 			return;
 		}
-		console.log(result.length);
+		// console.log(result.length);
 		if (result.length < 6) {
 			showMore = false;
 		}
 		loading = false;
-		collection = [...collection, ...result];
+		let collection_attached_with_creatorname = await returnDataWithProfile(result, supabase);
+		collection = [...collection, ...collection_attached_with_creatorname];
 		pageCount.update((cur) => {
 			return cur + 6;
 		});
@@ -80,6 +84,36 @@
 			window.location.href = '#more';
 		}
 	}
+
+	async function returnDataWithProfile(arr, supabase) {
+		// console.log('jlfdajkfda fda fda fda ');
+		const newData = [];
+
+		for (const element of arr) {
+			// console.log(element);
+			try {
+				const user_name = await getProfile(element.user_id, supabase);
+				// Assuming getProfile returns an object with a 'user_name' property
+				// console.log(user_name);
+				if (new Object(user_name).length > 0) {
+					newData.push({ ...element, profile: user_name[0].username });
+				} else {
+					newData.push({ ...element });
+				}
+			} catch (error) {
+				newData.push({ ...element });
+				console.error(`Error fetching profile for user_id ${element.user_id}: ${error.message}`);
+			}
+		}
+
+		return newData;
+	}
+
+	onMount(async () => {
+		console.log('mounted', rawcollection.length);
+		collection = await returnDataWithProfile(rawcollection, supabase);
+		console.log('fetched collections', collection.length);
+	});
 </script>
 
 <svelte:head>
@@ -96,9 +130,7 @@
 		<div class="grid gap-6 rounded-lg w-full">
 			{#each collection as snippet}
 				<div class="bg-white dark:bg-secondary-dark rounded-lg p-2 md:p-4">
-					<h3
-						class="text-sm md:text-base px-3 py-1 my-4 bg-[#0d1117] w-fit rounded-lg text-light cool"
-					>
+					<h3 class="text-sm px-3 py-2 my-4 bg-[#0d1117] w-fit rounded-lg text-light cool">
 						{snippet.lang}
 					</h3>
 
