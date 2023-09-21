@@ -29,8 +29,7 @@
 				<li><Darkmode /></li>
 
 				{#if !$user}
-					<li><a href={signinURL} class="bg-green-400 p-3 rounded-lg">Login</a></li>
-					<li><a href={signinURL} class="bg-sky-400 p-3 rounded-lg">Signup</a></li>
+					<li><a href={signinURL} class="bg-green-400 p-3 rounded-lg">Join</a></li>
 				{:else}
 					<li><ProfileCard /></li>
 				{/if}

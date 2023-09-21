@@ -70,7 +70,7 @@
 				on:keydown={handleKeyDown}
 				on:input={handleInput}
 				placeholder="Untitled Project"
-				class="w-fit text-sm md:text-xl capitalize text-white bg-inherit outline-none"
+				class="max-w-[100px] md:max-w-full w-fit text-sm md:text-xl capitalize text-white bg-inherit outline-none whitespace-nowrap overflow-hidden text-ellipsis"
 			>
 				{$current_data.description}
 			</p>
@@ -81,7 +81,7 @@
 	{:else}
 		<p
 			style="margin-bottom: -7px;"
-			class="text-sm md:text-xl capitalize text-white bg-inherit outline-none"
+			class="max-w-[100px] md:max-w-full w-fit text-sm md:text-xl capitalize text-white bg-inherit outline-none whitespace-nowrap overflow-hidden text-ellipsis"
 		>
 			{$current_data.description}
 		</p>
@@ -89,7 +89,7 @@
 
 	{#if profile.length > 0}
 		<p
-			class="text-sky-400 dark:text-sky-300 outline-none focus:outline-sky-300 p-1 focus:dark:outline-sky-400 rounded-lg text-sm"
+			class="text-sky-400 dark:text-sky-300 outline-none focus:outline-sky-300 p-1 focus:dark:outline-sky-400 rounded-lg text-[9px] md:text-sm"
 			spellcheck="false"
 		>
 			<span>by</span>

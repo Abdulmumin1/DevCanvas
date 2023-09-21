@@ -73,7 +73,7 @@
 			return cur + 6;
 		});
 
-		window.location.href = '#more';
+		// window.location.href = '#more';
 
 		loading = false;
 	}
@@ -106,7 +106,7 @@
 
 <div class="flex flex-col gap-6 items-center" transition:fade>
 	<div class="gap-6 flex flex-col w-full">
-		<div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-6 rounded-lg w-full">
+		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 rounded-lg w-full">
 			{#each collection as snippet}
 				<!-- <div class="bg-white rounded-lg p-4 shadow-md">
 					<h3 class="text-xl font-semibold mb-2">{snippet.lang}</h3>
