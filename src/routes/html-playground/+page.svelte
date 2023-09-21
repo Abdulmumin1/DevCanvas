@@ -50,10 +50,27 @@
 			.order('created_at', { ascending: false })
 			.limit($pageCount);
 
-		if (error) {
-			console.error(error);
-			return;
-		}
+		// dt = data[0];
+		// console.log(data);
+		// const views = await getViews(dt.project_key, supabase);
+		// console.log(views);
+		// try {
+		// 	const user_name = await getProfile(dt.user_id, supabase);
+		// 	// Assuming getProfile returns an object with a 'user_name' property
+		// 	if (new Object(user_name).length > 0) {
+		// 		dt = { ...dt, profile: user_name[0].username, views: views[0]?.views };
+		// 	} else {
+		// 		dt = { ...dt, profile: 'anonymous', views: views[0]?.views };
+		// 	}
+		// } catch (error) {
+		// 	dt = { ...data, profile: 'anonymous', views: views[0]?.views };
+		// 	console.error(`Error fetching profile for user_id ${data.user_id}: ${error.message}`);
+		// }
+
+		// if (error) {
+		// 	console.error(error);
+		// 	return;
+		// }
 		// pageCount.update((cur) => {
 		// 	return cur + 6;
 		// });

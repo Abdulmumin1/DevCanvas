@@ -6,7 +6,7 @@
 	import Fa from 'svelte-fa';
 	import { onMount } from 'svelte';
 
-	import { getProfile } from '$lib/utils';
+	import { getProfile, getViews } from '$lib/utils';
 	export let supabase;
 	export let session;
 	export let collection;
@@ -82,11 +82,12 @@
 		const newData = [];
 
 		for (const element of collection) {
+			const views = await getViews(element.project_key, supabase);
 			try {
 				const user_name = await getProfile(element.user_id, supabase);
 				// Assuming getProfile returns an object with a 'user_name' property
 				if (new Object(user_name).length > 0) {
-					newData.push({ ...element, profile: user_name[0].username });
+					newData.push({ ...element, profile: user_name[0].username, views: views[0]?.views });
 				} else {
 					newData.push({ ...element });
 				}
@@ -94,6 +95,8 @@
 				newData.push({ ...element });
 				console.error(`Error fetching profile for user_id ${element.user_id}: ${error.message}`);
 			}
+			console.log(views);
+			// newData.push({...element, views:views[0].views})
 		}
 
 		return newData;

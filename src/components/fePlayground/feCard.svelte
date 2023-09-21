@@ -5,6 +5,8 @@
 	import { fade } from 'svelte/transition';
 	import html2canvas from 'html2canvas';
 	import { onMount } from 'svelte';
+	import Fa from 'svelte-fa';
+	import { faEye } from '@fortawesome/free-solid-svg-icons';
 
 	let session = $page.data.session;
 	export let details;
@@ -31,28 +33,35 @@
 			>{details.description}
 		</a>
 
-		{#if details.user_id == session?.user?.id}
-			<p
-				in:fade
-				class="text-sky-400 dark:text-sky-300 outline-none focus:outline-sky-300 focus:dark:outline-sky-400 rounded-lg text-sm"
-				spellcheck="false"
-			>
-				<a href="/html-playground">You</a>
-			</p>
-		{:else if details?.profile}
-			<div in:fade>
-				<p>
-					<span>by</span>
-					<a class="text-sky-400 dark:text-sky-300 text-sm" href={`/${details.profile}`}
-						>@{details.profile}</a
-					>
+		<div class="flex justify-between items-center w-full">
+			{#if details.user_id == session?.user?.id}
+				<p
+					in:fade
+					class="text-sky-400 dark:text-sky-300 outline-none focus:outline-sky-300 focus:dark:outline-sky-400 rounded-lg text-sm"
+					spellcheck="false"
+				>
+					<a href="/html-playground">You</a>
 				</p>
+			{:else if details?.profile}
+				<div in:fade>
+					<p>
+						<span>by</span>
+						<a class="text-sky-400 dark:text-sky-300 text-sm" href={`/${details.profile}`}
+							>@{details.profile}</a
+						>
+					</p>
+				</div>
+			{:else}
+				<div in:fade>
+					<span>by</span>
+					<a class="text-sky-400 dark:text-sky-300 text-sm" href={`/anon`}>Anonymous user</a>
+				</div>
+			{/if}
+			<div>
+				<span class="flex items-center justify-center gap-2 w-fit"
+					><Fa icon={faEye} />{details.views != undefined ? details.views : '....'}</span
+				>
 			</div>
-		{:else}
-			<div in:fade>
-				<span>by</span>
-				<a class="text-sky-400 dark:text-sky-300 text-sm" href={`/anon`}>Anonymous user</a>
-			</div>
-		{/if}
+		</div>
 	</div>
 </div>

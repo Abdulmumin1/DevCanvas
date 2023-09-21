@@ -25,12 +25,12 @@ https://cdn.jsdelivr.net/npm/tailwindcss@3.3.3/tailwind.min.css
 	::-webkit-scrollbar {
 		height: 0;
 	}
-		${data[0].css}	
+		${data.details.css}	
 	</style>
 </head>
 <body>
 
-	${data[0].html}
+	${data.details.html}
 </body>
 </html>
 

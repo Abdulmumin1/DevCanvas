@@ -16,10 +16,15 @@ export async function POST({ url, locals: { supabase, getSession }, request }) {
 		.from('htmlPlayground')
 		.insert([{ project_key: key, user_id, description }]);
 
+	const { data: dt, error: er } = await supabase
+		.from('view')
+		.insert([{ project_key: key, views: 0 }]);
+	console.log(dt, er);
 	if (err) {
 		console.log(data);
 		fail(400, { error: ' unable to complete action' });
 	}
+	if (er) throw er;
 
 	throw redirect(303, `/html-playground/${key}`);
 }
