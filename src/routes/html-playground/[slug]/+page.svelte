@@ -17,7 +17,7 @@
 	if (browser) {
 		mobileDetails = window.innerWidth <= 768;
 	}
-	current_data.set(data['0']);
+	current_data.set(data.details);
 
 	onMount(() => {
 		// getUser()
@@ -37,37 +37,29 @@
 
 <svelte:head>
 	{#if data.isFound}
-		<title>{data['0'].description}</title>
+		<title>{data.details.description}</title>
 
 		<!-- Facebook Meta Tags -->
-		<meta property="og:title" content={data['0'].description} />
+		<meta property="og:title" content={data.details.description} />
 
 		<!-- Twitter Meta Tags -->
-		<meta name="twitter:title" content={data['0'].description} />
+		<meta name="twitter:title" content={data.details.description} />
 	{/if}
 	<!-- HTML Meta Tags -->
 </svelte:head>
 
 <FePlayGroungNav />
 <article class="min-h-screen h-screen flex flex-col">
-	{#if data.isFound}
-		<div class="relative flex h-full flex-col lg:flex-row">
-			<Resizable>
-				<div slot="left" class="w-full h-full">
-					<FeCodeEditor initialHTML={data['0'].html} initialCSS={data['0'].css} lang="html" />
-				</div>
-				<div slot="right" class="w-full h-full">
-					<CodeOutput />
-				</div>
-			</Resizable>
-			<!-- <div class="w-full h-full"> -->
-			<!-- </div> -->
-		</div>
-	{:else}
-		<div class=" h-screen flex items-center justify-center flex-col">
-			<h1 class="text-4xl md:text-5xl font-bold">404</h1>
-			<p>Not found</p>
-			<a class="bg-sky-300 rounded-md p-1" href="/dashboard">Home</a>
-		</div>
-	{/if}
+	<div class="relative flex h-full flex-col lg:flex-row">
+		<Resizable>
+			<div slot="left" class="w-full h-full">
+				<FeCodeEditor initialHTML={data.details.html} initialCSS={data.details.css} lang="html" />
+			</div>
+			<div slot="right" class="w-full h-full">
+				<CodeOutput />
+			</div>
+		</Resizable>
+		<!-- <div class="w-full h-full"> -->
+		<!-- </div> -->
+	</div>
 </article>
