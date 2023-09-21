@@ -1,10 +1,7 @@
 <script>
 	import Fa from 'svelte-fa';
-	import atomOneDark from 'svelte-highlight/styles/atom-one-dark';
 	import RecentCard from './recentCard.svelte';
-	import { faAngleDoubleRight, faSpinner } from '@fortawesome/free-solid-svg-icons';
-	// import { supabase } from '$lib/supabase.js';
-	import { browser } from '$app/environment';
+	import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 	import { pageCountSnips } from '$lib/index.js';
 	import { fade } from 'svelte/transition';
 	import { HighlightAuto, LineNumbers } from 'svelte-highlight';
@@ -80,9 +77,6 @@
 		pageCountSnips.update((cur) => {
 			return cur + 6;
 		});
-		if (browser) {
-			window.location.href = '#more';
-		}
 	}
 
 	async function returnDataWithProfile(arr, supabase) {

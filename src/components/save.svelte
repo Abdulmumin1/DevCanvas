@@ -6,7 +6,7 @@
 
 <button
 	type="submit"
-	class="bg-sky-400 px-3 py-2 shadow-sm rounded-lg cursor-pointer flex gap-2 items-center justify-center"
+	class="bg-sky-400 px-3 py-2 rounded-md cursor-pointer flex gap-2 items-center justify-center"
 	on:click={() => {
 		saveData($current_data);
 	}}

@@ -11,7 +11,7 @@
 </script>
 
 <div
-	class="bg-sky-100 hover:scale-105 duration-300 transition-all rounded-xl p-1 dark:bg-secondary-dark"
+	class="bg-sky-100 hover:scale-105 duration-300 transition-all rounded-xl p-1 dark:bg-secondary-dark h-full shadow-sm"
 >
 	<!-- <div class=" rounded-xl bg-white w-full" bind:this={letsee}>
 		<img src={capturedImageUrl} alt="" srcset="" />
@@ -21,37 +21,38 @@
 		title="fs"
 		height="200"
 		frameborder="0"
-		class="w-full overflow-hidden"
+		class="w-full overflow-hidden rounded-xl"
 	/>
 	<!-- {#if !capturedImageUrl}
 	{/if} -->
-	<div>{details.description}</div>
 
-	{#if details.user_id == session?.user?.id}
-		<p
-			in:fade
-			class="text-sky-400 dark:text-sky-300 outline-none focus:outline-sky-300 focus:dark:outline-sky-400 rounded-lg text-sm"
-			spellcheck="false"
-		>
-			<a href="/html-playground">You</a>
-		</p>
-	{:else if details?.profile}
-		<p
-			in:fade
-			class="text-sky-400 dark:text-sky-300 outline-none focus:outline-sky-300 focus:dark:outline-sky-400 rounded-lg text-sm"
-			spellcheck="false"
-		>
-			<a href={`/${details.profile}`}>@{details.profile}</a>
-		</p>
-	{:else}
-		<p
-			in:fade
-			class="text-sky-400 dark:text-sky-300 outline-none focus:outline-sky-300 focus:dark:outline-sky-400 rounded-lg text-sm"
-			spellcheck="false"
-		>
-			<a href={`/anon`}>Anonymous user</a>
-		</p>
-	{/if}
+	<div class="flex flex-col p-2 items-start">
+		<a href="/html-playground/{details.project_key}" class="text-xl font-semibold"
+			>{details.description}
+		</a>
 
-	<a href="/html-playground/{details.project_key}">Goto </a>
+		{#if details.user_id == session?.user?.id}
+			<p
+				in:fade
+				class="text-sky-400 dark:text-sky-300 outline-none focus:outline-sky-300 focus:dark:outline-sky-400 rounded-lg text-sm"
+				spellcheck="false"
+			>
+				<a href="/html-playground">You</a>
+			</p>
+		{:else if details?.profile}
+			<div in:fade>
+				<p>
+					<span>by</span>
+					<a class="text-sky-400 dark:text-sky-300 text-sm" href={`/${details.profile}`}
+						>@{details.profile}</a
+					>
+				</p>
+			</div>
+		{:else}
+			<div in:fade>
+				<span>by</span>
+				<a class="text-sky-400 dark:text-sky-300 text-sm" href={`/anon`}>Anonymous user</a>
+			</div>
+		{/if}
+	</div>
 </div>

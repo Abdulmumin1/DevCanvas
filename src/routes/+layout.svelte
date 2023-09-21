@@ -16,7 +16,10 @@
 	$: ({ supabase, session, userInfo } = data);
 
 	if (browser) {
-		darkModeState.set(localStorage.theme === 'dark');
+		darkModeState.set(
+			localStorage.theme === 'dark' ||
+				(!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
+		);
 	}
 	$: ({
 		if(browser) {

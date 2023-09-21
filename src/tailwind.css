@@ -4,7 +4,7 @@
 
 @layer utilities {
 	.splitpanes.my-theme .splitpanes__pane {
-		background-color: #f8f8f8;
+		@apply bg-gray-50 dark:bg-black;
 	}
 
 	.splitpanes.my-theme .splitpanes__splitter {

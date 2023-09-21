@@ -34,7 +34,7 @@
 </script>
 
 <button
-	class="p-1 rounded-md cursor-pointer flex items-center justify-center gap-2 text-primary bg-gray-300 px-3 py-2"
+	class="p-1 rounded cursor-pointer flex items-center justify-center gap-2 text-primary bg-gray-300 px-3 py-2"
 	on:click={shareCode}
 	disabled
 	class:scale-90={isClicked}

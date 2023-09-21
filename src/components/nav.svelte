@@ -12,8 +12,7 @@
 	import FeGetEmbed from './fePlayground/feGetEmbed.svelte';
 
 	import logo from '$lib/logo.png';
-
-	let signinURL = handleRedirectURL($page.url);
+	import Login from './auth/login.svelte';
 
 	let showPreview = $page.url.pathname.endsWith('/edit');
 	let back = `${$page.url.pathname}`;
@@ -56,18 +55,10 @@
 			<li>
 				{#if $user}
 					<Msdropdown />
-				{:else}
-					<li
-						class="bg-sky-400 px-3 shadow-sm shadow-sky-800 py-2 rounded-lg hover:scale-105 transition-transform duration-300"
-					>
-						<a
-							href={signinURL}
-							class="w-full h-full cursor-pointer flex items-center justify-center gap-2"
-						>
-							<Fa icon={faUserGroup} /> Join
-						</a>
-					</li>
 				{/if}
+			</li>
+			<li>
+				<Login />
 			</li>
 		</ul>
 	</ul>
