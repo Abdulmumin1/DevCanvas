@@ -18,7 +18,7 @@
 <div class="w-full p-2 bg-sky-300 text-sky-dark text-sm md:text-lg">
 	SnippetLand is experimenting with an interactive HTML playground 🤩 <a
 		class="underline text-sky-900"
-		href="/html-playground"
+		href="/play"
 		>Try it
 	</a>
 	🚀
@@ -44,7 +44,7 @@
 					>
 				</li>
 				<li class="bg-secondary-dark text-light rounded-full py-2 px-3">
-					<a class="flex gap-2 items-center justify-center" href="/html-playground">
+					<a class="flex gap-2 items-center justify-center" href="/play">
 						HTML Playground <Fa icon={faWindowMaximize} class="" /></a
 					>
 				</li>
@@ -89,8 +89,9 @@
 					</li>
 					<li class="w-full text-xl flex flex-col gap-4">
 						<ul class="w-full flex flex-col text-center items-center justify-center">
-							<li><a href="/explore">Explore</a></li>
-							<li><a href="/html-playground">HTML Playground</a></li>
+							<li><a href="/play">Dashboard</a></li>
+							<li><a href="/explore">Library</a></li>
+							<li><a href="/play">HTML Playground</a></li>
 						</ul>
 					</li>
 				</ul>

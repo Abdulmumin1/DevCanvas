@@ -30,7 +30,7 @@
 
 <div
 	style="height: 70dvh; "
-	class="flex px-8 py-12 flex-col gap-4 items-start bg-sky-500 w-full text-black border-b-2 border-primary"
+	class="flex px-8 py-12 flex-col gap-4 items-center text-center w-full border-b-2 border-primary justify-center"
 >
 	<p>
 		<a
@@ -66,7 +66,7 @@
 			<span class="magic-text">Genius</span>
 		</span> with the World!
 	</h1>
-	<p class="text-xl text-gray-900 max-w-lg mx-1">
+	<p class="text-xl text-gray-100 max-w-lg mx-1">
 		The platform for effortlessly sharing, collaborating, and discovering code snippets. <span
 			class="text-green-700">share</span
 		>,

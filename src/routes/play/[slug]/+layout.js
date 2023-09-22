@@ -8,7 +8,8 @@ export async function load({ params, parent }) {
 	// console.log(slug);
 	let { data, error: err } = await supabase
 		.from('htmlPlayground')
-		.select('*')
+		.select('*, view (views)')
+
 		.eq('project_key', slug);
 
 	if (err) throw err;

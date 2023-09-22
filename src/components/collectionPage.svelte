@@ -68,7 +68,7 @@
 		if (dashboard) {
 			return fetchDashboard(pageNumber, pageSize);
 		} else if (user_id) {
-			fetchUserCollection(pageNumber, pageSize);
+			return fetchUserCollection(pageNumber, pageSize);
 		} else {
 			return fetchExplore(pageNumber, pageSize);
 		}
