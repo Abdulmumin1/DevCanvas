@@ -6,8 +6,6 @@
 	import { user, isOwner } from '$lib/index.js';
 	import logo from '$lib/logo.png';
 
-	import { faExclamationTriangle, faRightToBracket } from '@fortawesome/free-solid-svg-icons';
-	import Fa from 'svelte-fa';
 	import FeFork from './feFork.svelte';
 	import FePlaygroundTitle from './fePlaygroundTitle.svelte';
 	import FeGetEmbed from './feGetEmbed.svelte';
@@ -25,15 +23,6 @@
 
 					<FePlaygroundTitle />
 				</div>
-				{#if $showLoginToSave}
-					<div class="flex items-center justify-center gap-2">
-						<span class="text-error"><Fa icon={faExclamationTriangle} /></span>
-						<span class="text-primary dark:text-light"
-							><a href={signinURL} class="underline text-sky-500 dark:text-sky-300"> Login</a> to save
-							progress</span
-						>
-					</div>
-				{/if}
 			</div>
 		</li>
 		<ul class="flex items-center justify-center gap-2">

@@ -3,7 +3,7 @@ import { writable } from 'svelte/store';
 export let showSave = writable(false);
 export let saved_spinner = writable(false);
 export let showLoginToSave = writable(false);
-
+export let showForkTosave = writable(false);
 function appendJSONToFormData(json, formData, which) {
 	for (const key in json) {
 		if (which == key || which == true) {

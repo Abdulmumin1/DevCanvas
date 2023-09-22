@@ -7,6 +7,7 @@
 
 	import { page } from '$app/stores';
 	import { onMount } from 'svelte';
+	import ShowLoginOrforkBanner from './showLoginOrforkBanner.svelte';
 
 	let supabase = $page.data.supabase;
 	let session = $page.data.session;
@@ -88,13 +89,16 @@
 	{/if}
 
 	{#if profile.length > 0}
-		<p
-			class="text-sky-400 dark:text-sky-300 outline-none focus:outline-sky-300 p-1 focus:dark:outline-sky-400 rounded-lg text-[9px] md:text-sm"
-			spellcheck="false"
-		>
-			<span>by</span>
-			<a href={`/${profile[0].username}`}>@{profile[0].username}</a>
-		</p>
+		<div class="flex text-[9px] md:text-sm gap-2">
+			<p
+				class="text-sky-400 dark:text-sky-300 outline-none focus:outline-sky-300 p-1 focus:dark:outline-sky-400 rounded-lg"
+				spellcheck="false"
+			>
+				<span>by</span>
+				<a href={`/${profile[0].username}`}>@{profile[0].username}</a>
+			</p>
+			<ShowLoginOrforkBanner />
+		</div>
 	{:else}
 		<p
 			class="text-sky-400 dark:text-sky-300 outline-none focus:outline-sky-300 p-1 focus:dark:outline-sky-400 rounded-lg text-sm"

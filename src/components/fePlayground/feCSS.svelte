@@ -2,7 +2,7 @@
 	import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 	import { afterUpdate, onDestroy, onMount } from 'svelte';
 	import { showSave, saveData, showLoginToSave } from '$lib/feEditor/store.js';
-	import { current_data, isOwner, saved_spinner, darkModeState } from '$lib/index.js';
+	import { current_data, isOwner, user, saved_spinner, darkModeState } from '$lib/index.js';
 	import { browser } from '$app/environment';
 	import Fa from 'svelte-fa';
 	import editorWorker from 'monaco-editor/esm/vs/editor/editor.worker?worker';
@@ -71,6 +71,10 @@
 		if ($isOwner) {
 			showSave.set(true);
 			return true;
+		} else if (!$user) {
+			showLoginToSave.set(true);
+		} else {
+			showForkTosave.set(true);
 		}
 	}
 	function handleContentChange(data) {

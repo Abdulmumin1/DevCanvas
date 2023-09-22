@@ -19,7 +19,7 @@
 		<img src={capturedImageUrl} alt="" srcset="" />
 	</div> -->
 	<iframe
-		src="{$page.url.origin}/html-playground/{details.project_key}/preview"
+		src="{$page.url.origin}/play/{details.project_key}/preview"
 		title="fs"
 		height="200"
 		frameborder="0"

@@ -1,6 +1,31 @@
 <script>
 	import Fa from 'svelte-fa';
 	import { faStar } from '@fortawesome/free-solid-svg-icons';
+	import { onMount } from 'svelte';
+
+	let index = 0,
+		interval = 1000;
+
+	const rand = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
+
+	const animate = (star) => {
+		star.style.setProperty('--star-left', `${rand(-10, 100)}%`);
+		star.style.setProperty('--star-top', `${rand(-40, 80)}%`);
+
+		star.style.animation = 'none';
+		star.offsetHeight;
+		star.style.animation = '';
+	};
+
+	onMount(() => {
+		for (const star of document.getElementsByClassName('magic-star')) {
+			setTimeout(() => {
+				animate(star);
+
+				setInterval(() => animate(star), 2000);
+			}, index++ * (interval / 3));
+		}
+	});
 </script>
 
 <div
@@ -16,7 +41,30 @@
 		</a>
 	</p>
 	<h1 class="text-4xl md:text-5xl font-bold max-w-lg">
-		Share Your <span class="">Genius</span> with the World!
+		Share Your <span class="magic">
+			<span class="magic-star">
+				<svg viewBox="0 0 512 512">
+					<path
+						d="M512 255.1c0 11.34-7.406 20.86-18.44 23.64l-171.3 42.78l-42.78 171.1C276.7 504.6 267.2 512 255.9 512s-20.84-7.406-23.62-18.44l-42.66-171.2L18.47 279.6C7.406 276.8 0 267.3 0 255.1c0-11.34 7.406-20.83 18.44-23.61l171.2-42.78l42.78-171.1C235.2 7.406 244.7 0 256 0s20.84 7.406 23.62 18.44l42.78 171.2l171.2 42.78C504.6 235.2 512 244.6 512 255.1z"
+					/>
+				</svg>
+			</span>
+			<span class="magic-star">
+				<svg viewBox="0 0 512 512">
+					<path
+						d="M512 255.1c0 11.34-7.406 20.86-18.44 23.64l-171.3 42.78l-42.78 171.1C276.7 504.6 267.2 512 255.9 512s-20.84-7.406-23.62-18.44l-42.66-171.2L18.47 279.6C7.406 276.8 0 267.3 0 255.1c0-11.34 7.406-20.83 18.44-23.61l171.2-42.78l42.78-171.1C235.2 7.406 244.7 0 256 0s20.84 7.406 23.62 18.44l42.78 171.2l171.2 42.78C504.6 235.2 512 244.6 512 255.1z"
+					/>
+				</svg>
+			</span>
+			<span class="magic-star">
+				<svg viewBox="0 0 512 512">
+					<path
+						d="M512 255.1c0 11.34-7.406 20.86-18.44 23.64l-171.3 42.78l-42.78 171.1C276.7 504.6 267.2 512 255.9 512s-20.84-7.406-23.62-18.44l-42.66-171.2L18.47 279.6C7.406 276.8 0 267.3 0 255.1c0-11.34 7.406-20.83 18.44-23.61l171.2-42.78l42.78-171.1C235.2 7.406 244.7 0 256 0s20.84 7.406 23.62 18.44l42.78 171.2l171.2 42.78C504.6 235.2 512 244.6 512 255.1z"
+					/>
+				</svg>
+			</span>
+			<span class="magic-text">Genius</span>
+		</span> with the World!
 	</h1>
 	<p class="text-xl text-gray-900 max-w-lg mx-1">
 		The platform for effortlessly sharing, collaborating, and discovering code snippets. <span
@@ -38,3 +86,84 @@
 		>
 	</div>
 </div>
+
+<style>
+	:root {
+		--purple: rgb(255, 255, 255);
+		--violet: rgb(248, 203, 0);
+		--pink: rgb(241, 194, 162);
+	}
+
+	@keyframes background-pan {
+		from {
+			background-position: 0% center;
+		}
+
+		to {
+			background-position: -200% center;
+		}
+	}
+
+	@keyframes scale {
+		from,
+		to {
+			transform: scale(0);
+		}
+
+		50% {
+			transform: scale(1);
+		}
+	}
+
+	@keyframes rotate {
+		from {
+			transform: rotate(0deg);
+		}
+
+		to {
+			transform: rotate(180deg);
+		}
+	}
+
+	h1 {
+		font-weight: 400;
+	}
+
+	h1 > .magic {
+		display: inline-block;
+		position: relative;
+	}
+
+	h1 > .magic > .magic-star {
+		--size: clamp(20px, 1.5vw, 30px);
+
+		animation: scale 700ms ease forwards;
+		display: block;
+		height: var(--size);
+		left: var(--star-left);
+		position: absolute;
+		top: var(--star-top);
+		width: var(--size);
+	}
+
+	h1 > .magic > .magic-star > svg {
+		animation: rotate 1000ms linear infinite;
+		display: block;
+		opacity: 0.7;
+	}
+
+	h1 > .magic > .magic-star > svg > path {
+		fill: var(--violet);
+	}
+
+	h1 > .magic > .magic-text {
+		animation: background-pan 3s linear infinite;
+		background: linear-gradient(to right, var(--purple), var(--violet), var(--pink), var(--purple));
+		background-size: 200%;
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		white-space: nowrap;
+	}
+
+	/* -- YouTube Link Styles -- */
+</style>

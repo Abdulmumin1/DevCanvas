@@ -6,16 +6,18 @@
 	import { github, githubDark, atomOneDark } from 'svelte-highlight/styles';
 	import Fa from 'svelte-fa';
 	import { faPen } from '@fortawesome/free-solid-svg-icons';
-	import { setContext } from 'svelte';
+	import { onMount, setContext } from 'svelte';
 	import NavWrapper from '../../components/snips/navWrapper.svelte';
 	import { faGithub, faInstagram, faTwitter } from '@fortawesome/free-brands-svg-icons';
+	import Collection from '../../components/user/collection.svelte';
+	import { pageCountSnips, pageCountPl } from '$lib/index.js';
 
 	export let data;
-	// setContext('isOwner', false);
-	// if (data.isFound && data.session) {
-	// 	setContext('isOwner', data.session.user.id == data[0].user_id);
-	// 	console.log(data.session.user.id == data[0].user_id);
-	// }
+
+	onMount(() => {
+		pageCountPl.set(6);
+		pageCountSnips.set(6);
+	});
 </script>
 
 <svelte:head>
@@ -79,7 +81,8 @@
 					<div class="h-full">
 						<h2 class="text-2xl">Collections</h2>
 						<div class="h-full w-full">
-							<p class="text-3xl">Apologies, Comming Soon 😋.....</p>
+							<p class="text-3xl">Apologies, In Progess 😋.....</p>
+							<Collection data={{ supabase: data.supabase, user_id: data.details.user_id }} />
 						</div>
 					</div>
 				</div>
