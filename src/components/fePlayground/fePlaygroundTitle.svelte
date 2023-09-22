@@ -36,7 +36,6 @@
 	function saveToServer() {
 		// Send a request to the server with the text data
 		// You can use AJAX, Fetch API, or any other method to send data to the server
-		console.log('saving data');
 		saveData($current_data, 'description');
 	}
 
@@ -49,11 +48,9 @@
 	$: profile = [];
 
 	onMount(async () => {
-		console.log('mounted');
 		if ($current_data.user_id == session?.user?.id) return;
 		try {
 			let profile_data = await getProfile($current_data.user_id, supabase);
-			console.log(profile_data);
 			if (profile_data.length > 0) {
 				profile = profile_data;
 			}
@@ -104,7 +101,7 @@
 			class="text-sky-400 dark:text-sky-300 outline-none focus:outline-sky-300 p-1 focus:dark:outline-sky-400 rounded-lg text-sm"
 			spellcheck="false"
 		>
-			<a href="/html-playground">&larr;backHome</a>
+			<a href="/play">&larr;backHome</a>
 		</p>
 	{/if}
 </div>

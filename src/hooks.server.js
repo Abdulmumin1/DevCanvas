@@ -27,7 +27,14 @@ export const handle = async ({ event, resolve }) => {
 			throw redirect(307, '/dashboard');
 		}
 	}
+	if (
+		event.url.pathname.startsWith('/html-playground') ||
+		event.url.pathname == '/html-playground'
+	) {
+		throw redirect(307, event.url.pathname.replace('/html-playground', '/play'));
+	}
 
+	// console.log(event.url);
 	return resolve(event, {
 		filterSerializedResponseHeaders(name) {
 			return name === 'content-range';

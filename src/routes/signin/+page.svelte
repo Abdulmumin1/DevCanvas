@@ -51,7 +51,7 @@
 				aria-busy={loading}
 				type="submit"
 				class="p-2 rounded-md flex items-center justify-center gap-2"
-				>Signin
+				>Join
 
 				{#if loading}
 					<Fa icon={faSpinner} class="animate-spin" />

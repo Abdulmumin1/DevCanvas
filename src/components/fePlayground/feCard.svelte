@@ -59,8 +59,11 @@
 			{/if}
 			<div>
 				<span class="flex items-center justify-center gap-2 w-fit"
-					><Fa icon={faEye} />{details.views != undefined ? details.views : '....'}</span
+					><Fa icon={faEye} />{new Object(details.view).length > 0
+						? details.view[0].views
+						: '....'}</span
 				>
+				<!-- {JSON.stringify(details.view)} -->
 			</div>
 		</div>
 	</div>

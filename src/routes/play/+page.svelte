@@ -46,7 +46,8 @@
 	async function loadIntialData() {
 		let { data: dt, error } = await supabase
 			.from('htmlPlayground')
-			.select('*')
+			.select('project_key, user_id, description, view (views)')
+
 			.order('created_at', { ascending: false })
 			.limit($pageCount);
 
@@ -77,6 +78,17 @@
 		return dt;
 	}
 
+	// async function getEntries() {
+	// 	const { data: dt, error } = await supabase.from('htmlPlayground').select(`
+	// 	project_key,
+	// 	description,
+
+	// 	view (views)
+
+	// 	`);
+	// 	console.log(dt);
+	// }
+
 	export async function CreateNew() {
 		let formData = new FormData();
 		formData.append('description', 'Untitled X');
@@ -93,7 +105,11 @@
 		}
 	}
 
-	onMount(() => {});
+	// onMount(() => {
+	// 	setTimeout(() => {
+	// 		getEntries();
+	// 	}, 4000);
+	// });
 
 	// afterUpdate(() => {
 	// 	// This will handle the redirection if the user logs out on  page
@@ -141,11 +157,7 @@
 
 					<!-- Code Snippet Cards -->
 
-					<FeCollectionPage
-						collection={userSnippets}
-						supabase={data.supabase}
-						session={data.session}
-					/>
+					<FeCollectionPage collection={userSnippets} supabase={data.supabase} />
 				{/await}
 			</div>
 		</main>

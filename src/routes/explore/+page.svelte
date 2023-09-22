@@ -40,7 +40,7 @@
 	async function loadPlaygroundData() {
 		let { data: dt, error } = await supabase
 			.from('htmlPlayground')
-			.select('*')
+			.select('*, view (views)')
 			.order('created_at', { ascending: false })
 			.limit($pageCountPl);
 

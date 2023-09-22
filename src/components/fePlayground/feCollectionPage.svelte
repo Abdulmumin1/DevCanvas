@@ -8,7 +8,6 @@
 
 	import { getProfile, getViews } from '$lib/utils';
 	export let supabase;
-	export let session;
 	export let collection;
 	export let dashboard = false;
 	export let user_id = false;
@@ -17,7 +16,7 @@
 	async function fetchExplore(pageNumber, pageSize) {
 		const { data, error } = await supabase
 			.from('htmlPlayground')
-			.select('*')
+			.select('project_key, user_id, description, view (views)')
 			.order('created_at', { ascending: false }) // Optional: Ordering the results
 			.range(pageNumber, pageSize);
 
@@ -31,7 +30,7 @@
 	async function fetchDashboard(pageNumber, pageSize) {
 		const { data, error } = await supabase
 			.from('htmlPlayground')
-			.select('*')
+			.select('project_key, user_id, description, view (views)')
 			.eq('user_id', session.user.id)
 			.order('created_at', { ascending: false }) // Optional: Ordering the results
 			.range(pageNumber, pageSize);
@@ -45,7 +44,7 @@
 	async function fetchUserCollection(pageNumber, pageSize) {
 		const { data, error } = await supabase
 			.from('htmlPlayground')
-			.select('*')
+			.select('project_key, user_id, description, view (views)')
 			.eq('user_id', user_id)
 			.order('created_at', { ascending: false }) // Optional: Ordering the results
 			.range(pageNumber, pageSize);
@@ -63,13 +62,11 @@
 		if (dashboard) {
 			return fetchDashboard(pageNumber, pageSize);
 		} else if (user_id) {
-			fetchUserCollection(pageNumber, pageSize);
+			return fetchUserCollection(pageNumber, pageSize);
 		} else {
 			return fetchExplore(pageNumber, pageSize);
 		}
 	}
-
-	let showMore = true;
 
 	async function more() {
 		console.log($pageCountPl);
@@ -100,12 +97,12 @@
 		const newData = [];
 
 		for (const element of collection) {
-			const views = await getViews(element.project_key, supabase);
+			// const views = await getViews(element.project_key, supabase);
 			try {
 				const user_name = await getProfile(element.user_id, supabase);
 				// Assuming getProfile returns an object with a 'user_name' property
 				if (new Object(user_name).length > 0) {
-					newData.push({ ...element, profile: user_name[0].username, views: views[0]?.views });
+					newData.push({ ...element, profile: user_name[0].username });
 				} else {
 					newData.push({ ...element });
 				}
@@ -119,6 +116,8 @@
 
 		return newData;
 	}
+
+	$: showMore = collection.length > 5;
 
 	onMount(async () => {
 		collection = await returnDataWithProfile(collection, supabase);
