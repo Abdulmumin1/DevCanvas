@@ -58,7 +58,6 @@
 	}
 
 	async function fetchPaginatedRows(pageNumber, pageSize) {
-		console.log(user_id);
 		loading = true;
 		const off = (pageNumber - 1) * pageSize;
 		if (dashboard) {
