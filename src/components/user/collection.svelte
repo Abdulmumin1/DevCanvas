@@ -15,6 +15,7 @@
 		let { data: dt, error } = await supabase
 			.from('snips')
 			.select('*')
+			.eq('user_id', data.user_id)
 			.order('created_at', { ascending: false })
 			.limit($pageCountSnips);
 
@@ -41,6 +42,7 @@
 		let { data: dt, error } = await supabase
 			.from('htmlPlayground')
 			.select('*')
+			.eq('user_id', data.user_id)
 			.order('created_at', { ascending: false })
 			.limit($pageCountPl);
 
@@ -60,9 +62,6 @@
 	}
 </script>
 
-<svelte:head>
-	<title>Explore</title>
-</svelte:head>
 <!-- <div class="bg-secondary-dark min-h-[50vh]">
 	<InnerNav />
 
@@ -75,60 +74,57 @@
 		</div>
 	</div>
 </div> -->
-<div class="flex min-h-screen gap-2">
-	<NavWrapper>
-		<main class=" min-h-screen w-full flex">
-			<div class="max-w-4xl w-full">
-				<!-- Code Snippet Cards -->
-				<div class="w-full py-6 px-2 flex gap-2 text-primary dark:text-white text-xl md:text-3xl">
-					<button
-						class="border-sky-500"
-						on:click={toogle}
-						class:border-b-2={!showOther}
-						class:text-sky-500={!showOther}>Playground</button
-					>
-					<button
-						class="border-sky-500"
-						on:click={toogle}
-						class:border-b-2={showOther}
-						class:text-sky-500={showOther}>Snippets</button
-					>
-				</div>
-				{#await loadPlaygroundData()}
-					<CollectionDummy />
-				{:then userSnippets}
-					<!-- <Sm -->
-					<!-- Create New Code Snippet button -->
 
-					<!-- Code Snippet Cards -->
-					<div transition:fade class:hidden={showOther} class="hidden h-full">
-						<FeCollectionPage
-							collection={userSnippets}
-							supabase={data.supabase}
-							session={data.session}
-						/>
-					</div>
+<div class="max-w-4xl w-full">
+	<!-- Code Snippet Cards -->
+	<div class="w-full py-6 px-2 flex gap-2 text-primary dark:text-white text-xl md:text-3xl">
+		<button
+			class="border-sky-500"
+			on:click={toogle}
+			class:border-b-2={!showOther}
+			class:text-sky-500={!showOther}>Playground</button
+		>
+		<button
+			class="border-sky-500"
+			on:click={toogle}
+			class:border-b-2={showOther}
+			class:text-sky-500={showOther}>Snippets</button
+		>
+	</div>
+	{#await loadPlaygroundData()}
+		<CollectionDummy />
+	{:then userSnippets}
+		<!-- <Sm -->
+		<!-- Create New Code Snippet button -->
 
-					{#await loadIntialData()}
-						<!-- <p class="flex items-center justify-center gap-2 text-xl h-[50vh]">
+		<!-- Code Snippet Cards -->
+		<div transition:fade class:hidden={showOther} class="hidden h-full">
+			<FeCollectionPage
+				user_id={data.user_id}
+				collection={userSnippets}
+				supabase={data.supabase}
+				session={data.session}
+			/>
+		</div>
+
+		{#await loadIntialData()}
+			<!-- <p class="flex items-center justify-center gap-2 text-xl h-[50vh]">
 						Loading ...
 						<Fa icon={faSpinner} class="animate-spin text-xl" />
 					</p> -->
-						<CollectionDummy />
-					{:then userSnippets}
-						<div transition:fade class:hidden={!showOther} class="hidden h-full">
-							<CollectionPage
-								rawcollection={userSnippets}
-								supabase={data.supabase}
-								session={data.session}
-								showMore={userSnippets.length > 6}
-							/>
-						</div>
-
-						<!-- <FeCollectionPage -->
-					{/await}
-				{/await}
+			<CollectionDummy />
+		{:then userSnippets}
+			<div transition:fade class:hidden={!showOther} class="hidden h-full">
+				<CollectionPage
+					rawcollection={userSnippets}
+					supabase={data.supabase}
+					session={data.session}
+					showMore={userSnippets.length > 6}
+					user_id={data.user_id}
+				/>
 			</div>
-		</main>
-	</NavWrapper>
+
+			<!-- <FeCollectionPage -->
+		{/await}
+	{/await}
 </div>

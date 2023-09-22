@@ -11,6 +11,7 @@
 	export let session;
 	export let collection;
 	export let dashboard = false;
+	export let user_id = false;
 
 	let loading = false;
 	async function fetchExplore(pageNumber, pageSize) {
@@ -41,11 +42,28 @@
 		}
 		return data;
 	}
+	async function fetchUserCollection(pageNumber, pageSize) {
+		const { data, error } = await supabase
+			.from('htmlPlayground')
+			.select('*')
+			.eq('user_id', user_id)
+			.order('created_at', { ascending: false }) // Optional: Ordering the results
+			.range(pageNumber, pageSize);
+
+		if (error) {
+			console.error('Error fetching data:', error.message);
+			return;
+		}
+		return data;
+	}
+
 	async function fetchPaginatedRows(pageNumber, pageSize) {
 		loading = true;
 		const off = (pageNumber - 1) * pageSize;
 		if (dashboard) {
 			return fetchDashboard(pageNumber, pageSize);
+		} else if (user_id) {
+			fetchUserCollection(pageNumber, pageSize);
 		} else {
 			return fetchExplore(pageNumber, pageSize);
 		}
@@ -95,7 +113,7 @@
 				newData.push({ ...element });
 				console.error(`Error fetching profile for user_id ${element.user_id}: ${error.message}`);
 			}
-			console.log(views);
+			// console.log(views);
 			// newData.push({...element, views:views[0].views})
 		}
 

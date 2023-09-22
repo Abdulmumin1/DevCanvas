@@ -39,10 +39,8 @@
 					>
 				</li>
 				<li>
-					<a
-						href="/html-playground"
-						class="text-lg px-2"
-						class:text-sky-400={$page.url.pathname == '/html-playground'}>Online Editor</a
+					<a href="/play" class="text-lg px-2" class:text-sky-400={$page.url.pathname == '/play'}
+						>Online Editor</a
 					>
 				</li>
 			</ul>

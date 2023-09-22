@@ -36,15 +36,14 @@
 </script>
 
 <svelte:head>
-	{#if data.isFound}
-		<title>{data.details.description}</title>
+	<title>{$current_data.description}</title>
 
-		<!-- Facebook Meta Tags -->
-		<meta property="og:title" content={data.details.description} />
+	<!-- Facebook Meta Tags -->
+	<meta property="og:title" content={data.details.description} />
 
-		<!-- Twitter Meta Tags -->
-		<meta name="twitter:title" content={data.details.description} />
-	{/if}
+	<!-- Twitter Meta Tags -->
+	<meta name="twitter:title" content={data.details.description} />
+
 	<!-- HTML Meta Tags -->
 </svelte:head>
 

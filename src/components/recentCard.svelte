@@ -73,7 +73,10 @@
 				><Fa icon={faArrowUpFromBracket} class="transition-all duration-300" /></button
 			>
 			{#if editIcons}
-				<a href="/{card.project_key}/edit" class="hover:scale-105 transition-all duration-200">
+				<a
+					href="/{card.profile}/{card.project_key}/edit"
+					class="hover:scale-105 transition-all duration-200"
+				>
 					<Fa icon={faEdit} />
 				</a>
 

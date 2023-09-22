@@ -15,7 +15,7 @@
 	<li class="bg-green-500 px-3 py-3 md:py-2 rounded text-primary">
 		<a href={signinURL}>
 			<span class="flex md:hidden"><Fa icon={faRightToBracket} /></span>
-			<span class="hidden md:flex">Login</span>
+			<span class="hidden md:flex">Join</span>
 		</a>
 	</li>
 {:else}

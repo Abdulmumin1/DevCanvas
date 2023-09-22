@@ -20,7 +20,7 @@ export async function load({ url, params, parent }) {
 		.eq('user_id', data[0].user_id);
 
 	if (er) throw er;
-	console.log(username, data[0].user_id);
+	// console.log(username, data[0].user_id);
 	if (new Object(username).length > 0) {
 		// let fullurl = `${url.origin}/xi1w/${slug}`;
 		let fullurl = `${url.origin}/${username[0].username}/${slug}`;
