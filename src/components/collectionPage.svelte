@@ -6,7 +6,7 @@
 	import { fade } from 'svelte/transition';
 	import { HighlightAuto, LineNumbers } from 'svelte-highlight';
 	import { githubDark } from 'svelte-highlight/styles';
-	import { onMount } from 'svelte';
+	import { onDestroy, onMount } from 'svelte';
 
 	import { getProfile } from '$lib/utils.js';
 
@@ -125,6 +125,10 @@
 		console.log('mounted', rawcollection.length);
 		collection = await returnDataWithProfile(rawcollection, supabase);
 		console.log('fetched collections', collection.length);
+	});
+
+	onDestroy(() => {
+		pageCountSnips.set(6);
 	});
 </script>
 

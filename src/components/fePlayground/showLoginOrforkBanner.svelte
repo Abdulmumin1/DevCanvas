@@ -9,8 +9,14 @@
 	import { handleRedirectURL } from '$lib/utils.js';
 
 	import { showLoginToSave, showForkTosave } from '$lib/feEditor/store.js';
+	import { onDestroy } from 'svelte';
 
 	let signinURL = handleRedirectURL($page.url);
+
+	onDestroy(() => {
+		showForkTosave.set(false);
+		showLoginToSave.set(false);
+	});
 </script>
 
 {#if $showLoginToSave}

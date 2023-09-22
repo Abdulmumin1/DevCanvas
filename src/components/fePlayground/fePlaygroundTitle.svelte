@@ -6,7 +6,7 @@
 	import { getProfile } from '$lib/utils.js';
 
 	import { page } from '$app/stores';
-	import { onMount } from 'svelte';
+	import { onDestroy, onMount } from 'svelte';
 	import ShowLoginOrforkBanner from './showLoginOrforkBanner.svelte';
 
 	let supabase = $page.data.supabase;
