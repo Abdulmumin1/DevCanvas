@@ -4,7 +4,7 @@
 	import { pageCountPl } from '$lib/index.js';
 	import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 	import Fa from 'svelte-fa';
-	import { onMount } from 'svelte';
+	import { onDestroy, onMount } from 'svelte';
 
 	import { getProfile, getViews } from '$lib/utils';
 	export let supabase;
@@ -121,6 +121,10 @@
 
 	onMount(async () => {
 		collection = await returnDataWithProfile(collection, supabase);
+	});
+
+	onDestroy(() => {
+		pageCountPl.set(6);
 	});
 </script>
 
