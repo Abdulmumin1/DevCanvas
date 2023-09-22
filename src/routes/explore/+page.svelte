@@ -60,6 +60,9 @@
 	}
 </script>
 
+<svelte:head>
+	<title>Explore</title>
+</svelte:head>
 <!-- <div class="bg-secondary-dark min-h-[50vh]">
 	<InnerNav />
 
@@ -79,14 +82,16 @@
 				<!-- Code Snippet Cards -->
 				<div class="w-full py-6 px-2 flex gap-2 text-primary dark:text-white text-xl md:text-3xl">
 					<button
-						class="border-primary dark:border-secondary-dark"
+						class="border-sky-500"
 						on:click={toogle}
-						class:border-b-2={!showOther}>Playground</button
+						class:border-b-2={!showOther}
+						class:text-sky-500={!showOther}>Playground</button
 					>
 					<button
-						class="border-primary dark:border-secondary-dark"
+						class="border-sky-500"
 						on:click={toogle}
-						class:border-b-2={showOther}>Snippets</button
+						class:border-b-2={showOther}
+						class:text-sky-500={showOther}>Snippets</button
 					>
 				</div>
 				{#await loadPlaygroundData()}

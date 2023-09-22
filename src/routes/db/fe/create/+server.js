@@ -26,5 +26,5 @@ export async function POST({ url, locals: { supabase, getSession }, request }) {
 	}
 	if (er) throw er;
 
-	throw redirect(303, `/html-playground/${key}`);
+	throw redirect(303, `/play/${key}`);
 }

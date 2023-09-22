@@ -29,7 +29,7 @@
 	{/if} -->
 
 	<div class="flex flex-col p-2 items-start">
-		<a href="/html-playground/{details.project_key}" class="text-xl font-semibold"
+		<a href="/play/{details.project_key}" class="text-xl font-semibold hover:opacity-80"
 			>{details.description}
 		</a>
 
@@ -40,7 +40,7 @@
 					class="text-sky-400 dark:text-sky-300 outline-none focus:outline-sky-300 focus:dark:outline-sky-400 rounded-lg text-sm"
 					spellcheck="false"
 				>
-					<a href="/html-playground">You</a>
+					<a href="/{details.profile}">You</a>
 				</p>
 			{:else if details?.profile}
 				<div in:fade>

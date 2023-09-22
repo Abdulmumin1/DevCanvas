@@ -95,7 +95,7 @@
 				newData.push({ ...element });
 				console.error(`Error fetching profile for user_id ${element.user_id}: ${error.message}`);
 			}
-			console.log(views);
+			// console.log(views);
 			// newData.push({...element, views:views[0].views})
 		}
 

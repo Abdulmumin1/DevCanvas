@@ -15,13 +15,10 @@
 		{/if}
 	</div>
 	<div class=" max-w-md">
-		<h2 class=" font-semibold mb-2 text-4xl md:text-5xl dark:text-sky-400">
-			Inspiration at Your Fingertips
-		</h2>
+		<h2 class=" font-semibold mb-2 text-4xl md:text-5xl dark:text-sky-400">Inspiration Awaits</h2>
 		<p class="max-w-md">
-			Explore a diverse library of code snippets contributed by developers like you. From simple
-			solutions to complex algorithms, SnippetLand is your go-to resource for finding inspiration,
-			solving problems, and learning new techniques
+			Dive into a treasure trove of user-generated code snippets. Find inspiration, learn new
+			tricks, and take your coding skills to the next level.
 		</p>
 	</div>
 </SectionCard>

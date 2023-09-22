@@ -48,7 +48,7 @@ https://cdn.jsdelivr.net/npm/tailwindcss@3.3.3/tailwind.min.css
 </script>
 
 <iframe
-	class=" w-full dark:bg-primary"
+	class="h-[100dvh] w-full overflow-hidden dark:bg-primary"
 	src=""
 	title="preview"
 	frameborder="0"

@@ -7,8 +7,8 @@
 	let slug = data.details.project_key;
 
 	function update_views() {
-		console.log('update views: ', data.details.description);
-		// console.log(parseInt(data.details.views));
+		console.log('wiil be updating vies');
+		console.log(parseInt(data.details.views));
 		setTimeout(async () => {
 			const { data: dt, error: er } = await supabase
 				.from('view')
