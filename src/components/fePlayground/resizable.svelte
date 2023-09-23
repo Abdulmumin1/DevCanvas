@@ -1,9 +1,8 @@
 <script>
 	import { onMount } from 'svelte';
 	import { Pane, Splitpanes } from 'svelte-splitpanes';
-	import { browser } from '$app/environment';
 	import { layoutView } from '$lib/feEditor/store.js';
-	let isVertical = false;
+	let isVertical = true;
 	// if (browser) {
 	// 	 // Change the breakpoint as needed
 	// }
@@ -21,12 +20,15 @@
 
 		console.log(isVertical);
 	};
+
 	onMount(() => {
 		// Listen for window resize events and update orientation accordingly
 		isVertical = window.innerWidth <= 768;
 		window.addEventListener('resize', updateOrientation);
-		console.log(isVertical);
+		console.log('mounted editor window');
 	});
+
+	// console.log('isvertialcs');
 </script>
 
 {#if isVertical}
