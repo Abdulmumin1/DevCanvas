@@ -47,6 +47,10 @@ https://cdn.jsdelivr.net/npm/tailwindcss@3.3.3/tailwind.min.css
 	});
 </script>
 
+<svelte:head>
+	<meta name="viewport" content="width=device-width, initial-scale=0" />
+</svelte:head>
+
 <iframe
 	class="h-[100dvh] w-full overflow-hidden dark:bg-primary"
 	src=""

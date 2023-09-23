@@ -7,6 +7,7 @@
 	import { onMount } from 'svelte';
 	import Fa from 'svelte-fa';
 	import { faEye } from '@fortawesome/free-solid-svg-icons';
+	import ShareAct from '../shareAct.svelte';
 
 	let session = $page.data.session;
 	export let details;
@@ -57,13 +58,14 @@
 					<a class="text-sky-400 dark:text-sky-300 text-sm" href={`/anon`}>Anonymous user</a>
 				</div>
 			{/if}
-			<div>
+			<div class="flex gap-2 items-center justify-center w-fit">
 				<span class="flex items-center justify-center gap-2 w-fit"
 					><Fa icon={faEye} />{new Object(details.view).length > 0
 						? details.view[0].views
 						: '....'}</span
 				>
 				<!-- {JSON.stringify(details.view)} -->
+				<ShareAct link="{$page.url.origin}/play/{details.project_key}" />
 			</div>
 		</div>
 	</div>

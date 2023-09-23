@@ -90,8 +90,8 @@
 <style>
 	:root {
 		--purple: rgb(255, 255, 255);
-		--violet: rgb(248, 203, 0);
-		--pink: rgb(241, 194, 162);
+		--violet: rgb(0, 248, 248);
+		--pink: rgb(194, 223, 243);
 	}
 
 	@keyframes background-pan {

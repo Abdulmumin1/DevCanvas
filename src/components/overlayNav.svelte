@@ -30,7 +30,7 @@
 				<li class="w-full text-xl flex flex-col gap-4">
 					<ul class="w-full flex flex-col text-center items-center justify-center">
 						<li><a href="/explore">Explore</a></li>
-						<li><a href="/dashboard">Dashboard</a></li>
+						<li><a href="/dashboard">Your Collection</a></li>
 
 						<li><a href="/play">HTML Playground</a></li>
 					</ul>

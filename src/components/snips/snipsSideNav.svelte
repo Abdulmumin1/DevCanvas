@@ -35,7 +35,7 @@
 					<a
 						href="/dashboard"
 						class="text-lg px-2"
-						class:text-sky-400={$page.url.pathname == '/dashboard'}>Snips</a
+						class:text-sky-400={$page.url.pathname == '/dashboard'}>Your Collection</a
 					>
 				</li>
 				<li>
