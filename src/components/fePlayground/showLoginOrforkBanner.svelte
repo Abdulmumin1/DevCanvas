@@ -10,6 +10,7 @@
 
 	import { showLoginToSave, showForkTosave } from '$lib/feEditor/store.js';
 	import { onDestroy } from 'svelte';
+	import { scale } from 'svelte/transition';
 
 	let signinURL = handleRedirectURL($page.url);
 
@@ -20,14 +21,14 @@
 </script>
 
 {#if $showLoginToSave}
-	<div class="flex items-center justify-center gap-2 text-inherit">
+	<div in:scale class="flex items-center justify-center gap-2 text-inherit">
 		<span class="text-error wobble-hor-top"><Fa icon={faExclamationTriangle} /></span>
 		<span class="text-light"
 			><a href={signinURL} class="underline text-sky-300"> Login</a> to save progress</span
 		>
 	</div>
 {:else if $showForkTosave}
-	<div class="flex items-center justify-center gap-1 text-inherit">
+	<div in:scale class="flex items-center justify-center gap-1 text-inherit">
 		<span class="text-green-500 jello-diagonal-2"><Fa icon={faCodeMerge} /></span>
 		<span class="text-light"><a href="#" class=" text-green-500"> Fork</a> to save progress</span>
 	</div>

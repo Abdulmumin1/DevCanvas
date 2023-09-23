@@ -25,8 +25,7 @@
 </div>
 <div
 	class="h-[12vh] p-3 w-full bg-inherit"
-	class:bg-sky-500={$page.url.pathname == '/'}
-	class:border-b-2={$page.url.pathname == '/'}
+	class:border-b={$page.url.pathname == '/'}
 	class:border-primary={$page.url.pathname == '/'}
 >
 	<ul class="hidden md:flex w-full justify-between items-center">

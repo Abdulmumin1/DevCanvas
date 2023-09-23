@@ -30,7 +30,7 @@
 
 <div
 	style="height: 70dvh; "
-	class="flex px-8 py-12 flex-col gap-4 items-center text-center w-full border-b-2 border-primary justify-center"
+	class="flex px-8 py-12 flex-col gap-4 items-center text-center w-full border-primary justify-center"
 >
 	<p>
 		<a
@@ -66,22 +66,22 @@
 			<span class="magic-text">Genius</span>
 		</span> with the World!
 	</h1>
-	<p class="text-xl text-gray-100 max-w-lg mx-1">
+	<p class="text-xl text-primary dark:text-gray-100 max-w-lg mx-1">
 		The platform for effortlessly sharing, collaborating, and discovering code snippets. <span
-			class="text-green-700">share</span
+			class="text-green-500 dark:text-green-700">share</span
 		>,
-		<span class="text-orange-800">learn</span>, and
+		<span class="text-orange-400 dark:text-orange-800">learn</span>, and
 		<span class="bg-sky-300 text-primary">build together</span>.
 	</p>
 	<div class="text-center">
 		<a
 			href="/signin"
-			class="inline-block bg-sky-600 hover:bg-sky-600 border-2 border-black font-semibold py-3 px-6 rounded-lg"
+			class="inline-block bg-sky-600 hover:bg-sky-600 font-semibold py-3 px-6 rounded-lg"
 			>Get Started</a
 		>
 		<a
 			href="/explore"
-			class="inline-block bg-secondary-dark text-white border-2 border-primary font-semibold py-3 px-6 rounded-lg"
+			class="inline-block bg-secondary-dark text-white font-semibold py-3 px-6 rounded-lg"
 			>Explore</a
 		>
 	</div>

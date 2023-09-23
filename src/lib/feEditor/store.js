@@ -35,3 +35,5 @@ export async function saveData(json_data, which = true) {
 	saved_spinner.set(false);
 	showSave.set(false);
 }
+
+export let layoutView = writable('left');

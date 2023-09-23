@@ -4,12 +4,13 @@
 
 @layer utilities {
 	.splitpanes.my-theme .splitpanes__pane {
-		@apply bg-gray-50 dark:bg-black;
+		@apply bg-black;
 	}
 
 	.splitpanes.my-theme .splitpanes__splitter {
 		background-color: #cccccc00;
 		position: relative;
+		@apply border-x-8 border-gray-50 dark:border-black;
 	}
 
 	.splitpanes.my-theme .splitpanes__splitter:before {
@@ -23,9 +24,9 @@
 		@apply bg-sky-200;
 	}
 
-	.splitpanes.my-theme .splitpanes__splitter:hover:before {
+	/* .splitpanes.my-theme .splitpanes__splitter:hover:before {
 		opacity: 1;
-	}
+	} */
 
 	.splitpanes.my-theme .splitpanes__splitter.splitpanes__splitter__active {
 		z-index: 2;

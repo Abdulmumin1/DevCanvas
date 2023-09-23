@@ -8,6 +8,7 @@
 	import FePlayGroungNav from '../../../components/fePlayground/fePlayGroungNav.svelte';
 	import CodeOutput from '../../../components/fePlayground/codeOutput.svelte';
 	import Resizable from '../../../components/fePlayground/resizable.svelte';
+	import { showLoginToSave, showForkTosave } from '$lib/feEditor/store.js';
 
 	export let data;
 
@@ -33,6 +34,9 @@
 			}
 		}, 1000);
 	});
+
+	showForkTosave.set(false);
+	showLoginToSave.set(false);
 </script>
 
 <svelte:head>

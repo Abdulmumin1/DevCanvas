@@ -10,6 +10,7 @@
 	import FePlaygroundTitle from './fePlaygroundTitle.svelte';
 	import FeGetEmbed from './feGetEmbed.svelte';
 	import Login from '../auth/login.svelte';
+	import SelectLayout from './selectLayout.svelte';
 </script>
 
 <nav class="w-full bg-black h-10 px-2 py-8 flex items-center text-white border-b border-primary">
@@ -26,6 +27,7 @@
 			</div>
 		</li>
 		<ul class="flex items-center justify-center gap-2">
+			<li class="hidden md:flex"><SelectLayout /></li>
 			{#if $isOwner}
 				{#if $showSave}
 					<li><FeSave /></li>

@@ -2,36 +2,67 @@
 	import { onMount } from 'svelte';
 	import { Pane, Splitpanes } from 'svelte-splitpanes';
 	import { browser } from '$app/environment';
-	let windowSize = 'medium'; // Initialize with the default size
+	import { layoutView } from '$lib/feEditor/store.js';
+	let isVertical = false;
+	// if (browser) {
+	// 	 // Change the breakpoint as needed
+	// }
+	$: splitpaneOptions = {
+		horizontal: !isVertical
+		// Other options for your Splitpanes component
+	};
 
-	// Define a function to update the windowSize variable based on the window width
-	function updateWindowSize() {
-		const width = window.innerWidth;
-		if (width < 640) {
-			windowSize = 'small';
-		} else if (width < 1024) {
-			windowSize = 'medium';
-		} else {
-			windowSize = 'large';
-		}
-	}
+	// Function to update isVertical based on window width
+	const updateOrientation = () => {
+		isVertical = window.innerWidth <= 768; // Change the breakpoint as needed
+		splitpaneOptions = {
+			horizontal: !isVertical
+		};
 
+		console.log(isVertical);
+	};
 	onMount(() => {
-		window.addEventListener('resize', updateWindowSize);
-		return window.removeEventListener('resize', updateWindowSize);
+		// Listen for window resize events and update orientation accordingly
+		isVertical = window.innerWidth <= 768;
+		window.addEventListener('resize', updateOrientation);
+		console.log(isVertical);
 	});
-
-	// Initial call to set the initial window size\
-	if (browser) {
-		updateWindowSize();
-	}
 </script>
 
-<Splitpanes theme="my-theme">
-	<Pane snapSize={20}>
-		<slot name="left" />
-	</Pane>
-	<Pane snapSize={10}>
-		<slot name="right" />
-	</Pane>
-</Splitpanes>
+{#if isVertical}
+	<Splitpanes horizontal={true} theme="my-theme">
+		<Pane snapSize={20}>
+			<slot name="left" />
+		</Pane>
+		<Pane snapSize={20}>
+			<slot name="right" />
+		</Pane>
+	</Splitpanes>
+{:else if $layoutView == 'left'}
+	<Splitpanes horizontal={false} theme="my-theme">
+		<Pane snapSize={20}>
+			<slot name="left" />
+		</Pane>
+		<Pane snapSize={20}>
+			<slot name="right" />
+		</Pane>
+	</Splitpanes>
+{:else if $layoutView == 'top'}
+	<Splitpanes horizontal={true} theme="my-theme">
+		<Pane snapSize={20}>
+			<slot name="left" />
+		</Pane>
+		<Pane snapSize={20}>
+			<slot name="right" />
+		</Pane>
+	</Splitpanes>
+{:else if $layoutView == 'right'}
+	<Splitpanes horizontal={false} theme="my-theme">
+		<Pane snapSize={20}>
+			<slot name="right" />
+		</Pane>
+		<Pane snapSize={20}>
+			<slot name="left" />
+		</Pane>
+	</Splitpanes>
+{/if}

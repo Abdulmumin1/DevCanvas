@@ -1,5 +1,7 @@
 <script>
 	import { current_data, isOwner } from '$lib/index.js';
+	import { showLoginToSave, showForkTosave } from '$lib/feEditor/store.js';
+
 	import { saveData } from '$lib/feEditor/store.js';
 	import { faPen } from '@fortawesome/free-solid-svg-icons';
 	import Fa from 'svelte-fa';
@@ -57,6 +59,11 @@
 		} catch (error) {
 			throw error;
 		}
+	});
+
+	onDestroy(() => {
+		showForkTosave.set(false);
+		showLoginToSave.set(false);
 	});
 </script>
 
