@@ -1,5 +1,10 @@
 <script>
-	import { faArrowUpFromBracket, faCodeMerge, faLink } from '@fortawesome/free-solid-svg-icons';
+	import {
+		faArrowUpFromBracket,
+		faCode,
+		faCodeMerge,
+		faLink
+	} from '@fortawesome/free-solid-svg-icons';
 	import Fa from 'svelte-fa';
 	import { slide } from 'svelte/transition';
 	import { browser } from '$app/environment';
@@ -41,7 +46,7 @@
 >
 	<!-- {#if isClicked} -->
 	<div transition:slide class:scale-110={isClicked} class="transition-all duration-300">
-		<Fa icon={faCodeMerge} class="transition-all duration-300" />
+		<Fa icon={faCode} class="transition-all duration-300" />
 	</div>
 	<!-- {/if} -->
 	<span class="hidden md:flex">Embed</span>
