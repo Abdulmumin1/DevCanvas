@@ -1,6 +1,5 @@
 <script>
 	import { pageCountSnips, pageCountPl } from '$lib/index.js';
-
 	import CollectionPage from '../../components/collectionPage.svelte';
 	import CollectionDummy from '../../components/collectionDummy.svelte';
 	import NavWrapper from '../../components/snips/navWrapper.svelte';
@@ -78,21 +77,23 @@
 <div class="flex min-h-screen gap-2">
 	<NavWrapper>
 		<main class=" min-h-screen w-full flex">
-			<div class="max-w-4xl w-full">
+			<div class=" w-full flex flex-col gap-2">
 				<!-- Code Snippet Cards -->
-				<div class="w-full py-6 px-2 flex gap-2 text-primary dark:text-white text-xl md:text-3xl">
-					<button
-						class="border-sky-500"
-						on:click={toogle}
-						class:border-b-2={!showOther}
-						class:text-sky-500={!showOther}>Playground</button
-					>
-					<button
-						class="border-sky-500"
-						on:click={toogle}
-						class:border-b-2={showOther}
-						class:text-sky-500={showOther}>Snippets</button
-					>
+				<div class="bg-sky-100 dark:bg-secondary-dark pt-2 px-1 rounded-md mt-4">
+					<div class="w-full flex gap-2 text-primary dark:text-white text-xl md:text-2xl">
+						<button
+							class="p-1 rounded-t-md px-3"
+							on:click={toogle}
+							class:bg-white={!showOther}
+							class:dark:bg-primary={!showOther}>Plays</button
+						>
+						<button
+							class="p-1 rounded-t-md px-3"
+							on:click={toogle}
+							class:bg-white={showOther}
+							class:dark:bg-primary={showOther}>Snippets</button
+						>
+					</div>
 				</div>
 				{#await loadPlaygroundData()}
 					<CollectionDummy />

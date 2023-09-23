@@ -40,65 +40,58 @@
 </svelte:head>
 
 <article class="h-screen flex flex-col">
-	{#if data.isFound}
-		<NavWrapper>
-			<main class="flex flex-col items-center h-full p-3">
-				<div
-					id="userinfo"
-					class="flex items-center flex-col gap-3 w-full border-b-2 dark:border-secondary-dark py-2 md:py-4"
-				>
-					<div class="h-24 w-24 bg-sky-500" />
-					<h1 class="text-3xl capitalize">
-						{data.details.name}
-					</h1>
+	<NavWrapper>
+		<main class="flex flex-col items-center h-full p-3">
+			<div
+				id="userinfo"
+				class="flex items-center flex-col gap-3 w-full border-b-2 dark:border-secondary-dark py-2 md:py-4"
+			>
+				<div class="h-24 w-24 bg-sky-500" />
+				<h1 class="text-3xl capitalize">
+					{data.details.name}
+				</h1>
 
-					<div class="flex gap-2">
-						{#each Object.keys(data.details.socials) as site}
-							<!-- {site} -->
+				<div class="flex gap-2">
+					{#each Object.keys(data.details.socials) as site}
+						<!-- {site} -->
 
-							{#if data.details.socials[site]}
-								{#if site == 'github'}
-									<a href={`https://github.com/${data.details.socials[site]}`} target="_blank"
-										><Fa icon={faGithub} /></a
-									>
-								{/if}
-								{#if site == 'twitter'}
-									<a href={`https://twitter.com/${data.details.socials[site]}`} target="_blank"
-										><Fa icon={faTwitter} /></a
-									>
-								{/if}
-								{#if site == 'instagram'}
-									<a href={`https://instagram.com/${data.details.socials[site]}`} target="_blank"
-										><Fa icon={faInstagram} /></a
-									>
-								{/if}
+						{#if data.details.socials[site]}
+							{#if site == 'github'}
+								<a href={`https://github.com/${data.details.socials[site]}`} target="_blank"
+									><Fa icon={faGithub} /></a
+								>
 							{/if}
-						{/each}
+							{#if site == 'twitter'}
+								<a href={`https://twitter.com/${data.details.socials[site]}`} target="_blank"
+									><Fa icon={faTwitter} /></a
+								>
+							{/if}
+							{#if site == 'instagram'}
+								<a href={`https://instagram.com/${data.details.socials[site]}`} target="_blank"
+									><Fa icon={faInstagram} /></a
+								>
+							{/if}
+						{/if}
+					{/each}
+				</div>
+			</div>
+
+			<div id="collections" class="w-full">
+				<div class="h-full">
+					<h2 class="text-2xl">Collections</h2>
+					<div class="h-full w-full">
+						<p class="text-3xl">Apologies, In Progess 😋.....</p>
+						<Collection data={{ supabase: data.supabase, user_id: data.details.user_id }} />
 					</div>
 				</div>
+			</div>
+			<!-- {JSON.stringify(data.details.socials)} -->
 
-				<div id="collections" class="w-full">
-					<div class="h-full">
-						<h2 class="text-2xl">Collections</h2>
-						<div class="h-full w-full">
-							<p class="text-3xl">Apologies, In Progess 😋.....</p>
-							<Collection data={{ supabase: data.supabase, user_id: data.details.user_id }} />
-						</div>
-					</div>
-				</div>
-				<!-- {JSON.stringify(data.details.socials)} -->
-
-				<!-- {#key data.details.socials} 
+			<!-- {#key data.details.socials} 
 					{}
 				{/key} -->
-			</main>
-		</NavWrapper>
-	{:else}
-		<div class=" h-screen flex items-center justify-center flex-col">
-			<h1 class="text-3xl">User not found</h1>
-			<a class="bg-sky-300 rounded-md py-1 px-3" href="/dashboard">Home</a>
-		</div>
-	{/if}
+		</main>
+	</NavWrapper>
 </article>
 
 <style>

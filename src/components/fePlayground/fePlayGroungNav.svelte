@@ -17,7 +17,7 @@
 		<li class="w-full">
 			<div class="flex flex-col w-full">
 				<div class="flex items-center gap-2">
-					<a href="/html-playground">
+					<a href="/play">
 						<img src={logo} class="h-6 w-6" alt="snippetsLand" />
 					</a>
 

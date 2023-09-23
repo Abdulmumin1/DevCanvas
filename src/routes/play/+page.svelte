@@ -145,9 +145,9 @@
 	</article>
 	<div class="flex items-center justify-center min-h-screen flex-col gap-2">
 		<main class=" min-h-screen flex py-3 md:py-6 w-full justify-center">
-			<div class="w-full px-4 max-w-4xl">
+			<div class="w-full px-4">
 				<div>
-					<p class="text-lg md:text-xl font-bold py-6">Recent Collections</p>
+					<p class="text-lg md:text-xl font-bold py-6">Popular Collections</p>
 				</div>
 				{#await loadIntialData()}
 					<CollectionDummy />
