@@ -53,7 +53,7 @@
 
 <FePlayGroungNav />
 <article class="min-h-screen h-screen flex flex-col">
-	<div class="relative flex h-full flex-col lg:flex-row">
+	<div class="relative flex h-full">
 		<Resizable>
 			<div slot="left" class="w-full h-full">
 				<FeCodeEditor initialHTML={data.details.html} initialCSS={data.details.css} lang="html" />
