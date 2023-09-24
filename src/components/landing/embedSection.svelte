@@ -1,7 +1,7 @@
 <script>
 	import embed_gif from '$lib/embed_files/playground.gif';
 	import embed_gif_dark from '$lib/embed_files/playground_dark.gif';
-
+	import { page } from '$app/stores';
 	import { darkModeState } from '$lib/index.js';
 	let c = `
 <iframe
@@ -24,13 +24,13 @@
 		<div class="flex flex-col h-full w-full gap-4 md:gap-6">
 			<iframe
 				title="embed"
-				src="http://localhost:5173/play/aDDzMU/embed"
+				src="{$page.url.origin}/play/aDDzMU/embed"
 				frameborder="0"
 				class="w-full rounded h-full"
 			/>
 			<iframe
 				title="embed"
-				src="http://localhost:5173/anonymous/0S6jpq/embed"
+				src="{$page.url.origin}/anonymous/0S6jpq/embed"
 				frameborder="0"
 				class="w-full rounded h-full md:pl-10"
 			/>
