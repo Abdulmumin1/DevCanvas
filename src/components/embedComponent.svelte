@@ -19,7 +19,7 @@
 	const code = details.code;
 </script>
 
-<div class="flex flex-col">
+<div class="flex flex-col h-[100dvh] bg-secondary-dark rounded">
 	<div class="fixed w-full bg-secondary-dark flex items-center justify-between p-2 z-50">
 		<div class="flex flex-col text-light">
 			<a href="https://snippet-bice.vercel.app" class="flex items-center gap-1" target="_blank">
@@ -46,7 +46,7 @@
 			>
 		</div>
 	</div>
-	<div class="mt-12 text-sm">
+	<div class="mt-14 py-4 text-sm">
 		<HighlightAuto {code} let:highlighted>
 			<LineNumbers {highlighted} hideBorder />
 		</HighlightAuto>

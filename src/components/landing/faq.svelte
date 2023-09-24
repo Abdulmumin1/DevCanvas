@@ -17,8 +17,6 @@
 
 				<Accodion title="Is it a language specific platform?" content="Still Building!" />
 
-				<Accodion title="Why not just github instead of SnippetLand?" content="Still Building!" />
-
 				<Accodion title="Is snippetsLand 100% open source?" content="Still Building	" />
 			</ul>
 		</div>
