@@ -93,13 +93,13 @@
 	{/if}
 
 	{#if profile.length > 0}
-		<div class="flex text-[9px] md:text-sm gap-2">
+		<div class="flex text-sm gap-2">
 			<p
 				class="text-sky-400 dark:text-sky-300 outline-none focus:outline-sky-300 p-1 focus:dark:outline-sky-400 rounded-lg"
 				spellcheck="false"
 			>
 				<span>by</span>
-				<a href={`/${profile[0].username}`}>@{profile[0].username}</a>
+				<a class="text-[9px] md:text-sm" href={`/${profile[0].username}`}>@{profile[0].username}</a>
 			</p>
 			<ShowLoginOrforkBanner />
 		</div>
@@ -108,7 +108,7 @@
 			class="text-sky-400 dark:text-sky-300 outline-none focus:outline-sky-300 p-1 focus:dark:outline-sky-400 rounded-lg text-sm"
 			spellcheck="false"
 		>
-			<a href="/play">&larr;backHome</a>
+			<a class="text-[9px] md:text-sm" href="/play">&larr;backHome</a>
 		</p>
 	{/if}
 </div>

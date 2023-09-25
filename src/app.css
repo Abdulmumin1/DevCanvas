@@ -803,6 +803,10 @@ video {
   height: 80vh;
 }
 
+.h-\[90dvh\] {
+  height: 90dvh;
+}
+
 .h-fit {
   height: -moz-fit-content;
   height: fit-content;
@@ -822,6 +826,10 @@ video {
 
 .max-h-\[500px\] {
   max-height: 500px;
+}
+
+.max-h-screen {
+  max-height: 100vh;
 }
 
 .min-h-\[400px\] {
@@ -1784,8 +1792,8 @@ video {
 .splitpanes.my-theme .splitpanes__splitter {
   background-color: #cccccc00;
   position: relative;
-  border-left-width: 8px;
-  border-right-width: 8px;
+  border-left-width: 2px;
+  border-right-width: 2px;
   --tw-border-opacity: 1;
   border-color: rgb(249 250 251 / var(--tw-border-opacity));
 }
@@ -1804,12 +1812,12 @@ video {
   opacity: 0;
   z-index: 1;
   --tw-bg-opacity: 1;
-  background-color: rgb(186 230 253 / var(--tw-bg-opacity));
+  background-color: rgb(25 25 25 / var(--tw-bg-opacity));
 }
 
-/* .splitpanes.my-theme .splitpanes__splitter:hover:before {
-		opacity: 1;
-	} */
+.splitpanes.my-theme .splitpanes__splitter:hover:before {
+  opacity: 1;
+}
 
 .splitpanes.my-theme .splitpanes__splitter.splitpanes__splitter__active {
   z-index: 2;

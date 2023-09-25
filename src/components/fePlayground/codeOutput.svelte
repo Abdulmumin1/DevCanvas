@@ -4,66 +4,28 @@
 
 	export let code;
 	export let css;
-	let documentCode = `
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<linkhref="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.CSS"rel=" stylesheet"/>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-	<style>
-		${css}	
-	</style>
-</head>
-<body>
+	export let js;
 
-	${code}
-</body>
-</html>
-`;
-
-	let sc = '';
-
-	let iframeDoc;
+	let iframe;
 	$: {
 		code = $current_data.html;
 		css = $current_data.css;
-		documentCode = `
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-	<link href="
-https://cdn.jsdelivr.net/npm/tailwindcss@3.3.3/tailwind.min.css
-" rel="stylesheet">
-	<style>
-		/* Hide the vertical scrollbar */
-	::-webkit-scrollbar {
-		width: 0;
-	}
+		js = $current_data.js;
+		if (iframe) {
+			let iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
 
-	/* Hide the horizontal scrollbar */
-	::-webkit-scrollbar {
-		height: 0;
-	}
-		${css}	
-	</style>
-</head>
-<body>
+			const bodyContent = code;
+			iframeDoc.body.innerHTML = bodyContent;
 
-	${code}
-</body>
-</html>
+			// Step 2: Create and append the CSS style
+			const styleElement = iframeDoc.createElement('style');
+			styleElement.textContent = css;
+			iframeDoc.head.appendChild(styleElement);
 
-`;
-
-		if (iframeDoc) {
-			iframeDoc.contentDocument.open();
-			iframeDoc.contentDocument.write(documentCode);
-			iframeDoc.contentDocument.close();
+			// Step 3: Create and append JavaScript code
+			const scriptElement = iframeDoc.createElement('script');
+			scriptElement.textContent = `${js}`;
+			iframeDoc.body.appendChild(scriptElement);
 		}
 
 		// console.log(code);
@@ -73,20 +35,20 @@ https://cdn.jsdelivr.net/npm/tailwindcss@3.3.3/tailwind.min.css
 	// 	html = code;
 	// });
 
-	onMount(() => {
-		// Initialize the iframe with the default HTML code
-		if (iframeDoc) {
-			iframeDoc.contentDocument.open();
-			iframeDoc.contentDocument.write(documentCode);
-			iframeDoc.contentDocument.close();
-		}
-	});
+	// onMount(() => {
+	// 	// Initialize the iframe with the default HTML code
+	// 	if (iframeDoc) {
+	// 		iframeDoc.contentDocument.open();
+	// 		iframeDoc.contentDocument.write(documentCode);
+	// 		iframeDoc.contentDocument.close();
+	// 	}
+	// });
 </script>
 
 <div
 	class="bg-white border-t md:border-l dark:border-primary border-gray-300 w-full h-full text-black dark:text-white"
 >
-	<iframe bind:this={iframeDoc} title="preview" id="preview-frame" class="w-full h-full" />
+	<iframe bind:this={iframe} title="preview" id="preview-frame" class="w-full h-full" />
 </div>
 
 <style>

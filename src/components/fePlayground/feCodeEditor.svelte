@@ -3,14 +3,16 @@
 	import FeCss from './feCSS.svelte';
 	import FeHtml from './feHTML.svelte';
 	import Fa from 'svelte-fa';
-	import { faCss3, faCss3Alt, faHtml5 } from '@fortawesome/free-brands-svg-icons';
+	import { faCss3, faCss3Alt, faHtml5, faJs } from '@fortawesome/free-brands-svg-icons';
 	import { faShekel } from '@fortawesome/free-solid-svg-icons';
 	import { onDestroy, onMount } from 'svelte';
 	import { browser } from '$app/environment';
 	import { layoutView } from '$lib/feEditor/store.js';
+	import { current_data } from '$lib/index.js';
+	import FeJs from './feJS.svelte';
 
-	export let initialHTML;
-	export let initialCSS;
+	let initialHTML = $current_data.html;
+	let initialCSS = $current_data.css;
 
 	let isVertical = false;
 	// if (browser) {
@@ -41,11 +43,13 @@
 	// onDestroy(() => {
 	// 	window.removeEventListener('resize', updateOrientation);
 	// });
+
+	let size = '100%';
 </script>
 
 {#if isVertical}
 	<Splitpanes horizontal={false} theme="my-theme">
-		<Pane snapSize={20}>
+		<Pane snapSize={20} bind:size>
 			<p class="bg-gray-50 dark:bg-black px-3 py-1 flex gap-1 items-center">
 				<span class="text-rose-500"><Fa icon={faShekel} /></span>HTML
 			</p>
@@ -56,6 +60,12 @@
 				<span class="text-blue-500"><Fa icon={faCss3} /></span>CSS
 			</p>
 			<FeCss {initialCSS} />
+		</Pane>
+		<Pane snapSize={10}>
+			<p class="bg-gray-50 dark:bg-black px-3 py-1 flex gap-1 items-center">
+				<span class="text-blue-500"><Fa icon={faJs} /></span>js
+			</p>
+			<FeJs />
 		</Pane>
 	</Splitpanes>
 {:else if $layoutView == 'top'}
@@ -72,6 +82,12 @@
 			</p>
 			<FeCss {initialCSS} />
 		</Pane>
+		<Pane snapSize={10}>
+			<p class="bg-gray-50 dark:bg-black px-3 py-1 flex gap-1 items-center">
+				<span class="text-blue-500"><Fa icon={faJs} /></span>js
+			</p>
+			<FeJs />
+		</Pane>
 	</Splitpanes>
 {:else}
 	<Splitpanes horizontal theme="my-theme">
@@ -86,6 +102,12 @@
 				<span class="text-blue-500"><Fa icon={faCss3} /></span>CSS
 			</p>
 			<FeCss {initialCSS} />
+		</Pane>
+		<Pane snapSize={10}>
+			<p class="bg-gray-50 dark:bg-black px-3 py-1 flex gap-1 items-center">
+				<span class="text-blue-500"><Fa icon={faJs} /></span>js
+			</p>
+			<FeJs />
 		</Pane>
 	</Splitpanes>
 {/if}
