@@ -31,7 +31,7 @@
 	// console.log('isvertialcs');
 </script>
 
-<div class="h-[90dvh]">
+<div class="h-full">
 	{#if isVertical}
 		<Splitpanes horizontal={true} theme="my-theme">
 			<Pane snapSize={20}>
