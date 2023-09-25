@@ -803,10 +803,6 @@ video {
   height: 80vh;
 }
 
-.h-\[90dvh\] {
-  height: 90dvh;
-}
-
 .h-fit {
   height: -moz-fit-content;
   height: fit-content;
@@ -826,10 +822,6 @@ video {
 
 .max-h-\[500px\] {
   max-height: 500px;
-}
-
-.max-h-screen {
-  max-height: 100vh;
 }
 
 .min-h-\[400px\] {
@@ -970,6 +962,18 @@ video {
 .scale-90 {
   --tw-scale-x: .9;
   --tw-scale-y: .9;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.scale-50 {
+  --tw-scale-x: .5;
+  --tw-scale-y: .5;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.scale-0 {
+  --tw-scale-x: 0;
+  --tw-scale-y: 0;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
@@ -1681,6 +1685,11 @@ video {
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
+.text-yellow-500 {
+  --tw-text-opacity: 1;
+  color: rgb(234 179 8 / var(--tw-text-opacity));
+}
+
 .underline {
   text-decoration-line: underline;
 }
@@ -1786,21 +1795,17 @@ video {
 
 .splitpanes.my-theme .splitpanes__pane {
   --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+
+:is(.dark .splitpanes.my-theme .splitpanes__pane) {
+  --tw-bg-opacity: 1;
   background-color: rgb(0 0 0 / var(--tw-bg-opacity));
 }
 
 .splitpanes.my-theme .splitpanes__splitter {
   background-color: #cccccc00;
   position: relative;
-  border-left-width: 2px;
-  border-right-width: 2px;
-  --tw-border-opacity: 1;
-  border-color: rgb(249 250 251 / var(--tw-border-opacity));
-}
-
-:is(.dark .splitpanes.my-theme .splitpanes__splitter) {
-  --tw-border-opacity: 1;
-  border-color: rgb(0 0 0 / var(--tw-border-opacity));
 }
 
 .splitpanes.my-theme .splitpanes__splitter:before {

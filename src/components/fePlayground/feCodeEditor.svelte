@@ -98,7 +98,7 @@
 				}}
 				class:bg-secondary-dark={showJs}
 			>
-				<span class="text-blue-500"><Fa icon={faJs} /></span>JS
+				<span class="text-yellow-500"><Fa icon={faJs} /></span>JS
 			</button>
 		</div>
 		<Splitpanes horizontal={false} theme="my-theme">
@@ -122,43 +122,55 @@
 	{:else if $layoutView == 'top'}
 		<Splitpanes horizontal={false} theme="my-theme">
 			<Pane snapSize={20}>
-				<p class="bg-gray-50 dark:bg-black px-3 py-1 flex gap-1 items-center">
-					<span class="text-rose-500"><Fa icon={faHtml5} /></span>HTML
-				</p>
-				<FeHtml {initialHTML} />
+				<div class="w-full h-full">
+					<p class="bg-gray-50 dark:bg-black px-3 py-1 flex gap-1 items-center">
+						<span class="text-rose-500"><Fa icon={faHtml5} /></span>HTML
+					</p>
+					<FeHtml {initialHTML} />
+				</div>
 			</Pane>
 			<Pane snapSize={10}>
-				<p class="bg-gray-50 dark:bg-black px-3 py-1 flex gap-1 items-center">
-					<span class="text-blue-500"><Fa icon={faCss3} /></span>CSS
-				</p>
-				<FeCss {initialCSS} />
+				<div class="h-full w-full">
+					<p class="bg-gray-50 dark:bg-black px-3 py-1 flex gap-1 items-center">
+						<span class="text-blue-500"><Fa icon={faCss3} /></span>CSS
+					</p>
+					<FeCss {initialCSS} />
+				</div>
 			</Pane>
 			<Pane snapSize={10}>
-				<p class="bg-gray-50 dark:bg-black px-3 py-1 flex gap-2 items-center">
-					<span class="text-yellow-500"><Fa icon={faJs} /></span>JS
-				</p>
-				<FeJs />
+				<div class="h-full w-full">
+					<p class="bg-gray-50 dark:bg-black px-3 py-1 flex gap-2 items-center">
+						<span class="text-yellow-500"><Fa icon={faJs} /></span>JS
+					</p>
+					<FeJs />
+				</div>
 			</Pane>
 		</Splitpanes>
 	{:else}
 		<Splitpanes horizontal theme="my-theme">
 			<Pane snapSize={20}>
-				<p class="bg-gray-50 dark:bg-black px-3 py-1 flex gap-1 items-center">
-					<span class="text-rose-500"><Fa icon={faHtml5} /></span>HTML
-				</p>
-				<FeHtml {initialHTML} />
+				<div class="h-full w-full">
+					<p class="bg-gray-50 dark:bg-black px-3 py-1 flex gap-1 items-center">
+						<span class="text-rose-500"><Fa icon={faHtml5} /></span>HTML
+					</p>
+					<FeHtml {initialHTML} />
+				</div>
 			</Pane>
 			<Pane snapSize={10}>
-				<p class="bg-gray-50 dark:bg-black px-3 py-1 flex gap-1 items-center">
-					<span class="text-yellow-500"><Fa icon={faCss3} /></span>CSS
-				</p>
-				<FeCss {initialCSS} />
+				<div class="h-full w-full">
+					<p class="bg-gray-50 dark:bg-black px-3 py-1 flex gap-1 items-center">
+						<span class="text-blue-500"><Fa icon={faCss3} /></span>CSS
+					</p>
+					<FeCss {initialCSS} />
+				</div>
 			</Pane>
 			<Pane snapSize={10}>
-				<p class="bg-gray-50 dark:bg-black px-3 py-1 flex gap-2 items-center">
-					<span class="text-blue-500"><Fa icon={faJs} /></span>JS
-				</p>
-				<FeJs />
+				<div class="h-full w-full">
+					<p class="bg-gray-50 dark:bg-black px-3 py-1 flex gap-2 items-center">
+						<span class="text-yellow-500"><Fa icon={faJs} /></span>JS
+					</p>
+					<FeJs />
+				</div>
 			</Pane>
 		</Splitpanes>
 	{/if}

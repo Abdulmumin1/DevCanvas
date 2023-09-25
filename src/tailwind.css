@@ -4,13 +4,12 @@
 
 @layer utilities {
 	.splitpanes.my-theme .splitpanes__pane {
-		@apply bg-black;
+		@apply bg-white dark:bg-black;
 	}
 
 	.splitpanes.my-theme .splitpanes__splitter {
 		background-color: #cccccc00;
 		position: relative;
-		@apply border-x-2 border-gray-50 dark:border-black;
 	}
 
 	.splitpanes.my-theme .splitpanes__splitter:before {
