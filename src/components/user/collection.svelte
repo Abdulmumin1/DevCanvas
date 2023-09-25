@@ -75,7 +75,7 @@
 	</div>
 </div> -->
 
-<div class="max-w-4xl w-full">
+<div class=" w-full">
 	<!-- Code Snippet Cards -->
 	<div class="bg-sky-100 dark:bg-secondary-dark pt-2 px-1 rounded-md my-4">
 		<div class="w-full flex gap-2 text-primary dark:text-white text-xl md:text-2xl">
