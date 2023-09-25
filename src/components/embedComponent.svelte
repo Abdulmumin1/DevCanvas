@@ -46,7 +46,7 @@
 			>
 		</div>
 	</div>
-	<div class="mt-14 py-4 text-sm">
+	<div class="mt-14 py-4 text-sm md:text-base">
 		<HighlightAuto {code} let:highlighted>
 			<LineNumbers {highlighted} hideBorder />
 		</HighlightAuto>

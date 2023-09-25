@@ -9,13 +9,11 @@
 />`;
 </script>
 
-<div class="h-[100dvh] mb-8 flex p-7 py-9 justify-center items-center">
-	<div
-		class="w-full flex flex-col md:flex-row gap-6 justify-between items-center h-full max-w-[90vw]"
-	>
-		<div class="flex justify-center flex-col w-full md:w-[400px]">
-			<h2 class="text-6xl text-black font-semibold mb-2 dark:text-sky-400">
-				Embed With Just <span class="text-green-500">iframe</span>
+<div class=" mb-8 flex p-7 py-9 justify-center items-center">
+	<div class="w-full flex flex-col gap-6 justify-between items-center h-full max-w-[90vw]">
+		<div class="flex justify-center flex-col w-full">
+			<h2 class="text-5xl md:text-6xl text-black font-semibold mb-2 dark:text-sky-400">
+				Embed With <span class="text-green-500">iframe</span>
 			</h2>
 			<!-- <pre class="text-[9px] md:text-sm bg-secondary-dark rounded-xl px-4 text-white">
 				<code>{c}</code>
@@ -26,13 +24,13 @@
 				title="embed"
 				src="{$page.url.origin}/play/aDDzMU/embed"
 				frameborder="0"
-				class="w-full rounded h-full"
+				class="w-[] rounded h-[600px]"
 			/>
 			<iframe
 				title="embed"
 				src="{$page.url.origin}/anonymous/0S6jpq/embed"
 				frameborder="0"
-				class="w-full rounded h-full md:pl-10"
+				class="w-full rounded h-[400px] md:pl-10"
 			/>
 		</div>
 	</div>

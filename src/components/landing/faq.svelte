@@ -13,11 +13,20 @@
 			</p>
 
 			<ul class=" flex gap-6 flex-col">
-				<Accodion title="Can the editor execute code?" content="Still Building!" />
+				<Accodion
+					title="Can the editor execute code?"
+					content="SnippetLand Interactive frontend Playground can show preview of code almost instantanoeusly, but for snippets in other languages, you can't execute the code directly from our online editor. It is only for sharing beautifully"
+				/>
 
-				<Accodion title="Is it a language specific platform?" content="Still Building!" />
+				<Accodion
+					title="Is it a language specific platform?"
+					content="SnippetLand support 50+ Languages, so there is hope that whatever you're are sharing has a powerfull autocompletion and beautiful syntax highlighting"
+				/>
 
-				<Accodion title="Is snippetsLand 100% open source?" content="Still Building	" />
+				<Accodion
+					title="Is snippetsLand 100% open source?"
+					content="Yes, SnippetLand entire code is available for public review, suggestions and modification	"
+				/>
 			</ul>
 		</div>
 	</div>

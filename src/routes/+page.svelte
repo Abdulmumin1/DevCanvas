@@ -14,6 +14,8 @@
 	import Idea from '../components/landing/idea.svelte';
 	import Faq from '../components/landing/faq.svelte';
 	import EmbedSection from '../components/landing/embedSection.svelte';
+	import Forcreators from '../components/landing/forcreators.svelte';
+	import Forcreatives from '../components/landing/forcreatives.svelte';
 </script>
 
 <svelte:head>
@@ -37,7 +39,8 @@
 		<div class="w-full">
 			<!-- Add your features or benefits here -->
 
-			<Explore />
+			<Forcreators />
+			<Forcreatives />
 			<Discover />
 			<LanguageSupport />
 			<EmbedSection />

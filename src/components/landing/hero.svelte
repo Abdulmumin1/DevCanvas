@@ -29,7 +29,7 @@
 </script>
 
 <div
-	style="height: 70dvh; "
+	style="height: 80dvh; "
 	class="flex px-8 py-12 flex-col gap-4 items-center text-center w-full border-primary justify-center"
 >
 	<p>
@@ -40,7 +40,7 @@
 			Star us on github <Fa icon={faStar} />
 		</a>
 	</p>
-	<h1 class="text-4xl md:text-5xl font-bold max-w-lg">
+	<h1 class="text-4xl md:text-6xl font-bold max-w-[35rem]">
 		Share Your <span class="magic">
 			<span class="magic-star">
 				<svg viewBox="0 0 512 512">
@@ -67,9 +67,8 @@
 		</span> with the World!
 	</h1>
 	<p class="text-xl text-primary dark:text-gray-100 max-w-lg mx-1">
-		The platform for effortlessly sharing, collaborating, and discovering code snippets. <span
-			class="text-green-500 dark:text-green-700">share</span
-		>,
+		The platform for effortlessly sharing, collaborating, and discovering code snippets and stunnig
+		frontend codes. <span class="text-green-500 dark:text-green-700">share</span>,
 		<span class="text-orange-400 dark:text-orange-800">learn</span>, and
 		<span class="bg-sky-300 text-primary">build together</span>.
 	</p>
