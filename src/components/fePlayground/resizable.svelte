@@ -31,40 +31,42 @@
 	// console.log('isvertialcs');
 </script>
 
-{#if isVertical}
-	<Splitpanes horizontal={true} theme="my-theme">
-		<Pane snapSize={20}>
-			<slot name="left" />
-		</Pane>
-		<Pane snapSize={20}>
-			<slot name="right" />
-		</Pane>
-	</Splitpanes>
-{:else if $layoutView == 'left'}
-	<Splitpanes horizontal={false} theme="my-theme">
-		<Pane snapSize={20}>
-			<slot name="left" />
-		</Pane>
-		<Pane snapSize={20}>
-			<slot name="right" />
-		</Pane>
-	</Splitpanes>
-{:else if $layoutView == 'top'}
-	<Splitpanes horizontal={true} theme="my-theme">
-		<Pane snapSize={20}>
-			<slot name="left" />
-		</Pane>
-		<Pane snapSize={20}>
-			<slot name="right" />
-		</Pane>
-	</Splitpanes>
-{:else if $layoutView == 'right'}
-	<Splitpanes horizontal={false} theme="my-theme">
-		<Pane snapSize={20}>
-			<slot name="right" />
-		</Pane>
-		<Pane snapSize={20}>
-			<slot name="left" />
-		</Pane>
-	</Splitpanes>
-{/if}
+<div class="h-[90dvh]">
+	{#if isVertical}
+		<Splitpanes horizontal={true} theme="my-theme">
+			<Pane snapSize={20}>
+				<slot name="left" />
+			</Pane>
+			<Pane snapSize={20}>
+				<slot name="right" />
+			</Pane>
+		</Splitpanes>
+	{:else if $layoutView == 'left'}
+		<Splitpanes horizontal={false} theme="my-theme">
+			<Pane snapSize={20}>
+				<slot name="left" />
+			</Pane>
+			<Pane snapSize={20}>
+				<slot name="right" />
+			</Pane>
+		</Splitpanes>
+	{:else if $layoutView == 'top'}
+		<Splitpanes horizontal={true} theme="my-theme">
+			<Pane snapSize={20}>
+				<slot name="left" />
+			</Pane>
+			<Pane snapSize={20}>
+				<slot name="right" />
+			</Pane>
+		</Splitpanes>
+	{:else if $layoutView == 'right'}
+		<Splitpanes horizontal={false} theme="my-theme">
+			<Pane snapSize={20}>
+				<slot name="right" />
+			</Pane>
+			<Pane snapSize={20}>
+				<slot name="left" />
+			</Pane>
+		</Splitpanes>
+	{/if}
+</div>
