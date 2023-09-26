@@ -21,13 +21,13 @@ Snippets is an open-source platform for sharing code snippets. It provides a sim
 
 <td align="Center" width="30%">
 
-<a href="https://www.typescriptlang.org/" target="_blank" rel="noreferrer"><img src="https://cf.appdrag.com/dashboard-openvm-clo-b2d42c/uploads/supabase-TAiY.png" width="36" height="36" alt="Supabase" /></a>
+<a href="https://supabase.com/" target="_blank" rel="noreferrer"><img src="https://cf.appdrag.com/dashboard-openvm-clo-b2d42c/uploads/supabase-TAiY.png" width="36" height="36" alt="Supabase" /></a>
 <br>Supabase
 
 </td>
 <td align="Center" width="30%">
 
-<a href="https://www.typescriptlang.org/" target="_blank" rel="noreferrer"><img src="https://img.icons8.com/color/144/000000/tailwindcss.png" width="36" height="36" alt="TailWind" /></a>
+<a href="https://tailwindcss.com/" target="_blank" rel="noreferrer"><img src="https://img.icons8.com/color/144/000000/tailwindcss.png" width="36" height="36" alt="TailWind" /></a>
 <br>Tailwind CSS
 
 </td>
@@ -40,7 +40,7 @@ Snippets is an open-source platform for sharing code snippets. It provides a sim
 ## Table of Contents
 
 - [Features](#features)
-- [Installation](<#installation-'(locally)'>)
+- [Installation](#installation-locally)
 - [Usage](#usage)
 - [Collaborative Code Editor](#collaborative-code-editor)
 - [Contributing](#contributing)
@@ -57,7 +57,7 @@ Snippets is an open-source platform for sharing code snippets. It provides a sim
 
 ## Installation (Locally)
 
-1. Clone the repository: `git clone https://github.com/your-username/Snippets.git`
+1. Clone the repository: `git clone https://github.com/Abdulmumin1/Snippets.git`
 2. Navigate to the project directory: `cd Snippets`
 3. Install dependencies: `npm install` or `yarn install`
 
