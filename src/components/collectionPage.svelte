@@ -15,6 +15,7 @@
 	export let rawcollection;
 	export let dashboard = false;
 	export let user_id = false;
+	export let query = false;
 
 	let collection = rawcollection;
 	let loading = false;
@@ -62,6 +63,21 @@
 		return data;
 	}
 
+	async function fetchSearchRows(pageNumber, pageSize) {
+		const { data, error } = await supabase
+			.from('snips')
+			.select('*')
+			.ilike('description', `%${query}%`)
+			.order('created_at', { ascending: false }) // Optional: Ordering the results
+			.range(pageNumber, pageSize);
+
+		if (error) {
+			console.error('Error fetching data:', error.message);
+			return;
+		}
+		return data;
+	}
+
 	async function fetchPaginatedRows(pageNumber, pageSize) {
 		loading = true;
 		const off = (pageNumber - 1) * pageSize;
@@ -69,6 +85,8 @@
 			return fetchDashboard(pageNumber, pageSize);
 		} else if (user_id) {
 			return fetchUserCollection(pageNumber, pageSize);
+		} else if (query) {
+			return fetchSearchRows(pageNumber, pageSize);
 		} else {
 			return fetchExplore(pageNumber, pageSize);
 		}
@@ -141,42 +159,49 @@
 	{@html github}
 </svelte:head>
 {/if} -->
-<div class="flex flex-col gap-6 items-center" transition:fade>
-	<div class="gap-6 flex flex-col w-full bg-white dark:bg-secondary-dark">
-		<div class="grid gap-6 rounded-lg w-full">
-			{#each collection as snippet}
-				<div class="bg-white dark:bg-secondary-dark rounded-lg p-2 md:p-4">
-					<h3 class="text-sm px-3 py-2 my-4 bg-[#0d1117] w-fit rounded-lg text-light cool">
-						{snippet.lang}
-					</h3>
 
-					<div class="bg-gray-100 dark:bg-primary flex md:hidden p-2 rounded-lg">
-						{snippet.code.slice(0, 200)}
-					</div>
-					<div class="bg-[#0d1117] w-full hidden md:flex rounded-lg">
-						<HighlightAuto code={snippet.code.slice(0, 200) + '....'} let:highlighted>
-							<LineNumbers {highlighted} hideBorder />
-						</HighlightAuto>
-					</div>
-				</div>
+{#if collection.length > 0}
+	<div class="flex flex-col gap-6 items-center" transition:fade>
+		<div class="gap-6 flex flex-col w-full bg-white dark:bg-secondary-dark">
+			<div class="grid gap-6 rounded-lg w-full">
+				{#each collection as snippet}
+					<div class="bg-white dark:bg-secondary-dark rounded-lg p-2 md:p-4">
+						<h3 class="text-sm px-3 py-2 my-4 bg-[#0d1117] w-fit rounded-lg text-light cool">
+							{snippet.lang}
+						</h3>
 
-				<RecentCard card={snippet} editIcons={dashboard} />
-			{/each}
-		</div>
-	</div>
-	{#if showMore}
-		<button
-			class="bg-gray-300 dark:bg-secondary-dark shadow rounded-lg py-2 px-4 flex justify-center items-center gap-2 w-fit"
-			id="more"
-			on:click={more}
-		>
-			<div class:animate-spin={loading} class:hidden={!loading}>
-				<Fa icon={faSpinner} />
+						<div class="bg-gray-100 dark:bg-primary flex md:hidden p-2 rounded-lg">
+							{snippet.code.slice(0, 200)}
+						</div>
+						<div class="bg-[#0d1117] w-full hidden md:flex rounded-lg">
+							<HighlightAuto code={snippet.code.slice(0, 200) + '....'} let:highlighted>
+								<LineNumbers {highlighted} hideBorder />
+							</HighlightAuto>
+						</div>
+					</div>
+
+					<RecentCard card={snippet} editIcons={dashboard} />
+				{/each}
 			</div>
-			Load more...</button
-		>
-	{/if}
-</div>
+		</div>
+		{#if showMore}
+			<button
+				class="active:scale-75 transition-transform duration-300 bg-gray-300 dark:bg-secondary-dark shadow rounded-lg py-2 px-4 flex justify-center items-center gap-2 w-fit"
+				id="more"
+				on:click={more}
+			>
+				<div class:animate-spin={loading} class:hidden={!loading}>
+					<Fa icon={faSpinner} />
+				</div>
+				Load more...</button
+			>
+		{/if}
+	</div>
+{:else}
+	<div class="flex justify-center pt-12 h-full w-full">
+		<p class="text-gray-400 text-6xl">Nothing to Show</p>
+	</div>
+{/if}
 
 <style>
 	.cool {

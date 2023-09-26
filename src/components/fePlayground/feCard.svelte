@@ -24,12 +24,14 @@
 		title="fs"
 		height="200"
 		frameborder="0"
+		loading="lazy"
+		scrolling="no"
 		class="w-full overflow-hidden rounded-xl"
 	/>
 	<!-- {#if !capturedImageUrl}
 	{/if} -->
 
-	<div class="flex flex-col p-2 items-start">
+	<div class="flex flex-col p-2 items-start text-base">
 		<a href="/play/{details.project_key}" class="text-xl font-semibold hover:opacity-80"
 			>{details.description}
 		</a>

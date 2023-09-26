@@ -51,9 +51,9 @@
 	<!-- HTML Meta Tags -->
 </svelte:head>
 
-<main class="h-screen flex flex-col">
+<div class="h-screen flex flex-col">
 	<FePlayGroungNav />
-	<div class="h-full w-full">
+	<div class="h-full w-full overflow-hidden">
 		<Resizable>
 			<div slot="left" class="h-full w-full">
 				<FeCodeEditor initialHTML={data.details.html} initialCSS={data.details.css} lang="html" />
@@ -63,4 +63,4 @@
 			</div>
 		</Resizable>
 	</div>
-</main>
+</div>
