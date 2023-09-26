@@ -13,6 +13,7 @@
 
 	let initialHTML = $current_data.html;
 	let initialCSS = $current_data.css;
+	let initialJs = $current_data.js;
 
 	let isVertical = false;
 	// if (browser) {
@@ -169,7 +170,7 @@
 					<p class="bg-gray-50 dark:bg-black px-3 py-1 flex gap-2 items-center">
 						<span class="text-yellow-500"><Fa icon={faJs} /></span>JS
 					</p>
-					<FeJs />
+					<FeJs {initialJs} />
 				</div>
 			</Pane>
 		</Splitpanes>

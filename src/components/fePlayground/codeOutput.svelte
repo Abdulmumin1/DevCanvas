@@ -27,7 +27,7 @@
 
 			// Step 3: Create and append JavaScript code
 			const scriptElement = iframeDoc.createElement('script');
-			scriptElement.textContent = `${js}`;
+			scriptElement.textContent = `try{${js}}catch(err){console.log(err)}`;
 			iframeDoc.body.appendChild(scriptElement);
 		}
 
