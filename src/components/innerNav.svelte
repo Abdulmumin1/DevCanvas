@@ -23,11 +23,7 @@
 	</a>
 	🚀
 </div>
-<div
-	class="h-[12vh] p-3 w-full bg-inherit"
-	class:border-b={$page.url.pathname == '/'}
-	class:border-primary={$page.url.pathname == '/'}
->
+<div class="h-[12vh] p-3 w-full bg-inherit">
 	<ul class="hidden md:flex w-full justify-between items-center">
 		<li
 			class="text-base md:text-lg py-2 px-3 gap-3 text-light bg-secondary-dark flex items-center justify-center rounded-3xl"

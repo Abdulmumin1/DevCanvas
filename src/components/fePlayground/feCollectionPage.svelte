@@ -11,6 +11,7 @@
 	export let collection;
 	export let dashboard = false;
 	export let user_id = false;
+	export let query = false;
 
 	let loading = false;
 	async function fetchExplore(pageNumber, pageSize) {
@@ -56,6 +57,20 @@
 		return data;
 	}
 
+	async function fetchSearchRows(pageNumber, pageSize) {
+		const { data, error } = await supabase
+			.from('htmlPlayground')
+			.select('project_key, user_id, description, view (views)')
+			.ilike('description', `%${query}%`)
+			.order('created_at', { ascending: false }) // Optional: Ordering the results
+			.range(pageNumber, pageSize);
+
+		if (error) {
+			console.error('Error fetching data:', error.message);
+			return;
+		}
+		return data;
+	}
 	async function fetchPaginatedRows(pageNumber, pageSize) {
 		loading = true;
 		const off = (pageNumber - 1) * pageSize;
@@ -63,6 +78,8 @@
 			return fetchDashboard(pageNumber, pageSize);
 		} else if (user_id) {
 			return fetchUserCollection(pageNumber, pageSize);
+		} else if (query) {
+			return fetchSearchRows(pageNumber, pageSize);
 		} else {
 			return fetchExplore(pageNumber, pageSize);
 		}
@@ -128,29 +145,35 @@
 	});
 </script>
 
-<div class="flex flex-col gap-6 items-center" transition:fade>
-	<div class="gap-6 flex flex-col w-full">
-		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 rounded-lg w-full">
-			{#each collection as snippet}
-				<!-- <div class="bg-white rounded-lg p-4 shadow-md">
+{#if collection.length > 0}
+	<div class="flex flex-col gap-6 items-center" transition:fade>
+		<div class="gap-6 flex flex-col w-full">
+			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 rounded-lg w-full">
+				{#each collection as snippet}
+					<!-- <div class="bg-white rounded-lg p-4 shadow-md">
 					<h3 class="text-xl font-semibold mb-2">{snippet.lang}</h3>
 					<code class="block bg-gray-100 p-2 rounded-lg shadow-inner">{snippet.code}</code>
 					Add any additional information or actions here
 				</div> -->
-				<FeCard details={snippet} />
-			{/each}
-		</div>
-	</div>
-	{#if showMore}
-		<button
-			class="bg-gray-300 dark:bg-secondary-dark shadow rounded-lg py-2 px-4 flex justify-center items-center gap-2 w-fit"
-			id="more"
-			on:click={more}
-		>
-			<div class:animate-spin={loading} class:hidden={!loading}>
-				<Fa icon={faSpinner} />
+					<FeCard details={snippet} />
+				{/each}
 			</div>
-			Load more...</button
-		>
-	{/if}
-</div>
+		</div>
+		{#if showMore}
+			<button
+				class="active:scale-75 transition-transform duration-300 bg-gray-300 dark:bg-secondary-dark shadow rounded-lg py-2 px-4 flex justify-center items-center gap-2 w-fit"
+				id="more"
+				on:click={more}
+			>
+				<div class:animate-spin={loading} class:hidden={!loading}>
+					<Fa icon={faSpinner} />
+				</div>
+				Load more...</button
+			>
+		{/if}
+	</div>
+{:else}
+	<div class="flex justify-center pt-12 h-full w-full">
+		<p class="text-gray-400 text-6xl">Nothing to Show</p>
+	</div>
+{/if}

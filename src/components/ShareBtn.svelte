@@ -16,8 +16,7 @@
 		copyToClipboard(fullUrl);
 		setTimeout(() => {
 			isClicked = false;
-			event.target.disabled = false;
-		}, 200);
+		}, 3000);
 	}
 
 	async function copyToClipboard(text) {
@@ -31,9 +30,9 @@
 </script>
 
 <button
-	class=" p-1 rounded cursor-pointer flex items-center justify-center gap-2 text-primary bg-sky-300 px-3 py-2"
+	class="active:scale-75 transition-transform duration-300 p-1 rounded cursor-pointer flex items-center justify-center gap-2 text-primary bg-sky-300 px-3 py-2"
 	on:click={shareCode}
-	class:scale-90={isClicked}
+	aria-busy={isClicked}
 >
 	<!-- {#if isClicked} -->
 	<div transition:slide class:scale-110={isClicked} class="transition-all duration-300">

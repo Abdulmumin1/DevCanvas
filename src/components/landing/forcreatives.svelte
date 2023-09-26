@@ -3,13 +3,13 @@
 	import Fa from 'svelte-fa';
 </script>
 
-<div class="flex items-center justify-center gap-2">
+<div class="flex items-center justify-center gap-2 w-full">
 	<div class=" h-full w-full flex items-center justify-center gap-12 flex-col">
 		<p class="text-4xl md:text-6xl py-12">🎨 𝓯𝓸𝓻 𝒸𝓇𝑒𝓪𝓽𝓲𝓿𝓮𝓼</p>
 
-		<div class="flex items-center justify-between w-[60rem] flex-col md:flex-row">
+		<div class="flex items-center justify-between w-full md:w-[60rem] flex-col md:flex-row">
 			<div class=" p-10 relative">
-				<span class="absolute top-[-25px] text-white bg-secondary-dark p-3 text-lg z-50">
+				<span class="absolute top-[-40px] rounded-md text-white bg-secondary-dark p-3 text-lg z-50">
 					Coffee Machine and it Animation
 					<a href="https://snippet-bice.vercel.app/play/y0wEhu" class="text-sky-500"
 						>https://snippetland.io/play/y0wEhu</a
@@ -36,8 +36,8 @@
 				</div>
 			</div>
 
-			<div class="bg-black p-10 relative">
-				<span class="absolute top-[-20px] text-white bg-secondary-dark p-3 text-xl">
+			<div class="bg-black p-10 relative w-fit">
+				<span class="absolute top-[-20px] rounded-md text-white bg-secondary-dark p-3 text-xl">
 					Moon animation with just HTML and CSS<br />
 					<a href="https://snippet-bice.vercel.app/play/aDDzMU" class="text-sky-500"
 						>https://snippetland.io/play/aDDzMU</a

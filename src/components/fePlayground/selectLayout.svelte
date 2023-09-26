@@ -20,12 +20,12 @@
 
 <div class="relative">
 	<div class="">
-		<div
-			class="dropdown-header p-2 bg-gray-200 text-primary rounded cursor-pointer"
+		<button
+			class="active:scale-75 transition-transform duration-300 p-2 bg-gray-200 text-primary rounded cursor-pointer"
 			on:click={toggleDropdown}
 		>
 			<Fa icon={faLayerGroup} />
-		</div>
+		</button>
 
 		{#if isOpen}
 			<div
@@ -39,6 +39,7 @@
 				<div class="flex gap-2 bg-secondary-dark round">
 					<button
 						class="py-2 px-4 hover:bg-primary cursor-pointer text-white"
+						class:bg-primary={$layoutView == 'left'}
 						on:click={() => {
 							layoutView.set('left');
 						}}
@@ -56,6 +57,7 @@
 
 					<button
 						class="py-2 px-4 hover:bg-primary cursor-pointer text-white"
+						class:bg-primary={$layoutView == 'top'}
 						on:click={() => {
 							layoutView.set('top');
 						}}
@@ -72,6 +74,7 @@
 
 					<button
 						class="py-2 px-4 hover:bg-primary cursor-pointer text-white"
+						class:bg-primary={$layoutView == 'right'}
 						on:click={() => {
 							layoutView.set('right');
 						}}

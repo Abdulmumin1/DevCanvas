@@ -11,8 +11,6 @@
 
 	let zoomOut = $page.url.searchParams.get('preview');
 
-	console.log(zoomOut);
-
 	onMount(() => {
 		// Initialize the iframe with the default HTML code
 		if (iframe) {
@@ -20,7 +18,7 @@
 
 			const bodyContent = data.details.html;
 			if (zoomOut) {
-				iframeDoc.body.style.scale = 0.3;
+				iframeDoc.body.style.scale = 0.35;
 			}
 			iframeDoc.body.innerHTML = bodyContent;
 
@@ -31,24 +29,13 @@
 			}${data.details.css}`;
 
 			iframeDoc.head.appendChild(styleElement);
-			let meta = iframeDoc.createElement('meta');
-			meta.name = 'viewport';
-			meta.content = 'width=device-width, initial-scale=0.2';
 
-			iframeDoc.head.appendChild(meta);
-
-			if (zoomOut) {
-				const contentHeight = Math.max(
-					iframeDoc.body.scrollHeight,
-					iframeDoc.documentElement.scrollHeight
-				);
-				const iframeHeight = iframe.clientHeight;
-				const desiredPositionY = (contentHeight - iframeHeight) / 2;
-
-				iframeDoc.documentElement.scrollTop = desiredPositionY;
+			if (!zoomOut) {
+				// Step 3: Create and append JavaScript code
+				const scriptElement = iframeDoc.createElement('script');
+				scriptElement.textContent = `${js}`;
+				iframeDoc.body.appendChild(scriptElement);
 			}
-
-			// Step 3: Create and append JavaScript code
 		}
 	});
 </script>

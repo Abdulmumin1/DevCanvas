@@ -2,16 +2,18 @@
 	import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 	import Fa from 'svelte-fa';
 	import { page } from '$app/stores';
+
 	import { onMount } from 'svelte';
 	import { redirect } from '@sveltejs/kit';
+	import { goto } from '$app/navigation';
 	let whereTo = $page.url.searchParams.get('whereto');
 	if (!['/dashboard', '/profile'].includes(whereTo)) {
 		whereTo = '/';
 	}
 	onMount(() => {
 		setTimeout(() => {
-			window.location.href = whereTo;
-		}, 1000);
+			goto(whereTo);
+		}, 500);
 	});
 </script>
 

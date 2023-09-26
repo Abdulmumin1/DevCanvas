@@ -16,7 +16,7 @@
 		<ul class="w-full h-full flex flex-col gap-4 pl-3">
 			<ul class="w-full h-full flex flex-col gap-4 transition-all duration-200">
 				<li class="py-12 px-2 border-b dark:border-primary">
-					<a href="/dashboard" class="text-3xl text-sky-400"
+					<a href="/dashboard" class="text-2xl text-sky-400"
 						><span class="text-white dark:text-light">Snippets</span>Land</a
 					>
 					<span class="bg-sky-200 rounded text-primary p-[2px]">

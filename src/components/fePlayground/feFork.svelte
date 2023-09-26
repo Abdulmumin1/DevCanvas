@@ -13,7 +13,7 @@
 
 	<button
 		type="submit"
-		class="p-1 rounded-md cursor-pointer flex gap-2 items-center justify-center text-primary bg-green-500 px-3 py-2"
+		class="p-1 rounded-md cursor-pointer flex gap-2 items-center justify-center text-primary bg-green-500 px-3 py-2 active:scale-75 transition-transform duration-300"
 	>
 		<Fa icon={faCodeFork} />
 		<span class="hidden md:flex">Fork</span>

@@ -138,7 +138,7 @@
 			<input type="text" name="description" id="" value="Untitled Project" class="hidden" />
 			<button
 				type="submit"
-				class="bg-sky-500 hover:bg-sky-300 px-6 py-4 rounded-lg text-primary text-xl md:text-5xl flex transition-all duration-300 hover:gap-6 gap-4"
+				class=" bg-sky-500 hover:bg-sky-300 px-6 py-4 rounded-lg text-primary text-xl md:text-5xl flex transition-all duration-300 hover:gap-6 gap-4"
 				>Launch play ground <Fa icon={faRightLong} /></button
 			>
 		</form>
