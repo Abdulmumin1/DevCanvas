@@ -17,12 +17,12 @@
 	export let lang = 'javascript';
 
 	// Define the initial code content
-	export let initialCSS = `//`;
+	export let initialJs = `//`;
 	let editorConfig;
 	let monacoModel;
 	if (browser) {
 		editorConfig = {
-			value: initialCSS,
+			value: initialJs,
 			language: lang,
 			automaticLayout: true,
 			renderIndentGuides: false,
