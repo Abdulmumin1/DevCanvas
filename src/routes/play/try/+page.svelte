@@ -20,6 +20,7 @@
 	current_data.set({
 		html: '<!-- -->',
 		css: '/* */',
+		js: '//',
 		user_id: 123,
 		project_key: 'try',
 		description: 'Try Snippetland Playground'

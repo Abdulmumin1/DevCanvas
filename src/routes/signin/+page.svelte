@@ -29,7 +29,7 @@
 		use:enhance={handleSubmit}
 		class="flex flex-col gap-4 border p-6 md:p-12 rounded-lg mt-4"
 	>
-		<h2 class="text-3xl md:text-5xl py-11">Snippets<span class="text-sky-500">Land</span></h2>
+		<h2 class="text-3xl md:text-5xl py-11">Snippet<span class="text-sky-500">Land</span></h2>
 		<div class="flex flex-col gap-4">
 			<input
 				type="text"

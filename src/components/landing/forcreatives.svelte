@@ -9,7 +9,9 @@
 
 		<div class="flex items-center justify-between w-full md:w-[60rem] flex-col md:flex-row">
 			<div class=" p-10 relative">
-				<span class="absolute top-[-40px] rounded-md text-white bg-secondary-dark p-3 text-lg z-50">
+				<span
+					class="absolute top-[-40px] rounded-md text-white bg-secondary-dark p-3 text-sm md:text-lg z-50"
+				>
 					Coffee Machine and it Animation
 					<a href="https://snippet-bice.vercel.app/play/y0wEhu" class="text-sky-500"
 						>https://snippetland.io/play/y0wEhu</a
@@ -37,7 +39,9 @@
 			</div>
 
 			<div class="bg-black p-10 relative w-fit">
-				<span class="absolute top-[-20px] rounded-md text-white bg-secondary-dark p-3 text-xl">
+				<span
+					class="absolute top-[-20px] rounded-md text-white bg-secondary-dark p-3 text-sm md:text-lg"
+				>
 					Moon animation with just HTML and CSS<br />
 					<a href="https://snippet-bice.vercel.app/play/aDDzMU" class="text-sky-500"
 						>https://snippetland.io/play/aDDzMU</a
@@ -53,9 +57,9 @@
 					</div>
 				</div>
 
-				<div class="poem-body">
+				<div class="poem-body m-5 md:m-10">
 					<h1 class="poem-title">Poem</h1>
-					<p class="poem">
+					<p class="poem text-sm md:text-base">
 						The moon, how it shines so bright,<br />
 						In the vas expanse of night,<br />
 						A gentle orb that graces the sky,<br />
@@ -465,32 +469,10 @@
 		}
 	}
 
-	.source > a {
-		text-decoration: none;
-		color: wheat;
-	}
-
-	.source {
-		padding: 5px;
-		border: 1px solid wheat;
-		width: fit-content;
-		border-radius: 4px;
-		position: absolute;
-		top: 0px;
-		margin: 10px;
-		display: flex;
-		align-items: center;
-		gap: 5px;
-	}
-
-	.source:hover {
-		opacity: 70%;
-	}
-
 	.poem-body {
 		display: flex;
 		align-items: center;
-		margin: 60px;
+		/* margin: 60px; */
 		flex-direction: column;
 	}
 

@@ -1,4 +1,4 @@
-import { fail, redirect } from '@sveltejs/kit';
+import { fail } from '@sveltejs/kit';
 /** @type {import('./$types').RequestHandler} */
 export async function POST({ locals: { supabase }, request }) {
 	const body = Object.fromEntries(await request.formData());
