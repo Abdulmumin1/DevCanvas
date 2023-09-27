@@ -1,13 +1,14 @@
 import { generateRandomKey } from '$lib/index.js';
-import { fail, redirect } from '@sveltejs/kit';
+import { error, fail, redirect } from '@sveltejs/kit';
 import { handleRedirectURL } from '$lib/utils';
+
 /** @type {import('./$types').RequestHandler} */
 export async function POST({ url, locals: { supabase, getSession }, request }) {
 	let session = await getSession();
-	if (!session) {
-		throw redirect(303, handleRedirectURL(url));
-	}
 	const body = Object.fromEntries(await request.formData());
+	if (!session) {
+		throw error(400, { message: ' unable to complete action' });
+	}
 	let key = generateRandomKey();
 	let html = body.html;
 	let css = body.css;
@@ -21,8 +22,16 @@ export async function POST({ url, locals: { supabase, getSession }, request }) {
 
 	if (err) {
 		console.log(data);
-		fail(400, { error: ' unable to complete action' });
+		throw error(400, { message: ' unable to complete action' });
+	}
+	const { data: _, error: er } = await supabase
+		.from('view')
+		.insert([{ project_key: key, views: 0 }]);
+
+	console.log(_);
+	if (er) {
+		throw error(400, { message: 'unable to complete action' });
 	}
 
-	throw redirect(303, `/html-playground/${key}`);
+	return new Response(JSON.stringify({ url: `/play/${key}` }));
 }

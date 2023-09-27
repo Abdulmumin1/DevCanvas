@@ -2,20 +2,47 @@
 	import { saved_spinner, saveData } from '$lib/feEditor/store.js';
 	import { current_data } from '$lib/index.js';
 	import { faCodeFork, faSpinner } from '@fortawesome/free-solid-svg-icons';
+	import { page } from '$app/stores';
 	import Fa from 'svelte-fa';
+	import { goto } from '$app/navigation';
+	import { handleRedirectURL } from '$lib/utils';
+
+	let busy = false;
+	async function forkData() {
+		busy = true;
+		let formData = new FormData();
+
+		formData.append('js', $current_data.js);
+		formData.append('css', $current_data.css);
+		formData.append('html', $current_data.html);
+		formData.append('description', $current_data.description);
+		formData.append('url', $page.url.pathname);
+
+		const response = await fetch('/db/fe/fork', {
+			method: 'POST',
+			body: formData
+		});
+
+		// console.log('response', response.json());
+		if (response.ok) {
+			let d = await response.json();
+			goto(d.url);
+		} else {
+			if (response.status == 400) {
+				goto(handleRedirectURL($page.url));
+			}
+		}
+	}
 </script>
 
-<form method="POST" action="/db/fe/fork">
-	<input type="text" value={$current_data.html} name="html" class="hidden" />
-	<input type="text" value={$current_data.css} name="css" class="hidden" />
-	<input type="text" value={$current_data.js} name="js" class="hidden" />
-	<input type="text" value={$current_data.description} name="description" class="hidden" />
-
-	<button
-		type="submit"
-		class="p-1 rounded-md cursor-pointer flex gap-2 items-center justify-center text-primary bg-green-500 px-3 py-2 active:scale-75 transition-transform duration-300"
-	>
-		<Fa icon={faCodeFork} />
-		<span class="hidden md:flex">Fork</span>
-	</button>
-</form>
+<button
+	on:click={forkData}
+	aria-busy={busy}
+	class="p-1 rounded-md cursor-pointer flex gap-2 items-center justify-center text-primary bg-green-500 px-3 py-2 active:scale-75 transition-transform duration-300"
+>
+	<Fa icon={faCodeFork} />
+	<span class="hidden md:flex">Fork</span>
+	{#if busy}
+		<span class="animate-spin"><Fa icon={faSpinner} /></span>
+	{/if}
+</button>

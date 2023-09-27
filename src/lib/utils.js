@@ -3,8 +3,11 @@ export function handleRedirect(event) {
 	return `/signin?redirectTo=${redirectTo}`;
 }
 
-export function handleRedirectURL(url) {
-	const redirectTo = url.pathname + url.search;
+export function handleRedirectURL(url, custom = null) {
+	let redirectTo = url.pathname + url.search;
+	if (custom) {
+		redirectTo = custom;
+	}
 	return `/signin?redirectTo=${redirectTo}`;
 }
 

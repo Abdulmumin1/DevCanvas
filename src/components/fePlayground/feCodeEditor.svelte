@@ -116,7 +116,7 @@
 
 			{#if showJs}
 				<Pane snapSize={10}>
-					<FeJs />
+					<FeJs {initialJs} />
 				</Pane>
 			{/if}
 		</Splitpanes>
@@ -143,7 +143,7 @@
 					<p class="bg-gray-50 dark:bg-black px-3 py-1 flex gap-2 items-center">
 						<span class="text-yellow-500"><Fa icon={faJs} /></span>JS
 					</p>
-					<FeJs />
+					<FeJs {initialJs} />
 				</div>
 			</Pane>
 		</Splitpanes>
@@ -151,7 +151,7 @@
 		<Splitpanes horizontal theme="my-theme">
 			<Pane snapSize={20}>
 				<div class="h-full w-full">
-					<p class="bg-gray-50 dark:bg-black px-3 py-1 flex gap-1 items-center">
+					<p class="bg-gray-50 dark:bg-black px-3 py-1 flex gap-1 items-center z-50">
 						<span class="text-rose-500"><Fa icon={faHtml5} /></span>HTML
 					</p>
 					<FeHtml {initialHTML} />

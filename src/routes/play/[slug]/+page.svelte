@@ -59,7 +59,7 @@
 				<FeCodeEditor initialHTML={data.details.html} initialCSS={data.details.css} lang="html" />
 			</div>
 			<div slot="right" class="w-full h-full">
-				<CodeOutput />
+				<CodeOutput code={$current_data.html} css={$current_data.css} js={$current_data.js} />
 			</div>
 		</Resizable>
 	</div>
