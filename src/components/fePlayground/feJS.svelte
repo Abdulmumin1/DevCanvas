@@ -121,33 +121,17 @@
 				base: 'vs-dark',
 				inherit: true,
 				rules: [
-					{
-						token: 'comment',
-						foreground: '#5c6370' // Comment color
-					},
-					{
-						token: 'string',
-						foreground: '#98c379' // String color
-					},
-					{
-						token: 'keyword',
-						foreground: '#c678dd' // Keyword color
-					},
-					{
-						token: 'tag',
-						foreground: '#e06c75' // HTML tag color
-					},
-					{
-						token: 'attribute.name',
-						foreground: '#abb2bf' // HTML attribute name color
-					},
-					{
-						token: 'attribute.value',
-						foreground: '#36A0D8' // HTML attribute value color
-					},
-					{}
-					// Add more rules as needed to match the Ayu Dark theme
+					{ token: 'comment', foreground: '#5c6370' }, // Comment color
+					{ token: 'string', foreground: '#98c379' }, // String color
+					{ token: 'keyword', foreground: '#c678dd' }, // Keyword color
+					{ token: 'tag', foreground: '#e06c75' }, // HTML tag color
+					{ token: 'attribute.name', foreground: '#abb2bf' }, // HTML attribute name color
+					{ token: 'attribute.value', foreground: '#36A0D8' }, // HTML attribute value color
+					// Add more rules as needed to match your theme
+					{ token: 'keyword.function', foreground: '#e06c75' }, // For functions
+					{ token: 'keyword.control', foreground: '#e06c75' }
 				],
+
 				colors: {
 					'editor.foreground': '#abb2bf',
 					'editor.background': '#0e0e0e',

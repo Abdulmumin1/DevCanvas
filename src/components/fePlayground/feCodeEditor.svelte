@@ -102,24 +102,17 @@
 				<span class="text-yellow-500"><Fa icon={faJs} /></span>JS
 			</button>
 		</div>
-		<Splitpanes horizontal={false} theme="my-theme">
-			{#if showHtml}
-				<Pane snapSize={20} bind:size>
-					<FeHtml {initialHTML} />
-				</Pane>
-			{/if}
-			{#if showCSS}
-				<Pane snapSize={10}>
-					<FeCss {initialCSS} />
-				</Pane>
-			{/if}
-
-			{#if showJs}
-				<Pane snapSize={10}>
-					<FeJs {initialJs} />
-				</Pane>
-			{/if}
-		</Splitpanes>
+		<div class="w-full h-full">
+			<div class:hidden={!showHtml} class="hidden w-full h-full">
+				<FeHtml {initialHTML} />
+			</div>
+			<div class:hidden={!showCSS} class="hidden w-full h-full">
+				<FeCss {initialCSS} />
+			</div>
+			<div class:hidden={!showJs} class="hidden w-full h-full">
+				<FeJs {initialJs} />
+			</div>
+		</div>
 	{:else if $layoutView == 'top'}
 		<Splitpanes horizontal={false} theme="my-theme">
 			<Pane snapSize={20}>

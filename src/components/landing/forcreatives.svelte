@@ -10,7 +10,7 @@
 		<div class="flex items-center justify-between w-full md:w-[60rem] flex-col md:flex-row">
 			<div class=" p-10 relative">
 				<span
-					class="absolute top-[-40px] rounded-md text-white bg-secondary-dark p-3 text-sm md:text-lg z-50"
+					class=" w-fit absolute top-[-40px] rounded-md text-white bg-secondary-dark p-3 text-sm md:text-lg z-50"
 				>
 					Coffee Machine and it Animation
 					<a href="https://snippet-bice.vercel.app/play/y0wEhu" class="text-sky-500"
@@ -40,7 +40,7 @@
 
 			<div class="bg-black p-10 relative w-fit">
 				<span
-					class="absolute top-[-20px] rounded-md text-white bg-secondary-dark p-3 text-sm md:text-lg"
+					class="w-fit absolute top-[-20px] rounded-md text-white bg-secondary-dark p-3 text-sm md:text-lg"
 				>
 					Moon animation with just HTML and CSS<br />
 					<a href="https://snippet-bice.vercel.app/play/aDDzMU" class="text-sky-500"
