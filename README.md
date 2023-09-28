@@ -1,8 +1,8 @@
-# Snippets
+# SnippetLand
 
 ![Snippets Logo](/static/snippetsPreview.png)
 
-Snippets is an open-source platform for sharing code snippets. It provides a simple and intuitive interface for developers to share, discover, and discuss code snippets across various programming languages and use cases.
+SnippetLand is an open-source platform for sharing code snippets. It provides a simple and intuitive interface for developers to share, discover, and discuss code snippets across various programming languages and use cases.
 
 ## Stack
 
@@ -49,11 +49,12 @@ Snippets is an open-source platform for sharing code snippets. It provides a sim
 
 ## Features
 
-- Easy code snippet sharing with the community.
-- Discover and explore a wide range of code snippets.
+- Interactive Frontend Editor
+- Easy code snippet sharing (any other language).
+- Discover and explore a wide range of code snippets and beatufil creations.
 - A powerfull editor for a smooth coding experience.
 - Support for multiple programming languages.
-- User profiles with personal code snippet collections. - (Loading...)
+- User profiles with personal code snippet collections.
 
 ## Installation (Locally)
 
