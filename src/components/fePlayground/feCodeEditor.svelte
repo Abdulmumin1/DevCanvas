@@ -10,6 +10,7 @@
 	import { layoutView } from '$lib/feEditor/store.js';
 	import { current_data } from '$lib/index.js';
 	import FeJs from './feJS.svelte';
+	import EditorTitle from './editorTitle.svelte';
 
 	let initialHTML = $current_data.html;
 	let initialCSS = $current_data.css;
@@ -117,25 +118,21 @@
 		<Splitpanes horizontal={false} theme="my-theme">
 			<Pane snapSize={20}>
 				<div class="w-full h-full">
-					<p class="bg-gray-50 dark:bg-black px-3 py-1 flex gap-1 items-center">
-						<span class="text-rose-500"><Fa icon={faHtml5} /></span>HTML
-					</p>
+					<EditorTitle lang="html" />
+
 					<FeHtml {initialHTML} />
 				</div>
 			</Pane>
 			<Pane snapSize={10}>
 				<div class="h-full w-full">
-					<p class="bg-gray-50 dark:bg-black px-3 py-1 flex gap-1 items-center">
-						<span class="text-blue-500"><Fa icon={faCss3} /></span>CSS
-					</p>
+					<EditorTitle lang="css" />
+
 					<FeCss {initialCSS} />
 				</div>
 			</Pane>
 			<Pane snapSize={10}>
 				<div class="h-full w-full">
-					<p class="bg-gray-50 dark:bg-black px-3 py-1 flex gap-2 items-center">
-						<span class="text-yellow-500"><Fa icon={faJs} /></span>JS
-					</p>
+					<EditorTitle lang="js" />
 					<FeJs {initialJs} />
 				</div>
 			</Pane>
@@ -144,25 +141,22 @@
 		<Splitpanes horizontal theme="my-theme">
 			<Pane snapSize={20}>
 				<div class="h-full w-full">
-					<p class="bg-gray-50 dark:bg-black px-3 py-1 flex gap-1 items-center z-50">
-						<span class="text-rose-500"><Fa icon={faHtml5} /></span>HTML
-					</p>
+					<EditorTitle lang="html" />
+
 					<FeHtml {initialHTML} />
 				</div>
 			</Pane>
 			<Pane snapSize={10}>
 				<div class="h-full w-full">
-					<p class="bg-gray-50 dark:bg-black px-3 py-1 flex gap-1 items-center">
-						<span class="text-blue-500"><Fa icon={faCss3} /></span>CSS
-					</p>
+					<EditorTitle lang="css" />
+
 					<FeCss {initialCSS} />
 				</div>
 			</Pane>
 			<Pane snapSize={10}>
 				<div class="h-full w-full">
-					<p class="bg-gray-50 dark:bg-black px-3 py-1 flex gap-2 items-center">
-						<span class="text-yellow-500"><Fa icon={faJs} /></span>JS
-					</p>
+					<EditorTitle lang="js" />
+
 					<FeJs {initialJs} />
 				</div>
 			</Pane>

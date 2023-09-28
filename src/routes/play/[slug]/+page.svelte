@@ -8,7 +8,8 @@
 	import FePlayGroungNav from '../../../components/fePlayground/fePlayGroungNav.svelte';
 	import CodeOutput from '../../../components/fePlayground/codeOutput.svelte';
 	import Resizable from '../../../components/fePlayground/resizable.svelte';
-	import { showLoginToSave, showForkTosave } from '$lib/feEditor/store.js';
+	import { showLoginToSave, showForkTosave, showModal } from '$lib/feEditor/store.js';
+	import Femodal from '../../../components/fePlayground/femodal.svelte';
 
 	export let data;
 
@@ -53,7 +54,7 @@
 
 <div class="h-screen flex flex-col">
 	<FePlayGroungNav />
-	<div class="h-full w-full overflow-hidden">
+	<div class="h-full w-full overflow-hidden relative">
 		<Resizable>
 			<div slot="left" class="h-full w-full">
 				<FeCodeEditor initialHTML={data.details.html} initialCSS={data.details.css} lang="html" />
@@ -62,5 +63,9 @@
 				<CodeOutput code={$current_data.html} css={$current_data.css} js={$current_data.js} />
 			</div>
 		</Resizable>
+
+		{#if $showModal}
+			<Femodal type={$showModal} />
+		{/if}
 	</div>
 </div>
