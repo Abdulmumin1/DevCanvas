@@ -1,7 +1,13 @@
 <script>
 	import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 	import { afterUpdate, onDestroy, onMount } from 'svelte';
-	import { showSave, saveData, showLoginToSave } from '$lib/feEditor/store.js';
+	import {
+		showSave,
+		saveData,
+		showLoginToSave,
+		javascriptStuff,
+		showForkTosave
+	} from '$lib/feEditor/store.js';
 	import { current_data, isOwner, user, saved_spinner, darkModeState } from '$lib/index.js';
 	import { browser } from '$app/environment';
 	import Fa from 'svelte-fa';
@@ -82,6 +88,9 @@
 		current_data.update((cur) => {
 			// console.log(cur);
 			return { ...cur, js: data };
+		});
+		javascriptStuff.update((c) => {
+			return { ...c, main: data };
 		});
 		handleAutoSave();
 	}

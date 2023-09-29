@@ -2,7 +2,7 @@
 
 ![Snippets Logo](/static/snippetsPreview.png)
 
-SnippetLand is an open-source platform for sharing code snippets. It provides a simple and intuitive interface for developers to share, discover, and discuss code snippets across various programming languages and use cases.
+SnippetLand is an open-source platform for sharing code snippets. It provides a simple and intuitive interface for developers to share, discover, and discuss frontend code and code snippets across various programming languages and use cases.
 
 ## Stack
 
@@ -51,15 +51,15 @@ SnippetLand is an open-source platform for sharing code snippets. It provides a 
 
 - Interactive Frontend Editor
 - Easy code snippet sharing (any other language).
-- Discover and explore a wide range of code snippets and beatufil creations.
+- Discover and explore a wide range of code snippets and beatufill creations.
 - A powerfull editor for a smooth coding experience.
 - Support for multiple programming languages.
 - User profiles with personal code snippet collections.
 
 ## Installation (Locally)
 
-1. Clone the repository: `git clone https://github.com/Abdulmumin1/Snippets.git`
-2. Navigate to the project directory: `cd Snippets`
+1. Clone the repository: `git clone https://github.com/Abdulmumin1/snippetLand.git`
+2. Navigate to the project directory: `cd SnippetLand`
 3. Install dependencies: `npm install` or `yarn install`
 
 ## Usage
@@ -85,7 +85,7 @@ Please adhere to the project's coding style and conventions.
 
 ## License
 
-Snippets is licensed under the [MIT License](./LICENSE).
+SnippetLand is licensed under the [MIT License](./LICENSE).
 
 ## Support
 

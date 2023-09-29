@@ -35,8 +35,10 @@
 			<span class="text-yellow-500"><Fa icon={faJs} /></span>JS
 		</p>
 
-		<button on:click={showMod} class="z-50 hover:scale-105 hover:opacity-80 cursor-pointer px-4"
-			><Fa icon={faGear} /></button
-		>
+		<div class=" flex justify-between items-center">
+			<button on:click={showMod} class="z-50 hover:scale-105 hover:opacity-80 cursor-pointer px-4"
+				><Fa icon={faGear} /></button
+			>
+		</div>
 	</div>
 {/if}
