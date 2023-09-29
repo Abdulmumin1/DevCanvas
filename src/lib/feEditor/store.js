@@ -39,4 +39,5 @@ export async function saveData(json_data, which = true) {
 export let layoutView = writable('left');
 export let showModal = writable(false);
 export let externalStuff = writable({ html: '', css: '' });
-// export let javascriptStuff = writable({ main: '' });
+export let javascriptStuff = writable({ main: '' });
+export let jsChanged = writable(false);

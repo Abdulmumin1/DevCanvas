@@ -1,6 +1,6 @@
 <script>
 	import { current_data } from '$lib/index.js';
-	import { externalStuff } from '$lib/feEditor/store.js';
+	import { externalStuff, jsChanged, showBundling } from '$lib/feEditor/store.js';
 	import { onMount } from 'svelte';
 
 	export let code;
@@ -8,11 +8,14 @@
 	export let js;
 
 	let iframe;
+	let typingTimer; // Timer to track typing
 
 	$: {
 		code = $current_data.html;
 		css = $current_data.css;
 		js = $current_data.js;
+
+		// js = $current_data.js;
 		if (iframe) {
 			// Get the iframe's document
 			let iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
@@ -34,9 +37,6 @@
 			}${css}`;
 			iframeDoc.head.appendChild(styleElement);
 			try {
-				iframeDoc.head.appendChild($externalStuff.html);
-				console.log($externalStuff.html);
-
 				// Create a temporary HTML element
 				const tempElement = document.createElement('div');
 
@@ -44,14 +44,11 @@
 				tempElement.innerHTML = $externalStuff.html;
 
 				// Extract the first child element (the <link> element) from the temporary element
-				const linkElement = tempElement.firstElementChild;
+				const headStuff = tempElement.innerHTML;
 
 				// Append the <link> element to the <head> of the document
-				document.head.appendChild(linkElement);
-			} catch (err) {
-				console.log('err');
-				console.log('big faile', $externalStuff.html);
-			}
+				document.head.appendChild(headStuff);
+			} catch (err) {}
 
 			// Step 3: Remove any existing <script> elements
 			const existingScripts = iframeDoc.getElementsByTagName('script');
@@ -59,19 +56,43 @@
 				script.remove();
 			}
 
-			// Step 4: Create and append the new JavaScript code
-			const scriptElement = iframeDoc.createElement('script');
-			scriptElement.textContent = `try{${js}}catch(err){console.log(err)}`;
-			iframeDoc.body.appendChild(scriptElement);
+			// Function to handle text input
 
-			const externalScript = iframeDoc.createElement('script');
-			externalScript.src = $externalStuff.js;
-			iframeDoc.body.appendChild(externalScript);
+			const delay = 2000; // Adjust the delay as needed (in milliseconds)
+			clearTimeout(typingTimer); // Clear the previous timer
+
+			typingTimer = setTimeout(function () {
+				// This function will run after the delay (user has stopped typing)
+				jsChanged.set(true);
+			}, delay);
 		}
 
 		// console.log(code);
 	}
 
+	$: {
+		if ($jsChanged) {
+			jsChanged.set(false);
+			// Step 4: Create and append the new JavaScript code
+			// console.log('js changed', js);
+			// showBundling.set(true);
+			if (iframe) {
+				let iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+
+				const scriptElement = iframeDoc.createElement('script');
+				scriptElement.textContent = `try{${js}}catch(err){console.log(err)}`;
+				iframeDoc.body.appendChild(scriptElement);
+
+				if ($externalStuff.js != undefined) {
+					const externalScript = iframeDoc.createElement('script');
+					externalScript.src = $externalStuff.js;
+
+					iframeDoc.body.appendChild(externalScript);
+				}
+			}
+			// showBundling.set(false);
+		}
+	}
 	onMount(() => {
 		console.log(code, css, js);
 		if (iframe) {
@@ -98,9 +119,12 @@
 			scriptElement.textContent = `try{${js}}catch(err){console.log(err)}`;
 			iframeDoc.body.appendChild(scriptElement);
 
-			const externalScript = iframeDoc.createElement('script');
-			externalScript.src = $externalStuff.js;
-			iframeDoc.body.appendChild(externalScript);
+			if ($externalStuff.js != undefined) {
+				const externalScript = iframeDoc.createElement('script');
+				externalScript.src = $externalStuff.js;
+
+				iframeDoc.body.appendChild(externalScript);
+			}
 		}
 	});
 </script>
