@@ -1,5 +1,5 @@
 <script>
-	import { fade, scale, slide } from 'svelte/transition';
+	import { fade, fly, scale, slide } from 'svelte/transition';
 	import Fa from 'svelte-fa';
 	import { faClose } from '@fortawesome/free-solid-svg-icons';
 
@@ -24,10 +24,10 @@
 
 <div class="bc absolute top-0 h-full w-full z-50">
 	<div
-		transition:scale
+		transition:fly
 		use:clickOutside
 		on:click_outside={closeModal}
-		class="modal z-50 backdrop-blur-lg absolute w-[60%] h-[60%] inset-y-0 inset-x-0 mx-auto m-2 shadow-md border-t-4 bg-white dark:bg-primary border-sky-500 p-3 rounded flex flex-col overflow-scroll gap-2"
+		class="modal z-50 backdrop-blur-lg absolute w-[60%] h-[60%] inset-y-0 inset-x-0 mx-auto m-2 shadow-md border-t-4 bg-white dark:bg-black border-sky-500 p-3 rounded flex flex-col overflow-scroll gap-2"
 	>
 		<div class="absolute top-0 right-0 m-2">
 			<button on:click={closeModal}>
@@ -42,7 +42,7 @@
 				cols="30"
 				rows="5"
 				placeholder="Content for the head"
-				class="bg-gray-100 dark:bg-secondary-dark w-full outline-none font-thin"
+				class="bg-gray-100 dark:bg-primary w-full outline-none font-thin"
 				spellcheck="false"
 				bind:value={html}
 			/>
@@ -56,7 +56,7 @@
 				cols="30"
 				rows="5"
 				placeholder="External CSS links"
-				class="bg-gray-100 dark:bg-secondary-dark w-full outline-none font-thin"
+				class="bg-gray-100 dark:bg-primary w-full outline-none font-thin"
 				spellcheck="false"
 				bind:value={css}
 			/>
@@ -67,7 +67,7 @@
 			<input
 				name=""
 				placeholder="External Script Link"
-				class="bg-gray-100 dark:bg-secondary-dark w-full outline-none font-thin p-2"
+				class="bg-gray-100 dark:bg-primary w-full outline-none font-thin p-2"
 				spellcheck="false"
 				bind:value={js}
 			/>

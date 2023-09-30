@@ -4,7 +4,7 @@
 	import EditorFrame from './editorFrame.svelte';
 </script>
 
-<div class="flex items-center justify-center gap-2 w-full">
+<div class="flex items-center justify-center gap-2 w-full overflow-hidden">
 	<div class=" h-full w-full flex items-center justify-center gap-12 flex-col">
 		<p class="text-4xl md:text-6xl py-12">🎨 𝓯𝓸𝓻 𝒸𝓇𝑒𝓪𝓽𝓲𝓿𝓮𝓼</p>
 

@@ -1261,6 +1261,10 @@ video {
   border-top-width: 4px;
 }
 
+.border-t-2 {
+  border-top-width: 2px;
+}
+
 .border-error {
   --tw-border-opacity: 1;
   border-color: rgb(255 77 77 / var(--tw-border-opacity));

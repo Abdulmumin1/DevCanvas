@@ -9,8 +9,8 @@ export const user = writable(false);
 export const previewMode = writable(true);
 export const dashboardLoading = writable(true);
 export const SnippetsDescription = readable({
-	name: 'SnippetsLand',
-	des: 'SnippetsLand is an open-source online editor. It provides a simple and intuitive interface for developers to share, discover, and discuss code snippets across various programming languages and use cases.',
+	name: 'SnippetLand',
+	des: 'SnippetLand is an open-source online editor. It provides a simple and intuitive interface for developers to share, discover, and discuss code snippets across various programming languages and use cases.',
 	url: 'https://snippet-bice.vercel.app',
 	imageUrl: 'https://raw.githubusercontent.com/Abdulmumin1/snippets/main/static/snippetsPreview.png'
 });
