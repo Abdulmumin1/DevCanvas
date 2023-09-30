@@ -53,7 +53,9 @@
 </svelte:head>
 
 <div class="h-screen flex flex-col">
-	<FePlayGroungNav />
+	<header class="w-full">
+		<FePlayGroungNav />
+	</header>
 	<div class="h-full w-full overflow-hidden relative">
 		<Resizable>
 			<div slot="left" class="h-full w-full">

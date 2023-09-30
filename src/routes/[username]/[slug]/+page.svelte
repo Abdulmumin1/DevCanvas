@@ -52,7 +52,9 @@
 
 <article class="h-screen flex flex-col">
 	{#if data.isFound}
-		<Nav />
+		<header class="w-full">
+			<Nav />
+		</header>
 		<div class="h-full overflow-scroll p-4 dark:bg-black">
 			<!-- <Fa icon={faPen} /> -->
 			<div class="text-sm md:text-sm w-full items-center h-full flex justify-center flex-col">

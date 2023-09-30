@@ -9,7 +9,7 @@
 		/>
 
 		<div class="dark:text-black">
-			<div class="post-container">
+			<div class="post-container floating-object2">
 				<div class="user-info">
 					<img
 						src="https://cdn.pixabay.com/photo/2016/04/01/12/11/avatar-1300582_1280.png"
@@ -51,7 +51,7 @@
 		</div>
 
 		<div class="dark:text-black">
-			<div class="post-container">
+			<div class="post-container floating-object">
 				<div class="user-info">
 					<img
 						src="https://yaqeen.me/_app/immutable/assets/abdul.66936237.jpg"
@@ -156,5 +156,25 @@
 
 	.action-button:hover {
 		color: #1da1f2;
+	}
+
+	.floating-object {
+		position: relative;
+		animation: float 3s ease-in-out infinite;
+	}
+
+	.floating-object2 {
+		position: relative;
+		animation: float 3s ease-in-out infinite 1s;
+	}
+
+	@keyframes float {
+		0%,
+		100% {
+			transform: translateY(0);
+		}
+		50% {
+			transform: translateY(-20px);
+		}
 	}
 </style>
