@@ -14,7 +14,7 @@
 
 <svelte:head>
 	<!-- HTML Meta Tags -->
-	<title>SnippetsLand</title>
+	<title>SnippetLand</title>
 
 	<!-- Facebook Meta Tags -->
 	<meta property="og:title" content="Snippets" />
