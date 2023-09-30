@@ -2,11 +2,20 @@
 	import '../tailwind.css';
 	import '../app.css';
 	import { onMount, setContext } from 'svelte';
-	import { user, user_info, showToast, darkModeState, SnippetsDescription } from '$lib/index.js';
+	import {
+		user,
+		showNavigating,
+		showToast,
+		darkModeState,
+		SnippetsDescription
+	} from '$lib/index.js';
 	import { invalidateAll } from '$app/navigation';
 	import PageTransition from './transition.svelte';
 	import { browser } from '$app/environment';
 	import Toast from '../components/toast.svelte';
+
+	import { beforeNavigate, afterNavigate } from '$app/navigation';
+	import PageLoadProgess from '../components/pageLoadProgess.svelte';
 
 	// console.log(supabase.auth.getUser());
 
@@ -36,6 +45,15 @@
 		}
 	});
 
+	beforeNavigate(() => {
+		console.log('Navigation started!');
+		showNavigating.set(true);
+	});
+
+	afterNavigate(() => {
+		showNavigating.set(false);
+		console.log('Navigation ended!');
+	});
 	// setContext('userInfo', data.user_info);
 
 	// console.log('jfdklafdka fd afodamfd afdjaofdmaf dafodafmdas');
@@ -71,6 +89,10 @@
 	<meta name="twitter:description" content={$SnippetsDescription.des} />
 	<meta name="twitter:image" content={$SnippetsDescription.imageUrl} />
 </svelte:head>
+
+{#if $showNavigating}
+	<PageLoadProgess />
+{/if}
 <main class=" bg-white dark:bg-primary dark:text-white transition-colors duration-300">
 	<PageTransition url={data.url}>
 		<slot />

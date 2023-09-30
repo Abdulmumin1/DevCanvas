@@ -1,42 +1,37 @@
 <script>
 	import { faRightLong } from '@fortawesome/free-solid-svg-icons';
 	import Fa from 'svelte-fa';
+	import EditorFrame from './editorFrame.svelte';
 </script>
 
 <div class="flex items-center justify-center gap-2 w-full">
 	<div class=" h-full w-full flex items-center justify-center gap-12 flex-col">
 		<p class="text-4xl md:text-6xl py-12">🎨 𝓯𝓸𝓻 𝒸𝓇𝑒𝓪𝓽𝓲𝓿𝓮𝓼</p>
 
-		<div class="flex items-center justify-between w-full md:w-[60rem] flex-col md:flex-row">
-			<div class=" p-10 relative">
-				<span
-					class=" w-fit absolute top-[-40px] rounded-md text-white bg-secondary-dark p-3 text-sm md:text-lg z-50"
-				>
-					Coffee Machine and it Animation
-					<a href="https://snippet-bice.vercel.app/play/y0wEhu" class="text-sky-500"
-						>https://snippetland.io/play/y0wEhu</a
-					>
-				</span>
-				<div class="container scale-110">
-					<div class="coffee-header">
-						<div class="coffee-header__buttons coffee-header__button-one" />
-						<div class="coffee-header__buttons coffee-header__button-two" />
-						<div class="coffee-header__display" />
-						<div class="coffee-header__details" />
+		<div class="flex items-center justify-between w-full flex-col">
+			<EditorFrame title={'Coffee Machine and it Animation'}>
+				<div class=" p-10 relative">
+					<div class="container scale-110">
+						<div class="coffee-header">
+							<div class="coffee-header__buttons coffee-header__button-one" />
+							<div class="coffee-header__buttons coffee-header__button-two" />
+							<div class="coffee-header__display" />
+							<div class="coffee-header__details" />
+						</div>
+						<div class="coffee-medium">
+							<div class="coffe-medium__exit" />
+							<div class="coffee-medium__arm" />
+							<div class="coffee-medium__liquid" />
+							<div class="coffee-medium__smoke coffee-medium__smoke-one" />
+							<div class="coffee-medium__smoke coffee-medium__smoke-two" />
+							<div class="coffee-medium__smoke coffee-medium__smoke-three" />
+							<div class="coffee-medium__smoke coffee-medium__smoke-for" />
+							<div class="coffee-medium__cup" />
+						</div>
+						<div class="coffee-footer" />
 					</div>
-					<div class="coffee-medium">
-						<div class="coffe-medium__exit" />
-						<div class="coffee-medium__arm" />
-						<div class="coffee-medium__liquid" />
-						<div class="coffee-medium__smoke coffee-medium__smoke-one" />
-						<div class="coffee-medium__smoke coffee-medium__smoke-two" />
-						<div class="coffee-medium__smoke coffee-medium__smoke-three" />
-						<div class="coffee-medium__smoke coffee-medium__smoke-for" />
-						<div class="coffee-medium__cup" />
-					</div>
-					<div class="coffee-footer" />
 				</div>
-			</div>
+			</EditorFrame>
 
 			<div class="bg-black p-10 relative w-fit">
 				<span

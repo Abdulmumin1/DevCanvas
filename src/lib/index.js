@@ -1,6 +1,7 @@
 // place files you want to import through the `$lib` alias in this folder.
 import { readable, writable } from 'svelte/store';
 
+export const showNavigating = writable(false);
 export const user_info = writable([]);
 export const darkModeState = writable(false);
 export const current_data = writable({});
