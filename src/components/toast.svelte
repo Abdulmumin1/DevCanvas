@@ -21,7 +21,11 @@
 	<div class="flex items-center justify-center gap-2">
 		{message}
 
-		<button on:click={showToast.set(false)}>
+		<button
+			on:click={() => {
+				showToast.set(false);
+			}}
+		>
 			<Fa icon={faClose} />
 		</button>
 	</div>
