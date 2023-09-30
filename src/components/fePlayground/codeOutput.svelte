@@ -1,6 +1,6 @@
 <script>
 	import { current_data } from '$lib/index.js';
-	import { externalStuff, jsChanged, showBundling } from '$lib/feEditor/store.js';
+	import { externalStuff, jsChanged } from '$lib/feEditor/store.js';
 	import { onMount } from 'svelte';
 
 	export let code;
@@ -29,13 +29,6 @@
 				style.remove();
 			}
 
-			// Step 2: Create and append the new CSS style
-			const styleElement = iframeDoc.createElement('style');
-			styleElement.textContent = `body::-webkit-scrollbar {
-			width: 0px;
-			height: 0px;
-			}${css}`;
-			iframeDoc.head.appendChild(styleElement);
 			try {
 				// Create a temporary HTML element
 				const tempElement = document.createElement('div');
@@ -44,17 +37,29 @@
 				tempElement.innerHTML = $externalStuff.html;
 
 				// Extract the first child element (the <link> element) from the temporary element
-				const headStuff = tempElement.innerHTML;
+				const headStuff = tempElement.children;
 
 				// Append the <link> element to the <head> of the document
-				document.head.appendChild(headStuff);
+				for (let i = 0; i < headStuff.length; i++) {
+					const child = headStuff[i];
+					// Log the content of each child element
+					iframeDoc.head.appendChild(child);
+				}
 			} catch (err) {}
 
-			// Step 3: Remove any existing <script> elements
-			const existingScripts = iframeDoc.getElementsByTagName('script');
-			for (const script of existingScripts) {
-				script.remove();
-			}
+			// Step 2: Create and append the new CSS style
+			const styleElement = iframeDoc.createElement('style');
+			styleElement.textContent = `body::-webkit-scrollbar {
+			width: 0px;
+			height: 0px;
+			}${css}`;
+			iframeDoc.head.appendChild(styleElement);
+
+			// // Step 3: Remove any existing <script> elements
+			// const existingScripts = iframeDoc.getElementsByTagName('script');
+			// for (const script of existingScripts) {
+			// 	script.remove();
+			// }
 
 			// Function to handle text input
 
@@ -82,19 +87,19 @@
 				const scriptElement = iframeDoc.createElement('script');
 				scriptElement.textContent = `try{${js}}catch(err){console.log(err)}`;
 				iframeDoc.body.appendChild(scriptElement);
+				try {
+					if ($externalStuff.js != undefined) {
+						const externalScript = iframeDoc.createElement('script');
+						externalScript.src = $externalStuff.js;
 
-				if ($externalStuff.js != undefined) {
-					const externalScript = iframeDoc.createElement('script');
-					externalScript.src = $externalStuff.js;
-
-					iframeDoc.body.appendChild(externalScript);
-				}
+						iframeDoc.body.appendChild(externalScript);
+					}
+				} catch (err) {}
 			}
 			// showBundling.set(false);
 		}
 	}
 	onMount(() => {
-		console.log(code, css, js);
 		if (iframe) {
 			let iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
 
@@ -116,15 +121,18 @@
 			}
 			// Step 3: Create and append JavaScript code
 			const scriptElement = iframeDoc.createElement('script');
-			scriptElement.textContent = `try{${js}}catch(err){console.log(err)}`;
+			scriptElement.textContent = `try{
+				${js}
+			}catch(err){console.log(err)}`;
 			iframeDoc.body.appendChild(scriptElement);
+			try {
+				if ($externalStuff.js != undefined) {
+					const externalScript = iframeDoc.createElement('script');
+					externalScript.src = $externalStuff.js;
 
-			if ($externalStuff.js != undefined) {
-				const externalScript = iframeDoc.createElement('script');
-				externalScript.src = $externalStuff.js;
-
-				iframeDoc.body.appendChild(externalScript);
-			}
+					iframeDoc.body.appendChild(externalScript);
+				}
+			} catch (err) {}
 		}
 	});
 </script>
