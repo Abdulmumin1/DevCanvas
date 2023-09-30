@@ -46,10 +46,10 @@
 		loading = false;
 	});
 
-	loading = true;
+	let loading = true;
 </script>
 
-<div class="h-full max-w-full overflow-hidden border-t-2 border-sky-500">
+<div class="h-full max-w-full overflow-hidden">
 	{#if !loading}
 		<div class="w-full bg-secondary-dark p-2 flex gap-2 text-white">
 			<button
