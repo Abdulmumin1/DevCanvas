@@ -35,14 +35,17 @@
 			<div
 				class="flex gap-4 h-full md:h-[80dvh] flex-col w-full items-center justify-center md:flex-row"
 			>
+				<!-- 			
 				<div class="h-full text-6xl flex flex-col gap-3 w-full md:w-3/4">
 					<BlogCard details={data.posts[0]} latest={true} />
 				</div>
 				<div class="h-full flex flex-col w-full md:w-3/12 gap-2">
 					{#each data.posts.splice(1, 2) as post (post.slug)}
 						<BlogCard details={post} />
+					{:else}
 					{/each}
-				</div>
+				</div> -->
+				<p class="text-5xl">In progress!</p>
 			</div>
 		</div>
 	</article>
