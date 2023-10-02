@@ -41,3 +41,5 @@ export let showModal = writable(false);
 export let externalStuff = writable({ html: '', css: '' });
 export let javascriptStuff = writable({ main: '' });
 export let jsChanged = writable(false);
+export let showjsConsole = writable(false);
+export let consoleOutput = writable([]);

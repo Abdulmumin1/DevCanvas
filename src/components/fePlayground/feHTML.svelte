@@ -1,8 +1,6 @@
 <script>
 	import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 	import { afterUpdate, onDestroy, onMount } from 'svelte';
-	import { showSave, saveData, showLoginToSave, showForkTosave } from '$lib/feEditor/store.js';
-	import { current_data, isOwner, user, saved_spinner, darkModeState } from '$lib/index.js';
 	import { browser } from '$app/environment';
 	import Fa from 'svelte-fa';
 	import editorWorker from 'monaco-editor/esm/vs/editor/editor.worker?worker';
@@ -10,6 +8,10 @@
 	import cssWorker from 'monaco-editor/esm/vs/language/css/css.worker?worker';
 	import htmlWorker from 'monaco-editor/esm/vs/language/html/html.worker?worker';
 	import tsWorker from 'monaco-editor/esm/vs/language/typescript/ts.worker?worker';
+
+	import { currentTheme } from '$lib/utils/utils.js';
+	import { showSave, saveData, showLoginToSave, showForkTosave } from '$lib/feEditor/store.js';
+	import { current_data, isOwner, user, saved_spinner, darkModeState } from '$lib/index.js';
 
 	let editorContanier;
 	let editor;
@@ -93,7 +95,7 @@
 	}
 
 	function setEditorTheme() {
-		const theme = $darkModeState ? 'myTheme' : 'vs-code'; // Adjust theme names accordingly
+		const theme = $darkModeState ? 'newTheme' : 'vs-code'; // Adjust theme names accordingly
 
 		// Set the theme in Monaco Editor
 		try {
@@ -123,47 +125,7 @@
 		};
 		import('monaco-editor').then((monaco) => {
 			monacoModel = monaco;
-			monacoModel.editor.defineTheme('myTheme', {
-				base: 'vs-dark',
-				inherit: true,
-				rules: [
-					{
-						token: 'comment',
-						foreground: '#5c6370' // Comment color
-					},
-					{
-						token: 'string',
-						foreground: '#98c379' // String color
-					},
-					{
-						token: 'keyword',
-						foreground: '#c678dd' // Keyword color
-					},
-					{
-						token: 'tag',
-						foreground: '#e06c75' // HTML tag color
-					},
-					{
-						token: 'attribute.name',
-						foreground: '#abb2bf' // HTML attribute name color
-					},
-					{
-						token: 'attribute.value',
-						foreground: '#36A0D8' // HTML attribute value color
-					},
-					{}
-					// Add more rules as needed to match the Ayu Dark theme
-				],
-				colors: {
-					'editor.foreground': '#abb2bf',
-					'editor.background': '#0e0e0e',
-					'editorCursor.foreground': '#38bef7',
-					'editor.lineHighlightBackground': '#0e0e0e50',
-					'editorLineNumber.foreground': '#38bef7',
-					'editor.selectionBackground': '#38BEF710',
-					'editor.inactiveSelectionBackground': '#38BEF720'
-				}
-			});
+			monacoModel.editor.defineTheme('myTheme', currentTheme);
 			// Use monaco here...
 			setEditorTheme();
 			// Initialize the editor

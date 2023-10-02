@@ -41,7 +41,7 @@
 		"framer-motion": "^10.16.4",
 		"html2canvas": "^1.4.1",
 		"prismjs": "^1.29.0",
-		"shiki": "^0.14.3",
+		"shiki": "^0.14.4",
 		"svelte-ace": "^1.0.21",
 		"svelte-fa": "^3.0.4",
 		"svelte-splitpanes": "^0.8.0"

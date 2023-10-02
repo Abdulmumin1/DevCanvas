@@ -34,16 +34,15 @@
 	}
 
 	.my-theme.splitpanes--vertical > .splitpanes__splitter:before {
-		left: -30px;
-		right: -30px;
+		left: -10px;
+		right: -10px;
 		height: 100%;
-
 		cursor: col-resize;
 	}
 
 	.my-theme.splitpanes--horizontal > .splitpanes__splitter:before {
-		top: -30px;
-		bottom: -30px;
+		top: -10px;
+		bottom: -10px;
 		width: 100%;
 		cursor: row-resize;
 	}
@@ -92,5 +91,46 @@
 		display: inline-block;
 		margin: 40px;
 		text-align: center;
+	}
+
+	.article pre {
+		padding: theme(padding.3);
+		overflow: scroll;
+		font-size: theme(fontSize.base);
+		@apply border-8 border-sky-200   rounded-b-2xl;
+	}
+	.article pre::after {
+		position: absolute;
+		top: 0;
+		height: 100%;
+		background-color: red;
+	}
+
+	.article h2 {
+		font-size: theme(fontSize.4xl);
+		padding-top: theme(padding.4);
+		font-weight: theme(fontWeight.bold);
+		/* color: theme(colors.orang); */
+		text-transform: capitalize;
+	}
+	.article h1 {
+		font-size: theme(fontSize.5xl);
+		padding-block: theme(padding.5);
+		font-weight: theme(fontWeight.bold);
+		/* color: theme(colors.orang); */
+		/* text-transform: t; */
+	}
+
+	.article h3 {
+		font-size: theme(fontSize.2xl);
+		padding-block: theme(padding.3);
+		font-weight: theme(fontWeight.bold);
+		/* color: theme(colors.orang); */
+	}
+	.article h4 {
+		font-size: theme(fontSize.xl);
+		padding-block: theme(padding.3);
+		font-weight: theme(fontWeight.bold);
+		/* color: theme(colors.orang); */
 	}
 }

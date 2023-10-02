@@ -1,7 +1,7 @@
 <script>
 	import { faCss3, faCss3Alt, faHtml5, faJs, faSafari } from '@fortawesome/free-brands-svg-icons';
-	import { faGear } from '@fortawesome/free-solid-svg-icons';
-	import { showModal } from '$lib/feEditor/store.js';
+	import { faGear, faTerminal } from '@fortawesome/free-solid-svg-icons';
+	import { showModal, showjsConsole } from '$lib/feEditor/store.js';
 	import Fa from 'svelte-fa';
 	export let lang;
 
@@ -36,6 +36,15 @@
 		</p>
 
 		<div class=" flex justify-between items-center">
+			<button
+				on:click={() => {
+					showjsConsole.set(true);
+					console.log($showjsConsole);
+				}}
+				class="z-50 flex gap-2 items-center hover:opacity-80"
+			>
+				console <Fa icon={faTerminal} />
+			</button>
 			<button on:click={showMod} class="z-50 hover:scale-105 hover:opacity-80 cursor-pointer px-4"
 				><Fa icon={faGear} /></button
 			>

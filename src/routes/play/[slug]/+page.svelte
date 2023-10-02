@@ -1,6 +1,6 @@
 <script>
 	import { current_data, user, isOwner, SnippetsDescription, showToast } from '$lib/index.js';
-	import { showSave } from '$lib/feEditor/store.js';
+	import { showSave, consoleOutput } from '$lib/feEditor/store.js';
 	import { onMount } from 'svelte';
 	import Toast from '../../../components/toast.svelte';
 	import { browser } from '$app/environment';
@@ -10,6 +10,7 @@
 	import Resizable from '../../../components/fePlayground/resizable.svelte';
 	import { showLoginToSave, showForkTosave, showModal } from '$lib/feEditor/store.js';
 	import Femodal from '../../../components/fePlayground/femodal.svelte';
+	import JsConsole from '../../../components/fePlayground/jsConsole.svelte';
 
 	export let data;
 
@@ -34,6 +35,15 @@
 				}
 			}
 		}, 1000);
+
+		window.addEventListener('message', function (event) {
+			if (event.data && event.data.type === 'console') {
+				// Handle the console message received from the iframe
+				consoleOutput.update((cur) => {
+					return [...cur, event.data.message];
+				});
+			}
+		});
 	});
 
 	showForkTosave.set(false);
@@ -69,5 +79,6 @@
 		{#if $showModal}
 			<Femodal type={$showModal} />
 		{/if}
+		<JsConsole />
 	</div>
 </div>

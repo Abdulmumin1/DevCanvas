@@ -55,11 +55,11 @@
 			}${css}`;
 			iframeDoc.head.appendChild(styleElement);
 
-			// // Step 3: Remove any existing <script> elements
-			// const existingScripts = iframeDoc.getElementsByTagName('script');
-			// for (const script of existingScripts) {
-			// 	script.remove();
-			// }
+			// Step 3: Remove any existing <script> elements
+			const existingScripts = iframeDoc.getElementsByTagName('script');
+			for (const script of existingScripts) {
+				script.remove();
+			}
 
 			// Function to handle text input
 
@@ -85,7 +85,16 @@
 				let iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
 
 				const scriptElement = iframeDoc.createElement('script');
-				scriptElement.textContent = `try{${js}}catch(err){console.log(err)}`;
+				scriptElement.textContent = `try{
+					// Inside the iframe
+console.log = function(message) {
+    // Send the console message to the parent page
+    window.parent.postMessage({ type: 'console', message: message }, '*');
+};
+	
+					${js}
+				
+				}catch(err){console.log(err)}`;
 				iframeDoc.body.appendChild(scriptElement);
 				try {
 					if ($externalStuff.js != undefined) {
