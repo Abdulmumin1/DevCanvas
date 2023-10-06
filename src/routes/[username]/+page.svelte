@@ -80,7 +80,7 @@
 				<div class="h-full">
 					<h2 class="text-2xl">Collections</h2>
 					<div class="h-full w-full">
-						<p class="text-3xl">Apologies, In Progess 😋.....</p>
+						<!-- <p class="text-3xl">Apologies, In Progess 😋.....</p> -->
 						<Collection data={{ supabase: data.supabase, user_id: data.details.user_id }} />
 					</div>
 				</div>

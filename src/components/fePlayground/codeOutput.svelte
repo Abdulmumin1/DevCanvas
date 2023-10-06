@@ -1,6 +1,7 @@
 <script>
 	import { current_data } from '$lib/index.js';
-	import { externalStuff, jsChanged } from '$lib/feEditor/store.js';
+	import { externalStuff, jsChanged, cssPlugins } from '$lib/feEditor/store.js';
+	import { fontawesomeLINK, materialiconsLINK, bootstrapLINK } from '$lib/plugins/store.js';
 	import { onMount } from 'svelte';
 
 	export let code;
@@ -19,6 +20,12 @@
 		if (iframe) {
 			// Get the iframe's document
 			let iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+
+			// Step 3: Remove any existing <script> elements
+			// const existingScripts = iframeDoc.getElementsByTagName('script');
+			// for (const script of existingScripts) {
+			// 	script.remove();
+			// }
 
 			const bodyContent = code;
 			iframeDoc.body.innerHTML = bodyContent;
@@ -55,12 +62,6 @@
 			}${css}`;
 			iframeDoc.head.appendChild(styleElement);
 
-			// Step 3: Remove any existing <script> elements
-			const existingScripts = iframeDoc.getElementsByTagName('script');
-			for (const script of existingScripts) {
-				script.remove();
-			}
-
 			// Function to handle text input
 
 			const delay = 2000; // Adjust the delay as needed (in milliseconds)
@@ -76,6 +77,90 @@
 	}
 
 	$: {
+		if (iframe) {
+			let iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+
+			const tailwindScriptHTML = iframeDoc.getElementById('tailwincssDSFE4o431!!');
+			const fontawesomeHTML = iframeDoc.getElementById('fontawesomeDSFE4o431!!');
+			const materialiconsHTML = iframeDoc.getElementById('materialiconsDSFE4o431!!');
+			const bootstrapHTML = iframeDoc.getElementById('bootstrapDSFE4o431!!');
+
+			if ($cssPlugins.fontawesome) {
+				// Create a temporary HTML element
+				const tempElement = document.createElement('div');
+
+				// Set the HTML code as text
+				tempElement.innerHTML = fontawesomeLINK;
+				// Extract the first child element (the <link> element) from the temporary element
+				let fontawesome = tempElement.firstElementChild;
+
+				// check if it exists
+
+				if (!fontawesomeHTML) {
+					iframeDoc.head.appendChild(fontawesome);
+				}
+			} else {
+				if (fontawesomeHTML) {
+					fontawesomeHTML.remove();
+				}
+			}
+
+			if ($cssPlugins.bootstrap) {
+				// Create a temporary HTML element
+				const tempElement = document.createElement('div');
+
+				// Set the HTML code as text
+				tempElement.innerHTML = bootstrapLINK;
+				// Extract the first child element (the <link> element) from the temporary element
+				let bootstrap = tempElement.firstElementChild;
+
+				// check if it exists
+
+				if (!bootstrapHTML) {
+					iframeDoc.head.appendChild(bootstrap);
+				}
+			} else {
+				if (bootstrapHTML) {
+					bootstrapHTML.remove();
+				}
+			}
+
+			if ($cssPlugins.materialicons) {
+				// Create a temporary HTML element
+				const tempElement = document.createElement('div');
+
+				// Set the HTML code as text
+				tempElement.innerHTML = materialiconsLINK;
+				// Extract the first child element (the <link> element) from the temporary element
+				let materialicons = tempElement.firstElementChild;
+				materialicons.id = 'materialiconsDSFE4o431!!';
+
+				// check if it exists
+				if (!materialiconsHTML) {
+					iframeDoc.head.appendChild(materialicons);
+				}
+			} else {
+				if (materialiconsHTML) {
+					materialiconsHTML.remove();
+				}
+			}
+
+			if ($cssPlugins.tailwind) {
+				const tailwindScript = iframeDoc.createElement('script');
+				tailwindScript.src = 'https://cdn.tailwindcss.com';
+				tailwindScript.id = 'tailwincssDSFE4o431!!';
+
+				if (!tailwindScriptHTML) {
+					iframeDoc.body.appendChild(tailwindScript);
+				}
+			} else {
+				if (tailwindScriptHTML) {
+					tailwindScriptHTML.remove();
+				}
+			}
+		}
+	}
+	$: {
 		if ($jsChanged) {
 			jsChanged.set(false);
 			// Step 4: Create and append the new JavaScript code
@@ -84,7 +169,13 @@
 			if (iframe) {
 				let iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
 
+				const mainScriptHTML = iframeDoc.getElementById('mainScript12343REFDS!');
+				if (mainScriptHTML) {
+					mainScriptHTML.textContent = '';
+				}
+
 				const scriptElement = iframeDoc.createElement('script');
+				scriptElement.id = 'mainScript12343REFDS!';
 				scriptElement.textContent = `try{
 					// Inside the iframe
 console.log = function(message) {
@@ -130,6 +221,7 @@ console.log = function(message) {
 			}
 			// Step 3: Create and append JavaScript code
 			const scriptElement = iframeDoc.createElement('script');
+			scriptElement.id = 'mainScript12343REFDS!';
 			scriptElement.textContent = `try{
 				${js}
 			}catch(err){console.log(err)}`;
