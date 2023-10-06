@@ -56,7 +56,7 @@
 		transition:fly
 		use:clickOutside
 		on:click_outside={closeModal}
-		class="modal z-50 backdrop-blur-lg absolute w-[60%] h-[70%] inset-y-0 inset-x-0 mx-auto m-2 shadow-md border-t-4 bg-white dark:bg-black border-sky-500 p-3 rounded flex flex-col overflow-scroll gap-2"
+		class="modal z-50 backdrop-blur-lg absolute w-[95%] md:w-[60%] h-[80%] md:h-[70%] inset-y-0 inset-x-0 mx-auto m-2 shadow-md border-t-4 bg-white dark:bg-black border-sky-500 p-3 rounded flex flex-col overflow-scroll gap-2"
 	>
 		<div class="absolute top-0 right-0 m-2">
 			<button on:click={closeModal}>

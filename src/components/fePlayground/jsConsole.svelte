@@ -10,6 +10,7 @@
 	let isResizing = false;
 
 	// Function to handle resizing logic
+	let ovelay;
 	function startResize(event) {
 		isResizing = true;
 		startY = event.clientY;
@@ -26,6 +27,8 @@
 		if (isResizing) {
 			const deltaY = event.clientY - startY;
 			currentHeight = startHeight + -deltaY;
+
+			ovelay.style.height = `${currentHeight}px`;
 		}
 	}
 
@@ -75,8 +78,8 @@
 	</Splitpanes>
 </div> -->
 
-<div class="overlay" style="height: {currentHeight}px;" class:hidden={!$showjsConsole}>
-	<!-- <div on:mousedown={startResize} class="handle" /> -->
+<div class="overlay" bind:this={ovelay} class:hidden={!$showjsConsole}>
+	<div on:mousedown={startResize} class="handle bg-secondary-dark" />
 	<div class="w-full flex justify-between">
 		<span class="flex items-center gap-2 text-light">
 			Console <Fa icon={faTerminal} />
@@ -95,9 +98,9 @@
 			>
 		</div>
 	</div>
-	<div class="bg-black w-full h-full overflow-scroll content">
+	<div class="bg-black w-full h-full overflow-scroll content divide-y divide-gray-100">
 		{#each $consoleOutput as log}
-			<div class="divide-y w-full divide-secondary-dark">
+			<div class="w-full">
 				{log}
 			</div>
 		{/each}
@@ -112,6 +115,7 @@
 		width: 100%;
 		background-color: rgb(25 25 25);
 		overflow: hidden;
+		transition: height 0 ease-in-out;
 	}
 
 	.content {
