@@ -1,6 +1,7 @@
 <script>
 	import { current_data } from '$lib/index.js';
-	import { externalStuff, jsChanged } from '$lib/feEditor/store.js';
+	import { externalStuff, jsChanged, cssPlugins } from '$lib/feEditor/store.js';
+	import { fontawesomeLINK, materialiconsLINK } from '$lib/plugins/store.js';
 	import { onMount } from 'svelte';
 
 	export let code;
@@ -75,6 +76,69 @@
 		// console.log(code);
 	}
 
+	$: {
+		if (iframe) {
+			let iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+
+			const tailwindScriptHTML = iframeDoc.getElementById('tailwincssDSFE4o431!!');
+			const fontawesomeHTML = iframeDoc.getElementById('fontawesomeDSFE4o431!!');
+			const materialiconsHTML = iframeDoc.getElementById('materialiconsDSFE4o431!!');
+
+			if ($cssPlugins.fontawesome) {
+				// Create a temporary HTML element
+				const tempElement = document.createElement('div');
+
+				// Set the HTML code as text
+				tempElement.innerHTML = fontawesomeLINK;
+				// Extract the first child element (the <link> element) from the temporary element
+				let fontawesome = tempElement.firstElementChild;
+
+				// check if it exists
+
+				if (!fontawesomeHTML) {
+					iframeDoc.head.appendChild(fontawesome);
+				}
+			} else {
+				if (fontawesomeHTML) {
+					fontawesomeHTML.remove();
+				}
+			}
+
+			if ($cssPlugins.materialicons) {
+				// Create a temporary HTML element
+				const tempElement = document.createElement('div');
+
+				// Set the HTML code as text
+				tempElement.innerHTML = materialiconsLINK;
+				// Extract the first child element (the <link> element) from the temporary element
+				let materialicons = tempElement.firstElementChild;
+				materialicons.id = 'materialiconsDSFE4o431!!';
+
+				// check if it exists
+				if (!materialiconsHTML) {
+					iframeDoc.head.appendChild(materialicons);
+				}
+			} else {
+				if (materialiconsHTML) {
+					materialiconsHTML.remove();
+				}
+			}
+
+			if ($cssPlugins.tailwind) {
+				const tailwindScript = iframeDoc.createElement('script');
+				tailwindScript.src = 'https://cdn.tailwindcss.com';
+				tailwindScript.id = 'tailwincssDSFE4o431!!';
+
+				if (!tailwindScriptHTML) {
+					iframeDoc.body.appendChild(tailwindScript);
+				}
+			} else {
+				if (tailwindScriptHTML) {
+					tailwindScriptHTML.remove();
+				}
+			}
+		}
+	}
 	$: {
 		if ($jsChanged) {
 			jsChanged.set(false);

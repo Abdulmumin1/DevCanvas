@@ -43,3 +43,11 @@ export let javascriptStuff = writable({ main: '' });
 export let jsChanged = writable(false);
 export let showjsConsole = writable(false);
 export let consoleOutput = writable([]);
+export const cssPlugins = writable({
+	tailwind: false,
+	bootstrap: false,
+	fontawesome: false,
+	materialicons: false,
+	googlefonts: false,
+	bulma: false
+});

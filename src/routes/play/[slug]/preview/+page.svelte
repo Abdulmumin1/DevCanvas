@@ -18,7 +18,7 @@
 
 			const bodyContent = data.details.html;
 			if (zoomOut) {
-				iframeDoc.body.style.scale = 0.35;
+				iframeDoc.body.style.scale = 0.3;
 			}
 			iframeDoc.body.innerHTML = bodyContent;
 

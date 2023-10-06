@@ -869,6 +869,10 @@ video {
   height: 100vh;
 }
 
+.h-\[70\%\] {
+  height: 70%;
+}
+
 .max-h-96 {
   max-height: 24rem;
 }
@@ -980,6 +984,10 @@ video {
 
 .w-screen {
   width: 100vw;
+}
+
+.w-\[74\%\] {
+  width: 74%;
 }
 
 .min-w-\[100px\] {
@@ -2202,6 +2210,11 @@ video {
 .hover\:bg-blue-100:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(219 234 254 / var(--tw-bg-opacity));
+}
+
+.hover\:bg-error:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 77 77 / var(--tw-bg-opacity));
 }
 
 .hover\:bg-primary:hover {
