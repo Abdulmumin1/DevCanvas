@@ -1,7 +1,7 @@
 <script>
 	import { current_data, user, isOwner, SnippetsDescription, showToast } from '$lib/index.js';
 	import { consoleOutput } from '$lib/feEditor/store.js';
-	import { onMount } from 'svelte';
+	import { onDestroy, onMount } from 'svelte';
 	import { browser } from '$app/environment';
 	import FeCodeEditor from '../../../components/fePlayground/feCodeEditor.svelte';
 	import FePlayGroungNav from '../../../components/fePlayground/fePlayGroungNav.svelte';
@@ -27,15 +27,23 @@
 		description: 'Try Snippetland Playground'
 	});
 
+	function captureIframeOutput(event) {
+		if (event.data && event.data.type === 'console') {
+			// Handle the console message received from the iframe
+			consoleOutput.update((cur) => {
+				return [...cur, event.data.message];
+			});
+		}
+	}
+
 	onMount(() => {
-		window.addEventListener('message', function (event) {
-			if (event.data && event.data.type === 'console') {
-				// Handle the console message received from the iframe
-				consoleOutput.update((cur) => {
-					return [...cur, event.data.message];
-				});
-			}
-		});
+		window.addEventListener('message', captureIframeOutput);
+	});
+
+	onDestroy(() => {
+		if (browser) {
+			window.removeEventListener('message', captureIframeOutput);
+		}
 	});
 </script>
 

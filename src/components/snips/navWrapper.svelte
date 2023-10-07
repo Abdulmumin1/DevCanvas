@@ -26,7 +26,7 @@
 			<ul class="flex items-center justify-end w-full gap-2">
 				<li><OverlayNav /></li>
 				<li class="w-full"><Search /></li>
-				<li><Darkmode /></li>
+				<li class="text-black dark:text-white"><Darkmode /></li>
 
 				{#if !$user}
 					<li><a href={signinURL} class="bg-green-400 p-3 rounded-lg">Join</a></li>

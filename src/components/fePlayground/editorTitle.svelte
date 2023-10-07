@@ -11,7 +11,7 @@
 </script>
 
 {#if lang == 'html'}
-	<div class="w-full flex justify-between items-center">
+	<div class="w-full flex justify-between items-center h-10">
 		<p class="bg-gray-50 dark:bg-black px-3 py-1 flex gap-1 items-center">
 			<span class="text-rose-500"><Fa icon={faHtml5} /></span>HTML
 		</p>
@@ -21,7 +21,7 @@
 		>
 	</div>
 {:else if lang == 'css'}
-	<div class="w-full flex justify-between items-center">
+	<div class="w-full flex justify-between items-center h-10">
 		<p class="bg-gray-50 dark:bg-black px-3 py-1 flex gap-1 items-center">
 			<span class="text-blue-500"><Fa icon={faCss3} /></span>CSS
 		</p>
@@ -30,7 +30,7 @@
 		>
 	</div>
 {:else if lang == 'js'}
-	<div class="w-full flex justify-between items-center">
+	<div class="w-full flex justify-between items-center h-10">
 		<p class="bg-gray-50 dark:bg-black px-3 py-1 flex gap-1 items-center">
 			<span class="text-yellow-500"><Fa icon={faJs} /></span>JS
 		</p>

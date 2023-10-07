@@ -51,6 +51,9 @@
 
 <div class="h-full max-w-full overflow-hidden">
 	{#if !loading}
+		<p class="bg-secondary-dark py-1 px-2">
+			by <a href="/{details.profile}" target="_blank">@{details.profile}</a>
+		</p>
 		<div class="w-full bg-secondary-dark p-2 flex gap-2 text-white">
 			<button
 				on:click={() => toogle('html')}

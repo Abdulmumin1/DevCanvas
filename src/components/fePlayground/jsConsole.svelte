@@ -52,8 +52,8 @@
 
 <!-- 
 <div class="absolute top-0 h-full w-full z-[100] text-sky-dark" class:hidden={!$showjsConsole}>
-	<Splitpanes horizontal>
-		<Pane class={' pointer-events-none'}>
+	<Splitpanes horizontal theme="my-theme">
+		<Pane class={' pointer-events-none opacity-0'}>
 			<div
 				class="w-full opacity-0 h-full -z-50 bg-orange-100 pointer-events-none"
 				role="button"
@@ -63,23 +63,41 @@
 				tabindex="0"
 			/>
 		</Pane>
-		<Pane class={'bg-sky-dark'}>
-			<div class="bg-black w-full h-full overflow-scroll">
-				<span class="flex items-center gap-2 text-light">
-					Console <Fa icon={faTerminal} />
-				</span>
-				{#each $consoleOutput as log}
-					<div class="divide-y w-full divide-secondary-dark">
-						{log}
+		<Pane>
+			<div bind:this={ovelay} class:hidden={!$showjsConsole}>
+				<div on:mousedown={startResize} class="handle bg-secondary-dark w-full" />
+				<div class="w-full flex justify-between">
+					<span class="flex items-center gap-2 text-light">
+						Console <Fa icon={faTerminal} />
+					</span>
+
+					<div class="flex gap-2">
+						<button
+							on:click={() => {
+								consoleOutput.set([]);
+							}}>Clear</button
+						>
+						<button
+							on:click={() => {
+								showjsConsole.set(false);
+							}}>Close</button
+						>
 					</div>
-				{/each}
+				</div>
+				<div class="bg-black w-full h-full overflow-scroll content divide-y divide-gray-100">
+					{#each $consoleOutput as log}
+						<div class="w-full">
+							{log}
+						</div>
+					{/each}
+				</div>
 			</div>
 		</Pane>
 	</Splitpanes>
 </div> -->
 
-<div class="overlay" bind:this={ovelay} class:hidden={!$showjsConsole}>
-	<div on:mousedown={startResize} class="handle bg-secondary-dark" />
+<div class="overlay overflow-scroll" bind:this={ovelay} class:hidden={!$showjsConsole}>
+	<div on:mousedown={startResize} class="handle bg-secondary-dark w-full" />
 	<div class="w-full flex justify-between">
 		<span class="flex items-center gap-2 text-light">
 			Console <Fa icon={faTerminal} />
@@ -111,10 +129,11 @@
 	.overlay {
 		position: absolute;
 		bottom: 0;
-		z-index: 99;
+		z-index: 20;
 		width: 100%;
 		background-color: rgb(25 25 25);
 		overflow: hidden;
+		max-height: 90%;
 		transition: height 0 ease-in-out;
 	}
 
@@ -125,7 +144,6 @@
 	.handle {
 		width: 100%;
 		height: 10px;
-		background-color: black;
 		cursor: ns-resize; /* Vertical resize cursor */
 		user-select: none; /* Prevent text selection while dragging */
 	}

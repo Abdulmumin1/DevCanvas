@@ -18,7 +18,7 @@
 <div class="w-full p-2 bg-sky-300 text-sky-dark text-sm md:text-lg">
 	SnippetLand is experimenting with an interactive HTML playground 🤩 <a
 		class="underline text-sky-900"
-		href="/play"
+		href="/play/try"
 		>Try it
 	</a>
 	🚀
@@ -44,7 +44,9 @@
 					>
 				</li>
 				<li class="bg-secondary-dark p-2 rounded-full" class:landing={$page.url.pathname == '/'}>
-					<div class="flex gap-2 items-center justify-center"><Darkmode /></div>
+					<div class="flex gap-2 items-center justify-center text-light">
+						<Darkmode />
+					</div>
 				</li>
 				<li class="bg-secondary-dark text-light rounded-full p-3">
 					<a

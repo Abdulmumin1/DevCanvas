@@ -19,14 +19,18 @@
 	const code = details.code;
 </script>
 
-<div class="flex flex-col h-[100dvh] bg-secondary-dark rounded">
+<div class="flex flex-col h-fit bg-white rounded">
 	<div class="fixed w-full bg-secondary-dark flex items-center justify-between p-2 z-50">
-		<div class="flex flex-col text-light">
-			<a href="https://snippet-bice.vercel.app" class="flex items-center gap-1" target="_blank">
+		<div class="flex flex-col text-light h-fit">
+			<div class="flex items-center gap-1" target="_blank">
 				<img src={logo} class="h-6 w-6" alt="snippetsLand" />
 
-				<p class="text-xl text-white">{details.description}</p>
-			</a>
+				<p class="text-sm md:text-xl text-white">
+					<a href="/xyz/{details.project_key}" target="_blank">
+						{details.description}
+					</a>
+				</p>
+			</div>
 			<!-- <a class="w-full" href="http://localhost:5173" target="_parent">go to page</a> -->
 		</div>
 
@@ -46,7 +50,7 @@
 			>
 		</div>
 	</div>
-	<div class="mt-14 py-4 text-sm md:text-base">
+	<div class="mt-12 py-4 text-sm md:text-base bg-white">
 		<HighlightAuto {code} let:highlighted>
 			<LineNumbers {highlighted} hideBorder />
 		</HighlightAuto>

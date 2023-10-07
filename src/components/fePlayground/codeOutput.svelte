@@ -20,7 +20,6 @@
 		if (iframe) {
 			// Get the iframe's document
 			let iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
-
 			// Step 3: Remove any existing <script> elements
 			// const existingScripts = iframeDoc.getElementsByTagName('script');
 			// for (const script of existingScripts) {
@@ -170,22 +169,30 @@
 				let iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
 
 				const mainScriptHTML = iframeDoc.getElementById('mainScript12343REFDS!');
+				console.log(iframeDoc.body);
 				if (mainScriptHTML) {
+					console.log(mainScriptHTML.textContent);
 					mainScriptHTML.textContent = '';
 				}
 
 				const scriptElement = iframeDoc.createElement('script');
 				scriptElement.id = 'mainScript12343REFDS!';
-				scriptElement.textContent = `try{
-					// Inside the iframe
-console.log = function(message) {
-    // Send the console message to the parent page
-    window.parent.postMessage({ type: 'console', message: message }, '*');
-};
+				scriptElement.textContent = `
+
+	// Inside the iframe
 	
-					${js}
-				
-				}catch(err){console.log(err)}`;
+	console.log = function(message) {
+    	// Send the console message to the parent page
+    	window.parent.postMessage({ type: 'console', message: message }, '*');
+	};
+	try{
+
+	${js}
+
+		}catch(err){
+		console.log(err); 
+		
+	}`;
 				iframeDoc.body.appendChild(scriptElement);
 				try {
 					if ($externalStuff.js != undefined) {
@@ -226,14 +233,6 @@ console.log = function(message) {
 				${js}
 			}catch(err){console.log(err)}`;
 			iframeDoc.body.appendChild(scriptElement);
-			try {
-				if ($externalStuff.js != undefined) {
-					const externalScript = iframeDoc.createElement('script');
-					externalScript.src = $externalStuff.js;
-
-					iframeDoc.body.appendChild(externalScript);
-				}
-			} catch (err) {}
 		}
 	});
 </script>
