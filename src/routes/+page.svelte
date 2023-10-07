@@ -46,5 +46,5 @@
 			<Faq />
 		</div>
 	</div>
-	<Footer />
 </div>
+<Footer />

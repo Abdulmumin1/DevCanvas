@@ -18,32 +18,38 @@
 </script>
 
 <div class="grid grid-cols-3 gap-2">
-	<div class="bg-sky-100 text-black p-1 rounded flex justify-between">
-		<label for="tailwind">TailwindCSS</label>
+	<label class="bg-sky-100 text-black p-1 rounded flex justify-between" for="tailwind"
+		>TailwindCSS
+
 		<input type="checkbox" id="tailwind" bind:checked={state.tailwind} />
-	</div>
+	</label>
 
-	<div class="bg-sky-100 text-black p-1 rounded flex justify-between">
-		<label for="bootstrap">BootStrap</label>
+	<label class="bg-sky-100 text-black p-1 rounded flex justify-between" for="bootstrap"
+		>BootStrap
+
 		<input type="checkbox" id="bootstrap" bind:checked={state.bootstrap} />
-	</div>
-	<div class="bg-sky-100 text-black p-1 rounded flex justify-between">
-		<label for="fontawesome">FontAwesome</label>
+	</label>
+	<label class="bg-sky-100 text-black p-1 rounded flex justify-between" for="fontawesome">
+		FontAwesome
+
 		<input type="checkbox" id="fontawesome" bind:checked={state.fontawesome} />
-	</div>
+	</label>
 
-	<div class="bg-sky-100 text-black p-1 rounded flex justify-between">
-		<label for="materialicons">Material Icons</label>
+	<label class="bg-sky-100 text-black p-1 rounded flex justify-between" for="materialicons"
+		>Material Icons
+
 		<input type="checkbox" id="materialicons" bind:checked={state.materialicons} />
-	</div>
+	</label>
 
-	<div class="bg-sky-100 text-black p-1 rounded flex justify-between">
-		<label for="googlefonts">Google Fonts</label>
+	<label class="bg-sky-100 text-black p-1 rounded flex justify-between" for="googlefonts"
+		>Google Fonts
+
 		<input type="checkbox" id="googlefonts" bind:checked={state.googlefonts} />
-	</div>
+	</label>
 
-	<div class="bg-sky-100 text-black p-1 rounded flex justify-between">
-		<label for="bulma">Bulma</label>
+	<label class="bg-sky-100 text-black p-1 rounded flex justify-between" for="bulma"
+		>Bulma
+
 		<input type="checkbox" id="bulma" bind:checked={state.bulma} />
-	</div>
+	</label>
 </div>

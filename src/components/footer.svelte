@@ -1,11 +1,50 @@
 <script>
 	import Fa from 'svelte-fa';
 	import { faGithub } from '@fortawesome/free-brands-svg-icons';
+	import logo from '$lib/logo-100.png';
 </script>
 
-<div class="w-full p-6">
-	<p class="text-lg">Contribute to Snippets</p>
-	<a href="https://github.com/Abdulmumin1/snippets" target="_blank"><Fa icon={faGithub} /></a>
-	<p>Illustration Credits</p>
-	<a href="https://storyset.com/travel">Travel illustrations by Storyset</a>
-</div>
+<footer class="bg-sky-500 text-black font-thin px-4 py-8">
+	<div class="flex gap-2">
+		<img src={logo} alt="SnippetLand Logo" class="h-8" />
+		<div class="flex flex-col space-y-2">
+			<h3 class="text-2xl font-bold">SnippetLand</h3>
+			<p>A collection of code snippets and beautiful creations for developers of all levels.</p>
+		</div>
+	</div>
+
+	<div class="flex flex-row gap-12 mt-4 p-4">
+		<div class="flex flex-col space-y-2">
+			<h4 class="text-lg font-bold">Contact Us</h4>
+			<ul class="list-disc">
+				<li>
+					<a href="mailto:info@snippetland.com" class=" hover:underline">info@snippetland.io</a>
+				</li>
+				<li>
+					<a href="https://twitter.com/snippetlandIO" class=" hover:underline">Twitter</a>
+				</li>
+				<li>
+					<a href="https://github.com/Abdulmumin1/snippetland/" class=" hover:underline">GitHub</a>
+				</li>
+			</ul>
+		</div>
+
+		<div class="flex flex-col space-y-2">
+			<h4 class="text-lg font-bold">Links</h4>
+			<ul class="list-disc">
+				<li><a href="/" class=" hover:underline">Home</a></li>
+				<li><a href="/challenge" class=" hover:underline">Challenges</a></li>
+				<li><a href="/play" class=" hover:underline">Online Editor</a></li>
+				<li><a href="/about" class=" hover:underline">About</a></li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="flex flex-col justify-between mt-4">
+		<p class="text-sm copyright">&copy; 2023 SnippetLand. All rights reserved.</p>
+		<ul class="flex flex-row space-x-2">
+			<li><a href="/privacy-policy" class=" hover:underline">Privacy Policy</a></li>
+			<li><a href="/terms-of-service" class=" hover:underline">Terms of Service</a></li>
+		</ul>
+	</div>
+</footer>

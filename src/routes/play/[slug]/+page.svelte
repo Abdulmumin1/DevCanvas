@@ -1,7 +1,7 @@
 <script>
 	import { current_data, user, isOwner, SnippetsDescription, showToast } from '$lib/index.js';
 	import { showSave, consoleOutput } from '$lib/feEditor/store.js';
-	import { onMount } from 'svelte';
+	import { onDestroy, onMount } from 'svelte';
 	import Toast from '../../../components/toast.svelte';
 	import { browser } from '$app/environment';
 	import FeCodeEditor from '../../../components/fePlayground/feCodeEditor.svelte';
@@ -22,6 +22,14 @@
 	}
 	current_data.set(data.details);
 
+	function captureIframeOutput(event) {
+		if (event.data && event.data.type === 'console') {
+			// Handle the console message received from the iframe
+			consoleOutput.update((cur) => {
+				return [...cur, event.data.message];
+			});
+		}
+	}
 	onMount(() => {
 		// getUser()
 		showSave.set(false);
@@ -36,14 +44,13 @@
 			}
 		}, 1000);
 
-		window.addEventListener('message', function (event) {
-			if (event.data && event.data.type === 'console') {
-				// Handle the console message received from the iframe
-				consoleOutput.update((cur) => {
-					return [...cur, event.data.message];
-				});
-			}
-		});
+		window.addEventListener('message', captureIframeOutput);
+	});
+
+	onDestroy(() => {
+		if (browser) {
+			window.removeEventListener('message', captureIframeOutput);
+		}
 	});
 
 	showForkTosave.set(false);
@@ -71,14 +78,14 @@
 			<div slot="left" class="h-full w-full">
 				<FeCodeEditor initialHTML={data.details.html} initialCSS={data.details.css} lang="html" />
 			</div>
-			<div slot="right" class="w-full h-full">
+			<div slot="right" class="w-full h-full relative">
 				<CodeOutput code={$current_data.html} css={$current_data.css} js={$current_data.js} />
+				<JsConsole />
 			</div>
 		</Resizable>
 
 		{#if $showModal}
 			<Femodal type={$showModal} />
 		{/if}
-		<JsConsole />
 	</div>
 </div>
