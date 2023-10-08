@@ -1,6 +1,6 @@
 <script>
 	import { current_data, user, isOwner, SnippetsDescription, showToast } from '$lib/index.js';
-	import { showSave, consoleOutput } from '$lib/feEditor/store.js';
+	import { showSave, consoleOutput, cssPlugins, jsPlugins } from '$lib/feEditor/store.js';
 	import { onDestroy, onMount } from 'svelte';
 	import Toast from '../../../components/toast.svelte';
 	import { browser } from '$app/environment';

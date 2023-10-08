@@ -66,13 +66,13 @@
 			<div slot="left" class="h-full w-full">
 				<FeCodeEditor initialHTML={'<!--HTML HERE-->'} initialCSS={'/* */'} lang="html" />
 			</div>
-			<div slot="right" class="w-full h-full">
+			<div slot="right" class="w-full h-full relative">
 				<CodeOutput />
+				<JsConsole />
 			</div>
 		</Resizable>
 		{#if $showModal}
 			<Femodal type={$showModal} />
 		{/if}
-		<JsConsole />
 	</div>
 </main>

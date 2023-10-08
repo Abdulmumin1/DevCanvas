@@ -64,6 +64,10 @@
 	}
 </script>
 
+<svelte:head>
+	<meta name="robots" content="index, follow" />
+</svelte:head>
+
 <NavWrapper>
 	<!-- Code Snippet Cards -->
 	<div class="bg-sky-100 dark:bg-secondary-dark pt-2 px-1 rounded-md my-4">

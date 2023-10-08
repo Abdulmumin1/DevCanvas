@@ -1,7 +1,13 @@
 <script>
 	import { current_data } from '$lib/index.js';
-	import { externalStuff, jsChanged, cssPlugins } from '$lib/feEditor/store.js';
-	import { fontawesomeLINK, materialiconsLINK, bootstrapLINK } from '$lib/plugins/store.js';
+	import { externalStuff, jsChanged, cssPlugins, jsPlugins } from '$lib/feEditor/store.js';
+	import {
+		fontawesomeLINK,
+		materialiconsLINK,
+		bootstrapLINK,
+		animejsCDN,
+		setup_js_plugin
+	} from '$lib/plugins/store.js';
 	import { onMount } from 'svelte';
 
 	export let code;
@@ -75,6 +81,7 @@
 		// console.log(code);
 	}
 
+	// css plugins
 	$: {
 		if (iframe) {
 			let iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
@@ -159,6 +166,41 @@
 			}
 		}
 	}
+
+	$: {
+		if (iframe) {
+			let iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+
+			let array = Object.keys($jsPlugins);
+			for (let index = 0; index < array.length; index++) {
+				setup_js_plugin(array[index], $jsPlugins, iframeDoc);
+			}
+			// const animejsScriptHTML = iframeDoc.getElementById('animejsDSFE4o431!!');
+			// if ($jsPlugins.animejs) {
+			// 	const animejsScript = iframeDoc.createElement('script');
+			// 	animejsScript.src = animejsCDN;
+			// 	animejsScript.id = 'animejsDSFE4o431!!';
+
+			// 	if (!animejsScriptHTML) {
+			// 		iframeDoc.body.appendChild(animejsScript);
+			// 	}
+			// } else {
+			// 	if (animejsScriptHTML) {
+			// 		animejsScriptHTML.remove();
+			// 	}
+			// }
+
+			try {
+				if ($externalStuff.js != undefined) {
+					const externalScript = iframeDoc.createElement('script');
+					externalScript.src = $externalStuff.js;
+
+					iframeDoc.body.appendChild(externalScript);
+				}
+			} catch (err) {}
+		}
+	}
+
 	$: {
 		if ($jsChanged) {
 			jsChanged.set(false);
@@ -169,9 +211,7 @@
 				let iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
 
 				const mainScriptHTML = iframeDoc.getElementById('mainScript12343REFDS!');
-				console.log(iframeDoc.body);
 				if (mainScriptHTML) {
-					console.log(mainScriptHTML.textContent);
 					mainScriptHTML.textContent = '';
 				}
 
@@ -179,29 +219,22 @@
 				scriptElement.id = 'mainScript12343REFDS!';
 				scriptElement.textContent = `
 
-	// Inside the iframe
+// Inside the iframe
+
+console.log = function(message) {
+	// Send the console message to the parent page
+	window.parent.postMessage({ type: 'console', message: message }, '*');
+};
+
+try{
+
+${js}
+
+}catch(err){
+	console.log(err); 
 	
-	console.log = function(message) {
-    	// Send the console message to the parent page
-    	window.parent.postMessage({ type: 'console', message: message }, '*');
-	};
-	try{
-
-	${js}
-
-		}catch(err){
-		console.log(err); 
-		
-	}`;
+}`;
 				iframeDoc.body.appendChild(scriptElement);
-				try {
-					if ($externalStuff.js != undefined) {
-						const externalScript = iframeDoc.createElement('script');
-						externalScript.src = $externalStuff.js;
-
-						iframeDoc.body.appendChild(externalScript);
-					}
-				} catch (err) {}
 			}
 			// showBundling.set(false);
 		}
@@ -234,17 +267,23 @@
 			}catch(err){console.log(err)}`;
 			iframeDoc.body.appendChild(scriptElement);
 		}
+
+		setTimeout(() => {
+			try {
+				if ($current_data.plugins?.length > 0) {
+					console.log($current_data.plugins[0].js);
+					jsPlugins.set($current_data.plugins[0].js);
+					cssPlugins.set($current_data.plugins[0].css);
+				}
+			} catch (er) {
+				console.log(er);
+			}
+		}, 2000);
 	});
 </script>
 
 <div
 	class="bg-white border-t md:border-l dark:border-primary border-gray-300 w-full h-full text-black dark:text-white"
 >
-	<iframe
-		sandbox="allow-scripts allow-forms allow-modals allow-same-origin"
-		bind:this={iframe}
-		title="preview"
-		id="preview-frame"
-		class="w-full h-full"
-	/>
+	<iframe bind:this={iframe} title="preview" id="preview-frame" class="w-full h-full" />
 </div>

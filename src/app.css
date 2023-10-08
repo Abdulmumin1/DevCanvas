@@ -744,10 +744,6 @@ video {
   margin-top: 3rem;
 }
 
-.mt-14 {
-  margin-top: 3.5rem;
-}
-
 .mt-2 {
   margin-top: 0.5rem;
 }
@@ -848,6 +844,10 @@ video {
   height: 600px;
 }
 
+.h-\[70dvh\] {
+  height: 70dvh;
+}
+
 .h-\[80\%\] {
   height: 80%;
 }
@@ -867,14 +867,6 @@ video {
 
 .h-screen {
   height: 100vh;
-}
-
-.h-\[80dvh\] {
-  height: 80dvh;
-}
-
-.h-\[70dvh\] {
-  height: 70dvh;
 }
 
 .max-h-96 {
@@ -967,10 +959,6 @@ video {
 
 .w-\[90\%\] {
   width: 90%;
-}
-
-.w-\[95\%\] {
-  width: 95%;
 }
 
 .w-\[\] {
@@ -1198,6 +1186,12 @@ video {
   gap: 2rem;
 }
 
+.space-x-2 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 0;
+  margin-right: calc(0.5rem * var(--tw-space-x-reverse));
+  margin-left: calc(0.5rem * calc(1 - var(--tw-space-x-reverse)));
+}
+
 .space-x-3 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-x-reverse: 0;
   margin-right: calc(0.75rem * var(--tw-space-x-reverse));
@@ -1220,12 +1214,6 @@ video {
   --tw-space-y-reverse: 0;
   margin-top: calc(1.25rem * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(1.25rem * var(--tw-space-y-reverse));
-}
-
-.space-x-2 > :not([hidden]) ~ :not([hidden]) {
-  --tw-space-x-reverse: 0;
-  margin-right: calc(0.5rem * var(--tw-space-x-reverse));
-  margin-left: calc(0.5rem * calc(1 - var(--tw-space-x-reverse)));
 }
 
 .divide-y > :not([hidden]) ~ :not([hidden]) {
@@ -1273,6 +1261,10 @@ video {
   border-radius: 0.25rem;
 }
 
+.rounded-2xl {
+  border-radius: 1rem;
+}
+
 .rounded-3xl {
   border-radius: 1.5rem;
 }
@@ -1291,10 +1283,6 @@ video {
 
 .rounded-xl {
   border-radius: 0.75rem;
-}
-
-.rounded-2xl {
-  border-radius: 1rem;
 }
 
 .rounded-t-2xl {
@@ -1545,16 +1533,6 @@ video {
 .bg-yellow-500 {
   --tw-bg-opacity: 1;
   background-color: rgb(234 179 8 / var(--tw-bg-opacity));
-}
-
-.bg-orange-50 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(255 247 237 / var(--tw-bg-opacity));
-}
-
-.bg-gray-900 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(17 24 39 / var(--tw-bg-opacity));
 }
 
 .object-contain {
@@ -2460,8 +2438,8 @@ video {
     height: 60vh;
   }
 
-  .md\:h-\[70\%\] {
-    height: 70%;
+  .md\:h-\[80\%\] {
+    height: 80%;
   }
 
   .md\:h-\[80dvh\] {
@@ -2500,8 +2478,8 @@ video {
     width: 24rem;
   }
 
-  .md\:w-\[60\%\] {
-    width: 60%;
+  .md\:w-\[50\%\] {
+    width: 50%;
   }
 
   .md\:w-\[600px\] {

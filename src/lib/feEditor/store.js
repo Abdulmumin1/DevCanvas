@@ -36,6 +36,28 @@ export async function saveData(json_data, which = true) {
 	showSave.set(false);
 }
 
+export async function savePlugins(json_data, id) {
+	let formData = new FormData();
+
+	saved_spinner.set(true);
+	// showSave.set(true);
+
+	formData.append('plugins', JSON.stringify(json_data));
+	formData.append('id', id);
+	const response = await fetch('?/update', {
+		method: 'POST',
+		body: formData
+	});
+
+	if (response.ok) {
+		// Handle save success
+		console.log('plugin saved');
+	} else {
+		// Handle save failed
+		console.log('failed');
+	}
+}
+
 export let layoutView = writable('left');
 export let showModal = writable(false);
 export let externalStuff = writable({ html: '', css: '' });
@@ -50,4 +72,14 @@ export const cssPlugins = writable({
 	materialicons: false,
 	googlefonts: false,
 	bulma: false
+});
+
+export const jsPlugins = writable({
+	animejs: false,
+	gsap: false,
+	motionone: false,
+	threejs: false,
+	velocity: false,
+	popmotion: false,
+	scrollreveal: false
 });

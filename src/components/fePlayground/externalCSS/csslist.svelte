@@ -1,20 +1,26 @@
 <script>
 	import { onMount } from 'svelte';
-	import { cssPlugins } from '$lib/feEditor/store.js';
+	import { cssPlugins, savePlugins, jsPlugins } from '$lib/feEditor/store.js';
 
+	import { current_data } from '$lib/index.js';
 	let state = $cssPlugins;
+
+	let selectMore;
+	let delay = 1000;
 
 	$: {
 		cssPlugins.set(state);
-	}
-	function updateState(checkbox, value) {
-		state[checkbox] = value;
+
+		// clearTimeout(selectMore);
+		// selectMore = setTimeout(() => {
+		// 	savePlugins({ css: $cssPlugins, js: $jsPlugins }, $current_data.id);
+		// }, delay);
 	}
 
-	onMount(() => {
-		// Update the state of the first checkbox to be true
-		updateState('materialicons', true);
-	});
+	// onMount(() => {
+	// 	// Update the state of the first checkbox to be true
+	// 	updateState('materialicons', true);
+	// });
 </script>
 
 <div class="grid grid-cols-3 gap-2">
