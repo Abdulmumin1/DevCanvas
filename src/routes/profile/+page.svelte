@@ -52,6 +52,9 @@
 	let details = data.details;
 </script>
 
+<svelte:head>
+	<meta name="robots" content="index, follow" />
+</svelte:head>
 <NavWrapper>
 	<div class="bg-white rounded px-4 md:py-9 dark:bg-primary py-12 pb-8 mb-4 max-w-96">
 		<h2 class="text-4xl font-semibold text-gray-800 dark:text-white mb-4">Update Your Profile</h2>

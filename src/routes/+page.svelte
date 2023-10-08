@@ -21,6 +21,8 @@
 
 	<!-- Twitter Meta Tags -->
 	<meta name="twitter:title" content="Snippets" />
+
+	<meta name="robots" content="index, follow" />
 </svelte:head>
 
 <div class=" bg-skyblue-500 min-h-screen w-screen flex flex-col items-center justify-center">
@@ -29,8 +31,10 @@
 	</div>
 	<div class="w-full mx-auto rounded-lg flex flex-col gap-4 justify-center items-center">
 		<!-- Add your landing page content here -->
-		<Hero />
-		<div class="w-full">
+		<header class="w-full">
+			<Hero />
+		</header>
+		<main class="w-full">
 			<!-- Add your features or benefits here -->
 
 			<Forcreators />
@@ -44,7 +48,7 @@
 			<!-- <Idea /> -->
 			<!-- The Idea-->
 			<Faq />
-		</div>
+		</main>
 	</div>
 </div>
 <Footer />

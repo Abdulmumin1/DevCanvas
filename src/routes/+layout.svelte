@@ -88,16 +88,20 @@
 	<meta property="twitter:url" content={$SnippetsDescription.url} />
 	<meta name="twitter:description" content={$SnippetsDescription.des} />
 	<meta name="twitter:image" content={$SnippetsDescription.imageUrl} />
+	<meta
+		name="keywords"
+		content="css, html, css art, css animation, code snippet, javascript animations, animation with html/css,"
+	/>
 </svelte:head>
 
 {#if $showNavigating}
 	<PageLoadProgess />
 {/if}
-<main class=" bg-white dark:bg-primary dark:text-white transition-colors duration-300">
+<div class=" bg-white dark:bg-primary dark:text-white transition-colors duration-300">
 	<PageTransition url={data.url}>
 		<slot />
 	</PageTransition>
 	{#if $showToast}
 		<Toast message={$showToast.message} />
 	{/if}
-</main>
+</div>

@@ -7,6 +7,7 @@
 	import { clickOutside } from '$lib/index.js';
 	import { tweened } from 'svelte/motion';
 	import Csslist from './externalCSS/csslist.svelte';
+	import Jsplugins from './externalJs/jsplugins.svelte';
 
 	let js = $externalStuff.js;
 	let css = $externalStuff.css;
@@ -56,7 +57,7 @@
 		transition:fly
 		use:clickOutside
 		on:click_outside={closeModal}
-		class="modal z-50 backdrop-blur-lg absolute w-[95%] md:w-[60%] h-[80%] md:h-[70%] inset-y-0 inset-x-0 mx-auto m-2 shadow-md border-t-4 bg-white dark:bg-black border-sky-500 p-3 rounded flex flex-col overflow-scroll gap-2"
+		class="modal z-50 backdrop-blur-lg absolute w-[90%] md:w-[50%] h-[80%] md:h-[80%] inset-y-0 inset-x-0 mx-auto m-2 shadow-md border-t-4 bg-white dark:bg-black border-sky-500 p-3 rounded flex flex-col overflow-scroll gap-2"
 	>
 		<div class="absolute top-0 right-0 m-2">
 			<button on:click={closeModal}>
@@ -100,6 +101,9 @@
 				/>
 				<button class="bg-sky-500 text-primary rounded p-1 px-3" on:click={addMoreJs}> Add</button>
 			</div>
+
+			Plugins
+			<Jsplugins />
 		</div>
 	</div>
 </div>
