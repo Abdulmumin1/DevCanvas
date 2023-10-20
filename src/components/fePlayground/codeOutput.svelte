@@ -5,7 +5,6 @@
 		fontawesomeLINK,
 		materialiconsLINK,
 		bootstrapLINK,
-		animejsCDN,
 		setup_js_plugin
 	} from '$lib/plugins/store.js';
 	import { onMount } from 'svelte';

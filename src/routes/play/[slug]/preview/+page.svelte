@@ -24,9 +24,20 @@
 
 			// Step 2: Create and append the CSS style
 			const styleElement = iframeDoc.createElement('style');
-			styleElement.textContent = `body::-webkit-scrollbar {
-				width: 0px;
-			}${data.details.css}`;
+
+			if (zoomOut) {
+				styleElement.textContent = `
+				body{
+					overflow:hidden;
+				}
+				*::-webkit-scrollbar {
+					width: 0px;
+					
+				}${data.details.css}
+				`;
+			} else {
+				styleElement.textContent = data.details.css;
+			}
 
 			iframeDoc.head.appendChild(styleElement);
 
