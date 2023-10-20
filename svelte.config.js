@@ -30,6 +30,10 @@ const config = {
 			$components: 'src/components'
 		}
 	},
+	optimizeDeps: {
+		exclude: ['codemirror', '@codemirror/language-javascript' /* ... */]
+	},
+
 	extensions: ['.svelte', '.md'],
 	preprocess: [vitePreprocess(), mdsvex(mdsvexConf)]
 };

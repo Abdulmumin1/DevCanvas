@@ -98,9 +98,7 @@
 	<PageLoadProgess />
 {/if}
 <div class=" bg-white dark:bg-primary dark:text-white transition-colors duration-300">
-	<PageTransition url={data.url}>
-		<slot />
-	</PageTransition>
+	<slot />
 	{#if $showToast}
 		<Toast message={$showToast.message} />
 	{/if}

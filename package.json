@@ -30,6 +30,9 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@codemirror/lang-css": "^6.2.1",
+		"@codemirror/lang-html": "^6.4.6",
+		"@codemirror/lang-javascript": "^6.2.1",
 		"@fortawesome/free-brands-svg-icons": "^6.4.0",
 		"@fortawesome/free-solid-svg-icons": "^6.4.0",
 		"@supabase/auth-helpers-sveltekit": "^0.10.1",
@@ -44,7 +47,9 @@
 		"prismjs": "^1.29.0",
 		"shiki": "^0.14.4",
 		"svelte-ace": "^1.0.21",
+		"svelte-codemirror-editor": "^1.1.0",
 		"svelte-fa": "^3.0.4",
-		"svelte-splitpanes": "^0.8.0"
+		"svelte-splitpanes": "^0.8.0",
+		"thememirror": "^2.0.1"
 	}
 }

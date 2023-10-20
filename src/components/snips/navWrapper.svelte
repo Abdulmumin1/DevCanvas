@@ -9,6 +9,7 @@
 	import Search from '../search.svelte';
 	import OverlayNav from '../overlayNav.svelte';
 	import ProfileCard from '../profileCard.svelte';
+	import { fly } from 'svelte/transition';
 
 	let signinURL = handleRedirectURL($page.url);
 </script>
@@ -36,6 +37,11 @@
 			</ul>
 		</div>
 
-		<div class="h-full w-full overflow-y-scroll px-4 md:px-6 mb-4"><slot /></div>
+		<div
+			class="h-full w-full overflow-y-scroll px-4 md:px-6 mb-4"
+			transition:fly={{ duration: 400 }}
+		>
+			<slot />
+		</div>
 	</div>
 </div>
