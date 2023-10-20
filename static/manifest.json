@@ -1,0 +1,29 @@
+{
+	"name": "My PWA",
+	"short_name": "My PWA",
+	"description": "A progressive web app example.",
+	"icons": [
+		{
+			"src": "favicon.png",
+			"type": "image/png"
+		}
+	],
+	"start_url": "/",
+	"theme_color": "#ffffff",
+	"background_color": "#ffffff",
+	"display": "standalone",
+	"orientation": "any",
+	"scope": "/",
+	"shortcuts": [
+		{
+			"name": "Share",
+			"description": "Share the PWA with your friends.",
+			"url": "/share"
+		},
+		{
+			"name": "Settings",
+			"description": "Configure the PWA settings.",
+			"url": "/settings"
+		}
+	]
+}
