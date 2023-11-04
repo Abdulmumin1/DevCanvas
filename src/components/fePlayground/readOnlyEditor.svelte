@@ -10,7 +10,6 @@
 	export let code;
 
 	let editorConfig;
-	let monacoModel;
 
 	if (browser) {
 		editorConfig = {
@@ -30,20 +29,21 @@
 	}
 
 	onMount(async () => {
-		// self.MonacoEnvironment = {
-		// 	getWorker: function (_moduleId, label) {
-		// 		return new editorWorker();
-		// 	}
-		// };
+		self.MonacoEnvironment = {
+			getWorker: function (_moduleId, label) {
+				return new editorWorker();
+			}
+		};
 		import('monaco-editor').then((monaco) => {
-			monacoModel = monaco;
-			monacoModel.editor.defineTheme('newTheme', currentTheme);
-			// Use monaco here...
-			// Initialize the editor
-			editor = monacoModel.editor.create(editorContainer, editorConfig);
-			monacoModel.editor.setTheme('newTheme');
+			try {
+				monaco.editor.defineTheme('newTheme', currentTheme);
+				// Use monaco here...
+				// Initialize the editor
+				editor = monaco.editor.create(editorContainer, editorConfig);
+				monaco.editor.setTheme('newTheme');
+			} catch (err) {}
 		});
 	});
 </script>
 
-<div class="w-full h-full py-2 bg-primary" bind:this={editorContainer} />
+<div class="w-full h-full py-2 bg-[#0b0e14]" bind:this={editorContainer} />

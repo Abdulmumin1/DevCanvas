@@ -7,9 +7,10 @@
 	import FePlayGroungNav from '../../../components/fePlayground/fePlayGroungNav.svelte';
 	import CodeOutput from '../../../components/fePlayground/codeOutput.svelte';
 	import Resizable from '../../../components/fePlayground/resizable.svelte';
-	import { showModal } from '$lib/feEditor/store.js';
+	import { showModal, showEmbedModal } from '$lib/feEditor/store.js';
 	import Femodal from '../../../components/fePlayground/femodal.svelte';
 	import JsConsole from '../../../components/fePlayground/jsConsole.svelte';
+	import EmbedModal from '../../../components/fePlayground/embedModal.svelte';
 
 	// console.log(user)
 
@@ -73,6 +74,9 @@
 		</Resizable>
 		{#if $showModal}
 			<Femodal type={$showModal} />
+		{/if}
+		{#if $showEmbedModal}
+			<EmbedModal type={$showModal} />
 		{/if}
 	</div>
 </main>

@@ -15,9 +15,9 @@
 <svelte:head>
 	{@html githubDark}
 </svelte:head>
-<div class="text-sm h-[100dvh] p-1 bg-secondary-dark rounded">
+<div class="text-sm h-[100dvh] p-1 bg-[#0b0e14] rounded">
 	<div class="h-full rounded-xl p-1">
-		<div class="w-full h-full bg-[#0d1117] mb-4">
+		<div class="w-full h-full bg-[#0b0e14] mb-4">
 			<FeEmbedComponent details={data.details} />
 		</div>
 	</div>

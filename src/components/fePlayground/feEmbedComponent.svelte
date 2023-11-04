@@ -22,8 +22,8 @@
 			showHtml = false;
 			showResult = isVertical ? false : true;
 		} else if (which == 'output') {
-			showCSS = false;
-			showHtml = false;
+			showCSS = isVertical ? false : !showHtml;
+			showHtml = isVertical ? false : !showCSS;
 			showResult = true;
 		}
 
@@ -31,8 +31,8 @@
 	}
 
 	let isVertical = false;
-	showHtml = isVertical ? true : true;
-	showResult = isVertical ? false : true;
+	$: showHtml = isVertical ? false : true;
+	$: showResult = isVertical ? true : true;
 	// if (browser) {
 	// 	 // Change the breakpoint as needed
 	// }
@@ -51,24 +51,24 @@
 
 <div class="h-full max-w-full overflow-hidden">
 	{#if !loading}
-		<p class="bg-secondary-dark py-1 px-2">
-			by <a href="/{details.profile}" target="_blank">@{details.profile}</a>
+		<p class="bg-[#0b0e14] py-1 px-2 text-white">
+			by <a href="/{details.profile}" class="text-sky-400" target="_blank">@{details.profile}</a>
 		</p>
-		<div class="w-full bg-secondary-dark p-2 flex gap-2 text-white">
+		<div class="w-full bg-[#0b0e14] p-2 flex gap-2 text-white">
 			<button
 				on:click={() => toogle('html')}
-				class:border-b={showHtml}
+				class:text-sky-300={showHtml}
 				class="flex items-center justify-center gap-2"
 				><span class="text-error"><Fa icon={faHtml5} /></span> HTML</button
 			>
 			<button
 				class="flex items-center justify-center gap-2"
 				on:click={() => toogle('css')}
-				class:border-b={showCSS}
+				class:text-sky-300={showCSS}
 			>
 				<span class="text-blue-500"><Fa icon={faCss3} /></span> CSS</button
 			>
-			<button on:click={() => toogle('output')} class:border-b={showResult}> Output</button>
+			<button on:click={() => toogle('output')} class:text-sky-300={showResult}> Output</button>
 		</div>
 
 		{#if isVertical}

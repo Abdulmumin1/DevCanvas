@@ -24,7 +24,6 @@
 		title="fs"
 		height="200"
 		frameborder="0"
-		loading="lazy"
 		scrolling="no"
 		class="w-full overflow-hidden rounded-xl"
 	/>

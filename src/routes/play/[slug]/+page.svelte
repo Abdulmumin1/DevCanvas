@@ -8,9 +8,15 @@
 	import FePlayGroungNav from '../../../components/fePlayground/fePlayGroungNav.svelte';
 	import CodeOutput from '../../../components/fePlayground/codeOutput.svelte';
 	import Resizable from '../../../components/fePlayground/resizable.svelte';
-	import { showLoginToSave, showForkTosave, showModal } from '$lib/feEditor/store.js';
+	import {
+		showLoginToSave,
+		showForkTosave,
+		showModal,
+		showEmbedModal
+	} from '$lib/feEditor/store.js';
 	import Femodal from '../../../components/fePlayground/femodal.svelte';
 	import JsConsole from '../../../components/fePlayground/jsConsole.svelte';
+	import EmbedModal from '../../../components/fePlayground/embedModal.svelte';
 
 	export let data;
 
@@ -86,6 +92,9 @@
 
 		{#if $showModal}
 			<Femodal type={$showModal} />
+		{/if}
+		{#if $showEmbedModal}
+			<EmbedModal />
 		{/if}
 	</div>
 </div>

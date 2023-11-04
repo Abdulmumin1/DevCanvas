@@ -60,6 +60,8 @@ export async function savePlugins(json_data, id) {
 
 export let layoutView = writable('left');
 export let showModal = writable(false);
+export let showEmbedModal = writable(false);
+
 export let externalStuff = writable({ html: '', css: '' });
 export let javascriptStuff = writable({ main: '' });
 export let jsChanged = writable(false);
