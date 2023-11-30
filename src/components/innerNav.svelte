@@ -15,7 +15,7 @@
 	}
 </script>
 
-<div class="w-full p-2 bg-sky-300 text-sky-dark text-sm md:text-lg">
+<div class="w-full p-2 bg-sky-300 text-sky-dark text-sm">
 	SnippetLand is experimenting with an interactive HTML playground 🤩 <a
 		class="underline text-sky-900"
 		href="/play/try"

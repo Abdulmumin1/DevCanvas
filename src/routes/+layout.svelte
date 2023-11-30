@@ -16,6 +16,7 @@
 
 	import { beforeNavigate, afterNavigate } from '$app/navigation';
 	import PageLoadProgess from '../components/pageLoadProgess.svelte';
+	import { page } from '$app/stores';
 
 	// console.log(supabase.auth.getUser());
 
@@ -94,7 +95,7 @@
 	/>
 </svelte:head>
 
-{#if $showNavigating}
+{#if $showNavigating && !($page.url.pathname.endsWith('/preview') || $page.url.pathname.endsWith('/embed'))}
 	<PageLoadProgess />
 {/if}
 <div class=" bg-white dark:bg-primary dark:text-white transition-colors duration-300">

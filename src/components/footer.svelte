@@ -18,7 +18,9 @@
 			<h4 class="text-lg font-bold">Contact Us</h4>
 			<ul class="list-disc">
 				<li>
-					<a href="mailto:info@snippetland.com" class=" hover:underline">info@snippetland.io</a>
+					<a href="mailto:abdulmuminyqn@gmail.com" class=" hover:underline"
+						>abdulmuminyqn@gmail.com</a
+					>
 				</li>
 				<li>
 					<a href="https://twitter.com/snippetlandIO" class=" hover:underline">Twitter</a>

@@ -4,7 +4,7 @@
 	import CollectionDummy from '../../components/collectionDummy.svelte';
 	import NavWrapper from '../../components/snips/navWrapper.svelte';
 	import FeCollectionPage from '../../components/fePlayground/feCollectionPage.svelte';
-	import { fade, slide } from 'svelte/transition';
+	import { fade, fly, scale, slide } from 'svelte/transition';
 	// if (!$user) {
 	// 	window.location.href = '/signin';
 	// }
@@ -102,13 +102,15 @@
 					<!-- Create New Code Snippet button -->
 
 					<!-- Code Snippet Cards -->
-					<div transition:fade class:hidden={showOther} class="hidden h-full">
-						<FeCollectionPage
-							collection={userSnippets}
-							supabase={data.supabase}
-							session={data.session}
-						/>
-					</div>
+					{#key showOther}
+						<div in:fade class:hidden={showOther} class="hidden h-full">
+							<FeCollectionPage
+								collection={userSnippets}
+								supabase={data.supabase}
+								session={data.session}
+							/>
+						</div>
+					{/key}
 
 					{#await loadIntialData()}
 						<!-- <p class="flex items-center justify-center gap-2 text-xl h-[50vh]">
@@ -117,14 +119,16 @@
 					</p> -->
 						<CollectionDummy />
 					{:then userSnippets}
-						<div transition:fade class:hidden={!showOther} class="hidden h-full">
-							<CollectionPage
-								rawcollection={userSnippets}
-								supabase={data.supabase}
-								session={data.session}
-								showMore={userSnippets.length > 6}
-							/>
-						</div>
+						{#key showOther}
+							<div in:fade class:hidden={!showOther} class="hidden h-full">
+								<CollectionPage
+									rawcollection={userSnippets}
+									supabase={data.supabase}
+									session={data.session}
+									showMore={userSnippets.length > 6}
+								/>
+							</div>
+						{/key}
 
 						<!-- <FeCollectionPage -->
 					{/await}
