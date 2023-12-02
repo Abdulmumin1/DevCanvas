@@ -30,7 +30,7 @@
 				title="embed"
 				src="{$page.url.origin}/anonymous/ovUiK7/embed"
 				frameborder="0"
-				class="w-full rounded h-[400px] md:pl-10"
+				class="w-full rounded h-[600px] md:pl-10"
 			/>
 		</div>
 	</div>

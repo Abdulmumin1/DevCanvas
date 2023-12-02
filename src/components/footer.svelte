@@ -9,7 +9,10 @@
 		<img src={logo} alt="SnippetLand Logo" class="h-8" />
 		<div class="flex flex-col space-y-2">
 			<h3 class="text-2xl font-bold">SnippetLand</h3>
-			<p>A collection of code snippets and beautiful creations for developers of all levels.</p>
+			<p>
+				Online Editor with a collection of awesome frontend code and code snippets for developers of
+				all levels.
+			</p>
 		</div>
 	</div>
 

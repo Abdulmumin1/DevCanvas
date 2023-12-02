@@ -65,7 +65,7 @@
 			<span class="magic-text text-black dark:text-white">Genius</span>
 		</span> with the World!
 	</h1>
-	<p class="text-xl text-primary max-w-lg mx-1">
+	<p class="text-sm md:text-xl text-primary max-w-lg mx-1">
 		The platform for effortlessly sharing, collaborating, and discovering code snippets and stunnig
 		frontend codes. <span class="text-green-500 dark:text-green-700">share</span>,
 		<span class="text-orange-400 dark:text-orange-800">learn</span>, and
@@ -74,12 +74,12 @@
 	<div class="text-center">
 		<a
 			href="/signin"
-			class="inline-block bg-sky-600 hover:bg-sky-600 font-semibold py-3 px-6 rounded-lg"
+			class="inline-block text-light bg-sky-600 hover:bg-sky-600 font-semibold py-3 px-6 rounded-lg"
 			>Get Started</a
 		>
 		<a
 			href="/explore"
-			class="inline-block bg-secondary-dark text-white font-semibold py-3 px-6 rounded-lg"
+			class="inline-block bg-secondary-dark text-light font-semibold py-3 px-6 rounded-lg"
 			>Explore</a
 		>
 	</div>

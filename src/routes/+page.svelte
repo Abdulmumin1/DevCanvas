@@ -33,12 +33,12 @@
 	</div>
 	<div class="w-full mx-auto rounded-lg flex flex-col gap-4 justify-center items-center relative">
 		<!-- Add your landing page content here -->
-		<div class="h-[500px] md:h-[100dvh]">
+		<div class="h-[500px] md:h-[100dvh] grid">
 			<header class="w-full overflow-hidden">
 				<div
-					class="w-full h-[500px] md:h-[100dvh] bg-sky-300 opacity-80 overflow-hidden absolute top-0 inset-x-0 rounded-t-full"
+					class="w-[500px] md:w-full h-[500px] md:h-[100dvh] bg-sky-300 opacity-80 blur-lg overflow-hidden absolute top-0 inset-x-0 mx-auto rounded-full md:rounded-none md:rounded-t-full"
 				/>
-				<div>
+				<div class="mt-20">
 					<Hero />
 				</div>
 			</header>

@@ -1,29 +1,39 @@
 {
-	"name": "My PWA",
-	"short_name": "My PWA",
-	"description": "A progressive web app example.",
+	"name": "SnippetLand",
+	"short_name": "SnippetLand",
+	"description": "HTML/CSS/JS code editor",
+	"theme_color": "#7DD3FC",
+	"background_color": "#000",
+	"display": "standalone",
+	"orientation": "any",
+	"start_url": "/play/try",
+	"scope": "/",
+	"lang": "en",
+	"dir": "ltr",
 	"icons": [
 		{
-			"src": "favicon.png",
+			"src": "/android-chrome-192x192.png",
+			"sizes": "192x192",
+			"type": "image/png"
+		},
+		{
+			"src": "/android-chrome-512x512.png",
+			"sizes": "512x512",
 			"type": "image/png"
 		}
 	],
-	"start_url": "/",
-	"theme_color": "#ffffff",
-	"background_color": "#ffffff",
-	"display": "standalone",
-	"orientation": "any",
-	"scope": "/",
 	"shortcuts": [
 		{
-			"name": "Share",
-			"description": "Share the PWA with your friends.",
-			"url": "/share"
-		},
-		{
-			"name": "Settings",
-			"description": "Configure the PWA settings.",
-			"url": "/settings"
+			"name": "New Editor",
+			"short_name": "New Editor",
+			"description": "Create New Editor",
+			"url": "/play/try",
+			"icons": [
+				{
+					"src": "/android-chrome-192x192.png",
+					"sizes": "192x192"
+				}
+			]
 		}
 	]
 }
