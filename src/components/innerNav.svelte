@@ -69,7 +69,7 @@
 			<a href="/"> SnippetLand </a>
 		</li>
 
-		<li class="flex items-center justify-center gap-4">
+		<li class="flex items-center justify-center gap-4 text-2xl">
 			<Darkmode />
 			<button on:click={toogleOpen}><Fa icon={faBars} /></button>
 		</li>
@@ -78,17 +78,21 @@
 				transition:slide={{ axis: 'x' }}
 				use:clickOutside
 				on:click_outside={toogleOpen}
-				class="fixed top-0 right-0 w-[90%] h-screen z-50 bg-white p-4 dark:bg-primary shadow-lg"
+				class="fixed top-0 right-0 w-screen h-screen z-50 bg-white p-4 dark:bg-primary shadow-lg"
 			>
-				<ul class="flex justify-between items-end flex-col">
+				<ul class="flex gap-4 justify-between items-end flex-col">
 					<li>
-						<button on:click={toogleOpen}><Fa icon={faClose} /></button>
+						<button on:click={toogleOpen} class="text-4xl"><Fa icon={faClose} /></button>
 					</li>
 					<li class="w-full text-xl flex flex-col gap-4">
-						<ul class="w-full flex flex-col text-center items-center justify-center">
-							<li><a href="/play">Dashboard</a></li>
-							<li><a href="/explore">Library</a></li>
-							<li><a href="/play">HTML Playground</a></li>
+						<ul
+							class="w-full flex flex-col justify-between gap-4 text-4xl dark:text-secondary-dark"
+						>
+							<li class="p-6 bg-sky-200 rounded-xl"><a href="/play" class="">Dashboard</a></li>
+							<li class="p-6 bg-sky-200 rounded-xl"><a href="/explore" class="">Library</a></li>
+							<li class="p-6 bg-sky-200 rounded-xl">
+								<a href="/play" class="">HTML Playground</a>
+							</li>
 						</ul>
 					</li>
 				</ul>

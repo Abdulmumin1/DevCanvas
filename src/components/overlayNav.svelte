@@ -28,11 +28,12 @@
 					<button on:click={toogleOpen}><Fa icon={faClose} /></button>
 				</li>
 				<li class="w-full text-xl flex flex-col gap-4">
-					<ul class="w-full flex flex-col text-center items-center justify-center">
-						<li><a href="/explore">Explore</a></li>
-						<li><a href="/dashboard">Your Collection</a></li>
-
-						<li><a href="/play">HTML Playground</a></li>
+					<ul class="w-full flex flex-col justify-between gap-4 text-4xl dark:text-secondary-dark">
+						<li class="p-6 bg-sky-200 rounded-xl"><a href="/dashboard" class="">Dashboard</a></li>
+						<li class="p-6 bg-sky-200 rounded-xl"><a href="/explore" class="">Library</a></li>
+						<li class="p-6 bg-sky-200 rounded-xl">
+							<a href="/play" class="">HTML Playground</a>
+						</li>
 					</ul>
 				</li>
 			</ul>

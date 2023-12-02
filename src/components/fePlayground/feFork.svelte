@@ -1,7 +1,7 @@
 <script>
 	import { saved_spinner, saveData } from '$lib/feEditor/store.js';
 	import { current_data } from '$lib/index.js';
-	import { faCodeFork, faSpinner } from '@fortawesome/free-solid-svg-icons';
+	import { faCodeFork, faSave, faSpinner } from '@fortawesome/free-solid-svg-icons';
 	import { page } from '$app/stores';
 	import Fa from 'svelte-fa';
 	import { goto } from '$app/navigation';
@@ -33,16 +33,33 @@
 			}
 		}
 	}
+
+	let demo = $page.url.pathname.endsWith('/try');
 </script>
 
-<button
-	on:click={forkData}
-	aria-busy={busy}
-	class="p-1 rounded-md cursor-pointer flex gap-2 items-center justify-center text-primary bg-green-500 px-3 py-2 active:scale-75 transition-transform duration-300"
->
-	<Fa icon={faCodeFork} />
-	<span class="hidden md:flex">Fork</span>
-	{#if busy}
-		<span class="animate-spin"><Fa icon={faSpinner} /></span>
-	{/if}
-</button>
+{#if demo}
+	<button
+		on:click={forkData}
+		aria-busy={busy}
+		class="p-1 rounded-md cursor-pointer flex gap-2 items-center justify-center text-primary bg-green-500 px-3 py-2 active:scale-75 transition-transform duration-300"
+	>
+		<Fa icon={faSave} />
+		<span class="hidden md:flex">Save</span>
+		{#if busy}
+			<span class="animate-spin"><Fa icon={faSpinner} /></span>
+		{/if}
+	</button>
+{:else}
+	<button
+		on:click={forkData}
+		class:hidden={demo}
+		aria-busy={busy}
+		class="p-1 rounded-md cursor-pointer flex gap-2 items-center justify-center text-primary bg-green-500 px-3 py-2 active:scale-75 transition-transform duration-300"
+	>
+		<Fa icon={faCodeFork} />
+		<span class="hidden md:flex">Fork</span>
+		{#if busy}
+			<span class="animate-spin"><Fa icon={faSpinner} /></span>
+		{/if}
+	</button>
+{/if}

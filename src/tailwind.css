@@ -15,14 +15,16 @@
 	}
 
 	.splitpanes.my-theme .splitpanes__splitter:before {
-		content: '';
+		content: 'Double Click to expand';
 		position: absolute;
 		left: 0;
 		top: 0;
+		color: black;
 		transition: opacity 0.4s;
 		opacity: 0;
 		z-index: 1;
-		@apply bg-secondary-dark;
+		background-color: #7dd3fc;
+		font-size: 9px;
 	}
 
 	.splitpanes.my-theme .splitpanes__splitter:hover:before {
