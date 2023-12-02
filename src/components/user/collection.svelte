@@ -100,14 +100,16 @@
 		<!-- Create New Code Snippet button -->
 
 		<!-- Code Snippet Cards -->
-		<div transition:fade class:hidden={showOther} class="hidden h-full">
-			<FeCollectionPage
-				user_id={data.user_id}
-				collection={userSnippets}
-				supabase={data.supabase}
-				session={data.session}
-			/>
-		</div>
+		{#key showOther}
+			<div in:fade class:hidden={showOther} class="hidden h-full">
+				<FeCollectionPage
+					user_id={data.user_id}
+					collection={userSnippets}
+					supabase={data.supabase}
+					session={data.session}
+				/>
+			</div>
+		{/key}
 
 		{#await loadIntialData()}
 			<!-- <p class="flex items-center justify-center gap-2 text-xl h-[50vh]">
@@ -116,15 +118,17 @@
 					</p> -->
 			<CollectionDummy />
 		{:then userSnippets}
-			<div transition:fade class:hidden={!showOther} class="hidden h-full">
-				<CollectionPage
-					rawcollection={userSnippets}
-					supabase={data.supabase}
-					session={data.session}
-					showMore={userSnippets.length > 6}
-					user_id={data.user_id}
-				/>
-			</div>
+			{#key showOther}
+				<div in:fade class:hidden={!showOther} class="hidden h-full">
+					<CollectionPage
+						rawcollection={userSnippets}
+						supabase={data.supabase}
+						session={data.session}
+						showMore={userSnippets.length > 6}
+						user_id={data.user_id}
+					/>
+				</div>
+			{/key}
 
 			<!-- <FeCollectionPage -->
 		{/await}

@@ -25,15 +25,24 @@
 	<meta name="robots" content="index, follow" />
 </svelte:head>
 
-<div class=" bg-skyblue-500 min-h-screen w-screen flex flex-col items-center justify-center">
+<div
+	class="before:he bg-skyblue-500 min-h-screen w-screen flex flex-col items-center justify-center"
+>
 	<div class="w-full">
 		<InnerNav />
 	</div>
-	<div class="w-full mx-auto rounded-lg flex flex-col gap-4 justify-center items-center">
+	<div class="w-full mx-auto rounded-lg flex flex-col gap-4 justify-center items-center relative">
 		<!-- Add your landing page content here -->
-		<header class="w-full">
-			<Hero />
-		</header>
+		<div class="h-[500px] md:h-[100dvh]">
+			<header class="w-full overflow-hidden">
+				<div
+					class="w-full h-[500px] md:h-[100dvh] bg-sky-300 opacity-80 overflow-hidden absolute top-0 inset-x-0 rounded-t-full"
+				/>
+				<div>
+					<Hero />
+				</div>
+			</header>
+		</div>
 		<main class="w-full">
 			<!-- Add your features or benefits here -->
 

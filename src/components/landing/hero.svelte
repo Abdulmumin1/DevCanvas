@@ -29,8 +29,7 @@
 </script>
 
 <div
-	style="height: 80dvh; "
-	class="flex px-8 py-12 flex-col gap-4 items-center text-center w-full border-primary justify-center"
+	class="flex relative px-8 py-12 flex-col gap-4 items-center text-center w-full border-primary justify-center text-secondary-dark"
 >
 	<p>
 		<a
@@ -63,10 +62,10 @@
 					/>
 				</svg>
 			</span>
-			<span class="magic-text">Genius</span>
+			<span class="magic-text text-black dark:text-white">Genius</span>
 		</span> with the World!
 	</h1>
-	<p class="text-xl text-primary dark:text-gray-100 max-w-lg mx-1">
+	<p class="text-xl text-primary max-w-lg mx-1">
 		The platform for effortlessly sharing, collaborating, and discovering code snippets and stunnig
 		frontend codes. <span class="text-green-500 dark:text-green-700">share</span>,
 		<span class="text-orange-400 dark:text-orange-800">learn</span>, and
@@ -88,9 +87,9 @@
 
 <style>
 	:root {
-		--purple: rgb(255, 255, 255);
+		--purple: rgb(4, 45, 61);
 		--violet: rgb(0, 248, 248);
-		--pink: rgb(194, 223, 243);
+		--pink: rgb(0, 150, 250);
 	}
 
 	@keyframes background-pan {
@@ -152,7 +151,7 @@
 	}
 
 	h1 > .magic > .magic-star > svg > path {
-		fill: var(--violet);
+		fill: rgb(2 132 199);
 	}
 
 	h1 > .magic > .magic-text {
