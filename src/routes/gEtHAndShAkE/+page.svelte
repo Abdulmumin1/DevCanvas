@@ -5,6 +5,7 @@
 
 	import { onMount } from 'svelte';
 	import { redirect } from '@sveltejs/kit';
+	import Loader from '$components/loader.svelte';
 	import { goto } from '$app/navigation';
 	let whereTo = $page.url.searchParams.get('whereto');
 	if (!['/dashboard', '/profile'].includes(whereTo)) {
@@ -18,5 +19,6 @@
 </script>
 
 <div class="h-screen flex items-center justify-center text-2xl md:text-5xl gap-4">
-	Preparing for redirect <span class="animate-spin"><Fa icon={faSpinner} /></span>
+	Preparing for redirect <br />
+	<Loader />
 </div>

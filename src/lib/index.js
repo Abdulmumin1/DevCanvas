@@ -11,8 +11,8 @@ export const dashboardLoading = writable(true);
 export const SnippetsDescription = readable({
 	name: 'DevCanvas',
 	des: 'DevCanvas is an open-source online editor. It provides a simple and intuitive interface for developers to share, discover, and discuss code snippets across various programming languages and use cases.',
-	url: 'https://snippet-bice.vercel.app',
-	imageUrl: 'https://raw.githubusercontent.com/Abdulmumin1/snippets/main/static/snippetsPreview.png'
+	url: 'https://devcanvas.art',
+	imageUrl: '/devCanvas.png'
 });
 export const pageCountPl = writable(6);
 export const pageCountSnips = writable(6);
