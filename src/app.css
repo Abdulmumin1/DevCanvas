@@ -800,6 +800,10 @@ video {
   height: 2.5rem;
 }
 
+.h-12 {
+  height: 3rem;
+}
+
 .h-20 {
   height: 5rem;
 }
@@ -1714,6 +1718,10 @@ video {
 
 .pt-6 {
   padding-top: 1.5rem;
+}
+
+.pb-11 {
+  padding-bottom: 2.75rem;
 }
 
 .text-left {

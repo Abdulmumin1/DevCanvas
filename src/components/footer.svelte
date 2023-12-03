@@ -6,9 +6,9 @@
 
 <footer class="bg-sky-500 text-black font-thin px-4 py-8">
 	<div class="flex gap-2">
-		<img src={logo} alt="SnippetLand Logo" class="h-8" />
+		<img src="/logo.svg" class="bg-secondary-dark p-2 rounded-3xl h-10" alt="SnippetLand Logo" />
 		<div class="flex flex-col space-y-2">
-			<h3 class="text-2xl font-bold">SnippetLand</h3>
+			<h3 class="text-2xl font-bold">DevCanvas</h3>
 			<p>
 				Online Editor with a collection of awesome frontend code and code snippets for developers of
 				all levels.

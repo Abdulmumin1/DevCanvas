@@ -16,7 +16,7 @@
 </script>
 
 <div class="w-full p-2 bg-sky-300 text-sky-dark text-sm">
-	SnippetLand is experimenting with an interactive HTML playground 🤩 <a
+	DevCanvas is experimenting with an interactive HTML playground 🤩 <a
 		class="underline text-sky-900"
 		href="/play/try"
 		>Try it
@@ -28,8 +28,8 @@
 		<li
 			class="text-base md:text-lg py-2 px-3 gap-3 text-light bg-secondary-dark flex items-center justify-center rounded-3xl"
 		>
-			<img src={logo} class="h-6 w-6" alt="snippetsLand" />
-			<a href="/"> SnippetLand </a>
+			<img src="/logo.svg" class="h-8 w-8" alt="snippetsLand" />
+			<a href="/"> DevCanvas </a>
 		</li>
 		<li>
 			<ul class="flex gap-2 items-center">
@@ -65,7 +65,7 @@
 		<li
 			class="text-base md:text-lg py-2 px-3 gap-3 text-light bg-secondary-dark flex items-center justify-center rounded-3xl"
 		>
-			<img src={logo} class="h-6 w-6" alt="snippetsLand" />
+			<img src="/logo.svg" class="h-6 w-6" alt="snippetsLand" />
 			<a href="/"> SnippetLand </a>
 		</li>
 
