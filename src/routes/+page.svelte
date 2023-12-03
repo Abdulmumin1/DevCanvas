@@ -14,7 +14,7 @@
 
 <svelte:head>
 	<!-- HTML Meta Tags -->
-	<title>SnippetLand</title>
+	<title>DevCanvas</title>
 
 	<!-- Facebook Meta Tags -->
 	<meta property="og:title" content="Snippets" />

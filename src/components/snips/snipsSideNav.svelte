@@ -13,12 +13,13 @@
 	<div
 		class="h-full hidden md:flex bg-inherit w-[250px] text-white fixed bg-primary dark:bg-secondary-dark"
 	>
-		<ul class="w-full h-full flex flex-col gap-4 pl-3 pt-12">
+		<ul class="w-full h-full flex flex-col gap-4 pl-3">
 			<ul class="w-full h-full flex flex-col gap-4 transition-all duration-200">
 				<li class="py-12 px-2 border-b dark:border-primary">
+					<img src="/logo.svg" alt="" width="100" />
 					<a href="/dashboard" class="text-2xl text-sky-400"
-						><span class="text-white dark:text-light">Snippet</span>Land</a
-					><br />
+						><span class="text-white dark:text-light">Dev</span>Canvas
+					</a><br />
 					<span class="bg-sky-200 rounded text-primary p-[2px]">
 						{$page.url.pathname}
 					</span>

@@ -19,7 +19,7 @@
 			<div class="flex flex-col w-full">
 				<div class="flex items-center gap-2">
 					<a href="/play">
-						<img src={logo} class="h-6 w-6" alt="snippetsLand" />
+						<img src="/logo.svg" class="h-10 w-10" alt="snippetsLand" />
 					</a>
 
 					<FePlaygroundTitle />

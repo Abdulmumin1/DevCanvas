@@ -9,6 +9,8 @@
 	import Fa from 'svelte-fa';
 	import { faCss3, faHtml5 } from '@fortawesome/free-brands-svg-icons';
 	import { faGears } from '@fortawesome/free-solid-svg-icons';
+	import Loader from '../loader.svelte';
+	import { fade } from 'svelte/transition';
 	export let details;
 
 	let showHtml, showCSS, showResult;
@@ -54,7 +56,7 @@
 		<p class="bg-[#0b0e14] py-1 px-2 text-white">
 			by <a href="/{details.profile}" class="text-sky-400" target="_blank">@{details.profile}</a>
 		</p>
-		<div class="w-full bg-[#0b0e14] p-2 flex gap-2 text-white">
+		<div class="w-full bg-[#0b0e14] p-2 flex gap-2 text-white text-sm">
 			<button
 				on:click={() => toogle('html')}
 				class:text-sky-300={showHtml}
@@ -100,7 +102,12 @@
 			</Splitpanes>
 		{/if}
 	{:else}
-		<p>loading</p>
+		<div
+			transition:fade
+			class="h-full w-full flex items-center justify-center bg-white dark:bg-primary"
+		>
+			<Loader />
+		</div>
 	{/if}
 </div>
 

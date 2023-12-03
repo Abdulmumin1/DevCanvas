@@ -11,7 +11,7 @@
 	import { getContext } from 'svelte';
 	import FeGetEmbed from './fePlayground/feGetEmbed.svelte';
 
-	import logo from '$lib/logo.png';
+	// import logo from '$lib/logo.png';
 	import Login from './auth/login.svelte';
 
 	let showPreview = $page.url.pathname.endsWith('/edit');
@@ -23,9 +23,9 @@
 <nav class=" w-full border-b dark:border-secondary-dark">
 	<ul class="w-full rounded-lg flex justify-between items-center p-4 text-black">
 		<li class="text-lg md:text-2xl text-sky-400 px-1 py-1 gap-1 flex items-center">
-			<img src={logo} class="h-6 w-6" alt="snippetsLand" />
+			<img src="/logo.svg" class="h-6 w-6" alt="snippetsLand" />
 
-			<a href="/"><span class="text-secondary-dark dark:text-white">Snippets</span>Land</a>
+			<a href="/"><span class="text-secondary-dark dark:text-white">Dev</span>Canvas</a>
 		</li>
 		<ul class="flex gap-2 items-center justify-center">
 			{#if showEdit && !showPreview}
