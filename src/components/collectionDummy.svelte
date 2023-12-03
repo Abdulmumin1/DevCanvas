@@ -1,11 +1,16 @@
 <script>
 	import { fade } from 'svelte/transition';
-
+	import Loader from '$components/loader.svelte';
 	let snippet = [1, 2, 3, 4, 5, 6];
 </script>
 
-<div class="flex flex-col gap-6 items-center w-full" transition:fade>
-	<div class="gap-6 flex flex-col w-full bg-white dark:bg-secondary-dark rounded-lg shadow-md">
+<div class="relative flex flex-col gap-6 items-center w-full" transition:fade>
+	<div class="absolute z-50 mt-12 p-12">
+		<Loader />
+	</div>
+	<div
+		class="gap-6 flex opacity-40 flex-col w-full bg-white dark:bg-secondary-dark rounded-lg shadow-md"
+	>
 		<div class="grid gap-6 rounded-lg divide-y-2 dark:divide-primary w-full">
 			{#each snippet as sn}
 				<!-- <div class="bg-white rounded-lg p-4 shadow-md">

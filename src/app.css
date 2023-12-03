@@ -800,10 +800,6 @@ video {
   height: 2.5rem;
 }
 
-.h-12 {
-  height: 3rem;
-}
-
 .h-20 {
   height: 5rem;
 }
@@ -1696,6 +1692,10 @@ video {
   padding-bottom: 2.25rem;
 }
 
+.pb-11 {
+  padding-bottom: 2.75rem;
+}
+
 .pb-3 {
   padding-bottom: 0.75rem;
 }
@@ -1718,10 +1718,6 @@ video {
 
 .pt-6 {
   padding-top: 1.5rem;
-}
-
-.pb-11 {
-  padding-bottom: 2.75rem;
 }
 
 .text-left {
@@ -1945,6 +1941,10 @@ video {
 
 .opacity-0 {
   opacity: 0;
+}
+
+.opacity-40 {
+  opacity: 0.4;
 }
 
 .opacity-80 {
