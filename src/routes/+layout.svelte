@@ -85,7 +85,7 @@
 
 	<!-- Twitter Meta Tags -->
 	<meta name="twitter:card" content="summary_large_image" />
-	<meta property="twitter:domain" content="snippets" />
+	<meta property="twitter:domain" content="devCanvas" />
 	<meta property="twitter:url" content={$SnippetsDescription.url} />
 	<meta name="twitter:description" content={$SnippetsDescription.des} />
 	<meta name="twitter:image" content={$SnippetsDescription.imageUrl} />
