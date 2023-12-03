@@ -25,7 +25,7 @@
 		>
 			<ul class="flex justify-between items-end flex-col">
 				<li>
-					<button on:click={toogleOpen}><Fa icon={faClose} /></button>
+					<button on:click={toogleOpen} class="text-lg"><Fa icon={faClose} /></button>
 				</li>
 				<li class="w-full text-xl flex flex-col gap-4">
 					<ul class="w-full flex flex-col justify-between gap-4 text-4xl dark:text-secondary-dark">
