@@ -24,7 +24,8 @@
 		saved_spinner,
 		darkModeState,
 		wordWrapSetting,
-		smallerFontSize
+		smallerFontSize,
+		formatOnPasteSetting
 	} from '$lib/index.js';
 	import Loader from '../loader.svelte';
 
@@ -115,6 +116,16 @@
 			} else {
 				editor.updateOptions({ fontSize: 16 });
 			}
+			console.log(value);
+		}
+	}
+
+	$: {
+		if (browser && editor) {
+			let value = $formatOnPasteSetting;
+
+			editor.updateOptions({ formatOnPaste: value });
+
 			console.log(value);
 		}
 	}
