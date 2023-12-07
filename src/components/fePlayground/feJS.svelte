@@ -6,9 +6,18 @@
 		saveData,
 		showLoginToSave,
 		javascriptStuff,
-		showForkTosave
+		showForkTosave,
+		editorConfig
 	} from '$lib/feEditor/store.js';
-	import { current_data, isOwner, user, saved_spinner, darkModeState } from '$lib/index.js';
+	import {
+		current_data,
+		isOwner,
+		user,
+		saved_spinner,
+		darkModeState,
+		wordWrapSetting,
+		smallerFontSize
+	} from '$lib/index.js';
 	import { currentTheme } from '$lib/utils/utils.js';
 	import { browser } from '$app/environment';
 	import Fa from 'svelte-fa';
@@ -17,6 +26,7 @@
 	import cssWorker from 'monaco-editor/esm/vs/language/css/css.worker?worker';
 	import htmlWorker from 'monaco-editor/esm/vs/language/html/html.worker?worker';
 	import tsWorker from 'monaco-editor/esm/vs/language/typescript/ts.worker?worker';
+	import Loader from '../loader.svelte';
 
 	let editorContanier;
 	let editor;
@@ -25,22 +35,8 @@
 
 	// Define the initial code content
 	export let initialJs = `//`;
-	let editorConfig;
 	let monacoModel;
-	if (browser) {
-		editorConfig = {
-			value: initialJs,
-			language: lang,
-			automaticLayout: true,
-			renderIndentGuides: false,
-			formatOnPaste: true,
-			emmet: {
-				enabled: true // Enable Emmet support
-			},
-			minimap: { enabled: false },
-			...(window.innerWidth <= 600 && { fontSize: 11, wordWrap: 'on' })
-		};
-	}
+	let model;
 
 	let saved = true;
 	let typingTimer; // Timer to track typing
@@ -107,6 +103,25 @@
 		}
 	}
 
+	$: {
+		if (browser && editor) {
+			let value = $wordWrapSetting ? 'on' : 'off';
+			editor.updateOptions({ wordWrap: value });
+			console.log(value);
+		}
+	}
+
+	$: {
+		if (browser && editor) {
+			let value = $smallerFontSize;
+			if (value) {
+				editor.updateOptions({ fontSize: 14 });
+			} else {
+				editor.updateOptions({ fontSize: 16 });
+			}
+			console.log(value);
+		}
+	}
 	onMount(async () => {
 		self.MonacoEnvironment = {
 			getWorker: function (_moduleId, label) {
@@ -128,11 +143,13 @@
 		import('monaco-editor').then((monaco) => {
 			monacoModel = monaco;
 			monacoModel.editor.defineTheme('newTheme', currentTheme);
+
 			// Use monaco here...
 			setEditorTheme();
 			// Initialize the editor
 			editor = monacoModel.editor.create(editorContanier, editorConfig);
 			// Register the HTML language with Monaco Editor
+
 			monacoModel.languages.register({
 				id: 'html'
 			});
@@ -192,6 +209,10 @@
 			// });
 
 			editor.addAction(saveAction);
+
+			model = monacoModel.editor.createModel(initialJs, lang);
+
+			editor.setModel(model);
 		});
 
 		window.addEventListener('resize', () => {
@@ -199,6 +220,7 @@
 				editor.layout();
 			}
 		});
+
 		loading = false;
 
 		return () => {
@@ -220,7 +242,7 @@
 
 {#if loading}
 	<div class="h-full flex justify-center items-center">
-		<Fa icon={faSpinner} class="animate-spin text-2xl" />
+		<Loader />
 	</div>
 {:else}
 	<div class="editor-container h-full bg-primary w-full" class:bg-secondary-dark={$darkModeState}>

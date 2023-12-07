@@ -76,6 +76,7 @@
 					showTab('html');
 				}}
 				class:bg-secondary-dark={showHtml}
+				class:dark:bg-gray-100={showHtml}
 				><span class="text-rose-500"><Fa icon={faHtml5} /></span>HTML</button
 			>
 			<button
