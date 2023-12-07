@@ -85,3 +85,17 @@ export const jsPlugins = writable({
 	popmotion: false,
 	scrollreveal: false
 });
+
+export const editorConfig = {
+	automaticLayout: true,
+	renderIndentGuides: false,
+	tabSize: 1,
+	formatOnPaste: true,
+	fontFamily: '"Monolisa", Menlo, "Source Code Pro", monospace',
+	fontSize: 16,
+	emmet: {
+		enabled: true // Enable Emmet support
+	},
+	minimap: { enabled: false }
+	// ...(window.innerWidth <= 600 && { fontSize: 11, wordWrap: 'on' })
+};

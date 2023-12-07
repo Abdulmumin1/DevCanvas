@@ -10,8 +10,23 @@
 	import tsWorker from 'monaco-editor/esm/vs/language/typescript/ts.worker?worker';
 
 	import { currentTheme } from '$lib/utils/utils.js';
-	import { showSave, saveData, showLoginToSave, showForkTosave } from '$lib/feEditor/store.js';
-	import { current_data, isOwner, user, saved_spinner, darkModeState } from '$lib/index.js';
+	import {
+		showSave,
+		saveData,
+		showLoginToSave,
+		showForkTosave,
+		editorConfig
+	} from '$lib/feEditor/store.js';
+	import {
+		current_data,
+		isOwner,
+		user,
+		saved_spinner,
+		darkModeState,
+		wordWrapSetting,
+		smallerFontSize
+	} from '$lib/index.js';
+	import Loader from '../loader.svelte';
 
 	let editorContanier;
 	let editor;
@@ -20,22 +35,7 @@
 
 	// Define the initial code content
 	export let initialCSS = `/* css here */`;
-	let editorConfig;
 	let monacoModel;
-	if (browser) {
-		editorConfig = {
-			value: initialCSS,
-			language: lang,
-			automaticLayout: true,
-			renderIndentGuides: false,
-			formatOnPaste: true,
-			emmet: {
-				enabled: true // Enable Emmet support
-			},
-			minimap: { enabled: false },
-			...(window.innerWidth <= 600 && { fontSize: 11, wordWrap: 'on' })
-		};
-	}
 
 	let saved = true;
 	let typingTimer; // Timer to track typing
@@ -96,6 +96,26 @@
 			monacoModel.editor.setTheme(theme);
 		} catch (error) {
 			console.log(error);
+		}
+	}
+
+	$: {
+		if (browser && editor) {
+			let value = $wordWrapSetting ? 'on' : 'off';
+			editor.updateOptions({ wordWrap: value });
+			console.log(value);
+		}
+	}
+
+	$: {
+		if (browser && editor) {
+			let value = $smallerFontSize;
+			if (value) {
+				editor.updateOptions({ fontSize: 14 });
+			} else {
+				editor.updateOptions({ fontSize: 16 });
+			}
+			console.log(value);
 		}
 	}
 
@@ -184,6 +204,10 @@
 			// });
 
 			editor.addAction(saveAction);
+
+			let model = monacoModel.editor.createModel(initialCSS, lang);
+
+			editor.setModel(model);
 		});
 
 		window.addEventListener('resize', () => {
@@ -191,6 +215,7 @@
 				editor.layout();
 			}
 		});
+
 		loading = false;
 
 		return () => {
@@ -212,7 +237,7 @@
 
 {#if loading}
 	<div class="h-full flex justify-center items-center">
-		<Fa icon={faSpinner} class="animate-spin text-2xl" />
+		<Loader />
 	</div>
 {:else}
 	<div class="editor-container h-full bg-primary w-full" class:bg-secondary-dark={$darkModeState}>

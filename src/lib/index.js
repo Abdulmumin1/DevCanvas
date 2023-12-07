@@ -24,6 +24,11 @@ export const pageCount = writable(6);
 export const pageLimit = writable(3);
 
 export const showToast = writable(false);
+
+export const wordWrapSetting = writable(false);
+export const autoIndentSetting = writable(true);
+export const formatOnPasteSetting = writable(true);
+export const smallerFontSize = writable(false);
 export function generateRandomKey() {
 	// Define the characters to be used in the random key
 	const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
