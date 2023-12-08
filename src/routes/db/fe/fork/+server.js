@@ -1,9 +1,9 @@
 import { generateRandomKey } from '$lib/index.js';
-import { error, fail, redirect } from '@sveltejs/kit';
-import { handleRedirectURL } from '$lib/utils';
+import { error } from '@sveltejs/kit';
+// import { handleRedirectURL } from '$lib/utils';
 
 /** @type {import('./$types').RequestHandler} */
-export async function POST({ url, locals: { supabase, getSession }, request }) {
+export async function POST({ locals: { supabase, getSession }, request }) {
 	let session = await getSession();
 	const body = Object.fromEntries(await request.formData());
 	if (!session) {
@@ -13,7 +13,8 @@ export async function POST({ url, locals: { supabase, getSession }, request }) {
 	let html = body.html;
 	let css = body.css;
 	let js = body.js;
-	let description = `Fork: ${body.description}`;
+	let description =
+		body.description == 'Untitled Canvas' ? body.description : `Fork: ${body.description}`;
 	let user_id = session.user.id;
 	// console.log(session.user);
 	const { data, error: err } = await supabase

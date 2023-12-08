@@ -12,7 +12,7 @@
 </script>
 
 {#if !$user}
-	<li class="bg-green-500 px-3 py-3 md:py-2 rounded text-primary">
+	<li class="bg-green-500 px-2 py-2 md:py-2 rounded text-primary">
 		<a href={signinURL}>
 			<span class="flex md:hidden"><Fa icon={faRightToBracket} /></span>
 			<span class="hidden md:flex">Join</span>

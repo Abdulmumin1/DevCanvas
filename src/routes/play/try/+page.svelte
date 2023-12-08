@@ -25,7 +25,7 @@
 		js: '//',
 		user_id: 123,
 		project_key: 'try',
-		description: 'Try Snippetland Playground'
+		description: 'Untitled Canvas'
 	});
 
 	function captureIframeOutput(event) {
@@ -36,7 +36,7 @@
 			});
 		}
 	}
-
+	isOwner.set(false);
 	onMount(() => {
 		window.addEventListener('message', captureIframeOutput);
 	});
