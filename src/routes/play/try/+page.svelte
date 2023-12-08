@@ -36,7 +36,7 @@
 			});
 		}
 	}
-
+	isOwner.set(false);
 	onMount(() => {
 		window.addEventListener('message', captureIframeOutput);
 	});

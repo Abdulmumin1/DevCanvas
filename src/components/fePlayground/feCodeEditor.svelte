@@ -75,8 +75,8 @@
 				on:click={() => {
 					showTab('html');
 				}}
-				class:bg-secondary-dark={showHtml}
-				class:dark:bg-gray-100={showHtml}
+				class:bg-gray-100={showHtml}
+				class:dark:bg-secondary-dark={showHtml}
 				><span class="text-rose-500"><Fa icon={faHtml5} /></span>HTML</button
 			>
 			<button
@@ -84,7 +84,8 @@
 				on:click={() => {
 					showTab('css');
 				}}
-				class:bg-secondary-dark={showCSS}
+				class:bg-gray-100={showCSS}
+				class:dark:bg-secondary-dark={showCSS}
 			>
 				<span class="text-blue-500"><Fa icon={faCss3} /></span>CSS
 			</button>
@@ -94,7 +95,8 @@
 				on:click={() => {
 					showTab('js');
 				}}
-				class:bg-secondary-dark={showJs}
+				class:bg-gray-100={showJs}
+				class:dark:bg-secondary-dark={showJs}
 			>
 				<span class="text-yellow-500"><Fa icon={faJs} /></span>JS
 			</button>

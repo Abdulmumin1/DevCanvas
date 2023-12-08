@@ -25,7 +25,8 @@
 		darkModeState,
 		wordWrapSetting,
 		smallerFontSize,
-		formatOnPasteSetting
+		formatOnPasteSetting,
+		renderIndentGuidesSetting
 	} from '$lib/index.js';
 	import Loader from '../loader.svelte';
 
@@ -104,7 +105,7 @@
 		if (browser && editor) {
 			let value = $wordWrapSetting ? 'on' : 'off';
 			editor.updateOptions({ wordWrap: value });
-			console.log(value);
+			// console.log(value);
 		}
 	}
 
@@ -116,7 +117,7 @@
 			} else {
 				editor.updateOptions({ fontSize: 16 });
 			}
-			console.log(value);
+			// console.log(value);
 		}
 	}
 
@@ -126,7 +127,17 @@
 
 			editor.updateOptions({ formatOnPaste: value });
 
-			console.log(value);
+			// console.log(value);
+		}
+	}
+
+	$: {
+		if (browser && editor) {
+			let value = $renderIndentGuidesSetting;
+
+			editor.updateOptions({ renderIndentGuides: value });
+
+			// console.log(value);
 		}
 	}
 

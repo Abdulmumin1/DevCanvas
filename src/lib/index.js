@@ -29,6 +29,7 @@ export const wordWrapSetting = writable(false);
 export const autoIndentSetting = writable(true);
 export const formatOnPasteSetting = writable(true);
 export const smallerFontSize = writable(false);
+export const renderIndentGuidesSetting = writable(false);
 export function generateRandomKey() {
 	// Define the characters to be used in the random key
 	const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -115,6 +116,22 @@ export async function saveData(json_data, all = true) {
 	}
 	saved_spinner.set(false);
 	previewMode.set(true);
+}
+
+export function constructHtmlForZip(html) {
+	return `
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Some Title</title>
+		<link rel="stylesheet" href="style.css">
+	</head>
+	<body>
+		${html}
+		<script src="script.js"></script>
+	</body>
+</html>`;
 }
 
 export const supportedLanguages = [

@@ -4,13 +4,15 @@
 		clickOutside,
 		wordWrapSetting,
 		smallerFontSize,
-		formatOnPasteSetting
+		formatOnPasteSetting,
+		renderIndentGuidesSetting
 	} from '$lib/index.js';
 	// import feather from 'feather-icons';
 	import { scale, slide } from 'svelte/transition';
 	import Fa from 'svelte-fa';
 	import { faArrowDown } from '@fortawesome/free-solid-svg-icons';
 	import SingleSetting from './singleSetting.svelte';
+	import DownloadCodeDropDown from './downloadCodeDropDown.svelte';
 
 	let dropdownOpen = false;
 
@@ -33,6 +35,9 @@
 
 	function handleFormatOnPaste(event) {
 		formatOnPasteSetting.set(event.detail.status);
+	}
+	function handleInderLines(event) {
+		renderIndentGuidesSetting.set(event.detail.status);
 	}
 </script>
 
@@ -64,11 +69,21 @@
 			</li>
 			<li class="w-full">
 				<SingleSetting
+					on:checked={handleInderLines}
+					checked={$renderIndentGuidesSetting}
+					label={'Indent lines'}
+				/>
+			</li>
+			<li class="w-full">
+				<SingleSetting
 					on:checked={handleFormatOnPaste}
 					checked={$formatOnPasteSetting}
 					label={'Format on paste'}
 				/>
 			</li>
+			<!-- <li class="w-full">
+				<DownloadCodeDropDown />
+			</li> -->
 		</ul>
 	{/if}
 </div>
