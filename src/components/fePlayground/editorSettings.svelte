@@ -1,6 +1,11 @@
 <script>
 	import { onMount } from 'svelte';
-	import { clickOutside, wordWrapSetting, smallerFontSize } from '$lib/index.js';
+	import {
+		clickOutside,
+		wordWrapSetting,
+		smallerFontSize,
+		formatOnPasteSetting
+	} from '$lib/index.js';
 	// import feather from 'feather-icons';
 	import { scale, slide } from 'svelte/transition';
 	import Fa from 'svelte-fa';
@@ -25,6 +30,10 @@
 	function handleSmallerFont(event) {
 		smallerFontSize.set(event.detail.status);
 	}
+
+	function handleFormatOnPaste(event) {
+		formatOnPasteSetting.set(event.detail.status);
+	}
 </script>
 
 <div class="dropdown relative flex flex-col text-center">
@@ -39,7 +48,7 @@
 		<ul
 			use:clickOutside
 			on:click_outside={closeDropdown}
-			class={`mt-4 w-[200px] rounded-xl p-2 absolute drop  right-0 top-0 text-sm h-fit  dropdown-menu flex items-start gap-4 justify-start flex-col bg-gray-300 dark:bg-black `}
+			class={`mt-4 w-[200px] rounded-xl p-2 absolute drop  right-0 top-0 text-sm h-fit  dropdown-menu flex items-start gap-2 justify-start flex-col bg-gray-300 dark:bg-black `}
 			transition:scale
 		>
 			<li class="p-2 text-center">Applies to all editor</li>
@@ -54,7 +63,11 @@
 				/>
 			</li>
 			<li class="w-full">
-				<SingleSetting label={'Format on paste'} />
+				<SingleSetting
+					on:checked={handleFormatOnPaste}
+					checked={$formatOnPasteSetting}
+					label={'Format on paste'}
+				/>
 			</li>
 		</ul>
 	{/if}

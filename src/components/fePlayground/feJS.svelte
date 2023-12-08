@@ -16,7 +16,8 @@
 		saved_spinner,
 		darkModeState,
 		wordWrapSetting,
-		smallerFontSize
+		smallerFontSize,
+		formatOnPasteSetting
 	} from '$lib/index.js';
 	import { currentTheme } from '$lib/utils/utils.js';
 	import { browser } from '$app/environment';
@@ -122,6 +123,17 @@
 			console.log(value);
 		}
 	}
+
+	$: {
+		if (browser && editor) {
+			let value = $formatOnPasteSetting;
+
+			editor.updateOptions({ formatOnPaste: value });
+
+			console.log(value);
+		}
+	}
+
 	onMount(async () => {
 		self.MonacoEnvironment = {
 			getWorker: function (_moduleId, label) {

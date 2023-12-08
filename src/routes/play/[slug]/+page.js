@@ -5,4 +5,4 @@ export async function load({ parent }) {
 	return { details };
 }
 
-export const ssr = false;
+// export const ssr = false;
