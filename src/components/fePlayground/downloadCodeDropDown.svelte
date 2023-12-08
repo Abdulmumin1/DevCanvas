@@ -19,7 +19,8 @@
 		faCloudDownloadAlt,
 		faDownload,
 		faFileDownload,
-		faFileZipper
+		faFileZipper,
+		faSpinner
 	} from '@fortawesome/free-solid-svg-icons';
 
 	let dropdownOpen = false;
@@ -33,9 +34,13 @@
 	}
 
 	import JSZip from 'jszip';
+	import Loader from '../loader.svelte';
+	import Loadermini from '../loadermini.svelte';
+	let loading;
 
 	async function downloadZip() {
 		try {
+			loading = true;
 			const zip = new JSZip();
 
 			// textsToZip.forEach((text, index) => {
@@ -44,13 +49,14 @@
 			zip.file(`script.js`, $current_data.js);
 
 			// });
-
 			const content = await zip.generateAsync({ type: 'blob' });
-
-			const downloadLink = document.createElement('a');
-			downloadLink.href = window.URL.createObjectURL(content);
-			downloadLink.download = 'code - (devCanvas.art).zip';
-			downloadLink.click();
+			setTimeout(() => {
+				const downloadLink = document.createElement('a');
+				downloadLink.href = window.URL.createObjectURL(content);
+				downloadLink.download = 'code - (devCanvas.art).zip';
+				downloadLink.click();
+				loading = false;
+			}, 1000);
 		} catch (error) {
 			console.error('Error creating or downloading zip file:', error);
 		}
@@ -59,7 +65,7 @@
 
 <div class="dropdown text-primary dark:text-white relative flex flex-col text-center">
 	<button
-		class="dropdown-button text-primary flex items-center justify-end gap-2 hover:scale-105 transition-all duration-300 active:scale-95"
+		class="dropdown-button text-primary flex items-center justify-end gap-2"
 		on:click={toggleDropdown}
 	>
 		<Fa icon={faFileZipper} />
@@ -69,14 +75,17 @@
 		<ul
 			use:clickOutside
 			on:click_outside={closeDropdown}
-			class={`mt-8 w-[200px] rounded-xl p-2 absolute drop  right-0 top-0 text-sm h-fit  dropdown-menu flex items-start gap-2 justify-start flex-col bg-gray-300 dark:bg-black `}
+			class={`mt-8 w-[200px] rounded-md p-1 absolute drop  right-0 top-0 text-sm h-fit  dropdown-menu flex items-start  justify-start flex-col bg-gray-300 dark:bg-black `}
 			transition:scale
 		>
 			<li class="p-2 text-center">Download Code</li>
 			<!-- <form action="?/downloadZip" method="post"> -->
 			<button
 				on:click={downloadZip}
-				class="w-full p-2 rounded-md bg-gray-100 dark:bg-secondary-dark">Download Zip</button
+				class="w-full p-2 rounded-md flex items-center justify-center gap-2 bg-gray-100 dark:bg-secondary-dark"
+				>Download Zip {#if loading}
+					<Fa icon={faSpinner} class="animate-spin" />
+				{/if}</button
 			>
 			<!-- </form> -->
 		</ul>
