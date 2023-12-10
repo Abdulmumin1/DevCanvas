@@ -187,12 +187,6 @@
 				);
 			});
 
-			// Format the HTML code
-			var formatAction = editor.getAction('editor.action.formatDocument');
-			formatAction.run().then(function () {
-				// The code has been formatted
-				console.log('document formated');
-			});
 			// if ($darkModeState) {
 			// 	monaco.editor.setTheme('myTheme');
 			// }
@@ -236,6 +230,13 @@
 			model = monacoModel.editor.createModel(initialJs, lang);
 
 			editor.setModel(model);
+
+			// Format the HTML code
+			var formatAction = editor.getAction('editor.action.formatDocument');
+			formatAction.run().then(function () {
+				// The code has been formatted
+				console.log('document formated');
+			});
 		});
 
 		window.addEventListener('resize', () => {

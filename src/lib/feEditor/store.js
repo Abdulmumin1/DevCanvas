@@ -92,7 +92,7 @@ export const editorConfig = {
 	tabSize: 1,
 	formatOnPaste: true,
 	fontFamily: '"Monolisa", Menlo, "Source Code Pro", monospace',
-	fontSize: 16,
+	fontSize: 15,
 	emmet: {
 		enabled: true // Enable Emmet support
 	},

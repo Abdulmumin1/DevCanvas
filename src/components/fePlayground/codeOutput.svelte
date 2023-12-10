@@ -222,9 +222,13 @@
 	}
 
 	function injectJSPlugins(iframeDoc, jsPluginsVar) {
-		let array = Object.keys($jsPlugins);
+		jsPluginsVar = $jsPlugins;
+
+		let array = Object.keys(jsPluginsVar);
+		console.log(array);
+		// console.log(array);
 		for (let index = 0; index < array.length; index++) {
-			setup_js_plugin(array[index], $jsPlugins, iframeDoc);
+			setup_js_plugin(array[index], jsPluginsVar, iframeDoc);
 		}
 
 		try {

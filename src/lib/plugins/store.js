@@ -26,7 +26,11 @@ export function setup_js_plugin(name, plugins, iframeDoc) {
 		plugin.id = `${name}DSFE4o431!!`;
 		if (!pluginHTML) {
 			console.log('configuring plugin:', name);
-			iframeDoc.body.appendChild(plugin);
+			try {
+				iframeDoc.body.appendChild(plugin);
+			} catch (err) {
+				console.log('Unable to configure plugin', name);
+			}
 		}
 	} else {
 		if (pluginHTML) {
