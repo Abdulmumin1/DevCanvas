@@ -178,7 +178,7 @@
 
 			// Import and configure the emmet-monaco-es package
 			import('emmet-monaco-es').then((emmet) => {
-				console.log(emmet);
+				// console.log(emmet);
 				const dispose = emmet.emmetHTML(
 					// monaco-editor it self. If not provided, will use window.monaco instead.
 					// This could make the plugin support both ESM and AMD loaded monaco-editor
@@ -187,12 +187,6 @@
 				);
 			});
 
-			// Format the HTML code
-			var formatAction = editor.getAction('editor.action.formatDocument');
-			formatAction.run().then(function () {
-				// The code has been formatted
-				console.log('document formated');
-			});
 			// if ($darkModeState) {
 			// 	monaco.editor.setTheme('myTheme');
 			// }
@@ -236,6 +230,13 @@
 			let model = monacoModel.editor.createModel(initialHTML, lang);
 
 			editor.setModel(model);
+
+			// Format the HTML code
+			var formatAction = editor.getAction('editor.action.formatDocument');
+			formatAction.run().then(function () {
+				// The code has been formatted
+				console.log('document formated');
+			});
 		});
 
 		window.addEventListener('resize', () => {
