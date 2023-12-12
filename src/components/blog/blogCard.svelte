@@ -14,7 +14,7 @@
 	in:scale
 	class=" overflow-hidden w-full min-w-[300px] space-y-3 rounded-xl h-full transition-all duration-200 flex justify-center flex-col"
 >
-	<img src={details.thumbnail} alt="" class="object-fit w-full h-full" />
+	<!-- <img src={details.thumbnail} alt="" class="object-fit w-full h-full" /> -->
 	{#if latest}
 		<div class=" flex flex-col gap-3 p-3">
 			<a

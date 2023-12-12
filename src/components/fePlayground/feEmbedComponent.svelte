@@ -8,7 +8,12 @@
 	import ReadOnlyEditor from './readOnlyEditor.svelte';
 	import Fa from 'svelte-fa';
 	import { faCss3, faHtml5 } from '@fortawesome/free-brands-svg-icons';
-	import { faGears } from '@fortawesome/free-solid-svg-icons';
+	import {
+		faArrowRightToBracket,
+		faArrowUpRightFromSquare,
+		faEdit,
+		faGears
+	} from '@fortawesome/free-solid-svg-icons';
 	import Loader from '../loader.svelte';
 	import { fade } from 'svelte/transition';
 	export let details;
@@ -51,12 +56,9 @@
 	let loading = true;
 </script>
 
-<div class="h-full max-w-full overflow-hidden">
-	{#if !loading}
-		<p class="bg-[#0b0e14] py-1 px-2 text-white">
-			by <a href="/{details.profile}" class="text-sky-400" target="_blank">@{details.profile}</a>
-		</p>
-		<div class="w-full bg-[#0b0e14] p-2 flex gap-2 text-white text-sm">
+<div class="h-full max-h-full flex flex-col">
+	<div class="flex justify-between p-2">
+		<div class="w-full bg-secondary-dark p-2 flex gap-2 text-white text-sm">
 			<button
 				on:click={() => toogle('html')}
 				class:text-sky-300={showHtml}
@@ -73,6 +75,18 @@
 			<button on:click={() => toogle('output')} class:text-sky-300={showResult}> Output</button>
 		</div>
 
+		<p class="text-black rounded-r p-1 flex gap-2 w-[100px] items-center justify-center bg-sky-300">
+			<Fa icon={faArrowUpRightFromSquare} /> <span>GOTO Canvas</span>
+		</p>
+	</div>
+
+	{#if !loading}
+		<!-- <p class="bg-[#0b0e14] py-1 px-2 text-white">
+			created by <a href="/{details.profile}" class="text-sky-400" target="_blank"
+				>@{details.profile}</a
+			>
+		</p> -->
+
 		{#if isVertical}
 			<div class:hidden={!showHtml} class="hidden h-full">
 				<ReadOnlyEditor lang="html" code={details.html} />
@@ -85,7 +99,7 @@
 				<CodeOutput code={details.html} css={details.css} js={details.js} />
 			</div>
 		{:else}
-			<Splitpanes theme="my-theme">
+			<Splitpanes theme="embed-theme">
 				<Pane>
 					<div class:hidden={!showHtml} class="hidden h-full">
 						<ReadOnlyEditor lang="html" code={details.html} />
@@ -95,7 +109,7 @@
 					</div>
 				</Pane>
 				<Pane>
-					<div class="h-full w-full" class:hidden={!showResult}>
+					<div class="h-full w-full overflow-scroll" class:hidden={!showResult}>
 						<CodeOutput code={details.html} css={details.css} js={details.js} />
 					</div>
 				</Pane>

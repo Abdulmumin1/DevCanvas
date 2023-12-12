@@ -4,7 +4,9 @@
 </script>
 
 <div>
-	<InnerNav />
+	<!-- <div class="relative">
+		<InnerNav />
+	</div> -->
 	<slot />
 	<Footer />
 </div>

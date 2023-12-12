@@ -66,10 +66,12 @@
 			class="text-base md:text-lg py-2 px-3 gap-3 text-light bg-secondary-dark flex items-center justify-center rounded-3xl"
 		>
 			<img src="/logo.svg" class="h-6 w-6" alt="snippetsLand" />
-			<a href="/"> SnippetLand </a>
+			<a href="/"> devCanvas </a>
 		</li>
 
-		<li class="flex items-center justify-center gap-4 text-2xl">
+		<li
+			class="flex items-center justify-center gap-4 text-xl bg-secondary-dark text-light py-2 px-3 rounded-3xl"
+		>
 			<Darkmode />
 			<button on:click={toogleOpen}><Fa icon={faBars} /></button>
 		</li>

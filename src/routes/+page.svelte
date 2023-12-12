@@ -31,7 +31,9 @@
 	<div class="w-full">
 		<InnerNav />
 	</div>
-	<div class="w-full mx-auto rounded-lg flex flex-col gap-4 justify-center items-center relative">
+	<div
+		class="w-full max-w-[1500px] mx-auto rounded-lg flex flex-col gap-4 justify-center items-center relative"
+	>
 		<!-- Add your landing page content here -->
 		<div class="h-[500px] md:h-[100dvh] grid">
 			<header class="w-full overflow-hidden">
