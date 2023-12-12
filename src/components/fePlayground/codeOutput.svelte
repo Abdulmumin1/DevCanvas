@@ -50,10 +50,7 @@
 
 		// Step 2: Create and append the new CSS style
 		const styleElement = iframeDoc.createElement('style');
-		styleElement.textContent = `body::-webkit-scrollbar {
-			width: 0px;
-			height: 0px;
-			}${css}`;
+		styleElement.textContent = `${css}`;
 		iframeDoc.head.appendChild(styleElement);
 
 		// Function to handle text input

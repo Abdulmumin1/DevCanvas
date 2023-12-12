@@ -6,9 +6,12 @@
 
 <footer class="bg-sky-500 text-black font-thin px-4 py-8">
 	<div class="flex gap-2">
-		<img src="/logo.svg" class="bg-secondary-dark p-2 rounded-3xl h-10" alt="SnippetLand Logo" />
 		<div class="flex flex-col space-y-2">
-			<h3 class="text-2xl font-bold">DevCanvas</h3>
+			<h3 class="text-2xl font-bold flex items-center gap-2">
+				DevCanvas
+
+				<img src="/logo.svg" class="bg-sky-200 p-2 rounded-3xl h-10" alt="SnippetLand Logo" />
+			</h3>
 			<p>
 				Online Editor with a collection of awesome frontend code and code snippets for developers of
 				all levels.
@@ -16,10 +19,10 @@
 		</div>
 	</div>
 
-	<div class="flex flex-row gap-12 mt-4 p-4">
+	<div class="flex flex-row gap-12 mt-4">
 		<div class="flex flex-col space-y-2">
 			<h4 class="text-lg font-bold">Contact Us</h4>
-			<ul class="list-disc">
+			<ul class="">
 				<li>
 					<a href="mailto:abdulmuminyqn@gmail.com" class=" hover:underline"
 						>abdulmuminyqn@gmail.com</a
@@ -36,9 +39,9 @@
 
 		<div class="flex flex-col space-y-2">
 			<h4 class="text-lg font-bold">Links</h4>
-			<ul class="list-disc">
+			<ul class="">
 				<li><a href="/" class=" hover:underline">Home</a></li>
-				<li><a href="/challenge" class=" hover:underline">Challenges</a></li>
+				<li><a href="/blog" class=" hover:underline">Blog</a></li>
 				<li><a href="/play" class=" hover:underline">Online Editor</a></li>
 				<li><a href="/about" class=" hover:underline">About</a></li>
 			</ul>

@@ -1,6 +1,7 @@
 <script>
 	import { scale, slide } from 'svelte/transition';
 	import BlogCard from '$components/blog/blogCard.svelte';
+	import InnerNav from '$components/innerNav.svelte';
 
 	export let data;
 </script>
@@ -28,50 +29,34 @@
 	<meta name="twitter:image" content="https://i.ibb.co/nPW10cf/abdul.png" />
 </svelte:head>
 
+<InnerNav />
 <section in:scale class="min-h-screen">
 	<article class="h-full w-full flex justify-center items-center flex-col">
-		<div class=" max-w-[1200px] flex flex-col w-full h-full p-4 gap-4 items-center">
+		<div class=" max-w-[1200px] justify-center flex flex-col w-full h-full p-4 gap-4 items-center">
 			<div
-				class="header flex flex-col text-center gap-4 h-[70dvh] justify-center items-center dark:text-light"
+				class="flex gap-4 h-full md:h-[100dvh] flex-col w-full items-center justify-center md:flex-row"
 			>
-				<h1 class="text-6xl">Snippet<span class="text-sky-500">Land</span></h1>
-				<p class="max-w-[600px]">
-					In an era where information reigns supreme, sometimes it's the small pieces that hold the
-					most significant secrets. Enter the realm of SNIPPETLAND, a place where tiny treasures of
-					knowledge, wisdom, and inspiration come to life.
-				</p>
+				{#if data.posts.length > 0}
+					<div class="h-full text-6xl flex flex-col gap-3 w-full md:w-[800px]">
+						<BlogCard details={data.posts[0]} latest={true} />
+					</div>
+					<div class="h-full flex flex-col w-full md:w-[400px] gap-2">
+						{#each data.posts.splice(1, 2) as post (post.slug)}
+							<BlogCard details={post} />
+						{:else}
+							<p>Nothing to show</p>
+						{/each}
+					</div>
 
-				<form
-					class="flex flex-col gap-2 items-center justify-center bg-sky-200 dark:bg-secondary-dark w-full p-6 rounded-2xl"
-				>
-					<input
-						type="email"
-						name="subscriber-email"
-						id=""
-						placeholder="name@example.com"
-						class="w-full p-3 rounded-md"
-					/>
-					<input
-						type="submit"
-						value="subscribe"
-						class="bg-sky-500 text-primary px-6 cursor-pointer py-3 rounded-md"
-					/>
-				</form>
-			</div>
-			<div
-				class="flex gap-4 h-full md:h-[80dvh] flex-col w-full items-center justify-center md:flex-row"
-			>
-				<!-- 			
-				<div class="h-full text-6xl flex flex-col gap-3 w-full md:w-3/4">
-					<BlogCard details={data.posts[0]} latest={true} />
-				</div>
-				<div class="h-full flex flex-col w-full md:w-3/12 gap-2">
-					{#each data.posts.splice(1, 2) as post (post.slug)}
-						<BlogCard details={post} />
-					{:else}
-					{/each}
-				</div> -->
-				<p class="text-5xl">In progress!</p>
+					<div class="h-full flex flex-col w-full md:w-[400px] gap-2">
+						{#each data.posts.splice(3, data.posts.length) as post (post.slug)}
+							<BlogCard details={post} />
+						{/each}
+					</div>
+				{:else}
+					<p>Nothing to show</p>
+				{/if}
+				<!-- <p class="text-5xl">In progress!</p> -->
 			</div>
 		</div>
 	</article>

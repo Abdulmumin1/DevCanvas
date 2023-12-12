@@ -22,14 +22,14 @@
 		editorConfig = {
 			readOnly: true,
 			automaticLayout: true,
-			renderIndentGuides: false,
-			tabSize: 1,
-			formatOnPaste: true,
-			emmet: {
-				enabled: true // Enable Emmet support
-			},
+			// renderIndentGuides: false,
+			// tabSize: 1,
+			// formatOnPaste: true,
+
 			minimap: { enabled: false },
-			...(window.innerWidth <= 600 && { fontSize: 12, wordWrap: 'on' })
+			// wordWrap: 'on',
+			fontSize: 13,
+			...(window.innerWidth <= 600 && { fontSize: 12 })
 		};
 	}
 

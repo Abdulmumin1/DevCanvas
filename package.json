@@ -50,6 +50,7 @@
 		"svelte-ace": "^1.0.21",
 		"svelte-codemirror-editor": "^1.1.0",
 		"svelte-fa": "^3.0.4",
+		"svelte-markdown": "^0.4.0",
 		"svelte-splitpanes": "^0.8.0",
 		"thememirror": "^2.0.1"
 	}
