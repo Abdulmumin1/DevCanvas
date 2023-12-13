@@ -8,6 +8,7 @@
 	import Fa from 'svelte-fa';
 	import { faEye } from '@fortawesome/free-solid-svg-icons';
 	import ShareAct from '../shareAct.svelte';
+	import DeleteCanvas from './deleteCanvas.svelte';
 
 	let session = $page.data.session;
 	export let details;
@@ -67,6 +68,9 @@
 				>
 				<!-- {JSON.stringify(details.view)} -->
 				<ShareAct link="{$page.url.origin}/play/{details.project_key}" />
+				{#if details.user_id == session?.user?.id}
+					<DeleteCanvas canvas_id={details.project_key} title={details.description} />
+				{/if}
 			</div>
 		</div>
 	</div>

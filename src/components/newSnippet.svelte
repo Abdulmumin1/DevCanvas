@@ -60,7 +60,7 @@
 	<h1 class="text-6xl">Dashboard</h1>
 	<button
 		on:click={showOptions}
-		class="flex gap-2 p-2 rounded-lg text-secondary-dark bg-sky-400 w-fit items-center text-lg md:text-xl"
+		class="flex gap-2 p-2 text-sm rounded-lg text-secondary-dark bg-sky-400 w-fit items-center mb-2"
 	>
 		<Fa icon={newCodeIcon} /> New Code Snippet
 	</button>
@@ -74,7 +74,7 @@
 		>
 			<div class="w-full gap-2 dark:text-white">
 				<p class="text-black text-left w-full font-semibold dark:text-white">Enter Description</p>
-				<textarea
+				<input
 					name="description"
 					bind:value={description}
 					class="text-black text-left border border-sky-200 rounded-lg outline-sky-200 w-full p-2 dark:bg-secondary-dark dark:outline-none dark:focus:outline-none dark:border-0 dark:text-white"

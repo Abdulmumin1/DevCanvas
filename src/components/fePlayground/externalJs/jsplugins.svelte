@@ -12,8 +12,13 @@
 		jsPlugins.set(state);
 
 		clearTimeout(selectMore);
+
 		selectMore = setTimeout(() => {
-			savePlugins({ css: $cssPlugins, js: $jsPlugins }, $current_data.id);
+			try {
+				savePlugins({ css: $cssPlugins, js: $jsPlugins }, $current_data.id);
+			} catch (err) {
+				console.error(err);
+			}
 		}, delay);
 	}
 

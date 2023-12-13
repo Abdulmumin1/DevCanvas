@@ -165,7 +165,7 @@
 		<div class="gap-6 flex flex-col w-full bg-white dark:bg-secondary-dark">
 			<div class="grid gap-6 rounded-lg w-full">
 				{#each collection as snippet}
-					<div class="bg-white dark:bg-secondary-dark rounded-lg p-2 md:p-4">
+					<div class="bg-white dark:bg-secondary-dark rounded-lg p-2 md:p-4 max-w-full">
 						<h3 class="text-sm px-3 py-2 my-4 bg-[#0d1117] w-fit rounded-lg text-light cool">
 							{snippet.lang}
 						</h3>

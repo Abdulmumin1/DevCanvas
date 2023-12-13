@@ -78,12 +78,12 @@
 <div class=" w-full">
 	<!-- Code Snippet Cards -->
 	<div class="bg-sky-100 dark:bg-secondary-dark pt-2 px-1 rounded-md my-4">
-		<div class="w-full flex gap-2 text-primary dark:text-white text-xl md:text-2xl">
+		<div class="w-full flex gap-2 text-primary dark:text-white text-base">
 			<button
 				class="p-1 rounded-t-md px-3"
 				on:click={toogle}
 				class:bg-white={!showOther}
-				class:dark:bg-primary={!showOther}>Plays</button
+				class:dark:bg-primary={!showOther}>Canvas</button
 			>
 			<button
 				class="p-1 rounded-t-md px-3"

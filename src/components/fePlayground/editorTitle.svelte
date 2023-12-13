@@ -4,6 +4,7 @@
 	import { showModal, showjsConsole } from '$lib/feEditor/store.js';
 	import Fa from 'svelte-fa';
 	import EditorSettings from './editorSettings.svelte';
+	import Femodal from './femodal.svelte';
 	export let lang;
 
 	function showMod() {
@@ -17,9 +18,7 @@
 			<span class="text-rose-500"><Fa icon={faHtml5} /></span>HTML
 		</p>
 		<div class="flex px-4 gap-3 relative">
-			<button on:click={showMod} class="z-50 hover:scale-105 hover:opacity-80 cursor-pointer"
-				><Fa icon={faGear} /></button
-			>
+			<Femodal />
 
 			<EditorSettings />
 		</div>
@@ -29,9 +28,6 @@
 		<p class="bg-gray-50 dark:bg-black px-3 py-1 flex gap-1 items-center">
 			<span class="text-blue-500"><Fa icon={faCss3} /></span>CSS
 		</p>
-		<button on:click={showMod} class="z-50 hover:scale-105 hover:opacity-80 cursor-pointer px-4"
-			><Fa icon={faGear} /></button
-		>
 	</div>
 {:else if lang == 'js'}
 	<div class="w-full flex justify-between items-center h-10">
@@ -48,9 +44,6 @@
 			>
 				console <Fa icon={faTerminal} />
 			</button>
-			<button on:click={showMod} class="z-50 hover:scale-105 hover:opacity-80 cursor-pointer px-4"
-				><Fa icon={faGear} /></button
-			>
 		</div>
 	</div>
 {/if}

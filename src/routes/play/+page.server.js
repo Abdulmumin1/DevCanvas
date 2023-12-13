@@ -24,16 +24,5 @@ export const actions = {
 	search: async ({ request }) => {
 		let body = Object.fromEntries(await request.formData());
 		throw redirect(303, `/search?query=${body.query}`);
-	},
-	downloadZip: async ({ request }) => {
-		let body = Object.fromEntries(await request.formData());
-		let content = await zipEverything();
-		return {
-			body: content,
-			headers: {
-				'Content-Disposition': 'attachment; filename="project.zip"',
-				'Content-Type': 'application/zip'
-			}
-		};
 	}
 };

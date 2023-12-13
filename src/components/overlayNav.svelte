@@ -25,12 +25,14 @@
 		>
 			<ul class="flex justify-between items-end flex-col">
 				<li>
-					<button on:click={toogleOpen} class="text-lg"><Fa icon={faClose} /></button>
+					<button on:click={toogleOpen} class="text-2xl"><Fa icon={faClose} /></button>
 				</li>
 				<li class="w-full text-xl flex flex-col gap-4">
 					<ul class="w-full flex flex-col justify-between gap-4 text-4xl dark:text-secondary-dark">
 						<li class="p-6 bg-sky-200 rounded-xl"><a href="/dashboard" class="">Dashboard</a></li>
-						<li class="p-6 bg-sky-200 rounded-xl"><a href="/explore" class="">Library</a></li>
+						<li class="p-6 bg-sky-200 rounded-xl"><a href="/explore" class="">Explore</a></li>
+						<li class="p-6 bg-sky-200 rounded-xl"><a href="/blog" class="">Blog</a></li>
+
 						<li class="p-6 bg-sky-200 rounded-xl">
 							<a href="/play" class="">HTML Playground</a>
 						</li>

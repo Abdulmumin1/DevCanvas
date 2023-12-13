@@ -1,5 +1,7 @@
 <script>
 	import { onMount } from 'svelte';
+	import { isOwner, current_data } from '$lib/index.js';
+
 	import {
 		clickOutside,
 		wordWrapSetting,
@@ -13,6 +15,7 @@
 	import { faArrowDown } from '@fortawesome/free-solid-svg-icons';
 	import SingleSetting from './singleSetting.svelte';
 	import DownloadCodeDropDown from './downloadCodeDropDown.svelte';
+	import DeleteCanvas from './deleteCanvas.svelte';
 
 	let dropdownOpen = false;
 
@@ -84,6 +87,18 @@
 			<!-- <li class="w-full">
 				<DownloadCodeDropDown />
 			</li> -->
+			{#if $isOwner}
+				<li>
+					<label
+						for=""
+						class="bg-error text-black gap-2 rounded-lg cursor-pointer w-full p-2 flex items-center justify-center transition-all duration-300 active:scale-95 hover:gap-4"
+						><DeleteCanvas
+							canvas_id={$current_data.project_key}
+							title={$current_data.description}
+						/> Delete Canvas</label
+					>
+				</li>
+			{/if}
 		</ul>
 	{/if}
 </div>

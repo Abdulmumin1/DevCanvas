@@ -29,7 +29,7 @@
 						href="/explore"
 						class="text-lg px-2 w-full"
 						class:text-sky-400={$page.url.pathname == '/explore'}
-						>Library
+						>Explore
 					</a>
 				</li>
 				<li>
