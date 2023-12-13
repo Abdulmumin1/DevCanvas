@@ -39,7 +39,7 @@
 			Star us on github <Fa icon={faStar} />
 		</a>
 	</p>
-	<h1 class="text-4xl md:text-6xl font-bold max-w-[35rem]">
+	<h1 class="text-4xl text-primary dark:text-light md:text-6xl font-bold max-w-[35rem]">
 		Share Your <span class="magic">
 			<span class="magic-star">
 				<svg viewBox="0 0 512 512">
@@ -65,7 +65,7 @@
 			<span class="magic-text text-black dark:text-white">Genius</span>
 		</span> with the World!
 	</h1>
-	<p class="text-sm md:text-xl text-primary max-w-lg mx-1">
+	<p class="text-sm md:text-xl text-primary dark:text-light max-w-lg mx-1">
 		The platform for effortlessly sharing, collaborating, and discovering code snippets and stunnig
 		frontend codes. <span class="text-green-500 dark:text-green-700">share</span>,
 		<span class="text-orange-400 dark:text-orange-800">learn</span>, and

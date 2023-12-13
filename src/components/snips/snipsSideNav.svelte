@@ -5,6 +5,8 @@
 	import { handleRedirectURL } from '$lib/utils.js';
 
 	import Signout from '../signout.svelte';
+	import Fa from 'svelte-fa';
+	import { faPerson, faPersonArrowUpFromLine, faUser } from '@fortawesome/free-solid-svg-icons';
 
 	let signinURL = handleRedirectURL($page.url);
 </script>
@@ -49,8 +51,15 @@
 			<ul class="w-full">
 				<li class="text-lg px-2">
 					{#if $user}
-						<FeAccordion title="Logout">
-							<Signout />
+						<FeAccordion title={'Settings'}>
+							<div class="flex flex-col gap-2">
+								<a href="/profile" class="flex items-center gap-2 bg-secondary-dark rounded-lg p-2"
+									><Fa icon={faUser} />Profile</a
+								>
+								<div class="bg-error w-full text-black rounded-xl p-1">
+									<Signout />
+								</div>
+							</div>
 						</FeAccordion>
 					{:else}
 						<li>

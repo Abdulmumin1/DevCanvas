@@ -100,7 +100,7 @@
 	<NavWrapper>
 		<main class=" min-h-screen flex py-3 md:py-6 w-full flex-col">
 			<!-- <NewSnippet /> -->
-			<UserStats />
+			<UserStats {supabase} user_id={session?.user?.id} />
 			<div class="w-full px-0">
 				<div class="flex flex-col gap-2">
 					<p class="text-xl md:text-2xl font-bold pt-6">Your Collections</p>

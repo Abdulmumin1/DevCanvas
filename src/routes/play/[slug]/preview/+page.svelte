@@ -29,6 +29,7 @@
 				styleElement.textContent = `
 				body{
 					overflow:hidden;
+					background-color:white;
 				}
 				*::-webkit-scrollbar {
 					width: 0px;
