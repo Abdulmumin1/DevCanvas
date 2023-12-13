@@ -35,7 +35,7 @@
 	{#if isVertical}
 		<Splitpanes horizontal={true} theme="my-theme">
 			<Pane snapSize={20}>
-				<slot name="left" />
+				<slot name="left" size={30} />
 			</Pane>
 			<Pane snapSize={20}>
 				<slot name="right" />
@@ -43,7 +43,7 @@
 		</Splitpanes>
 	{:else if $layoutView == 'left'}
 		<Splitpanes horizontal={false} theme="my-theme">
-			<Pane snapSize={20} size="40">
+			<Pane snapSize={20} size="30">
 				<slot name="left" />
 			</Pane>
 			<Pane snapSize={20}>

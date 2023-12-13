@@ -17,6 +17,7 @@
 	import Femodal from '../../../components/fePlayground/femodal.svelte';
 	import JsConsole from '../../../components/fePlayground/jsConsole.svelte';
 	import EmbedModal from '../../../components/fePlayground/embedModal.svelte';
+	import ModalHigh from '../../../components/fePlayground/modalHigh.svelte';
 
 	export let data;
 
@@ -89,7 +90,9 @@
 				<JsConsole />
 			</div>
 		</Resizable>
-
+		{#if $showModal}
+			<ModalHigh />
+		{/if}
 		{#if $showEmbedModal}
 			<EmbedModal />
 		{/if}

@@ -38,17 +38,14 @@ export async function saveData(json_data, which = true) {
 
 export async function savePlugins(json_data, id) {
 	let formData = new FormData();
-
 	saved_spinner.set(true);
 	// showSave.set(true);
-
 	formData.append('plugins', JSON.stringify(json_data));
 	formData.append('id', id);
 	const response = await fetch('?/update', {
 		method: 'POST',
 		body: formData
 	});
-
 	if (response.ok) {
 		// Handle save success
 		console.log('plugin saved');
