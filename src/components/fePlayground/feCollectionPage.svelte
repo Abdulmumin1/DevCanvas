@@ -87,7 +87,7 @@
 
 	async function more() {
 		console.log($pageCountPl);
-		let result = await fetchPaginatedRows($pageCountPl, $pageCountPl + 6 - 1);
+		let result = await fetchPaginatedRows($pageCountPl, $pageCountPl + 12 - 1);
 
 		if (result.length == 0) {
 			showMore = false;
@@ -102,7 +102,7 @@
 		collection = [...collection, ...result_with_profile_data];
 
 		pageCountPl.update((cur) => {
-			return cur + 6;
+			return cur + 12;
 		});
 
 		// window.location.href = '#more';
@@ -141,7 +141,7 @@
 	});
 
 	onDestroy(() => {
-		pageCountPl.set(6);
+		pageCountPl.set(12);
 	});
 </script>
 

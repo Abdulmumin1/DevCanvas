@@ -38,7 +38,7 @@
 		<div class="h-[500px] md:h-[100dvh] grid">
 			<header class="w-full overflow-hidden">
 				<div
-					class="w-[500px] md:w-full h-[500px] md:h-[100dvh] bg-sky-300 opacity-80 blur-lg overflow-hidden absolute top-0 inset-x-0 mx-auto rounded-full md:rounded-none md:rounded-t-full"
+					class="hidden md:flex w-[500px] md:w-full h-[500px] md:h-[100dvh] bg-sky-300 opacity-80 blur-lg overflow-hidden absolute top-0 inset-x-0 mx-auto rounded-full md:rounded-none md:rounded-t-full"
 				/>
 				<div class="mt-20">
 					<Hero />

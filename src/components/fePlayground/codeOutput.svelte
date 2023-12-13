@@ -8,6 +8,9 @@
 		setup_js_plugin
 	} from '$lib/plugins/store.js';
 	import { onMount } from 'svelte';
+	import Loader from '../loader.svelte';
+	import Loadermini from '../loadermini.svelte';
+	import { fade } from 'svelte/transition';
 
 	export let code;
 	export let css;
@@ -19,6 +22,7 @@
 	let typingTimer; // Timer to track typing
 	let cssPluginsVar = $cssPlugins;
 	let jsPluginsVar = $jsPlugins;
+	let loading = true;
 
 	function injectHtmlCSS(iframeDoc, code, css) {
 		const bodyContent = code;
@@ -98,10 +102,7 @@
 
 		// Step 2: Create and append the new CSS style
 		const styleElement = iframeDoc.createElement('style');
-		styleElement.textContent = `body::-webkit-scrollbar {
-			width: 0px;
-			height: 0px;
-			}${css}`;
+		styleElement.textContent = `${css}`;
 		iframeDoc.head.appendChild(styleElement);
 	}
 
@@ -294,6 +295,7 @@ ${js}
 				current_data.update((cur) => {
 					return { ...cur, html: `${code} ` };
 				});
+				loading = false;
 			}, 1000);
 			return false;
 		};

@@ -16,13 +16,13 @@ export const SnippetsDescription = readable({
 		'https://raw.githubusercontent.com/Abdulmumin1/snippetLand/6643c0d26744f6231aa168bf352c27b49664ba66/static/devCanvas.png'
 });
 
-export const pageCountPl = writable(6);
+export const pageCountPl = writable(12);
 export const pageCountSnips = writable(6);
 
 export const saved_spinner = writable(false);
 export const isOwner = writable(false);
 
-export const pageCount = writable(6);
+export const pageCount = writable(12);
 export const pageLimit = writable(3);
 
 export const showToast = writable(false);
