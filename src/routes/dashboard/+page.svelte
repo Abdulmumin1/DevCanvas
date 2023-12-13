@@ -7,6 +7,7 @@
 	import NavWrapper from '../../components/snips/navWrapper.svelte';
 	import { fade } from 'svelte/transition';
 	import FeCollectionPage from '../../components/fePlayground/feCollectionPage.svelte';
+	import UserStats from '../../components/userStats.svelte';
 
 	export let data;
 
@@ -98,18 +99,20 @@
 <div class="flex min-h-screen gap-2">
 	<NavWrapper>
 		<main class=" min-h-screen flex py-3 md:py-6 w-full flex-col">
-			<NewSnippet />
+			<!-- <NewSnippet /> -->
+			<UserStats />
 			<div class="w-full px-0">
 				<div class="flex flex-col gap-2">
-					<p class="text-2xl md:text-3xl font-bold pt-6">Your Collections</p>
+					<p class="text-xl md:text-2xl font-bold pt-6">Your Collections</p>
 					<div class="bg-sky-100 dark:bg-secondary-dark pt-2 px-1 rounded-md my-4">
-						<div class="w-full flex gap-2 text-primary dark:text-white text-xl md:text-2xl">
+						<div class="w-full flex gap-2 text-primary dark:text-white text-base">
 							<button
 								class="p-1 rounded-t-md px-3"
 								on:click={toogle}
 								class:bg-white={!showOther}
-								class:dark:bg-primary={!showOther}>Plays</button
-							>
+								class:dark:bg-primary={!showOther}
+								>Canvas
+							</button>
 							<button
 								class="p-1 rounded-t-md px-3"
 								on:click={toogle}

@@ -90,9 +90,6 @@
 			</div>
 		</Resizable>
 
-		{#if $showModal}
-			<Femodal type={$showModal} />
-		{/if}
 		{#if $showEmbedModal}
 			<EmbedModal />
 		{/if}

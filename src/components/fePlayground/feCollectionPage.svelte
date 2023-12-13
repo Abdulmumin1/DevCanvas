@@ -149,12 +149,7 @@
 	<div class="flex flex-col gap-6 items-center" transition:fade>
 		<div class="gap-6 flex flex-col w-full">
 			<div class="customGrid gap-6 rounded-lg w-full">
-				{#each collection as snippet}
-					<!-- <div class="bg-white rounded-lg p-4 shadow-md">
-					<h3 class="text-xl font-semibold mb-2">{snippet.lang}</h3>
-					<code class="block bg-gray-100 p-2 rounded-lg shadow-inner">{snippet.code}</code>
-					Add any additional information or actions here
-				</div> -->
+				{#each collection as snippet (snippet.project_key)}
 					<FeCard details={snippet} />
 				{/each}
 			</div>
