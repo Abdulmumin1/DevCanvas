@@ -120,7 +120,7 @@
 						<CollectionDummy />
 					{:then userSnippets}
 						{#key showOther}
-							<div in:fade class:hidden={!showOther} class="hidden h-full w-full">
+							<div in:fade class:hidden={!showOther} class="hidden h-full">
 								<CollectionPage
 									rawcollection={userSnippets}
 									supabase={data.supabase}
