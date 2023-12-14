@@ -41,7 +41,7 @@
 	<title>{data.meta.title}</title>
 </svelte:head>
 
-<article in:scale class="mx-auto flex flex-col gap-2 article before:h-[700px] before:md:h-[600px]">
+<article in:scale class="mx-auto flex flex-col gap-2 article">
 	<hgroup class=" h-[500px] text-black flex rounded-lg w-full flex-col gap-3 relative">
 		<div class="flex flex-col items-center justify-center">
 			<h1 class="text-5xl text-center">{data.meta.title}</h1>
@@ -79,7 +79,7 @@
 		{/each}
 	</div>
 
-	<div class="space-y-5 markdown-content font-light">
+	<div class="space-y-5 markdown-content font-light dark:text-light">
 		<svelte:component this={data.content} />
 	</div>
 	<div class="w-full flex items-center justify-center p-3">

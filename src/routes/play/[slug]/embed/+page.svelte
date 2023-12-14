@@ -7,22 +7,21 @@
 	// console.log($current_data.html);
 </script>
 
-<div class="text-sm bg-transparent h-[100dvh] p-1 bg-secondary-dark rounded">
-	<div class="h-full rounded-xl p-1">
-		<div class="w-full h-full bg-[#0b0e14] mb-4">
+<div class="text-sm h-[100dvh] bg-secondary-dark rounded bd">
+	<div class="h-full rounded-xl">
+		<div class="w-full h-full mb-4">
 			<FeEmbedComponent details={data.details} />
 		</div>
 	</div>
 </div>
-<!-- 
-<style>
-	/* Hide the vertical scrollbar */
-	::-webkit-scrollbar {
-		width: 0;
-	}
 
-	/* Hide the horizontal scrollbar */
-	::-webkit-scrollbar {
+<style>
+	*::-webkit-scrollbar {
+		width: 0;
 		height: 0;
 	}
-</style> -->
+
+	.bd {
+		border: 1px solid #444;
+	}
+</style>

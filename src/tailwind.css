@@ -207,4 +207,9 @@
 		width: 100%;
 		cursor: row-resize;
 	}
+
+	.article pre::-webkit-scrollbar {
+		width: 0;
+		height: 0;
+	}
 }

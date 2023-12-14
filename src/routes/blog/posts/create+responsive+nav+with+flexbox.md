@@ -153,7 +153,7 @@ With CSS Flexbox, creating a responsive navigation bar becomes efficient and str
 
 <iframe
   title="embed"
-  src="http://localhost:5173/play/eKCyam/embed"
+  src="https://snippet-bice.vercel.app/play/eKCyam/embed"
   frameborder="0"
   height="500px"
   width="100%"

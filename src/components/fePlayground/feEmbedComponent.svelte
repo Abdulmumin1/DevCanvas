@@ -7,7 +7,7 @@
 	import CodeOutput from './codeOutput.svelte';
 	import ReadOnlyEditor from './readOnlyEditor.svelte';
 	import Fa from 'svelte-fa';
-	import { faCss3, faHtml5 } from '@fortawesome/free-brands-svg-icons';
+	import { faCss3, faHtml5, faJs } from '@fortawesome/free-brands-svg-icons';
 	import {
 		faArrowRightToBracket,
 		faArrowUpRightFromSquare,
@@ -18,19 +18,27 @@
 	import { fade } from 'svelte/transition';
 	export let details;
 
-	let showHtml, showCSS, showResult;
+	let showHtml, showCSS, showResult, showJs;
 	function toogle(which) {
 		if (which == 'html') {
 			showHtml = true;
 			showCSS = false;
+			showJs = false;
 			showResult = isVertical ? false : true;
 		} else if (which == 'css') {
 			showCSS = true;
 			showHtml = false;
+			showJs = false;
+			showResult = isVertical ? false : true;
+		} else if ((which = 'js')) {
+			showJs = true;
+			showHtml = false;
+			showCSS = false;
 			showResult = isVertical ? false : true;
 		} else if (which == 'output') {
 			showCSS = isVertical ? false : !showHtml;
 			showHtml = isVertical ? false : !showCSS;
+			showJs = isVertical ? false : !showJs;
 			showResult = true;
 		}
 
@@ -57,27 +65,59 @@
 </script>
 
 <div class="h-full max-h-full flex flex-col">
-	<div class="flex justify-between p-2">
-		<div class="w-full bg-secondary-dark p-2 flex gap-2 text-white text-sm">
+	<div class="flex h-[50px] justify-between">
+		<div class="w-full bg-secondary-dark flex gap-2 text-white text-sm">
 			<button
 				on:click={() => toogle('html')}
-				class:text-sky-300={showHtml}
-				class="flex items-center justify-center gap-2"
+				class:sl={showHtml}
+				class:text-light={showHtml}
+				class="flex items-center justify-center gap-2 p-2"
 				><span class="text-error"><Fa icon={faHtml5} /></span> HTML</button
 			>
 			<button
-				class="flex items-center justify-center gap-2"
+				class="flex items-center justify-center gap-2 p-2"
 				on:click={() => toogle('css')}
-				class:text-sky-300={showCSS}
+				class:sl={showCSS}
+				class:text-light={showCSS}
 			>
 				<span class="text-blue-500"><Fa icon={faCss3} /></span> CSS</button
 			>
-			<button on:click={() => toogle('output')} class:text-sky-300={showResult}> Output</button>
+			<button
+				class="flex items-center justify-center gap-2 p-2"
+				on:click={() => toogle('js')}
+				class:sl={showJs}
+				class:text-light={showJs}
+			>
+				<span class="text-blue-500"><Fa icon={faJs} /></span> JS</button
+			>
 		</div>
 
-		<p class="text-black rounded-r p-1 flex gap-2 w-[100px] items-center justify-center bg-sky-300">
-			<Fa icon={faArrowUpRightFromSquare} /> <span>GOTO Canvas</span>
-		</p>
+		<div class="w-full flex items-center justify-center bg-inherit bg-secondary-dark">
+			<button
+				on:click={() => toogle('output')}
+				class:sl={showResult}
+				class="p-2 h-full"
+				class:text-light={showResult}
+			>
+				Output</button
+			>
+		</div>
+
+		<a
+			href="https://snippet-bice.vercel.app/play/{details.project_key}"
+			target="_blank"
+			class="w-full text-gray-100 rounded-r p-1 flex gap-2 items-center justify-center sl px-2"
+		>
+			<span
+				><img
+					height="16px"
+					width="16px"
+					alt=""
+					style="filter: grayscale(100);"
+					src="/logo.svg"
+				/></span
+			> <span>GOTO Canvas</span>
+		</a>
 	</div>
 
 	{#if !loading}
@@ -100,12 +140,16 @@
 			</div>
 		{:else}
 			<Splitpanes theme="embed-theme">
-				<Pane>
+				<Pane size={45.8}>
 					<div class:hidden={!showHtml} class="hidden h-full">
 						<ReadOnlyEditor lang="html" code={details.html} />
 					</div>
 					<div class:hidden={!showCSS} class="hidden h-full overflow-scroll text-sm">
 						<ReadOnlyEditor lang="css" code={details.css} />
+					</div>
+
+					<div class:hidden={!showJs} class="hidden h-full overflow-scroll text-sm">
+						<ReadOnlyEditor lang="js" code={details.js} />
 					</div>
 				</Pane>
 				<Pane>
@@ -134,5 +178,9 @@
 	/* Hide the horizontal scrollbar */
 	::-webkit-scrollbar {
 		height: 0;
+	}
+
+	.sl {
+		background-color: #222;
 	}
 </style>
