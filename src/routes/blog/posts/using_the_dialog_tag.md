@@ -23,7 +23,7 @@ The `<dialog>` tag is a powerful HTML5 element that allows developers to create 
 
 <iframe
                 title="embed"
-                src="http://localhost:5173/play/IQwG4s/embed"
+                src="https://snippet-bice.vercel.app/play/IQwG4s/embed"
                 frameborder="0"
                 height="500px"
                 width="100%"

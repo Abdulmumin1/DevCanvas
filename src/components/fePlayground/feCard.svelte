@@ -55,10 +55,10 @@
 					</p>
 				</div>
 			{:else}
-				<div in:fade>
+				<div in:fade class="flex gap-2">
 					<span>by</span>
 					<!-- <a class="text-sky-400 dark:text-sky-300 text-sm" href={`/anon`}>Anonymous user</a> -->
-					<span class="w-12 h-6 rounded-2xl animate-pulse bg-sky-100 dark:bg-gray-400" />
+					<div class="w-12 h-2 rounded-2xl animate-pulse bg-sky-100 dark:bg-gray-400" />
 				</div>
 			{/if}
 			<div class="flex gap-2 items-center justify-center w-fit">
