@@ -11,7 +11,8 @@
 	export let canvas_id;
 	export let publicLy;
 
-	let isPublic = publicLy;
+	$: isPublic = publicLy;
+
 	$: icon = isPublic ? faLockOpen : faLock;
 	$: text = isPublic ? 'Public' : 'Private';
 
