@@ -42,25 +42,24 @@
 		}
 	}
 
-	async function changeTitle(event) {
-		isPublic = event.detail.status;
+	async function toggleVisibility() {
+		isPublic = !isPublic;
 		console.log(canvas_id);
 		await saveVisibility();
 	}
 </script>
 
-<div class="dropdown text-primary dark:text-white relative flex flex-col text-center">
-	<button
-		on:click={toggleDropdown}
-		class="flex text-[10px] text-black bg-sky-100 h-fit rounded-xl p-1 px-2"
-	>
-		<div class="flex gap-1">
-			<Fa {icon} />
-			{text}
-		</div>
-	</button>
+<button
+	on:click={toggleVisibility}
+	class="flex text-[10px] text-black bg-sky-100 h-fit rounded-xl p-1 px-2"
+>
+	<div class="flex gap-1">
+		<Fa {icon} />
+		{text}
+	</div>
+</button>
 
-	{#if dropdownOpen}
+<!-- {#if dropdownOpen}
 		<ul
 			use:clickOutside
 			on:click_outside={closeDropdown}
@@ -68,12 +67,9 @@
 			transition:scale
 		>
 			<li class="p-2 text-center">Change Visibility</li>
-			<!-- <form action="?/downloadZip" method="post"> -->
 			<SingleSetting label={'Private'} checked={!isPublic} on:checked={changeTitle} />
-			<!-- </form> -->
 		</ul>
-	{/if}
-</div>
+	{/if} -->
 
 <style>
 	.drop {
