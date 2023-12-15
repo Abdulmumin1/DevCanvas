@@ -15,7 +15,7 @@
 	export let data;
 
 	onMount(() => {
-		pageCountPl.set(6);
+		pageCountPl.set(12);
 		pageCountSnips.set(6);
 	});
 </script>
