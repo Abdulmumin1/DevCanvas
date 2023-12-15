@@ -1,5 +1,19 @@
 **Changelog updates:**
 
+## 2023-12-15
+
+### Added
+
+- Introduced Visibility toggle, make canvas public/private
+
+### Changed
+
+- Added a focus outline to canvas title
+
+### Fixed
+
+- Adjuested the settings on the bottom of side nav
+
 ## 2023-12-08
 
 ### Added
