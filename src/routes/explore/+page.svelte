@@ -41,6 +41,7 @@
 			.from('htmlPlayground')
 			.select('*, view (views)')
 			.order('created_at', { ascending: false })
+			.is('public', true)
 			.limit($pageCountPl);
 
 		if (error) {
