@@ -98,7 +98,7 @@
 			return;
 		}
 		console.log(result.length);
-		if (result.length < 6) {
+		if (result.length < 12) {
 			showMore = false;
 		}
 		let result_with_profile_data = await returnDataWithProfile(result, supabase);
