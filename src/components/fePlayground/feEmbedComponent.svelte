@@ -18,31 +18,42 @@
 	import { fade } from 'svelte/transition';
 	export let details;
 
-	let showHtml, showCSS, showResult, showJs;
-	function toogle(which) {
-		if (which == 'html') {
-			showHtml = true;
-			showCSS = false;
-			showJs = false;
-			showResult = isVertical ? false : true;
-		} else if (which == 'css') {
-			showCSS = true;
-			showHtml = false;
-			showJs = false;
-			showResult = isVertical ? false : true;
-		} else if ((which = 'js')) {
-			showJs = true;
-			showHtml = false;
-			showCSS = false;
-			showResult = isVertical ? false : true;
-		} else if (which == 'output') {
-			showCSS = isVertical ? false : !showHtml;
-			showHtml = isVertical ? false : !showCSS;
-			showJs = isVertical ? false : !showJs;
-			showResult = true;
-		}
+	let showHtml;
+	let showCSS;
+	let showResult;
+	let showJs;
 
-		console.log(showResult);
+	function toogle(which) {
+		switch (which) {
+			case 'html':
+				showHtml = true;
+				showCSS = false;
+				showJs = false;
+				showResult = isVertical ? false : true;
+				break;
+			case 'css':
+				showCSS = true;
+				showHtml = false;
+				showJs = false;
+				showResult = isVertical ? false : true;
+				break;
+			case 'js':
+				showJs = true;
+				showHtml = false;
+				showCSS = false;
+				showResult = isVertical ? false : true;
+				break;
+			case 'output':
+				showCSS = isVertical ? false : !showHtml;
+				showHtml = isVertical ? false : !showCSS;
+				showJs = isVertical ? false : !showJs;
+				showResult = true;
+				console.log('showJds');
+				break;
+			default:
+				break;
+		}
+		// console.log(showResult);
 	}
 
 	let isVertical = false;
@@ -134,7 +145,9 @@
 			<div class:hidden={!showCSS} class="hidden h-full overflow-scroll">
 				<ReadOnlyEditor lang="css" code={details.css} />
 			</div>
-
+			<div class:hidden={!showJs} class="hidden h-full overflow-scroll text-sm">
+				<ReadOnlyEditor lang="js" code={details.js} />
+			</div>
 			<div class="h-full w-full" class:hidden={!showResult}>
 				<CodeOutput code={details.html} css={details.css} js={details.js} />
 			</div>
