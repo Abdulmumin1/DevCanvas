@@ -1,0 +1,81 @@
+<script>
+	import { onMount } from 'svelte';
+	import { clickOutside, current_data } from '$lib/index.js';
+	// import feather from 'feather-icons';
+	import { scale } from 'svelte/transition';
+	import Fa from 'svelte-fa';
+	import { faLock, faLockOpen, faSpinner } from '@fortawesome/free-solid-svg-icons';
+	import SingleSetting from './singleSetting.svelte';
+
+	let dropdownOpen = false;
+	export let canvas_id;
+	export let publicLy;
+
+	let isPublic = publicLy;
+	$: icon = isPublic ? faLockOpen : faLock;
+	$: text = isPublic ? 'Public' : 'Private';
+
+	function toggleDropdown() {
+		dropdownOpen = !dropdownOpen;
+	}
+
+	function closeDropdown() {
+		dropdownOpen = false;
+	}
+
+	async function saveVisibility() {
+		let formData = new FormData();
+		// showSave.set(true);
+		formData.append('id', canvas_id);
+		formData.append('value', isPublic);
+		const response = await fetch('?/updateVisibility', {
+			method: 'POST',
+			body: formData
+		});
+		if (response.ok) {
+			// Handle save success
+			console.log('visibility saved');
+		} else {
+			// Handle save failed
+			console.log('failed');
+		}
+	}
+
+	async function changeTitle(event) {
+		isPublic = event.detail.status;
+		console.log(canvas_id);
+		await saveVisibility();
+	}
+</script>
+
+<div class="dropdown text-primary dark:text-white relative flex flex-col text-center">
+	<button
+		on:click={toggleDropdown}
+		class="flex text-[10px] text-black bg-sky-100 h-fit rounded-xl p-1 px-2"
+	>
+		<div class="flex gap-1">
+			<Fa {icon} />
+			{text}
+		</div>
+	</button>
+
+	{#if dropdownOpen}
+		<ul
+			use:clickOutside
+			on:click_outside={closeDropdown}
+			class={`mt-8 w-[200px] rounded-md p-1 absolute drop  left-0 top-0 text-sm h-fit  dropdown-menu flex items-start  justify-start flex-col bg-gray-300 dark:bg-black `}
+			transition:scale
+		>
+			<li class="p-2 text-center">Change Visibility</li>
+			<!-- <form action="?/downloadZip" method="post"> -->
+			<SingleSetting label={'Private'} checked={!isPublic} on:checked={changeTitle} />
+			<!-- </form> -->
+		</ul>
+	{/if}
+</div>
+
+<style>
+	.drop {
+		z-index: 9999;
+	}
+</style>

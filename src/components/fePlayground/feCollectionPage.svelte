@@ -19,7 +19,8 @@
 			.from('htmlPlayground')
 			.select('project_key, user_id, description, view (views)')
 			.order('created_at', { ascending: false }) // Optional: Ordering the results
-			.range(pageNumber, pageSize);
+			.range(pageNumber, pageSize)
+			.is('public', true);
 
 		if (error) {
 			console.error('Error fetching data:', error.message);
@@ -48,7 +49,8 @@
 			.select('project_key, user_id, description, view (views)')
 			.eq('user_id', user_id)
 			.order('created_at', { ascending: false }) // Optional: Ordering the results
-			.range(pageNumber, pageSize);
+			.range(pageNumber, pageSize)
+			.is('public', true);
 
 		if (error) {
 			console.error('Error fetching data:', error.message);
@@ -63,7 +65,8 @@
 			.select('project_key, user_id, description, view (views)')
 			.ilike('description', `%${query}%`)
 			.order('created_at', { ascending: false }) // Optional: Ordering the results
-			.range(pageNumber, pageSize);
+			.range(pageNumber, pageSize)
+			.is('public', true);
 
 		if (error) {
 			console.error('Error fetching data:', error.message);

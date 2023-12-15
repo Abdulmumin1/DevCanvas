@@ -66,9 +66,9 @@
 					class="relative text-[11px] md:text-base w-full md:w-[90%] bg-orange-100 p-4 rounded-lg dark:bg-[#0d1117] overflow-scroll h-full"
 				>
 					<div
-						class="absolute top-2 right-2 text-base md:text-xl flex items-center justify-center z-50"
+						class="sticky top-0 right-0 text-base md:text-xl flex items-center justify-center z-50"
 					>
-						<p class="text-sm bg-orange-100 dark:bg-primary p-2 rounded">python</p>
+						<p class="text-sm bg-orange-100 dark:bg-primary p-2 rounded">{data[0].lang}</p>
 						<button class="p-2" on:click={CopyAction}><Fa icon={iconCopy} /></button>
 					</div>
 					<HighlightAuto code={data[0].code} let:highlighted>

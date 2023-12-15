@@ -50,6 +50,7 @@
 			.select('project_key, user_id, description, view (views)')
 
 			.order('created_at', { ascending: false })
+			.is('public', true)
 			.limit($pageCount);
 
 		// dt = data[0];

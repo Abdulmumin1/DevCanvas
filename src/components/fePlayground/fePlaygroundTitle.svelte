@@ -3,13 +3,14 @@
 	import { showLoginToSave, showForkTosave } from '$lib/feEditor/store.js';
 
 	import { saveData } from '$lib/feEditor/store.js';
-	import { faPen } from '@fortawesome/free-solid-svg-icons';
+	import { faLock, faLockOpen, faPen } from '@fortawesome/free-solid-svg-icons';
 	import Fa from 'svelte-fa';
 	import { getProfile } from '$lib/utils.js';
 
 	import { page } from '$app/stores';
 	import { onDestroy, onMount } from 'svelte';
 	import ShowLoginOrforkBanner from './showLoginOrforkBanner.svelte';
+	import CanvasVisibility from './canvasVisibility.svelte';
 
 	let supabase = $page.data.supabase;
 	let session = $page.data.session;
@@ -75,18 +76,20 @@
 				on:keydown={handleKeyDown}
 				on:input={handleInput}
 				placeholder="Untitled Project"
-				class="max-w-[100px] md:max-w-full w-fit text-sm md:text-xl capitalize text-white bg-inherit outline-none whitespace-nowrap overflow-hidden text-ellipsis"
+				class="max-w-[100px] md:max-w-full w-fit focus:outline-1 focus:outline-sky-200 text-sm md:text-xl capitalize text-white bg-inherit whitespace-nowrap overflow-hidden text-ellipsis"
 			>
 				{$current_data.description}
 			</p>
 			<span class="text-white text-[11px] md:text-base jello-diagonal-2 cursor-pointer">
 				<Fa icon={faPen} />
 			</span>
+
+			<CanvasVisibility canvas_id={$current_data.id} publicLy={$current_data.public} />
 		</div>
 	{:else}
 		<p
 			style="margin-bottom: -7px;"
-			class="max-w-[100px] md:max-w-full w-fit text-sm md:text-xl capitalize text-white bg-inherit outline-none whitespace-nowrap overflow-hidden text-ellipsis"
+			class="max-w-[100px] md:max-w-full w-fit text-sm md:text-xl capitalize text-white bg-inherit outline-none whitespace-nowrap overflow-hidden text-ellipsis flex items-center gap-2"
 		>
 			{$current_data.description}
 		</p>
