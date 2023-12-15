@@ -44,6 +44,7 @@
 			.select('*, view (views)')
 			.eq('user_id', data.user_id)
 			.order('created_at', { ascending: false })
+			.is('public', true)
 			.limit($pageCountPl);
 
 		if (error) {
