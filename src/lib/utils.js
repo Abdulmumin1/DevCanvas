@@ -12,7 +12,10 @@ export function handleRedirectURL(url, custom = null) {
 }
 
 export async function getProfile(user_id, supabase) {
-	const { data, error: err } = await supabase.from('profiles').select('*').eq('user_id', user_id);
+	const { data, error: err } = await supabase
+		.from('profiles')
+		.select('username')
+		.eq('user_id', user_id);
 	if (err) throw err;
 	return data;
 }

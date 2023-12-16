@@ -3,8 +3,6 @@
 
 	import { page } from '$app/stores';
 	import { fade } from 'svelte/transition';
-	import html2canvas from 'html2canvas';
-	import { onMount } from 'svelte';
 	import Fa from 'svelte-fa';
 	import { faEye } from '@fortawesome/free-solid-svg-icons';
 	import ShareAct from '../shareAct.svelte';
@@ -55,10 +53,10 @@
 					</p>
 				</div>
 			{:else}
-				<div in:fade class="flex gap-2">
+				<div in:fade class="flex gap-2 items-center justify-center">
 					<span>by</span>
 					<!-- <a class="text-sky-400 dark:text-sky-300 text-sm" href={`/anon`}>Anonymous user</a> -->
-					<div class="w-12 h-2 rounded-2xl animate-pulse bg-sky-100 dark:bg-gray-400" />
+					<div class="w-12 h-4 rounded-2xl animate-pulse bg-sky-100 dark:bg-gray-400" />
 				</div>
 			{/if}
 			<div class="flex gap-2 items-center justify-center w-fit">
@@ -69,7 +67,7 @@
 				>
 				<!-- {JSON.stringify(details.view)} -->
 				<ShareAct link="{$page.url.origin}/play/{details.project_key}" />
-				{#if details.user_id == session?.user?.id}
+				{#if details.user_id == session?.user?.id && $page.url.pathname == '/dashboard'}
 					<DeleteCanvas canvas_id={details.project_key} title={details.description} />
 				{/if}
 			</div>
