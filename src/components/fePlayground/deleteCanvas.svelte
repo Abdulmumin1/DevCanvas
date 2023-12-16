@@ -2,7 +2,7 @@
 	import { isOwner, current_data, showToast } from '$lib/index.js';
 	import { faSpinner, faTrash } from '@fortawesome/free-solid-svg-icons';
 	import Fa from 'svelte-fa';
-	import { invalidateAll } from '$app/navigation';
+	import { invalidateAll, goto } from '$app/navigation';
 
 	export let canvas_id;
 	export let user_id;
@@ -31,10 +31,12 @@
 
 		if (response.ok) {
 			// Handle save success
-			invalidateAll().then(() => {
-				loading = false;
-				showToast.set({ message: 'Canvas deleted' });
-				modal.close();
+			goto('/dashboard').then(() => {
+				invalidateAll().then(() => {
+					loading = false;
+					showToast.set({ message: 'Canvas deleted' });
+					modal.close();
+				});
 			});
 		} else {
 			// Handle save failed

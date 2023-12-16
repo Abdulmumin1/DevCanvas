@@ -817,10 +817,6 @@ video {
   height: 2.5rem;
 }
 
-.h-2 {
-  height: 0.5rem;
-}
-
 .h-20 {
   height: 5rem;
 }
@@ -1309,8 +1305,10 @@ video {
   overflow-y: scroll;
 }
 
-.text-ellipsis {
+.truncate {
+  overflow: hidden;
   text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .whitespace-nowrap {
@@ -1831,6 +1829,10 @@ video {
   font-size: 11px;
 }
 
+.text-\[2px\] {
+  font-size: 2px;
+}
+
 .text-\[9px\] {
   font-size: 9px;
 }
@@ -1853,6 +1855,14 @@ video {
 .text-xl {
   font-size: 1.25rem;
   line-height: 1.75rem;
+}
+
+.text-\[14px\] {
+  font-size: 14px;
+}
+
+.text-\[13px\] {
+  font-size: 13px;
 }
 
 .font-bold {
@@ -2835,8 +2845,8 @@ video {
     width: 100%;
   }
 
-  .md\:max-w-full {
-    max-width: 100%;
+  .md\:max-w-\[400px\] {
+    max-width: 400px;
   }
 
   .md\:flex-row {
