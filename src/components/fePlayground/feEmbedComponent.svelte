@@ -146,7 +146,7 @@
 				<ReadOnlyEditor lang="css" code={details.css} />
 			</div>
 			<div class:hidden={!showJs} class="hidden h-full overflow-scroll text-sm">
-				<ReadOnlyEditor lang="js" code={details.js} />
+				<ReadOnlyEditor lang="javascript" code={details.js} />
 			</div>
 			<div class="h-full w-full" class:hidden={!showResult}>
 				<CodeOutput code={details.html} css={details.css} js={details.js} />
@@ -162,7 +162,7 @@
 					</div>
 
 					<div class:hidden={!showJs} class="hidden h-full overflow-scroll text-sm">
-						<ReadOnlyEditor lang="js" code={details.js} />
+						<ReadOnlyEditor lang="javascript" code={details.js} />
 					</div>
 				</Pane>
 				<Pane>
