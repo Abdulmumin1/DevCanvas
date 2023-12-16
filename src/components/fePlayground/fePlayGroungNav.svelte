@@ -33,7 +33,7 @@
 				{#if $showSave}
 					<li><FeSave /></li>
 				{/if}
-			{:else if !ispublic}
+			{:else if ispublic}
 				<li><FeFork /></li>
 			{/if}
 			<li><FeGetEmbed /></li>
