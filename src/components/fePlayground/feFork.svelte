@@ -1,14 +1,16 @@
 <script>
-	import { saved_spinner, saveData } from '$lib/feEditor/store.js';
+	// import { saved_spinner, saveData } from '$lib/feEditor/store.js';
 	import { current_data } from '$lib/index.js';
-	import { faAngleDown, faCodeFork, faSave, faSpinner } from '@fortawesome/free-solid-svg-icons';
+	import { faCodeFork, faSave, faSpinner } from '@fortawesome/free-solid-svg-icons';
 	import { page } from '$app/stores';
 	import Fa from 'svelte-fa';
-	import { goto } from '$app/navigation';
+	import { goto, invalidateAll } from '$app/navigation';
 	import { handleRedirectURL } from '$lib/utils';
-	import DownloadCodeDropDown from './downloadCodeDropDown.svelte';
 
 	let busy = false;
+
+	let demo = $page.url.pathname.endsWith('/try');
+
 	async function forkData() {
 		busy = true;
 		let formData = new FormData();
@@ -27,15 +29,19 @@
 		// console.log('response', response.json());
 		if (response.ok) {
 			let d = await response.json();
-			goto(d.url);
+			// invalidateAll();
+			if (demo) {
+				goto(d.url);
+			} else {
+				window.location.href = d.url;
+			}
+			// window.l
 		} else {
 			if (response.status == 400) {
 				goto(handleRedirectURL($page.url));
 			}
 		}
 	}
-
-	let demo = $page.url.pathname.endsWith('/try');
 </script>
 
 {#if demo}

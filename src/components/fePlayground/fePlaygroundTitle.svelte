@@ -76,7 +76,8 @@
 				on:keydown={handleKeyDown}
 				on:input={handleInput}
 				placeholder="Untitled Project"
-				class="max-w-[100px] md:max-w-full w-fit focus:outline-1 focus:outline-sky-200 text-sm md:text-xl capitalize text-white bg-inherit whitespace-nowrap overflow-hidden text-ellipsis"
+				spellcheck="false"
+				class="max-w-[100px] md:max-w-[400px] w-fit focus:outline-1 focus:outline-sky-200 text-sm md:text-xl capitalize text-white bg-inherit whitespace-nowrap truncate"
 			>
 				{$current_data.description}
 			</p>
@@ -89,7 +90,7 @@
 	{:else}
 		<p
 			style="margin-bottom: -7px;"
-			class="max-w-[100px] md:max-w-full w-fit text-sm md:text-xl capitalize text-white bg-inherit outline-none whitespace-nowrap overflow-hidden text-ellipsis flex items-center gap-2"
+			class="max-w-[100px] md:max-w-[400px] w-fit text-sm md:text-xl capitalize text-white bg-inherit outline-none whitespace-nowrap flex items-center gap-2 truncate"
 		>
 			{$current_data.description}
 		</p>
