@@ -7,13 +7,26 @@
 	import { faEye } from '@fortawesome/free-solid-svg-icons';
 	import ShareAct from '../shareAct.svelte';
 	import DeleteCanvas from './deleteCanvas.svelte';
+	import { onMount } from 'svelte';
 
 	let session = $page.data.session;
+	let supabase = $page.data.supabase;
 	export let details;
+
+	let profile = false;
+
+	onMount(async () => {
+		const user_name = await getProfile(details.user_id, supabase);
+		// Assuming getProfile returns an object with a 'user_name' property
+		if (new Object(user_name).length > 0) {
+			profile = user_name[0].username;
+			console.log(profile);
+		}
+	});
 </script>
 
 <div
-	class="bg-sky-100 hover:scale-105 duration-300 transition-all rounded-xl p-1 dark:bg-secondary-dark h-full shadow-sm"
+	class="bg-sky-100 card duration-300 transition-all rounded-xl p-1 dark:bg-secondary-dark h-full shadow-sm"
 >
 	<!-- <div class=" rounded-xl bg-white w-full" bind:this={letsee}>
 		<img src={capturedImageUrl} alt="" srcset="" />
@@ -41,15 +54,13 @@
 					class="text-sky-400 dark:text-sky-300 outline-none focus:outline-sky-300 focus:dark:outline-sky-400 rounded-lg text-sm"
 					spellcheck="false"
 				>
-					<a href="/{details.profile}">You</a>
+					<a href="/{profile}">You</a>
 				</p>
-			{:else if details?.profile}
+			{:else if profile}
 				<div in:fade>
 					<p>
 						<span>by</span>
-						<a class="text-sky-400 dark:text-sky-300 text-sm" href={`/${details.profile}`}
-							>@{details.profile}</a
-						>
+						<a class="text-sky-400 dark:text-sky-300 text-sm" href={`/${profile}`}>@{profile}</a>
 					</p>
 				</div>
 			{:else}
@@ -74,3 +85,10 @@
 		</div>
 	</div>
 </div>
+
+<style>
+	.card:hover {
+		transform: translateY(-10px);
+		/* box-shadow: 10px 10px 0px rgba(0, 0, 0, 0.4); */
+	}
+</style>

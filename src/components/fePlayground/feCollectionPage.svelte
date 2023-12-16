@@ -87,60 +87,60 @@
 			return fetchExplore(pageNumber, pageSize);
 		}
 	}
-
 	async function more() {
-		console.log($pageCountPl);
+		console.log('current page count', $pageCountPl);
 		let result = await fetchPaginatedRows($pageCountPl, $pageCountPl + 12 - 1);
 
 		if (result.length == 0) {
 			showMore = false;
 			console.log('no more');
 			return;
-		}
-		console.log(result.length);
-		if (result.length < 12) {
+		} else if (result.length < 12) {
 			showMore = false;
+			console.log('is less than 12');
 		}
-		let result_with_profile_data = await returnDataWithProfile(result, supabase);
-		collection = [...collection, ...result_with_profile_data];
+
+		console.log('I got through using->', result.length);
+		// let result_with_profile_data = await returnDataWithProfile(result, supabase);
+		collection = [...collection, ...result];
 
 		pageCountPl.update((cur) => {
 			return cur + 12;
 		});
-
-		// window.location.href = '#more';
-
 		loading = false;
 	}
-	async function returnDataWithProfile(collection, supabase) {
-		// console.log('jlfdajkfda fda fda fda ');
-		const newData = [];
 
-		for (const element of collection) {
-			// const views = await getViews(element.project_key, supabase);
-			try {
-				const user_name = await getProfile(element.user_id, supabase);
-				// Assuming getProfile returns an object with a 'user_name' property
-				if (new Object(user_name).length > 0) {
-					newData.push({ ...element, profile: user_name[0].username });
-				} else {
-					newData.push({ ...element });
-				}
-			} catch (error) {
-				newData.push({ ...element });
-				console.error(`Error fetching profile for user_id ${element.user_id}: ${error.message}`);
-			}
-			// console.log(views);
-			// newData.push({...element, views:views[0].views})
-		}
+	// async function returnDataWithProfile(collection, supabase) {
+	// 	// console.log('jlfdajkfda fda fda fda ');
+	// 	const newData = [];
 
-		return newData;
-	}
+	// 	for (const element of collection) {
+	// 		// const views = await getViews(element.project_key, supabase);
+	// 		try {
+	// 			const user_name = await getProfile(element.user_id, supabase);
+	// 			// Assuming getProfile returns an object with a 'user_name' property
+	// 			if (new Object(user_name).length > 0) {
+	// 				newData.push({ ...element, profile: user_name[0].username });
+	// 			} else {
+	// 				newData.push({ ...element });
+	// 			}
+	// 		} catch (error) {
+	// 			newData.push({ ...element });
+	// 			console.error(`Error fetching profile for user_id ${element.user_id}: ${error.message}`);
+	// 		}
+	// 		// console.log(views);
+	// 		// newData.push({...element, views:views[0].views})
+	// 	}
+
+	// 	return newData;
+	// }
 
 	$: showMore = collection.length > 5;
 
 	onMount(async () => {
-		collection = await returnDataWithProfile(collection, supabase);
+		if (collection.length < 12) {
+			showMore = false;
+		}
 	});
 
 	onDestroy(() => {
