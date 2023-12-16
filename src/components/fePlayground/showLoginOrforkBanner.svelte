@@ -22,17 +22,9 @@
 
 {#if $showLoginToSave}
 	<div in:scale class="flex items-center justify-center gap-2 text-inherit">
-		<span class="text-error wobble-hor-top"><Fa icon={faExclamationTriangle} /></span>
+		<span class="text-error"><Fa icon={faExclamationTriangle} /></span>
 		<span class="text-light flex gap-1"
-			><a href={signinURL} class="underline text-sky-300"> Login</a>
-			<span class="hidden md:flex">to save progress</span></span
-		>
-	</div>
-{:else if $showForkTosave}
-	<div in:scale class="flex items-center justify-center gap-1 text-inherit">
-		<span class="text-green-500 jello-diagonal-2"><Fa icon={faCodeMerge} /></span>
-		<span class="text-light flex gap-1"
-			><a href="#" class=" text-green-500"> Fork</a>
+			><a href="/signin" target="_blank" class="underline text-sky-300"> Login</a>
 			<span class="hidden md:flex">to save progress</span></span
 		>
 	</div>
