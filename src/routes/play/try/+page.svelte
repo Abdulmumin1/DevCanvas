@@ -25,7 +25,8 @@
 		js: '//',
 		user_id: 123,
 		project_key: 'try',
-		description: 'Untitled Canvas'
+		description: 'Untitled Canvas',
+		public: true
 	});
 
 	function captureIframeOutput(event) {
@@ -61,7 +62,7 @@
 </svelte:head>
 
 <main class="h-screen flex flex-col">
-	<FePlayGroungNav />
+	<FePlayGroungNav ispublic={$current_data.public} />
 	<div class="h-full w-full relative overflow-hidden">
 		<Resizable>
 			<div slot="left" class="h-full w-full">

@@ -11,6 +11,7 @@
 	import FeGetEmbed from './feGetEmbed.svelte';
 	import Login from '../auth/login.svelte';
 	import SelectLayout from './selectLayout.svelte';
+	export let ispublic;
 </script>
 
 <nav class="w-full bg-black h-10 px-2 py-8 flex items-center text-white border-b border-primary">
@@ -32,7 +33,7 @@
 				{#if $showSave}
 					<li><FeSave /></li>
 				{/if}
-			{:else}
+			{:else if !ispublic}
 				<li><FeFork /></li>
 			{/if}
 			<li><FeGetEmbed /></li>

@@ -78,7 +78,7 @@
 
 <div class="h-screen flex flex-col">
 	<header class="w-full">
-		<FePlayGroungNav />
+		<FePlayGroungNav ispublic{$current_data.public} />
 	</header>
 	<div class="h-full w-full overflow-hidden relative">
 		<Resizable>
