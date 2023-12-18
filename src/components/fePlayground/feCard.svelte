@@ -26,7 +26,7 @@
 </script>
 
 <div
-	class="bg-sky-100 card duration-300 transition-all rounded-xl p-1 dark:bg-secondary-dark h-full shadow-sm"
+	class="bg-sky-100 card duration-300 transition-all rounded-xl p-1 dark:bg-secondary-dark h-full shadow-sm flex flex-col"
 >
 	<!-- <div class=" rounded-xl bg-white w-full" bind:this={letsee}>
 		<img src={capturedImageUrl} alt="" srcset="" />
@@ -37,7 +37,8 @@
 		height="200"
 		frameborder="0"
 		scrolling="no"
-		class="w-full h-full overflow-hidden rounded-xl"
+		class="w-full h-[250px] overflow-hidden rounded-xl"
+		style="aspect-ratio: 1/1;"
 	/>
 	<!-- {#if !capturedImageUrl}
 	{/if} -->
