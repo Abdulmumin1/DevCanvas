@@ -196,8 +196,4 @@
 	.sl {
 		background-color: #222;
 	}
-
-	*{
-		border:1px solid red;
-	}
 </style>
