@@ -34,37 +34,37 @@
 <div class="h-full">
 	{#if isVertical}
 		<Splitpanes horizontal={true} theme="my-theme">
-			<Pane snapSize={20}>
+			<Pane snapSize={5}>
 				<slot name="left" size={30} />
 			</Pane>
-			<Pane snapSize={20}>
+			<Pane snapSize={5}>
 				<slot name="right" />
 			</Pane>
 		</Splitpanes>
 	{:else if $layoutView == 'left'}
 		<Splitpanes horizontal={false} theme="my-theme">
-			<Pane snapSize={20} size="30">
+			<Pane snapSize={5} size="30">
 				<slot name="left" />
 			</Pane>
-			<Pane snapSize={20}>
+			<Pane snapSize={5}>
 				<slot name="right" />
 			</Pane>
 		</Splitpanes>
 	{:else if $layoutView == 'top'}
 		<Splitpanes horizontal={true} theme="my-theme">
-			<Pane snapSize={20}>
+			<Pane snapSize={5}>
 				<slot name="left" />
 			</Pane>
-			<Pane snapSize={20}>
+			<Pane snapSize={5}>
 				<slot name="right" />
 			</Pane>
 		</Splitpanes>
 	{:else if $layoutView == 'right'}
 		<Splitpanes horizontal={false} theme="my-theme">
-			<Pane snapSize={20}>
+			<Pane snapSize={5}>
 				<slot name="right" />
 			</Pane>
-			<Pane snapSize={20} size="40">
+			<Pane snapSize={5} size="40">
 				<slot name="left" />
 			</Pane>
 		</Splitpanes>

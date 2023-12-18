@@ -98,48 +98,52 @@
 	.article pre {
 		padding: theme(padding.3);
 		overflow: scroll;
-		font-size: theme(fontSize.base);
-		@apply rounded-b-2xl;
-	}
-	.article pre::after {
-		position: absolute;
-		top: 0;
-		height: 100%;
-		background-color: red;
+		font-size: theme(fontSize.sm);
+		@apply rounded-2xl border;
 	}
 
 	.article h2 {
-		font-size: theme(fontSize.4xl);
-		padding-top: theme(padding.4);
-		font-weight: theme(fontWeight.bold);
+		font-family: Roboto Slab, serif !important;
+
 		/* color: theme(colors.orang); */
 		text-transform: capitalize;
+		@apply text-3xl md:text-4xl py-2;
+		font-weight: 500;
 	}
+
 	.article h1 {
-		font-size: theme(fontSize.5xl);
-		padding-block: theme(padding.5);
-		font-weight: theme(fontWeight.bold);
+		font-family: Roboto Slab, serif !important;
+		font-size: 3rem;
+		padding-block: 1;
+		/* font-weight: theme(fontWeight.bold); */
 		/* color: theme(colors.orang); */
 		/* text-transform: t; */
+		font-weight: 500;
+		@apply text-2xl md:text-3xl py-2;
 	}
 
 	.article h3 {
-		font-size: theme(fontSize.2xl);
-		padding-block: theme(padding.3);
-		font-weight: theme(fontWeight.bold);
+		font-family: Roboto Slab, serif !important;
+
+		font-weight: 500;
+		@apply text-xl md:text-2xl py-2;
+
 		/* color: theme(colors.orang); */
 	}
 	.article h4 {
-		font-size: theme(fontSize.xl);
-		padding-block: theme(padding.3);
-		font-weight: theme(fontWeight.bold);
+		font-family: Roboto Slab, serif !important;
+
+		@apply text-lg md:text-xl py-2;
+
+		/* font-weight: theme(fontWeight.bold); */
 		/* color: theme(colors.orang); */
 	}
 
 	.article code {
 		/* background-color: #888; */
-		@apply rounded-md p-[1px] bg-sky-200  dark:text-black;
+		@apply rounded-md  bg-sky-200  dark:text-black;
 		font-size: 14px !important;
+		padding: 2px;
 	}
 	.article pre > code {
 		background-color: inherit !important;

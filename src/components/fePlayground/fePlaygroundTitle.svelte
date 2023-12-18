@@ -77,7 +77,7 @@
 				on:input={handleInput}
 				placeholder="Untitled Project"
 				spellcheck="false"
-				class="max-w-[100px] md:max-w-[400px] w-fit focus:outline-1 focus:outline-sky-200 text-sm md:text-xl capitalize text-white bg-inherit whitespace-nowrap truncate"
+				class="max-w-[100px] font-semibold md:max-w-[400px] w-fit focus:outline-1 focus:outline-sky-200 text-sm md:text-xl capitalize text-white bg-inherit whitespace-nowrap truncate"
 			>
 				{$current_data.description}
 			</p>
@@ -90,7 +90,7 @@
 	{:else}
 		<p
 			style="margin-bottom: -7px;"
-			class="max-w-[100px] md:max-w-[400px] w-fit text-sm md:text-xl capitalize text-white bg-inherit outline-none whitespace-nowrap flex items-center gap-2 truncate"
+			class="max-w-[100px] md:max-w-[400px] font-semibold w-fit text-sm md:text-xl capitalize text-white bg-inherit outline-none whitespace-nowrap flex items-center gap-2 truncate"
 		>
 			{$current_data.description}
 		</p>
@@ -103,7 +103,7 @@
 				spellcheck="false"
 			>
 				<span>by</span>
-				<a class="" href={`/${profile[0].username}`}>@{profile[0].username}</a>
+				<a class="font-semibold" href={`/${profile[0].username}`}>@{profile[0].username}</a>
 			</p>
 			<ShowLoginOrforkBanner />
 		</div>

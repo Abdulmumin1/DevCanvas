@@ -33,23 +33,22 @@
 <section in:scale class="min-h-screen">
 	<article class="h-full w-full flex justify-center items-center flex-col">
 		<div class=" max-w-[1200px] justify-center flex flex-col w-full h-full p-4 gap-4 items-center">
-			<div
-				class="flex gap-4 h-full md:h-[100dvh] flex-col w-full items-center justify-center md:flex-row"
-			>
+			<div class="flex gap-4 h-full md:min-h-[100dvh] flex-col w-full justify-center">
 				{#if data.posts.length > 0}
-					<div class="h-full text-6xl flex flex-col gap-3 w-full md:w-[800px]">
+					<h1 class="text-3xl">Latest Post</h1>
+					<div class=" bg-sky-300 p-2 text-black text-6xl flex flex-col gap-3 w-full">
 						<BlogCard details={data.posts[0]} latest={true} />
 					</div>
-					<div class="h-full flex flex-col w-full md:w-[400px] gap-2">
+					<!-- <div class="h-full flex flex-col w-full  gap-2">
 						{#each data.posts.splice(1, 2) as post (post.slug)}
 							<BlogCard details={post} />
 						{:else}
 							<p>Nothing to show</p>
 						{/each}
-					</div>
+					</div> -->
 
-					<div class="h-full flex flex-col w-full md:w-[400px] gap-2">
-						{#each data.posts.splice(3, data.posts.length) as post (post.slug)}
+					<div class="h-full customGrid w-full px-4">
+						{#each data.posts.splice(1, data.posts.length) as post (post.slug)}
 							<BlogCard details={post} />
 						{/each}
 					</div>
@@ -61,3 +60,11 @@
 		</div>
 	</article>
 </section>
+
+<style>
+	.customGrid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+		gap: 2rem;
+	}
+</style>

@@ -17,14 +17,35 @@
 		faGithub,
 		faYoutube
 	} from '@fortawesome/free-brands-svg-icons';
-	import { faCopy } from '@fortawesome/free-solid-svg-icons';
-	import { scale, slide } from 'svelte/transition';
-
+	import { faCalendar, faCopy } from '@fortawesome/free-solid-svg-icons';
+	import { scale } from 'svelte/transition';
+	// import { page } from '$app/stores';
 	let url;
 
 	onMount(() => {
 		url = window.location.href;
-		insertCopyButton(faCopy);
+		let classes = document.querySelectorAll('pre');
+		classes.forEach((element) => {
+			let div = document.createElement('div');
+			div.classList = 'sticky top-0';
+			// div.style.marginBottom = '-23px';
+			let copyButton = document.createElement('button');
+			copyButton.innerText = 'copy';
+			copyButton.classList = ' px-4 py-1 rounded-t-lg  w-fit z-9999';
+			copyButton.onclick = () => {
+				copyUrlToClipboard(element.lastElementChild.innerText);
+				copyButton.innerText = 'copied';
+				setTimeout(() => {
+					copyButton.innerText = 'copy';
+				}, 2000);
+			};
+			element.classList.add('relative');
+
+			div.appendChild(copyButton);
+			element.appendChild(div);
+		});
+
+		// console.log($page.url.pathname.startsWith('/blog/'));
 	});
 
 	function convertLinkToRequestReadable(link) {
@@ -39,13 +60,23 @@
 
 <svelte:head>
 	<title>{data.meta.title}</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link
+		href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;500&display=swap"
+		rel="stylesheet"
+	/>
 </svelte:head>
 
-<article in:scale class="mx-auto flex flex-col gap-2 article">
-	<hgroup class=" h-[500px] text-black flex rounded-lg w-full flex-col gap-3 relative">
-		<div class="flex flex-col items-center justify-center">
-			<h1 class="text-5xl text-center">{data.meta.title}</h1>
-			<div class="rounded-full h-8 w-8">
+<article in:scale class="mx-auto flex flex-col gap-6 md:px-12">
+	<hgroup class="  text-black flex rounded-lg w-full flex-col gap-3 relative">
+		<div class="flex gap-4 flex-col">
+			<div class="flex gap-2">
+				<Fa icon={faCalendar} />
+				<p class="text-sm">Published {formatDate(data.meta.date)}</p>
+			</div>
+			<h1 class="text-3xl md:text-5xl title">{data.meta.title}</h1>
+			<!-- <div class="rounded-full h-8 w-8">
 				<img
 					src="https://yaqeen.me/_app/immutable/assets/abdul.66936237.jpg"
 					alt="Abdulmumin Yaqeen"
@@ -68,8 +99,7 @@
 						<Fa icon={faYoutube} />
 					</a>
 				</div>
-			</div>
-			<p class="text-sm">Published {formatDate(data.meta.date)}</p>
+			</div> -->
 		</div>
 	</hgroup>
 	<div class="flex gap-3 flex-wrap">
@@ -79,7 +109,7 @@
 		{/each}
 	</div>
 
-	<div class="space-y-5 markdown-content font-light dark:text-light">
+	<div class="space-y-5 markdown-content font-light text-black article">
 		<svelte:component this={data.content} />
 	</div>
 	<div class="w-full flex items-center justify-center p-3">
@@ -153,5 +183,17 @@
 
 		width: 100%;
 		z-index: 0;
+	}
+	.article {
+		font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI Adjusted', 'Segoe UI',
+			'Liberation Sans', sans-serif;
+	}
+
+	.title {
+		font-family: Roboto slab;
+	}
+
+	.article {
+		font-size: 1em !important;
 	}
 </style>

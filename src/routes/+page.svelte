@@ -28,7 +28,7 @@
 <div
 	class="before:he bg-skyblue-500 min-h-screen w-screen flex flex-col items-center justify-center"
 >
-	<div class="w-full">
+	<div class="w-full border-b border-primary dark:border-secondary-dark">
 		<InnerNav />
 	</div>
 	<div
@@ -37,9 +37,9 @@
 		<!-- Add your landing page content here -->
 		<div class="h-[500px] md:h-[100dvh] grid">
 			<header class="w-full overflow-hidden">
-				<div
+				<!-- <div
 					class="hidden md:flex w-[500px] md:w-full h-[500px] md:h-[100dvh] bg-sky-300 opacity-80 blur-lg overflow-hidden absolute top-0 inset-x-0 mx-auto rounded-full md:rounded-none md:rounded-t-full"
-				/>
+				/> -->
 				<div class="mt-20">
 					<Hero />
 				</div>

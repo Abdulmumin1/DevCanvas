@@ -2,38 +2,19 @@
 	import { faRightLong } from '@fortawesome/free-solid-svg-icons';
 	import Fa from 'svelte-fa';
 	import EditorFrame from './editorFrame.svelte';
+	import ModelLanding from './modelLanding.svelte';
 </script>
 
-<div class="flex items-center justify-center gap-2 w-full overflow-hidden">
+<div class="flex items-center justify-center gap-2 w-full">
 	<div class=" h-full w-full flex items-center justify-center gap-12 flex-col">
 		<p class="text-4xl md:text-6xl py-12">🎨 𝓯𝓸𝓻 𝒸𝓇𝑒𝓪𝓽𝓲𝓿𝓮𝓼</p>
 
-		<div class="flex items-center justify-between w-full flex-col">
+		<div class="flex items-center justify-between w-full flex-col h-full">
 			<EditorFrame title={'Coffee Machine and it Animation'}>
-				<div class=" p-10 relative">
-					<div class="container scale-110">
-						<div class="coffee-header">
-							<div class="coffee-header__buttons coffee-header__button-one" />
-							<div class="coffee-header__buttons coffee-header__button-two" />
-							<div class="coffee-header__display" />
-							<div class="coffee-header__details" />
-						</div>
-						<div class="coffee-medium">
-							<div class="coffe-medium__exit" />
-							<div class="coffee-medium__arm" />
-							<div class="coffee-medium__liquid" />
-							<div class="coffee-medium__smoke coffee-medium__smoke-one" />
-							<div class="coffee-medium__smoke coffee-medium__smoke-two" />
-							<div class="coffee-medium__smoke coffee-medium__smoke-three" />
-							<div class="coffee-medium__smoke coffee-medium__smoke-for" />
-							<div class="coffee-medium__cup" />
-						</div>
-						<div class="coffee-footer" />
-					</div>
-				</div>
+				<ModelLanding />
 			</EditorFrame>
 
-			<div class="bg-black p-10 relative w-fit">
+			<!-- <div class="bg-black p-10 relative w-fit">
 				<span
 					class="w-fit absolute top-[-20px] rounded-md text-white bg-secondary-dark p-3 text-sm md:text-lg"
 				>
@@ -73,7 +54,7 @@
 						And brings a sense of peace to every place
 					</p>
 				</div>
-			</div>
+			</div> -->
 		</div>
 
 		<a

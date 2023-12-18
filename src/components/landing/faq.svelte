@@ -15,7 +15,7 @@
 			<ul class=" flex gap-6 flex-col">
 				<Accodion
 					title="Can the editor execute code?"
-					content="DevCanvas Interactive frontend Playground can show preview of code almost instantanoeusly, but for snippets in other languages, you can't execute the code directly from our online editor. It is only for sharing beautifully."
+					content="DevCanvas Interactive frontend Playground can show preview of code almost instantanoeusly, but for snippets in other languages, you can't execute the code directly from our online editor. It is only for sharing."
 				/>
 
 				<Accodion

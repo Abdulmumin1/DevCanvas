@@ -75,7 +75,7 @@
 	let loading = true;
 </script>
 
-<div class="h-full max-h-full flex flex-col">
+<div class="h-full max-h-full flex flex-col overflow-clip">
 	<div class="flex h-[50px] justify-between">
 		<div class="w-full bg-secondary-dark flex gap-2 text-white text-sm">
 			<button
@@ -195,5 +195,9 @@
 
 	.sl {
 		background-color: #222;
+	}
+
+	*{
+		border:1px solid red;
 	}
 </style>

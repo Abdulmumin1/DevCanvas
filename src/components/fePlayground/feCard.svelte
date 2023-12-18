@@ -37,7 +37,7 @@
 		height="200"
 		frameborder="0"
 		scrolling="no"
-		class="w-full overflow-hidden rounded-xl"
+		class="w-full h-full overflow-hidden rounded-xl"
 	/>
 	<!-- {#if !capturedImageUrl}
 	{/if} -->
