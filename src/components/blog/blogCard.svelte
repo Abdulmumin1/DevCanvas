@@ -32,7 +32,9 @@
 			>
 		</div>
 	{:else}
-		<div class="p-3 flex flex-col gap-2 bg-sky-50 dark:bg-secondary-dark dark:text-white text-black ">
+		<div
+			class="p-3 max-w-[250px] flex flex-col gap-2 bg-sky-50 dark:bg-secondary-dark dark:text-white text-black"
+		>
 			<a href={`blog/${details.slug}`} class="text-2xl lg:text-4xl hover:opacity-80">
 				{details.title}</a
 			>
