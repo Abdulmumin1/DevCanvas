@@ -26,12 +26,12 @@
 				frameborder="0"
 				class="w-[] rounded h-[600px]"
 			/>
-			<iframe
+			<!-- <iframe
 				title="embed"
 				src="{$page.url.origin}/anonymous/ovUiK7/embed"
 				frameborder="0"
 				class="w-full rounded h-[600px] md:pl-10"
-			/>
+			/> -->
 		</div>
 	</div>
 </div>

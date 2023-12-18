@@ -5,7 +5,7 @@
 	export let title;
 </script>
 
-<section class="w-full p-2 h-screen md:w-[90%]">
+<section class="w-full p-2 md:w-[90%]">
 	<header>
 		<nav>
 			<ul>
@@ -19,7 +19,7 @@
 							spellcheck="false"
 						>
 							<span>by</span>
-							<a class="" href={`/abdulmumin`}>@abdulmumin</a>
+							<a class="" href={`/nuur`}>@nuur</a>
 						</p>
 					</div>
 				</li>

@@ -16,10 +16,10 @@
 >
 	<!-- <img src={details.thumbnail} alt="" class="object-fit w-full h-full" /> -->
 	{#if latest}
-		<div class=" flex flex-col gap-3 p-3">
+		<div class="h-[400px] flex flex-col gap-3 p-3">
 			<a
 				href={`blog/${details.slug}`}
-				class="text-xl lg:text-3xl hover:opacity-80 text-orang dark:text-dark max-w-md capitalize"
+				class="text-4xl lg:text-6xl hover:opacity-80 text-orang dark:text-dark max-w-md capitalize"
 			>
 				{details.title}</a
 			>
@@ -32,10 +32,11 @@
 			>
 		</div>
 	{:else}
-		<div class="p-3 flex flex-col gap-2">
-			<a href={`blog/${details.slug}`} class="text-2xl lg:text-xl hover:opacity-80">
+		<div class="p-3 flex flex-col gap-2 bg-sky-50 dark:bg-secondary-dark dark:text-white text-black ">
+			<a href={`blog/${details.slug}`} class="text-2xl lg:text-4xl hover:opacity-80">
 				{details.title}</a
 			>
+			<p>{details.description.slice(0, 100)}...</p>
 			<p>{formatDate(details.date)}</p>
 		</div>
 	{/if}

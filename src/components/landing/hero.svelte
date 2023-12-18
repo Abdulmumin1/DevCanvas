@@ -39,8 +39,8 @@
 			Star us on github <Fa icon={faStar} />
 		</a>
 	</p>
-	<h1 class="text-4xl text-primary dark:text-light md:text-6xl font-bold max-w-[35rem]">
-		Share Your <span class="magic">
+	<h1 class="text-4xl font-semibold text-primary dark:text-light md:text-6xl max-w-[35rem]">
+		Paint Your <span class="magic">
 			<span class="magic-star">
 				<svg viewBox="0 0 512 512">
 					<path
@@ -62,13 +62,14 @@
 					/>
 				</svg>
 			</span>
-			<span class="magic-text text-black dark:text-white">Genius</span>
-		</span> with the World!
+			<span class="magic-text text-black dark:text-white">Wildest</span>
+		</span> Idea 🚀
 	</h1>
 	<p class="text-sm md:text-xl text-primary dark:text-light max-w-lg mx-1">
-		The platform for effortlessly sharing, collaborating, and discovering code snippets and stunnig
-		frontend codes. <span class="text-green-500 dark:text-green-700">share</span>,
-		<span class="text-orange-400 dark:text-orange-800">learn</span>, and
+		The platform efforlessly prototype. Bring your wildest idea to life. <span
+			class="text-green-500 dark:text-green-700">learn</span
+		>,
+		<span class="text-orange-400 dark:text-orange-800">share</span>, and
 		<span class="bg-sky-300 text-primary">build together</span>.
 	</p>
 	<div class="text-center">

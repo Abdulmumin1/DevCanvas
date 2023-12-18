@@ -160,12 +160,12 @@
 
 	.floating-object {
 		position: relative;
-		animation: float 3s ease-in-out infinite;
+		/* animation: float 3s ease-in-out infinite; */
 	}
 
 	.floating-object2 {
 		position: relative;
-		animation: float 3s ease-in-out infinite 1s;
+		/* animation: float 3s ease-in-out infinite 1s; */
 	}
 
 	@keyframes float {

@@ -14,7 +14,7 @@ categories:
 
   - Frontend
 
-published: false
+published: true
 
 thumbnail: '/devCanvas.png'
 ---

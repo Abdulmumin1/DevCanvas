@@ -7,7 +7,7 @@
 	// console.log($current_data.html);
 </script>
 
-<div class="text-sm h-[100dvh] bg-secondary-dark rounded bd">
+<div class="text-sm h-[100dvh] bg-black rounded bd overflow-clip">
 	<div class="h-full rounded-xl">
 		<div class="w-full h-full mb-4">
 			<FeEmbedComponent details={data.details} />
@@ -24,4 +24,6 @@
 	.bd {
 		border: 1px solid #444;
 	}
+
+
 </style>
