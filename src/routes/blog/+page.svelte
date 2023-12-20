@@ -2,6 +2,7 @@
 	import { scale, slide } from 'svelte/transition';
 	import BlogCard from '$components/blog/blogCard.svelte';
 	import InnerNav from '$components/innerNav.svelte';
+	import LatestBlog from '../../components/blog/latestBlog.svelte';
 
 	export let data;
 </script>
@@ -29,15 +30,15 @@
 	<meta name="twitter:image" content="https://i.ibb.co/nPW10cf/abdul.png" />
 </svelte:head>
 
-<InnerNav />
-<section in:scale class="min-h-screen">
+<section class="min-h-screen">
+	<InnerNav />
 	<article class="h-full w-full flex justify-center items-center flex-col">
 		<div class=" max-w-[1200px] justify-center flex flex-col w-full h-full p-4 gap-4 items-center">
-			<div class="flex gap-4 h-full md:min-h-[100dvh] flex-col w-full justify-center">
+			<div class="flex mb-20 gap-4 h-full md:min-h-[100dvh] flex-col w-full justify-center">
 				{#if data.posts.length > 0}
 					<h1 class="text-3xl">Latest Post</h1>
 					<div class=" bg-sky-300 p-2 text-black text-6xl flex flex-col gap-3 w-full">
-						<BlogCard details={data.posts[0]} latest={true} />
+						<LatestBlog details={data.posts[0]} />
 					</div>
 					<!-- <div class="h-full flex flex-col w-full  gap-2">
 						{#each data.posts.splice(1, 2) as post (post.slug)}
@@ -47,7 +48,7 @@
 						{/each}
 					</div> -->
 
-					<div class="h-full customGrid w-full px-4">
+					<div class="h-full customGrid w-full">
 						{#each data.posts.splice(1, data.posts.length) as post (post.slug)}
 							<BlogCard details={post} />
 						{/each}

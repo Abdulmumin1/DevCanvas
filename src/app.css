@@ -777,6 +777,10 @@ video {
   margin-top: 2rem;
 }
 
+.mb-20 {
+  margin-bottom: 5rem;
+}
+
 .block {
   display: block;
 }
@@ -900,6 +904,22 @@ video {
 
 .h-screen {
   height: 100vh;
+}
+
+.h-\[1000px\] {
+  height: 1000px;
+}
+
+.h-\[10000px\] {
+  height: 10000px;
+}
+
+.h-\[100px\] {
+  height: 100px;
+}
+
+.h-\[60px\] {
+  height: 60px;
 }
 
 .max-h-96 {
@@ -1031,10 +1051,6 @@ video {
   min-width: 100px;
 }
 
-.min-w-\[300px\] {
-  min-width: 300px;
-}
-
 .max-w-4xl {
   max-width: 56rem;
 }
@@ -1059,8 +1075,8 @@ video {
   max-width: 1500px;
 }
 
-.max-w-\[250px\] {
-  max-width: 250px;
+.max-w-\[300px\] {
+  max-width: 300px;
 }
 
 .max-w-\[35rem\] {
@@ -1454,6 +1470,11 @@ video {
 .border-sky-500 {
   --tw-border-opacity: 1;
   border-color: rgb(14 165 233 / var(--tw-border-opacity));
+}
+
+.border-secondary-dark {
+  --tw-border-opacity: 1;
+  border-color: rgb(25 25 25 / var(--tw-border-opacity));
 }
 
 .border-b-primary {
@@ -2033,6 +2054,16 @@ video {
   color: rgb(234 179 8 / var(--tw-text-opacity));
 }
 
+.text-gray-300 {
+  --tw-text-opacity: 1;
+  color: rgb(209 213 219 / var(--tw-text-opacity));
+}
+
+.text-gray-900 {
+  --tw-text-opacity: 1;
+  color: rgb(17 24 39 / var(--tw-text-opacity));
+}
+
 .underline {
   text-decoration-line: underline;
 }
@@ -2556,6 +2587,15 @@ video {
   gap: 1.5rem;
 }
 
+.hover\:border-2:hover {
+  border-width: 2px;
+}
+
+.hover\:border-sky-300:hover {
+  --tw-border-opacity: 1;
+  border-color: rgb(125 211 252 / var(--tw-border-opacity));
+}
+
 .hover\:bg-blue-100:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(219 234 254 / var(--tw-bg-opacity));
@@ -2681,6 +2721,11 @@ video {
 :is(.dark .dark\:border-secondary-dark) {
   --tw-border-opacity: 1;
   border-color: rgb(25 25 25 / var(--tw-border-opacity));
+}
+
+:is(.dark .dark\:border-light) {
+  --tw-border-opacity: 1;
+  border-color: rgb(190 227 248 / var(--tw-border-opacity));
 }
 
 :is(.dark .dark\:bg-\[\#0d1117\]) {
@@ -2898,6 +2943,14 @@ video {
     max-width: 400px;
   }
 
+  .md\:max-w-\[300px\] {
+    max-width: 300px;
+  }
+
+  .md\:max-w-\[500px\] {
+    max-width: 500px;
+  }
+
   .md\:flex-row {
     flex-direction: row;
   }
@@ -3039,5 +3092,10 @@ video {
   .lg\:text-xl {
     font-size: 1.25rem;
     line-height: 1.75rem;
+  }
+
+  .lg\:text-2xl {
+    font-size: 1.5rem;
+    line-height: 2rem;
   }
 }

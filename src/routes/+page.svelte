@@ -28,7 +28,7 @@
 <div
 	class="before:he bg-skyblue-500 min-h-screen w-screen flex flex-col items-center justify-center"
 >
-	<div class="w-full border-b border-primary dark:border-secondary-dark">
+	<div class="w-full">
 		<InnerNav />
 	</div>
 	<div

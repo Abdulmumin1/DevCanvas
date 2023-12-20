@@ -194,6 +194,6 @@
 	}
 
 	.article {
-		font-size: 1em !important;
+		font-size: 0.8em !important;
 	}
 </style>

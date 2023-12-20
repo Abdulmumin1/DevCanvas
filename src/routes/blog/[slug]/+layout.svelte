@@ -3,7 +3,7 @@
 	import InnerNav from '$components/innerNav.svelte';
 </script>
 
-<div class="z-50 relative bg-white border-b border-b-primary">
+<div class="z-50 relative bg-white">
 	<InnerNav />
 </div>
 <div class="w-full flex justify-center py-12 bg-white">

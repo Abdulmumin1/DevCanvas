@@ -16,17 +16,17 @@
 </script>
 
 <div
-	class="w-full p-2 bg-sky-300 text-sky-dark text-sm text-center flex items-center justify-center"
+	class="w-full border-b border-secondary-dark p-2 bg-sky-300 text-sky-dark text-sm text-center flex items-center justify-center"
 >
 	Free Palestine 🚀
 </div>
-<div class="flex items-center justify-center top-0">
-	<div class="h-[12vh] p-3 w-full bg-inherit max-w-[1200px]">
+<div class="flex items-center justify-center py-3 top-0 border-b border-primary dark:border-light">
+	<div class="h-[50px] w-full bg-inherit max-w-[1200px]">
 		<ul class="hidden md:flex w-full justify-between items-center">
 			<li
 				class="text-base md:text-lg py-2 px-3 gap-3 text-light bg-secondary-dark flex items-center justify-center rounded-3xl"
 			>
-				<img src="/logo.svg" class="h-8 w-8" alt="snippetsLand" />
+				<img src="/logo.svg" class="h-8 w-8" alt="devCanvas" />
 				<a href="/"> DevCanvas </a>
 			</li>
 			<li>
