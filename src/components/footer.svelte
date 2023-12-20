@@ -4,7 +4,7 @@
 	import logo from '$lib/logo-100.png';
 </script>
 
-<footer class="bg-sky-500 text-black font-thin px-4 py-8">
+<footer class="bg-sky-500 text-black px-4 py-8">
 	<div class="flex gap-2">
 		<div class="flex flex-col space-y-2">
 			<h3 class="text-2xl font-bold flex items-center gap-2">
@@ -38,7 +38,7 @@
 		</div>
 
 		<div class="flex flex-col space-y-2">
-			<h4 class="text-lg font-bold">Links</h4>
+			<h4 class="text-lg">Links</h4>
 			<ul class="">
 				<li><a href="/" class=" hover:underline">Home</a></li>
 				<li><a href="/blog" class=" hover:underline">Blog</a></li>
@@ -56,3 +56,14 @@
 		</ul>
 	</div>
 </footer>
+
+<style>
+	* {
+		font-weight: 400;
+	}
+
+	h3,
+	h4 {
+		font-weight: 500;
+	}
+</style>
