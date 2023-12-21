@@ -6,7 +6,7 @@
 	import Fa from 'svelte-fa';
 	import { goto, invalidateAll } from '$app/navigation';
 	import { handleRedirectURL } from '$lib/utils';
-
+	import { jsPlugins, cssPlugins, sassActive } from '$lib/feEditor/store.js';
 	let busy = false;
 
 	let demo = $page.url.pathname.endsWith('/try');
@@ -19,6 +19,20 @@
 		formData.append('css', $current_data.css);
 		formData.append('html', $current_data.html);
 		formData.append('description', $current_data.description);
+		formData.append(
+			'plugins',
+			JSON.stringify({
+				css: $cssPlugins,
+				js: $jsPlugins
+			})
+		);
+		formData.append(
+			'config',
+			JSON.stringify({
+				tags: [],
+				cssProcessor: $sassActive
+			})
+		);
 		formData.append('url', $page.url.pathname);
 
 		const response = await fetch('/db/fe/fork', {
