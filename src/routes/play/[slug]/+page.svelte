@@ -1,6 +1,6 @@
 <script>
 	import { current_data, user, isOwner, SnippetsDescription, showToast } from '$lib/index.js';
-	import { showSave, consoleOutput, cssPlugins, jsPlugins } from '$lib/feEditor/store.js';
+	import { showSave, consoleOutput, canvasConfig, jsPlugins } from '$lib/feEditor/store.js';
 	import { onDestroy, onMount } from 'svelte';
 	import Toast from '../../../components/toast.svelte';
 	import { browser } from '$app/environment';
@@ -12,7 +12,8 @@
 		showLoginToSave,
 		showForkTosave,
 		showModal,
-		showEmbedModal
+		showEmbedModal,
+		sassActive
 	} from '$lib/feEditor/store.js';
 	import Femodal from '../../../components/fePlayground/femodal.svelte';
 	import JsConsole from '../../../components/fePlayground/jsConsole.svelte';
@@ -28,6 +29,8 @@
 		mobileDetails = window.innerWidth <= 768;
 	}
 	current_data.set(data.details);
+	canvasConfig.set(data.details.config);
+	sassActive.set(data.details.config?.cssProcessor);
 
 	function captureIframeOutput(event) {
 		if (event.data && event.data.type === 'console') {

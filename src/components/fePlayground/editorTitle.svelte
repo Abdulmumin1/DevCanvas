@@ -1,7 +1,7 @@
 <script>
 	import { faCss3, faCss3Alt, faHtml5, faJs, faSafari } from '@fortawesome/free-brands-svg-icons';
-	import { faAngleDown, faGear, faTerminal } from '@fortawesome/free-solid-svg-icons';
-	import { showModal, showjsConsole } from '$lib/feEditor/store.js';
+	import { faAngleDown, faGear, faGears, faTerminal } from '@fortawesome/free-solid-svg-icons';
+	import { showModal, showjsConsole, sassActive } from '$lib/feEditor/store.js';
 	import Fa from 'svelte-fa';
 	import EditorSettings from './editorSettings.svelte';
 	import Femodal from './femodal.svelte';
@@ -26,7 +26,7 @@
 {:else if lang == 'css'}
 	<div class="w-full flex justify-between items-center h-10">
 		<p class="bg-gray-50 dark:bg-black px-3 py-1 flex gap-1 items-center">
-			<span class="text-blue-500"><Fa icon={faCss3} /></span>CSS
+			<span class="text-blue-500"><Fa icon={faCss3} /></span>{$sassActive ? 'SCSS' : 'CSS'}
 		</p>
 	</div>
 {:else if lang == 'js'}

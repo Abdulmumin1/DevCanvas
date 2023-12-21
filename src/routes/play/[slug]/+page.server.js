@@ -7,6 +7,8 @@ export const actions = {
 		let id = body.id;
 		if (body.plugins) {
 			body.plugins = [JSON.parse(body.plugins)];
+		} else if (body.config) {
+			body.config = JSON.parse(body.config);
 		}
 		const { data, error: err } = await supabase.from('htmlPlayground').update([body]).eq('id', id);
 		if (err) {

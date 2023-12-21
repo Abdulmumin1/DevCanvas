@@ -4,6 +4,8 @@
 
 <script>
 	import { onMount } from 'svelte';
+	import { compileSassString } from '$lib/utils.js';
+
 	import { page } from '$app/stores';
 	export let data;
 
@@ -11,7 +13,7 @@
 
 	let zoomOut = $page.url.searchParams.get('preview');
 
-	onMount(() => {
+	onMount(async () => {
 		// Initialize the iframe with the default HTML code
 		if (iframe) {
 			let iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
@@ -25,6 +27,13 @@
 			// Step 2: Create and append the CSS style
 			const styleElement = iframeDoc.createElement('style');
 
+			let css = data.details.css;
+
+			if (data.details.config?.cssProcessor) {
+				console.log('ok');
+				css = await compileSassString(css);
+			}
+			// console.log(css);
 			if (zoomOut) {
 				styleElement.textContent = `
 				body{
@@ -36,10 +45,10 @@
 				*::-webkit-scrollbar {
 					width: 0px;
 					
-				}${data.details.css}
+				}${css}
 				`;
 			} else {
-				styleElement.textContent = data.details.css;
+				styleElement.textContent = css;
 			}
 
 			iframeDoc.head.appendChild(styleElement);
