@@ -1,13 +1,14 @@
 <script>
-	import { fade, fly, scale, slide } from 'svelte/transition';
+	import { fly } from 'svelte/transition';
 	import Fa from 'svelte-fa';
-	import { faClose, faGear, faGreaterThan } from '@fortawesome/free-solid-svg-icons';
+	import { faClose } from '@fortawesome/free-solid-svg-icons';
 
 	import { showModal, externalStuff } from '$lib/feEditor/store.js';
 	import { clickOutside } from '$lib/index.js';
 	import Csslist from './externalCSS/csslist.svelte';
 	import Jsplugins from './externalJs/jsplugins.svelte';
 	import { onMount, tick } from 'svelte';
+	import SaasProcessor from './saasProcessor.svelte';
 
 	let modal;
 	let js = $externalStuff.js;
@@ -65,10 +66,12 @@
 	bind:this={modal}
 	use:clickOutside
 	on:click_outside={closeModal}
-	class="p-3 w-[90%] md:w-[500px] h-[80%] md:h-[80%] border-t-4 border-sky-300 dark:bg-black dark:text-white rounded-lg"
+	class="px-2 pb-2 w-[90%] md:w-[500px] h-[80%] md:h-[900px] border-t-4 border-sky-300 dark:bg-black dark:text-white rounded-lg flex flex-col gap-4"
 >
 	<!-- class="modal z-50 backdrop-blur-lg absolute  inset-y-0 inset-x-0 mx-auto m-2 shadow-md border-t-4 bg-white dark:bg-black border-sky-500 p-3 rounded flex flex-col overflow-scroll gap-2" -->
-	<div class="absolute top-0 right-0 m-2">
+	<div
+		class="sticky flex items-end justify-end bg-white text-black dark:bg-black dark:text-white top-0 right-0 p-2"
+	>
 		<button on:click={closeModal}>
 			<Fa icon={faClose} />
 		</button>
@@ -88,13 +91,9 @@
 	</div>
 
 	<div class="w-full flex flex-col gap-2">
-		<p>CSS</p>
-		<input
-			name=""
-			placeholder="External Script Link"
-			class="bg-gray-100 dark:bg-primary w-full outline-none font-thin p-2 rounded"
-			spellcheck="false"
-		/>
+		<SaasProcessor />
+
+		<p>CSS Plugin</p>
 		<Csslist />
 	</div>
 

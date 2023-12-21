@@ -33,7 +33,7 @@
 			copyButton.innerText = 'copy';
 			copyButton.classList = ' px-4 py-1 rounded-t-lg  w-fit z-9999';
 			copyButton.onclick = () => {
-				copyUrlToClipboard(element.lastElementChild.innerText);
+				copyUrlToClipboard(element.firstElementChild.innerText);
 				copyButton.innerText = 'copied';
 				setTimeout(() => {
 					copyButton.innerText = 'copy';
@@ -109,7 +109,7 @@
 		{/each}
 	</div>
 
-	<div class="space-y-5 markdown-content font-light text-black article">
+	<div class="space-y-8 markdown-content font-light text-[#404953] article">
 		<svelte:component this={data.content} />
 	</div>
 	<div class="w-full flex items-center justify-center p-3">
@@ -194,6 +194,6 @@
 	}
 
 	.article {
-		font-size: 0.8em !important;
+		font-size: 1em !important;
 	}
 </style>

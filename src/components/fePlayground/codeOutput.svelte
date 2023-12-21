@@ -1,28 +1,37 @@
 <script>
 	import { current_data } from '$lib/index.js';
-	import { externalStuff, jsChanged, cssPlugins, jsPlugins } from '$lib/feEditor/store.js';
+	import {
+		externalStuff,
+		jsChanged,
+		cssPlugins,
+		jsPlugins,
+		sassActive,
+		canvasConfig
+	} from '$lib/feEditor/store.js';
 	import {
 		fontawesomeLINK,
 		materialiconsLINK,
 		bootstrapLINK,
 		setup_js_plugin
 	} from '$lib/plugins/store.js';
-	import { onMount } from 'svelte';
-	import Loader from '../loader.svelte';
-	import Loadermini from '../loadermini.svelte';
-	import { fade } from 'svelte/transition';
+	import { onDestroy, onMount } from 'svelte';
+	import { compileSassString } from '$lib/utils.js';
+	// import { beforeNavigate, afterNavigate } from '$app/navigation';
 
 	export let code;
 	export let css;
 	export let js;
 
 	var currentJS = $current_data.js;
+	var currentCSS = $current_data.css;
 
 	let iframe;
 	let typingTimer; // Timer to track typing
 	let cssPluginsVar = $cssPlugins;
 	let jsPluginsVar = $jsPlugins;
 	let loading = true;
+	let typingTimerCSS;
+	var INJ_CSS;
 
 	function injectHtmlCSS(iframeDoc, code, css) {
 		const bodyContent = code;
@@ -54,8 +63,22 @@
 
 		// Step 2: Create and append the new CSS style
 		const styleElement = iframeDoc.createElement('style');
-		styleElement.textContent = `${css}`;
-		iframeDoc.head.appendChild(styleElement);
+
+		if (currentCSS != css && $sassActive) {
+			// console.log('logic confirmed');
+			// console.log(INJ_CSS);
+			styleElement.textContent = `${INJ_CSS}`;
+			iframeDoc.head.appendChild(styleElement);
+			ProcessCSs(iframeDoc);
+		} else if (currentCSS == css && $sassActive) {
+			styleElement.textContent = `${INJ_CSS}`;
+			iframeDoc.head.appendChild(styleElement);
+		} else if (currentCSS != css && !$sassActive) {
+			styleElement.textContent = `${css}`;
+			iframeDoc.head.appendChild(styleElement);
+			// console.log('plain');
+		}
+		// console.log(INJ_CSS);
 
 		// Function to handle text input
 		// console.log(currentJS, js);
@@ -72,6 +95,20 @@
 		injectJavascript(iframeDoc, js);
 	}
 
+	function ProcessCSs(iframeDoc) {
+		const delay = 1000;
+		clearTimeout(typingTimerCSS);
+
+		const styleElement = iframeDoc.createElement('style');
+		typingTimerCSS = setTimeout(async () => {
+			INJ_CSS = await compileSassString(css);
+			console.log(INJ_CSS);
+			styleElement.textContent = `${INJ_CSS}`;
+			console.log('game');
+			iframeDoc.head.appendChild(styleElement);
+		}, delay);
+		currentCSS = css;
+	}
 	function injectHtmlCSSOnReload(iframeDoc, code, css) {
 		const bodyContent = code;
 		iframeDoc.body.innerHTML = bodyContent;
@@ -102,8 +139,21 @@
 
 		// Step 2: Create and append the new CSS style
 		const styleElement = iframeDoc.createElement('style');
-		styleElement.textContent = `${css}`;
-		iframeDoc.head.appendChild(styleElement);
+
+		if (currentCSS != css && $sassActive) {
+			// console.log('logic confirmed');
+			// console.log(INJ_CSS);
+			styleElement.textContent = `${INJ_CSS}`;
+			iframeDoc.head.appendChild(styleElement);
+			ProcessCSs(iframeDoc);
+		} else if (currentCSS == css && $sassActive) {
+			styleElement.textContent = `${INJ_CSS}`;
+			iframeDoc.head.appendChild(styleElement);
+		} else if (currentCSS != css && !$sassActive) {
+			styleElement.textContent = `${css}`;
+			iframeDoc.head.appendChild(styleElement);
+			// console.log('plain');
+		}
 	}
 
 	$: {
@@ -293,7 +343,7 @@ ${js}
 			injectJSPlugins(iframeDoc, jsPluginsVar);
 			setTimeout(() => {
 				current_data.update((cur) => {
-					return { ...cur, html: `${code} ` };
+					return { ...cur, css: `${css}  ` };
 				});
 				loading = false;
 			}, 1000);
@@ -330,24 +380,26 @@ ${js}
 		// 	iframeDoc.body.appendChild(scriptElement);
 		// }
 
-		setTimeout(() => {
-			try {
-				if ($current_data.plugins?.length > 0) {
-					jsPlugins.set($current_data.plugins[0].js);
-					cssPlugins.set($current_data.plugins[0].css);
-				}
-			} catch (er) {
-				console.log(er);
+		// setTimeout(() => {
+		try {
+			if ($current_data.plugins?.length > 0) {
+				jsPlugins.set($current_data.plugins[0].js);
+				cssPlugins.set($current_data.plugins[0].css);
+				// console.log($canvasConfig?.cssProcessor ? true : false);
 			}
-			current_data.update((cur) => {
-				return { ...cur, js: `${cur.js}   ` };
-			});
-		}, 2000);
+		} catch (er) {
+			console.log(er);
+		}
+		current_data.update((cur) => {
+			return { ...cur, js: `${cur.js}   ` };
+		});
+
+		// }, 1000);
 	});
 </script>
 
 <div
-	class="bg-white border-t md:border-l dark:border-primary border-gray-300 w-full h-full text-black dark:text-white"
+	class="bg-white m-0 p-0 border-t md:border-l dark:border-primary border-gray-300 w-full h-full text-black dark:text-white"
 >
 	<iframe bind:this={iframe} title="preview" id="preview-frame" class="w-full h-full" />
 </div>

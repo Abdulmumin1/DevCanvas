@@ -109,6 +109,7 @@
 		text-transform: capitalize;
 		@apply text-3xl md:text-4xl py-2;
 		font-weight: 500;
+		color: black;
 	}
 
 	.article h1 {
@@ -118,6 +119,7 @@
 		/* font-weight: theme(fontWeight.bold); */
 		/* color: theme(colors.orang); */
 		/* text-transform: t; */
+		color: black;
 		font-weight: 500;
 		@apply text-2xl md:text-3xl py-2;
 	}
@@ -126,13 +128,14 @@
 		font-family: Roboto Slab, serif !important;
 
 		font-weight: 500;
+		color: black;
 		@apply text-xl md:text-2xl py-2;
 
 		/* color: theme(colors.orang); */
 	}
 	.article h4 {
 		font-family: Roboto Slab, serif !important;
-
+		color: black;
 		@apply text-lg md:text-xl py-2;
 
 		/* font-weight: theme(fontWeight.bold); */
@@ -141,12 +144,16 @@
 
 	.article code {
 		/* background-color: #888; */
-		@apply rounded-md  bg-sky-200  dark:text-black;
-		font-size: 14px !important;
+		@apply rounded  bg-sky-100  dark:text-black;
+		font-size: 1rem;
 		padding: 2px;
+		font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI Adjusted', 'Segoe UI',
+			'Liberation Sans', sans-serif;
 	}
 	.article pre > code {
 		background-color: inherit !important;
+		font-family: inherit;
+		font-size: 14px !important;
 
 		@apply text-sm lg:text-base;
 	}
@@ -215,5 +222,13 @@
 	.article pre::-webkit-scrollbar {
 		width: 0;
 		height: 0;
+	}
+
+	.article ul,
+	ol {
+		display: flex;
+		flex-direction: column;
+		gap: 6px;
+		/* list-style-type: disc; */
 	}
 }

@@ -127,7 +127,7 @@
 					style="filter: grayscale(100);"
 					src="/logo.svg"
 				/></span
-			> <span>GOTO Canvas</span>
+			> <span class="hidden md:block">GOTO Canvas</span>
 		</a>
 	</div>
 

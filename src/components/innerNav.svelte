@@ -3,7 +3,7 @@
 	import { faGithub, faWpexplorer } from '@fortawesome/free-brands-svg-icons';
 	import logo from '$lib/logo.png';
 	import Darkmode from './darkmode.svelte';
-	import { faBars, faClose, faWindowMaximize } from '@fortawesome/free-solid-svg-icons';
+	import { faBars, faBlog, faClose, faWindowMaximize } from '@fortawesome/free-solid-svg-icons';
 	import { slide } from 'svelte/transition';
 	import { clickOutside } from '$lib/index.js';
 	import { page } from '$app/stores';
@@ -18,10 +18,12 @@
 <div
 	class="w-full border-b border-secondary-dark p-2 bg-sky-300 text-sky-dark text-sm text-center flex items-center justify-center"
 >
-	Free Palestine 🚀
+	Free Palestine 🇵🇸, DO NOT BE SILENCED
 </div>
-<div class="flex items-center justify-center py-3 top-0 border-b border-primary dark:border-light">
-	<div class="h-[50px] w-full bg-inherit max-w-[1200px]">
+<div
+	class="flex items-center justify-center py-3 top-0 border-b border-primary dark:border-secondary-dark"
+>
+	<div class="h-[50px] px-2 w-full bg-inherit max-w-[1200px]">
 		<ul class="hidden md:flex w-full justify-between items-center">
 			<li
 				class="text-base md:text-lg py-2 px-3 gap-3 text-light bg-secondary-dark flex items-center justify-center rounded-3xl"
@@ -41,19 +43,15 @@
 							HTML Playground <Fa icon={faWindowMaximize} class="" /></a
 						>
 					</li>
+					<li class="bg-secondary-dark text-light rounded-full py-2 px-3">
+						<a class="flex gap-2 items-center justify-center" href="/blog">
+							Blog <Fa icon={faBlog} class="" /></a
+						>
+					</li>
 					<li class="bg-secondary-dark p-2 rounded-full" class:landing={$page.url.pathname == '/'}>
 						<div class="flex gap-2 items-center justify-center text-light">
 							<Darkmode />
 						</div>
-					</li>
-					<li class="bg-secondary-dark text-light rounded-full p-3">
-						<a
-							class="flex gap-2 items-center justify-center"
-							href="https://github.com/Abdulmumin1/snippets"
-							target="_blank"
-						>
-							<Fa icon={faGithub} class="" /></a
-						>
 					</li>
 				</ul>
 			</li>

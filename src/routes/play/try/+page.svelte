@@ -26,7 +26,32 @@
 		user_id: 123,
 		project_key: 'try',
 		description: 'Untitled Canvas',
-		public: true
+		public: true,
+		plugins: [
+			{
+				css: {
+					tailwind: false,
+					bootstrap: false,
+					fontawesome: false,
+					materialicons: false,
+					googlefonts: false,
+					bulma: false
+				},
+				js: {
+					animejs: false,
+					gsap: false,
+					motionone: false,
+					threejs: false,
+					velocity: false,
+					popmotion: false,
+					scrollreveal: false
+				}
+			}
+		],
+		config: {
+			tags: [],
+			cssProcessor: false
+		}
 	});
 
 	function captureIframeOutput(event) {

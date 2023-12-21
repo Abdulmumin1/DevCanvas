@@ -10,7 +10,7 @@
 	export let label = 'Toggle me';
 </script>
 
-<div class="p-1 bg-white dark:bg-secondary-dark w-full rounded-md">
+<div class="p-2 bg-white dark:bg-secondary-dark w-full rounded-md">
 	<label class="relative inline-flex items-center cursor-pointer w-full">
 		<input
 			type="checkbox"

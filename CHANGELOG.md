@@ -4,6 +4,22 @@
 
 ### Added
 
+- Introduced Sass (CSS Processor)
+
+### Changed
+
+- Changed blog layout, fonts and others
+
+### Fixed
+
+- Logic for loading/injecting code into Iframe
+
+---
+
+## 2023-12-15
+
+### Added
+
 - Introduced Visibility toggle, make canvas public/private
 
 ### Changed
@@ -12,7 +28,9 @@
 
 ### Fixed
 
-- Adjuested the settings on the bottom of side nav
+- Adjusted the settings on the bottom of side nav
+
+---
 
 ## 2023-12-08
 

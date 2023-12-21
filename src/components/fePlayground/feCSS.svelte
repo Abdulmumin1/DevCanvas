@@ -15,7 +15,8 @@
 		saveData,
 		showLoginToSave,
 		showForkTosave,
-		editorConfig
+		editorConfig,
+		sassActive
 	} from '$lib/feEditor/store.js';
 	import {
 		current_data,
@@ -38,6 +39,7 @@
 	// Define the initial code content
 	export let initialCSS = `/* css here */`;
 	let monacoModel;
+	let model;
 
 	let saved = true;
 	let typingTimer; // Timer to track typing
@@ -141,6 +143,23 @@
 		}
 	}
 
+	$: {
+		let active = $sassActive;
+		console.log(active);
+		if (monacoModel) {
+			// console.log(monacoModel);
+			// let model = monacoModel.getModel();
+			// console.log(model);
+			if ($sassActive) {
+				monacoModel.editor.setModelLanguage(model, 'scss');
+				console.log('lang just changed', 'SCSS');
+			} else {
+				monacoModel.editor.setModelLanguage(model, 'css');
+				console.log('lang just changed', 'CSS');
+			}
+		}
+	}
+
 	onMount(async () => {
 		self.MonacoEnvironment = {
 			getWorker: function (_moduleId, label) {
@@ -166,9 +185,9 @@
 			setEditorTheme();
 			// Initialize the editor
 			editor = monacoModel.editor.create(editorContanier, editorConfig);
-			// Register the HTML language with Monaco Editor
+			// Register the CSS language with Monaco Editor
 			monacoModel.languages.register({
-				id: 'html'
+				id: 'css'
 			});
 
 			// Import and configure the emmet-monaco-es package
@@ -221,7 +240,7 @@
 
 			editor.addAction(saveAction);
 
-			let model = monacoModel.editor.createModel(initialCSS, lang);
+			model = monacoModel.editor.createModel(initialCSS, lang);
 
 			editor.setModel(model);
 
