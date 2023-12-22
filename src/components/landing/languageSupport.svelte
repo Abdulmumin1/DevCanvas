@@ -55,11 +55,11 @@
 				<li
 					class="flex flex-col items-center justify-center text-center text-lg shadow p-3 rounded-md bg-white dark:bg-primary md:text-xl"
 				>
-					Rust
+					SaSS
 					<img
 						class="w-20 h-20 md:w-24 md:h-24 dark:invert"
-						src="https://cdn.svgporn.com/logos/rust.svg"
-						alt="rust"
+						src="https://cdn.svgporn.com/logos/sass.svg"
+						alt="sass"
 					/>
 				</li>
 

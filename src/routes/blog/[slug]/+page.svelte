@@ -19,6 +19,7 @@
 	} from '@fortawesome/free-brands-svg-icons';
 	import { faCalendar, faCopy } from '@fortawesome/free-solid-svg-icons';
 	import { scale } from 'svelte/transition';
+	import { generateStructuredData } from '$lib/blog/utils.js';
 	// import { page } from '$app/stores';
 	let url;
 
@@ -56,6 +57,17 @@
 	}
 
 	let encodedTitle = convertLinkToRequestReadable(data.meta.title);
+	let stData;
+	onMount(() => {
+		stData = generateStructuredData({
+			title: data.meta.title,
+			datePublished: data.meta.date,
+			description: data.meta.description,
+			keywords: data.meta.categories
+		});
+
+		document.head.appendChild(stData);
+	});
 </script>
 
 <svelte:head>
