@@ -15,7 +15,7 @@
 			href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
 		/>
 
-		<div class="flex">
+		<div class="flex flex-col md:flex-row">
 			<div class="dark:text-black">
 				<div class="post-container floating-object2">
 					<div class="user-info">

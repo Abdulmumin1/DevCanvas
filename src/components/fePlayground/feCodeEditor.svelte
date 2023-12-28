@@ -10,6 +10,7 @@
 	import FeJs from './feJS.svelte';
 	import EditorTitle from './editorTitle.svelte';
 	import Femodal from './femodal.svelte';
+	import EditorSettings from './editorSettings.svelte';
 
 	let initialHTML = $current_data.html;
 	let initialCSS = $current_data.css;
@@ -103,8 +104,9 @@
 					<span class="text-yellow-500"><Fa icon={faJs} /></span>JS
 				</button>
 			</div>
-			<div class="p-2">
+			<div class="p-2 flex gap-2">
 				<Femodal />
+				<EditorSettings />
 			</div>
 		</div>
 		<div class="w-full h-full">
