@@ -1,7 +1,7 @@
 <script>
 	import { current_data, user, isOwner, SnippetsDescription, showToast } from '$lib/index.js';
-	import { consoleOutput } from '$lib/feEditor/store.js';
-	import { onDestroy, onMount } from 'svelte';
+	import { consoleOutput, canvasConfig, canvasTags, sassActive } from '$lib/feEditor/store.js';
+	import { onDestroy, onMount, tick } from 'svelte';
 	import { browser } from '$app/environment';
 	import FeCodeEditor from '../../../components/fePlayground/feCodeEditor.svelte';
 	import FePlayGroungNav from '../../../components/fePlayground/fePlayGroungNav.svelte';
@@ -51,7 +51,8 @@
 		config: {
 			tags: [],
 			cssProcessor: false
-		}
+		},
+		tags: []
 	});
 
 	function captureIframeOutput(event) {
@@ -63,7 +64,11 @@
 		}
 	}
 	isOwner.set(false);
-	onMount(() => {
+	onMount(async () => {
+		await tick();
+		canvasTags.set($current_data.tags);
+		canvasConfig.set($current_data.config);
+		sassActive.set($current_data.config?.cssProcessor);
 		window.addEventListener('message', captureIframeOutput);
 	});
 

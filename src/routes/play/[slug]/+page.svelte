@@ -1,6 +1,12 @@
 <script>
 	import { current_data, user, isOwner, SnippetsDescription, showToast } from '$lib/index.js';
-	import { showSave, consoleOutput, canvasConfig, jsPlugins } from '$lib/feEditor/store.js';
+	import {
+		showSave,
+		consoleOutput,
+		canvasTags,
+		canvasConfig,
+		jsPlugins
+	} from '$lib/feEditor/store.js';
 	import { onDestroy, onMount } from 'svelte';
 	import Toast from '../../../components/toast.svelte';
 	import { browser } from '$app/environment';
@@ -29,6 +35,8 @@
 		mobileDetails = window.innerWidth <= 768;
 	}
 	current_data.set(data.details);
+	canvasTags.set(data.details.tags);
+
 	canvasConfig.set(data.details.config);
 	sassActive.set(data.details.config?.cssProcessor);
 

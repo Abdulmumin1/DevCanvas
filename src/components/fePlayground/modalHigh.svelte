@@ -9,6 +9,7 @@
 	import Jsplugins from './externalJs/jsplugins.svelte';
 	import { onMount, tick } from 'svelte';
 	import SaasProcessor from './saasProcessor.svelte';
+	import AddTags from './pluginModal/addTags.svelte';
 
 	let modal;
 	let js = $externalStuff.js;
@@ -58,6 +59,16 @@
 	onMount(() => {
 		modal.showModal();
 	});
+
+	let tabPlugin = true;
+
+	function showPlugin() {
+		tabPlugin = true;
+	}
+
+	function showEditor() {
+		tabPlugin = false;
+	}
 </script>
 
 <dialog
@@ -66,56 +77,71 @@
 	bind:this={modal}
 	use:clickOutside
 	on:click_outside={closeModal}
-	class="px-2 pb-2 w-[90%] md:w-[500px] h-[80%] md:h-[900px] border-t-4 border-sky-300 dark:bg-black dark:text-white rounded-lg flex flex-col gap-4"
+	class="px-2 pb-2 w-[90%] md:w-[500px] h-[80%] md:h-[900px] dark:bg-black dark:text-white rounded-lg flex flex-col gap-4"
 >
 	<!-- class="modal z-50 backdrop-blur-lg absolute  inset-y-0 inset-x-0 mx-auto m-2 shadow-md border-t-4 bg-white dark:bg-black border-sky-500 p-3 rounded flex flex-col overflow-scroll gap-2" -->
 	<div
-		class="sticky flex items-end justify-end bg-white text-black dark:bg-black dark:text-white top-0 right-0 p-2"
+		class="sticky flex pb-2 pt-4 items-end justify-between bg-white text-black dark:bg-black dark:text-white border-b-2 border-sky-300 top-0"
 	>
-		<button on:click={closeModal}>
+		<div class="flex gap-2 px-2">
+			<button on:click={showPlugin} class:border-b-2={tabPlugin}>Plugins</button>
+			<button on:click={showEditor} class:border-b-2={!tabPlugin}>Editor</button>
+		</div>
+
+		<button class="px-2" on:click={closeModal}>
 			<Fa icon={faClose} />
 		</button>
 	</div>
-	<div class="w-full">
-		<p>Head</p>
-		<textarea
-			name=""
-			id=""
-			cols="30"
-			rows="3"
-			placeholder="Content for the head"
-			class="bg-gray-100 dark:bg-primary w-full outline-none font-thin rounded"
-			spellcheck="false"
-			bind:value={html}
-		/>
-	</div>
 
-	<div class="w-full flex flex-col gap-2">
-		<SaasProcessor />
-
-		<p>CSS Plugin</p>
-		<Csslist />
-	</div>
-
-	<div class="w-full flex gap-2 flex-col transition-transform duration-300">
-		<p>JS</p>
-		<div bind:this={inputField} class="flex gap-2">
-			<input
+	<div id="tabPlugins" class:hidden={!tabPlugin} class="flex flex-col gap-2">
+		<div class="w-full">
+			<p>Head</p>
+			<textarea
 				name=""
-				placeholder="External Script Link"
-				class="bg-gray-100 dark:bg-primary w-full outline-none font-thin p-2 rounded"
+				id=""
+				cols="30"
+				rows="3"
+				placeholder="Content for the head"
+				class="bg-gray-100 dark:bg-primary w-full outline-none font-thin rounded"
 				spellcheck="false"
-				bind:value={js}
+				bind:value={html}
 			/>
-			<button class="bg-sky-500 text-primary rounded p-1 px-3" on:click={addMoreJs}> Add</button>
 		</div>
 
-		Plugins
-		<Jsplugins />
+		<div class="w-full flex flex-col gap-2">
+			<p>CSS Plugin</p>
+			<Csslist />
+		</div>
+
+		<div class="w-full flex gap-2 flex-col transition-transform duration-300">
+			<p>JS</p>
+			<div bind:this={inputField} class="flex gap-2">
+				<input
+					name=""
+					placeholder="External Script Link"
+					class="bg-gray-100 dark:bg-primary w-full outline-none font-thin p-2 rounded"
+					spellcheck="false"
+					bind:value={js}
+				/>
+				<button class="bg-sky-500 text-primary rounded p-1 px-3" on:click={addMoreJs}> Add</button>
+			</div>
+
+			Plugins
+			<Jsplugins />
+		</div>
+	</div>
+
+	<div id="tabEditor" class:hidden={tabPlugin} class="flex gap-2 flex-col">
+		<div>CSS PreProcessor</div>
+		<SaasProcessor />
+		<AddTags />
 	</div>
 </dialog>
 
 <style>
+	#pluginModal {
+		max-height: 600px;
+	}
 	#pluginModal::-webkit-scrollbar {
 		width: 0px;
 		height: 0px;

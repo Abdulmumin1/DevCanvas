@@ -5,7 +5,7 @@
 				Support for
 			</h2>
 			<p class="text-light">
-				From JavaScript to Python, HTML to CSS, SnippetLand support a wide range of programming
+				From JavaScript to Python, HTML to CSS, DevCanvas support a wide range of programming
 				languages
 			</p>
 		</div>

@@ -45,9 +45,14 @@
 		</div>
 		<main class="w-full">
 			<!-- Add your features or benefits here -->
-
-			<Forcreators />
-			<Forcreatives />
+			<div>
+				<div class="">
+					<Forcreators />
+				</div>
+				<div class=" bg-white dark:bg-primary">
+					<Forcreatives />
+				</div>
+			</div>
 			<Discover />
 			<LanguageSupport />
 			<EmbedSection />
