@@ -43,11 +43,13 @@
 		let { data: dt, error } = await supabase
 			.from('htmlPlayground')
 			.select('project_key, user_id, description, view (views)')
-			.ilike('description', `%${query}%`)
+			// .or('tags.@>.{' + query + '}');
+
 			// .filter('tags', 'cs', '{"css","html"}')
 			// .contains('tags', ['css', 'html'])
 			// .or(`description:ilike.${query}`)
-			// .filter('tags', 'cs', `{"${query}", "css"}`)
+			.or(`tags.cs.{"${query}"}`)
+			// .ilike('description', `%${query}%`)
 			// Use `()` for `in` filter, `{}` for array values and `cs` for `contains()`.
 
 			// .cd('tags', [query])

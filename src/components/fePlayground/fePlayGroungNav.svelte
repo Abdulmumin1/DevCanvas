@@ -19,7 +19,7 @@
 		<li class="w-full">
 			<div class="flex flex-col w-full">
 				<div class="flex items-center gap-2">
-					<a href="/play">
+					<a href="/play" class="hidden md:block">
 						<img src="/logo.svg" class="h-10 w-10" alt="snippetsLand" />
 					</a>
 

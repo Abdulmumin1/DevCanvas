@@ -77,7 +77,7 @@
 	bind:this={modal}
 	use:clickOutside
 	on:click_outside={closeModal}
-	class="px-2 pb-2 w-[90%] md:w-[500px] h-[80%] md:h-[900px] dark:bg-black dark:text-white rounded-lg flex flex-col gap-4"
+	class="text-sm px-2 pb-2 w-[90%] md:w-[500px] h-[80%] md:h-[900px] dark:bg-black dark:text-white rounded-lg flex flex-col gap-4"
 >
 	<!-- class="modal z-50 backdrop-blur-lg absolute  inset-y-0 inset-x-0 mx-auto m-2 shadow-md border-t-4 bg-white dark:bg-black border-sky-500 p-3 rounded flex flex-col overflow-scroll gap-2" -->
 	<div

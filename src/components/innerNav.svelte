@@ -4,7 +4,7 @@
 	import logo from '$lib/logo.png';
 	import Darkmode from './darkmode.svelte';
 	import { faBars, faBlog, faClose, faWindowMaximize } from '@fortawesome/free-solid-svg-icons';
-	import { slide } from 'svelte/transition';
+	import { scale, slide } from 'svelte/transition';
 	import { clickOutside } from '$lib/index.js';
 	import { page } from '$app/stores';
 
@@ -78,7 +78,7 @@
 					on:click_outside={toogleOpen}
 					class="fixed top-0 right-0 w-screen h-screen z-50 bg-white p-4 dark:bg-primary shadow-lg"
 				>
-					<ul class="flex gap-4 justify-between items-end flex-col">
+					<ul transition:scale class="flex gap-4 justify-between items-end flex-col">
 						<li>
 							<button on:click={toogleOpen} class="text-4xl"><Fa icon={faClose} /></button>
 						</li>

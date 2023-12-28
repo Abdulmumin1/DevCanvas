@@ -3,7 +3,7 @@
 
 	import { faBars, faClose, faWindowMaximize } from '@fortawesome/free-solid-svg-icons';
 	import Fa from 'svelte-fa';
-	import { slide } from 'svelte/transition';
+	import { scale, slide } from 'svelte/transition';
 
 	let openSideBar = false;
 
@@ -23,7 +23,7 @@
 			on:click_outside={toogleOpen}
 			class="fixed top-0 left-0 w-full h-screen z-50 bg-white p-4 dark:bg-primary shadow-lg"
 		>
-			<ul class="flex justify-between items-end flex-col">
+			<ul transition:scale class="flex justify-between items-end flex-col">
 				<li>
 					<button on:click={toogleOpen} class="text-2xl"><Fa icon={faClose} /></button>
 				</li>

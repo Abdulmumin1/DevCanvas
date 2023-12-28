@@ -9,6 +9,8 @@
 	import { current_data } from '$lib/index.js';
 	import FeJs from './feJS.svelte';
 	import EditorTitle from './editorTitle.svelte';
+	import Femodal from './femodal.svelte';
+	import EditorSettings from './editorSettings.svelte';
 
 	let initialHTML = $current_data.html;
 	let initialCSS = $current_data.css;
@@ -69,37 +71,43 @@
 
 <div class="h-full w-full">
 	{#if isVertical}
-		<div class="flex gap-2">
-			<button
-				class="flex gap-1 items-center justify-center p-2"
-				on:click={() => {
-					showTab('html');
-				}}
-				class:bg-gray-100={showHtml}
-				class:dark:bg-secondary-dark={showHtml}
-				><span class="text-rose-500"><Fa icon={faHtml5} /></span>HTML</button
-			>
-			<button
-				class="flex gap-1 items-center justify-center p-2"
-				on:click={() => {
-					showTab('css');
-				}}
-				class:bg-gray-100={showCSS}
-				class:dark:bg-secondary-dark={showCSS}
-			>
-				<span class="text-blue-500"><Fa icon={faCss3} /></span>CSS
-			</button>
+		<div class="flex justify-between items-center">
+			<div class="flex gap-2">
+				<button
+					class="flex gap-1 items-center justify-center p-2"
+					on:click={() => {
+						showTab('html');
+					}}
+					class:bg-gray-100={showHtml}
+					class:dark:bg-secondary-dark={showHtml}
+					><span class="text-rose-500"><Fa icon={faHtml5} /></span>HTML</button
+				>
+				<button
+					class="flex gap-1 items-center justify-center p-2"
+					on:click={() => {
+						showTab('css');
+					}}
+					class:bg-gray-100={showCSS}
+					class:dark:bg-secondary-dark={showCSS}
+				>
+					<span class="text-blue-500"><Fa icon={faCss3} /></span>CSS
+				</button>
 
-			<button
-				class="flex gap-1 items-center justify-center p-2"
-				on:click={() => {
-					showTab('js');
-				}}
-				class:bg-gray-100={showJs}
-				class:dark:bg-secondary-dark={showJs}
-			>
-				<span class="text-yellow-500"><Fa icon={faJs} /></span>JS
-			</button>
+				<button
+					class="flex gap-1 items-center justify-center p-2"
+					on:click={() => {
+						showTab('js');
+					}}
+					class:bg-gray-100={showJs}
+					class:dark:bg-secondary-dark={showJs}
+				>
+					<span class="text-yellow-500"><Fa icon={faJs} /></span>JS
+				</button>
+			</div>
+			<div class="p-2 flex gap-2">
+				<Femodal />
+				<EditorSettings />
+			</div>
 		</div>
 		<div class="w-full h-full">
 			<div class:hidden={!showHtml} class="hidden w-full h-full">

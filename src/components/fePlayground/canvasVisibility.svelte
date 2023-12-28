@@ -55,7 +55,7 @@
 >
 	<div class="flex gap-1">
 		<Fa {icon} />
-		{text}
+		<span class="hidden md:block">{text}</span>
 	</div>
 </button>
 

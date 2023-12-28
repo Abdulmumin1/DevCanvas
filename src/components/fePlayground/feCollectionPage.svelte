@@ -63,7 +63,8 @@
 		const { data, error } = await supabase
 			.from('htmlPlayground')
 			.select('project_key, user_id, description, view (views)')
-			.ilike('description', `%${query}%`)
+			// .ilike('description', `%${query}%`)
+			.or(`tags.cs.{"${query}"}`)
 			.order('created_at', { ascending: false }) // Optional: Ordering the results
 			.range(pageNumber, pageSize)
 			.is('public', true);
