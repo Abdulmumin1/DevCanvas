@@ -25,6 +25,7 @@
 	import JsConsole from '../../../components/fePlayground/jsConsole.svelte';
 	import EmbedModal from '../../../components/fePlayground/embedModal.svelte';
 	import ModalHigh from '../../../components/fePlayground/modalHigh.svelte';
+	import SideComponent from '../../../components/fePlayground/editorSets/sideComponent.svelte';
 
 	export let data;
 
@@ -101,6 +102,7 @@
 				<JsConsole />
 			</div>
 		</Resizable>
+		<SideComponent />
 		{#if $showModal}
 			<ModalHigh />
 		{/if}
