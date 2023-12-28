@@ -43,7 +43,7 @@
 {#if $editorSettingState}
 	<div
 		transition:slide={{ axis: 'x' }}
-		class="absolute top-0 w-[300px] flex flex-col bg-white dark:bg-black h-full shadow-2xl"
+		class="absolute drop top-0 w-[300px] flex flex-col bg-white dark:bg-black h-full shadow-2xl"
 	>
 		<div class="justify-end">
 			<button class="p-2" on:click={closeDropdown}>Close</button>
@@ -100,6 +100,6 @@
 
 <style>
 	.drop {
-		z-index: 1;
+		z-index: 9999;
 	}
 </style>
