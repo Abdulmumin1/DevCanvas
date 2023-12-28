@@ -5,6 +5,8 @@ export let saved_spinner = writable(false);
 export let showLoginToSave = writable(false);
 export let showForkTosave = writable(false);
 export let canvasConfig = writable({});
+export let canvasTags = writable({});
+
 function appendJSONToFormData(json, formData, which) {
 	for (const key in json) {
 		if (which == key || which == true) {
@@ -68,6 +70,25 @@ export async function saveConfig(json_data, id) {
 	if (response.ok) {
 		// Handle save success
 		console.log('config saved');
+	} else {
+		// Handle save failed
+		console.log('failed');
+	}
+}
+
+export async function saveTags(json_data, id) {
+	let formData = new FormData();
+	saved_spinner.set(true);
+	// showSave.set(true);
+	formData.append('tags', JSON.stringify(json_data));
+	formData.append('id', id);
+	const response = await fetch('?/update', {
+		method: 'POST',
+		body: formData
+	});
+	if (response.ok) {
+		// Handle save success
+		console.log('Tags saved');
 	} else {
 		// Handle save failed
 		console.log('failed');

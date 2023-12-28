@@ -7,7 +7,9 @@
 
 <SectionCard reverse={true}>
 	<div class="flex flex-col justify-center">
-		<h2 class="text-4xl md:text-5xl font-semibold mb-2 dark:text-sky-400">Easy Code Sharing</h2>
+		<h2 class="text-4xl md:text-5xl font-semibold mb-2 dark:text-sky-400">
+			Easy Code Sharing <sub class="text-sm">(Snippets)</sub>
+		</h2>
 		<p class="max-w-md">
 			Got a brilliant code snippet that could help others? Share it with the community! Our
 			intuitive interface lets you upload your code snippets in a snap.

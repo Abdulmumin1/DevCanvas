@@ -9,6 +9,9 @@ export const actions = {
 			body.plugins = [JSON.parse(body.plugins)];
 		} else if (body.config) {
 			body.config = JSON.parse(body.config);
+		} else if (body.tags) {
+			body.tags = JSON.parse(body.tags);
+			console.log(body.tags);
 		}
 		const { data, error: err } = await supabase.from('htmlPlayground').update([body]).eq('id', id);
 		if (err) {

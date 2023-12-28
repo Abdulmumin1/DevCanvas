@@ -28,7 +28,7 @@
 	});
 </script>
 
-<div
+<section
 	class="flex relative px-8 py-12 flex-col gap-4 items-center text-center w-full border-primary justify-center text-secondary-dark"
 >
 	<p>
@@ -84,7 +84,7 @@
 			>Explore</a
 		>
 	</div>
-</div>
+</section>
 
 <style>
 	:root {

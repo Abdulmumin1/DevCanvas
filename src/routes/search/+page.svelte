@@ -43,8 +43,15 @@
 		let { data: dt, error } = await supabase
 			.from('htmlPlayground')
 			.select('project_key, user_id, description, view (views)')
-
 			.ilike('description', `%${query}%`)
+			// .filter('tags', 'cs', '{"css","html"}')
+			// .contains('tags', ['css', 'html'])
+			// .or(`description:ilike.${query}`)
+			// .filter('tags', 'cs', `{"${query}", "css"}`)
+			// Use `()` for `in` filter, `{}` for array values and `cs` for `contains()`.
+
+			// .cd('tags', [query])
+			// .contains('tags', [query])
 			.order('created_at', { ascending: false })
 			.is('public', true)
 			.limit($pageCountPl);
@@ -56,6 +63,7 @@
 		// pageCount.update((cur) => {
 		// 	return cur + 6;
 		// });
+		console.log(dt);
 		return dt;
 	}
 

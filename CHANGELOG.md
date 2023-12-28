@@ -1,5 +1,17 @@
 **Changelog updates:**
 
+## 2023-12-28
+
+### Added
+
+- Added Tags
+
+### Changed
+
+- modified plugin modal with tabs, separated plugins from editor settings/config
+
+---
+
 ## 2023-12-15
 
 ### Added
