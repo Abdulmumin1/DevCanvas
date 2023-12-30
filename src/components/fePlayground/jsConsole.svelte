@@ -103,7 +103,7 @@
 			Console <Fa icon={faTerminal} />
 		</span>
 
-		<div class="flex gap-2">
+		<div class="flex gap-2 text-white">
 			<button
 				on:click={() => {
 					consoleOutput.set([]);
@@ -116,7 +116,7 @@
 			>
 		</div>
 	</div>
-	<div class="bg-black w-full h-full overflow-scroll content divide-y divide-gray-100">
+	<div class="bg-black w-full h-full text-white overflow-scroll content divide-y divide-gray-100">
 		{#each $consoleOutput as log}
 			<div class="w-full">
 				{log}

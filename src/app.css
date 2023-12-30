@@ -785,10 +785,6 @@ video {
   margin-top: 2rem;
 }
 
-.ml-20 {
-  margin-left: 5rem;
-}
-
 .block {
   display: block;
 }
@@ -857,8 +853,16 @@ video {
   height: 2rem;
 }
 
+.h-\[1000px\] {
+  height: 1000px;
+}
+
 .h-\[100dvh\] {
   height: 100dvh;
+}
+
+.h-\[10px\] {
+  height: 10px;
 }
 
 .h-\[150px\] {
@@ -889,6 +893,10 @@ video {
   height: 600px;
 }
 
+.h-\[612px\] {
+  height: 612px;
+}
+
 .h-\[80\%\] {
   height: 80%;
 }
@@ -908,14 +916,6 @@ video {
 
 .h-screen {
   height: 100vh;
-}
-
-.h-\[610px\] {
-  height: 610px;
-}
-
-.h-\[612px\] {
-  height: 612px;
 }
 
 .max-h-96 {
@@ -988,6 +988,10 @@ video {
 
 .w-8 {
   width: 2rem;
+}
+
+.w-\[10px\] {
+  width: 10px;
 }
 
 .w-\[200px\] {
@@ -1095,6 +1099,10 @@ video {
   max-width: 28rem;
 }
 
+.max-w-\[800px\] {
+  max-width: 800px;
+}
+
 .border-collapse {
   border-collapse: collapse;
 }
@@ -1175,10 +1183,6 @@ video {
   grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
-.grid-cols-2 {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
 .flex-row {
   flex-direction: row;
 }
@@ -1235,10 +1239,6 @@ video {
   gap: 0.5rem;
 }
 
-.gap-20 {
-  gap: 5rem;
-}
-
 .gap-3 {
   gap: 0.75rem;
 }
@@ -1253,6 +1253,11 @@ video {
 
 .gap-8 {
   gap: 2rem;
+}
+
+.gap-x-20 {
+  -moz-column-gap: 5rem;
+       column-gap: 5rem;
 }
 
 .space-x-2 > :not([hidden]) ~ :not([hidden]) {
@@ -1481,6 +1486,11 @@ video {
   background-color: rgb(13 17 23 / var(--tw-bg-opacity));
 }
 
+.bg-\[\#111111\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(17 17 17 / var(--tw-bg-opacity));
+}
+
 .bg-black {
   --tw-bg-opacity: 1;
   background-color: rgb(0 0 0 / var(--tw-bg-opacity));
@@ -1635,11 +1645,6 @@ video {
   background-color: rgb(234 179 8 / var(--tw-bg-opacity));
 }
 
-.bg-orange-50 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(255 247 237 / var(--tw-bg-opacity));
-}
-
 .object-contain {
   -o-object-fit: contain;
      object-fit: contain;
@@ -1723,6 +1728,11 @@ video {
 .px-8 {
   padding-left: 2rem;
   padding-right: 2rem;
+}
+
+.py-0 {
+  padding-top: 0px;
+  padding-bottom: 0px;
 }
 
 .py-1 {
@@ -2142,6 +2152,11 @@ video {
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
 
+.drop-shadow {
+  --tw-drop-shadow: drop-shadow(0 1px 2px rgb(0 0 0 / 0.1)) drop-shadow(0 1px 1px rgb(0 0 0 / 0.06));
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+
 .grayscale {
   --tw-grayscale: grayscale(100%);
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
@@ -2191,6 +2206,10 @@ video {
   transition-property: transform;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
+}
+
+.delay-150 {
+  transition-delay: 150ms;
 }
 
 .duration-100 {
@@ -2855,10 +2874,6 @@ video {
 }
 
 @media (min-width: 768px) {
-  .md\:static {
-    position: static;
-  }
-
   .md\:m-10 {
     margin: 2.5rem;
   }
@@ -2906,6 +2921,10 @@ video {
 
   .md\:h-\[900px\] {
     height: 900px;
+  }
+
+  .md\:h-full {
+    height: 100%;
   }
 
   .md\:h-screen {
@@ -2956,6 +2975,10 @@ video {
     max-width: 500px;
   }
 
+  .md\:grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .md\:flex-row {
     flex-direction: row;
   }
@@ -2995,6 +3018,11 @@ video {
     padding-right: 1.5rem;
   }
 
+  .md\:py-12 {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+
   .md\:py-2 {
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
@@ -3017,6 +3045,14 @@ video {
 
   .md\:pl-10 {
     padding-left: 2.5rem;
+  }
+
+  .md\:pl-12 {
+    padding-left: 3rem;
+  }
+
+  .md\:pl-20 {
+    padding-left: 5rem;
   }
 
   .md\:text-2xl {
@@ -3070,8 +3106,9 @@ video {
     flex-direction: row;
   }
 
-  .lg\:gap-40 {
-    gap: 10rem;
+  .lg\:gap-x-40 {
+    -moz-column-gap: 10rem;
+         column-gap: 10rem;
   }
 
   .lg\:px-4 {

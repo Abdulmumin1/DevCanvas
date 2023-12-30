@@ -1,4 +1,4 @@
-<div class=" bg-secondary-dark h-fit md:h-[60vh] mb-8 flex p-7 py-9 justify-center">
+<div class=" bg-secondary-dark h-fit mb-8 flex p-7 py-9 justify-center">
 	<div class="w-full flex flex-col md:flex-row gap-6 justify-between max-w-5xl">
 		<div class="flex justify-center flex-col">
 			<h2 class="text-4xl md:text-5xl text-light font-semibold mb-2 dark:text-sky-400">

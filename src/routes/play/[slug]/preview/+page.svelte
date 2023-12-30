@@ -12,6 +12,8 @@
 		setup_js_plugin
 	} from '$lib/plugins/store.js';
 	import { page } from '$app/stores';
+	import { beforeNavigate, afterNavigate } from '$app/navigation';
+	import ShareAct from '$components/shareAct.svelte';
 	export let data;
 
 	let iframe;
@@ -104,6 +106,7 @@
 		for (let index = 0; index < array.length; index++) {
 			setup_js_plugin(array[index], jsPluginsVar, iframeDoc);
 		}
+		console.log('done with the plugins');
 	}
 
 	let zoomOut = $page.url.searchParams.get('preview');
@@ -149,9 +152,9 @@
 			iframeDoc.head.appendChild(styleElement);
 
 			if (!zoomOut) {
+				injectJSPlugins(iframeDoc, data.details.plugins[0].js);
 				// Step 3: Create and append JavaScript code
 				let js = data.details.js;
-				injectJSPlugins(iframeDoc, data.details.plugins[0].js);
 				injectCSSPlugins(iframeDoc, data.details.plugins[0].css);
 				const scriptElement = iframeDoc.createElement('script');
 				scriptElement.textContent = `${js}`;
@@ -159,9 +162,21 @@
 			}
 		}
 	});
+	afterNavigate(() => {
+		// console.log('which is fist');
+		if (!zoomOut) {
+			setTimeout(() => {
+				let es = document.createElement('div');
+				let iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+				iframeDoc.body.appendChild(es);
+				// console.log('me');
+			}, 500);
+		}
+	});
 </script>
 
 <svelte:head>
+	<title>{data.details.description}</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </svelte:head>
 
@@ -173,18 +188,19 @@
 	bind:this={iframe}
 />
 {#if !zoomOut}
-	<a
-		href="./"
-		class="absolute bottom-0 right-0 m-2 bg-secondary-dark flex gap-2 items-center p-2 rounded-xl"
-	>
-		<span
-			><img
-				height="16px"
-				width="16px"
-				alt=""
-				style="filter: grayscale(100);"
-				src="/logo.svg"
-			/></span
-		> <span class="hidden md:block text-gray-100">Editor View</span>
-	</a>
+	<div class="absolute bottom-0 right-0 m-2 flex items-center justify-center gap-2">
+		<a href="./" class=" bg-secondary-dark flex gap-2 items-center p-2 rounded-xl">
+			<span
+				><img
+					height="16px"
+					width="16px"
+					alt=""
+					style="filter: grayscale(100);"
+					src="/logo.svg"
+				/></span
+			> <span class="hidden md:block text-gray-100">Editor View</span>
+		</a>
+
+		<div class="bg-secondary-dark p-3 text-gray-100 rounded-full"><ShareAct /></div>
+	</div>
 {/if}

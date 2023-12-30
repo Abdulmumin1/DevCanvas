@@ -24,8 +24,8 @@
 </script>
 
 <div class="typing-animation">
-	<span id="text" class="text-sm text-white" bind:this={textElement} /><span
-		class="cursor text-white">_</span
+	<span id="text" class="text-sm text-light" bind:this={textElement} /><span
+		class="cursor text-light">_</span
 	>
 </div>
 
