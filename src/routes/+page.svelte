@@ -26,18 +26,21 @@
 </svelte:head>
 
 <div
-	class="before:he bg-skyblue-500 min-h-screen w-screen flex flex-col items-center justify-center"
+	class="before:he bg-skyblue-500 min-h-screen w-screen flex flex-col items-center justify-center relative"
 >
-	<div class="w-full">
+	<div class="w-full relative z-10">
 		<InnerNav />
 	</div>
 	<div
-		class="w-full max-w-[1500px] mx-auto rounded-lg flex flex-col gap-4 justify-center items-center relative"
+		class="w-full max-w-[1500px] mx-auto rounded-lg flex flex-col gap-4 justify-center items-center"
 	>
 		<!-- Add your landing page content here -->
-		<div class="h-[500px] md:h-[100dvh] grid">
+		<div class="h-[500px] grid">
 			<header class="w-full overflow-hidden">
-				<!-- <div id="kds" class=" w-full h-screen bg-sky-300 opacity-80 blur-lg overflow-hidden absolute" /> -->
+				<!-- <div
+					id="kds"
+					class=" w-screen right-0 h-[612px] bg-sky-300 top-0 overflow-hidden absolute"
+				/> -->
 				<div class="mt-20">
 					<Hero />
 				</div>

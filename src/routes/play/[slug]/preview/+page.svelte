@@ -166,9 +166,25 @@
 </svelte:head>
 
 <iframe
-	class="h-[100dvh] w-full dark:bg-primary"
+	class="h-[100dvh] w-full bg-white"
 	src=""
 	title="preview"
 	frameborder="0"
 	bind:this={iframe}
 />
+{#if !zoomOut}
+	<a
+		href="./"
+		class="absolute bottom-0 right-0 m-2 bg-secondary-dark flex gap-2 items-center p-2 rounded-xl"
+	>
+		<span
+			><img
+				height="16px"
+				width="16px"
+				alt=""
+				style="filter: grayscale(100);"
+				src="/logo.svg"
+			/></span
+		> <span class="hidden md:block text-gray-100">Editor View</span>
+	</a>
+{/if}

@@ -5,8 +5,7 @@
 				Support for
 			</h2>
 			<p class="text-light">
-				From JavaScript to Python, HTML to CSS, DevCanvas support a wide range of programming
-				languages
+				Easily bring your ideas to live with the tools combination of your choice.
 			</p>
 		</div>
 		<div>
@@ -14,10 +13,10 @@
 				<li
 					class="flex flex-col items-center justify-center text-center text-lg shadow p-3 rounded-md bg-white dark:bg-primary md:text-xl"
 				>
-					Python
+					Babel
 					<img
 						class="w-20 h-20 md:w-24 md:h-24"
-						src="https://cdn.svgporn.com/logos/python.svg"
+						src="https://cdn.svgporn.com/logos/babel.svg"
 						alt="python"
 					/>
 				</li>

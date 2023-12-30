@@ -2,6 +2,7 @@
 	import Fa from 'svelte-fa';
 	import { faStar } from '@fortawesome/free-solid-svg-icons';
 	import { onMount } from 'svelte';
+	import HeroCanvas from './heroCanvas.svelte';
 
 	let index = 0,
 		interval = 1000;
@@ -28,63 +29,69 @@
 	});
 </script>
 
-<section
-	class="flex relative px-8 py-12 flex-col gap-4 items-center text-center w-full border-primary justify-center text-secondary-dark"
->
-	<p>
-		<a
-			href="https://github.com/Abdulmumin1/snippets"
-			class="flex items-center justify-center gap-2 rounded-3xl bg-sky-100 dark:bg-light p-2 px-4 dark:text-sky-dark w-fit"
-		>
-			Star us on github <Fa icon={faStar} />
-		</a>
-	</p>
-	<h1 class="text-4xl font-semibold text-primary dark:text-light md:text-6xl max-w-[35rem]">
-		Paint Your <span class="magic">
-			<span class="magic-star">
-				<svg viewBox="0 0 512 512">
-					<path
-						d="M512 255.1c0 11.34-7.406 20.86-18.44 23.64l-171.3 42.78l-42.78 171.1C276.7 504.6 267.2 512 255.9 512s-20.84-7.406-23.62-18.44l-42.66-171.2L18.47 279.6C7.406 276.8 0 267.3 0 255.1c0-11.34 7.406-20.83 18.44-23.61l171.2-42.78l42.78-171.1C235.2 7.406 244.7 0 256 0s20.84 7.406 23.62 18.44l42.78 171.2l171.2 42.78C504.6 235.2 512 244.6 512 255.1z"
-					/>
-				</svg>
-			</span>
-			<span class="magic-star">
-				<svg viewBox="0 0 512 512">
-					<path
-						d="M512 255.1c0 11.34-7.406 20.86-18.44 23.64l-171.3 42.78l-42.78 171.1C276.7 504.6 267.2 512 255.9 512s-20.84-7.406-23.62-18.44l-42.66-171.2L18.47 279.6C7.406 276.8 0 267.3 0 255.1c0-11.34 7.406-20.83 18.44-23.61l171.2-42.78l42.78-171.1C235.2 7.406 244.7 0 256 0s20.84 7.406 23.62 18.44l42.78 171.2l171.2 42.78C504.6 235.2 512 244.6 512 255.1z"
-					/>
-				</svg>
-			</span>
-			<span class="magic-star">
-				<svg viewBox="0 0 512 512">
-					<path
-						d="M512 255.1c0 11.34-7.406 20.86-18.44 23.64l-171.3 42.78l-42.78 171.1C276.7 504.6 267.2 512 255.9 512s-20.84-7.406-23.62-18.44l-42.66-171.2L18.47 279.6C7.406 276.8 0 267.3 0 255.1c0-11.34 7.406-20.83 18.44-23.61l171.2-42.78l42.78-171.1C235.2 7.406 244.7 0 256 0s20.84 7.406 23.62 18.44l42.78 171.2l171.2 42.78C504.6 235.2 512 244.6 512 255.1z"
-					/>
-				</svg>
-			</span>
-			<span class="magic-text text-black dark:text-white">Wildest</span>
-		</span> Idea 🚀
-	</h1>
-	<p class="text-sm md:text-xl text-primary dark:text-light max-w-lg mx-1">
-		The platform efforlessly prototype. Bring your wildest idea to life. <span
-			class="text-green-500 dark:text-green-700">learn</span
-		>,
-		<span class="text-orange-400 dark:text-orange-800">share</span>, and
-		<span class="bg-sky-300 text-primary">build together</span>.
-	</p>
-	<div class="text-center">
-		<a
-			href="/signin"
-			class="inline-block text-light bg-sky-600 hover:bg-sky-600 font-semibold py-3 px-6 rounded-lg"
-			>Get Started</a
-		>
-		<a
-			href="/explore"
-			class="inline-block bg-secondary-dark text-light font-semibold py-3 px-6 rounded-lg"
-			>Explore</a
-		>
-	</div>
-</section>
+<div class="grid grid-cols-2 items-center justify-between gap-20 lg:gap-40">
+	<section
+		class="flex relative md:ml-20 h-full px-8 py-12 flex-col gap-4 w-full border-primary text-secondary-dark"
+	>
+		<!-- <p>
+			<a
+				href="https://github.com/Abdulmumin1/snippets"
+				class="flex items-center gap-2 rounded-3xl bg-sky-100 dark:bg-light p-2 px-4 dark:text-sky-dark w-fit"
+			>
+				Star us on github <Fa icon={faStar} />
+			</a>
+		</p> -->
+		<h1 class="text-4xl hero-text text-primary dark:text-light md:text-6xl max-w-[35rem]">
+			Paint Your <span class="magic">
+				<span class="magic-star">
+					<svg viewBox="0 0 512 512">
+						<path
+							d="M512 255.1c0 11.34-7.406 20.86-18.44 23.64l-171.3 42.78l-42.78 171.1C276.7 504.6 267.2 512 255.9 512s-20.84-7.406-23.62-18.44l-42.66-171.2L18.47 279.6C7.406 276.8 0 267.3 0 255.1c0-11.34 7.406-20.83 18.44-23.61l171.2-42.78l42.78-171.1C235.2 7.406 244.7 0 256 0s20.84 7.406 23.62 18.44l42.78 171.2l171.2 42.78C504.6 235.2 512 244.6 512 255.1z"
+						/>
+					</svg>
+				</span>
+				<span class="magic-star">
+					<svg viewBox="0 0 512 512">
+						<path
+							d="M512 255.1c0 11.34-7.406 20.86-18.44 23.64l-171.3 42.78l-42.78 171.1C276.7 504.6 267.2 512 255.9 512s-20.84-7.406-23.62-18.44l-42.66-171.2L18.47 279.6C7.406 276.8 0 267.3 0 255.1c0-11.34 7.406-20.83 18.44-23.61l171.2-42.78l42.78-171.1C235.2 7.406 244.7 0 256 0s20.84 7.406 23.62 18.44l42.78 171.2l171.2 42.78C504.6 235.2 512 244.6 512 255.1z"
+						/>
+					</svg>
+				</span>
+				<span class="magic-star">
+					<svg viewBox="0 0 512 512">
+						<path
+							d="M512 255.1c0 11.34-7.406 20.86-18.44 23.64l-171.3 42.78l-42.78 171.1C276.7 504.6 267.2 512 255.9 512s-20.84-7.406-23.62-18.44l-42.66-171.2L18.47 279.6C7.406 276.8 0 267.3 0 255.1c0-11.34 7.406-20.83 18.44-23.61l171.2-42.78l42.78-171.1C235.2 7.406 244.7 0 256 0s20.84 7.406 23.62 18.44l42.78 171.2l171.2 42.78C504.6 235.2 512 244.6 512 255.1z"
+						/>
+					</svg>
+				</span>
+				<span class=" text-black dark:text-light">Wildest</span>
+			</span> Idea 🚀
+		</h1>
+		<p class="text-sm md:text-xl text-primary max-w-lg mx-1 dark:text-light">
+			Effortlessly bring your boldest concepts to life. <span
+				class="text-green-500 dark:text-green-700">learn</span
+			>,
+			<span class="text-orange-400 dark:text-orange-800">share</span>, and
+			<span class="bg-sky-300 text-primary">build together</span>.
+		</p>
+		<div class="">
+			<a
+				href="/signin"
+				class="inline-block text-light bg-sky-600 hover:bg-sky-600 font-semibold py-2 px-4 rounded-lg"
+				>Get Started</a
+			>
+			<a
+				href="/explore"
+				class="inline-block bg-secondary-dark text-light font-semibold py-2 px-4 rounded-lg"
+				>Explore</a
+			>
+		</div>
+	</section>
+
+	<section class="absolute md:static">
+		<HeroCanvas />
+	</section>
+</div>
 
 <style>
 	:root {
@@ -152,7 +159,8 @@
 	}
 
 	h1 > .magic > .magic-star > svg > path {
-		fill: rgb(2 132 199);
+		/* fill: rgb(2 132 199); */
+		fill: whitesmoke;
 	}
 
 	h1 > .magic > .magic-text {
@@ -163,6 +171,10 @@
 		-webkit-text-fill-color: transparent;
 		white-space: nowrap;
 	}
+
+	/* .hero-text {
+		font-weight: 600;
+	} */
 
 	/* -- YouTube Link Styles -- */
 </style>
