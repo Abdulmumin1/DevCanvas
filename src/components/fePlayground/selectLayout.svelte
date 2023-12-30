@@ -90,6 +90,11 @@
 						>
 					</button>
 				</div>
+				<a
+					href={window.location.pathname + '/preview'}
+					class="bg-secondary-dark text-sm p-1 flex justify-between items-center"
+					>Preview <span class="text-[9px]">/preview</span></a
+				>
 			</div>
 		{/if}
 	</div>
