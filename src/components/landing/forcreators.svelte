@@ -3,20 +3,23 @@
 	import Fa from 'svelte-fa';
 </script>
 
-<div class="min-h-screen">
+<div class="flex items-center justify-center bg-gray-50 dark:bg-secondary-dark py-12">
 	<div
-		class="w-full h-full bg-gray-50 dark:bg-secondary-dark p-4 flex flex-col md:flex-row gap-3 items-center justify-center"
+		class=" max-w-[1000px] w-full h-full p-4 md:pl-20 flex flex-col md:flex-row gap-3 items-center justify-between"
 	>
-		<h1 class=" text-3xl md:text-4xl">
-			For <span class="bg-sky-500 text-black">CREATORS</span>
-		</h1>
+		<div>
+			<h1 class=" text-3xl md:text-4xl">
+				<span>Share your work</span>
+			</h1>
+			<p>share your most amazing</p>
+		</div>
 		<link
 			rel="stylesheet"
 			href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
 		/>
 
 		<div class="flex flex-col md:flex-row">
-			<div class="dark:text-black">
+			<!-- <div class="dark:text-black">
 				<div class="post-container floating-object2">
 					<div class="user-info">
 						<img
@@ -57,7 +60,7 @@
 						</div>
 					</div>
 				</div>
-			</div>
+			</div> -->
 
 			<div class="dark:text-black">
 				<div class="post-container floating-object">
@@ -77,7 +80,7 @@
 						Super cool Google Pixel Art with Just HMTL and css 👇🏾<br />
 						<a href="">https://devcanvas.art/play/zuyrPz</a>
 					</p>
-					<div class="post-image">
+					<div class="post-image bg-[#111111] p-4 rounded">
 						<img
 							src="https://pbs.twimg.com/media/F6lEU2yXMAASyiD?format=png&name=medium"
 							width="100%"
@@ -108,11 +111,14 @@
 	/* Basic styling for the post container */
 	.post-container {
 		border: 1px solid #ccc;
-		padding: 10px;
+		padding: 13px;
 		margin: 10px;
-		border-radius: 5px;
+		border-radius: 20px;
 		max-width: 400px;
 		background-color: white;
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
 	}
 
 	/* Styling for the user profile picture */

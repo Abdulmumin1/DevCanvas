@@ -6,6 +6,7 @@ export let showLoginToSave = writable(false);
 export let showForkTosave = writable(false);
 export let canvasConfig = writable({});
 export let canvasTags = writable({});
+export let dummyTitle = writable('Hover Animation');
 
 function appendJSONToFormData(json, formData, which) {
 	for (const key in json) {

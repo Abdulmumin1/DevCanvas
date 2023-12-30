@@ -29,9 +29,9 @@
 	});
 </script>
 
-<div class="grid grid-cols-2 items-center justify-between gap-20 lg:gap-40">
+<div class="grid grid-cols-1 md:grid-cols-2 items-center justify-between gap-x-20 lg:gap-x-40">
 	<section
-		class="flex relative md:ml-20 h-full px-8 py-12 flex-col gap-4 w-full border-primary text-secondary-dark"
+		class="flex relative md:ml-20 h-full px-8 py-0 md:py-12 flex-col gap-4 w-full border-primary text-secondary-dark"
 	>
 		<!-- <p>
 			<a
@@ -88,7 +88,7 @@
 		</div>
 	</section>
 
-	<section class="absolute md:static">
+	<section class="h-[1000px] p-12 md:h-full overflow-hidden">
 		<HeroCanvas />
 	</section>
 </div>
