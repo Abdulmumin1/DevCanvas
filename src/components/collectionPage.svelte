@@ -161,7 +161,7 @@
 {/if} -->
 
 {#if collection.length > 0}
-	<div class="flex flex-col gap-6 items-center" transition:fade>
+	<div class="flex flex-col gap-6 items-center w-full" transition:fade>
 		<div class="gap-6 flex flex-col w-full bg-white dark:bg-secondary-dark">
 			<div class="grid gap-6 rounded-lg w-full">
 				{#each collection as snippet}

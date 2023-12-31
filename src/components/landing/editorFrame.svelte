@@ -11,7 +11,7 @@
 			<ul>
 				<li>
 					<div class="flex text-sm gap-1 flex-col">
-						<p style="margin-bottom: -7px;" class="text-sm md:text-xl capitalize text-white">
+						<p style="margin-bottom: -7px;" class="text-sm md:text-xl capitalize text-light">
 							{title}
 						</p>
 						<p
@@ -19,7 +19,7 @@
 							spellcheck="false"
 						>
 							<span>by</span>
-							<a class="" href={`/nuur`}>@nuur</a>
+							<a class="text-light" href={`/nuur`}>@nuur</a>
 						</p>
 					</div>
 				</li>

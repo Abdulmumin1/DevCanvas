@@ -5,6 +5,7 @@
 	import NavWrapper from '../../components/snips/navWrapper.svelte';
 	import FeCollectionPage from '../../components/fePlayground/feCollectionPage.svelte';
 	import { fade, fly, scale, slide } from 'svelte/transition';
+	import FilterTags from '../../components/fePlayground/filterTags.svelte';
 	// if (!$user) {
 	// 	window.location.href = '/signin';
 	// }
@@ -75,66 +76,70 @@
 		</div>
 	</div>
 </div> -->
-<div class="flex min-h-screen gap-2">
-	<NavWrapper>
-		<main class=" min-h-screen w-full flex">
-			<div class=" w-full flex flex-col gap-2">
-				<!-- Code Snippet Cards -->
-				<div class="bg-sky-100 dark:bg-secondary-dark pt-2 px-1 rounded-md mt-4">
-					<div class="w-full flex gap-2 text-primary dark:text-white text-base">
-						<button
-							class="p-1 rounded-t-md px-3"
-							on:click={toogle}
-							class:bg-white={!showOther}
-							class:dark:bg-primary={!showOther}>Canvas</button
-						>
-						<button
-							class="p-1 rounded-t-md px-3"
-							on:click={toogle}
-							class:bg-white={showOther}
-							class:dark:bg-primary={showOther}>Snippets</button
-						>
-					</div>
+<!-- <div class="flex min-h-screen bg-sky-300 gap-2 w-full"> -->
+<NavWrapper>
+	<!-- <FilterTags /> -->
+	<main class=" min-h-screen py-3 md:py-6 w-full flex">
+		<div class=" w-full flex flex-col gap-2">
+			<!-- Code Snippet Cards -->
+			<!-- <div class="bg-sky-100 dark:bg-secondary-dark pt-2 px-1 rounded-md mt-4">
+				<div class="w-full flex gap-2 text-primary dark:text-white text-base">
+					<button
+						class="p-1 rounded-t-md px-3"
+						on:click={toogle}
+						class:bg-white={!showOther}
+						class:dark:bg-primary={!showOther}>Canvas</button
+					>
+					<button
+						class="p-1 rounded-t-md px-3"
+						on:click={toogle}
+						class:bg-white={showOther}
+						class:dark:bg-primary={showOther}>Snippets</button
+					>
 				</div>
-				{#await loadPlaygroundData()}
+			</div> -->
+			{#await loadPlaygroundData()}
+				<CollectionDummy />
+			{:then userSnippets}
+				<!-- <Sm -->
+				<!-- Create New Code Snippet button -->
+
+				<!-- Code Snippet Cards -->
+				{#key showOther}
+					<div in:fade class:hidden={showOther} class="hidden h-full">
+						<FeCollectionPage
+							collection={userSnippets}
+							supabase={data.supabase}
+							session={data.session}
+						/>
+					</div>
+				{/key}
+
+				<!-- {#await loadIntialData()}
+					
 					<CollectionDummy />
 				{:then userSnippets}
-					<!-- <Sm -->
-					<!-- Create New Code Snippet button -->
-
-					<!-- Code Snippet Cards -->
 					{#key showOther}
-						<div in:fade class:hidden={showOther} class="hidden h-full">
-							<FeCollectionPage
-								collection={userSnippets}
+						<div in:fade class:hidden={!showOther} class="hidden h-full">
+							<CollectionPage
+								rawcollection={userSnippets}
 								supabase={data.supabase}
 								session={data.session}
+								showMore={userSnippets.length > 6}
 							/>
 						</div>
 					{/key}
 
-					{#await loadIntialData()}
-						<!-- <p class="flex items-center justify-center gap-2 text-xl h-[50vh]">
-						Loading ...
-						<Fa icon={faSpinner} class="animate-spin text-xl" />
-					</p> -->
-						<CollectionDummy />
-					{:then userSnippets}
-						{#key showOther}
-							<div in:fade class:hidden={!showOther} class="hidden h-full">
-								<CollectionPage
-									rawcollection={userSnippets}
-									supabase={data.supabase}
-									session={data.session}
-									showMore={userSnippets.length > 6}
-								/>
-							</div>
-						{/key}
+				{/await} -->
+			{/await}
+		</div>
+	</main>
+</NavWrapper>
 
-						<!-- <FeCollectionPage -->
-					{/await}
-				{/await}
-			</div>
-		</main>
-	</NavWrapper>
-</div>
+<!-- </div> -->
+<!-- 
+<style>
+	* {
+		border: 1px solid red;
+	}
+</style> -->

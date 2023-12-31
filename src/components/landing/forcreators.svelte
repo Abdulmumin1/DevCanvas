@@ -5,18 +5,18 @@
 
 <div class="flex items-center justify-center bg-gray-50 dark:bg-secondary-dark py-12">
 	<div
-		class=" max-w-[1000px] w-full h-full p-4 md:pl-20 flex flex-col md:flex-row gap-3 items-center justify-between"
+		class=" max-w-[1000px] md:flex-row-reverse w-full h-full p-4 md:pl-20 flex flex-col gap-3 items-center justify-between"
 	>
 		<div>
-			<h1 class=" text-3xl md:text-4xl">
-				<span>Share your work</span>
+			<h1 class=" text-4xl md:text-5xl">
+				<span class="text-sky-500">Share your work</span>
 			</h1>
-			<p>share your most amazing</p>
+			<p class="text-black dark:text-light">share your most amazing</p>
 		</div>
-		<link
+		<!-- <link
 			rel="stylesheet"
 			href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
-		/>
+		/> -->
 
 		<div class="flex flex-col md:flex-row">
 			<!-- <div class="dark:text-black">
@@ -89,15 +89,15 @@
 					</div>
 					<div class="action-buttons">
 						<div class="action-button">
-							<span class="material-symbols-outlined icon"> share </span>
+							<span class="material-symbols-outlined icon"> Share </span>
 							<span>54</span>
 						</div>
 						<div class="action-button">
-							<Fa icon={faRetweet} />
+							<i class="material-symbols-outlined icon"> Retweet </i>
 							<span>254</span>
 						</div>
 						<div class="action-button">
-							<i class="material-symbols-outlined icon"> favorite </i>
+							<i class="material-symbols-outlined icon"> Favorite </i>
 							3.4k
 						</div>
 					</div>

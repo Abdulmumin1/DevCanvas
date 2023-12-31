@@ -10,6 +10,7 @@
 	import EmbedSection from '../components/landing/embedSection.svelte';
 	import Forcreators from '../components/landing/forcreators.svelte';
 	import Forcreatives from '../components/landing/forcreatives.svelte';
+	import Explore from '../components/landing/explore.svelte';
 </script>
 
 <svelte:head>
@@ -31,9 +32,7 @@
 	<div class="w-full relative z-10">
 		<InnerNav />
 	</div>
-	<div
-		class="w-full max-w-[1500px] mx-auto rounded-lg flex flex-col gap-4 justify-center items-center"
-	>
+	<div class="w-full mx-auto rounded-lg flex flex-col gap-4 justify-center items-center">
 		<!-- Add your landing page content here -->
 		<div class="h-[500px] grid">
 			<header class="w-full overflow-hidden">
@@ -48,6 +47,7 @@
 		</div>
 		<main class="w-full">
 			<!-- Add your features or benefits here -->
+			<!-- <Explore /> -->
 			<div>
 				<div class="">
 					<Forcreators />

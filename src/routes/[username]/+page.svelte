@@ -46,7 +46,7 @@
 				id="userinfo"
 				class="flex items-center flex-col gap-3 w-full border-b-2 dark:border-secondary-dark py-2 md:py-4"
 			>
-				<div class="h-24 w-24 bg-sky-500" />
+				<div class="h-24 w-24 bg-sky-500 rounded-xl" />
 				<h1 class="text-3xl capitalize">
 					{data.details.name}
 				</h1>
@@ -77,8 +77,8 @@
 			</div>
 
 			<div id="collections" class="w-full">
-				<div class="h-full">
-					<h2 class="text-2xl">Collections</h2>
+				<div class="h-full flex flex-col">
+					<h2 class="text-2xl py-4">Collections</h2>
 					<div class="h-full w-full">
 						<!-- <p class="text-3xl">Apologies, In Progess 😋.....</p> -->
 						<Collection data={{ supabase: data.supabase, user_id: data.details.user_id }} />

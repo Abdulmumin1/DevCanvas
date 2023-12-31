@@ -14,9 +14,11 @@
 	import { page } from '$app/stores';
 	import { beforeNavigate, afterNavigate } from '$app/navigation';
 	import ShareAct from '$components/shareAct.svelte';
+	import ShareDropdown from '../../../../components/fePlayground/shareDropdown.svelte';
 	export let data;
 
 	let iframe;
+	let link;
 	function injectCSSPlugins(iframeDoc, cssPluginsVar) {
 		const tailwindScriptHTML = iframeDoc.getElementById('tailwincssDSFE4o431!!');
 		const fontawesomeHTML = iframeDoc.getElementById('fontawesomeDSFE4o431!!');
@@ -154,13 +156,11 @@
 			if (!zoomOut) {
 				injectJSPlugins(iframeDoc, data.details.plugins[0].js);
 				// Step 3: Create and append JavaScript code
-				let js = data.details.js;
 				injectCSSPlugins(iframeDoc, data.details.plugins[0].css);
-				const scriptElement = iframeDoc.createElement('script');
-				scriptElement.textContent = `${js}`;
-				iframeDoc.body.appendChild(scriptElement);
 			}
 		}
+
+		link = window.location.href;
 	});
 	afterNavigate(() => {
 		// console.log('which is fist');
@@ -170,6 +170,10 @@
 				let iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
 				iframeDoc.body.appendChild(es);
 				// console.log('me');
+				let js = data.details.js;
+				const scriptElement = iframeDoc.createElement('script');
+				scriptElement.textContent = `${js}`;
+				iframeDoc.body.appendChild(scriptElement);
 			}, 500);
 		}
 	});
@@ -201,6 +205,10 @@
 			> <span class="hidden md:block text-gray-100">Editor View</span>
 		</a>
 
-		<div class="bg-secondary-dark p-3 text-gray-100 rounded-full"><ShareAct /></div>
+		<div class="bg-secondary-dark p-3 text-gray-100 rounded-full">
+			<ShareAct {link} />
+		</div>
+
+		<!-- <ShareDropdown /> -->
 	</div>
 {/if}
