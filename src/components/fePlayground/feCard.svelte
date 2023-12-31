@@ -37,6 +37,7 @@
 		height="200"
 		frameborder="0"
 		scrolling="no"
+		loading="lazy"
 		class="w-full h-[250px] overflow-hidden rounded-xl"
 		style="aspect-ratio: 1/1;"
 	/>
