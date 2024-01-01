@@ -11,8 +11,11 @@
 </script>
 
 <li class=" text-xl md:text-2xl flex flex-col gap-2 items-center justify-center">
-	<button on:click={toggleAccordion} class="flex gap-2 items-center justify-center">
-		<span>{title}</span>
+	<button
+		on:click={toggleAccordion}
+		class="dark:text-sky-400 flex gap-2 items-center justify-center"
+	>
+		<span class="">{title}</span>
 		<svg
 			class="w-5 h-5 transition-transform transform rotate-0"
 			class:rotate-180={open}

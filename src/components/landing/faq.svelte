@@ -12,15 +12,19 @@
 				Here are list of question we think you might want answers for.
 			</p>
 
-			<ul class=" flex gap-6 flex-col">
+			<ul class=" flex gap-6 flex-col dark:text-light">
 				<Accodion
-					title="Can the editor execute code?"
+					title="What is snippets"
+					content="Snippets is a part of devcanvas, that allows you to share code snippets easily with others"
+				/>
+				<Accodion
+					title="Can the editor (snippets) execute code?"
 					content="DevCanvas Interactive frontend Playground can show preview of code almost instantanoeusly, but for snippets in other languages, you can't execute the code directly from our online editor. It is only for sharing."
 				/>
 
 				<Accodion
-					title="Is it a language specific platform?"
-					content="DevCanvas support 50+ Languages, so there is hope that whatever you're are sharing has a powerfull autocompletion and beautiful syntax highlighting."
+					title="Is it a language specific platform (snippets) ?"
+					content="DevCanvas snippets support 50+ Languages, so there is hope that whatever you're are sharing has a powerfull autocompletion and beautiful syntax highlighting."
 				/>
 
 				<Accodion
