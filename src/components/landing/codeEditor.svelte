@@ -1,6 +1,9 @@
 <script>
 	import snippetEditorDark from '$lib/snippetEditorDark.png';
 	import snippetEditor from '$lib/snippetEditor.png';
+
+	import devcanvaseditor from '$lib/devcanvaseditor.jpg';
+
 	import { darkModeState } from '$lib/index.js';
 </script>
 
@@ -10,7 +13,7 @@
 			<h2 class=" font-semibold mb-2 text-4xl md:text-6xl dark:text-sky-400">
 				A Powerfull Code Editor
 			</h2>
-			<p class="max-w-lg text-center">
+			<p class="max-w-lg text-center dark:text-light">
 				Bring your coding projects to life with real-time collaboration. Our built-in collaborative
 				code editor powered by VSCode lets you write code more seamlessly, Every of your vscode
 				thingy just works.
@@ -20,11 +23,11 @@
 		<div class="rounded-t-3xl overflow-hidden">
 			<!-- src="https://raw.githubusercontent.com/Abdulmumin1/media/main/snippetCodeEditorPreview.gif" -->
 
-			{#if $darkModeState}
-				<img src={snippetEditorDark} alt="Editor Preview" class="  rounded-4xl" />
-			{:else}
-				<img src={snippetEditor} alt="Editor Preview" class="  rounded-4xl" />
-			{/if}
+			<!-- {#if $darkModeState} -->
+			<!-- <img src={snippetEditorDark} alt="Editor Preview" class="  rounded-4xl" /> -->
+			<!-- {:else} -->
+			<img src={devcanvaseditor} alt="Editor Preview" class="  rounded-4xl grayscale" />
+			<!-- {/if} -->
 		</div>
 	</div>
 </div>
