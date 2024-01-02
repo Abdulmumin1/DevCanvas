@@ -38,6 +38,7 @@
 		"@fortawesome/free-solid-svg-icons": "^6.4.0",
 		"@supabase/auth-helpers-sveltekit": "^0.10.1",
 		"@supabase/supabase-js": "^2.31.0",
+		"@vercel/og": "^0.6.1",
 		"animejs": "^3.2.1",
 		"caniuse-lite": "^1.0.30001546",
 		"codemirror": "^6.0.1",
