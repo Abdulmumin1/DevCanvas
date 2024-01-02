@@ -28,11 +28,11 @@
 <svelte:head>
 	<meta
 		property="og:image"
-		content="https://og.tailgraph.com/og?fontFamily=Roboto&title={title}&titleTailwind=text-gray-800%20font-bold%20text-6xl&text=&textTailwind=text-gray-700%20text-2xl%20mt-4&logoUrl=https%3A%2F%2Fsnippet-bice.vercel.app%2Flogo.svg&logoTailwind=h-8%20opacity-75&bgTailwind=bg-white&footer=devcanvas.art&footerTailwind=text-teal-600&t=1704208668613&refresh=1"
+		content="https://og.tailgraph.com/og?fontFamily=Roboto&title={title}&titleTailwind=text-gray-800%20font-bold%20text-6xl&text=&textTailwind=text-gray-700%20text-2xl%20mt-4&logoUrl=https%3A%2F%2Fsnippet-bice.vercel.app%2Flogo.svg&logoTailwind=opacity-75%20height%20width&bgTailwind=bg-white&footer=devcanvas.art&footerTailwind=text-teal-600&t=1704208668613&refresh=1"
 	/>
 	<meta
 		property="twitter:image"
-		content="https://og.tailgraph.com/og?fontFamily=Roboto&title={title}&titleTailwind=text-gray-800%20font-bold%20text-6xl&text=&textTailwind=text-gray-700%20text-2xl%20mt-4&logoUrl=https%3A%2F%2Fsnippet-bice.vercel.app%2Flogo.svg&logoTailwind=h-8%20opacity-75&bgTailwind=bg-white&footer=devcanvas.art&footerTailwind=text-teal-600&t=1704208668613&refresh=1"
+		content="https://og.tailgraph.com/og?fontFamily=Roboto&title={title}&titleTailwind=text-gray-800%20font-bold%20text-6xl&text=&textTailwind=text-gray-700%20text-2xl%20mt-4&logoUrl=https%3A%2F%2Fsnippet-bice.vercel.app%2Flogo.svg&logoTailwind=opacity-75%20height%20width&bgTailwind=bg-white&footer=devcanvas.art&footerTailwind=text-teal-600&t=1704208668613&refresh=1"
 	/>
 </svelte:head>
 <slot />
