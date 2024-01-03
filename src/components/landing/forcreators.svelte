@@ -11,7 +11,10 @@
 			<h1 class=" text-4xl md:text-5xl">
 				<span class="text-sky-500">Share your work</span>
 			</h1>
-			<p class="text-black dark:text-light">share your most amazing</p>
+			<p class="text-black dark:text-light max-w-[500px]">
+				Build up your public profile, and bring others along on your journey <br /> Foster a sense of
+				community by sharing insights, experiences, and valuable tips that resonates with your audience.
+			</p>
 		</div>
 		<!-- <link
 			rel="stylesheet"

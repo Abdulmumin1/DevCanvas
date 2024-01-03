@@ -1,7 +1,6 @@
 <script>
 	import Fa from 'svelte-fa';
 	import { faGithub, faWpexplorer } from '@fortawesome/free-brands-svg-icons';
-	import logo from '$lib/logo.png';
 	import Darkmode from './darkmode.svelte';
 	import { faBars, faBlog, faClose, faWindowMaximize } from '@fortawesome/free-solid-svg-icons';
 	import { scale, slide } from 'svelte/transition';

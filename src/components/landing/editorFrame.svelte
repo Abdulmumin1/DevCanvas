@@ -57,7 +57,7 @@
 				<div class="h-4 animate-pulse rounded-3xl bg-gray-300 w-[30%]" />
 			</div>
 		</section>
-		<section id="preview" class="flex items-center justify-center">
+		<section id="preview" class="flex items-center justify-center h-full">
 			<slot />
 		</section>
 	</div>
