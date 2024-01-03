@@ -9,7 +9,7 @@
 			<div class="pill blue" />
 			<div class="pill green" />
 		</div>
-		<div class="search text-black">https://devcanvas.art</div>
+		<div class="search text-black bg-[#cecbcb] dark:bg-light">https://devcanvas.art</div>
 		<div />
 	</div>
 	<div class="box">
@@ -38,7 +38,7 @@
 			</div>
 		</div>
 
-		<div class="preview text-black"><h1>HELLO WORLD</h1></div>
+		<div class="preview bg-white dark:bg-light text-black"><h1>HELLO WORLD</h1></div>
 	</div>
 </div>
 
@@ -74,7 +74,6 @@
 
 	.preview {
 		width: 60%;
-		background-color: white;
 		height: 500px;
 		display: flex;
 		padding: 20px;
@@ -119,7 +118,7 @@
 	}
 
 	.search {
-		background-color: #cecbcb;
+		/* background-color: #cecbcb; */
 		width: 300px;
 		text-align: center;
 		padding: 4px;

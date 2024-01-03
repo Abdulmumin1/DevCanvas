@@ -11,6 +11,7 @@
 	import Forcreators from '../components/landing/forcreators.svelte';
 	import Forcreatives from '../components/landing/forcreatives.svelte';
 	import Explore from '../components/landing/explore.svelte';
+	import Features from '../components/landing/features.svelte';
 </script>
 
 <svelte:head>
@@ -48,6 +49,7 @@
 		<main class="w-full">
 			<!-- Add your features or benefits here -->
 			<!-- <Explore /> -->
+			<Features />
 			<div>
 				<div class="">
 					<Forcreators />
