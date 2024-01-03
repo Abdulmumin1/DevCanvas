@@ -4,7 +4,6 @@
 	import FeSave from './feSave.svelte';
 	import { showSave, showLoginToSave } from '$lib/feEditor/store.js';
 	import { user, isOwner } from '$lib/index.js';
-	import logo from '$lib/logo.png';
 
 	import FeFork from './feFork.svelte';
 	import FePlaygroundTitle from './fePlaygroundTitle.svelte';

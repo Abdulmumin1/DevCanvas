@@ -1,7 +1,4 @@
 <script>
-	import snippetEditorDark from '$lib/snippetEditorDark.png';
-	import snippetEditor from '$lib/snippetEditor.png';
-
 	import devcanvaseditor from '$lib/devcanvaseditor.jpg';
 
 	import { darkModeState } from '$lib/index.js';

@@ -1,10 +1,3 @@
-<script>
-	import SectionCard from './sectionCard.svelte';
-	import Explore from '$lib/exploreNew.gif';
-	import ExploreDark from '$lib/exploreNewDark.gif';
-	import { darkModeState } from '$lib/index.js';
-</script>
-
 <div class="w-full flex items-center justify-center">
 	<div class="flex gap-3 flex-col md:flex-row max-w-4xl">
 		<div

@@ -1,7 +1,7 @@
 <script>
 	import { HighlightAuto, LineNumbers } from 'svelte-highlight';
 	import { copyTextToClipboard } from '$lib/index.js';
-	import logo from '$lib/logo.png';
+	import logo from '$lib/logo.svg';
 
 	import { faCheck, faCopy, faExpand } from '@fortawesome/free-solid-svg-icons';
 	import Fa from 'svelte-fa';
