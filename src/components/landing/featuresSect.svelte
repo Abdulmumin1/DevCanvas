@@ -12,7 +12,7 @@
 </script>
 
 <div class="min-h-[300px] py-12 items-center justify-center flex flex-col anim">
-	<h1 class="text-4xl bg-sky-500">Features</h1>
+	<h1 class="text-4xl font-semibold dark:text-sky-500">Features</h1>
 	<div class="flex gap-2 p-2 flex-wrap items-center justify-center cs">
 		{#each features as feat}
 			<FeatureCard icon={feat.icon} title={feat.message} />
@@ -23,8 +23,9 @@
 <style>
 	.anim {
 		animation: fade-in both;
-		animation-timeline: view(vertical);
-		animation-range: contain;
+		animation-timeline: view();
+		animation-range-start: contain 0vh;
+		animation-range-end: contain 20vh;
 		opacity: 0;
 		scale: 0.4;
 	}

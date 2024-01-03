@@ -18,10 +18,22 @@
 	let typingTimer; // Timer to track typing
 	const delay = 1000; // Adjust the delay as needed (in milliseconds)
 
+	let text = $current_data.description;
+	let title = null;
+	try {
+		title = text.split('Fork:')[1];
+		console.log(title);
+	} catch (err) {
+		//
+	}
 	// Function to handle text input
 	function handleInput(event) {
 		if (!$isOwner) return;
 		let text = event.target.innerText;
+		if (title) {
+			text = `Fork: ${text}`;
+		}
+
 		console.log(text);
 		current_data.update((cur) => {
 			// console.log(cur);
@@ -71,21 +83,48 @@
 <div class="flex flex-col w-full">
 	{#if $isOwner}
 		<div class="flex gap-2 items-center" style="margin-bottom: -7px;">
-			<p
-				contenteditable=""
-				on:keydown={handleKeyDown}
-				on:input={handleInput}
-				placeholder="Untitled Project"
-				spellcheck="false"
-				class="max-w-[100px] font-semibold md:max-w-[400px] w-fit focus:outline-1 focus:outline-sky-200 text-sm md:text-xl capitalize text-white bg-inherit whitespace-nowrap truncate"
-			>
-				{$current_data.description}
-			</p>
+			{#if title}
+				<div class="flex gap-1 items-center max-w-[100px] md:max-w-[400px] w-fit">
+					<p class="bg-sky-400 text-black p-[1.3px] rounded text-sm md:text-xl">Fork</p>
+					<p
+						contenteditable=""
+						on:keydown={handleKeyDown}
+						on:input={handleInput}
+						placeholder="Untitled Project"
+						spellcheck="false"
+						class=" focus:outline-1 font-semibold focus:outline-sky-200 text-sm md:text-xl capitalize text-white bg-inherit whitespace-nowrap truncate"
+					>
+						{title}
+					</p>
+				</div>
+			{:else}
+				<p
+					contenteditable=""
+					on:keydown={handleKeyDown}
+					on:input={handleInput}
+					placeholder="Untitled Project"
+					spellcheck="false"
+					class="max-w-[100px] font-semibold md:max-w-[400px] w-fit focus:outline-1 focus:outline-sky-200 text-sm md:text-xl capitalize text-white bg-inherit whitespace-nowrap truncate"
+				>
+					{$current_data.description}
+				</p>
+			{/if}
 			<span class="text-white text-[11px] md:text-base jello-diagonal-2 cursor-pointer">
 				<Fa icon={faPen} />
 			</span>
 
 			<CanvasVisibility canvas_id={$current_data.id} publicLy={$current_data.public} />
+		</div>
+	{:else if title}
+		<div class="flex gap-1 items-center max-w-[100px] md:max-w-[400px] w-fit">
+			<p class="bg-sky-400 text-black p-[1.3px] rounded text-sm md:text-xl flex items-baseline">
+				Fork
+			</p>
+			<p
+				class="max-w-[100px] md:max-w-[400px] font-semibold w-fit text-sm md:text-xl capitalize text-white bg-inherit outline-none whitespace-nowrap flex items-center gap-2 truncate"
+			>
+				{title}
+			</p>
 		</div>
 	{:else}
 		<p
