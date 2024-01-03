@@ -1,7 +1,6 @@
 <script>
 	import Fa from 'svelte-fa';
 	import { faGithub } from '@fortawesome/free-brands-svg-icons';
-	import logo from '$lib/logo-100.png';
 </script>
 
 <footer class="bg-sky-500 text-black px-4 py-8">
