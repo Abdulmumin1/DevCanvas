@@ -1,17 +1,17 @@
 <script>
-	import Footer from '../components/footer.svelte';
-	import InnerNav from '../components/innerNav.svelte';
+	import Footer from '$components/footer.svelte';
+	import InnerNav from '$components/innerNav.svelte';
 
-	import Hero from '../components/landing/hero.svelte';
-	import Discover from '../components/landing/discover.svelte';
-	import LanguageSupport from '../components/landing/languageSupport.svelte';
-	import CodeEditor from '../components/landing/codeEditor.svelte';
-	import Faq from '../components/landing/faq.svelte';
-	import EmbedSection from '../components/landing/embedSection.svelte';
-	import Forcreators from '../components/landing/forcreators.svelte';
-	import Forcreatives from '../components/landing/forcreatives.svelte';
-	import Explore from '../components/landing/explore.svelte';
-	import Features from '../components/landing/features.svelte';
+	import Hero from '$components/landing/hero.svelte';
+	import Discover from '$components/landing/discover.svelte';
+	import LanguageSupport from '$components/landing/languageSupport.svelte';
+	import CodeEditor from '$components/landing/codeEditor.svelte';
+	import Faq from '$components/landing/faq.svelte';
+	import EmbedSection from '$components/landing/embedSection.svelte';
+	import Forcreators from '$components/landing/forcreators.svelte';
+	import Forcreatives from '$components/landing/forcreatives.svelte';
+	import Explore from '$components/landing/explore.svelte';
+	import Features from '$components/landing/features.svelte';
 </script>
 
 <svelte:head>
