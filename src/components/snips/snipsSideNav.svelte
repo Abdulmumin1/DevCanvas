@@ -6,7 +6,13 @@
 
 	import Signout from '../signout.svelte';
 	import Fa from 'svelte-fa';
-	import { faPerson, faPersonArrowUpFromLine, faUser } from '@fortawesome/free-solid-svg-icons';
+	import {
+		faMagicWandSparkles,
+		faPerson,
+		faPersonArrowUpFromLine,
+		faStar,
+		faUser
+	} from '@fortawesome/free-solid-svg-icons';
 
 	let signinURL = handleRedirectURL($page.url);
 </script>
@@ -56,6 +62,14 @@
 								<a href="/profile" class="flex items-center gap-2 bg-secondary-dark rounded-lg p-2"
 									><Fa icon={faUser} />Profile</a
 								>
+								<div>
+									<a
+										href="/pro/activate"
+										class="bg-secondary-dark p-1 py-2 text-sm w-full text-left rounded-lg flex gap-2 items-center"
+									>
+										<Fa icon={faMagicWandSparkles} />Pro<Fa icon={faStar} />
+									</a>
+								</div>
 								<div class="bg-error w-full text-black rounded-xl p-1">
 									<Signout />
 								</div>

@@ -4,6 +4,7 @@
 	import Fa from 'svelte-fa';
 	import { scale, slide } from 'svelte/transition';
 	import { supportedLanguages, user_info, showToast } from '$lib/index.js';
+	import Probadge from './probadge.svelte';
 
 	let isTooltipVisible = false;
 
@@ -54,13 +55,11 @@
 	// });
 </script>
 
-<div
-	class="tooltip-container relative inline-block cursor-pointer transition-transform duration-300"
->
-	<h1 class="text-6xl">Dashboard</h1>
+<div class="tooltip-container relative inline-block transition-transform duration-300">
+	<h1 class="text-6xl flex">Dashboard <Probadge /></h1>
 	<button
 		on:click={showOptions}
-		class="flex gap-2 p-2 text-sm rounded-lg text-secondary-dark bg-sky-400 w-fit items-center mb-2"
+		class="flex gap-2 p-2 cursor-pointer text-sm rounded-lg text-secondary-dark bg-sky-400 w-fit items-center mb-2"
 	>
 		<Fa icon={newCodeIcon} /> New Code Snippet
 	</button>
@@ -70,7 +69,7 @@
 			method="POST"
 			action="/db/create"
 			transition:slide
-			class="tooltip-contentw-[300px] md:w-[600px] bg-inherit py-4 top-14 z-10 flex justify-center items-center gap-4 rounded-lg flex-col"
+			class="tooltip-content w-full md:max-w-[500px] bg-inherit py-4 top-14 z-10 flex justify-center items-center gap-4 rounded-lg flex-col"
 		>
 			<div class="w-full gap-2 dark:text-white">
 				<p class="text-black text-left w-full font-semibold dark:text-white">Enter Description</p>

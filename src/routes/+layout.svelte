@@ -95,7 +95,7 @@
 	/>
 </svelte:head>
 
-{#if $showNavigating && !($page.url.pathname.endsWith('/preview?preview=preview') || $page.url.pathname.endsWith('/embed'))}
+{#if $showNavigating && !(($page.url.pathname.endsWith('/preview') && $page.url.searchParams.get('preview') == 'preview') || $page.url.pathname.endsWith('/embed'))}
 	<PageLoadProgess />
 {/if}
 <div class=" bg-white dark:bg-primary dark:text-white transition-colors duration-300">
