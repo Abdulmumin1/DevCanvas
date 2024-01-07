@@ -25,7 +25,7 @@
 	.progress-bar {
 		position: fixed;
 		top: 0;
-		height: 0.1rem;
+		height: 0.2rem;
 		width: 100vw;
 		z-index: 100;
 	}

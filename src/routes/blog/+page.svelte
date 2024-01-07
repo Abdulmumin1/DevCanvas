@@ -37,7 +37,9 @@
 			<div class="flex mb-20 gap-4 h-full md:min-h-[100dvh] flex-col w-full justify-center">
 				{#if data.posts.length > 0}
 					<h1 class="text-3xl">Latest Post</h1>
-					<div class=" bg-sky-300 p-2 text-black text-6xl flex flex-col gap-3 w-full">
+					<div
+						class=" bg-secondary-dark p-2 rounded-3xl text-light text-6xl flex flex-col gap-3 w-full"
+					>
 						<LatestBlog details={data.posts[0]} />
 					</div>
 					<!-- <div class="h-full flex flex-col w-full  gap-2">

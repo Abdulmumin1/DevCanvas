@@ -19,7 +19,9 @@
 		showForkTosave,
 		showModal,
 		showEmbedModal,
-		sassActive
+		sassActive,
+		babelActive,
+		typescriptActive
 	} from '$lib/feEditor/store.js';
 	import Femodal from '../../../components/fePlayground/femodal.svelte';
 	import JsConsole from '../../../components/fePlayground/jsConsole.svelte';
@@ -40,7 +42,8 @@
 
 	canvasConfig.set(data.details.config);
 	sassActive.set(data.details.config?.cssProcessor);
-
+	babelActive.set($current_data.config?.babelActive);
+	typescriptActive.set($current_data.config?.typescriptActive);
 	function captureIframeOutput(event) {
 		if (event.data && event.data.type === 'console') {
 			// Handle the console message received from the iframe

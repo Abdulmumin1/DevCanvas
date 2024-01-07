@@ -1,6 +1,13 @@
 <script>
 	import { current_data, user, isOwner, SnippetsDescription, showToast } from '$lib/index.js';
-	import { consoleOutput, canvasConfig, canvasTags, sassActive } from '$lib/feEditor/store.js';
+	import {
+		consoleOutput,
+		canvasConfig,
+		canvasTags,
+		sassActive,
+		babelActive,
+		typescriptActive
+	} from '$lib/feEditor/store.js';
 	import { onDestroy, onMount, tick } from 'svelte';
 	import { browser } from '$app/environment';
 	import FeCodeEditor from '../../../components/fePlayground/feCodeEditor.svelte';
@@ -52,7 +59,8 @@
 		],
 		config: {
 			tags: [],
-			cssProcessor: false
+			cssProcessor: false,
+			babel: false
 		},
 		tags: []
 	};
@@ -72,6 +80,9 @@
 		canvasTags.set($current_data.tags);
 		canvasConfig.set($current_data.config);
 		sassActive.set($current_data.config?.cssProcessor);
+		babelActive.set($current_data.config?.babelActive);
+		typescriptActive.set($current_data.config?.typescriptActive);
+
 		window.addEventListener('message', captureIframeOutput);
 
 		// // Attach the beforeunload event

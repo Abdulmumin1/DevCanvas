@@ -10,6 +10,8 @@
 	import { onMount, tick } from 'svelte';
 	import SaasProcessor from './saasProcessor.svelte';
 	import AddTags from './pluginModal/addTags.svelte';
+	import BabelProcessor from './babelProcessor.svelte';
+	import TypescriptProcessor from './typescriptProcessor.svelte';
 
 	let modal;
 	let js = $externalStuff.js;
@@ -134,6 +136,11 @@
 	<div id="tabEditor" class:hidden={tabPlugin} class="flex gap-2 flex-col">
 		<div>CSS PreProcessor</div>
 		<SaasProcessor />
+		<div>Javascript Processors</div>
+		<div class="bg-gray-300 rounded-lg dark:bg-primary p-2 flex flex-col gap-2">
+			<BabelProcessor />
+			<TypescriptProcessor />
+		</div>
 		<AddTags />
 	</div>
 </dialog>

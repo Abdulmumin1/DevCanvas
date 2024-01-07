@@ -81,9 +81,7 @@
 </svelte:head>
 
 <article in:scale class="mx-auto flex flex-col gap-6 md:px-12">
-	<hgroup
-		class="  text-black dark:text-[rgba(255,228,230,.9)] flex rounded-lg w-full flex-col gap-3 relative"
-	>
+	<hgroup class="  text-black flex rounded-lg w-full flex-col gap-3 relative">
 		<div class="flex gap-4 flex-col">
 			<div class="flex gap-2">
 				<Fa icon={faCalendar} />
@@ -123,9 +121,7 @@
 		{/each}
 	</div>
 
-	<div
-		class="space-y-8 markdown-content font-light text-[#404953] dark:text-[rgba(255,228,230,.9)] article"
-	>
+	<div class="space-y-8 markdown-content font-light text-[#404953] article">
 		<svelte:component this={data.content} />
 	</div>
 	<div class="w-full flex items-center justify-center p-3">

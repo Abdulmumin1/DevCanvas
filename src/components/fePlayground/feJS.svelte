@@ -7,7 +7,8 @@
 		showLoginToSave,
 		javascriptStuff,
 		showForkTosave,
-		editorConfig
+		editorConfig,
+		typescriptActive
 	} from '$lib/feEditor/store.js';
 	import {
 		current_data,
@@ -144,7 +145,22 @@
 			// console.log(value);
 		}
 	}
-
+	$: {
+		let active = $typescriptActive;
+		console.log(active);
+		if (monacoModel) {
+			// console.log(monacoModel);
+			// let model = monacoModel.getModel();
+			// console.log(model);
+			if ($typescriptActive) {
+				monacoModel.editor.setModelLanguage(model, 'typescript');
+				console.log('lang just changed', 'typescript');
+			} else {
+				monacoModel.editor.setModelLanguage(model, 'javascript');
+				console.log('lang just changed', 'javascript');
+			}
+		}
+	}
 	onMount(async () => {
 		self.MonacoEnvironment = {
 			getWorker: function (_moduleId, label) {
