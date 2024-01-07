@@ -938,6 +938,10 @@ video {
   min-height: 300px;
 }
 
+.min-h-\[350px\] {
+  min-height: 350px;
+}
+
 .min-h-\[400px\] {
   min-height: 400px;
 }
@@ -2061,11 +2065,6 @@ video {
   color: rgb(14 165 233 / var(--tw-text-opacity));
 }
 
-.text-sky-600 {
-  --tw-text-opacity: 1;
-  color: rgb(2 132 199 / var(--tw-text-opacity));
-}
-
 .text-sky-900 {
   --tw-text-opacity: 1;
   color: rgb(12 74 110 / var(--tw-text-opacity));
@@ -2370,10 +2369,6 @@ video {
   line-height: 2.25rem;
 }
 
-:is(.dark .article h2) {
-  color: rgba(255,228,230,.9);
-}
-
 @media (min-width: 768px) {
   .article h2 {
     font-size: 2.25rem;
@@ -2400,10 +2395,6 @@ video {
   line-height: 2rem;
 }
 
-:is(.dark .article h1) {
-  color: rgba(255,228,230,.9);
-}
-
 @media (min-width: 768px) {
   .article h1 {
     font-size: 1.875rem;
@@ -2419,10 +2410,6 @@ video {
   padding-bottom: 0.5rem;
   font-size: 1.25rem;
   line-height: 1.75rem;
-}
-
-:is(.dark .article h3) {
-  color: rgba(255,228,230,.9);
 }
 
 @media (min-width: 768px) {
@@ -2443,10 +2430,6 @@ video {
   padding-bottom: 0.5rem;
   font-size: 1.125rem;
   line-height: 1.75rem;
-}
-
-:is(.dark .article h4) {
-  color: rgba(255,228,230,.9);
 }
 
 @media (min-width: 768px) {
@@ -2579,7 +2562,7 @@ video {
 	h4,
 	h5,
 	h6 {
-		@apply dark:text-[rgba(255,228,230,.9)];
+		@apply ;
 	} */
 
 .after\:absolute::after {
@@ -2821,10 +2804,6 @@ video {
 :is(.dark .dark\:bg-sky-200) {
   --tw-bg-opacity: 1;
   background-color: rgb(186 230 253 / var(--tw-bg-opacity));
-}
-
-:is(.dark .dark\:text-\[rgba\(255\2c 228\2c 230\2c \.9\)\]) {
-  color: rgba(255,228,230,.9);
 }
 
 :is(.dark .dark\:text-black) {

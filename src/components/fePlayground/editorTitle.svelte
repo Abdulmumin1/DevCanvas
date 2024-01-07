@@ -1,7 +1,13 @@
 <script>
 	import { faCss3, faCss3Alt, faHtml5, faJs, faSafari } from '@fortawesome/free-brands-svg-icons';
 	import { faAngleDown, faGear, faGears, faTerminal } from '@fortawesome/free-solid-svg-icons';
-	import { showModal, showjsConsole, sassActive } from '$lib/feEditor/store.js';
+	import {
+		showModal,
+		showjsConsole,
+		sassActive,
+		babelActive,
+		typescriptActive
+	} from '$lib/feEditor/store.js';
 	import Fa from 'svelte-fa';
 	import EditorSettings from './editorSettings.svelte';
 	import Femodal from './femodal.svelte';
@@ -32,8 +38,13 @@
 {:else if lang == 'js'}
 	<div class="w-full flex justify-between items-center h-10">
 		<p class="bg-gray-50 dark:bg-black px-3 py-1 flex gap-1 items-center">
-			<span class="text-yellow-500"><Fa icon={faJs} /></span>JS
+			<span class="text-yellow-500"><Fa icon={faJs} /></span>{$babelActive
+				? `JS (babel)`
+				: $typescriptActive
+				? 'JS (Typescript)'
+				: 'JS'}
 		</p>
+		<!-- {@html games} -->
 
 		<div class=" flex justify-between items-center">
 			<button
