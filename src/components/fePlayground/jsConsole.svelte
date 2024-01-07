@@ -5,7 +5,7 @@
 	import { showjsConsole, consoleOutput } from '$lib/feEditor/store.js';
 	import { onDestroy } from 'svelte';
 	import { browser } from '$app/environment';
-	let currentHeight = 150; // Initial height of the overlay
+	let currentHeight = 300; // Initial height of the overlay
 	let startY, startHeight;
 	let isResizing = false;
 
@@ -16,11 +16,11 @@
 		startY = event.clientY;
 		startHeight = currentHeight;
 
-		if (browser) {
-			// Attach window event listeners for mousemove and mouseup
-			window.addEventListener('mousemove', resizeOverlay);
-			window.addEventListener('mouseup', stopResize);
-		}
+		// if (browser) {
+		// 	// Attach window event listeners for mousemove and mouseup
+		// 	window.addEventListener('mousemove', resizeOverlay);
+		// 	window.addEventListener('mouseup', stopResize);
+		// }
 	}
 
 	function resizeOverlay(event) {
@@ -96,10 +96,15 @@
 	</Splitpanes>
 </div> -->
 
-<div class="overlay overflow-scroll" bind:this={ovelay} class:hidden={!$showjsConsole}>
-	<div on:mousedown={startResize} class="handle bg-secondary-dark w-full" />
+<div
+	class="overlay overflow-scroll"
+	bind:this={ovelay}
+	class:hidden={!$showjsConsole}
+	style="height: {currentHeight}px;"
+>
+	<div on:drag={startResize} class="handle bg-secondary-dark w-full" />
 	<div class="w-full flex justify-between">
-		<span class="flex items-center gap-2 text-light">
+		<span class="flex items-center gap-2 text-white">
 			Console <Fa icon={faTerminal} />
 		</span>
 

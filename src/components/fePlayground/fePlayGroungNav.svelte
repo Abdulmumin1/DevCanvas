@@ -18,7 +18,7 @@
 		<li class="w-full">
 			<div class="flex flex-col w-full">
 				<div class="flex items-center gap-2">
-					<a href="/play" class="hidden md:block">
+					<a href="/play" class="">
 						<img src="/logo.svg" class="h-10 w-10" alt="snippetsLand" />
 					</a>
 
@@ -38,7 +38,7 @@
 			<li><FeGetEmbed /></li>
 			<li><ShareBtn /></li>
 			<li><Darkmode /></li>
-			<li>
+			<li class="text-black">
 				<Login />
 			</li>
 		</ul>

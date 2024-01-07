@@ -12,6 +12,8 @@
 	import { fly } from 'svelte/transition';
 
 	let signinURL = handleRedirectURL($page.url);
+
+	export let noSearch = false;
 </script>
 
 <div class="flex min-h-screen h-screen w-full">
@@ -23,19 +25,22 @@
 
 	<div class="flex flex-col h-full w-full">
 		<!-- Upper nave -->
-		<div class="w-full px-3 py-3 border-b text-primary dark:border-secondary-dark">
-			<ul class="flex items-center justify-end w-full gap-2">
-				<li><OverlayNav /></li>
-				<li class="w-full"><Search /></li>
-				<li class="text-black dark:text-white"><Darkmode /></li>
 
-				{#if !$user}
-					<li><a href={signinURL} class="bg-green-400 p-3 rounded-lg">Join</a></li>
-				{:else}
-					<li><ProfileCard /></li>
-				{/if}
-			</ul>
-		</div>
+		{#if !noSearch}
+			<div class="w-full px-3 py-3 border-b text-primary dark:border-secondary-dark">
+				<ul class="flex items-center justify-end w-full gap-2">
+					<li><OverlayNav /></li>
+					<li class="w-full"><Search /></li>
+					<li class="text-black dark:text-white"><Darkmode /></li>
+
+					{#if !$user}
+						<li><a href={signinURL} class="bg-green-400 p-3 rounded-lg">Join</a></li>
+					{:else}
+						<li><ProfileCard /></li>
+					{/if}
+				</ul>
+			</div>
+		{/if}
 
 		<div
 			class="h-full w-full overflow-y-scroll px-4 md:px-6 mb-4"

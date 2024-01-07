@@ -21,7 +21,7 @@
 		mobileDetails = window.innerWidth <= 768;
 	}
 
-	current_data.set({
+	let try_data = {
 		html: '<!-- -->',
 		css: '/* */',
 		js: '//',
@@ -55,7 +55,8 @@
 			cssProcessor: false
 		},
 		tags: []
-	});
+	};
+	current_data.set(try_data);
 
 	function captureIframeOutput(event) {
 		if (event.data && event.data.type === 'console') {
@@ -72,6 +73,17 @@
 		canvasConfig.set($current_data.config);
 		sassActive.set($current_data.config?.cssProcessor);
 		window.addEventListener('message', captureIframeOutput);
+
+		// // Attach the beforeunload event
+		// window.addEventListener('beforeunload', function (event) {
+		// 	if (try_data != $current_data) {
+		// 		// Standard for most browsers
+		// 		event.returnValue = 'You have unsaved changes. Are you sure you want to leave?';
+
+		// 		// For some older browsers
+		// 		return 'You have unsaved changes. Are you sure you want to leave?';
+		// 	}
+		// });
 	});
 
 	onDestroy(() => {
@@ -82,13 +94,13 @@
 </script>
 
 <svelte:head>
-	<title>{'Try SnippetLand'}</title>
+	<title>{'Try DevCanvas'}</title>
 
 	<!-- Facebook Meta Tags -->
-	<meta property="og:title" content={'Try SnippetLand'} />
+	<meta property="og:title" content={'Try DevCanvas'} />
 
 	<!-- Twitter Meta Tags -->
-	<meta name="twitter:title" content={'Try SnippetLand'} />
+	<meta name="twitter:title" content={'Try DevCanvas'} />
 
 	<!-- HTML Meta Tags -->
 </svelte:head>

@@ -10,6 +10,7 @@ export const previewMode = writable(true);
 export const dashboardLoading = writable(true);
 
 export const editorSettingState = writable(false);
+export const delayPreview = writable(false);
 
 export const SnippetsDescription = readable({
 	name: 'DevCanvas',

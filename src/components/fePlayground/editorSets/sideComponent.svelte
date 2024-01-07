@@ -8,7 +8,8 @@
 		smallerFontSize,
 		formatOnPasteSetting,
 		renderIndentGuidesSetting,
-		editorSettingState
+		editorSettingState,
+		delayPreview
 	} from '$lib/index.js';
 	// import feather from 'feather-icons';
 	import { scale, slide } from 'svelte/transition';
@@ -38,6 +39,10 @@
 	function handleInderLines(event) {
 		renderIndentGuidesSetting.set(event.detail.status);
 	}
+
+	function handleDelayChange(event) {
+		delayPreview.set(event.detail.status);
+	}
 </script>
 
 {#if $editorSettingState}
@@ -48,6 +53,7 @@
 		<div class="justify-end">
 			<button class="p-2" on:click={closeDropdown}>Close</button>
 		</div>
+
 		<ul
 			use:clickOutside
 			on:click_outside={closeDropdown}
@@ -55,6 +61,9 @@
 			transition:scale
 		>
 			<li class="p-2 text-center">Applies to all editor</li>
+			<li class="w-full">
+				<SingleSetting on:checked={handleDelayChange} checked={$delayPreview} label={'Delay'} />
+			</li>
 			<li class="w-full">
 				<SingleSetting label={'Word Wrap'} on:checked={handleWordWrap} checked={$wordWrapSetting} />
 			</li>
@@ -79,6 +88,7 @@
 					label={'Format on paste'}
 				/>
 			</li>
+
 			<!-- <li class="w-full">
 				<DownloadCodeDropDown />
 			</li> -->

@@ -14,7 +14,7 @@
 
 <ul class="flex justify-between items-center md:hidden dark:text-white">
 	<li class="flex items-center justify-center">
-		<button on:click={toogleOpen}><Fa icon={faBars} /></button>
+		<button on:click={toogleOpen} class="text-xl"><Fa icon={faBars} /></button>
 	</li>
 	{#if openSideBar}
 		<li
