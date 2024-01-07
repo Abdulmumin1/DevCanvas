@@ -79,7 +79,10 @@
 						: '....'}</span
 				>
 				<!-- {JSON.stringify(details.view)} -->
-				<ShareAct link="{$page.url.origin}/play/{details.project_key}" />
+				<ShareAct
+					link="{$page.url.origin}/play/{details.project_key}"
+					title={details.description}
+				/>
 				{#if details.user_id == session?.user?.id && $page.url.pathname == '/dashboard'}
 					<DeleteCanvas canvas_id={details.project_key} title={details.description} />
 				{/if}

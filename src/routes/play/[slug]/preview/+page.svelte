@@ -206,7 +206,7 @@
 		</a>
 
 		<div class="bg-secondary-dark p-3 text-gray-100 rounded-full">
-			<ShareAct {link} />
+			<ShareAct {link} title={data.details.description} />
 		</div>
 
 		<!-- <ShareDropdown /> -->

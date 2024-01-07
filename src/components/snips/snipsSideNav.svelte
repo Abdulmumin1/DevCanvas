@@ -62,14 +62,14 @@
 								<a href="/profile" class="flex items-center gap-2 bg-secondary-dark rounded-lg p-2"
 									><Fa icon={faUser} />Profile</a
 								>
-								<div>
+								<!-- <div>
 									<a
 										href="/pro/activate"
 										class="bg-secondary-dark p-1 py-2 text-sm w-full text-left rounded-lg flex gap-2 items-center"
 									>
 										<Fa icon={faMagicWandSparkles} />Pro<Fa icon={faStar} />
 									</a>
-								</div>
+								</div> -->
 								<div class="bg-error w-full text-black rounded-xl p-1">
 									<Signout />
 								</div>

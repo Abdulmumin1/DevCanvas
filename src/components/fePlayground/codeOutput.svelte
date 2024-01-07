@@ -16,6 +16,8 @@
 	} from '$lib/plugins/store.js';
 	import { onDestroy, onMount } from 'svelte';
 	import { compileSassString } from '$lib/utils.js';
+	import { delayPreview } from '$lib/index.js';
+
 	// import { beforeNavigate, afterNavigate } from '$app/navigation';
 
 	export let code;
@@ -32,6 +34,7 @@
 	let loading = true;
 	let typingTimerCSS;
 	var INJ_CSS;
+	let delayPRTimer;
 
 	function injectHtmlCSS(iframeDoc, code, css) {
 		const bodyContent = code;
@@ -83,7 +86,7 @@
 		// Function to handle text input
 		// console.log(currentJS, js);
 		if (currentJS != js) {
-			const delay = 2000; // Adjust the delay as needed (in milliseconds)
+			const delay = 1000; // Adjust the delay as needed (in milliseconds)
 			clearTimeout(typingTimer); // Clear the previous timer
 
 			typingTimer = setTimeout(function () {
@@ -157,22 +160,26 @@
 	}
 
 	$: {
-		code = $current_data.html;
-		css = $current_data.css;
-		js = $current_data.js;
+		let delay = $delayPreview ? 500 : 0;
+		clearTimeout(delayPRTimer);
+		delayPRTimer = setTimeout(() => {
+			code = $current_data.html;
+			css = $current_data.css;
+			js = $current_data.js;
 
-		// js = $current_data.js;
-		if (iframe) {
-			// Get the iframe's document
-			let iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
-			// Step 3: Remove any existing <script> elements
-			// const existingScripts = iframeDoc.getElementsByTagName('script');
-			// for (const script of existingScripts) {
-			// 	script.remove();
-			// }
+			// js = $current_data.js;
+			if (iframe) {
+				// Get the iframe's document
+				let iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+				// Step 3: Remove any existing <script> elements
+				// const existingScripts = iframeDoc.getElementsByTagName('script');
+				// for (const script of existingScripts) {
+				// 	script.remove();
+				// }
 
-			injectHtmlCSS(iframeDoc, code, css);
-		}
+				injectHtmlCSS(iframeDoc, code, css);
+			}
+		}, delay);
 
 		// console.log('changesing');
 	}
@@ -346,7 +353,7 @@ ${js}
 					return { ...cur, css: `${css}  ` };
 				});
 				loading = false;
-			}, 1000);
+			}, 500);
 			return false;
 		};
 	}

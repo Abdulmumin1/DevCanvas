@@ -7,7 +7,7 @@
 		faSpinner,
 		faUserEdit
 	} from '@fortawesome/free-solid-svg-icons';
-	import { slide } from 'svelte/transition';
+	import { fade, scale, slide } from 'svelte/transition';
 	import InnerNav from '../../components/innerNav.svelte';
 	import { enhance } from '$app/forms';
 	import { page } from '$app/stores';
@@ -55,7 +55,7 @@
 <svelte:head>
 	<meta name="robots" content="index, follow" />
 </svelte:head>
-<NavWrapper>
+<NavWrapper noSearch={true}>
 	<div class="bg-white rounded px-4 md:py-9 dark:bg-primary py-12 pb-8 mb-4 max-w-96">
 		<h2 class="text-4xl font-semibold text-gray-800 dark:text-white mb-4">Update Your Profile</h2>
 		<form action={data.action} use:enhance={handleSubmit} method="POST">
@@ -189,18 +189,18 @@
 		</form>
 		{#if completed}
 			<div
-				in:slide={{ axis: 'x' }}
+				in:slide={{ axis: 'y' }}
 				out:slide
-				class="bg-green-400 text-black h-6 mt-2 rounded-md p-2 gap-2 text-sm md:text-base flex items-center justify-start"
+				class="bg-green-400 w-fit py-4 text-black h-6 mt-2 rounded-md p-2 gap-2 text-sm md:text-base flex items-center justify-start"
 			>
-				<span> <Fa icon={faExclamationCircle} /></span>profile updated
+				<span> <Fa icon={faExclamationCircle} /></span><span transition:slide>profile updated</span>
 			</div>
 		{/if}
 		{#if serverErr}
 			<div
-				in:slide={{ axis: 'x' }}
+				in:slide={{ axis: 'y' }}
 				out:slide
-				class="bg-error text-black h-6 mt-2 rounded-md p-2 gap-2 text-sm md:text-base flex items-center justify-start"
+				class="bg-error w-fit py-4 text-black h-6 mt-2 rounded-md p-2 gap-2 text-sm md:text-base flex items-center justify-start"
 			>
 				<span> <Fa icon={faExclamationCircle} /></span>
 				<p>{serverErr.message}</p>
