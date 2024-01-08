@@ -6,6 +6,7 @@
 		cssPlugins,
 		jsPlugins,
 		sassActive,
+		userImportedJS,
 		canvasConfig
 	} from '$lib/feEditor/store.js';
 	import {
@@ -18,7 +19,7 @@
 	import { compileSassString } from '$lib/utils.js';
 	import { delayPreview } from '$lib/index.js';
 
-	// import { beforeNavigate, afterNavigate } from '$app/navigation';
+	import { beforeNavigate, afterNavigate } from '$app/navigation';
 
 	export let code;
 	export let css;
@@ -31,6 +32,7 @@
 	let typingTimer; // Timer to track typing
 	let cssPluginsVar = $cssPlugins;
 	let jsPluginsVar = $jsPlugins;
+	let userImportedJSVar = $userImportedJS;
 	let loading = true;
 	let typingTimerCSS;
 	var INJ_CSS;
@@ -45,24 +47,6 @@
 		for (const style of existingStyles) {
 			style.remove();
 		}
-
-		try {
-			// Create a temporary HTML element
-			const tempElement = document.createElement('div');
-
-			// Set the HTML code as text
-			tempElement.innerHTML = $externalStuff.html;
-
-			// Extract the first child element (the <link> element) from the temporary element
-			const headStuff = tempElement.children;
-
-			// Append the <link> element to the <head> of the document
-			for (let i = 0; i < headStuff.length; i++) {
-				const child = headStuff[i];
-				// Log the content of each child element
-				iframeDoc.head.appendChild(child);
-			}
-		} catch (err) {}
 
 		// Step 2: Create and append the new CSS style
 		const styleElement = iframeDoc.createElement('style');
@@ -122,24 +106,6 @@
 			style.remove();
 		}
 
-		try {
-			// Create a temporary HTML element
-			const tempElement = document.createElement('div');
-
-			// Set the HTML code as text
-			tempElement.innerHTML = $externalStuff.html;
-
-			// Extract the first child element (the <link> element) from the temporary element
-			const headStuff = tempElement.children;
-
-			// Append the <link> element to the <head> of the document
-			for (let i = 0; i < headStuff.length; i++) {
-				const child = headStuff[i];
-				// Log the content of each child element
-				iframeDoc.head.appendChild(child);
-			}
-		} catch (err) {}
-
 		// Step 2: Create and append the new CSS style
 		const styleElement = iframeDoc.createElement('style');
 
@@ -184,6 +150,15 @@
 		// console.log('changesing');
 	}
 
+	function injectUserImportedPlugins(iframeDoc, userImportedJSVar) {
+		for (let index = 0; index < userImportedJSVar.length; index++) {
+			const scriptsrc = userImportedJSVar[index];
+			let scptag = iframeDoc.createElement('script');
+			scptag.src = scriptsrc;
+			iframeDoc.body.appendChild(scptag);
+		}
+	}
+
 	// css plugins\
 	function injectCSSPlugins(iframeDoc, cssPluginsVar) {
 		const tailwindScriptHTML = iframeDoc.getElementById('tailwincssDSFE4o431!!');
@@ -193,7 +168,7 @@
 
 		if (cssPluginsVar.fontawesome) {
 			// Create a temporary HTML element
-			const tempElement = document.createElement('div');
+			const tempElement = iframeDoc.createElement('div');
 
 			// Set the HTML code as text
 			tempElement.innerHTML = fontawesomeLINK;
@@ -213,7 +188,7 @@
 
 		if (cssPluginsVar.bootstrap) {
 			// Create a temporary HTML element
-			const tempElement = document.createElement('div');
+			const tempElement = iframeDoc.createElement('div');
 
 			// Set the HTML code as text
 			tempElement.innerHTML = bootstrapLINK;
@@ -233,7 +208,7 @@
 
 		if (cssPluginsVar.materialicons) {
 			// Create a temporary HTML element
-			const tempElement = document.createElement('div');
+			const tempElement = iframeDoc.createElement('div');
 
 			// Set the HTML code as text
 			tempElement.innerHTML = materialiconsLINK;
@@ -285,15 +260,6 @@
 		for (let index = 0; index < array.length; index++) {
 			setup_js_plugin(array[index], jsPluginsVar, iframeDoc);
 		}
-
-		try {
-			if ($externalStuff.js != undefined) {
-				const externalScript = iframeDoc.createElement('script');
-				externalScript.src = $externalStuff.js;
-
-				iframeDoc.body.appendChild(externalScript);
-			}
-		} catch (err) {}
 	}
 	$: {
 		jsPluginsVar = $jsPlugins;
@@ -306,6 +272,14 @@
 		console.log('js plugins injected');
 	}
 
+	$: {
+		userImportedJSVar = $userImportedJS ?? [];
+		if (iframe) {
+			let iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+
+			injectUserImportedPlugins(iframeDoc, userImportedJSVar);
+		}
+	}
 	function injectJavascript(iframeDoc, js) {
 		const scriptElement = iframeDoc.createElement('script');
 		scriptElement.id = 'mainScript12343REFDS!';
@@ -343,9 +317,9 @@ ${js}
 	function addLoadEvent() {
 		iframe.onload = function () {
 			let iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+			injectUserImportedPlugins(iframeDoc, userImportedJSVar);
 			injectHtmlCSSOnReload(iframeDoc, code, css);
 			injectJavascript(iframeDoc, js);
-			console.log('why man!');
 			injectCSSPlugins(iframeDoc, cssPluginsVar);
 			injectJSPlugins(iframeDoc, jsPluginsVar);
 			setTimeout(() => {
@@ -403,6 +377,8 @@ ${js}
 
 		// }, 1000);
 	});
+
+	// afterNavigate(()=>)
 </script>
 
 <div

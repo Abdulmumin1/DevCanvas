@@ -12,9 +12,13 @@
 		babelActive.set(active);
 		clearTimeout(selectMore);
 
+		canvasConfig.update((cur) => {
+			return { ...cur, babelActive: active };
+		});
+
 		selectMore = setTimeout(() => {
 			try {
-				saveConfig({ ...$canvasConfig, babelActive: active }, $current_data.id);
+				saveConfig({ ...$canvasConfig }, $current_data.id);
 			} catch (err) {
 				console.error(err);
 			}

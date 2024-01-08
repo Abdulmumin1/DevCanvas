@@ -12,9 +12,13 @@
 		console.log($canvasConfig);
 		clearTimeout(selectMore);
 
+		canvasConfig.update((cur) => {
+			return { ...cur, cssProcessor: active };
+		});
+
 		selectMore = setTimeout(() => {
 			try {
-				saveConfig({ ...$canvasConfig, cssProcessor: active }, $current_data.id);
+				saveConfig({ ...$canvasConfig }, $current_data.id);
 			} catch (err) {
 				console.error(err);
 			}

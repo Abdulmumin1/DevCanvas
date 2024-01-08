@@ -111,6 +111,15 @@
 		console.log('done with the plugins');
 	}
 
+	function injectUserImportedPlugins(iframeDoc, userImportedJSVar) {
+		for (let index = 0; index < userImportedJSVar.length; index++) {
+			const scriptsrc = userImportedJSVar[index];
+			let scptag = iframeDoc.createElement('script');
+			scptag.src = scriptsrc;
+			iframeDoc.body.appendChild(scptag);
+		}
+	}
+
 	let zoomOut = $page.url.searchParams.get('preview');
 
 	onMount(async () => {
@@ -157,6 +166,7 @@
 				injectJSPlugins(iframeDoc, data.details.plugins[0].js);
 				// Step 3: Create and append JavaScript code
 				injectCSSPlugins(iframeDoc, data.details.plugins[0].css);
+				injectUserImportedPlugins(iframeDoc, data.details.config?.userImportedJS ?? []);
 			}
 		}
 

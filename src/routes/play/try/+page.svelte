@@ -6,7 +6,8 @@
 		canvasTags,
 		sassActive,
 		babelActive,
-		typescriptActive
+		typescriptActive,
+		userImportedJS
 	} from '$lib/feEditor/store.js';
 	import { onDestroy, onMount, tick } from 'svelte';
 	import { browser } from '$app/environment';
@@ -60,7 +61,9 @@
 		config: {
 			tags: [],
 			cssProcessor: false,
-			babel: false
+			babelActive: false,
+			typescriptActive: false,
+			userImportedJS: []
 		},
 		tags: []
 	};
@@ -82,6 +85,7 @@
 		sassActive.set($current_data.config?.cssProcessor);
 		babelActive.set($current_data.config?.babelActive);
 		typescriptActive.set($current_data.config?.typescriptActive);
+		userImportedJS.set($current_data.config?.userImportedJS);
 
 		window.addEventListener('message', captureIframeOutput);
 

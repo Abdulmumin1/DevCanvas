@@ -116,6 +116,7 @@ export const cssPlugins = writable({
 	bulma: false
 });
 export let sassActive = writable(false);
+export let userImportedJS = writable([]);
 
 export const jsPlugins = writable({
 	animejs: false,
