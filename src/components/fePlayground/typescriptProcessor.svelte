@@ -12,9 +12,13 @@
 		typescriptActive.set(active);
 		clearTimeout(selectMore);
 
+		canvasConfig.update((cur) => {
+			return { ...cur, typescriptActive: active };
+		});
+
 		selectMore = setTimeout(() => {
 			try {
-				saveConfig({ ...$canvasConfig, typescriptActive: active }, $current_data.id);
+				saveConfig({ ...$canvasConfig }, $current_data.id);
 			} catch (err) {
 				console.error(err);
 			}

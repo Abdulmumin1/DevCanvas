@@ -12,6 +12,7 @@
 	import AddTags from './pluginModal/addTags.svelte';
 	import BabelProcessor from './babelProcessor.svelte';
 	import TypescriptProcessor from './typescriptProcessor.svelte';
+	import OtherjsPlugins from './externalJs/otherjsPlugins.svelte';
 
 	let modal;
 	let js = $externalStuff.js;
@@ -116,20 +117,9 @@
 		</div>
 
 		<div class="w-full flex gap-2 flex-col transition-transform duration-300">
-			<p>JS</p>
-			<div bind:this={inputField} class="flex gap-2">
-				<input
-					name=""
-					placeholder="External Script Link"
-					class="bg-gray-100 dark:bg-primary w-full outline-none font-thin p-2 rounded"
-					spellcheck="false"
-					bind:value={js}
-				/>
-				<button class="bg-sky-500 text-primary rounded p-1 px-3" on:click={addMoreJs}> Add</button>
-			</div>
-
 			Plugins
 			<Jsplugins />
+			<OtherjsPlugins />
 		</div>
 	</div>
 

@@ -6,7 +6,7 @@
 	import Fa from 'svelte-fa';
 	import { goto, invalidateAll } from '$app/navigation';
 	import { handleRedirectURL } from '$lib/utils';
-	import { jsPlugins, cssPlugins, sassActive } from '$lib/feEditor/store.js';
+	import { jsPlugins, cssPlugins, canvasConfig } from '$lib/feEditor/store.js';
 	let busy = false;
 
 	let demo = $page.url.pathname.endsWith('/try');
@@ -26,13 +26,15 @@
 				js: $jsPlugins
 			})
 		);
+
 		formData.append(
 			'config',
 			JSON.stringify({
-				tags: [],
-				cssProcessor: $sassActive
+				...$canvasConfig,
+				tags: []
 			})
 		);
+
 		formData.append('url', $page.url.pathname);
 
 		const response = await fetch('/db/fe/fork', {
