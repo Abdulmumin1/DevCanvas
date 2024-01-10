@@ -3,12 +3,14 @@
 
 	import Fa from 'svelte-fa';
 	import { page } from '$app/stores';
+	import { faSearchengin } from '@fortawesome/free-brands-svg-icons';
 
 	let query = $page.url.searchParams.get('query');
+	let sort = 'tags';
 </script>
 
 <div
-	class="group w-full dark:text-white bg-sky-50 dark:bg-secondary-dark rounded-3xl flex items-center px-3 py-2 transition-transform duration-300 gap-2"
+	class="group w-full dark:text-white bg-sky-50 dark:bg-secondary-dark rounded-xl flex items-center px-3 py-2 transition-transform duration-300 gap-2"
 >
 	<Fa icon={faSearch} />
 	<form action="?/search" class="w-full" method="post">
@@ -20,4 +22,9 @@
 			value={query}
 		/>
 	</form>
+
+	<!-- <div>
+		<span>Search by</span>
+		<button><Fa icon={faSearch} /></button>
+	</div> -->
 </div>

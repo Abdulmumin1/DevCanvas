@@ -172,8 +172,9 @@
 		{/if}
 	</div>
 {:else}
-	<div class="flex justify-center pt-12 h-full w-full">
-		<p class="text-gray-400 text-6xl">Nothing to Show</p>
+	<div class="flex flex-col justify-center pt-12 h-[100dvh] w-full items-center">
+		<img src="/logo.svg" alt="" width="300" style="filter: grayscale(100);" />
+		<p class="text-gray-400 text-4xl">Nothing to Show</p>
 	</div>
 {/if}
 

@@ -40,3 +40,85 @@ export function setup_js_plugin(name, plugins, iframeDoc) {
 
 	// console.log(name, plugins, iframeDoc);
 }
+
+export function injectHeadContent(plugins, iframeDoc) {
+	const tailwindScriptHTML = iframeDoc.getElementById('tailwincssDSFE4o431!!');
+	const fontawesomeHTML = iframeDoc.getElementById('fontawesomeDSFE4o431!!');
+	const materialiconsHTML = iframeDoc.getElementById('materialiconsDSFE4o431!!');
+	const bootstrapHTML = iframeDoc.getElementById('bootstrapDSFE4o431!!');
+
+	if (plugins.fontawesome) {
+		// Create a temporary HTML element
+		const tempElement = iframeDoc.createElement('div');
+
+		// Set the HTML code as text
+		tempElement.innerHTML = fontawesomeLINK;
+		// Extract the first child element (the <link> element) from the temporary element
+		let fontawesome = tempElement.firstElementChild;
+
+		// check if it exists
+
+		if (!fontawesomeHTML) {
+			iframeDoc.head.appendChild(fontawesome);
+		}
+	} else {
+		if (fontawesomeHTML) {
+			fontawesomeHTML.remove();
+		}
+	}
+
+	if (plugins.bootstrap) {
+		// Create a temporary HTML element
+		const tempElement = iframeDoc.createElement('div');
+
+		// Set the HTML code as text
+		tempElement.innerHTML = bootstrapLINK;
+		// Extract the first child element (the <link> element) from the temporary element
+		let bootstrap = tempElement.firstElementChild;
+
+		// check if it exists
+
+		if (!bootstrapHTML) {
+			iframeDoc.head.appendChild(bootstrap);
+		}
+	} else {
+		if (bootstrapHTML) {
+			bootstrapHTML.remove();
+		}
+	}
+
+	if (plugins.materialicons) {
+		// Create a temporary HTML element
+		const tempElement = iframeDoc.createElement('div');
+
+		// Set the HTML code as text
+		tempElement.innerHTML = materialiconsLINK;
+		// Extract the first child element (the <link> element) from the temporary element
+		let materialicons = tempElement.firstElementChild;
+		materialicons.id = 'materialiconsDSFE4o431!!';
+
+		// check if it exists
+		if (!materialiconsHTML) {
+			iframeDoc.head.appendChild(materialicons);
+		}
+	} else {
+		if (materialiconsHTML) {
+			materialiconsHTML.remove();
+		}
+	}
+
+	if (plugins.tailwind) {
+		const tailwindScript = iframeDoc.createElement('script');
+		// tailwindScript.setAttribute('defer')
+		tailwindScript.src = 'https://cdn.tailwindcss.com';
+		tailwindScript.id = 'tailwincssDSFE4o431!!';
+
+		if (!tailwindScriptHTML) {
+			iframeDoc.head.appendChild(tailwindScript);
+		}
+	} else {
+		if (tailwindScriptHTML) {
+			tailwindScriptHTML.remove();
+		}
+	}
+}
