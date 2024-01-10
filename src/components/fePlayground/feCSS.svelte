@@ -27,7 +27,8 @@
 		wordWrapSetting,
 		smallerFontSize,
 		formatOnPasteSetting,
-		renderIndentGuidesSetting
+		renderIndentGuidesSetting,
+		delayPreview
 	} from '$lib/index.js';
 	import Loader from '../loader.svelte';
 
@@ -44,7 +45,7 @@
 	let saved = true;
 	let typingTimer; // Timer to track typing
 	const delay = 1000; // Adjust the delay as needed (in milliseconds)
-
+	var updateDelayTm;
 	// Function to handle text input
 	function handleAutoSave() {
 		clearTimeout(typingTimer); // Clear the previous timer
@@ -85,10 +86,16 @@
 	}
 	function handleContentChange(data) {
 		verifyUser();
-		current_data.update((cur) => {
-			// console.log(cur);
-			return { ...cur, css: data };
-		});
+
+		clearTimeout(updateDelayTm);
+		let updateDelay = $delayPreview ? 500 : 0;
+
+		updateDelayTm = setTimeout(() => {
+			current_data.update((cur) => {
+				// console.log(cur);
+				return { ...cur, css: data };
+			});
+		}, updateDelay);
 		handleAutoSave();
 	}
 

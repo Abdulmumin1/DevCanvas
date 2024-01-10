@@ -26,7 +26,8 @@
 		wordWrapSetting,
 		smallerFontSize,
 		formatOnPasteSetting,
-		renderIndentGuidesSetting
+		renderIndentGuidesSetting,
+		delayPreview
 	} from '$lib/index.js';
 	import Loader from '../loader.svelte';
 
@@ -45,6 +46,7 @@
 
 	let typingTimer; // Timer to track typing
 	const delay = 1000; // Adjust the delay as needed (in milliseconds)
+	var updateDelayTm;
 
 	// Function to handle text input
 	function handleAutoSave() {
@@ -88,10 +90,17 @@
 	function handleContentChange(data) {
 		// console.log('coentent changed');
 		verifyUser();
-		current_data.update((cur) => {
-			// console.log(cur);
-			return { ...cur, html: data };
-		});
+		// if (updateDelay !==)
+		// console.log(updateDelay);
+
+		clearTimeout(updateDelayTm);
+		let updateDelay = $delayPreview ? 500 : 0;
+		updateDelayTm = setTimeout(() => {
+			current_data.update((cur) => {
+				// console.log(cur);
+				return { ...cur, html: data };
+			});
+		}, updateDelay);
 		handleAutoSave();
 	}
 
@@ -193,7 +202,7 @@
 			// Attach an event listener for changes in the code
 			editor.onDidChangeModelContent(() => {
 				try {
-					// console.log(editor.getValue());
+					// console.log('g'));
 					handleContentChange(editor.getValue());
 				} catch {
 					console.log('err');

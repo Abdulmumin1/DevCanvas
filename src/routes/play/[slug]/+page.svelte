@@ -30,6 +30,8 @@
 	import ModalHigh from '../../../components/fePlayground/modalHigh.svelte';
 	import SideComponent from '../../../components/fePlayground/editorSets/sideComponent.svelte';
 
+	import { setInitialState } from '$lib/feEditor/stateConfig.js';
+
 	export let data;
 
 	// console.log(user)
@@ -39,13 +41,7 @@
 		mobileDetails = window.innerWidth <= 768;
 	}
 	current_data.set(data.details);
-	canvasTags.set(data.details.tags);
-
-	canvasConfig.set(data.details.config);
-	sassActive.set(data.details.config?.cssProcessor);
-	babelActive.set($current_data.config?.babelActive);
-	typescriptActive.set($current_data.config?.typescriptActive);
-	userImportedJS.set($current_data.config?.userImportedJS);
+	setInitialState(data.details);
 
 	function captureIframeOutput(event) {
 		if (event.data && event.data.type === 'console') {

@@ -39,7 +39,7 @@
 		scrolling="no"
 		loading="lazy"
 		class="w-full h-[250px] overflow-hidden rounded-xl"
-		style="aspect-ratio: 1/1;"
+		style="aspect-ratio: 1/1; pointer-events: none;"
 	/>
 	<!-- {#if !capturedImageUrl}
 	{/if} -->

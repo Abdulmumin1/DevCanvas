@@ -1,21 +1,22 @@
 <script>
 	import { current_data } from '$lib/index.js';
 	import {
-		externalStuff,
 		jsChanged,
 		cssPlugins,
 		jsPlugins,
 		sassActive,
-		userImportedJS,
-		canvasConfig
+		userImportedJS
 	} from '$lib/feEditor/store.js';
 	import {
 		fontawesomeLINK,
 		materialiconsLINK,
 		bootstrapLINK,
-		setup_js_plugin
+		setup_js_plugin,
+		injectHeadContent
 	} from '$lib/plugins/store.js';
-	import { onDestroy, onMount } from 'svelte';
+	import { injectJavascript } from '$lib/feEditor/previewUtils.js';
+
+	import { onDestroy, onMount, tick } from 'svelte';
 	import { compileSassString } from '$lib/utils.js';
 	import { delayPreview } from '$lib/index.js';
 
@@ -25,8 +26,8 @@
 	export let css;
 	export let js;
 
-	var currentJS = $current_data.js;
-	var currentCSS = $current_data.css;
+	var currentJS;
+	var currentCSS;
 
 	let iframe;
 	let typingTimer; // Timer to track typing
@@ -69,16 +70,7 @@
 
 		// Function to handle text input
 		// console.log(currentJS, js);
-		if (currentJS != js) {
-			const delay = 1000; // Adjust the delay as needed (in milliseconds)
-			clearTimeout(typingTimer); // Clear the previous timer
 
-			typingTimer = setTimeout(function () {
-				// This function will run after the delay (user has stopped typing)
-				jsChanged.set(true);
-			}, delay);
-			currentJS = js;
-		}
 		injectJavascript(iframeDoc, js);
 	}
 
@@ -110,7 +102,7 @@
 		const styleElement = iframeDoc.createElement('style');
 
 		if (currentCSS != css && $sassActive) {
-			// console.log('logic confirmed');
+			console.log('logic confirmed');
 			// console.log(INJ_CSS);
 			styleElement.textContent = `${INJ_CSS}`;
 			iframeDoc.head.appendChild(styleElement);
@@ -125,129 +117,12 @@
 		}
 	}
 
-	$: {
-		let delay = $delayPreview ? 500 : 0;
-		clearTimeout(delayPRTimer);
-		delayPRTimer = setTimeout(() => {
-			code = $current_data.html;
-			css = $current_data.css;
-			js = $current_data.js;
-
-			// js = $current_data.js;
-			if (iframe) {
-				// Get the iframe's document
-				let iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
-				// Step 3: Remove any existing <script> elements
-				// const existingScripts = iframeDoc.getElementsByTagName('script');
-				// for (const script of existingScripts) {
-				// 	script.remove();
-				// }
-
-				injectHtmlCSS(iframeDoc, code, css);
-			}
-		}, delay);
-
-		// console.log('changesing');
-	}
-
 	function injectUserImportedPlugins(iframeDoc, userImportedJSVar) {
 		for (let index = 0; index < userImportedJSVar.length; index++) {
 			const scriptsrc = userImportedJSVar[index];
 			let scptag = iframeDoc.createElement('script');
 			scptag.src = scriptsrc;
 			iframeDoc.body.appendChild(scptag);
-		}
-	}
-
-	// css plugins\
-	function injectCSSPlugins(iframeDoc, cssPluginsVar) {
-		const tailwindScriptHTML = iframeDoc.getElementById('tailwincssDSFE4o431!!');
-		const fontawesomeHTML = iframeDoc.getElementById('fontawesomeDSFE4o431!!');
-		const materialiconsHTML = iframeDoc.getElementById('materialiconsDSFE4o431!!');
-		const bootstrapHTML = iframeDoc.getElementById('bootstrapDSFE4o431!!');
-
-		if (cssPluginsVar.fontawesome) {
-			// Create a temporary HTML element
-			const tempElement = iframeDoc.createElement('div');
-
-			// Set the HTML code as text
-			tempElement.innerHTML = fontawesomeLINK;
-			// Extract the first child element (the <link> element) from the temporary element
-			let fontawesome = tempElement.firstElementChild;
-
-			// check if it exists
-
-			if (!fontawesomeHTML) {
-				iframeDoc.head.appendChild(fontawesome);
-			}
-		} else {
-			if (fontawesomeHTML) {
-				fontawesomeHTML.remove();
-			}
-		}
-
-		if (cssPluginsVar.bootstrap) {
-			// Create a temporary HTML element
-			const tempElement = iframeDoc.createElement('div');
-
-			// Set the HTML code as text
-			tempElement.innerHTML = bootstrapLINK;
-			// Extract the first child element (the <link> element) from the temporary element
-			let bootstrap = tempElement.firstElementChild;
-
-			// check if it exists
-
-			if (!bootstrapHTML) {
-				iframeDoc.head.appendChild(bootstrap);
-			}
-		} else {
-			if (bootstrapHTML) {
-				bootstrapHTML.remove();
-			}
-		}
-
-		if (cssPluginsVar.materialicons) {
-			// Create a temporary HTML element
-			const tempElement = iframeDoc.createElement('div');
-
-			// Set the HTML code as text
-			tempElement.innerHTML = materialiconsLINK;
-			// Extract the first child element (the <link> element) from the temporary element
-			let materialicons = tempElement.firstElementChild;
-			materialicons.id = 'materialiconsDSFE4o431!!';
-
-			// check if it exists
-			if (!materialiconsHTML) {
-				iframeDoc.head.appendChild(materialicons);
-			}
-		} else {
-			if (materialiconsHTML) {
-				materialiconsHTML.remove();
-			}
-		}
-
-		if (cssPluginsVar.tailwind) {
-			const tailwindScript = iframeDoc.createElement('script');
-			tailwindScript.src = 'https://cdn.tailwindcss.com';
-			tailwindScript.id = 'tailwincssDSFE4o431!!';
-
-			if (!tailwindScriptHTML) {
-				iframeDoc.body.appendChild(tailwindScript);
-			}
-		} else {
-			if (tailwindScriptHTML) {
-				tailwindScriptHTML.remove();
-			}
-		}
-
-		console.log('inject output');
-	}
-
-	$: {
-		cssPluginsVar = $cssPlugins;
-		if (iframe) {
-			let iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
-			injectCSSPlugins(iframeDoc, cssPluginsVar);
 		}
 	}
 
@@ -261,18 +136,66 @@
 			setup_js_plugin(array[index], jsPluginsVar, iframeDoc);
 		}
 	}
+
+	// $: {
+	// 	code = $current_data.html;
+	// 	css = $current_data.css;
+	// 	js = $current_data.js;
+	// 	cssPluginsVar = $cssPlugins;
+	// 	jsPluginsVar = $jsPlugins;
+	// 	userImportedJSVar = $userImportedJS ?? [];
+	// 	jsPluginsVar = $jsPlugins;
+
+	// 	console.log('go shit');
+	// 	if (iframe) {
+	// 		console.log(iframe.contentDocument.body.innerHTML);
+	// 		iframe.contentWindow.location.reload(true);
+	// 		addLoadEvent();
+	// 	}
+	// }
 	$: {
+		// await tick();
+		cssPluginsVar = $cssPlugins;
+		if (iframe) {
+			let iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+			injectHeadContent(cssPluginsVar, iframeDoc);
+		}
+	}
+
+	$: {
+		// await tick();
+		code = $current_data.html;
+		css = $current_data.css;
+		js = $current_data.js;
+
+		// js = $current_data.js;
+		if (iframe) {
+			// Get the iframe's document
+			let iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+			// Step 3: Remove any existing <script> elements
+			// const existingScripts = iframeDoc.getElementsByTagName('script');
+			// for (const script of existingScripts) {
+			// 	script.remove();
+			// }
+
+			injectHtmlCSS(iframeDoc, code, css);
+		}
+
+		// console.log('changesing');
+	}
+
+	$: {
+		// await tick();
 		jsPluginsVar = $jsPlugins;
 		if (iframe) {
 			let iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
 
-			injectCSSPlugins(iframeDoc, jsPluginsVar);
+			injectJSPlugins(iframeDoc, jsPluginsVar);
 		}
-
-		console.log('js plugins injected');
 	}
 
 	$: {
+		// await tick();
 		userImportedJSVar = $userImportedJS ?? [];
 		if (iframe) {
 			let iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
@@ -280,102 +203,62 @@
 			injectUserImportedPlugins(iframeDoc, userImportedJSVar);
 		}
 	}
-	function injectJavascript(iframeDoc, js) {
-		const scriptElement = iframeDoc.createElement('script');
-		scriptElement.id = 'mainScript12343REFDS!';
-		scriptElement.textContent = `
 
-console.log = function(message) {
-	// Send the console message to the parent page
-	window.parent.postMessage({ type: 'console', message: message }, '*');
-};
-
-try {
-
-${js}
-
-} catch(err){
-	console.log(err); 
-	
-}`;
-		iframeDoc.body.appendChild(scriptElement);
-	}
 	$: {
-		if ($jsChanged) {
-			jsChanged.set(false);
-			// Step 4: Create and append the new JavaScript code
-			// console.log('js changed', js);
-			// showBundling.set(true);
-			if (iframe) {
-				iframe.contentWindow.location.reload(true);
-				addLoadEvent();
-			}
-			// showBundling.set(false);
+		// await tick();
+		// console.log(curren)
+		if (currentJS != js) {
+			const delay = 1000; // Adjust the delay as needed (in milliseconds)
+			clearTimeout(typingTimer); // Clear the previous timer
+
+			typingTimer = setTimeout(function () {
+				// This function will run after the delay (user has stopped typing)
+
+				currentJS = js;
+				if (iframe) {
+					iframe.contentWindow.location.reload(true);
+					addLoadEvent();
+				}
+			}, delay);
 		}
 	}
 
+	var c = 0;
 	function addLoadEvent() {
+		console.log('reloaded ', c);
 		iframe.onload = function () {
+			c += 1;
+			// currentCSS = null;
+			// currentJS = null;
 			let iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
-			injectUserImportedPlugins(iframeDoc, userImportedJSVar);
+			injectHeadContent(cssPluginsVar, iframeDoc);
 			injectHtmlCSSOnReload(iframeDoc, code, css);
-			injectJavascript(iframeDoc, js);
-			injectCSSPlugins(iframeDoc, cssPluginsVar);
+			injectUserImportedPlugins(iframeDoc, userImportedJSVar);
 			injectJSPlugins(iframeDoc, jsPluginsVar);
+			injectJavascript(iframeDoc, js);
+			loading = false;
+			console.log(currentJS, js);
+
 			setTimeout(() => {
 				current_data.update((cur) => {
-					return { ...cur, css: `${css}  ` };
+					return { ...cur, html: `${cur.html}  ` };
 				});
-				loading = false;
+				console.log('injjected html');
 			}, 500);
+			// console.log('boom');
 			return false;
 		};
 	}
 
 	onMount(() => {
-		// if (iframe) {
-		// 	let iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
-
-		// 	const bodyContent = code;
-		// 	iframeDoc.body.innerHTML = bodyContent;
-
-		// 	// Step 2: Create and append the CSS style
-		// 	const styleElement = iframeDoc.createElement('style');
-		// 	styleElement.textContent = `body::-webkit-scrollbar {
-		// 		width: 0px;
-		// 		height:0px;
-		// 	}${css}`;
-
-		// 	iframeDoc.head.appendChild(styleElement);
-		// 	try {
-		// 		iframeDoc.head.appendChild($externalStuff.html);
-		// 	} catch (err) {
-		// 		console.log('err');
-		// 	}
-		// 	// Step 3: Create and append JavaScript code
-		// 	const scriptElement = iframeDoc.createElement('script');
-		// 	scriptElement.id = 'mainScript12343REFDS!';
-		// 	scriptElement.textContent = `try{
-		// 		${js}
-		// 	}catch(err){console.log(err)}`;
-		// 	iframeDoc.body.appendChild(scriptElement);
-		// }
-
-		// setTimeout(() => {
-		try {
-			if ($current_data.plugins?.length > 0) {
-				jsPlugins.set($current_data.plugins[0].js);
-				cssPlugins.set($current_data.plugins[0].css);
-				// console.log($canvasConfig?.cssProcessor ? true : false);
-			}
-		} catch (er) {
-			console.log(er);
-		}
-		current_data.update((cur) => {
-			return { ...cur, js: `${cur.js}   ` };
-		});
-
-		// }, 1000);
+		setTimeout(() => {
+			current_data.update((cur) => {
+				return { ...cur, js: `${cur.js}   ` };
+			});
+			// console.log()
+		}, 1000);
+		currentCSS = null;
+		currentJS = null;
 	});
 
 	// afterNavigate(()=>)

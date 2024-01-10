@@ -1,14 +1,8 @@
 <script>
 	import { current_data, user, isOwner, SnippetsDescription, showToast } from '$lib/index.js';
-	import {
-		consoleOutput,
-		canvasConfig,
-		canvasTags,
-		sassActive,
-		babelActive,
-		typescriptActive,
-		userImportedJS
-	} from '$lib/feEditor/store.js';
+	import { consoleOutput } from '$lib/feEditor/store.js';
+	import { setInitialState } from '$lib/feEditor/stateConfig.js';
+
 	import { onDestroy, onMount, tick } from 'svelte';
 	import { browser } from '$app/environment';
 	import FeCodeEditor from '../../../components/fePlayground/feCodeEditor.svelte';
@@ -80,13 +74,7 @@
 	isOwner.set(false);
 	onMount(async () => {
 		await tick();
-		canvasTags.set($current_data.tags);
-		canvasConfig.set($current_data.config);
-		sassActive.set($current_data.config?.cssProcessor);
-		babelActive.set($current_data.config?.babelActive);
-		typescriptActive.set($current_data.config?.typescriptActive);
-		userImportedJS.set($current_data.config?.userImportedJS);
-
+		setInitialState($current_data);
 		window.addEventListener('message', captureIframeOutput);
 
 		// // Attach the beforeunload event

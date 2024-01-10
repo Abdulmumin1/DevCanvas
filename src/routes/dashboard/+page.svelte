@@ -96,6 +96,10 @@
 	// console.log(session.user);
 </script>
 
+<svelte:head>
+	<title>Dashboard</title>
+</svelte:head>
+
 <div class="flex min-h-screen gap-2">
 	<NavWrapper>
 		<main class=" min-h-screen flex py-3 md:py-6 w-full flex-col">

@@ -62,7 +62,7 @@
 
 	<div class="share-options absolute bottom-0 right-0" class:hidden={!showOptions}>
 		<a
-			href="https://www.facebook.com/share?url={link}&t={urlEncode(title)}"
+			href="https://www.facebook.com/sharer/sharer.php?u={link}&t={urlEncode(title)}"
 			target="_blank"
 			class="share-option flex items-center gap-4 w-full"
 		>
