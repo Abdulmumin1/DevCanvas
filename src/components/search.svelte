@@ -6,6 +6,7 @@
 	import { faSearchengin } from '@fortawesome/free-brands-svg-icons';
 
 	let query = $page.url.searchParams.get('query');
+	let path = $page.url.pathname.endsWith('/dashboard') ? '/dashboard/search/?/search' : '?/search';
 	let sort = 'tags';
 </script>
 
@@ -13,7 +14,7 @@
 	class="group w-full dark:text-white bg-sky-50 dark:bg-secondary-dark rounded-xl flex items-center px-3 py-2 transition-transform duration-300 gap-2"
 >
 	<Fa icon={faSearch} />
-	<form action="?/search" class="w-full" method="post">
+	<form action={path} class="w-full" method="post">
 		<input
 			type="text"
 			class="outline-none bg-inherit w-full"

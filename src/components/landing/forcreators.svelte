@@ -3,7 +3,7 @@
 	import Fa from 'svelte-fa';
 </script>
 
-<div class="flex items-center justify-center bg-gray-50 dark:bg-secondary-dark py-12">
+<div class="flex items-center justify-center bg-gray-100 dark:bg-secondary-dark py-12">
 	<div
 		class=" max-w-[1000px] md:flex-row-reverse w-full h-full p-4 md:pl-20 flex flex-col gap-3 items-center justify-between"
 	>

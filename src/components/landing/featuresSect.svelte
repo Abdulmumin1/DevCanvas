@@ -21,7 +21,7 @@
 </div>
 
 <style>
-	.anim {
+	/* .anim {
 		animation: fade-in both;
 		animation-timeline: view();
 		animation-range-start: contain 0vh;
@@ -35,5 +35,5 @@
 			opacity: 1;
 			scale: 1;
 		}
-	}
+	} */
 </style>
