@@ -237,13 +237,13 @@
 			injectJSPlugins(iframeDoc, jsPluginsVar);
 			injectJavascript(iframeDoc, js);
 			loading = false;
-			console.log(currentJS, js);
+			// console.log(currentJS, js);
 
 			setTimeout(() => {
 				current_data.update((cur) => {
 					return { ...cur, html: `${cur.html}  ` };
 				});
-				console.log('injjected html');
+				// console.log('injjected html');
 			}, 500);
 			// console.log('boom');
 			return false;

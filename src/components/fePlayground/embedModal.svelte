@@ -1,14 +1,15 @@
 <script>
-	import { fly } from 'svelte/transition';
+	import { fly, scale, slide } from 'svelte/transition';
 	import { clickOutside, copyTextToClipboard } from '$lib/index.js';
 	import { showEmbedModal } from '$lib/feEditor/store.js';
 	import { page } from '$app/stores';
 	import Fa from 'svelte-fa';
-	import { faCopy, faCheck } from '@fortawesome/free-solid-svg-icons';
+	import { faCopy, faCheck, faClose } from '@fortawesome/free-solid-svg-icons';
+	import { onDestroy, onMount } from 'svelte';
 	function closeModal() {
 		showEmbedModal.set(false);
 	}
-
+	let modal;
 	let copied = false;
 	let path = `${$page.url.origin}${$page.url.pathname}/embed`;
 	$: iconCopy = copied ? faCheck : faCopy;
@@ -19,14 +20,33 @@
 			copied = false;
 		}, 2000);
 	}
+
+	onMount(() => {
+		modal.showModal();
+	});
+
+	onDestroy(() => {
+		modal.close();
+	});
 </script>
 
-<div class="bc absolute top-0 h-full w-full z-50">
+<dialog
+	bind:this={modal}
+	class="bc w-[90%] md:w-[90%] h-[90%] md:h-[90%] max-w-[850px] max-h-[850px] dark:border border-secondary-dark bg-transparent rounded-md"
+>
+	<!--class="bc absolute top-0 h-full w-full z-50"-->
 	<div
-		transition:fly
+		class="bg-white dark:bg-black dark:text-white flex justify-between p-2 sticky top-0 border-b-4 border-sky-500"
+	>
+		<p>Embed Canvas</p>
+		<button on:click={closeModal}><Fa icon={faClose} /></button>
+	</div>
+	<div
+		in:fly
+		out:slide
 		use:clickOutside
 		on:click_outside={closeModal}
-		class="modal z-50 backdrop-blur-lg absolute w-[90%] md:w-[70%] h-[80%] md:h-[80%] inset-y-0 inset-x-0 mx-auto m-2 shadow-md border-t-4 bg-white dark:bg-black border-sky-500 p-3 rounded flex flex-col overflow-scroll gap-2"
+		class="modal h-full bg-white dark:bg-black p-3 rounded flex flex-col gap-2"
 	>
 		<iframe
 			src={path}
@@ -53,7 +73,7 @@
 			>
 		</div>
 	</div>
-</div>
+</dialog>
 
 <style>
 	.modal::-webkit-scrollbar {
@@ -63,7 +83,11 @@
 	.modal {
 		z-index: 50;
 	}
-	.bc {
+	/* .bc {
 		background-color: rgba(0, 0, 0, 0.42);
+	} */
+
+	.bc::backdrop {
+		backdrop-filter: blur(1px);
 	}
 </style>

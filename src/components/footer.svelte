@@ -3,13 +3,17 @@
 	import { faGithub } from '@fortawesome/free-brands-svg-icons';
 </script>
 
-<footer class="bg-sky-500 text-black px-4 py-8">
+<footer class="bg-gray-200 text-black px-4 py-8">
 	<div class="flex gap-2">
 		<div class="flex flex-col space-y-2">
 			<h3 class="text-2xl font-bold flex items-center gap-2">
 				DevCanvas
 
-				<img src="/logo.svg" class="bg-sky-200 p-2 rounded-3xl h-10" alt="SnippetLand Logo" />
+				<img
+					src="/logo.svg"
+					class="bg-sky-200 p-2 rounded-3xl h-10 grayscale"
+					alt="SnippetLand Logo"
+				/>
 			</h3>
 			<p>
 				Online Editor with a collection of awesome frontend code and code snippets for developers of
