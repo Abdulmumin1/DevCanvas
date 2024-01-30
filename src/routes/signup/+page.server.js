@@ -1,13 +1,25 @@
-import { fail, redirect } from '@sveltejs/kit';
+import { redirect } from '@sveltejs/kit';
+
+async function signUpNewUser(supabase, email, password, redirectTo) {
+	const { data, error } = await supabase.auth.signUp({
+		email,
+		password,
+		options: {
+			emailRedirectTo: redirectTo
+		}
+	});
+
+	return { data, error };
+}
 
 /** @type {import('./$types').Actions} */
 export const actions = {
-	signin: async ({ url, request, locals: { supabase } }) => {
+	default: async ({ url, request, locals: { supabase } }) => {
 		let body = Object.fromEntries(await request.formData());
 		let email = body.email;
 		let password = body?.password;
 		let redirectTo;
-		// console.log('body', body.redirectTo);
+		console.log('body', body);
 		if (body.redirectTo) {
 			redirectTo = `${url.origin}${body.redirectTo}`;
 		} else {
@@ -23,15 +35,10 @@ export const actions = {
 
 			if (error) throw error;
 		} else {
-			let { dt, error } = await supabase.auth.signInWithPassword({
-				email,
-				password
-			});
+			let { dt, error } = await signUpNewUser(supabase, email, password, redirectTo);
 
-			if (error) return fail(400, { message: 'Invalid Credentials' });
-			else {
-				throw redirect(307, redirectTo);
-			}
+			if (error) throw error;
+			throw redirect(307, redirectTo);
 		}
 		// await sleep(2000);
 		// alert('Check your inbox for the magik link');

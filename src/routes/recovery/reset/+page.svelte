@@ -1,32 +1,30 @@
 <script>
-	import { user, current_data } from '$lib/index.js';
 	import Fa from 'svelte-fa';
-	import { faExclamationCircle, faSpinner } from '@fortawesome/free-solid-svg-icons';
+	import { faExclamationCircle, faL, faSpinner } from '@fortawesome/free-solid-svg-icons';
 	import { slide } from 'svelte/transition';
-	import InnerNav from '../../components/innerNav.svelte';
 	import { enhance } from '$app/forms';
-	import { page } from '$app/stores';
+	import PasswordModule from '$components/auth/passwordModule.svelte';
 	let email;
-	let password;
 	let loading = false;
 	let completed = false;
-	let usePassword = false;
+	let Invalid;
 	let errMessage;
 
-	// export let form;
-
-	const handleSubmit = () => {
+	const handleSubmit = ({ cancel }) => {
+		if (Invalid) {
+			cancel();
+			return;
+		}
 		loading = true;
-
 		return async ({ update, result }) => {
 			loading = false;
-			completed = true;
-			console.log(result);
-			if (result.status == 400) {
+			if (result.type == 'success') {
+				completed = true;
+			} else {
 				errMessage = result.data.message;
 				setTimeout(() => {
 					errMessage = '';
-				}, 3000);
+				}, 2000);
 			}
 			// await update();
 		};
@@ -34,14 +32,14 @@
 </script>
 
 <svelte:head>
-	<title>SignIn - devCanvas</title>
+	<title>Forgot password - devCanvas</title>
 </svelte:head>
 
 <div class="h-screen flex flex-col items-center justify-center bg-white text-primary">
 	<!-- <InnerNav /> -->
 	<form
 		transition:slide
-		action="?/signin"
+		action="?/reset"
 		method="post"
 		use:enhance={handleSubmit}
 		class="flex flex-col gap-4 w-full max-w-xl p-6 md:p-6 md:px-16 rounded-lg mt-2"
@@ -49,77 +47,29 @@
 		<img src="/logo.svg" class=" h-24 rounded-3xl" alt="DevCanvas Logo" />
 
 		<h2 class="text-3xl md:text-5xl text-center">Dev<span class="text-sky-500">Canvas</span></h2>
+
 		<div class="flex flex-col gap-3">
-			<input
-				type="text"
-				name="redirectTo"
-				value={$page.url.searchParams.get('redirectTo')}
-				readonly
-				class="hidden"
-			/>
-			<div transition:slide class="flex flex-col gap-2">
-				<label for="email" class="text-sm">Email</label>
-				<input
-					name="email"
-					type="email"
-					id="email"
-					bind:value={email}
-					required
-					class="border border-sky-200 p-1 rounded outline-none focus:outline focus:outline-sky-300"
-				/>
-			</div>
-			{#if !usePassword}
-				<div class="flex flex-col gap-2" transition:slide>
-					<label for="password" class="text-sm">Password</label>
-					<input
-						name="password"
-						type="password"
-						id="password"
-						bind:value={password}
-						required
-						class="border border-sky-200 p-1 rounded outline-none focus:outline focus:outline-sky-300"
-					/>
-				</div>
-			{/if}
-			<button
-				aria-busy={loading}
-				type="submit"
-				class="p-2 rounded-md flex items-center justify-center gap-2 bg-[#0973a5] text-white"
-				>Login
-
-				{#if loading}
-					<Fa icon={faSpinner} class="animate-spin" />
-				{/if}
-			</button>
-			<label class="bg-light rounded-md p-3 gap-2 text-sm flex items-center justify-start">
-				<input type="checkbox" name="usePassword" id="" bind:checked={usePassword} />
-				Use OTP
-			</label>
-
-			{#if usePassword}
-				{#if !completed}
-					<span
-						class="bg-sky-100 rounded-md p-1 px-2 gap-2 text-sm flex items-center justify-start"
-					>
-						<Fa icon={faExclamationCircle} />Magik link will be sent to your inbox</span
-					>
-				{:else}
-					<span
-						class="bg-green-400 rounded-md p-1 px-2 gap-2 text-sm flex items-center justify-start"
-					>
-						<span class="wobble-hor-top"> <Fa icon={faExclamationCircle} /></span> Magik link sent to
-						your inbox</span
-					>
-				{/if}
-			{/if}
+			<PasswordModule {loading} submitText={'Update password'} bind:message={Invalid} />
 		</div>
-		<p>Don't have an account? <a href="/signup">SignUp</a></p>
-		<a href="recovery/forgot">forgot password?</a>
 
-		{#if errMessage}
-			<p transition:slide class="bg-error p-2 w-full rounded-md">{errMessage}</p>
+		{#if completed}
+			<div
+				in:slide={{ axis: 'y' }}
+				out:slide
+				class="bg-green-400 w-fit py-4 text-black h-6 mt-2 rounded-md p-2 gap-2 text-sm md:text-base flex items-center justify-start"
+			>
+				<span> <Fa icon={faExclamationCircle} /></span><span transition:slide>Password updated</span
+				>
+			</div>
 		{/if}
 	</form>
+	{#if errMessage}
+		<p transition:slide class="bg-error p-2 w-full rounded-md">{errMessage}</p>
+
+		<div>
+			<a href="/dashboard">Go to dashboard</a>
+		</div>
+	{/if}
 </div>
 
 <style>

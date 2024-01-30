@@ -11,37 +11,27 @@
 	let loading = false;
 	let completed = false;
 	let usePassword = false;
-	let errMessage;
-
-	// export let form;
 
 	const handleSubmit = () => {
 		loading = true;
 
-		return async ({ update, result }) => {
+		return async ({ update }) => {
 			loading = false;
 			completed = true;
-			console.log(result);
-			if (result.status == 400) {
-				errMessage = result.data.message;
-				setTimeout(() => {
-					errMessage = '';
-				}, 3000);
-			}
-			// await update();
+			await update();
 		};
 	};
 </script>
 
 <svelte:head>
-	<title>SignIn - devCanvas</title>
+	<title>SignUp - devCanvas</title>
 </svelte:head>
 
 <div class="h-screen flex flex-col items-center justify-center bg-white text-primary">
 	<!-- <InnerNav /> -->
 	<form
 		transition:slide
-		action="?/signin"
+		action="/signup"
 		method="post"
 		use:enhance={handleSubmit}
 		class="flex flex-col gap-4 w-full max-w-xl p-6 md:p-6 md:px-16 rounded-lg mt-2"
@@ -57,7 +47,7 @@
 				readonly
 				class="hidden"
 			/>
-			<div transition:slide class="flex flex-col gap-2">
+			<div class="flex flex-col gap-2">
 				<label for="email" class="text-sm">Email</label>
 				<input
 					name="email"
@@ -85,7 +75,7 @@
 				aria-busy={loading}
 				type="submit"
 				class="p-2 rounded-md flex items-center justify-center gap-2 bg-[#0973a5] text-white"
-				>Login
+				>SignUp
 
 				{#if loading}
 					<Fa icon={faSpinner} class="animate-spin" />
@@ -113,12 +103,7 @@
 				{/if}
 			{/if}
 		</div>
-		<p>Don't have an account? <a href="/signup">SignUp</a></p>
-		<a href="recovery/forgot">forgot password?</a>
-
-		{#if errMessage}
-			<p transition:slide class="bg-error p-2 w-full rounded-md">{errMessage}</p>
-		{/if}
+		<p>Don't have an account? <a href="/signin">SignUp</a></p>
 	</form>
 </div>
 
