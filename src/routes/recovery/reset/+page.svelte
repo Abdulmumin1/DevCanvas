@@ -24,7 +24,7 @@
 				errMessage = result.data.message;
 				setTimeout(() => {
 					errMessage = '';
-				}, 2000);
+				}, 3000);
 			}
 			// await update();
 		};
@@ -68,7 +68,7 @@
 		{/if}
 	</form>
 	{#if errMessage}
-		<p transition:slide class="bg-error p-2 w-full rounded-md">{errMessage}</p>
+		<p transition:slide class="bg-error p-2 rounded-md">{errMessage}</p>
 	{/if}
 </div>
 

@@ -10,6 +10,12 @@ export const actions = {
 		// console.log('body', body.redirectTo);
 		if (body.redirectTo) {
 			redirectTo = `${url.origin}${body.redirectTo}`;
+			if (password) {
+				let inputString = body.redirectTo;
+				let searchString = '/gEtHAndShAkE?whereto=';
+				let resultString = inputString.replace(new RegExp(searchString, 'g'), '');
+				redirectTo = `${resultString}`;
+			}
 		} else {
 			redirectTo = `${url.origin}${'/'}`;
 		}
