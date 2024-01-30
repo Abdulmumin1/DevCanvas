@@ -8,19 +8,20 @@ export const actions = {
 		let password = body?.password;
 		let redirectTo;
 		// console.log('body', body.redirectTo);
+		if (!email) return fail(400, { message: 'Invalid Credentials' });
+
 		if (body.redirectTo) {
 			redirectTo = `${url.origin}${body.redirectTo}`;
 			if (password) {
 				let inputString = body.redirectTo;
 				let searchString = '/gEtHAndShAkE?whereto=';
-				let resultString = inputString.replace(new RegExp(searchString, 'g'), '');
-				redirectTo = `${resultString}`;
+				let resultString = inputString.replace(searchString, '');
+				redirectTo = `${url.origin}${resultString}`;
 			}
 		} else {
 			redirectTo = `${url.origin}${'/'}`;
 		}
-		console.log(redirectTo);
-		if (!email) return 'no mail';
+		// console.log(redirectTo);
 		if (!password) {
 			const { error } = await supabase.auth.signInWithOtp({
 				email,
@@ -39,6 +40,8 @@ export const actions = {
 				throw redirect(307, redirectTo);
 			}
 		}
+
+		// ehre
 		// await sleep(2000);
 		// alert('Check your inbox for the magik link');
 	}
