@@ -1,7 +1,7 @@
 // src/hooks.server.ts
 import { createSupabaseServerClient } from '@supabase/auth-helpers-sveltekit';
 import { redirect } from '@sveltejs/kit';
-import { handleRedirect } from '$lib/utils';
+// import { handleRedirect } from '$lib/utils';
 
 let PUBLIC_SUPABASE_URL = import.meta.env.VITE_PUBLIC_SUPABASE_URL;
 let PUBLIC_SUPABASE_ANON_KEY = import.meta.env.VITE_PUBLIC_SUPABASE_ANON_KEY;
