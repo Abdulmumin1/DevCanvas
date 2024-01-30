@@ -26,7 +26,7 @@
 					errMessage = '';
 				}, 3000);
 			}
-			// await update();
+			await update();
 		};
 	};
 </script>
