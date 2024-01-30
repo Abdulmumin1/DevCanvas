@@ -56,7 +56,7 @@ export const actions = {
 				if (err.code == 23505) {
 					message = 'username already taken';
 				}
-				console.log(message);
+				// console.log(message);
 				return fail(402, { message });
 			} else {
 				return body;
@@ -89,13 +89,13 @@ export const actions = {
 				.eq('user_id', user_id);
 
 			// console.log(body, profile);
-			console.log(profile);
+			// console.log(profile);
 			if (err) {
 				let message = 'Error updating your info';
 				if (err.code == 23505) {
 					message = 'username already taken';
 				}
-				console.log(message);
+				// console.log(profile);
 				return fail(402, { message });
 			} else {
 				return body;

@@ -4,6 +4,7 @@
 	import {
 		faExclamationCircle,
 		faIcons,
+		faRightLong,
 		faSpinner,
 		faUpRightAndDownLeftFromCenter,
 		faUpRightFromSquare,
@@ -67,6 +68,12 @@
 					><a href="/{details?.username}"><Fa icon={faUpRightFromSquare} /></a></span
 				>
 			</h2>
+
+			<div>
+				<a href="/recovery/reset" class="flex gap-2 items-center py-4"
+					>Reset password <Fa icon={faRightLong} /></a
+				>
+			</div>
 			<form action={data.action} use:enhance={handleSubmit} method="POST">
 				<!-- User Name -->
 				<div class="mb-4">
@@ -101,6 +108,7 @@
 						readonly
 					/>
 				</div>
+
 				<!-- Full Name -->
 				<div class="mb-4">
 					<label for="fullname" class="block text-gray-700 dark:text-white text-sm md:text-lg mb-2">
@@ -172,6 +180,7 @@
 						</div>
 					</div>
 				</div>
+
 				<!-- Submit Button -->
 				<div class="flex items-center justify-between">
 					<button

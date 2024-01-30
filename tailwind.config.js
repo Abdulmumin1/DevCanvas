@@ -9,9 +9,9 @@ export default {
 			},
 
 			colors: {
-				// Light Mode
+				// Light Mode BEE3F8
 				primary: '#0e0e0e',
-				light: '#BEE3F8',
+				light: '#e5e7eb',
 				'text-light': '#0369A1',
 				secondary: '#FFFFFF',
 				'text-secondary': '#333333',
