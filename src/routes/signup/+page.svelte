@@ -103,7 +103,7 @@
 				{/if}
 			{/if}
 		</div>
-		<p>Don't have an account? <a href="/signin">SignUp</a></p>
+		<p>Account already? <a href="/signin">SignIn</a></p>
 	</form>
 </div>
 
