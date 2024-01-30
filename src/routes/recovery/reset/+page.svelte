@@ -61,14 +61,14 @@
 				<span> <Fa icon={faExclamationCircle} /></span><span transition:slide>Password updated</span
 				>
 			</div>
+
+			<div>
+				<a href="/dashboard">Go to dashboard</a>
+			</div>
 		{/if}
 	</form>
 	{#if errMessage}
 		<p transition:slide class="bg-error p-2 w-full rounded-md">{errMessage}</p>
-
-		<div>
-			<a href="/dashboard">Go to dashboard</a>
-		</div>
 	{/if}
 </div>
 
