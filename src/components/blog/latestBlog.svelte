@@ -9,10 +9,10 @@
 	// console.log(details);
 </script>
 
-<div class="min-h-[350px] flex flex-col justify-center gap-3 p-3 text-white">
+<div class="min-h-[350px] flex flex-col justify-center gap-3 px-6 text-white">
 	<a
 		href={`blog/${details.slug}`}
-		class="text-4xl md:text-6xl hover:opacity-80 text-orang dark:text-dark max-w-lg capitalize"
+		class="text-4xl md:text-5xl hover:opacity-80 text-orang dark:text-dark max-w-lg capitalize"
 	>
 		{details.title}</a
 	>
