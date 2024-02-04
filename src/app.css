@@ -1075,10 +1075,6 @@ video {
   min-width: 100px;
 }
 
-.max-w-3xl {
-  max-width: 48rem;
-}
-
 .max-w-4xl {
   max-width: 56rem;
 }
@@ -1133,10 +1129,6 @@ video {
 
 .max-w-md {
   max-width: 28rem;
-}
-
-.max-w-2xl {
-  max-width: 42rem;
 }
 
 .max-w-xl {
@@ -1538,6 +1530,11 @@ video {
   border-color: rgb(14 165 233 / var(--tw-border-opacity));
 }
 
+.bg-\[\#0973a5\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(9 115 165 / var(--tw-bg-opacity));
+}
+
 .bg-\[\#0b0e14\] {
   --tw-bg-opacity: 1;
   background-color: rgb(11 14 20 / var(--tw-bg-opacity));
@@ -1679,11 +1676,6 @@ video {
 .bg-white {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
-}
-
-.bg-\[\#0973a5\] {
-  --tw-bg-opacity: 1;
-  background-color: rgb(9 115 165 / var(--tw-bg-opacity));
 }
 
 .object-contain {
@@ -1987,6 +1979,10 @@ video {
 
 .uppercase {
   text-transform: uppercase;
+}
+
+.lowercase {
+  text-transform: lowercase;
 }
 
 .capitalize {
@@ -2408,7 +2404,7 @@ video {
   border-width: 1px;
 }
 
-.article h2 {
+.article h1 {
   font-family: Roboto Slab, serif !important;
   /* color: theme(colors.orang); */
   text-transform: capitalize;
@@ -2419,24 +2415,20 @@ video {
 }
 
 @media (min-width: 768px) {
-  .article h2 {
+  .article h1 {
     font-size: 2.25rem;
     line-height: 2.5rem;
   }
 }
 
-.article h2 {
+.article h1 {
   font-weight: 500;
-  color: black;
 }
 
-.article h1 {
+.article h2 {
   font-family: Roboto Slab, serif !important;
+  /* font-size: 2.5rem; */
   padding-block: 1;
-  /* font-weight: theme(fontWeight.bold); */
-  /* color: theme(colors.orang); */
-  /* text-transform: t; */
-  color: black;
   font-weight: 500;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
@@ -2445,7 +2437,7 @@ video {
 }
 
 @media (min-width: 768px) {
-  .article h1 {
+  .article h2 {
     font-size: 1.875rem;
     line-height: 2.25rem;
   }
@@ -2454,7 +2446,6 @@ video {
 .article h3 {
   font-family: Roboto Slab, serif !important;
   font-weight: 500;
-  color: black;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
   font-size: 1.25rem;
@@ -2474,7 +2465,6 @@ video {
 
 .article h4 {
   font-family: Roboto Slab, serif !important;
-  color: black;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
   font-size: 1.125rem;
@@ -2491,6 +2481,20 @@ video {
 .article h4 {
   /* font-weight: theme(fontWeight.bold); */
   /* color: theme(colors.orang); */
+}
+
+.article h1,
+	h2,
+	h3 {
+  --tw-text-opacity: 1;
+  color: rgb(14 165 233 / var(--tw-text-opacity));
+}
+
+:is(.dark .article h1),:is(.dark 
+	h2),:is(.dark 
+	h3) {
+  --tw-text-opacity: 1;
+  color: rgb(125 211 252 / var(--tw-text-opacity));
 }
 
 .article code {
