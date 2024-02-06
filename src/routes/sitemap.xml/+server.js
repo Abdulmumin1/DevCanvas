@@ -18,13 +18,15 @@ export async function GET({ fetch, url }) {
     <loc>https://devcanvas.art/explore</loc>
     <lastmod>2024-01-17</lastmod>
   </url>
-
   <url>
     <loc>https://devcanvas.art/blog</loc>
   </url>
   <url>
-  <loc>https://devcanvas.art/signin</loc>
-</url>
+    <loc>https://devcanvas.art/play/try</loc>
+  </url>
+  <url>
+    <loc>https://devcanvas.art/signin</loc>
+  </url>
  
     ${posts
 			.map(
