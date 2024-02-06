@@ -19,12 +19,59 @@
 	<title>DevCanvas</title>
 
 	<!-- Facebook Meta Tags -->
-	<meta property="og:title" content="Snippets" />
+	<meta property="og:title" content="DevCanvas" />
 
 	<!-- Twitter Meta Tags -->
-	<meta name="twitter:title" content="Snippets" />
+	<meta name="twitter:title" content="DevCanvas" />
 
 	<meta name="robots" content="index, follow" />
+
+	<script type="application/ld+json">
+		{
+			"@context": "https://schema.org/",
+			"@type": "WebSite",
+			"name": "devCanvas",
+			"url": "https://devcanvas.art",
+			"potentialAction": {
+				"@type": "SearchAction",
+				"target": "https://devcanvas.art/search?query={search_term_string}",
+				"query-input": "required name=search_term_string"
+			}
+		}
+	</script>
+
+	<script type="application/ld+json">
+		{
+			"@context": "https://schema.org/",
+			"@type": "BreadcrumbList",
+			"itemListElement": [
+				{
+					"@type": "ListItem",
+					"position": 1,
+					"name": "Explore",
+					"item": "https://devcanvas.art/explore"
+				},
+				{
+					"@type": "ListItem",
+					"position": 2,
+					"name": "Sign Up",
+					"item": "https://devcanvas.art/signin"
+				},
+				{
+					"@type": "ListItem",
+					"position": 3,
+					"name": "Sign In",
+					"item": "https://devcanvas.art/signin"
+				},
+				{
+					"@type": "ListItem",
+					"position": 4,
+					"name": "Blog",
+					"item": "https://devcanvas.art/blog"
+				}
+			]
+		}
+	</script>
 </svelte:head>
 
 <div
