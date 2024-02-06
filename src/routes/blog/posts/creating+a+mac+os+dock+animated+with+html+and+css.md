@@ -5,6 +5,8 @@ description: "In this tutorial, we'll recreate a similar animated dock using HTM
 
 date: '2023-12-20'
 
+lastmod: '2024-02-05'
+
 categories:
   - CSS
 

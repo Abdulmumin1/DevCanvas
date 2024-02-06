@@ -5,6 +5,8 @@ description: 'The <dialog> tag is a powerful HTML5 element that allows developer
 
 date: '2023-12-11'
 
+lastmod: '2024-02-05'
+
 categories:
   - CSS
 
