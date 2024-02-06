@@ -115,7 +115,7 @@
 		</div>
 
 		<a
-			href="https://snippet-bice.vercel.app/play/{details.project_key}"
+			href="https://devcanvas.art/play/{details.project_key}"
 			target="_blank"
 			class="w-full text-gray-100 rounded-r p-1 flex gap-2 items-center justify-center sl px-2"
 		>
