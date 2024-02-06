@@ -1,11 +1,7 @@
 <script>
 	import { onMount } from 'svelte';
 	export let data;
-	import { formatDate, insertCopyButton, copyUrlToClipboard } from '$lib/utils/utils.js';
-	import { mylinks } from '$lib/utils/randomstore.js';
-	// import { faGithub, faLinkedinIn, faTwitter, faYoutube } from '@fortawesome/free-brands-svg-icons';
-	import InnerNav from '$components/innerNav.svelte';
-
+	import { formatDate, copyUrlToClipboard } from '$lib/utils/utils.js';
 	import Fa from 'svelte-fa';
 	import {
 		faFacebook,
@@ -13,14 +9,14 @@
 		faLinkedin,
 		faReddit,
 		faTwitter,
-		faWhatsapp,
-		faGithub,
-		faYoutube
+		faWhatsapp
 	} from '@fortawesome/free-brands-svg-icons';
 	import { faCalendar, faCopy } from '@fortawesome/free-solid-svg-icons';
 	import { scale } from 'svelte/transition';
 	import { generateStructuredData } from '$lib/blog/utils.js';
 	// import { page } from '$app/stores';
+	// import { page } from '$app/stores';
+
 	let url;
 
 	onMount(() => {
@@ -46,6 +42,14 @@
 			element.appendChild(div);
 		});
 
+		let stData = generateStructuredData({
+			title: data.meta.title,
+			datePublished: data.meta.date,
+			description: data.meta.description,
+			url
+		});
+
+		document.head.appendChild(stData);
 		// console.log($page.url.pathname.startsWith('/blog/'));
 	});
 
@@ -57,17 +61,6 @@
 	}
 
 	let encodedTitle = convertLinkToRequestReadable(data.meta.title);
-	let stData;
-	onMount(() => {
-		stData = generateStructuredData({
-			title: data.meta.title,
-			datePublished: data.meta.date,
-			description: data.meta.description,
-			keywords: data.meta.categories
-		});
-
-		document.head.appendChild(stData);
-	});
 </script>
 
 <svelte:head>
@@ -78,6 +71,34 @@
 		href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;500&display=swap"
 		rel="stylesheet"
 	/>
+
+	<meta name="description" content={data.meta?.description} />
+
+	<!-- Facebook Meta Tags -->
+	<meta property="og:url" content="https://devcanvas.art/blog" />
+	<meta property="og:type" content="website" />
+	<meta property="og:title" content={data.meta.title} />
+	<meta property="og:description" content={data.meta?.description} />
+	<meta
+		property="og:image"
+		content={data.meta?.thumbnail ??
+			`https://devcanvas.art/og?message=${encodeURIComponent(data.meta.title)}`}
+	/>
+
+	<!-- Twitter Meta Tags -->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta property="twitter:domain" content="devcanvas.art" />
+	<meta property="twitter:url" content="https://devcanvas.art" />
+	<meta name="twitter:title" content={data.meta.title} />
+	<meta name="twitter:description" content={data.meta?.description || data.meta.title} />
+	<meta
+		name="twitter:image"
+		content={`https://devcanvas.art/og?message=${encodeURIComponent(data.meta.title)}`}
+	/>
+
+	{#if data.meta?.published}
+		<meta name="robots" content="index, follow" />
+	{/if}
 </svelte:head>
 
 <article in:scale class="mx-auto flex flex-col gap-6 md:px-12">
@@ -88,30 +109,6 @@
 				<p class="text-sm">Published {formatDate(data.meta.date)}</p>
 			</div>
 			<h1 class="text-3xl md:text-5xl title">{data.meta.title}</h1>
-			<!-- <div class="rounded-full h-8 w-8">
-				<img
-					src="https://yaqeen.me/_app/immutable/assets/abdul.66936237.jpg"
-					alt="Abdulmumin Yaqeen"
-					width="120px"
-					class="rounded-full"
-				/>
-			</div>
-			<div class="flex items-center">
-				<div class="flex gap-2 p-2">
-					<a href={$mylinks.github}>
-						<Fa icon={faGithub} />
-					</a>
-					<a href={$mylinks.linkedin}>
-						<Fa icon={faLinkedin} />
-					</a>
-					<a href={$mylinks.twitter}>
-						<Fa icon={faTwitter} />
-					</a>
-					<a href={$mylinks.youtube}>
-						<Fa icon={faYoutube} />
-					</a>
-				</div>
-			</div> -->
 		</div>
 	</hgroup>
 	<div class="flex gap-3 flex-wrap">

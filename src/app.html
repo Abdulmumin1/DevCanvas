@@ -59,6 +59,53 @@
 				? document.documentElement.classList.add('dark')
 				: document.documentElement.classList.remove('dark');
 		</script>
+
+		<script type="application/ld+json">
+			{
+				"@context": "https://schema.org/",
+				"@type": "WebSite",
+				"name": "devCanvas",
+				"url": "https://devcanvas.art",
+				"potentialAction": {
+					"@type": "SearchAction",
+					"target": "https://devcanvas.art/search?query={search_term_string}",
+					"query-input": "required name=search_term_string"
+				}
+			}
+		</script>
+
+		<script type="application/ld+json">
+			{
+				"@context": "https://schema.org/",
+				"@type": "BreadcrumbList",
+				"itemListElement": [
+					{
+						"@type": "ListItem",
+						"position": 1,
+						"name": "Explore",
+						"item": "https://devcanvas.art/explore"
+					},
+					{
+						"@type": "ListItem",
+						"position": 2,
+						"name": "Sign Up",
+						"item": "https://devcanvas.art/signin"
+					},
+					{
+						"@type": "ListItem",
+						"position": 3,
+						"name": "Sign In",
+						"item": "https://devcanvas.art/signin"
+					},
+					{
+						"@type": "ListItem",
+						"position": 4,
+						"name": "Blog",
+						"item": "https://devcanvas.art/blog"
+					}
+				]
+			}
+		</script>
 	</head>
 	<body data-sveltekit-preload-data="hover" class="dark:bg-primary">
 		<div style="display: contents">%sveltekit.body%</div>
