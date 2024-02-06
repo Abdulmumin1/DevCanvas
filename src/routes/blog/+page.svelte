@@ -11,7 +11,7 @@
 	<!-- Meta Tags Generated via https://www.opengraph.xyz -->
 
 	<!-- HTML Meta Tags -->
-	<title>Blog - SnippetLand</title>
+	<title>Blog - DevCanvas</title>
 	<meta name="description" content="Dev Canvas - Online HTML/CSS/JS/SCSS Editor" />
 
 	<!-- Facebook Meta Tags -->
