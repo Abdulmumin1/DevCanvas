@@ -32,7 +32,7 @@ export async function GET({ fetch, url }) {
             <url>
                
                 <loc>${url.origin}/blog/${post.slug}</loc>
-                <lastmod>${post?.date || new Date()}</lastmod>
+                <lastmod>${post?.lastmod}</lastmod>
             </url>
         `
 			)

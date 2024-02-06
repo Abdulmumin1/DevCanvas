@@ -5,6 +5,8 @@ description: "Have you ever wanted to create an interactive element that follows
 
 date: '2023-12-20'
 
+lastmod: '2024-02-05'
+
 categories:
   - CSS
 
