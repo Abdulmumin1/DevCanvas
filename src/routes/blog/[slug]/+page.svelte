@@ -101,7 +101,7 @@
 	{/if}
 </svelte:head>
 
-<article in:scale class="mx-auto flex flex-col gap-6 md:px-12">
+<article in:scale class="mx-auto flex flex-col gap-6 md:px-2 lg:px-4">
 	<hgroup class="  dark:text-light flex rounded-lg w-full flex-col gap-3 relative">
 		<div class="flex gap-4 flex-col">
 			<div class="flex gap-2">
@@ -174,7 +174,12 @@
 	</div>
 </article>
 
-<style>
+<style lang="postcss">
+	/* .article > h1,
+	h2,
+	h3 {
+		@apply text-sky-500 dark:text-sky-300;
+	} */
 	.article::before {
 		content: '';
 		background: rgb(56, 189, 248);

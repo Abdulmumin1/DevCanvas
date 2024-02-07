@@ -41,7 +41,9 @@
 				Star us on github <Fa icon={faStar} />
 			</a>
 		</p> -->
-		<h1 class="text-4xl hero-text text-primary dark:text-light md:text-6xl max-w-[35rem]">
+		<h1
+			class="text-4xl hero-text text-primary dark:text-light md:text-6xl lg:text-[5rem] max-w-[35rem]"
+		>
 			Paint Your <span class="magic">
 				<span class="magic-star">
 					<svg viewBox="0 0 512 512">

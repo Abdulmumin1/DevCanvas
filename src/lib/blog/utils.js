@@ -19,7 +19,7 @@ export function generateStructuredData({
 	  },
 	  "headline": "${title}",
 	  "description": "${description}",
-	  "image": "https://devcanvas.art/og?message=${description}",  
+	  "image": "https://devcanvas.art/og?message=${encodeURIComponent(description)}",  
 	  "author": {
 		"@type": "Organization",
 		"name": "${author}",

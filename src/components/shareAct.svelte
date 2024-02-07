@@ -71,7 +71,7 @@
 		<a
 			href="https://twitter.com/intent/tweet?url={link}&text={urlEncode(title)}"
 			target="_blank"
-			class="share-option flex items-center gap-4 w-full"><Fa icon={faX} /> X</a
+			class="share-option flex items-center gap-4 w-full"><span class="text-xl">𝕏</span> X</a
 		>
 		<a
 			href="https://www.linkedin.com/shareArticle?url={link}&title={urlEncode(title)}"
