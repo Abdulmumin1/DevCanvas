@@ -7,7 +7,7 @@
 	<InnerNav />
 </div>
 <div class="w-full flex justify-center py-12">
-	<div class="max-w-[1000px] w-full lg:text-xl px-4">
+	<div class="max-w-[1200px] w-full lg:text-xl px-4 lg:px-0">
 		<slot />
 	</div>
 </div>

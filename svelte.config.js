@@ -1,5 +1,6 @@
 import adapter from '@sveltejs/adapter-auto';
-import { vitePreprocess } from '@sveltejs/kit/vite';
+// import { vitePreprocess } from '@sveltejs/kit/vite';
+import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 
 import { escapeSvelte, mdsvex } from 'mdsvex';
 import shiki from 'shiki';
@@ -29,9 +30,6 @@ const config = {
 		alias: {
 			$components: 'src/components'
 		}
-	},
-	optimizeDeps: {
-		exclude: ['codemirror', '@codemirror/language-javascript' /* ... */]
 	},
 
 	extensions: ['.svelte', '.md'],

@@ -72,6 +72,9 @@
 			<ul>
 				<!-- <li class="py-2 px-4 hover:bg-blue-100 cursor-pointer">Option 1</li> -->
 				<li class="py-2 px-4 hover:bg-blue-100 hover:text-primary cursor-pointer rounded-lg">
+					<a class="w-full h-full text-left" href="/play/try">+ New Canvas</a>
+				</li>
+				<li class="py-2 px-4 hover:bg-blue-100 hover:text-primary cursor-pointer rounded-lg">
 					<a class="w-full h-full text-left" href="/profile">Profile</a>
 				</li>
 				<li class="py-2 px-4 hover:bg-blue-100 hover:text-primary cursor-pointer rounded-lg">
