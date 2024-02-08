@@ -108,7 +108,7 @@
 			<div class="w-full px-0">
 				<div class="flex flex-col gap-2">
 					<p class="text-xl md:text-2xl font-bold pt-6">Your Collections</p>
-					<div class="bg-sky-100 dark:bg-secondary-dark pt-2 px-1 rounded-md my-4">
+					<div class="bg-sky-light dark:bg-secondary-dark pt-2 px-1 rounded-md my-4">
 						<div class="w-full flex gap-2 text-primary dark:text-white text-base">
 							<button
 								class="p-1 rounded-t-md px-3"

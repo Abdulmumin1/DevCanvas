@@ -124,26 +124,24 @@
 
 <NavWrapper>
 	<!-- Code Snippet Cards -->
-	<div
-		class="flex gap-2 pt-2 items-center flex-wrap"
-	>
+	<div class="flex gap-2 pt-2 items-center flex-wrap">
 		Filters:
 		<button
-			class="bg-sky-100 {filter == 'tags'
+			class="bg-sky-light {filter == 'tags'
 				? 'dark:bg-gray-300 text-black'
 				: 'dark:bg-secondary-dark '} rounded-md p-1 px-2"
-			class:bg-sky-300={filter == 'tags'}
+			class:bg-gray-400={filter == 'tags'}
 			on:click={() => changeFilter('tags')}>Tags</button
 		>
 		<button
-			class="bg-sky-100 {filter == 'desc'
+			class="bg-sky-light {filter == 'desc'
 				? 'dark:bg-gray-300 text-black'
 				: 'dark:bg-secondary-dark '} p-1 rounded-md px-2"
-			class:bg-sky-300={filter == 'desc'}
+			class:bg-gray-400={filter == 'desc'}
 			on:click={() => changeFilter('desc')}>Description</button
 		>
 	</div>
-	<div class="bg-sky-100 dark:bg-secondary-dark pt-2 px-1 rounded-md my-4">
+	<div class="bg-sky-light dark:bg-secondary-dark pt-2 px-1 rounded-md my-4">
 		<div class="w-full flex gap-2 text-primary dark:text-white">
 			<button
 				class="p-1 rounded-t-md px-3"
