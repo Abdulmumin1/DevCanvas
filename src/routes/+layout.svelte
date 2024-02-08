@@ -100,6 +100,6 @@
 <div class=" bg-white dark:bg-primary dark:text-white transition-colors duration-300">
 	<slot />
 	{#if $showToast}
-		<Toast message={$showToast.message} />
+		<Toast message={$showToast.message} duration={$showToast?.duration ?? 2500} />
 	{/if}
 </div>

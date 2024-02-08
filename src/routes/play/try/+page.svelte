@@ -1,20 +1,22 @@
 <script>
-	import { current_data, user, isOwner, SnippetsDescription, showToast } from '$lib/index.js';
+	import { current_data, isOwner, showToast } from '$lib/index.js';
 	import { consoleOutput } from '$lib/feEditor/store.js';
 	import { setInitialState } from '$lib/feEditor/stateConfig.js';
 
 	import { onDestroy, onMount, tick } from 'svelte';
 	import { browser } from '$app/environment';
-	import FeCodeEditor from '../../../components/fePlayground/feCodeEditor.svelte';
-	import FePlayGroungNav from '../../../components/fePlayground/fePlayGroungNav.svelte';
-	import CodeOutput from '../../../components/fePlayground/codeOutput.svelte';
-	import Resizable from '../../../components/fePlayground/resizable.svelte';
+	import FeCodeEditor from '$components/fePlayground/feCodeEditor.svelte';
+	import FePlayGroungNav from '$components/fePlayground/fePlayGroungNav.svelte';
+	import CodeOutput from '$components/fePlayground/codeOutput.svelte';
+	import Resizable from '$components/fePlayground/resizable.svelte';
 	import { showModal, showEmbedModal } from '$lib/feEditor/store.js';
-	import JsConsole from '../../../components/fePlayground/jsConsole.svelte';
-	import EmbedModal from '../../../components/fePlayground/embedModal.svelte';
+	import JsConsole from '$components/fePlayground/jsConsole.svelte';
+	import EmbedModal from '$components/fePlayground/embedModal.svelte';
 	import ModalHigh from '$components/fePlayground/modalHigh.svelte';
-	import OverlayNav from '../../../components/overlayNav.svelte';
-	import SideComponent from '../../../components/fePlayground/editorSets/sideComponent.svelte';
+	// import OverlayNav from '$components/overlayNav.svelte';
+	// import { showToast } from '$lib/index.js';
+
+	import SideComponent from '$components/fePlayground/editorSets/sideComponent.svelte';
 
 	// console.log(user)
 
@@ -87,6 +89,8 @@
 		// 		return 'You have unsaved changes. Are you sure you want to leave?';
 		// 	}
 		// });
+
+		showToast.set({ message: 'Canvas not saved, Click save.', duration: 4000 });
 	});
 
 	onDestroy(() => {

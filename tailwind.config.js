@@ -10,6 +10,7 @@ export default {
 
 			colors: {
 				// Light Mode BEE3F8
+				'sky-light': 'theme(colors.gray.100)',
 				primary: '#0e0e0e',
 				light: '#e5e7eb',
 				'text-light': '#0369A1',

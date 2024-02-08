@@ -92,7 +92,7 @@
 						on:input={handleInput}
 						placeholder="Untitled Project"
 						spellcheck="false"
-						class=" focus:outline-1 font-semibold focus:outline-sky-200 text-sm md:text-xl capitalize text-white bg-inherit whitespace-nowrap truncate"
+						class=" focus:outline-1 min-w-[50px] font-semibold focus:outline-sky-200 text-sm md:text-xl capitalize text-white bg-inherit whitespace-nowrap truncate"
 					>
 						{title}
 					</p>
@@ -104,7 +104,7 @@
 					on:input={handleInput}
 					placeholder="Untitled Project"
 					spellcheck="false"
-					class="max-w-[100px] font-semibold md:max-w-[400px] w-fit focus:outline-1 focus:outline-sky-200 text-sm md:text-xl capitalize text-white bg-inherit whitespace-nowrap truncate"
+					class="max-w-[100px] min-w-[50px] font-semibold md:max-w-[400px] w-fit focus:outline-1 focus:outline-sky-200 text-sm md:text-xl capitalize text-white bg-inherit whitespace-nowrap truncate"
 				>
 					{$current_data.description}
 				</p>

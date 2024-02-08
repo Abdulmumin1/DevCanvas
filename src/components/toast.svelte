@@ -5,11 +5,12 @@
 	import Fa from 'svelte-fa';
 	import { faClose } from '@fortawesome/free-solid-svg-icons';
 	export let message;
+	export let duration = 2500;
 
 	onMount(() => {
 		setTimeout(() => {
 			showToast.set(false);
-		}, 2500);
+		}, duration);
 	});
 </script>
 
