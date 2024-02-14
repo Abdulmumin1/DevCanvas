@@ -129,7 +129,7 @@
 
 			const bodyContent = data.details.html;
 			if (zoomOut) {
-				iframeDoc.body.style.scale = 0.3;
+				iframeDoc.body.style.scale = 0.4;
 			}
 			iframeDoc.body.innerHTML = bodyContent;
 
@@ -139,7 +139,6 @@
 			let css = data.details.css;
 
 			if (data.details.config?.cssProcessor) {
-				console.log('ok');
 				css = await compileSassString(css);
 			}
 			// console.log(css);
@@ -150,6 +149,9 @@
 					background-color:white;
 					width:100%;
 					height:100%;
+				}
+				* {
+					font-size:11px;
 				}
 				*::-webkit-scrollbar {
 					width: 0px;

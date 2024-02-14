@@ -1,5 +1,4 @@
 <script>
-	import { onMount } from 'svelte';
 	import { isOwner, current_data } from '$lib/index.js';
 
 	import {
@@ -9,23 +8,21 @@
 		formatOnPasteSetting,
 		renderIndentGuidesSetting,
 		editorSettingState,
-		delayPreview
+		delayPreview,
+		autoSavefast
 	} from '$lib/index.js';
-	// import feather from 'feather-icons';
 	import { scale, slide } from 'svelte/transition';
-	import Fa from 'svelte-fa';
-	import { faArrowDown } from '@fortawesome/free-solid-svg-icons';
 	import SingleSetting from '../singleSetting.svelte';
 	import DeleteCanvas from '../deleteCanvas.svelte';
-
-	let dropdownOpen = false;
+	import Fa from 'svelte-fa';
+	import { faClose } from '@fortawesome/free-solid-svg-icons';
 
 	function closeDropdown() {
 		editorSettingState.set(false);
 	}
 
 	function handleWordWrap(event) {
-		console.log(event.detail.status);
+		// console.log(event.detail.status);
 		wordWrapSetting.set(event.detail.status);
 	}
 
@@ -43,6 +40,10 @@
 	function handleDelayChange(event) {
 		delayPreview.set(event.detail.status);
 	}
+
+	function handleAutoSave(event) {
+		autoSavefast.set(event.detail.status);
+	}
 </script>
 
 {#if $editorSettingState}
@@ -50,8 +51,8 @@
 		transition:slide={{ axis: 'x' }}
 		class="absolute drop top-0 w-[300px] flex flex-col bg-white dark:bg-black h-full shadow-2xl"
 	>
-		<div class="justify-end">
-			<button class="p-2" on:click={closeDropdown}>Close</button>
+		<div class="flex justify-end items-center w-full">
+			<button class="p-2 text-2xl" on:click={closeDropdown}><Fa icon={faClose} /></button>
 		</div>
 
 		<ul
@@ -61,8 +62,17 @@
 			transition:scale
 		>
 			<li class="p-2 text-center">Applies to all editor</li>
+
 			<li class="w-full">
-				<SingleSetting on:checked={handleDelayChange} checked={$delayPreview} label={'Delay'} />
+				<SingleSetting on:checked={handleAutoSave} checked={$autoSavefast} label={'Auto Save'} />
+			</li>
+
+			<li class="w-full">
+				<SingleSetting
+					on:checked={handleDelayChange}
+					checked={$delayPreview}
+					label={'Delay preview'}
+				/>
 			</li>
 			<li class="w-full">
 				<SingleSetting label={'Word Wrap'} on:checked={handleWordWrap} checked={$wordWrapSetting} />

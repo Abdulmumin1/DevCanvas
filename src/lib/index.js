@@ -8,6 +8,7 @@ export const current_data = writable({});
 export const user = writable(false);
 export const previewMode = writable(true);
 export const dashboardLoading = writable(true);
+export const autoSavefast = writable(true);
 
 export const editorSettingState = writable(false);
 export const delayPreview = writable(false);

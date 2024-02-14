@@ -1,14 +1,15 @@
 <script>
 	import Fa from 'svelte-fa';
-	import InnerNav from '../../components/innerNav.svelte';
+	// import InnerNav from '$components/innerNav.svelte';
 	import { faRightLong } from '@fortawesome/free-solid-svg-icons';
-	import { pageCount, user_info } from '$lib/index.js';
-	import { onMount } from 'svelte';
+	import { pageCount } from '$lib/index.js';
+	// import { onMount } from 'svelte';
 	import { goto } from '$app/navigation';
 
-	import CollectionDummy from '../../components/collectionDummy.svelte';
-	import FeCollectionPage from '../../components/fePlayground/feCollectionPage.svelte';
-	import NavWrapper from '../../components/snips/navWrapper.svelte';
+	import CollectionDummy from '$components/collectionDummy.svelte';
+	import FeCollectionPage from '$components/fePlayground/feCollectionPage.svelte';
+	import NavWrapper from '$components/snips/navWrapper.svelte';
+	import FeCollectionDummy from '../../components/feCollectionDummy.svelte';
 
 	export let data;
 
@@ -149,12 +150,13 @@
 	</article>
 	<div class="flex items-center justify-center min-h-screen flex-col gap-2">
 		<main class=" min-h-screen flex py-3 md:py-6 w-full justify-center">
-			<div class="w-full ">
+			<div class="w-full">
 				<div>
 					<p class="text-lg md:text-xl font-bold py-6">Popular Collections</p>
 				</div>
 				{#await loadIntialData()}
-					<CollectionDummy />
+					<!-- <CollectionDummy /> -->
+					<FeCollectionDummy />
 				{:then userSnippets}
 					<!-- <Sm -->
 					<!-- Create New Code Snippet button -->

@@ -20,7 +20,8 @@
 		smallerFontSize,
 		formatOnPasteSetting,
 		renderIndentGuidesSetting,
-		delayPreview
+		delayPreview,
+		autoSavefast
 	} from '$lib/index.js';
 	import { currentTheme } from '$lib/utils/utils.js';
 	import { browser } from '$app/environment';
@@ -95,7 +96,9 @@
 				return { ...cur, js: data };
 			});
 		}, updateDelay);
-		handleAutoSave();
+		if ($autoSavefast) {
+			handleAutoSave();
+		}
 	}
 
 	function setEditorTheme() {
@@ -265,6 +268,8 @@
 		});
 
 		loading = false;
+
+		editor.updateOptions({ tabSize: 1 });
 
 		return () => {
 			editor.dispose();

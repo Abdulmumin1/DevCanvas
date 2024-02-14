@@ -1,13 +1,12 @@
 <script>
-	import { afterUpdate, onMount } from 'svelte';
 	import { pageCountSnips, pageCountPl } from '$lib/index.js';
-	import NewSnippet from '../../components/newSnippet.svelte';
-	import CollectionPage from '../../components/collectionPage.svelte';
-	import CollectionDummy from '../../components/collectionDummy.svelte';
-	import NavWrapper from '../../components/snips/navWrapper.svelte';
+	import CollectionPage from '$components/collectionPage.svelte';
+	import CollectionDummy from '$components/collectionDummy.svelte';
+	import NavWrapper from '$components/snips/navWrapper.svelte';
 	import { fade } from 'svelte/transition';
-	import FeCollectionPage from '../../components/fePlayground/feCollectionPage.svelte';
-	import UserStats from '../../components/userStats.svelte';
+	import FeCollectionPage from '$components/fePlayground/feCollectionPage.svelte';
+	import UserStats from '$components/userStats.svelte';
+	import FeCollectionDummy from '$components/feCollectionDummy.svelte';
 
 	export let data;
 
@@ -126,7 +125,7 @@
 						</div>
 					</div>
 					{#await loadPlaygroundData()}
-						<CollectionDummy />
+						<FeCollectionDummy />
 					{:then userSnippets}
 						<!-- <Sm -->
 						<!-- Create New Code Snippet button -->

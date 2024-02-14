@@ -1,11 +1,11 @@
 <script>
 	import { pageCountSnips, pageCountPl } from '$lib/index.js';
 
-	import CollectionPage from '../../components/collectionPage.svelte';
-	import CollectionDummy from '../../components/collectionDummy.svelte';
-	import NavWrapper from '../../components/snips/navWrapper.svelte';
-	import FeCollectionPage from '../../components/fePlayground/feCollectionPage.svelte';
-	import { fade, slide } from 'svelte/transition';
+	import CollectionPage from '$components/collectionPage.svelte';
+	import CollectionDummy from '$components/collectionDummy.svelte';
+	import FeCollectionPage from '$components/fePlayground/feCollectionPage.svelte';
+	import { fade } from 'svelte/transition';
+	import FeCollectionDummy from '../feCollectionDummy.svelte';
 	// if (!$user) {
 	// 	window.location.href = '/signin';
 	// }
@@ -95,7 +95,7 @@
 		</div>
 	</div>
 	{#await loadPlaygroundData()}
-		<CollectionDummy />
+		<FeCollectionDummy />
 	{:then userSnippets}
 		<!-- <Sm -->
 		<!-- Create New Code Snippet button -->
