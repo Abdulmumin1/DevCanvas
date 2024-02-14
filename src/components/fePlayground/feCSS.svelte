@@ -1,8 +1,6 @@
 <script>
-	import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 	import { afterUpdate, onDestroy, onMount } from 'svelte';
 	import { browser } from '$app/environment';
-	import Fa from 'svelte-fa';
 	import editorWorker from 'monaco-editor/esm/vs/editor/editor.worker?worker';
 	import jsonWorker from 'monaco-editor/esm/vs/language/json/json.worker?worker';
 	import cssWorker from 'monaco-editor/esm/vs/language/css/css.worker?worker';
@@ -28,7 +26,8 @@
 		smallerFontSize,
 		formatOnPasteSetting,
 		renderIndentGuidesSetting,
-		delayPreview
+		delayPreview,
+		autoSavefast
 	} from '$lib/index.js';
 	import Loader from '../loader.svelte';
 
@@ -96,7 +95,9 @@
 				return { ...cur, css: data };
 			});
 		}, updateDelay);
-		handleAutoSave();
+		if ($autoSavefast) {
+			handleAutoSave();
+		}
 	}
 
 	function setEditorTheme() {
@@ -265,6 +266,7 @@
 		});
 
 		loading = false;
+		editor.updateOptions({ tabSize: 1 });
 
 		return () => {
 			editor.dispose();

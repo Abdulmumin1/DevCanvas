@@ -149,7 +149,12 @@
 				<ReadOnlyEditor lang="javascript" code={details.js} />
 			</div>
 			<div class="h-full w-full" class:hidden={!showResult}>
-				<CodeOutput code={details.html} css={details.css} js={details.js} />
+				<CodeOutput
+					code={details.html}
+					css={details.css}
+					js={details.js}
+					sassEmbed={details.config?.cssProcessor}
+				/>
 			</div>
 		{:else}
 			<Splitpanes theme="embed-theme">

@@ -27,7 +27,8 @@
 		smallerFontSize,
 		formatOnPasteSetting,
 		renderIndentGuidesSetting,
-		delayPreview
+		delayPreview,
+		autoSavefast
 	} from '$lib/index.js';
 	import Loader from '../loader.svelte';
 
@@ -101,7 +102,10 @@
 				return { ...cur, html: data };
 			});
 		}, updateDelay);
-		handleAutoSave();
+
+		if ($autoSavefast) {
+			handleAutoSave();
+		}
 	}
 
 	function setEditorTheme() {
@@ -255,6 +259,8 @@
 		});
 
 		loading = false;
+
+		editor.updateOptions({ tabSize: 1 });
 
 		return () => {
 			editor.dispose();

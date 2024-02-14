@@ -131,7 +131,7 @@ export const jsPlugins = writable({
 export const editorConfig = {
 	automaticLayout: true,
 	renderIndentGuides: false,
-	tabSize: 1,
+	tabSize: 2,
 	formatOnPaste: true,
 	fontFamily: '"Monolisa", Menlo, "Source Code Pro", monospace',
 	fontSize: 15,

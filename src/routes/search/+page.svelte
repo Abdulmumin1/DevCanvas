@@ -1,14 +1,16 @@
 <script>
 	import { pageCountSnips, pageCountPl } from '$lib/index.js';
 
-	import NavWrapper from '../../components/snips/navWrapper.svelte';
+	import NavWrapper from '$components/snips/navWrapper.svelte';
 	import { page } from '$app/stores';
-	import CollectionDummy from '../../components/collectionDummy.svelte';
+	import CollectionDummy from '$components/collectionDummy.svelte';
 	import { fade } from 'svelte/transition';
-	import FeCollectionPage from '../../components/fePlayground/feCollectionPage.svelte';
-	import CollectionPage from '../../components/collectionPage.svelte';
+	import FeCollectionPage from '$components/fePlayground/feCollectionPage.svelte';
+	import CollectionPage from '$components/collectionPage.svelte';
 	import { goto } from '$app/navigation';
 	import { browser } from '$app/environment';
+	import FeCollectionDummy from '$components/feCollectionDummy.svelte';
+
 	export let data;
 	let supabase = data.supabase;
 
@@ -159,7 +161,7 @@
 	</div>
 	{#key filter}
 		{#await loadPlaygroundData()}
-			<CollectionDummy />
+			<FeCollectionDummy />
 		{:then userSnippets}
 			<!-- <Sm -->
 			<!-- Create New Code Snippet button -->
@@ -174,6 +176,7 @@
 						Loading ...
 						<Fa icon={faSpinner} class="animate-spin text-xl" />
 					</p> -->
+
 				<CollectionDummy />
 			{:then userSnippets}
 				<div transition:fade class:hidden={!showOther} class="hidden h-full">

@@ -9,6 +9,7 @@
 	import CollectionPage from '$components/collectionPage.svelte';
 	import { goto } from '$app/navigation';
 	import { browser } from '$app/environment';
+	import FeCollectionDummy from '$components/feCollectionDummy.svelte';
 	export let data;
 	let supabase = data.supabase;
 	let session = data.session;
@@ -167,7 +168,7 @@
 	</div>
 	{#key filter}
 		{#await loadPlaygroundData()}
-			<CollectionDummy />
+			<FeCollectionDummy />
 		{:then userSnippets}
 			<!-- <Sm -->
 			<!-- Create New Code Snippet button -->
@@ -182,7 +183,8 @@
 						Loading ...
 						<Fa icon={faSpinner} class="animate-spin text-xl" />
 					</p> -->
-				<CollectionDummy />
+				<!-- <CollectionDummy /> -->
+				<div />
 			{:then userSnippets}
 				<div transition:fade class:hidden={!showOther} class="hidden h-full">
 					<CollectionPage

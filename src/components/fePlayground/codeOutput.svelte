@@ -1,30 +1,18 @@
 <script>
 	import { current_data } from '$lib/index.js';
-	import {
-		jsChanged,
-		cssPlugins,
-		jsPlugins,
-		sassActive,
-		userImportedJS
-	} from '$lib/feEditor/store.js';
-	import {
-		fontawesomeLINK,
-		materialiconsLINK,
-		bootstrapLINK,
-		setup_js_plugin,
-		injectHeadContent
-	} from '$lib/plugins/store.js';
+	import { cssPlugins, jsPlugins, sassActive, userImportedJS } from '$lib/feEditor/store.js';
+	import { setup_js_plugin, injectHeadContent } from '$lib/plugins/store.js';
 	import { injectJavascript } from '$lib/feEditor/previewUtils.js';
 
-	import { onDestroy, onMount, tick } from 'svelte';
+	import { onMount, tick } from 'svelte';
 	import { compileSassString } from '$lib/utils.js';
-	import { delayPreview } from '$lib/index.js';
 
 	import { beforeNavigate, afterNavigate } from '$app/navigation';
 
 	export let code;
 	export let css;
 	export let js;
+	export let sassEmbed = false;
 
 	var currentJS;
 	var currentCSS;
@@ -52,16 +40,16 @@
 		// Step 2: Create and append the new CSS style
 		const styleElement = iframeDoc.createElement('style');
 
-		if (currentCSS != css && $sassActive) {
+		if (currentCSS != css && ($sassActive || sassEmbed)) {
 			// console.log('logic confirmed');
 			// console.log(INJ_CSS);
 			styleElement.textContent = `${INJ_CSS}`;
 			iframeDoc.head.appendChild(styleElement);
 			ProcessCSs(iframeDoc);
-		} else if (currentCSS == css && $sassActive) {
+		} else if (currentCSS == css && ($sassActive || sassEmbed)) {
 			styleElement.textContent = `${INJ_CSS}`;
 			iframeDoc.head.appendChild(styleElement);
-		} else if (currentCSS != css && !$sassActive) {
+		} else if (currentCSS != css && !($sassActive || sassEmbed)) {
 			styleElement.textContent = `${css}`;
 			iframeDoc.head.appendChild(styleElement);
 			// console.log('plain');

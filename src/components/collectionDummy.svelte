@@ -1,4 +1,4 @@
-<script>
+<!-- <script>
 	import { fade } from 'svelte/transition';
 	import Loader from '$components/loader.svelte';
 	let snippet = [1, 2, 3, 4, 5, 6];
@@ -13,11 +13,7 @@
 	>
 		<div class="grid gap-6 rounded-lg divide-y-2 dark:divide-primary w-full">
 			{#each snippet as sn}
-				<!-- <div class="bg-white rounded-lg p-4 shadow-md">
-					<h3 class="text-xl font-semibold mb-2">{snippet.lang}</h3>
-					<code class="block bg-gray-100 p-2 rounded-lg shadow-inner">{snippet.code}</code>
-					Add any additional information or actions here
-				</div> -->
+				
 
 				<div class="flex h-fit gap-1 w-full items-center px-3 py-6">
 					<div class="min-w-[100px]">
@@ -32,4 +28,6 @@
 			{/each}
 		</div>
 	</div>
-</div>
+</div> -->
+
+<div />
