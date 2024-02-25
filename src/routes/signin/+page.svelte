@@ -37,18 +37,24 @@
 	<title>SignIn - devCanvas</title>
 </svelte:head>
 
-<div class="h-screen flex flex-col items-center justify-center bg-white text-primary">
+<div class="h-screen flex items-center justify-center bg-white text-primary">
 	<!-- <InnerNav /> -->
+	<div
+		class="hidden md:flex md:flex-1 bg-secondary-dark h-full items-center justify-center flex-col"
+	>
+		<img src="/logo.svg" class=" h-24 rounded-3xl" alt="DevCanvas Logo" />
+		<h2 class="text-3xl md:text-5xl text-center text-white">
+			Dev<span class="text-sky-500">Canvas</span>
+		</h2>
+	</div>
 	<form
 		transition:slide
 		action="?/signin"
 		method="post"
 		use:enhance={handleSubmit}
-		class="flex flex-col gap-4 w-full max-w-xl p-6 md:p-6 md:px-16 rounded-lg mt-2"
+		class="flex flex-1 flex-col gap-4 w-full max-w-xl p-6 md:p-6 md:px-16 rounded-lg mt-2"
 	>
-		<img src="/logo.svg" class=" h-24 rounded-3xl" alt="DevCanvas Logo" />
-
-		<h2 class="text-3xl md:text-5xl text-center">Dev<span class="text-sky-500">Canvas</span></h2>
+		<h2 class="text-center text-2xl">Sign In</h2>
 		<div class="flex flex-col gap-3">
 			<input
 				type="text"
@@ -84,7 +90,7 @@
 			<button
 				aria-busy={loading}
 				type="submit"
-				class="p-2 rounded-md flex items-center justify-center gap-2 bg-[#0973a5] text-white"
+				class="p-2 rounded-md flex items-center justify-center gap-2 bg-sky-500 text-black"
 				>Login
 
 				{#if loading}
@@ -114,7 +120,7 @@
 			{/if}
 		</div>
 		<p>Don't have an account? <a href="/signup">SignUp</a></p>
-		<a href="recovery/forgot">forgot password?</a>
+		<a href="recovery/forgot">Forgot password?</a>
 
 		{#if errMessage}
 			<p transition:slide class="bg-error p-2 w-full rounded-md">{errMessage}</p>
@@ -123,6 +129,9 @@
 </div>
 
 <style>
+	a {
+		@apply text-sky-600;
+	}
 	.wobble-hor-top {
 		-webkit-animation: wobble-hor-top 0.8s 3000ms infinite both;
 		animation: wobble-hor-top 0.8s 3000ms infinite both;
