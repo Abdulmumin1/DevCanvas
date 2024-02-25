@@ -23,7 +23,7 @@ export const actions = {
 		if (body.redirectTo) {
 			redirectTo = `${url.origin}${body.redirectTo}`;
 		} else {
-			redirectTo = `${url.origin}${'/'}`;
+			redirectTo = body?.password ? `${url.origin}${'/profile'}` : `${url.origin}${'/'}`;
 		}
 		console.log(redirectTo);
 		if (!email) return 'no mail';

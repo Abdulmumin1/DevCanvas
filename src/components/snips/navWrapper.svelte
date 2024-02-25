@@ -10,21 +10,44 @@
 	import OverlayNav from '../overlayNav.svelte';
 	import ProfileCard from '../profileCard.svelte';
 	import { fly } from 'svelte/transition';
-
+	import { onMount } from 'svelte';
+	// import { page } from '$app/store';
 	let signinURL = handleRedirectURL($page.url);
 
 	export let noSearch = false;
+	// export let data;
+
+	let profile = true;
+	onMount(async () => {
+		// console.log($page.data);
+
+		try {
+			let supabase = $page.data.supabase;
+			const { data, error: err } = await supabase
+				.from('profiles')
+				.select('*')
+				.eq('user_id', $page.data.session.user.id);
+			if (err) throw err;
+			profile = data.length > 0 ? data[0] : false;
+		} catch (error) {}
+	});
 </script>
 
 <div class="flex min-h-screen h-screen w-full">
 	<div class=" bg-inherit h-full">
-		<SnipsSideNav />
+		<SnipsSideNav name={profile?.name} />
 	</div>
 
 	<!-- second part -->
 
 	<div class="flex flex-col h-full w-full">
 		<!-- Upper nave -->
+
+		{#if !profile}
+			<p class="dark:bg-secondary-dark text-white p-2 bg-primary text-center">
+				<a href="/profile">Complete your profile setup</a>
+			</p>
+		{/if}
 
 		{#if !noSearch}
 			<div class="w-full px-3 py-3 border-b text-primary dark:border-secondary-dark">

@@ -15,6 +15,8 @@
 	} from '@fortawesome/free-solid-svg-icons';
 
 	let signinURL = handleRedirectURL($page.url);
+
+	export let name;
 </script>
 
 <div class="h-full md:w-[250px]">
@@ -57,8 +59,8 @@
 			<ul class="w-full">
 				<li class="text-lg px-2">
 					{#if $user}
-						<FeAccordion title={'Settings'}>
-							<div class="flex flex-col gap-2">
+						<FeAccordion title={name ?? 'Settings'}>
+							<div class="flex flex-col gap-2 text-sm">
 								<a href="/profile" class="flex items-center gap-2 bg-secondary-dark rounded-lg p-2"
 									><Fa icon={faUser} />Profile</a
 								>
