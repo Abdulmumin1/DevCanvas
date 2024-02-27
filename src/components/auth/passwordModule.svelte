@@ -3,6 +3,7 @@
 	import { onMount, tick } from 'svelte';
 	import Fa from 'svelte-fa';
 	import { slide } from 'svelte/transition';
+	import PasswordInput from './passwordInput.svelte';
 
 	let password;
 	let confirmPassword;
@@ -12,7 +13,7 @@
 	let message;
 
 	function validatePassword(event) {
-		console.log('click');
+		console.log(password, confirmPassword);
 		message = null;
 		if (password !== confirmPassword) {
 			message = 'Passwords must match! ';
@@ -62,26 +63,20 @@
 <div class="flex flex-col gap-2">
 	<div transition:slide class="flex flex-col gap-2">
 		<label for="password" class="text-sm">New password</label>
-		<input
+		<!-- <input
 			name="password"
 			type="password"
 			id="password"
 			bind:value={password}
 			required
 			class="border border-sky-200 p-1 rounded outline-none focus:outline focus:outline-sky-300"
-		/>
+		/> -->
+		<PasswordInput id={'password'} bind:password />
 	</div>
 
 	<div transition:slide class="flex flex-col gap-2">
 		<label for="password2" class="text-sm">Confirm password</label>
-		<input
-			name="password2"
-			type="password"
-			id="password2"
-			bind:value={confirmPassword}
-			required
-			class="border border-sky-200 p-1 rounded outline-none focus:outline focus:outline-sky-300"
-		/>
+		<PasswordInput bind:password={confirmPassword} id={'password2'} name="confirm" />
 	</div>
 
 	{#if message}

@@ -4,6 +4,7 @@ import { fail } from '@sveltejs/kit';
 export const actions = {
 	reset: async ({ request, locals: { supabase } }) => {
 		let body = Object.fromEntries(await request.formData());
+		console.log(body);
 		let password = body.password;
 		if (password) {
 			const { data, error } = await supabase.auth.updateUser({
