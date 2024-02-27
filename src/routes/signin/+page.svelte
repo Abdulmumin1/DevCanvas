@@ -6,6 +6,7 @@
 	import InnerNav from '../../components/innerNav.svelte';
 	import { enhance } from '$app/forms';
 	import { page } from '$app/stores';
+	import PasswordInput from '../../components/auth/passwordInput.svelte';
 	let email;
 	let password;
 	let loading = false;
@@ -77,14 +78,8 @@
 			{#if !usePassword}
 				<div class="flex flex-col gap-2" transition:slide>
 					<label for="password" class="text-sm">Password</label>
-					<input
-						name="password"
-						type="password"
-						id="password"
-						bind:value={password}
-						required
-						class="border border-sky-200 p-1 rounded outline-none focus:outline focus:outline-sky-300"
-					/>
+					<!-- <PasswordInput/ -->
+					<PasswordInput id="password" bind:password />
 				</div>
 			{/if}
 			<button

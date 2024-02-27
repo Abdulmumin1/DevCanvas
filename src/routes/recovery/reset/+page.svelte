@@ -4,7 +4,8 @@
 	import { slide } from 'svelte/transition';
 	import { enhance } from '$app/forms';
 	import PasswordModule from '$components/auth/passwordModule.svelte';
-	let email;
+	// let email;
+
 	let loading = false;
 	let completed = false;
 	let Invalid;

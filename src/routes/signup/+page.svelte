@@ -6,18 +6,31 @@
 	import InnerNav from '../../components/innerNav.svelte';
 	import { enhance } from '$app/forms';
 	import { page } from '$app/stores';
+	import PasswordInput from '../../components/auth/passwordInput.svelte';
 	let email;
 	let password;
+	let cfP;
+
 	let loading = false;
 	let completed = false;
 	let usePassword = false;
 
-	const handleSubmit = () => {
+	const handleSubmit = ({ cancel }) => {
+		if (Invalid) {
+			cancel();
+			return;
+		}
 		loading = true;
-
-		return async ({ update }) => {
+		return async ({ update, result }) => {
 			loading = false;
-			completed = true;
+			if (result.type == 'success') {
+				completed = true;
+			} else {
+				errMessage = result.data.message;
+				setTimeout(() => {
+					errMessage = '';
+				}, 3000);
+			}
 			await update();
 		};
 	};
@@ -51,6 +64,7 @@
 			<input
 				type="text"
 				name="redirectTo"
+				tabindex="-1"
 				value={$page.url.searchParams.get('redirectTo')}
 				readonly
 				class="hidden"
@@ -69,14 +83,10 @@
 			{#if !usePassword}
 				<div class="flex flex-col gap-2" transition:slide>
 					<label for="password" class="text-sm">Password</label>
-					<input
-						name="password"
-						type="password"
-						id="password"
-						bind:value={password}
-						required
-						class="border border-sky-200 p-1 rounded outline-none focus:outline focus:outline-sky-300"
-					/>
+					<PasswordInput bind:password id="password" />
+
+					<label for="cp" class="text-sm">Confirm</label>
+					<PasswordInput bind:password={cfP} id="cp" name="confirm" />
 				</div>
 			{/if}
 			<button

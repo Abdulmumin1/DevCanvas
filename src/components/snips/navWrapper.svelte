@@ -1,6 +1,4 @@
 <script>
-	import { faBarChart, faBars, faEllipsis } from '@fortawesome/free-solid-svg-icons';
-	import Fa from 'svelte-fa';
 	import SnipsSideNav from './snipsSideNav.svelte';
 	import { user } from '$lib/index.js';
 	import Darkmode from '../darkmode.svelte';
