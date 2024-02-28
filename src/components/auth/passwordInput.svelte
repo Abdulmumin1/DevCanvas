@@ -31,7 +31,7 @@
 		required
 		class=" p-1 w-full outline-none"
 	/>
-	<button on:click={toggle} class="w-fit p-1">
+	<button type="button" on:click={toggle} class="w-fit p-1">
 		<Fa {icon} />
 	</button>
 </div>

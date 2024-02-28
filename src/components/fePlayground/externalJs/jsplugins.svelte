@@ -37,9 +37,12 @@
 
 <div class="grid grid-cols-3 gap-2">
 	{#each Object.keys(state) as key (key)}
-		<label class="bg-sky-100 text-black p-1 rounded flex justify-between" for={key}>
+		<label
+			class="bg-sky-100 dark:bg-secondary-dark dark:text-white text-black p-1 rounded flex justify-between"
+			for={key}
+		>
 			{key}
-			<input type="checkbox" id={key} bind:checked={state[key]} />
+			<input type="checkbox" class="accent-sky-200" id={key} bind:checked={state[key]} />
 		</label>
 	{/each}
 </div>

@@ -78,12 +78,12 @@
 	id="pluginModal"
 	transition:fly
 	bind:this={modal}
+	use:clickOutside
+	on:click_outside={closeModal}
 	class="text-sm px-2 pb-2 w-[90%] md:w-[500px] h-[80%] md:h-[900px] dark:bg-black dark:text-white rounded-lg flex flex-col gap-4"
 >
 	<!-- class="modal z-50 backdrop-blur-lg absolute  inset-y-0 inset-x-0 mx-auto m-2 shadow-md border-t-4 bg-white dark:bg-black border-sky-500 p-3 rounded flex flex-col overflow-scroll gap-2" -->
 	<div
-		use:clickOutside
-		on:click_outside={closeModal}
 		class="sticky flex pb-2 pt-4 items-end justify-between bg-white text-black dark:bg-black dark:text-white border-b-2 border-sky-300 top-0"
 	>
 		<div class="flex gap-2 px-2">
