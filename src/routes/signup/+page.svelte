@@ -7,6 +7,7 @@
 	import { enhance } from '$app/forms';
 	import { page } from '$app/stores';
 	import PasswordInput from '../../components/auth/passwordInput.svelte';
+
 	let email;
 	let password;
 	let cfP;
@@ -14,9 +15,51 @@
 	let loading = false;
 	let completed = false;
 	let usePassword = false;
+	let msg;
+
+	function validatePassword() {
+		// console.log(password, confirmPassword);
+		// Minimum length requirement
+		if (password.length < 8) {
+			return 'Password must be at least 8 characters long.';
+		}
+
+		// At least one uppercase letter
+		if (!/[A-Z]/.test(password)) {
+			return 'Password must contain at least one uppercase letter.';
+		}
+
+		// At least one lowercase letter
+		if (!/[a-z]/.test(password)) {
+			return 'Password must contain at least one lowercase letter.';
+		}
+
+		// At least one digit
+		if (!/\d/.test(password)) {
+			return 'Password must contain at least one digit.';
+		}
+
+		// At least one special character
+		if (!/[!@#$%^&*(),.?":{}|<>]/.test(password)) {
+			return 'Password must contain at least one special character.';
+		}
+
+		if (password !== cfP) {
+			return 'Passwords must match! ';
+		}
+
+		return null;
+
+		// if (message) {
+		// 	event.preventDefault();
+		// }
+		// If all requirements are met
+		// message = null;
+	}
 
 	const handleSubmit = ({ cancel }) => {
-		if (Invalid) {
+		msg = validatePassword();
+		if (msg) {
 			cancel();
 			return;
 		}
@@ -88,7 +131,11 @@
 					<label for="cp" class="text-sm">Confirm</label>
 					<PasswordInput bind:password={cfP} id="cp" name="confirm" />
 				</div>
+				{#if msg}
+					{msg}
+				{/if}
 			{/if}
+
 			<button
 				aria-busy={loading}
 				type="submit"
