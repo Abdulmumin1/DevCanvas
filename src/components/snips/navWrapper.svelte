@@ -9,6 +9,7 @@
 	import ProfileCard from '../profileCard.svelte';
 	import { fly } from 'svelte/transition';
 	import { onMount } from 'svelte';
+	import Open from '../kbar/open.svelte';
 	// import { page } from '$app/store';
 	let signinURL = handleRedirectURL($page.url);
 
@@ -51,14 +52,22 @@
 			<div class="w-full px-3 py-3 border-b text-primary dark:border-secondary-dark">
 				<ul class="flex items-center justify-end w-full gap-2">
 					<li><OverlayNav /></li>
-					<li class="w-full"><Search /></li>
-					<li class="text-black dark:text-white"><Darkmode /></li>
+					<ul class="w-full flex items-center justify-center gap-2">
+						<li class="flex-1"><Search /></li>
+						<li
+							class="text-sm bg-gray-100 dark:bg-secondary-dark dark:text-light rounded-lg py-2 px-3 w-fit"
+						>
+							<Open />
+						</li>
 
-					{#if !$user}
-						<li><a href={signinURL} class="bg-green-400 p-3 rounded-lg">Join</a></li>
-					{:else}
-						<li><ProfileCard /></li>
-					{/if}
+						<li class="text-black dark:text-white"><Darkmode /></li>
+
+						{#if !$user}
+							<li><a href={signinURL} class="bg-green-400 p-3 rounded-lg">Join</a></li>
+						{:else}
+							<li><ProfileCard /></li>
+						{/if}
+					</ul>
 				</ul>
 			</div>
 		{/if}

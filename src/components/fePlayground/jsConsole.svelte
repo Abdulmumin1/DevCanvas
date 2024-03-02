@@ -1,53 +1,77 @@
 <script>
 	import { faTerminal } from '@fortawesome/free-solid-svg-icons';
 	import Fa from 'svelte-fa';
-	import { Pane, Splitpanes } from 'svelte-splitpanes';
 	import { showjsConsole, consoleOutput } from '$lib/feEditor/store.js';
-	import { onDestroy } from 'svelte';
-	import { browser } from '$app/environment';
+	import { spring } from 'svelte/motion';
+
 	let currentHeight = 300; // Initial height of the overlay
 	let startY, startHeight;
 	let isResizing = false;
 
 	// Function to handle resizing logic
 	let ovelay;
-	function startResize(event) {
-		isResizing = true;
-		startY = event.clientY;
-		startHeight = currentHeight;
 
-		// if (browser) {
-		// 	// Attach window event listeners for mousemove and mouseup
-		// 	window.addEventListener('mousemove', resizeOverlay);
-		// 	window.addEventListener('mouseup', stopResize);
-		// }
-	}
-
-	function resizeOverlay(event) {
-		if (isResizing) {
-			const deltaY = event.clientY - startY;
-			currentHeight = startHeight + -deltaY;
-
-			ovelay.style.height = `${currentHeight}px`;
-		}
-	}
-
-	function stopResize() {
-		isResizing = false;
-
-		// Remove window event listeners
-		if (browser) {
-			window.removeEventListener('mouseup', stopResize);
-			window.removeEventListener('mousemove', resizeOverlay);
-		}
-	}
-	// Clean up event listeners when the component is destroyed
-	onDestroy(() => {
-		if (browser) {
-			window.removeEventListener('mousemove', resizeOverlay);
-			window.removeEventListener('mouseup', stopResize);
+	showjsConsole.subscribe(() => {
+		if (ovelay) {
+			ovelay.transform = `translate3d(0, 0, 0)`;
 		}
 	});
+	function drag(node) {
+		let x;
+		let y;
+
+		const coords = spring({
+			x: 0,
+			y: 0
+		});
+
+		coords.subscribe((current) => {
+			node.style.transform = `translate3d(0px, ${current.y}px, 0)`;
+		});
+
+		node.addEventListener('mousedown', mousedown);
+
+		function mousedown(event) {
+			x = event.clientX;
+			y = event.clientY;
+
+			window.addEventListener('mouseup', mouseup);
+			window.addEventListener('mousemove', mousemove);
+		}
+
+		function mouseup() {
+			window.removeEventListener('mouseup', mouseup);
+			window.removeEventListener('mousemove', mousemove);
+
+			// coords.update(() => {
+			// 	return { x: 0, y: 0 };
+			// });
+
+			// node.dispatchEvent(
+			// 	new CustomEvent('dragstop', {
+			// 		detail: { x, y }
+			// 	})
+			// );
+
+			// x = 0;
+			// y = 0;
+		}
+
+		function mousemove(event) {
+			const dx = event.clientX - x;
+			const dy = event.clientY - y;
+
+			x = event.clientX;
+			y = event.clientY;
+
+			coords.update((current) => {
+				return {
+					x: current.x + dx,
+					y: current.y + dy
+				};
+			});
+		}
+	}
 </script>
 
 <!-- 
@@ -101,8 +125,15 @@
 	bind:this={ovelay}
 	class:hidden={!$showjsConsole}
 	style="height: {currentHeight}px;"
+	id="jsconsole"
+	use:drag
 >
-	<div on:drag={startResize} class="handle bg-secondary-dark w-full" />
+	<!-- on:dragstop={(event) => {
+		if (event.detail.x > 300) {
+			currentHeight = event.details.x;
+		}
+	}} -->
+	<div class="handle w-full" />
 	<div class="w-full flex justify-between">
 		<span class="flex items-center gap-2 text-white">
 			Console <Fa icon={faTerminal} />
@@ -140,6 +171,7 @@
 		overflow: hidden;
 		max-height: 90%;
 		transition: height 0 ease-in-out;
+		resize: vertical;
 	}
 
 	.content {
@@ -148,8 +180,9 @@
 
 	.handle {
 		width: 100%;
-		height: 10px;
+		height: 30px;
 		cursor: ns-resize; /* Vertical resize cursor */
 		user-select: none; /* Prevent text selection while dragging */
+		background-color: orange;
 	}
 </style>

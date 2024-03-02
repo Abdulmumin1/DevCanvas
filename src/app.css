@@ -3,6 +3,9 @@
 @tailwind utilities;
 
 @layer utilities {
+	/* .action-button.active {
+		border-left: 30px solid orange !important;
+	} */
 	.splitpanes.my-theme .splitpanes__pane {
 		@apply bg-white dark:bg-black;
 		height: 100%;

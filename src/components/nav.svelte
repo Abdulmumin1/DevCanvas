@@ -3,9 +3,8 @@
 	import Save from './save.svelte';
 	import { previewMode, user } from '$lib/index.js';
 	import { page } from '$app/stores';
-	import { handleRedirectURL } from '$lib/utils.js';
 	import ShareBtn from './ShareBtn.svelte';
-	import { faPen, faPenSquare, faUserGroup } from '@fortawesome/free-solid-svg-icons';
+	import { faPen } from '@fortawesome/free-solid-svg-icons';
 	import Fa from 'svelte-fa';
 	import Darkmode from './darkmode.svelte';
 	import { getContext } from 'svelte';
@@ -17,7 +16,6 @@
 	let showPreview = $page.url.pathname.endsWith('/edit');
 	let back = `${$page.url.pathname}`;
 	let showEdit = getContext('isOwner');
-	console.log(back);
 </script>
 
 <nav class=" w-full border-b dark:border-secondary-dark">

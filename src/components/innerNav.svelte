@@ -6,6 +6,7 @@
 	import { scale, slide } from 'svelte/transition';
 	import { clickOutside } from '$lib/index.js';
 	import { page } from '$app/stores';
+	import Open from './kbar/open.svelte';
 
 	let openSideBar = false;
 
@@ -33,20 +34,14 @@
 			<li>
 				<ul class="flex gap-2 items-center">
 					<li class="bg-secondary-dark text-light rounded-full py-2 px-3">
-						<a class="flex gap-2 items-center justify-center" href="/explore">
-							Explore <Fa icon={faWpexplorer} class="" /></a
-						>
+						<Open />
 					</li>
 					<li class="bg-secondary-dark text-light rounded-full py-2 px-3">
 						<a class="flex gap-2 items-center justify-center" href="/play">
-							HTML Playground <Fa icon={faWindowMaximize} class="" /></a
+							Playground <Fa icon={faWindowMaximize} class="" /></a
 						>
 					</li>
-					<li class="bg-secondary-dark text-light rounded-full py-2 px-3">
-						<a class="flex gap-2 items-center justify-center" href="/blog">
-							Blog <Fa icon={faBlog} class="" /></a
-						>
-					</li>
+
 					<li class="bg-secondary-dark p-2 rounded-full" class:landing={$page.url.pathname == '/'}>
 						<div class="flex gap-2 items-center justify-center text-light">
 							<Darkmode />
