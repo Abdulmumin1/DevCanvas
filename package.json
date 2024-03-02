@@ -54,6 +54,7 @@
 		"framer-motion": "^10.16.4",
 		"html2canvas": "^1.4.1",
 		"jszip": "^3.10.1",
+		"kbar-svelte-mini": "^0.1.0",
 		"prismjs": "^1.29.0",
 		"satori": "^0.10.13",
 		"satori-html": "^0.3.2",

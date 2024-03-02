@@ -1,6 +1,9 @@
 <script>
 	import '../app.css';
 	import { onMount, setContext } from 'svelte';
+	import { KDialog, setKbarState } from 'kbar-svelte-mini';
+	import { actions } from '$lib/kbar.js';
+	import { goto } from '$app/navigation';
 	import {
 		user,
 		showNavigating,
@@ -8,6 +11,9 @@
 		darkModeState,
 		SnippetsDescription
 	} from '$lib/index.js';
+
+	setKbarState();
+
 	import { invalidateAll } from '$app/navigation';
 	import PageTransition from './transition.svelte';
 	import { browser } from '$app/environment';
@@ -46,14 +52,13 @@
 	});
 
 	beforeNavigate(() => {
-		console.log('Navigation started!');
 		showNavigating.set(true);
 	});
 
 	afterNavigate(() => {
 		showNavigating.set(false);
-		console.log('Navigation ended!');
 	});
+
 	// setContext('userInfo', data.user_info);
 
 	// console.log('jfdklafdka fd afodamfd afdjaofdmaf dafodafmdas');
@@ -69,6 +74,10 @@
 		});
 		return () => data.subscription.unsubscribe();
 	});
+
+	let a = actions(goto);
+	$: kbarbg = $darkModeState ? '#191919' : 'white';
+	$: kbarSecondary = $darkModeState ? '#e5e7eb' : 'black';
 </script>
 
 <svelte:head>
@@ -103,3 +112,11 @@
 		<Toast message={$showToast.message} duration={$showToast?.duration ?? 2500} />
 	{/if}
 </div>
+
+<KDialog
+	actions={a}
+	--bg={kbarbg}
+	--kbar-primary={'rgb(56 189 248)'}
+	--kbar-secondary={kbarSecondary}
+	--shadow={'0px 0px 1px gray'}
+/>
