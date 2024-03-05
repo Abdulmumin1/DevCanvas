@@ -7,7 +7,7 @@
 	import { HighlightAuto, LineNumbers } from 'svelte-highlight';
 	import { githubDark } from 'svelte-highlight/styles';
 	import { onDestroy, onMount } from 'svelte';
-
+	import { codeToHtml } from 'shiki';
 	import { getProfile } from '$lib/utils.js';
 
 	export let supabase;
@@ -169,15 +169,6 @@
 						<h3 class="text-sm px-3 py-2 my-4 bg-[#0d1117] w-fit rounded-lg text-light cool">
 							{snippet.lang}
 						</h3>
-
-						<div class="bg-gray-100 dark:bg-primary flex md:hidden p-2 rounded-lg">
-							{snippet.code.slice(0, 200)}
-						</div>
-						<div class="bg-[#0d1117] w-full hidden md:flex rounded-lg">
-							<HighlightAuto code={snippet.code.slice(0, 200) + '....'} let:highlighted>
-								<LineNumbers {highlighted} hideBorder />
-							</HighlightAuto>
-						</div>
 					</div>
 
 					<RecentCard card={snippet} editIcons={dashboard} />

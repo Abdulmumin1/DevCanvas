@@ -52,7 +52,7 @@
 	</div>
 
 	<div class="flex flex-col justify-between mt-4">
-		<p class="text-sm copyright">&copy; 2023 SnippetLand. All rights reserved.</p>
+		<p class="text-sm copyright">&copy; 2023 DevCanvas. All rights reserved.</p>
 		<ul class="flex flex-row space-x-2">
 			<li><a href="/privacy-policy" class=" hover:underline">Privacy Policy</a></li>
 			<li><a href="/terms-of-service" class=" hover:underline">Terms of Service</a></li>

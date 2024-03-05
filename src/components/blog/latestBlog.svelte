@@ -9,10 +9,10 @@
 	// console.log(details);
 </script>
 
-<div class="min-h-[350px] flex flex-col justify-center gap-3 px-6 text-white">
+<div class=" flex flex-col justify-center gap-3 text-black dark:text-light border-b-2 pb-2">
 	<a
 		href={`blog/${details.slug}`}
-		class="text-4xl md:text-5xl hover:opacity-80 text-orang dark:text-dark max-w-lg capitalize"
+		class="text-4xl md:text-6xl hover:opacity-80 text-orang dark:text-dark capitalize s"
 	>
 		{details.title}</a
 	>
@@ -24,3 +24,11 @@
 		>Continue Reading <Fa icon={faArrowAltCircleRight} /></a
 	>
 </div>
+
+<style>
+	.s {
+		/* font-family: 'dia'; */
+
+		font-family: 'Dai Banna SIL';
+	}
+</style>
