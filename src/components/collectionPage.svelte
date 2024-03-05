@@ -4,10 +4,7 @@
 	import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 	import { pageCountSnips } from '$lib/index.js';
 	import { fade } from 'svelte/transition';
-	import { HighlightAuto, LineNumbers } from 'svelte-highlight';
-	import { githubDark } from 'svelte-highlight/styles';
 	import { onDestroy, onMount } from 'svelte';
-	import { codeToHtml } from 'shiki';
 	import { getProfile } from '$lib/utils.js';
 
 	export let supabase;
@@ -149,16 +146,6 @@
 		pageCountSnips.set(6);
 	});
 </script>
-
-<svelte:head>
-	{@html githubDark}
-</svelte:head>
-<!-- {#if $DarmodeState}
-{#else}
-<svelte:head>
-	{@html github}
-</svelte:head>
-{/if} -->
 
 {#if collection.length > 0}
 	<div class="flex flex-col gap-6 items-center w-full" transition:fade>
