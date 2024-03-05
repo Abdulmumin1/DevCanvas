@@ -122,6 +122,7 @@
 	<div class="space-y-8 markdown-content font-light text-[#404953] dark:text-light article">
 		<svelte:component this={data.content} />
 	</div>
+
 	<div class="w-full flex items-center justify-center p-3">
 		<div
 			class="w-full flex justify-between max-w-md items-center border border-b-2 rounded-lg bg-primary text-light dark:border-secondary-dark p-4"
@@ -200,8 +201,7 @@
 		z-index: 0;
 	}
 	.article {
-		font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI Adjusted', 'Segoe UI',
-			'Liberation Sans', sans-serif;
+		font-family: 'Dai Banna SIL';
 	}
 
 	.title {
@@ -209,6 +209,6 @@
 	}
 
 	.article {
-		font-size: 1em !important;
+		font-size: 1.4em !important;
 	}
 </style>

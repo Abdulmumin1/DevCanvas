@@ -2,8 +2,8 @@ import adapter from '@sveltejs/adapter-auto';
 // import { vitePreprocess } from '@sveltejs/kit/vite';
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 
-import { escapeSvelte, mdsvex } from 'mdsvex';
-import shiki from 'shiki';
+import { mdsvex } from 'mdsvex';
+import { codeToHtml } from 'shiki';
 
 /** @type {import('@sveltejs/kit').Config} */
 
@@ -11,10 +11,10 @@ const mdsvexConf = {
 	extensions: ['.md'],
 	highlight: {
 		highlighter: async (code, lang = 'text') => {
-			const highlighter = await shiki.getHighlighter({
-				theme: 'github-dark'
-			});
-			const html = escapeSvelte(highlighter.codeToHtml(code, { lang }));
+			// const highlighter = await shiki.getHighlighter({
+			// 	theme: 'github-dark'
+			// });
+			const html = await codeToHtml(code, { lang, theme: 'github-dark' });
 			return `{@html \`${html}\`}`;
 		}
 	}

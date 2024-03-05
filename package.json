@@ -58,7 +58,7 @@
 		"prismjs": "^1.29.0",
 		"satori": "^0.10.13",
 		"satori-html": "^0.3.2",
-		"shiki": "^0.14.4",
+		"shiki": "^1.1.7",
 		"svelte-ace": "^1.0.21",
 		"svelte-codemirror-editor": "^1.1.0",
 		"svelte-fa": "^3.0.4",

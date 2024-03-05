@@ -73,7 +73,7 @@ document.addEventListener('mousemove', (e) => {
 });
 
 window.addEventListener('click', () => {
-	follower.style.transform = `scale(.1)`;
+	follower.style.transform = 'scale(.1)';
 
 	setTimeout(() => {
 		follower.style.transform = 'scale(1)';

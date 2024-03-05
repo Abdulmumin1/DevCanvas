@@ -4,10 +4,7 @@
 	import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 	import { pageCountSnips } from '$lib/index.js';
 	import { fade } from 'svelte/transition';
-	import { HighlightAuto, LineNumbers } from 'svelte-highlight';
-	import { githubDark } from 'svelte-highlight/styles';
 	import { onDestroy, onMount } from 'svelte';
-
 	import { getProfile } from '$lib/utils.js';
 
 	export let supabase;
@@ -150,16 +147,6 @@
 	});
 </script>
 
-<svelte:head>
-	{@html githubDark}
-</svelte:head>
-<!-- {#if $DarmodeState}
-{#else}
-<svelte:head>
-	{@html github}
-</svelte:head>
-{/if} -->
-
 {#if collection.length > 0}
 	<div class="flex flex-col gap-6 items-center w-full" transition:fade>
 		<div class="gap-6 flex flex-col w-full bg-white dark:bg-secondary-dark">
@@ -169,15 +156,6 @@
 						<h3 class="text-sm px-3 py-2 my-4 bg-[#0d1117] w-fit rounded-lg text-light cool">
 							{snippet.lang}
 						</h3>
-
-						<div class="bg-gray-100 dark:bg-primary flex md:hidden p-2 rounded-lg">
-							{snippet.code.slice(0, 200)}
-						</div>
-						<div class="bg-[#0d1117] w-full hidden md:flex rounded-lg">
-							<HighlightAuto code={snippet.code.slice(0, 200) + '....'} let:highlighted>
-								<LineNumbers {highlighted} hideBorder />
-							</HighlightAuto>
-						</div>
 					</div>
 
 					<RecentCard card={snippet} editIcons={dashboard} />
