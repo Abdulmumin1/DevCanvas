@@ -234,4 +234,24 @@
 	h6 {
 		@apply ;
 	} */
+
+	.sick-hover {
+		position: relative;
+	}
+
+	.sick-hover::after {
+		content: '';
+		position: absolute;
+		bottom: 0;
+		right: 0;
+		width: 100%;
+		height: 1px;
+		opacity: 0.3;
+		@apply bg-sky-300;
+		transition: all 0.3s ease;
+	}
+
+	.sick-hover:hover::after {
+		height: 100%;
+	}
 }

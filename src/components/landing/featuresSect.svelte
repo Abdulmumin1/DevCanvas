@@ -9,7 +9,7 @@
 		},
 		{
 			message: 'Built-in Plugins',
-			icon: 'mingcute:plugin-fill',
+			icon: 'ph:plugs-fill',
 			description: 'Tailwindcss? Font Awesome? Gsap? - just a click away!'
 		},
 		{

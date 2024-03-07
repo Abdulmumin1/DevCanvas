@@ -22,6 +22,7 @@
 	import { beforeNavigate, afterNavigate } from '$app/navigation';
 	import PageLoadProgess from '../components/pageLoadProgess.svelte';
 	import { page } from '$app/stores';
+	import AcceptCookies from '../components/auth/acceptCookies.svelte';
 
 	// console.log(supabase.auth.getUser());
 
@@ -103,8 +104,15 @@
 	/>
 </svelte:head>
 
-{#if $showNavigating && !(($page.url.pathname.endsWith('/preview') && $page.url.searchParams.get('preview') == 'preview') || $page.url.pathname.endsWith('/embed'))}
-	<PageLoadProgess />
+<!-- {#if && !(($page.url.pathname.endsWith('/preview') && $page.url.searchParams.get('preview') == 'preview') || $page.url.pathname.endsWith('/embed'))}
+	{/if} -->
+
+{#if !(($page.url.pathname.endsWith('/preview') && $page.url.searchParams.get('preview') == 'preview') || $page.url.pathname.endsWith('/embed'))}
+	<AcceptCookies />
+
+	{#if $showNavigating}
+		<PageLoadProgess />
+	{/if}
 {/if}
 <div class=" bg-white dark:bg-primary dark:text-white transition-colors duration-300">
 	<slot />

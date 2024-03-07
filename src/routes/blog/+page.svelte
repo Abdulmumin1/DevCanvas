@@ -32,9 +32,10 @@
 
 <section class="min-h-screen">
 	<InnerNav />
-	<article class="h-full w-full flex justify-center items-center flex-col">
-		<div class=" max-w-[1200px] justify-center flex flex-col w-full h-full p-4 gap-4 items-center">
-			<div class="flex mb-20 gap-4 h-full md:min-h-[100dvh] flex-col w-full justify-center">
+	<article class="h-full w-full flex items-center -center flex-col">
+		<h1 class="text-3xl md:text-6xl font-semibold py-12 font-diana">DevCanvas Blog</h1>
+		<div class=" max-w-[1200px] md:px-12 -center flex flex-col w-full h-full p-4 gap-4 -center">
+			<div class="flex mb-20 gap-4 h-full md:min-h-[100dvh] flex-col w-full">
 				{#if data.posts.length > 0}
 					<h1 class="text-3xl">Latest Post</h1>
 					<div class="  text-6xl flex flex-col gap-3 w-full">
@@ -48,7 +49,7 @@
 						{/each}
 					</div> -->
 
-					<div class="h-full flex gap-3 flex-col w-full divide-y-2">
+					<div class="h-full flex gap-3 flex-col w-full">
 						{#each data.posts.splice(1, data.posts.length) as post (post.slug)}
 							<BlogCard details={post} />
 						{/each}

@@ -38,11 +38,11 @@
 
 <div in:scale class="  w-full">
 	<div class="py-2 justify-between rounded-lg flex flex-col gap-2 dark:text-light text-black">
-		<p class="flex gap-2 items-center">
+		<p class="flex gap-2 items-center font-diana">
 			<Fa icon={faCalendar} />{formatDate(details.date)}
 		</p>
 		<div class="">
-			<a href={`blog/${details.slug}`} class="text-2xl lg:text-4xl hover:opacity-80">
+			<a href={`blog/${details.slug}`} class="text-2xl lg:text-4xl hover:opacity-80 sick-hover">
 				{details.title}</a
 			>
 			<!-- <p class="text-gray-900 dark:text-gray-300">{details.description.slice(0, 100)}...</p> -->
