@@ -3,7 +3,7 @@
 	import { faGithub } from '@fortawesome/free-brands-svg-icons';
 </script>
 
-<footer class="bg-gray-200 text-black px-4 py-8">
+<footer class="bg-gray-200 text-black px-4 py-8 border-t-2 border-black dark:border-secondary-dark">
 	<div class="flex gap-2">
 		<div class="flex flex-col space-y-2">
 			<h3 class="text-2xl font-bold flex items-center gap-2">
@@ -32,10 +32,10 @@
 					>
 				</li>
 				<li>
-					<a href="https://twitter.com/snippetlandIO" class=" hover:underline">Twitter</a>
+					<a href="https://twitter.com/@devcanvas_" class=" hover:underline">Twitter</a>
 				</li>
 				<li>
-					<a href="https://github.com/Abdulmumin1/snippetland/" class=" hover:underline">GitHub</a>
+					<a href="https://github.com/Abdulmumin1/devcanvas/" class=" hover:underline">GitHub</a>
 				</li>
 			</ul>
 		</div>

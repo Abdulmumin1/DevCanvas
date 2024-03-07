@@ -3,17 +3,16 @@
 	import Fa from 'svelte-fa';
 </script>
 
-<div class="flex items-center justify-center bg-gray-100 dark:bg-secondary-dark py-12">
+<div class="flex items-center justify-center bg-gray-100 dark:bg-[#111] py-12">
 	<div
 		class=" max-w-[1000px] md:flex-row-reverse w-full h-full p-4 md:pl-20 flex flex-col gap-3 items-center justify-between"
 	>
 		<div>
 			<h1 class=" text-4xl md:text-5xl">
-				<span class="text-sky-500">Share your work</span>
+				<span class="text-sky-500">Showcase your work</span>
 			</h1>
 			<p class="text-black dark:text-light max-w-[500px]">
-				Build up your public profile, and bring others along on your journey <br /> Foster a sense of
-				community by sharing insights, experiences, and valuable tips that resonates with your audience.
+				Build up your public profile, and bring others along on your journey <br />
 			</p>
 		</div>
 		<!-- <link

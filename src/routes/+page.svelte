@@ -121,10 +121,10 @@
 					<Forcreators />
 				</div>
 				<div class=" bg-white dark:bg-primary">
-					<Forcreatives />
+					<!-- <Forcreatives /> -->
 				</div>
 			</div>
-			<Discover />
+			<!-- <Discover /> -->
 			<LanguageSupport />
 			<EmbedSection />
 			<!-- Add code editor section -->
