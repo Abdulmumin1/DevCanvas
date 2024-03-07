@@ -34,6 +34,9 @@ export default {
 				'success-dark': '#4BB543'
 
 				// Add other custom colors as needed...
+			},
+			fontFamily: {
+				diana: ['Dai Banna SIL', 'serif']
 			}
 		}
 	},

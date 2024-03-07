@@ -38,7 +38,7 @@
 			</div>
 		</div>
 
-		<div class="preview bg-white dark:bg-light text-black"><h1>HELLO WORLD</h1></div>
+		<div class="preview bg-white dark:bg-light text-black font-diana"><h1>HELLO WORLD</h1></div>
 	</div>
 </div>
 

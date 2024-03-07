@@ -31,7 +31,7 @@
 
 <div class="grid grid-cols-1 md:grid-cols-2 items-center justify-between gap-x-20 lg:gap-x-40">
 	<section
-		class="flex relative lg:ml-20 h-full px-8 py-0 md:py-12 flex-col gap-4 w-full border-primary text-secondary-dark"
+		class="flex relative lg:ml-20 h-full md:mt-12 px-8 py-0 md:py-12 flex-col gap-4 w-full border-primary text-secondary-dark"
 	>
 		<!-- <p>
 			<a
@@ -44,7 +44,7 @@
 		<h1
 			class="text-4xl hero-text text-primary dark:text-light md:text-6xl lg:text-[5rem] max-w-[35rem]"
 		>
-			Paint Your <span class="magic">
+			<!-- Paint Your <span class="magic">
 				<span class="magic-star">
 					<svg viewBox="0 0 512 512">
 						<path
@@ -67,9 +67,10 @@
 					</svg>
 				</span>
 				<span class=" text-black dark:text-light">Wildest</span>
-			</span> Idea 🚀
+			</span> Idea 🚀 -->
+			The Online code Editor
 		</h1>
-		<p class="text-sm md:text-xl text-primary max-w-lg mx-1 dark:text-light">
+		<p class="text-sm md:text-xl text-primary max-w-lg mx-1 dark:text-light font-diana">
 			Effortlessly bring your boldest concepts to life. <span
 				class="text-green-500 dark:text-green-700">learn</span
 			>,

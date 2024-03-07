@@ -10,7 +10,7 @@
 			<h2 class=" font-semibold mb-2 text-4xl md:text-6xl dark:text-sky-400">
 				A Powerfull Code Editor
 			</h2>
-			<p class="max-w-lg text-center dark:text-light">
+			<p class="max-w-lg text-center dark:text-light font-diana">
 				Bring your coding projects to life with real-time collaboration. Our built-in collaborative
 				code editor powered by VSCode lets you write code more seamlessly, Every of your vscode
 				thingy just works.
