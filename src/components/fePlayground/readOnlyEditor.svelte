@@ -1,4 +1,4 @@
-<script>
+<!-- <script>
 	import { browser } from '$app/environment';
 	import { onMount } from 'svelte';
 	import * as monaco from 'monaco-editor';
@@ -63,4 +63,51 @@
 	});
 </script>
 
-<div class="w-full h-full py-2 bg-[#0b0e14]" bind:this={editorContainer} />
+<div class="w-full h-full py-2 bg-[#0b0e14]" bind:this={editorContainer} /> -->
+
+<script>
+	import { EditorView } from '@codemirror/view';
+	import { basicSetup } from 'codemirror';
+	import { EditorState } from '@codemirror/state';
+	import { javascript } from '@codemirror/lang-javascript'; // Or other language extension
+	import { html } from '@codemirror/lang-html'; // Or other language extension
+	import { css } from '@codemirror/lang-css'; // Or other language extension
+
+	// import { onDark } from '@codemirror/theme-one-dark';
+	import { onMount } from 'svelte';
+	import { coolGlow } from 'thememirror';
+
+	// ... (reactive state and logic for the editor)
+
+	let editorView;
+	let container;
+
+	export let code;
+	export let lang;
+
+	onMount(() => {
+		//   const container = document.querySelector('.codemirror-editor'); // Select container element
+
+		if (lang == 'html') {
+			editorView = new EditorView({
+				parent: container,
+				doc: code, // Bind the initial code
+				extensions: [EditorState.readOnly.of(true), basicSetup, html(), coolGlow] // Extensions
+			});
+		} else if (lang == 'css') {
+			editorView = new EditorView({
+				parent: container,
+				doc: code, // Bind the initial code
+				extensions: [EditorState.readOnly.of(true), basicSetup, css(), coolGlow] // Extensions
+			});
+		} else if (lang == 'javascript') {
+			editorView = new EditorView({
+				parent: container,
+				doc: code, // Bind the initial code
+				extensions: [EditorState.readOnly.of(true), basicSetup, javascript(), coolGlow] // Extensions
+			});
+		}
+	});
+</script>
+
+<div bind:this={container} style="height: 100%;" />

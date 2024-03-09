@@ -22,6 +22,7 @@
 		position: absolute;
 		left: 0;
 		top: 0;
+		padding: 3px;
 		color: black;
 		transition: opacity 0.4s;
 		opacity: 0;
@@ -43,6 +44,7 @@
 		right: -10px;
 		height: 100%;
 		cursor: col-resize;
+		writing-mode: vertical-lr;
 	}
 
 	.my-theme.splitpanes--horizontal > .splitpanes__splitter:before {
@@ -51,12 +53,7 @@
 		width: 100%;
 		cursor: row-resize;
 	}
-	.mtk4 {
-		color: brown !important;
-	}
-	.mtk12 {
-		color: blueviolet !important;
-	}
+
 	.tooltip-text {
 		visibility: hidden;
 		position: absolute;
@@ -174,7 +171,7 @@
 	.splitpanes.embed-theme .splitpanes__splitter {
 		background-color: transparent;
 		position: relative;
-		@apply border-x-4 border-secondary-dark;
+		@apply border-x-8 border-secondary-dark;
 	}
 
 	.splitpanes.embed-theme .splitpanes__splitter:before {
@@ -182,13 +179,13 @@
 		position: absolute;
 		left: 0;
 		top: 0;
-		color: black;
+		color: whitesmoke;
 		transition: opacity 0.4s;
 		opacity: 0;
 		z-index: 1;
 		font-size: 9px;
-		@apply bg-secondary-dark;
-		/* writing-mode: horizontal-tb; */
+		background-color: #222;
+		writing-mode: vertical-lr;
 	}
 
 	.splitpanes.embed-theme .splitpanes__splitter:hover:before {

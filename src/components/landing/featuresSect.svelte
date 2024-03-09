@@ -8,6 +8,11 @@
 			description: 'Keep your canvas to yourself and only others with the link'
 		},
 		{
+			message: 'Embed',
+			icon: 'material-symbols-light:web',
+			description: 'Embed you project in websites, blogs and documentations.'
+		},
+		{
 			message: 'Built-in Plugins',
 			icon: 'ph:plugs-fill',
 			description: 'Tailwindcss? Font Awesome? Gsap? - just a click away!'
@@ -48,7 +53,7 @@
 <div
 	class="flex items-center justify-center w-full bg-sky-300 px-4 border-y-2 border-black dark:border-secondary-dark"
 >
-	<div class="min-h-[300px] max-w-6xl py-12 px-2 gap-3 justify-center flex flex-col anim">
+	<div class="min-h-[300px] max-w-[90rem] py-12 px-2 gap-3 justify-center flex flex-col anim">
 		<h1 class="text-4xl md:text-5xl font-semibold text-black">Features</h1>
 		<p class="font-thin font-diana text-xl text-stone-800">
 			DevCanvas has everything you need to experiment with ideas, build and teach others how to
