@@ -1,7 +1,6 @@
 <script>
-	import devcanvaseditor from '$lib/devcanvaseditor.jpg';
-
-	import { darkModeState } from '$lib/index.js';
+	// import devcanvaseditor from '$lib/devcanvaseditor.jpg';
+	import devcanvaseditor from '$lib/devcanvaseditor1.png';
 </script>
 
 <div class="px-4 h-fit md:h-screen flex items-center justify-center">

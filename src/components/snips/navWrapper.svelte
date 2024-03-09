@@ -55,7 +55,7 @@
 					<ul class="w-full flex items-center justify-center gap-2">
 						<li class="flex-1"><Search /></li>
 						<li
-							class="text-sm bg-gray-100 dark:bg-secondary-dark dark:text-light rounded-lg py-2 px-3 w-fit"
+							class="text-sm hidden md:flex bg-gray-100 dark:bg-secondary-dark dark:text-light rounded-lg py-2 px-3 w-fit"
 						>
 							<Open />
 						</li>

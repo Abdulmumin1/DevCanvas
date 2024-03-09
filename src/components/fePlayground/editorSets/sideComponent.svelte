@@ -16,6 +16,11 @@
 	import DeleteCanvas from '../deleteCanvas.svelte';
 	import Fa from 'svelte-fa';
 	import { faClose } from '@fortawesome/free-solid-svg-icons';
+	import FeGetEmbed from '../feGetEmbed.svelte';
+	import ShareBtn from '../../ShareBtn.svelte';
+	import { showSave, showLoginToSave } from '$lib/feEditor/store.js';
+	import FeSave from '../feSave.svelte';
+	import FeFork from '../feFork.svelte';
 
 	function closeDropdown() {
 		editorSettingState.set(false);
@@ -51,8 +56,10 @@
 		transition:slide={{ axis: 'x' }}
 		class="absolute drop top-0 w-[300px] flex flex-col bg-white dark:bg-black h-full shadow-2xl"
 	>
-		<div class="flex justify-end items-center w-full">
-			<button class="p-2 text-2xl" on:click={closeDropdown}><Fa icon={faClose} /></button>
+		<div class="absolute right-0 m-3">
+			<button class="p-1 text-2xl bg-sky-300 rounded text-black" on:click={closeDropdown}
+				><Fa icon={faClose} /></button
+			>
 		</div>
 
 		<ul
@@ -114,6 +121,20 @@
 					>
 				</li>
 			{/if}
+		</ul>
+
+		<ul class="flex md:hidden gap-2 flex-col text-black p-3">
+			<li class="flex gap-2 bg-gray-300 items-center justify-center rounded w-fit px-2">
+				Embed
+				<FeGetEmbed />
+			</li>
+			<li>
+				{#if !$isOwner}
+					<li class="flex gap-1 bg-green-500 items-center justify-center rounded w-fit px-2 py-1">
+						Fork <FeFork />
+					</li>
+				{/if}
+			</li>
 		</ul>
 	</div>
 {/if}

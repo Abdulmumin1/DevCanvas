@@ -58,6 +58,12 @@
 			<li><a href="/terms-of-service" class=" hover:underline">Terms of Service</a></li>
 		</ul>
 	</div>
+
+	<div
+		class="w-fit bg-gray-300 p-2 rounded-lg text-sky-dark text-sm text-center flex items-center justify-center"
+	>
+		Stand with Palestine 🇵🇸! DO NOT BE SILENCED
+	</div>
 </footer>
 
 <style>
