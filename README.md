@@ -1,8 +1,8 @@
-# SnippetLand
+# DevCanvas
 
 ![Snippets Logo](/static/snippetsPreview.png)
 
-SnippetLand is an open-source platform for sharing code snippets. It provides a simple and intuitive interface for developers to share, discover, and discuss frontend code and code snippets across various programming languages and use cases.
+DevCanvas is an open-source platform for sharing code snippets. It provides a simple and intuitive interface for developers to share, discover, and discuss frontend code and code snippets across various programming languages and use cases.
 
 ## Stack
 
@@ -85,7 +85,7 @@ Please adhere to the project's coding style and conventions.
 
 ## License
 
-SnippetLand is licensed under the [MIT License](./LICENSE).
+DevCanvas is licensed under the [MIT License](./LICENSE).
 
 ## Support
 

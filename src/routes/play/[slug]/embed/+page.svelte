@@ -24,6 +24,4 @@
 	.bd {
 		border: 1px solid #444;
 	}
-
-
 </style>

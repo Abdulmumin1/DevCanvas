@@ -75,8 +75,8 @@
 	let loading = true;
 </script>
 
-<div class="h-full max-h-full flex flex-col overflow-clip">
-	<div class="flex h-[50px] justify-between">
+<div class="h-full max-h-full flex flex-col">
+	<div class="flex min-h-[50px] h-[50px] justify-between">
 		<div class="w-full bg-secondary-dark flex gap-2 text-white text-sm">
 			<button
 				on:click={() => toogle('html')}
@@ -139,13 +139,13 @@
 		</p> -->
 
 		{#if isVertical}
-			<div class:hidden={!showHtml} class="hidden h-full">
+			<div class:hidden={!showHtml} class="hidden h-full bg-[#060521]">
 				<ReadOnlyEditor lang="html" code={details.html} />
 			</div>
-			<div class:hidden={!showCSS} class="hidden h-full overflow-scroll">
+			<div class:hidden={!showCSS} class="hidden h-full overflow-scroll bg-[#060521]">
 				<ReadOnlyEditor lang="css" code={details.css} />
 			</div>
-			<div class:hidden={!showJs} class="hidden h-full overflow-scroll text-sm">
+			<div class:hidden={!showJs} class="hidden h-full overflow-scroll text-sm bg-[#060521]">
 				<ReadOnlyEditor lang="javascript" code={details.js} />
 			</div>
 			<div class="h-full w-full" class:hidden={!showResult}>
@@ -158,15 +158,15 @@
 			</div>
 		{:else}
 			<Splitpanes theme="embed-theme">
-				<Pane size={45.8}>
-					<div class:hidden={!showHtml} class="hidden h-full">
+				<Pane size={46.8}>
+					<div class:hidden={!showHtml} class="hidden h-full overflow-scroll bg-[#060521]">
 						<ReadOnlyEditor lang="html" code={details.html} />
 					</div>
-					<div class:hidden={!showCSS} class="hidden h-full overflow-scroll text-sm">
+					<div class:hidden={!showCSS} class="hidden h-full overflow-scroll text-sm bg-[#060521]">
 						<ReadOnlyEditor lang="css" code={details.css} />
 					</div>
 
-					<div class:hidden={!showJs} class="hidden h-full overflow-scroll text-sm">
+					<div class:hidden={!showJs} class="hidden h-full overflow-scroll text-sm bg-[#060521]">
 						<ReadOnlyEditor lang="javascript" code={details.js} />
 					</div>
 				</Pane>

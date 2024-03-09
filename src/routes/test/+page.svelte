@@ -1,4 +1,4 @@
-<script>
+<!-- <script>
 	import anime from 'animejs';
 	import { browser } from '$app/environment';
 
@@ -213,4 +213,4 @@
 	}
 </script>
 
-<canvas class="w-screen h-screen" bind:this={c} id="c" />
+<canvas class="w-screen h-screen" bind:this={c} id="c" /> -->

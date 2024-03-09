@@ -9,4 +9,13 @@ export default defineConfig({
 	// 		allow: ['..']
 	// 	}
 	// }
+
+	// optimizeDeps: {
+	// 	exclude: [
+	// 		'codemirror',
+	// 		'@codemirror/language-javascript',
+	// 		'@codemirror/language-css',
+	// 		'@codemirror/language-html'
+	// 	]
+	// }
 });
