@@ -9,4 +9,4 @@
 	}
 </script>
 
-<button type="menu" on:click={toggleKbar} class="bg-secondark-dark">Menu ctrl+k</button>
+<button type="menu" on:click={toggleKbar} class=" bg-secondark-dark">Menu ctrl+k</button>

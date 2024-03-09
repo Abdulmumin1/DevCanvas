@@ -30,12 +30,12 @@
 			<li class="hidden md:flex"><SelectLayout /></li>
 			{#if $isOwner}
 				{#if $showSave}
-					<li><FeSave /></li>
+					<li class=""><FeSave /></li>
 				{/if}
 			{:else if ispublic}
-				<li><FeFork /></li>
+				<li class="hidden md:flex"><FeFork /></li>
 			{/if}
-			<li><FeGetEmbed /></li>
+			<li class="hidden md:flex"><FeGetEmbed /></li>
 			<li><ShareBtn /></li>
 			<li><Darkmode /></li>
 			<li class="text-black">

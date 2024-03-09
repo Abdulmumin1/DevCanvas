@@ -23,8 +23,8 @@
 {#if !$user}
 	<li class="bg-green-500 px-2 py-2 md:py-2 rounded text-primary">
 		<button on:click={openModal}>
-			<span class="flex md:hidden"><Fa icon={faRightToBracket} /></span>
-			<span class="hidden md:flex">Join</span>
+			<!-- <span class="flex md:hidden"><Fa icon={faRightToBracket} /></span> -->
+			<span class="flex">Join</span>
 		</button>
 	</li>
 
