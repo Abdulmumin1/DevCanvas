@@ -17,9 +17,6 @@
 	import Fa from 'svelte-fa';
 	import { faClose } from '@fortawesome/free-solid-svg-icons';
 	import FeGetEmbed from '../feGetEmbed.svelte';
-	import ShareBtn from '../../ShareBtn.svelte';
-	import { showSave, showLoginToSave } from '$lib/feEditor/store.js';
-	import FeSave from '../feSave.svelte';
 	import FeFork from '../feFork.svelte';
 
 	function closeDropdown() {
