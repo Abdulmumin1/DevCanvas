@@ -46,9 +46,6 @@
 				document.documentElement.classList.remove('dark');
 				localStorage.setItem('theme', 'light');
 			}
-
-			// localStorage.setItem('theme', darkModeState ? 'light' : 'dark');
-			console.log('saved mode', localStorage.theme);
 		}
 	});
 
@@ -60,13 +57,9 @@
 		showNavigating.set(false);
 	});
 
-	// setContext('userInfo', data.user_info);
-
-	// console.log('jfdklafdka fd afodamfd afdjaofdmaf dafodafmdas');
+	let url;
 	onMount(async () => {
-		// user_info.set(await userInfo());
-		// console.log(userInfo);
-		// darkModeState.set(localStorage.theme === 'dark');
+		url = window.location.href.replace('www.', '');
 		const { data } = supabase.auth.onAuthStateChange((event, _session) => {
 			user.set(_session?.user);
 			if (_session?.expires_at !== session?.expires_at) {
@@ -102,6 +95,8 @@
 		name="keywords"
 		content="css, html, css art, css animation, code snippet, javascript animations, animation with html/css,"
 	/>
+
+	<link rel="canonical" href={url} />
 </svelte:head>
 
 <!-- {#if && !(($page.url.pathname.endsWith('/preview') && $page.url.searchParams.get('preview') == 'preview') || $page.url.pathname.endsWith('/embed'))}
