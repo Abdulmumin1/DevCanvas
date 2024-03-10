@@ -108,19 +108,23 @@
 				<Fa icon={faCalendar} />
 				<p class="text-sm">Published {formatDate(data.meta.date)}</p>
 			</div>
-			<h1 class="text-3xl md:text-5xl title">{data.meta.title}</h1>
+			<h1 class="text-3xl md:text-5xl title">
+				{data.meta.title}
+			</h1>
 		</div>
 	</hgroup>
+
+	<div class="space-y-8 markdown-content font-light text-[#404953] dark:text-light article">
+		<svelte:component this={data.content} />
+	</div>
+
 	<div class="flex gap-3 flex-wrap">
+		Tags:
 		{#each data.meta.categories as tag}
 			<span class="px-3 py-1 text-light rounded-full bg-secondary-dark font-light text-sm"
 				>&num;{tag}</span
 			>
 		{/each}
-	</div>
-
-	<div class="space-y-8 markdown-content font-light text-[#404953] dark:text-light article">
-		<svelte:component this={data.content} />
 	</div>
 
 	<div class="w-full flex items-center justify-center p-3">

@@ -24,6 +24,7 @@
 				title="embed"
 				src="{$page.url.origin}/play/aDDzMU/embed"
 				frameborder="0"
+				loading="lazy"
 				class="w-[] rounded h-[700px]"
 				style="aspect-ratio: 1:1;"
 			/>
