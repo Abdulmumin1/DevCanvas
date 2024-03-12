@@ -6,7 +6,6 @@
 	import Fa from 'svelte-fa';
 	import { onDestroy, onMount } from 'svelte';
 
-	import { getProfile, getViews } from '$lib/utils';
 	export let supabase;
 	export let collection;
 	export let dashboard = false;

@@ -6,6 +6,45 @@
 	/* .action-button.active {
 		border-left: 30px solid orange !important;
 	} */
+
+	*::-webkit-scrollbar {
+		display: block;
+		width: var(--sds, 14px);
+		/* position: absolute; */
+	}
+
+	*::-webkit-scrollbar-button {
+		display: none;
+	}
+
+	*::-webkit-scrollbar-track {
+		background-color: var(--strack, theme(colors.white));
+	}
+
+	*::-webkit-scrollbar-track-piece {
+		background-color: #00000000;
+	}
+
+	*::-webkit-scrollbar-thumb {
+		background-color: #00000040;
+		border: 1px solid #ffffff40;
+		border-radius: 24px;
+	}
+
+	:is(.dark) {
+		--scroll-bg: theme(colors.stone.800);
+		--strack: theme(colors.primary);
+	}
+
+	/* box-sizing: /; */
+	*::-webkit-scrollbar-thumb {
+		background-color: #00000000;
+		border: 5px solid transparent;
+
+		border-radius: 24px;
+		box-shadow: 4px 0px 0px 4px var(--scroll-bg, theme(colors.sky.500)) inset;
+	}
+
 	.splitpanes.my-theme .splitpanes__pane {
 		@apply bg-white dark:bg-black;
 		height: 100%;
@@ -149,27 +188,13 @@
 		@apply text-sm lg:text-base;
 	}
 
-	:root {
-		--shiki-color-text: green;
-		--shiki-color-background: theme(backgroundColor.sky.400);
-		--shiki-token-constant: orange;
-		--shiki-token-string: blue;
-		--shiki-token-comment: #880000;
-		--shiki-token-keyword: #990000;
-		--shiki-token-parameter: #aa0000;
-		--shiki-token-function: #bb0000;
-		--shiki-token-string-expression: #cc0000;
-		--shiki-token-punctuation: #dd0000;
-		--shiki-token-link: #ee0000;
-	}
-
 	.splitpanes.embed-theme .splitpanes__pane {
-		background-color: transparent;
+		/* background: orange; */
 		height: 100%;
 	}
 
 	.splitpanes.embed-theme .splitpanes__splitter {
-		background-color: transparent;
+		/* background: orange; */
 		position: relative;
 		@apply border-x-8 border-secondary-dark;
 	}

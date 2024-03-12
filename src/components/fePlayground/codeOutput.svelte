@@ -255,5 +255,5 @@
 <div
 	class="bg-white m-0 p-0 border-t md:border-l dark:border-primary border-gray-300 w-full h-full text-black dark:text-white"
 >
-	<iframe bind:this={iframe} title="preview" id="preview-frame" class="w-full h-full" />
+	<iframe bind:this={iframe} title="preview" id="preview-frame" class="w-full h-full p-0 m-0" />
 </div>

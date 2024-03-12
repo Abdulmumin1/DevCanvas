@@ -14,10 +14,17 @@
 	import { faCalendar, faCopy } from '@fortawesome/free-solid-svg-icons';
 	import { scale } from 'svelte/transition';
 	import { generateStructuredData } from '$lib/blog/utils.js';
+	import { showToast } from '$lib/index.js';
+
 	// import { page } from '$app/stores';
 	// import { page } from '$app/stores';
 
 	let url;
+
+	function cp() {
+		copyUrlToClipboard(url);
+		showToast.set({ message: 'Link copied to clipboard', duration: 2000 });
+	}
 
 	onMount(() => {
 		url = window.location.href;
@@ -121,7 +128,7 @@
 	<div class="flex gap-3 flex-wrap">
 		Tags:
 		{#each data.meta.categories as tag}
-			<span class="px-3 py-1 text-light rounded-full bg-secondary-dark font-light text-sm"
+			<span class="px-3 py-1 text-light rounded-lg bg-secondary-dark font-light text-sm"
 				>&num;{tag}</span
 			>
 		{/each}
@@ -135,7 +142,7 @@
 			<div class="flex space-x-3 items-center justify-center">
 				<button
 					on:click={() => {
-						copyUrlToClipboard(url);
+						cp();
 					}}><Fa icon={faCopy} /></button
 				>
 				<a

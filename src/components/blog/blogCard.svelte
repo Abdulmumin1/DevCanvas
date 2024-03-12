@@ -38,8 +38,11 @@
 
 <div in:scale class="  w-full">
 	<div class="py-2 justify-between rounded-lg flex flex-col gap-2 dark:text-light text-black">
-		<p class="flex gap-2 items-center font-serif text-[.9rem]">
-			<Fa icon={faCalendar} />{formatDate(details.date)}
+		<p class="flex gap-2 items-center text-[.9rem]">
+			<span>
+				<Fa icon={faCalendar} />
+			</span>
+			Published {formatDate(details.date)}
 		</p>
 		<div class="">
 			<a href={`blog/${details.slug}`} class="text-lg lg:text-xl text-balance hover:opacity-80">

@@ -51,16 +51,17 @@
 		{#if !noSearch}
 			<div class="w-full px-3 py-3 border-b text-primary dark:border-secondary-dark">
 				<ul class="flex items-center justify-end w-full gap-2">
-					<li><OverlayNav /></li>
 					<ul class="w-full flex items-center justify-center gap-2">
 						<li class="flex-1"><Search /></li>
+						<li><OverlayNav /></li>
+
 						<li
-							class="text-sm hidden md:flex bg-gray-100 dark:bg-secondary-dark dark:text-light rounded-lg py-2 px-3 w-fit"
+							class="text-sm hidden md:flex bg-gray-100 dark:bg-secondary-dark dark:text-light rounded-xl py-2 px-3 w-fit"
 						>
 							<Open />
 						</li>
 
-						<li class="text-black dark:text-white"><Darkmode /></li>
+						<li class="text-black dark:text-white hidden md:block"><Darkmode /></li>
 
 						{#if !$user}
 							<li><a href={signinURL} class="bg-green-400 p-3 rounded-lg">Join</a></li>

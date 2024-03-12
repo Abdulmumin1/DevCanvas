@@ -171,7 +171,7 @@
 					</div>
 				</Pane>
 				<Pane>
-					<div class="h-full w-full overflow-scroll" class:hidden={!showResult}>
+					<div class="h-full w-full overflow-scroll m-0 p-0" class:hidden={!showResult}>
 						<CodeOutput code={details.html} css={details.css} js={details.js} />
 					</div>
 				</Pane>

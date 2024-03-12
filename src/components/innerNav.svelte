@@ -7,6 +7,7 @@
 	import { clickOutside } from '$lib/index.js';
 	import { page } from '$app/stores';
 	import Open from './kbar/open.svelte';
+	import MobileNav from './mobileNav.svelte';
 
 	let openSideBar = false;
 
@@ -58,33 +59,9 @@
 				class="flex items-center justify-center gap-4 text-xl bg-secondary-dark text-light py-2 px-3 rounded-3xl"
 			>
 				<Darkmode />
-				<button on:click={toogleOpen}><Fa icon={faBars} /></button>
+				<!-- <button on:click={toogleOpen}><Fa icon={faBars} /></button> -->
+				<MobileNav />
 			</li>
-			{#if openSideBar}
-				<li
-					transition:slide={{ axis: 'x' }}
-					use:clickOutside
-					on:click_outside={toogleOpen}
-					class="fixed top-0 right-0 w-screen h-screen z-50 bg-white p-4 dark:bg-primary shadow-lg"
-				>
-					<ul transition:scale class="flex gap-4 justify-between items-end flex-col">
-						<li>
-							<button on:click={toogleOpen} class="text-4xl"><Fa icon={faClose} /></button>
-						</li>
-						<li class="w-full text-xl flex flex-col gap-4">
-							<ul
-								class="w-full flex flex-col justify-between gap-4 text-4xl dark:text-secondary-dark"
-							>
-								<li class="p-6 bg-sky-200 rounded-xl"><a href="/explore" class="">Explore</a></li>
-								<li class="p-6 bg-sky-200 rounded-xl">
-									<a href="/play" class="">HTML Playground</a>
-								</li>
-								<li class="p-6 bg-sky-200 rounded-xl"><a href="/blog" class="">Blog</a></li>
-							</ul>
-						</li>
-					</ul>
-				</li>
-			{/if}
 		</ul>
 	</div>
 </div>

@@ -10,6 +10,7 @@
 	import FeGetEmbed from './feGetEmbed.svelte';
 	import Login from '../auth/login.svelte';
 	import SelectLayout from './selectLayout.svelte';
+	import MobileNav from '../mobileNav.svelte';
 	export let ispublic;
 </script>
 
@@ -37,8 +38,13 @@
 			{/if}
 			<li class="hidden md:flex"><FeGetEmbed /></li>
 			<li><ShareBtn /></li>
-			<li><Darkmode /></li>
-			<li class="text-black">
+			<li class="hidden md:block"><Darkmode /></li>
+			<li
+				class="md:hidden bg-gray-300 text-black px-2 py-2 dark:bg-secondary-dark dark:text-white rounded flex items-center justify-center"
+			>
+				<MobileNav />
+			</li>
+			<li class="text-black hidden md:block">
 				<Login />
 			</li>
 		</ul>
