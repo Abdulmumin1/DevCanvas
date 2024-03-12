@@ -90,7 +90,9 @@
 		// 	}
 		// });
 
-		showToast.set({ message: 'Canvas not saved, Click save.', duration: 4000 });
+		setTimeout(() => {
+			showToast.set({ message: 'Canvas not saved, Click save.', duration: 4000 });
+		}, 1000);
 	});
 
 	onDestroy(() => {

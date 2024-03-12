@@ -84,7 +84,7 @@
 	{#if $isOwner}
 		<div class="flex gap-2 items-center" style="margin-bottom: -7px;">
 			{#if title}
-				<div class="flex gap-1 items-center max-w-[300px] md:max-w-[400px] w-fit">
+				<div class="flex gap-1 items-center max-w-[200px] md:max-w-[400px] w-fit">
 					<p class="bg-sky-400 text-black p-[1.3px] rounded text-sm md:text-xl">Fork</p>
 					<p
 						contenteditable=""
@@ -104,7 +104,7 @@
 					on:input={handleInput}
 					placeholder="Untitled Project"
 					spellcheck="false"
-					class="max-w-[300px] min-w-[50px] font-semibold md:max-w-[400px] w-fit focus:outline-1 focus:outline-sky-200 text-sm md:text-xl capitalize text-white bg-inherit whitespace-nowrap truncate"
+					class="max-w-[200px] min-w-[50px] font-semibold md:max-w-[400px] w-fit focus:outline-1 focus:outline-sky-200 text-sm md:text-xl capitalize text-white bg-inherit whitespace-nowrap truncate"
 				>
 					{$current_data.description}
 				</p>
@@ -116,12 +116,12 @@
 			<CanvasVisibility canvas_id={$current_data.id} publicLy={$current_data.public} />
 		</div>
 	{:else if title}
-		<div class="flex gap-1 items-center max-w-[300px] md:max-w-[400px] w-fit">
+		<div class="flex gap-1 items-center max-w-[200px] md:max-w-[400px] w-fit">
 			<p class="bg-sky-400 text-black p-[1.3px] rounded text-sm md:text-xl flex items-baseline">
 				Fork
 			</p>
 			<p
-				class="max-w-[300px] md:max-w-[400px] font-semibold w-fit text-sm md:text-xl capitalize text-white bg-inherit outline-none whitespace-nowrap flex items-center gap-2 truncate"
+				class="max-w-[200px] md:max-w-[400px] font-semibold w-fit text-sm md:text-xl capitalize text-white bg-inherit outline-none whitespace-nowrap flex items-center gap-2 truncate"
 			>
 				{title}
 			</p>
@@ -129,7 +129,7 @@
 	{:else}
 		<p
 			style="margin-bottom: -7px;"
-			class="max-w-[300px] md:max-w-[400px] font-semibold w-fit text-sm md:text-xl capitalize text-white bg-inherit outline-none whitespace-nowrap flex items-center gap-2 truncate"
+			class="max-w-[200px] md:max-w-[400px] font-semibold w-fit text-sm md:text-xl capitalize text-white bg-inherit outline-none whitespace-nowrap flex items-center gap-2 truncate"
 		>
 			{$current_data.description}
 		</p>

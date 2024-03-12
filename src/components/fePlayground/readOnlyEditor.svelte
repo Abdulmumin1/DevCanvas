@@ -91,19 +91,19 @@
 		if (lang == 'html') {
 			editorView = new EditorView({
 				parent: container,
-				doc: code, // Bind the initial code
+				doc: `${code}\n`, // Bind the initial code
 				extensions: [EditorState.readOnly.of(true), basicSetup, html(), coolGlow] // Extensions
 			});
 		} else if (lang == 'css') {
 			editorView = new EditorView({
 				parent: container,
-				doc: code, // Bind the initial code
+				doc: `${code}\n`, // Bind the initial code
 				extensions: [EditorState.readOnly.of(true), basicSetup, css(), coolGlow] // Extensions
 			});
 		} else if (lang == 'javascript') {
 			editorView = new EditorView({
 				parent: container,
-				doc: code, // Bind the initial code
+				doc: `${code}\n`, // Bind the initial code
 				extensions: [EditorState.readOnly.of(true), basicSetup, javascript(), coolGlow] // Extensions
 			});
 		}
@@ -111,3 +111,5 @@
 </script>
 
 <div bind:this={container} style="height: 100%;" />
+
+<!-- <style></style> -->

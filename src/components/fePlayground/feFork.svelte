@@ -65,6 +65,7 @@
 		<button
 			on:click={forkData}
 			aria-busy={busy}
+			title="Save"
 			class="px-3 py-2 cursor-pointer flex gap-2 items-center justify-center active:scale-75 transition-transform duration-300"
 		>
 			<Fa icon={faSave} />
@@ -80,6 +81,7 @@
 		on:click={forkData}
 		class:hidden={demo}
 		aria-busy={busy}
+		title="Fork"
 		class="p-1 rounded-md cursor-pointer flex gap-2 items-center justify-center text-primary bg-green-500 px-3 py-2 active:scale-75 transition-transform duration-300"
 	>
 		<Fa icon={faCodeFork} />

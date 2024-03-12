@@ -23,6 +23,7 @@
 		<button
 			class="active:scale-75 transition-transform duration-300 p-2 bg-gray-200 text-primary rounded cursor-pointer"
 			on:click={toggleDropdown}
+			title="change layout"
 		>
 			<Fa icon={faLayerGroup} />
 		</button>

@@ -109,7 +109,7 @@
 		<PageLoadProgess />
 	{/if}
 {/if}
-<div class=" bg-white dark:bg-primary dark:text-white transition-colors duration-300">
+<div class=" bg-white dark:bg-primary dark:text-white transition-colors duration-300 relative">
 	<slot />
 	{#if $showToast}
 		<Toast message={$showToast.message} duration={$showToast?.duration ?? 2500} />
