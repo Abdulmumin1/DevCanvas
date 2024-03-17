@@ -138,7 +138,7 @@
 		padding: theme(padding.3);
 		overflow: scroll;
 		font-size: theme(fontSize.sm);
-		@apply rounded-2xl border;
+		@apply rounded-2xl border-sky-dark;
 	}
 
 	.article h1 {

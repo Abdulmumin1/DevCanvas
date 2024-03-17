@@ -14,7 +14,7 @@ const mdsvexConf = {
 			// const highlighter = await shiki.getHighlighter({
 			// 	theme: 'github-dark'
 			// });
-			const html = await codeToHtml(code, { lang, theme: 'github-dark' });
+			const html = await codeToHtml(code, { lang, theme: 'vesper' });
 			return `{@html \`${html}\`}`;
 		}
 	}

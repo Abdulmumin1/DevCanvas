@@ -110,14 +110,14 @@
 
 <article in:scale class="mx-auto flex flex-col gap-6 md:px-2 lg:px-4">
 	<hgroup class="  dark:text-light flex rounded-lg w-full flex-col gap-3 relative">
-		<div class="flex gap-4 flex-col">
-			<div class="flex gap-2">
-				<Fa icon={faCalendar} />
-				<p class="text-sm">Published {formatDate(data.meta.date)}</p>
-			</div>
-			<h1 class="text-3xl md:text-5xl title">
+		<div class="flex gap-4 flex-col fd">
+			<h1 class="text-3xl md:text-5xl title text-balance">
 				{data.meta.title}
 			</h1>
+			<div class="text-balance">
+				<!-- <Fa icon={faCalendar} /> -->
+				<p class="text-sm">Published {formatDate(data.meta.date)} by Abdulmumin Yaqeen</p>
+			</div>
 		</div>
 	</hgroup>
 
@@ -219,6 +219,13 @@
 		font-family: Roboto slab;
 	}
 
+	.fd {
+		height: 230px;
+		display: flex;
+		/* align-items: center; */
+		justify-content: center;
+		/* text-align: center; */
+	}
 	.article {
 		font-size: 1.4em !important;
 	}

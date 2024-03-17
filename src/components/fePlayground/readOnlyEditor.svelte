@@ -113,3 +113,20 @@
 <div bind:this={container} style="height: 100%;" />
 
 <!-- <style></style> -->
+
+<style>
+	/* Hide horizontal scrollbar */
+	*::-webkit-scrollbar {
+		height: 0; /* Chrome, Safari */
+	}
+
+	/* Hide scrollbar for IE and Edge */
+	* {
+		-ms-overflow-style: none; /* IE and Edge */
+	}
+
+	/* Hide horizontal scrollbar (Firefox) */
+	* {
+		scrollbar-height: none; /* Firefox */
+	}
+</style>
