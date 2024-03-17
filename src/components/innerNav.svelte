@@ -17,7 +17,7 @@
 </script>
 
 <div
-	class="flex bg-sky-300 items-center justify-center py-3 top-0 border-b border-primary dark:border-secondary-dark"
+	class="flex bg-sky-300 items-center justify-center py-3 top-0 border-b-2 border-primary dark:border-secondary-dark"
 >
 	<div class="h-[50px] px-2 w-full bg-inherit max-w-[1200px]">
 		<ul class="hidden md:flex w-full justify-between items-center">
