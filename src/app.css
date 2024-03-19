@@ -142,7 +142,7 @@
 	}
 
 	.article h1 {
-		font-family: Roboto Slab, serif !important;
+		font-family: 'Rubik', serif !important;
 
 		/* color: theme(colors.orang); */
 		text-transform: capitalize;
@@ -151,15 +151,18 @@
 	}
 
 	.article h2 {
-		font-family: Roboto Slab, serif !important;
+		/* font-family: Roboto Slab, serif !important; */
 		/* font-size: 2.5rem; */
+		font-family: 'Rubik', serif !important;
+
 		padding-block: 1;
 		font-weight: 500;
 		@apply text-2xl md:text-3xl py-2 text-black dark:text-white;
 	}
 
 	.article h3 {
-		font-family: Roboto Slab, serif !important;
+		/* font-family: Roboto Slab, serif !important; */
+		font-family: 'Rubik', serif !important;
 
 		font-weight: 500;
 
@@ -168,7 +171,7 @@
 		/* color: theme(colors.orang); */
 	}
 	.article h4 {
-		font-family: Roboto Slab, serif !important;
+		/* font-family: '', serif !important; */
 		@apply text-lg md:text-xl py-2 text-black dark:text-white;
 
 		/* font-weight: theme(fontWeight.bold); */
@@ -239,23 +242,6 @@
 		width: 0;
 		height: 0;
 	}
-
-	.article ul,
-	ol {
-		display: flex;
-		flex-direction: column;
-		gap: 6px;
-		/* list-style-type: disc; */
-	}
-
-	/* .article h1,
-	h2,
-	h3,
-	h4,
-	h5,
-	h6 {
-		@apply ;
-	} */
 
 	.sick-hover {
 		position: relative;
