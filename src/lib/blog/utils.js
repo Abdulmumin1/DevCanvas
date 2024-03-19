@@ -33,7 +33,7 @@ export function generateStructuredData({
 		  "url": "https://devcanvas.art/logo.svg"
 		}
 	  },
-	  "datePublished": ${datePublished},
+	  "datePublished": "${datePublished}",
 	  "dateModified": "${datePublished}"
 	}
             `;
