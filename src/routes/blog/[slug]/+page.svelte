@@ -11,7 +11,14 @@
 		faTwitter,
 		faWhatsapp
 	} from '@fortawesome/free-brands-svg-icons';
-	import { faCalendar, faCopy } from '@fortawesome/free-solid-svg-icons';
+	import {
+		faAngleLeft,
+		faBackward,
+		faCalendar,
+		faCopy,
+		faExternalLinkSquare,
+		faUser
+	} from '@fortawesome/free-solid-svg-icons';
 	import { scale } from 'svelte/transition';
 	import { generateStructuredData } from '$lib/blog/utils.js';
 	import { showToast } from '$lib/index.js';
@@ -110,10 +117,21 @@
 
 <article in:scale class="mx-auto flex flex-col gap-6 md:px-2 lg:px-4">
 	<hgroup class="  dark:text-light flex rounded-lg w-full flex-col gap-3 relative">
+		<aside>
+			<a href="/blog" class="flex items-center gap-1"><Fa icon={faAngleLeft} />Back home</a>
+		</aside>
 		<div class="flex gap-4 flex-col fd">
-			<div class="text-balance flex gap-2 items-center">
-				<Fa icon={faCalendar} />
-				<p class="text-sm">Published {formatDate(data.meta.date)}</p>
+			<div class="flex gap-3 flex-wrap">
+				<div class="text-balance flex gap-2 items-center">
+					<Fa icon={faCalendar} />
+					<p class="text-sm">Published {formatDate(data.meta.date)}</p>
+				</div>
+
+				<div class="text-balance flex gap-2 items-center">
+					<span><Fa icon={faUser} /></span>
+					<p>Written by: Abdulmumin Yaqeen</p>
+					<a href="https://yaqeen.me/about" target="_blank"><Fa icon={faExternalLinkSquare} /></a>
+				</div>
 			</div>
 			<h1 class="text-3xl md:text-5xl title text-balance">
 				{data.meta.title}
@@ -221,7 +239,7 @@
 	}
 
 	.fd {
-		height: 180px;
+		min-height: 180px;
 		display: flex;
 		/* align-items: center; */
 		justify-content: end;

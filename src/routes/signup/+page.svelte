@@ -80,7 +80,26 @@
 </script>
 
 <svelte:head>
-	<title>SignUp - devCanvas</title>
+	<title>Sign Up - DevCanvas</title>
+
+	<meta name="description" content={'Sign up for DevCanvas - Prototype with EASE!'} />
+
+	<!-- Facebook Meta Tags -->
+	<meta property="og:url" content={'Sign up for DevCanvas - Prototype with EASE!'} />
+	<meta property="og:type" content="website" />
+	<meta property="og:description" content={'Sign up for DevCanvas - Prototype with EASE!'} />
+	<meta property="og:image" content={'Sign up for DevCanvas - Prototype with EASE!'} />
+
+	<!-- Twitter Meta Tags -->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta property="twitter:domain" content="devcanvas.art" />
+	<meta property="twitter:url" content={'Sign up for DevCanvas - Prototype with EASE!'} />
+	<meta name="twitter:description" content={'Sign up for DevCanvas - Prototype with EASE!'} />
+	<meta name="twitter:image" content={'Sign up for DevCanvas - Prototype with EASE!'} />
+	<meta
+		name="keywords"
+		content="css, html, css art, css animation, code snippet, javascript animations, animation with html/css,"
+	/>
 </svelte:head>
 
 <div class="h-screen flex items-center justify-center bg-white text-primary">
