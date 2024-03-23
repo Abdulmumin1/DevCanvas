@@ -180,7 +180,7 @@
 
 	.article code {
 		/* background-color: #888; */
-		@apply rounded  bg-sky-100  dark:text-black;
+		@apply rounded bg-secondary-dark text-white  dark:bg-sky-100   dark:text-black;
 		font-size: 16px !important;
 		font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI Adjusted', 'Segoe UI',
 			'Liberation Sans', sans-serif;
@@ -261,5 +261,14 @@
 
 	.sick-hover:hover::after {
 		height: 100%;
+	}
+
+	.article strong {
+		font-weight: bold;
+	}
+
+	.article li {
+		list-style: disc;
+		margin-left: 20px;
 	}
 }

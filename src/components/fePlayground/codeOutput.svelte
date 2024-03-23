@@ -252,6 +252,6 @@
 	// afterNavigate(()=>)
 </script>
 
-<div class=" m-0 p-0 border-0 w-full h-full text-black dark:text-white">
+<div class=" m-0 p-0 bg-white border-0 w-full h-full">
 	<iframe bind:this={iframe} title="preview" id="preview-frame" class="w-full h-full p-0 m-0" />
 </div>

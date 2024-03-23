@@ -3,7 +3,8 @@
 	import {
 		faArrowAltCircleRight,
 		faArrowTrendUp,
-		faCalendar
+		faCalendar,
+		faPerson
 	} from '@fortawesome/free-solid-svg-icons';
 	import Fa from 'svelte-fa';
 	import { fade, scale, slide } from 'svelte/transition';
@@ -44,8 +45,15 @@
 			</span>
 			Published {formatDate(details.date)}
 		</p>
+		<p class="flex gap-2 items-center text-[.9rem]">
+			<span class="opacity-85"> Written by: </span>
+			<span class="opacity-90">Abdulmumin Yaqeen</span>
+		</p>
 		<div class="">
-			<a href={`blog/${details.slug}`} class="text-lg lg:text-xl text-balance hover:opacity-80">
+			<a
+				href={`blog/${details.slug}`}
+				class="text-lg x lg:text-xl decoration-wavy underline underline-offset-4 text-balance hover:opacity-80"
+			>
 				{details.title}</a
 			>
 			<!-- <p class="text-gray-900 dark:text-gray-300">

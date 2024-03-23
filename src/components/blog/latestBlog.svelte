@@ -30,9 +30,4 @@
 </div>
 
 <style>
-	.s {
-		/* font-family: 'dia'; */
-
-		font-family: 'Dai Banna SIL';
-	}
 </style>

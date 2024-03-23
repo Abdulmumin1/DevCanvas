@@ -41,46 +41,6 @@
 	</script>
 
 	<script type="application/ld+json">
-		{
-			"@context": "https://schema.org/",
-			"@type": "BreadcrumbList",
-			"itemListElement": [
-
-			{
-					"@type": "ListItem",
-					"position": 1,
-					"name": "Try Editor",
-					"item": "https://devcanvas.art/play/try"
-				},
-				{
-					"@type": "ListItem",
-					"position": 2,
-					"name": "Explore",
-					"item": "https://devcanvas.art/explore"
-				},
-				{
-					"@type": "ListItem",
-					"position": 3,
-					"name": "Sign Up",
-					"item": "https://devcanvas.art/signin"
-				},
-				{
-					"@type": "ListItem",
-					"position": 4,
-					"name": "Sign In",
-					"item": "https://devcanvas.art/signin"
-				},
-				{
-					"@type": "ListItem",
-					"position": 5,
-					"name": "Blog",
-					"item": "https://devcanvas.art/blog"
-				}
-			]
-		}
-	</script>
-
-	<script type="application/ld+json">
 	{
 	  "@context": "https://schema.org",
 	  "@type": "Organization",
