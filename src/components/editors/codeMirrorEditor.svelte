@@ -117,8 +117,10 @@
 			'&': { height: '100%' },
 			// '.cm-content, .cm-gutter': { minHeight: '100%' },
 			'.cm-scroller': { overflow: 'auto' },
-			'.cm-content': { 'margin-bottom': '55px' }
+			'.cm-content': { 'padding-bottom': '55px' },
+			'.cm-scroller::-webkit-scrollbar-track': { 'background-color': 'black' }
 		});
+		// '.cm-scroller::-webkit-scrollbar-thumb': { 'box-shadow': '4px 0px 0px 4px #22c55e inset' }
 
 		let changeReview = EditorView.updateListener.of((v) => {
 			if ((v.docChanged, v.state.doc.toString)) {
@@ -139,20 +141,14 @@
 <div bind:this={container} style="height: 100%;" class="bc" />
 
 <!-- <style></style> -->
-<!-- 
+
 <style>
 	/* Hide horizontal scrollbar */
-	.bc::-webkit-scrollbar {
-		height: 0; /* Chrome, Safari */
+	.cm-scroller::-webkit-scrollbar-track {
+		background-color: black !important;
 	}
 
-	/* Hide scrollbar for IE and Edge */
-	.bc {
-		-ms-overflow-style: none; /* IE and Edge */
+	:root {
+		--scroll-bg: #2263c593;
 	}
-
-	/* Hide horizontal scrollbar (Firefox) */
-	.bc {
-		scrollbar-height: none; /* Firefox */
-	}
-</style> -->
+</style>
