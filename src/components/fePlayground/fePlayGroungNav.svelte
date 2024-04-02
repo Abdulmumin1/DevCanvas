@@ -38,7 +38,6 @@
 			{/if}
 			<li class="hidden md:flex"><FeGetEmbed /></li>
 			<li><ShareBtn /></li>
-			<li class="hidden md:block"><Darkmode /></li>
 			<li
 				class="md:hidden bg-gray-300 text-black px-2 py-2 dark:bg-secondary-dark dark:text-white rounded flex items-center justify-center"
 			>
