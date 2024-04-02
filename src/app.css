@@ -46,14 +46,14 @@
 	}
 
 	.splitpanes.my-theme .splitpanes__pane {
-		@apply bg-white dark:bg-black;
+		@apply bg-black;
 		height: 100%;
 	}
 
 	.splitpanes.my-theme .splitpanes__splitter {
 		background-color: #cccccc00;
 		position: relative;
-		@apply border-x-4 border-gray-100 dark:border-black;
+		@apply border-x-4 border-black;
 	}
 
 	.splitpanes.my-theme .splitpanes__splitter:before {

@@ -85,28 +85,37 @@
 	export let code;
 	export let lang;
 
+	const langFunction = () => {
+		if (lang == 'html') {
+			return html();
+		} else if (lang == 'css') {
+			return css();
+		} else {
+			return javascript();
+		}
+	};
+
 	onMount(() => {
 		//   const container = document.querySelector('.codemirror-editor'); // Select container element
+		const fixedHeightEditor = EditorView.theme({
+			'&': { height: '100%' },
+			// '.cm-content, .cm-gutter': { minHeight: '100%' },
+			'.cm-scroller': { overflow: 'auto' },
+			'.cm-content': { 'margin-bottom': '100px' }
+		});
 
-		if (lang == 'html') {
-			editorView = new EditorView({
-				parent: container,
-				doc: `${code}\n`, // Bind the initial code
-				extensions: [EditorState.readOnly.of(true), basicSetup, html(), coolGlow] // Extensions
-			});
-		} else if (lang == 'css') {
-			editorView = new EditorView({
-				parent: container,
-				doc: `${code}\n`, // Bind the initial code
-				extensions: [EditorState.readOnly.of(true), basicSetup, css(), coolGlow] // Extensions
-			});
-		} else if (lang == 'javascript') {
-			editorView = new EditorView({
-				parent: container,
-				doc: `${code}\n`, // Bind the initial code
-				extensions: [EditorState.readOnly.of(true), basicSetup, javascript(), coolGlow] // Extensions
-			});
-		}
+		editorView = new EditorView({
+			parent: container,
+			doc: `${code}`, // Bind the initial code40
+			extensions: [
+				EditorState.readOnly.of(true),
+				basicSetup,
+				fixedHeightEditor,
+				langFunction(),
+				coolGlow,
+				EditorView.lineWrapping
+			] // Extensions
+		});
 	});
 </script>
 

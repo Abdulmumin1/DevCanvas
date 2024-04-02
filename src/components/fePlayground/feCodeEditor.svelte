@@ -11,6 +11,7 @@
 	import EditorTitle from './editorTitle.svelte';
 	import Femodal from './femodal.svelte';
 	import EditorSettings from './editorSettings.svelte';
+	import CodeMirrorEditor from '../editors/codeMirrorEditor.svelte';
 
 	let initialHTML = $current_data.html;
 	let initialCSS = $current_data.css;
@@ -72,14 +73,13 @@
 <div class="h-full w-full">
 	{#if isVertical}
 		<div class="flex justify-between items-center">
-			<div class="flex gap-2">
+			<div class="flex gap-2 text-white">
 				<button
 					class="flex gap-1 items-center justify-center p-2"
 					on:click={() => {
 						showTab('html');
 					}}
-					class:bg-gray-100={showHtml}
-					class:dark:bg-secondary-dark={showHtml}
+					class:bg-secondary-dark={showHtml}
 					><span class="text-rose-500"><Fa icon={faHtml5} /></span>HTML</button
 				>
 				<button
@@ -87,8 +87,7 @@
 					on:click={() => {
 						showTab('css');
 					}}
-					class:bg-gray-100={showCSS}
-					class:dark:bg-secondary-dark={showCSS}
+					class:bg-secondary-dark={showCSS}
 				>
 					<span class="text-blue-500"><Fa icon={faCss3} /></span>CSS
 				</button>
@@ -98,26 +97,27 @@
 					on:click={() => {
 						showTab('js');
 					}}
-					class:bg-gray-100={showJs}
-					class:dark:bg-secondary-dark={showJs}
+					class:bg-secondary-dark={showJs}
 				>
 					<span class="text-yellow-500"><Fa icon={faJs} /></span>JS
 				</button>
 			</div>
-			<div class="p-2 flex gap-2">
+			<div class="p-2 flex gap-2 text-white">
 				<Femodal />
 				<EditorSettings />
 			</div>
 		</div>
 		<div class="w-full h-full">
 			<div class:hidden={!showHtml} class="hidden w-full h-full">
-				<FeHtml {initialHTML} />
+				<!-- <FeHtml {initialHTML} /> -->
+				<CodeMirrorEditor lang={'html'} code={initialHTML} />
 			</div>
 			<div class:hidden={!showCSS} class="hidden w-full h-full">
-				<FeCss {initialCSS} />
+				<CodeMirrorEditor lang={'css'} code={initialCSS} />
 			</div>
 			<div class:hidden={!showJs} class="hidden w-full h-full">
-				<FeJs {initialJs} />
+				<!-- <FeJs {initialJs} /> -->
+				<CodeMirrorEditor lang={'javascript'} code={initialJs} />
 			</div>
 		</div>
 	{:else if $layoutView == 'top'}
@@ -126,20 +126,23 @@
 				<div class="w-full h-full">
 					<EditorTitle lang="html" />
 
-					<FeHtml {initialHTML} />
+					<!-- <FeHtml {initialHTML} /> -->
+					<CodeMirrorEditor lang={'html'} code={initialHTML} />
 				</div>
 			</Pane>
 			<Pane snapSize={10} minSize={1}>
 				<div class="h-full w-full">
 					<EditorTitle lang="css" />
 
-					<FeCss {initialCSS} />
+					<!-- <FeCss {initialCSS} /> -->
+					<CodeMirrorEditor lang={'css'} code={initialCSS} />
 				</div>
 			</Pane>
 			<Pane snapSize={10} minSize={1}>
 				<div class="h-full w-full">
 					<EditorTitle lang="js" />
-					<FeJs {initialJs} />
+					<!-- <FeJs {initialJs} /> -->
+					<CodeMirrorEditor lang={'javascript'} code={initialJs} />
 				</div>
 			</Pane>
 		</Splitpanes>
@@ -149,21 +152,24 @@
 				<div class="h-full w-full">
 					<EditorTitle lang="html" />
 
-					<FeHtml {initialHTML} />
+					<!-- <FeHtml {initialHTML} /> -->
+					<CodeMirrorEditor lang={'html'} code={initialHTML} />
 				</div>
 			</Pane>
 			<Pane snapSize={10} minSize={6}>
 				<div class="h-full w-full">
 					<EditorTitle lang="css" />
 
-					<FeCss {initialCSS} />
+					<!-- <FeCss {initialCSS} /> -->
+					<CodeMirrorEditor lang={'css'} code={initialCSS} />
 				</div>
 			</Pane>
 			<Pane snapSize={10} minSize={6}>
 				<div class="h-full w-full">
 					<EditorTitle lang="js" />
 
-					<FeJs {initialJs} />
+					<!-- <FeJs {initialJs} /> -->
+					<CodeMirrorEditor lang={'javascript'} code={initialJs} />
 				</div>
 			</Pane>
 		</Splitpanes>
