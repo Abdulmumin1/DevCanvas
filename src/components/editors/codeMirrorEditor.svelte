@@ -123,7 +123,7 @@
 		// '.cm-scroller::-webkit-scrollbar-thumb': { 'box-shadow': '4px 0px 0px 4px #22c55e inset' }
 
 		let changeReview = EditorView.updateListener.of((v) => {
-			if ((v.docChanged, v.state.doc.toString)) {
+			if (v.docChanged) {
 				// Document changed
 				// console.log(v.state.doc.toString());
 				handleContentChange(v.state.doc.toString(), lang);

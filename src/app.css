@@ -34,6 +34,7 @@
 	:is(.dark) {
 		--scroll-bg: theme(colors.stone.800);
 		--strack: theme(colors.primary);
+		/* --squiggle-color: red; */
 	}
 
 	/* box-sizing: /; */
@@ -270,5 +271,10 @@
 	.article li {
 		list-style: disc;
 		margin-left: 20px;
+	}
+
+	.article a {
+		color: theme(colors.sky.400);
+		text-decoration: underline;
 	}
 }
