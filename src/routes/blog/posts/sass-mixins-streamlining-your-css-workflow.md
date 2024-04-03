@@ -1,5 +1,5 @@
 ---
-title: 'Sass Mixins: Streamlining Your CSS Workflow'
+title: 'Sass Mixins: How to get the most out of It!'
 
 description: 'Mixins in Sass are powerful tools that allow you to define reusable blocks of CSS code. They are similar to functions in programming languages, as they accept parameters and can generate CSS output based on those parameters.'
 
@@ -63,6 +63,11 @@ You can also specify default values for parameters in mixins. If a value is not 
 
 In this example, if you don't specify values for `$x`, `$y`, `$blur`, or `$color` when including the mixin, the default values will be used.
 
+<div class="text-center text-black dark:text-white py-9 ">
+Wanna play with SASS?
+<a href="https://devcanvas.art/play/try" target="_blank">Try our editor.</a>
+</div>
+
 ## Mixins with Content Blocks;
 
 Mixins can also include content blocks, allowing you to inject CSS rules into the mixin. This is useful for creating dynamic mixins that can adapt to different situations. Here's an example of a mixin with a content block:
@@ -76,6 +81,22 @@ Mixins can also include content blocks, allowing you to inject CSS rules into th
 ```
 
 When you include this mixin and pass in a breakpoint value, any CSS rules within the content block will be wrapped in a media query with that breakpoint.
+
+In this case, the `media-query` mixin takes in one parameter, `$breakpoint`, and applies the CSS `@media` rule to it. Here's an example of how you can use this mixin:
+
+```scss
+$mobile-breakpoint: 480px;
+
+.element {
+	color: red;
+
+	@include media-query($mobile-breakpoint) {
+		color: blue;
+	}
+}
+```
+
+In this example, the `.element` selector will have a color value of red by default. However, when the viewport width reaches `480px` or more, the color value will be changed to blue due to the `media-query` mixin.
 
 ## Benefits of Using Mixins
 

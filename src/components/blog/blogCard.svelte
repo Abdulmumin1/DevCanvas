@@ -37,7 +37,12 @@
 	>
 </div> -->
 
-<div in:scale class="  w-full">
+<a href={`blog/${details.slug}`} in:scale class="hover:opacity-90 w-full">
+	<div class="holder my-2">
+		<div class="ellipse" />
+		<div class="ellipse ellipse2" />
+	</div>
+
 	<div class="py-2 justify-between rounded-lg flex flex-col gap-2 dark:text-light text-black">
 		<p class="flex gap-2 items-center text-[.9rem]">
 			<span>
@@ -50,12 +55,10 @@
 			<span class="opacity-90">Abdulmumin Yaqeen</span>
 		</p>
 		<div class="">
-			<a
-				href={`blog/${details.slug}`}
-				class="text-lg x lg:text-xl decoration-wavy underline underline-offset-4 text-balance hover:opacity-80"
-			>
+			<a href={`blog/${details.slug}`} class="text-2xl md:text-3xl x text-balance hover:opacity-80">
 				{details.title}</a
 			>
+			<!-- decoration-wavy underline underline-offset-4  -->
 			<!-- <p class="text-gray-900 dark:text-gray-300">
 				{details.description.slice(0, 200)}...
 			</p> -->
@@ -63,7 +66,7 @@
 			<!-- <a href={`blog/${details.slug}`}>Read ></a> -->
 		</div>
 	</div>
-</div>
+</a>
 
 <style>
 	/* .card:hover {
@@ -75,4 +78,35 @@
 	}
 
 	 */
+
+	.holder {
+		/* Clip edges, as some of the lines don't terminate nicely. */
+		overflow: hidden;
+		position: relative;
+		width: 100%;
+		height: 50px;
+	}
+
+	.ellipse {
+		--squiggle-color: currentColor;
+		position: absolute;
+		background: radial-gradient(
+			ellipse,
+			transparent,
+			transparent 7px,
+			var(--squiggle-color) 7px,
+			var(--squiggle-color) 10px,
+			transparent 11px
+		);
+		background-size: 36px 40px;
+		width: 100%;
+		height: 20px;
+		/* mix-blend-mode: multiply; */
+	}
+
+	.ellipse2 {
+		top: 20px;
+		left: 18px;
+		background-position: 0px -20px;
+	}
 </style>
