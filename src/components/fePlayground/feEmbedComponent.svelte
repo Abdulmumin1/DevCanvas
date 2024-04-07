@@ -75,7 +75,7 @@
 	let loading = true;
 </script>
 
-<div class="h-full max-h-full flex flex-col">
+<div class="h-full max-h-full flex flex-col tx">
 	<div class="flex min-h-[50px] h-[50px] justify-between">
 		<div class="w-full bg-secondary-dark flex gap-2 text-white text-sm">
 			<button
@@ -200,5 +200,10 @@
 
 	.sl {
 		background-color: #222;
+	}
+
+	.tx {
+		--strack: #222000000;
+		--scroll-bg: #292524;
 	}
 </style>

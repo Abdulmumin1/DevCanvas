@@ -18,6 +18,7 @@
 	}
 </script>
 
+<!-- <div class=""> -->
 {#if lang == 'html'}
 	<div class="w-full bg-black text-white flex justify-between items-center min-h-10">
 		<p class="bg-black px-3 py-1 flex gap-1 items-center">
@@ -58,3 +59,4 @@
 		</div>
 	</div>
 {/if}
+<!-- </div> -->

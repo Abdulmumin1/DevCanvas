@@ -116,7 +116,7 @@
 
 <main class="h-screen flex flex-col">
 	<FePlayGroungNav ispublic={$current_data.public} />
-	<div class="h-full w-full relative overflow-hidden">
+	<div class="h-full flex-1 w-full relative overflow-hidden">
 		<Resizable>
 			<div slot="left" class="h-full w-full">
 				<FeCodeEditor initialHTML={'<!--HTML HERE-->'} initialCSS={'/* */'} lang="html" />

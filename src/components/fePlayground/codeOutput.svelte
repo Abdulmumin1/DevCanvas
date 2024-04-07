@@ -1,7 +1,7 @@
 <script>
 	import { current_data } from '$lib/index.js';
 	import { cssPlugins, jsPlugins, sassActive, userImportedJS } from '$lib/feEditor/store.js';
-	import { setup_js_plugin, injectHeadContent } from '$lib/plugins/store.js';
+	import { setup_js_plugin, loadScriptFromURL, injectHeadContent } from '$lib/plugins/store.js';
 	import { injectJavascript } from '$lib/feEditor/previewUtils.js';
 
 	import { onMount, tick } from 'svelte';
@@ -108,9 +108,41 @@
 	function injectUserImportedPlugins(iframeDoc, userImportedJSVar) {
 		for (let index = 0; index < userImportedJSVar.length; index++) {
 			const scriptsrc = userImportedJSVar[index];
-			let scptag = iframeDoc.createElement('script');
-			scptag.src = scriptsrc;
-			iframeDoc.body.appendChild(scptag);
+
+			const cyrb53 = (str, seed = 0) => {
+				let h1 = 0xdeadbeef ^ seed,
+					h2 = 0x41c6ce57 ^ seed;
+				for (let i = 0, ch; i < str.length; i++) {
+					ch = str.charCodeAt(i);
+					h1 = Math.imul(h1 ^ ch, 2654435761);
+					h2 = Math.imul(h2 ^ ch, 1597334677);
+				}
+				h1 = Math.imul(h1 ^ (h1 >>> 16), 2246822507);
+				h1 ^= Math.imul(h2 ^ (h2 >>> 13), 3266489909);
+				h2 = Math.imul(h2 ^ (h2 >>> 16), 2246822507);
+				h2 ^= Math.imul(h1 ^ (h1 >>> 13), 3266489909);
+
+				return 4294967296 * (2097151 & h2) + (h1 >>> 0);
+			};
+
+			let id = cyrb53(scriptsrc);
+
+			let scriptExist = iframeDoc.getElementById(id);
+
+			if (!scriptExist) {
+				loadScriptFromURL(scriptsrc, iframeDoc, id)
+					.then(() => {
+						console.log('Script loaded successfully');
+						// Do something after the script is loaded
+					})
+					.catch((error) => {
+						console.error('Failed to load script:', error);
+					});
+			}
+
+			// let scptag = iframeDoc.createElement('script');
+			// scptag.src = scriptsrc;
+			// iframeDoc.body.appendChild(scptag);
 		}
 	}
 
@@ -118,7 +150,7 @@
 		jsPluginsVar = $jsPlugins;
 
 		let array = Object.keys(jsPluginsVar);
-		console.log(array);
+		// console.log(array);
 		// console.log(array);
 		for (let index = 0; index < array.length; index++) {
 			setup_js_plugin(array[index], jsPluginsVar, iframeDoc);
@@ -238,13 +270,17 @@
 		};
 	}
 
-	onMount(() => {
+	function tease() {
+		console.log('make this count');
 		setTimeout(() => {
 			current_data.update((cur) => {
 				return { ...cur, js: `${cur.js}   ` };
 			});
 			// console.log()
 		}, 1000);
+	}
+
+	onMount(() => {
 		currentCSS = null;
 		currentJS = null;
 	});
@@ -253,5 +289,11 @@
 </script>
 
 <div class=" m-0 p-0 bg-white border-0 w-full h-full">
-	<iframe bind:this={iframe} title="preview" id="preview-frame" class="w-full h-full p-0 m-0" />
+	<iframe
+		bind:this={iframe}
+		title="preview"
+		id="preview-frame"
+		class="w-full h-full p-0 m-0"
+		onload={tease()}
+	/>
 </div>

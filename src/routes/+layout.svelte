@@ -50,10 +50,12 @@
 	});
 
 	beforeNavigate(() => {
+		showNavigating.set(false);
 		showNavigating.set(true);
 	});
 
 	afterNavigate(() => {
+		// showNavigating.set(true);
 		showNavigating.set(false);
 	});
 
@@ -97,6 +99,7 @@
 	/>
 
 	<link rel="canonical" href={url} />
+	<meta name="robots" content="index, follow" />
 </svelte:head>
 
 <!-- {#if && !(($page.url.pathname.endsWith('/preview') && $page.url.searchParams.get('preview') == 'preview') || $page.url.pathname.endsWith('/embed'))}
