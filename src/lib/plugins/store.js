@@ -21,16 +21,25 @@ const cdns = {
 export function setup_js_plugin(name, plugins, iframeDoc) {
 	const pluginHTML = iframeDoc.getElementById(`${name}DSFE4o431!!`);
 	if (plugins[name]) {
-		const plugin = iframeDoc.createElement('script');
-		plugin.src = cdns[name];
-		plugin.id = `${name}DSFE4o431!!`;
+		// const plugin = iframeDoc.createElement('script');
+		let src = cdns[name];
+		let id = `${name}DSFE4o431!!`;
 		if (!pluginHTML) {
-			console.log('configuring plugin:', name);
-			try {
-				iframeDoc.body.appendChild(plugin);
-			} catch (err) {
-				console.log('Unable to configure plugin', name);
-			}
+			// console.log('configuring plugin:', name);
+			// try {
+			// 	iframeDoc.body.appendChild(plugin);
+			// } catch (err) {
+			// 	console.log('Unable to configure plugin', name);
+			// }
+			console.log('Configured {src}', src);
+			loadScriptFromURL(src, iframeDoc, id)
+				.then(() => {
+					console.log('Script loaded successfully');
+					// Do something after the script is loaded
+				})
+				.catch((error) => {
+					console.error('Failed to load script:', error);
+				});
 		}
 	} else {
 		if (pluginHTML) {
@@ -109,9 +118,18 @@ export function injectHeadContent(plugins, iframeDoc) {
 
 	if (plugins.tailwind) {
 		const tailwindScript = iframeDoc.createElement('script');
-		// tailwindScript.setAttribute('defer')
+		tailwindScript.setAttribute('defer');
 		tailwindScript.src = 'https://cdn.tailwindcss.com';
 		tailwindScript.id = 'tailwincssDSFE4o431!!';
+
+		// loadScriptFromURL('https://cdn.tailwindcss.com', iframeDoc, 'tailwincssDSFE4o431!!')
+		// 	.then(() => {
+		// 		console.log('Script loaded successfully');
+		// 		// Do something after the script is loaded
+		// 	})
+		// 	.catch((error) => {
+		// 		console.error('Failed to load script:', error);
+		// 	});
 
 		if (!tailwindScriptHTML) {
 			iframeDoc.head.appendChild(tailwindScript);
@@ -121,4 +139,28 @@ export function injectHeadContent(plugins, iframeDoc) {
 			tailwindScriptHTML.remove();
 		}
 	}
+}
+
+export function loadScriptFromURL(url, iframe, id) {
+	return new Promise((resolve, reject) => {
+		fetch(url)
+			.then((response) => {
+				if (!response.ok) {
+					throw new Error('Failed to fetch script');
+				}
+				return response.text();
+			})
+			.then((scriptText) => {
+				const scriptElement = iframe.createElement('script');
+				scriptElement.textContent = scriptText;
+				scriptElement.id = id;
+				scriptElement.onload = resolve;
+				scriptElement.onerror = reject;
+				iframe.body.appendChild(scriptElement);
+			})
+			.catch((error) => {
+				console.error('Error fetching or loading script:', error);
+				reject(error);
+			});
+	});
 }

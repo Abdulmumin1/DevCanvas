@@ -10,7 +10,7 @@
 </script>
 
 <div class=" mb-8 flex p-7 py-9 justify-center items-center">
-	<div class="w-full flex flex-col gap-6 justify-between items-center h-full max-w-[90vw]">
+	<div class="w-full flex flex-col gap-6 justify-between items-center h-full max-w-[1000px]">
 		<div class="flex justify-center flex-col w-full">
 			<h2 class="text-5xl md:text-6xl text-black font-semibold mb-2 dark:text-sky-400">
 				Embed With <span class="text-green-500">iframe</span>
@@ -25,7 +25,7 @@
 				src="{$page.url.origin}/play/aDDzMU/embed"
 				frameborder="0"
 				loading="lazy"
-				class="w-[] rounded h-[700px]"
+				class="rounded h-[700px]"
 				style="aspect-ratio: 1:1;"
 			/>
 			<!-- <iframe

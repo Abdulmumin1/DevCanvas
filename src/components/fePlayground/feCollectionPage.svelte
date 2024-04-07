@@ -2,7 +2,7 @@
 	import { fade } from 'svelte/transition';
 	import FeCard from './feCard.svelte';
 	import { pageCountPl } from '$lib/index.js';
-	import { faSpinner } from '@fortawesome/free-solid-svg-icons';
+	import { faForward, faForwardFast, faSpinner } from '@fortawesome/free-solid-svg-icons';
 	import Fa from 'svelte-fa';
 	import { onDestroy, onMount } from 'svelte';
 
@@ -159,14 +159,14 @@
 		</div>
 		{#if showMore}
 			<button
-				class="active:scale-75 transition-transform duration-300 bg-gray-300 dark:bg-secondary-dark shadow rounded-lg py-2 px-4 flex justify-center items-center gap-2 w-fit"
+				class="active:scale-90 transition-transform duration-300 bg-gray-200 dark:bg-secondary-dark rounded-lg py-2 px-4 flex justify-center items-center gap-2 w-fit"
 				id="more"
 				on:click={more}
 			>
 				<div class:animate-spin={loading} class:hidden={!loading}>
 					<Fa icon={faSpinner} />
 				</div>
-				Load more...</button
+				More <Fa icon={faForward} /></button
 			>
 		{/if}
 	</div>
