@@ -130,14 +130,14 @@
 		Filters:
 		<button
 			class="bg-sky-light {filter == 'tags'
-				? 'dark:bg-gray-300 text-black'
+				? 'dark:bg-gray-300 dark:text-black bg-stone-600 text-light'
 				: 'dark:bg-secondary-dark '} rounded-md p-1 px-2"
 			class:bg-gray-400={filter == 'tags'}
 			on:click={() => changeFilter('tags')}>Tags</button
 		>
 		<button
 			class="bg-sky-light {filter == 'desc'
-				? 'dark:bg-gray-300 text-black'
+				? 'dark:bg-gray-300 dark:text-black bg-stone-600 text-light'
 				: 'dark:bg-secondary-dark '} p-1 rounded-md px-2"
 			class:bg-gray-400={filter == 'desc'}
 			on:click={() => changeFilter('desc')}>Description</button

@@ -1,13 +1,13 @@
 <script>
 	import { Splitpanes, Pane } from 'svelte-splitpanes';
-	import FeCss from './feCSS.svelte';
-	import FeHtml from './feHTML.svelte';
+	// import FeCss from './feCSS.svelte';
+	// import FeHtml from './feHTML.svelte';
 	import Fa from 'svelte-fa';
 	import { faCss3, faHtml5, faJs } from '@fortawesome/free-brands-svg-icons';
 	import { onMount } from 'svelte';
 	import { layoutView, consoleOutput } from '$lib/feEditor/store.js';
 	import { current_data } from '$lib/index.js';
-	import FeJs from './feJS.svelte';
+	// import FeJs from './feJS.svelte';
 	import EditorTitle from './editorTitle.svelte';
 	import Femodal from './femodal.svelte';
 	import EditorSettings from './editorSettings.svelte';
@@ -66,11 +66,11 @@
 			showHtml = false;
 		}
 
-		console.log(which);
+		// console.log(which);
 	}
 </script>
 
-<div class="h-full w-full">
+<div class="h-full w-full overflow-clip">
 	{#if isVertical}
 		<div class="flex justify-between items-center">
 			<div class="flex gap-2 text-white">
@@ -123,7 +123,7 @@
 	{:else if $layoutView == 'top'}
 		<Splitpanes horizontal={false} theme="my-theme">
 			<Pane snapSize={20} minSize={1}>
-				<div class="w-full h-full">
+				<div class="w-full h-full overflow-clip">
 					<EditorTitle lang="html" />
 
 					<!-- <FeHtml {initialHTML} /> -->
@@ -131,7 +131,7 @@
 				</div>
 			</Pane>
 			<Pane snapSize={10} minSize={1}>
-				<div class="h-full w-full">
+				<div class="h-full w-full overflow-clip">
 					<EditorTitle lang="css" />
 
 					<!-- <FeCss {initialCSS} /> -->
@@ -139,7 +139,7 @@
 				</div>
 			</Pane>
 			<Pane snapSize={10} minSize={1}>
-				<div class="h-full w-full">
+				<div class="h-full w-full overflow-clip">
 					<EditorTitle lang="js" />
 					<!-- <FeJs {initialJs} /> -->
 					<CodeMirrorEditor lang={'javascript'} code={initialJs} />
@@ -149,7 +149,7 @@
 	{:else}
 		<Splitpanes horizontal theme="my-theme">
 			<Pane snapSize={20} minSize={6}>
-				<div class="h-full w-full">
+				<div class="h-full w-full overflow-clip">
 					<EditorTitle lang="html" />
 
 					<!-- <FeHtml {initialHTML} /> -->
@@ -157,7 +157,7 @@
 				</div>
 			</Pane>
 			<Pane snapSize={10} minSize={6}>
-				<div class="h-full w-full">
+				<div class="h-full w-full overflow-clip">
 					<EditorTitle lang="css" />
 
 					<!-- <FeCss {initialCSS} /> -->
@@ -165,7 +165,7 @@
 				</div>
 			</Pane>
 			<Pane snapSize={10} minSize={6}>
-				<div class="h-full w-full">
+				<div class="h-full w-full overflow-clip">
 					<EditorTitle lang="js" />
 
 					<!-- <FeJs {initialJs} /> -->

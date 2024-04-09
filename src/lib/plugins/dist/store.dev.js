@@ -123,7 +123,7 @@ function injectHeadContent(plugins, iframeDoc) {
 
   if (plugins.tailwind) {
     var tailwindScript = iframeDoc.createElement('script');
-    tailwindScript.setAttribute('defer');
+    tailwindScript.setAttribute('defer', true);
     tailwindScript.src = 'https://cdn.tailwindcss.com';
     tailwindScript.id = 'tailwincssDSFE4o431!!'; // loadScriptFromURL('https://cdn.tailwindcss.com', iframeDoc, 'tailwincssDSFE4o431!!')
     // 	.then(() => {

@@ -56,7 +56,7 @@
 
 	function closeModal() {
 		showModal.set(false);
-		modal.close();
+		// modal.close();
 	}
 
 	onMount(() => {
@@ -76,62 +76,63 @@
 
 <dialog
 	id="pluginModal"
-	transition:fly
+	in:fly={{ y: 100 }}
+	out:fly={{ y: 80, duration: 150 }}
 	bind:this={modal}
-	use:clickOutside
-	on:click_outside={closeModal}
-	class="text-sm px-2 pb-2 w-[90%] md:w-[500px] h-[80%] md:h-[900px] dark:bg-black dark:text-white rounded-lg flex flex-col gap-4"
+	class="text-sm px-2 pb-2 w-[90%] md:w-[500px] h-[80%] md:h-[900px] dark:bg-black dark:text-white rounded-lg"
 >
-	<!-- class="modal z-50 backdrop-blur-lg absolute  inset-y-0 inset-x-0 mx-auto m-2 shadow-md border-t-4 bg-white dark:bg-black border-sky-500 p-3 rounded flex flex-col overflow-scroll gap-2" -->
-	<div
-		class="sticky flex pb-2 pt-4 items-end justify-between bg-white text-black dark:bg-black dark:text-white border-b-2 border-sky-300 top-0"
-	>
-		<div class="flex gap-2 px-2">
-			<button on:click={showPlugin} class:border-b-2={tabPlugin}>Plugins</button>
-			<button on:click={showEditor} class:border-b-2={!tabPlugin}>Editor</button>
+	<div use:clickOutside on:click_outside={closeModal} class=" flex flex-col gap-4">
+		<!-- class="modal z-50 backdrop-blur-lg absolute  inset-y-0 inset-x-0 mx-auto m-2 shadow-md border-t-4 bg-white dark:bg-black border-sky-500 p-3 rounded flex flex-col overflow-scroll gap-2" -->
+		<div
+			class="sticky flex pb-2 pt-4 items-end justify-between bg-white text-black dark:bg-black dark:text-white border-b-2 border-sky-300 top-0"
+		>
+			<div class="flex gap-2 px-2">
+				<button on:click={showPlugin} class:border-b-2={tabPlugin}>Plugins</button>
+				<button on:click={showEditor} class:border-b-2={!tabPlugin}>Editor</button>
+			</div>
+
+			<button class="px-2" on:click={closeModal}>
+				<Fa icon={faClose} />
+			</button>
 		</div>
 
-		<button class="px-2" on:click={closeModal}>
-			<Fa icon={faClose} />
-		</button>
-	</div>
+		<div id="tabPlugins" class:hidden={!tabPlugin} class="flex flex-col gap-2">
+			<div class="w-full">
+				<p>Head</p>
+				<textarea
+					name=""
+					id=""
+					cols="30"
+					rows="3"
+					placeholder="Content for the head"
+					class="bg-gray-100 dark:bg-primary w-full outline-none font-thin rounded"
+					spellcheck="false"
+					bind:value={html}
+				/>
+			</div>
 
-	<div id="tabPlugins" class:hidden={!tabPlugin} class="flex flex-col gap-2">
-		<div class="w-full">
-			<p>Head</p>
-			<textarea
-				name=""
-				id=""
-				cols="30"
-				rows="3"
-				placeholder="Content for the head"
-				class="bg-gray-100 dark:bg-primary w-full outline-none font-thin rounded"
-				spellcheck="false"
-				bind:value={html}
-			/>
+			<div class="w-full flex flex-col gap-2">
+				<p>CSS Plugin</p>
+				<Csslist />
+			</div>
+
+			<div class="w-full flex gap-2 flex-col transition-transform duration-300">
+				Plugins
+				<Jsplugins />
+				<OtherjsPlugins />
+			</div>
 		</div>
 
-		<div class="w-full flex flex-col gap-2">
-			<p>CSS Plugin</p>
-			<Csslist />
+		<div id="tabEditor" class:hidden={tabPlugin} class="flex gap-2 flex-col">
+			<div>CSS PreProcessor</div>
+			<SaasProcessor />
+			<div>Javascript Processors</div>
+			<div class="bg-gray-300 rounded-lg dark:bg-primary p-2 flex flex-col gap-2">
+				<BabelProcessor />
+				<TypescriptProcessor />
+			</div>
+			<AddTags />
 		</div>
-
-		<div class="w-full flex gap-2 flex-col transition-transform duration-300">
-			Plugins
-			<Jsplugins />
-			<OtherjsPlugins />
-		</div>
-	</div>
-
-	<div id="tabEditor" class:hidden={tabPlugin} class="flex gap-2 flex-col">
-		<div>CSS PreProcessor</div>
-		<SaasProcessor />
-		<div>Javascript Processors</div>
-		<div class="bg-gray-300 rounded-lg dark:bg-primary p-2 flex flex-col gap-2">
-			<BabelProcessor />
-			<TypescriptProcessor />
-		</div>
-		<AddTags />
 	</div>
 </dialog>
 
