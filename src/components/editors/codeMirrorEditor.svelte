@@ -1,5 +1,6 @@
 <script>
 	import { EditorView } from '@codemirror/view';
+	import { Compartment } from '@codemirror/state';
 	import { basicSetup } from 'codemirror';
 	// import { EditorState } from '@codemirror/state';
 	import { javascript } from '@codemirror/lang-javascript'; // Or other language extension
@@ -30,6 +31,7 @@
 		autoSavefast
 	} from '$lib/index.js';
 	import { EditorState } from '@codemirror/state';
+	import { browser } from '$app/environment';
 	// ... (reactive state and logic for the editor)
 
 	let editorView;
@@ -111,13 +113,25 @@
 		}
 	}
 
+	let lineWrapping = new Compartment();
+
+	$: {
+		let state = $wordWrapSetting;
+		if (browser && editorView) {
+			console.log(state);
+			editorView.dispatch({
+				effects: lineWrapping.reconfigure(!state ? [] : EditorView.lineWrapping)
+			});
+		}
+	}
+
 	onMount(() => {
 		//   const container = document.querySelector('.codemirror-editor'); // Select container element
 		const fixedHeightEditor = EditorView.theme({
 			'&': { height: '100%' },
 			// '.cm-content, .cm-gutter': { minHeight: '100%' },
 			'.cm-scroller': { overflow: 'auto' },
-			'.cm-content': { 'padding-bottom': '55px' },
+			'.cm-content': { 'padding-bottom': '55px', 'padding-right': '20px' },
 			'.cm-scroller::-webkit-scrollbar-track': { 'background-color': 'black' }
 		});
 		// '.cm-scroller::-webkit-scrollbar-thumb': { 'box-shadow': '4px 0px 0px 4px #22c55e inset' }
@@ -133,7 +147,14 @@
 		editorView = new EditorView({
 			parent: container,
 			doc: `${code}`, // Bind the initial code
-			extensions: [basicSetup, fixedHeightEditor, langFunction(), changeReview, coolGlow] // Extensions
+			extensions: [
+				basicSetup,
+				fixedHeightEditor,
+				langFunction(),
+				changeReview,
+				lineWrapping.of(EditorView.lineWrapping),
+				coolGlow
+			] // Extensions
 		});
 	});
 </script>

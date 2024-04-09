@@ -118,7 +118,7 @@ export function injectHeadContent(plugins, iframeDoc) {
 
 	if (plugins.tailwind) {
 		const tailwindScript = iframeDoc.createElement('script');
-		tailwindScript.setAttribute('defer');
+		tailwindScript.setAttribute('defer', true);
 		tailwindScript.src = 'https://cdn.tailwindcss.com';
 		tailwindScript.id = 'tailwincssDSFE4o431!!';
 

@@ -17,9 +17,8 @@
 	// export let data;
 
 	let profile = true;
-	onMount(async () => {
-		// console.log($page.data);
 
+	async function loadprofile() {
 		try {
 			let supabase = $page.data.supabase;
 			const { data, error: err } = await supabase
@@ -29,7 +28,12 @@
 			if (err) throw err;
 			profile = data.length > 0 ? data[0] : false;
 		} catch (error) {}
-	});
+	}
+
+	loadprofile().then(() => {});
+	// 	onMount(async () => {
+	// 		// console.log($page.data);
+	// );
 </script>
 
 <div class="flex min-h-screen h-screen w-full">
@@ -75,7 +79,7 @@
 
 		<div
 			class="h-full w-full overflow-y-scroll px-4 md:px-6 mb-4"
-			transition:fly={{ duration: 400 }}
+			transition:fly={{ x: 10, duration: 400 }}
 		>
 			<slot />
 		</div>

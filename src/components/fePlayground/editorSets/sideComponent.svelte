@@ -11,7 +11,7 @@
 		delayPreview,
 		autoSavefast
 	} from '$lib/index.js';
-	import { scale, slide } from 'svelte/transition';
+	import { fly, scale, slide } from 'svelte/transition';
 	import SingleSetting from '../singleSetting.svelte';
 	import DeleteCanvas from '../deleteCanvas.svelte';
 	import Fa from 'svelte-fa';
@@ -49,8 +49,10 @@
 </script>
 
 {#if $editorSettingState}
+	<!-- transition:slide={{ axis: 'x' }} -->
+	<!-- in:fly -->
 	<div
-		transition:slide={{ axis: 'x' }}
+		transition:fly={{ x: -200 }}
 		class="absolute drop top-0 w-[300px] flex flex-col bg-white dark:bg-black h-full shadow-2xl"
 	>
 		<div class="absolute right-0 m-3">
@@ -63,8 +65,8 @@
 			use:clickOutside
 			on:click_outside={closeDropdown}
 			class={` p-2    text-sm h-fit  dropdown-menu flex items-start gap-2 justify-start flex-col `}
-			transition:scale
 		>
+			<!-- transition:fly={{ y: 200, delay: 50 }} -->
 			<li class="p-2 text-center">Applies to all editor</li>
 
 			<li class="w-full">
@@ -81,7 +83,7 @@
 			<li class="w-full">
 				<SingleSetting label={'Word Wrap'} on:checked={handleWordWrap} checked={$wordWrapSetting} />
 			</li>
-			<li class="w-full">
+			<!-- <li class="w-full">
 				<SingleSetting
 					label={'Smaller font size'}
 					on:checked={handleSmallerFont}
@@ -101,7 +103,7 @@
 					checked={$formatOnPasteSetting}
 					label={'Format on paste'}
 				/>
-			</li>
+			</li> -->
 
 			<!-- <li class="w-full">
 				<DownloadCodeDropDown />
