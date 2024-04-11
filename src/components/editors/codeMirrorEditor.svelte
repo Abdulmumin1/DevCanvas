@@ -69,7 +69,13 @@
 		saved = false;
 		saved_spinner.set(true);
 		if (verifyUser()) {
-			saveData($current_data, 'html');
+			if (lang == 'html') {
+				saveData($current_data, 'html');
+			} else if (lang == 'css') {
+				saveData($current_data, 'css');
+			} else if (lang == 'js') {
+				saveData($current_data, 'js');
+			}
 		}
 		saved = true;
 		saved_spinner.set(false);
