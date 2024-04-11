@@ -73,7 +73,7 @@
 				saveData($current_data, 'html');
 			} else if (lang == 'css') {
 				saveData($current_data, 'css');
-			} else if (lang == 'js') {
+			} else if (lang == 'javascript') {
 				saveData($current_data, 'js');
 			}
 		}
