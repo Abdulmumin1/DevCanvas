@@ -144,11 +144,13 @@
 	</div>
 
 	<div class="flex gap-3 flex-wrap">
-		Tags:
+		Tagged with:
 		{#each data.meta.categories as tag}
-			<span class="px-3 py-1 text-light rounded-lg bg-secondary-dark font-light text-sm"
+			<!-- <span class="px-3 py-1 text-light rounded-lg bg-secondary-dark font-light text-sm"
 				>&num;{tag}</span
-			>
+			> -->
+
+			{tag},&nbsp;
 		{/each}
 	</div>
 

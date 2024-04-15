@@ -1,5 +1,5 @@
 ---
-title: 'CSS Box Model Breakdown'
+title: 'CSS Box Model Breakdown: Beginners Series'
 
 description: 'Grasping the CSS Box Model is like understanding a blueprint before building a house. Web developers use it to design web pages carefully, much like architects plan structures. This guide explains the CSS Box Model clearly with simple illustrations.'
 
