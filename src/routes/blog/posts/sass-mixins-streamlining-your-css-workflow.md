@@ -19,6 +19,8 @@ published: true
 thumbnail: '/devCanvas.png'
 ---
 
+# Introduction;
+
 Mixins in Sass are powerful tools that allow you to define reusable blocks of CSS code. They are similar to functions in programming languages, as they accept parameters and can generate CSS output based on those parameters. Mixins are incredibly versatile and can significantly streamline your stylesheet by reducing redundancy and promoting code reuse.
 
 ## Declaring Mixins
