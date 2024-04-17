@@ -243,6 +243,13 @@
 		}
 	}
 
+	function isSomethingTrue(obj) {
+		// Convert the object into an array of values
+		const values = Object.values(obj);
+
+		// Check if at least one value is true
+		return values.some((value) => value === true);
+	}
 	var c = 0;
 	function addLoadEvent() {
 		console.log('reloaded ', c);
@@ -259,19 +266,24 @@
 			loading = false;
 			// console.log(currentJS, js);
 
-			setTimeout(() => {
-				current_data.update((cur) => {
-					return { ...cur, html: `${cur.html}  ` };
-				});
-				// console.log('injjected html');
-			}, 500);
+			let cssp = isSomethingTrue(cssPluginsVar);
+			let jsp = isSomethingTrue(jsPluginsVar);
+			let usrp = userImportedJSVar;
+			if (cssp || jsp || usrp) {
+				setTimeout(() => {
+					current_data.update((cur) => {
+						return { ...cur, html: `${cur.html}  ` };
+					});
+					// console.log('injjected html');
+				}, 500);
+			}
 			// console.log('boom');
 			return false;
 		};
 	}
 
 	function tease() {
-		console.log('make this count');
+		// console.log('make this count');
 		setTimeout(() => {
 			current_data.update((cur) => {
 				return { ...cur, js: `${cur.js}   ` };

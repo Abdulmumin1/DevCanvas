@@ -21,6 +21,10 @@ export const handle = async ({ event, resolve }) => {
 		} = await event.locals.supabase.auth.getSession();
 		return session;
 	};
+
+	if (event.url.pathname == '/new') {
+		throw redirect(301, '/play/try');
+	}
 	if (event.url.pathname == '/signin') {
 		let session = await event.locals.getSession();
 		if (session) {
