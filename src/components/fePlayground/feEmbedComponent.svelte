@@ -140,39 +140,39 @@
 
 		{#if isVertical}
 			<div class:hidden={!showHtml} class="hidden h-full bg-[#060521]">
-				<ReadOnlyEditor lang="html" code={details.html} />
+				<ReadOnlyEditor lang="html" htmlCode={details.html} />
 			</div>
 			<div class:hidden={!showCSS} class="hidden h-full overflow-scroll bg-[#060521]">
-				<ReadOnlyEditor lang="css" code={details.css} />
+				<ReadOnlyEditor lang="css" htmlCode={details.css} />
 			</div>
 			<div class:hidden={!showJs} class="hidden h-full overflow-scroll text-sm bg-[#060521]">
-				<ReadOnlyEditor lang="javascript" code={details.js} />
+				<ReadOnlyEditor lang="javascript" htmlCode={details.js} />
 			</div>
 			<div class="h-full w-full" class:hidden={!showResult}>
 				<CodeOutput
-					code={details.html}
-					css={details.css}
-					js={details.js}
-					sassEmbed={details.config?.cssProcessor}
+					htmlCode={details.html}
+					cssCode={details.css}
+					jsCode={details.js}
+					useSassEmbed={details.config?.cssProcessor}
 				/>
 			</div>
 		{:else}
 			<Splitpanes theme="embed-theme">
 				<Pane size={46.8}>
 					<div class:hidden={!showHtml} class="hidden h-full overflow-scroll bg-[#060521]">
-						<ReadOnlyEditor lang="html" code={details.html} />
+						<ReadOnlyEditor lang="html" htmlCode={details.html} />
 					</div>
 					<div class:hidden={!showCSS} class="hidden h-full overflow-scroll text-sm bg-[#060521]">
-						<ReadOnlyEditor lang="css" code={details.css} />
+						<ReadOnlyEditor lang="css" htmlCode={details.css} />
 					</div>
 
 					<div class:hidden={!showJs} class="hidden h-full overflow-scroll text-sm bg-[#060521]">
-						<ReadOnlyEditor lang="javascript" code={details.js} />
+						<ReadOnlyEditor lang="javascript" htmlCode={details.js} />
 					</div>
 				</Pane>
 				<Pane>
 					<div class="h-full w-full overflow-scroll m-0 p-0" class:hidden={!showResult}>
-						<CodeOutput code={details.html} css={details.css} js={details.js} />
+						<CodeOutput htmlCode={details.html} cssCode={details.css} jsCode={details.js} />
 					</div>
 				</Pane>
 			</Splitpanes>

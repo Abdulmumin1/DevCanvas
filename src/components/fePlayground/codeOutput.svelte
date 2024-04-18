@@ -3,309 +3,144 @@
 	import { cssPlugins, jsPlugins, sassActive, userImportedJS } from '$lib/feEditor/store.js';
 	import { setup_js_plugin, loadScriptFromURL, injectHeadContent } from '$lib/plugins/store.js';
 	import { injectJavascript } from '$lib/feEditor/previewUtils.js';
-
-	import { onMount, tick } from 'svelte';
+	import { onMount } from 'svelte';
 	import { compileSassString } from '$lib/utils.js';
 
-	import { beforeNavigate, afterNavigate } from '$app/navigation';
+	export let htmlCode;
+	export let cssCode;
+	export let jsCode;
+	export let useSassEmbed = false;
 
-	export let code;
-	export let css;
-	export let js;
-	export let sassEmbed = false;
+	let previewIframe;
+	let currentCSS = null;
+	let currentJS = null;
+	let isLoading = true;
+	let sassCompilationTimer;
+	let compiledSassCSS = '';
 
-	var currentJS;
-	var currentCSS;
-
-	let iframe;
-	let typingTimer; // Timer to track typing
-	let cssPluginsVar = $cssPlugins;
-	let jsPluginsVar = $jsPlugins;
-	let userImportedJSVar = $userImportedJS;
-	let loading = true;
-	let typingTimerCSS;
-	var INJ_CSS;
-	let delayPRTimer;
-
-	function injectHtmlCSS(iframeDoc, code, css) {
-		const bodyContent = code;
+	const injectHtmlAndCSS = (iframeDoc) => {
+		const bodyContent = htmlCode;
 		iframeDoc.body.innerHTML = bodyContent;
 
-		// Step 1: Remove any existing <style> elements
-		const existingStyles = iframeDoc.getElementsByTagName('style');
-		for (const style of existingStyles) {
-			style.remove();
-		}
-
-		// Step 2: Create and append the new CSS style
 		const styleElement = iframeDoc.createElement('style');
 
-		if (currentCSS != css && ($sassActive || sassEmbed)) {
-			// console.log('logic confirmed');
-			// console.log(INJ_CSS);
-			styleElement.textContent = `${INJ_CSS}`;
+		if (currentCSS !== cssCode && ($sassActive || useSassEmbed)) {
+			styleElement.textContent = compiledSassCSS;
 			iframeDoc.head.appendChild(styleElement);
-			ProcessCSs(iframeDoc);
-		} else if (currentCSS == css && ($sassActive || sassEmbed)) {
-			styleElement.textContent = `${INJ_CSS}`;
+			compileSassCode(iframeDoc);
+		} else if (currentCSS !== cssCode && !($sassActive || useSassEmbed)) {
+			styleElement.textContent = cssCode;
 			iframeDoc.head.appendChild(styleElement);
-		} else if (currentCSS != css && !($sassActive || sassEmbed)) {
-			styleElement.textContent = `${css}`;
-			iframeDoc.head.appendChild(styleElement);
-			// console.log('plain');
-		}
-		// console.log(INJ_CSS);
-
-		// Function to handle text input
-		// console.log(currentJS, js);
-
-		injectJavascript(iframeDoc, js);
-	}
-
-	function ProcessCSs(iframeDoc) {
-		const delay = 1000;
-		clearTimeout(typingTimerCSS);
-
-		const styleElement = iframeDoc.createElement('style');
-		typingTimerCSS = setTimeout(async () => {
-			INJ_CSS = await compileSassString(css);
-			console.log(INJ_CSS);
-			styleElement.textContent = `${INJ_CSS}`;
-			console.log('game');
-			iframeDoc.head.appendChild(styleElement);
-		}, delay);
-		currentCSS = css;
-	}
-	function injectHtmlCSSOnReload(iframeDoc, code, css) {
-		const bodyContent = code;
-		iframeDoc.body.innerHTML = bodyContent;
-
-		// Step 1: Remove any existing <style> elements
-		const existingStyles = iframeDoc.getElementsByTagName('style');
-		for (const style of existingStyles) {
-			style.remove();
 		}
 
-		// Step 2: Create and append the new CSS style
-		const styleElement = iframeDoc.createElement('style');
+		injectJavascript(iframeDoc, jsCode);
+	};
 
-		if (currentCSS != css && $sassActive) {
-			console.log('logic confirmed');
-			// console.log(INJ_CSS);
-			styleElement.textContent = `${INJ_CSS}`;
+	const compileSassCode = (iframeDoc) => {
+		clearTimeout(sassCompilationTimer);
+		sassCompilationTimer = setTimeout(async () => {
+			compiledSassCSS = await compileSassString(cssCode);
+			const styleElement = iframeDoc.createElement('style');
+			styleElement.textContent = compiledSassCSS;
 			iframeDoc.head.appendChild(styleElement);
-			ProcessCSs(iframeDoc);
-		} else if (currentCSS == css && $sassActive) {
-			styleElement.textContent = `${INJ_CSS}`;
-			iframeDoc.head.appendChild(styleElement);
-		} else if (currentCSS != css && !$sassActive) {
-			styleElement.textContent = `${css}`;
-			iframeDoc.head.appendChild(styleElement);
-			// console.log('plain');
-		}
-	}
+			currentCSS = cssCode;
+		}, 1000);
+	};
 
-	function injectUserImportedPlugins(iframeDoc, userImportedJSVar) {
-		for (let index = 0; index < userImportedJSVar.length; index++) {
-			const scriptsrc = userImportedJSVar[index];
+	const injectPlugins = (iframeDoc) => {
+		injectHeadContent($cssPlugins, iframeDoc);
+		injectJSPlugins(iframeDoc, $jsPlugins);
+		injectUserImportedPlugins(iframeDoc, $userImportedJS ?? []);
+	};
 
-			const cyrb53 = (str, seed = 0) => {
-				let h1 = 0xdeadbeef ^ seed,
-					h2 = 0x41c6ce57 ^ seed;
-				for (let i = 0, ch; i < str.length; i++) {
-					ch = str.charCodeAt(i);
-					h1 = Math.imul(h1 ^ ch, 2654435761);
-					h2 = Math.imul(h2 ^ ch, 1597334677);
+	const injectUserImportedPlugins = (iframeDoc, importedJS) => {
+		// importedJS;
+		importedJS.forEach((scriptSource) => {
+			const hashFunction = (str) => {
+				let hash = 0;
+				for (let i = 0; i < str.length; i++) {
+					hash = (hash << 5) - hash + str.charCodeAt(i);
+					hash |= 0;
 				}
-				h1 = Math.imul(h1 ^ (h1 >>> 16), 2246822507);
-				h1 ^= Math.imul(h2 ^ (h2 >>> 13), 3266489909);
-				h2 = Math.imul(h2 ^ (h2 >>> 16), 2246822507);
-				h2 ^= Math.imul(h1 ^ (h1 >>> 13), 3266489909);
-
-				return 4294967296 * (2097151 & h2) + (h1 >>> 0);
+				return hash;
 			};
 
-			let id = cyrb53(scriptsrc);
+			const id = hashFunction(scriptSource);
+			const scriptExists = iframeDoc.getElementById(id);
 
-			let scriptExist = iframeDoc.getElementById(id);
-
-			if (!scriptExist) {
-				loadScriptFromURL(scriptsrc, iframeDoc, id)
-					.then(() => {
-						console.log('Script loaded successfully');
-						// Do something after the script is loaded
-					})
-					.catch((error) => {
-						console.error('Failed to load script:', error);
-					});
+			if (!scriptExists) {
+				loadScriptFromURL(scriptSource, iframeDoc, id)
+					.then(() => console.log('Script loaded successfully'))
+					.catch((error) => console.error('Failed to load script:', error));
 			}
+		});
+	};
 
-			// let scptag = iframeDoc.createElement('script');
-			// scptag.src = scriptsrc;
-			// iframeDoc.body.appendChild(scptag);
+	const injectJSPlugins = (iframeDoc, jsPlugins) => {
+		Object.keys(jsPlugins).forEach((pluginName) => {
+			setup_js_plugin(pluginName, jsPlugins, iframeDoc);
+		});
+	};
+
+	const updatePreview = () => {
+		if (previewIframe) {
+			const iframeDoc = previewIframe.contentDocument || previewIframe.contentWindow.document;
+			injectHtmlAndCSS(iframeDoc);
+			injectPlugins(iframeDoc);
+			isLoading = false;
 		}
-	}
+	};
 
-	function injectJSPlugins(iframeDoc, jsPluginsVar) {
-		jsPluginsVar = $jsPlugins;
+	const handleIframeLoad = () => {
+		updatePreview();
 
-		let array = Object.keys(jsPluginsVar);
-		// console.log(array);
-		// console.log(array);
-		for (let index = 0; index < array.length; index++) {
-			setup_js_plugin(array[index], jsPluginsVar, iframeDoc);
+		const cssPluginsActive = Object.values($cssPlugins).some(Boolean);
+		const jsPluginsActive = Object.values($jsPlugins).some(Boolean);
+		const userLibrariesImported = $userImportedJS ? $userImportedJS.length > 0 : false;
+
+		if (cssPluginsActive || jsPluginsActive || userLibrariesImported) {
+			setTimeout(() => {
+				current_data.update((cur) => ({ ...cur, html: `${cur.html}  ` }));
+			}, 2000);
 		}
-	}
+	};
 
-	// $: {
-	// 	code = $current_data.html;
-	// 	css = $current_data.css;
-	// 	js = $current_data.js;
-	// 	cssPluginsVar = $cssPlugins;
-	// 	jsPluginsVar = $jsPlugins;
-	// 	userImportedJSVar = $userImportedJS ?? [];
-	// 	jsPluginsVar = $jsPlugins;
-
-	// 	console.log('go shit');
-	// 	if (iframe) {
-	// 		console.log(iframe.contentDocument.body.innerHTML);
-	// 		iframe.contentWindow.location.reload(true);
-	// 		addLoadEvent();
-	// 	}
-	// }
-	$: {
-		// await tick();
-		cssPluginsVar = $cssPlugins;
-		if (iframe) {
-			let iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
-			injectHeadContent(cssPluginsVar, iframeDoc);
-		}
-	}
-
-	$: {
-		// await tick();
-		code = $current_data.html;
-		css = $current_data.css;
-		js = $current_data.js;
-
-		// js = $current_data.js;
-		if (iframe) {
-			// Get the iframe's document
-			let iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
-			// Step 3: Remove any existing <script> elements
-			// const existingScripts = iframeDoc.getElementsByTagName('script');
-			// for (const script of existingScripts) {
-			// 	script.remove();
-			// }
-
-			injectHtmlCSS(iframeDoc, code, css);
-		}
-
-		// console.log('changesing');
-	}
-
-	$: {
-		// await tick();
-		jsPluginsVar = $jsPlugins;
-		if (iframe) {
-			let iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
-
-			injectJSPlugins(iframeDoc, jsPluginsVar);
-		}
-	}
-
-	$: {
-		// await tick();
-		userImportedJSVar = $userImportedJS ?? [];
-		if (iframe) {
-			let iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
-
-			injectUserImportedPlugins(iframeDoc, userImportedJSVar);
-		}
-	}
-
-	$: {
-		// await tick();
-		// console.log(curren)
-		if (currentJS != js) {
-			const delay = 1000; // Adjust the delay as needed (in milliseconds)
-			clearTimeout(typingTimer); // Clear the previous timer
-
-			typingTimer = setTimeout(function () {
-				// This function will run after the delay (user has stopped typing)
-
-				currentJS = js;
-				if (iframe) {
-					iframe.contentWindow.location.reload(true);
-					addLoadEvent();
-				}
-			}, delay);
-		}
-	}
-
-	function isSomethingTrue(obj) {
-		// Convert the object into an array of values
-		const values = Object.values(obj);
-
-		// Check if at least one value is true
-		return values.some((value) => value === true);
-	}
-	var c = 0;
-	function addLoadEvent() {
-		console.log('reloaded ', c);
-		iframe.onload = function () {
-			c += 1;
-			// currentCSS = null;
-			// currentJS = null;
-			let iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
-			injectHeadContent(cssPluginsVar, iframeDoc);
-			injectHtmlCSSOnReload(iframeDoc, code, css);
-			injectUserImportedPlugins(iframeDoc, userImportedJSVar);
-			injectJSPlugins(iframeDoc, jsPluginsVar);
-			injectJavascript(iframeDoc, js);
-			loading = false;
-			// console.log(currentJS, js);
-
-			let cssp = isSomethingTrue(cssPluginsVar);
-			let jsp = isSomethingTrue(jsPluginsVar);
-			let usrp = userImportedJSVar;
-			if (cssp || jsp || usrp) {
-				setTimeout(() => {
-					current_data.update((cur) => {
-						return { ...cur, html: `${cur.html}  ` };
-					});
-					// console.log('injjected html');
-				}, 500);
-			}
-			// console.log('boom');
-			return false;
-		};
-	}
-
-	function tease() {
-		// console.log('make this count');
+	const triggerJSUpdate = () => {
 		setTimeout(() => {
-			current_data.update((cur) => {
-				return { ...cur, js: `${cur.js}   ` };
-			});
-			// console.log()
+			current_data.update((cur) => ({ ...cur, js: `${cur.js}   ` }));
 		}, 1000);
+	};
+
+	$: {
+		htmlCode = $current_data?.html ?? '';
+		cssCode = $current_data?.css ?? '';
+		jsCode = $current_data?.js ?? '';
+		updatePreview();
 	}
+
+	$: currentJS !== jsCode && handleIframeReload();
+
+	const handleIframeReload = () => {
+		clearTimeout(sassCompilationTimer);
+		currentJS = jsCode;
+		if (previewIframe) {
+			previewIframe.contentWindow.location.reload(true);
+			previewIframe.onload = handleIframeLoad;
+		}
+	};
 
 	onMount(() => {
 		currentCSS = null;
 		currentJS = null;
 	});
-
-	// afterNavigate(()=>)
 </script>
 
-<div class=" m-0 p-0 bg-white border-0 w-full h-full">
+<div class="m-0 p-0 bg-white border-0 w-full h-full">
 	<iframe
-		bind:this={iframe}
+		bind:this={previewIframe}
 		title="preview"
 		id="preview-frame"
 		class="w-full h-full p-0 m-0"
-		onload={tease()}
+		onload={triggerJSUpdate()}
 	/>
 </div>
