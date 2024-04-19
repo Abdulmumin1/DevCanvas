@@ -2,20 +2,28 @@
 	import { EditorView } from '@codemirror/view';
 	import { Compartment } from '@codemirror/state';
 	import { basicSetup } from 'codemirror';
+	import { keymap } from '@codemirror/view';
+	import { indentWithTab } from '@codemirror/commands';
+	// import { formatExtension } from '@codemirror/formatting';
 	// import { EditorState } from '@codemirror/state';
 	import { javascript } from '@codemirror/lang-javascript'; // Or other language extension
 	import { html } from '@codemirror/lang-html'; // Or other language extension
 	import { css } from '@codemirror/lang-css'; // Or other language extension
 
 	// import { onDark } from '@codemirror/theme-one-dark';
-	import { onMount } from 'svelte';
+	import * as prettier from 'prettier';
+	import prettierPluginHtml from 'prettier/parser-html';
+	import prettierPluginBabel from 'prettier/parser-babel';
+	import prettierPluginCss from 'prettier/parser-postcss';
+
+	import { onMount, tick } from 'svelte';
 	import { coolGlow } from 'thememirror';
 	import {
 		showSave,
 		saveData,
 		showLoginToSave,
 		showForkTosave,
-		editorConfig
+		formatCode
 	} from '$lib/feEditor/store.js';
 	import {
 		current_data,
@@ -82,6 +90,29 @@
 		showSave.set(true);
 	}
 
+	async function formatter(view) {
+		const cCode = view.state.doc.toString();
+		const formattedCode = await prettier.format(cCode, {
+			parser: getParser(),
+			plugins: [prettierPluginHtml, prettierPluginBabel, prettierPluginCss]
+		});
+
+		view.dispatch({
+			changes: {
+				from: 0,
+				to: view.state.doc.length,
+				insert: formattedCode
+			}
+		});
+	}
+
+	function getParser() {
+		if (lang == 'html') return 'html';
+		else if (lang == 'css') return 'css';
+		else if (lang == 'javascript') return 'babel';
+		return 'html';
+	}
+
 	function handleAutoSave() {
 		clearTimeout(typingTimer); // Clear the previous timer
 
@@ -124,11 +155,26 @@
 	$: {
 		let state = $wordWrapSetting;
 		if (browser && editorView) {
-			console.log(state);
+			// console.log(state);
 			editorView.dispatch({
 				effects: lineWrapping.reconfigure(!state ? [] : EditorView.lineWrapping)
 			});
+			// console.log(editorView.state.doc.extension);
 		}
+	}
+
+	$: {
+		if ($formatCode && editorView) {
+			console.log('formatting code', lang);
+			formatAsync();
+			// formatCode.set(false);
+			// setTimeout()
+			// tick().then(setTimeout(formatCode.set(false), 2000));
+		}
+	}
+
+	function formatAsync() {
+		formatter(editorView).then(() => {});
 	}
 
 	onMount(() => {
@@ -155,6 +201,7 @@
 			doc: `${code}`, // Bind the initial code
 			extensions: [
 				basicSetup,
+				keymap.of([indentWithTab]),
 				fixedHeightEditor,
 				langFunction(),
 				changeReview,
@@ -162,6 +209,8 @@
 				coolGlow
 			] // Extensions
 		});
+
+		// formatCode.subscribe(())
 	});
 </script>
 

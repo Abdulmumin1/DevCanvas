@@ -1,5 +1,6 @@
+// import { setContext } from 'svelte';
 import { writable } from 'svelte/store';
-
+// import {}
 export let showSave = writable(false);
 export let saved_spinner = writable(false);
 export let showLoginToSave = writable(false);
@@ -9,7 +10,8 @@ export let canvasTags = writable({});
 export let dummyTitle = writable('Hover Animation');
 export let babelActive = writable(false);
 export let typescriptActive = writable(false);
-
+export let formatCode = writable(false);
+// export let setFormatCode =
 function appendJSONToFormData(json, formData, which) {
 	for (const key in json) {
 		if (which == key || which == true) {
