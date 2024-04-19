@@ -140,13 +140,13 @@
 
 		{#if isVertical}
 			<div class:hidden={!showHtml} class="hidden h-full bg-[#060521]">
-				<ReadOnlyEditor lang="html" htmlCode={details.html} />
+				<ReadOnlyEditor lang="html" code={details.html} />
 			</div>
 			<div class:hidden={!showCSS} class="hidden h-full overflow-scroll bg-[#060521]">
-				<ReadOnlyEditor lang="css" htmlCode={details.css} />
+				<ReadOnlyEditor lang="css" code={details.css} />
 			</div>
 			<div class:hidden={!showJs} class="hidden h-full overflow-scroll text-sm bg-[#060521]">
-				<ReadOnlyEditor lang="javascript" htmlCode={details.js} />
+				<ReadOnlyEditor lang="javascript" code={details.js} />
 			</div>
 			<div class="h-full w-full" class:hidden={!showResult}>
 				<CodeOutput
@@ -160,14 +160,14 @@
 			<Splitpanes theme="embed-theme">
 				<Pane size={46.8}>
 					<div class:hidden={!showHtml} class="hidden h-full overflow-scroll bg-[#060521]">
-						<ReadOnlyEditor lang="html" htmlCode={details.html} />
+						<ReadOnlyEditor lang="html" code={details.html} />
 					</div>
 					<div class:hidden={!showCSS} class="hidden h-full overflow-scroll text-sm bg-[#060521]">
-						<ReadOnlyEditor lang="css" htmlCode={details.css} />
+						<ReadOnlyEditor lang="css" code={details.css} />
 					</div>
 
 					<div class:hidden={!showJs} class="hidden h-full overflow-scroll text-sm bg-[#060521]">
-						<ReadOnlyEditor lang="javascript" htmlCode={details.js} />
+						<ReadOnlyEditor lang="javascript" code={details.js} />
 					</div>
 				</Pane>
 				<Pane>
