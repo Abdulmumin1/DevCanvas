@@ -131,7 +131,7 @@
 				<BabelProcessor />
 				<TypescriptProcessor />
 			</div>
-			<AddTags />
+			<!-- <AddTags /> -->
 		</div>
 	</div>
 </dialog>

@@ -2,6 +2,7 @@
 	import { saveTags, canvasTags } from '$lib/feEditor/store.js';
 	import { current_data } from '$lib/index.js';
 
+	export let owner = false;
 	let tags = $canvasTags;
 	if (!tags) {
 		tags = [];
@@ -32,35 +33,40 @@
 	}
 
 	function removeTag(index) {
+		if (!owner) {
+			return;
+		}
 		tags = tags.filter((_, i) => i !== index);
 	}
 </script>
 
-<div>Tags</div>
+<div class="mb-3">Tags</div>
 
-<div class="tags text-black">
+<div class="tags text-black mb-2">
 	{#each tags as tag, index}
 		<div class="tag" on:click={() => removeTag(index)}>{tag} &times;</div>
+	{:else}
+		<p class="text-gray-300 mb-2">Canvas not Tagged!</p>
 	{/each}
 </div>
 
-<div>
-	<input
-		type="text"
-		class="p-1 border text-black dark:text-white rounded-md dark:bg-secondary-dark"
-		bind:value={tagInput}
-		on:keydown={(e) => {
-			if (e.key === 'Enter') addTag();
-		}}
-		placeholder="Add a tag"
-		disabled={tags.length >= 8}
-	/>
-	<button
-		on:click={addTag}
-		disabled={tags.length >= 8}
-		class="bg-sky-300 px-2 py-1 text-black rounded">Add</button
-	>
-</div>
+{#if owner}
+	<div>
+		<input
+			type="text"
+			class="p-2 border text-black dark:text-white rounded focus:outline outline-1 focus:outline-sky-300 border-none dark:bg-secondary-dark"
+			bind:value={tagInput}
+			on:keydown={(e) => {
+				if (e.key === 'Enter') addTag();
+			}}
+			placeholder="Add a tag"
+			disabled={tags.length >= 8}
+		/>
+		<button on:click={addTag} disabled={tags.length >= 8} class="bg-sky-300 p-2 text-black rounded"
+			>Add</button
+		>
+	</div>
+{/if}
 
 <style>
 	/* Add your CSS styles for tags and input here */

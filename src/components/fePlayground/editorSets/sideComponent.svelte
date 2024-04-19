@@ -15,9 +15,11 @@
 	import SingleSetting from '../singleSetting.svelte';
 	import DeleteCanvas from '../deleteCanvas.svelte';
 	import Fa from 'svelte-fa';
-	import { faClose } from '@fortawesome/free-solid-svg-icons';
+	import { faBrush, faClose, faRemoveFormat } from '@fortawesome/free-solid-svg-icons';
 	import FeGetEmbed from '../feGetEmbed.svelte';
 	import FeFork from '../feFork.svelte';
+	import AddTags from '../pluginModal/addTags.svelte';
+	import FormatCode from './formatCode.svelte';
 
 	function closeDropdown() {
 		editorSettingState.set(false);
@@ -108,6 +110,10 @@
 			<!-- <li class="w-full">
 				<DownloadCodeDropDown />
 			</li> -->
+			<li class="px-1 text-black">
+				<FormatCode />
+			</li>
+			<li><AddTags owner={$isOwner} /></li>
 			{#if $isOwner}
 				<li>
 					<label
