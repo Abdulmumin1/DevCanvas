@@ -140,7 +140,7 @@
 	</hgroup>
 
 	<div class="space-y-8 markdown-content font-light text-[#404953] dark:text-light article">
-		{@html data.content} 
+		<svelte:component this={data.content} />
 	</div>
 
 	<div class="flex gap-3 flex-wrap">
