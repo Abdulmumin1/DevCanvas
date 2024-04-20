@@ -152,7 +152,7 @@
 		<main class=" min-h-screen flex py-3 md:py-6 w-full justify-center">
 			<div class="w-full">
 				<div>
-					<p class="text-lg md:text-xl font-bold py-6">Popular Collections</p>
+					<p class="text-lg md:text-xl font-bold py-6">Recent</p>
 				</div>
 				{#await loadIntialData()}
 					<!-- <CollectionDummy /> -->
