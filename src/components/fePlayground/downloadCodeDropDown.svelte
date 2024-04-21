@@ -1,27 +1,11 @@
 <script>
 	import { onMount } from 'svelte';
-	import {
-		clickOutside,
-		wordWrapSetting,
-		smallerFontSize,
-		formatOnPasteSetting,
-		current_data,
-		constructHtmlForZip
-	} from '$lib/index.js';
+	import { clickOutside, current_data } from '$lib/index.js';
+	import { constructHtmlForZip } from '$lib/downloadCode/index.js';
 	// import feather from 'feather-icons';
 	import { scale } from 'svelte/transition';
 	import Fa from 'svelte-fa';
-	import {
-		faArrowDown,
-		faArrowDownShortWide,
-		faArrowDownUpAcrossLine,
-		faCloudDownload,
-		faCloudDownloadAlt,
-		faDownload,
-		faFileDownload,
-		faFileZipper,
-		faSpinner
-	} from '@fortawesome/free-solid-svg-icons';
+	import { faFileZipper, faSpinner } from '@fortawesome/free-solid-svg-icons';
 
 	let dropdownOpen = false;
 
@@ -34,8 +18,7 @@
 	}
 
 	import JSZip from 'jszip';
-	import Loader from '../loader.svelte';
-	import Loadermini from '../loadermini.svelte';
+
 	let loading;
 
 	async function downloadZip() {
@@ -44,7 +27,7 @@
 			const zip = new JSZip();
 
 			// textsToZip.forEach((text, index) => {
-			zip.file(`index.html`, constructHtmlForZip($current_data.html));
+			zip.file(`index.html`, constructHtmlForZip($current_data));
 			zip.file(`style.css`, $current_data.css);
 			zip.file(`script.js`, $current_data.js);
 
@@ -53,7 +36,7 @@
 			setTimeout(() => {
 				const downloadLink = document.createElement('a');
 				downloadLink.href = window.URL.createObjectURL(content);
-				downloadLink.download = 'code - (devCanvas.art).zip';
+				downloadLink.download = `${$current_data.description} - (devCanvas.art).zip`;
 				downloadLink.click();
 				loading = false;
 			}, 1000);

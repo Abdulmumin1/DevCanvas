@@ -17,15 +17,22 @@
 </script>
 
 <div
-	class="flex bg-sky-300 items-center justify-center py-3 top-0 border-b-2 border-primary dark:border-secondary-dark"
+	class="flex bg-gradient-to-r from-sky-300 to-slate-200 dark:to-secondary-dark items-center justify-center py-3 top-0 border-b border-primary dark:border-secondary-dark"
 >
 	<div class="h-[50px] px-2 w-full bg-inherit max-w-[1200px]">
 		<ul class="hidden md:flex w-full justify-between items-center">
-			<li
-				class="text-base md:text-lg py-2 px-3 gap-3 text-light bg-secondary-dark flex items-center justify-center rounded-3xl"
-			>
-				<img src="/logo.svg" class="h-8 w-8" alt="DevCanvas" />
-				<a href="/"> DevCanvas </a>
+			<li>
+				<a
+					href="/"
+					class="text-base group md:text-lg py-2 px-3 gap-2 text-light bg-secondary-dark flex items-center justify-center rounded-3xl"
+				>
+					<img
+						src="/logo.svg"
+						class="h-8 w-8 group-hover:rotate-45 transition-all duration-300"
+						alt="DevCanvas"
+					/>
+					<span>DevCanvas </span>
+				</a>
 			</li>
 			<li>
 				<ul class="flex gap-2 items-center">

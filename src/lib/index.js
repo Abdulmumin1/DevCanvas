@@ -125,22 +125,6 @@ export async function saveData(json_data, all = true) {
 	previewMode.set(true);
 }
 
-export function constructHtmlForZip(html) {
-	return `
-<html lang="en">
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Some Title</title>
-		<link rel="stylesheet" href="style.css">
-	</head>
-	<body>
-		${html}
-		<script src="script.js"></script>
-	</body>
-</html>`;
-}
-
 export const supportedLanguages = [
 	'javascript',
 	'python',

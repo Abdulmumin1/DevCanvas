@@ -180,6 +180,6 @@
 <style>
 	.customGrid {
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+		grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
 	}
 </style>

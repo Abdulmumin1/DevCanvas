@@ -22,7 +22,9 @@ export async function POST({ locals: { supabase, getSession }, request }) {
 	// console.log(session.user);
 	const { data, error: err } = await supabase
 		.from('htmlPlayground')
-		.insert([{ html, css, js, project_key: key, user_id, description, plugins, config }]);
+		.insert([
+			{ html, css, js, project_key: key, user_id, description, plugins, config, public: false }
+		]);
 
 	if (err) {
 		console.log(data);
