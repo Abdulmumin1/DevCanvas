@@ -1,10 +1,5 @@
 <script>
-	import {
-		faArrowUpFromBracket,
-		faLink,
-		faShareFromSquare,
-		faX
-	} from '@fortawesome/free-solid-svg-icons';
+	import { faArrowUpFromBracket, faLink } from '@fortawesome/free-solid-svg-icons';
 	import Fa from 'svelte-fa';
 	import { slide } from 'svelte/transition';
 	import { showToast } from '$lib/index.js';

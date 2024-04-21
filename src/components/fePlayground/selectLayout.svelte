@@ -1,7 +1,7 @@
 <script>
 	import { faLayerGroup } from '@fortawesome/free-solid-svg-icons';
 	import Fa from 'svelte-fa';
-	import { clickOutside } from '$lib/index.js';
+	import { clickOutside, showToast } from '$lib/index.js';
 	import { scale } from 'svelte/transition';
 	import { layoutView } from '$lib/feEditor/store.js';
 
@@ -15,6 +15,15 @@
 	function selectOption(option) {
 		selectedOption = option;
 		isOpen = false;
+	}
+
+	function gotoPreview() {
+		if (window.location.pathname.endsWith('/play/try')) {
+			showToast.set({ message: 'Save to Preview.' });
+
+			return;
+		}
+		window.location.href = window.location.pathname + '/preview';
 	}
 </script>
 
@@ -92,7 +101,7 @@
 					</button>
 				</div>
 				<button
-					on:click={() => (window.location.href = window.location.pathname + '/preview')}
+					on:click={gotoPreview}
 					class="bg-secondary-dark text-sm p-1 flex justify-between items-center"
 					>Preview <span class="text-[9px]">/preview</span></button
 				>

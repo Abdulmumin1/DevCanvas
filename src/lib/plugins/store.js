@@ -11,13 +11,14 @@ export const framermotionCDN = `https://cdn.jsdelivr.net/npm/@motionone/types@10
 export const scrollrevealCDN = `https://unpkg.com/scrollreveal`;
 export const threejsCDN = `https://unpkg.com/three`;
 
-const cdns = {
+export const cdns = {
 	animejs: animejsCDN,
 	gsap: gsapCDN,
 	motionone: framermotionCDN,
 	scrollreveal: scrollrevealCDN,
 	threejs: threejsCDN
 };
+
 export function setup_js_plugin(name, plugins, iframeDoc) {
 	const pluginHTML = iframeDoc.getElementById(`${name}DSFE4o431!!`);
 	if (plugins[name]) {
