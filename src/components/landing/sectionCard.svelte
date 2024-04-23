@@ -4,13 +4,13 @@
 	export let reverse = false;
 </script>
 
-<div class="p-4 h-fit md:h-[500px] flex items-center justify-center">
+<div class="flex h-fit items-center justify-center p-4 md:h-[500px]">
 	{#if reverse}
-		<div class="h-full flex flex-col md:flex-row gap-3 md:gap-6 items-center text-left">
+		<div class="flex h-full flex-col items-center gap-3 text-left md:flex-row md:gap-6">
 			<slot />
 		</div>
 	{:else}
-		<div class="h-full flex flex-col-reverse md:flex-row gap-3 md:gap-6 items-center text-right">
+		<div class="flex h-full flex-col-reverse items-center gap-3 text-right md:flex-row md:gap-6">
 			<slot />
 		</div>
 	{/if}

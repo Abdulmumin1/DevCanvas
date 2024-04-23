@@ -7,9 +7,9 @@
 	// console.log($current_data.html);
 </script>
 
-<div class="text-sm h-[100dvh] bg-black rounded bd overflow-clip">
+<div class="bd h-[100dvh] overflow-clip rounded bg-black text-sm">
 	<div class="h-full rounded-xl">
-		<div class="w-full h-full mb-4">
+		<div class="mb-4 h-full w-full">
 			<FeEmbedComponent details={data.details} />
 		</div>
 	</div>

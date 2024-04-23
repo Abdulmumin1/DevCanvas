@@ -20,39 +20,39 @@
 
 <!-- <div class=""> -->
 {#if lang == 'html'}
-	<div class="w-full bg-black text-white flex justify-between items-center min-h-10">
-		<p class="bg-black px-3 py-1 flex gap-1 items-center">
+	<div class="flex min-h-10 w-full items-center justify-between bg-black text-white">
+		<p class="flex items-center gap-1 bg-black px-3 py-1">
 			<span class="text-rose-500"><Fa icon={faHtml5} /></span>HTML
 		</p>
-		<div class="flex px-4 gap-3 relative">
+		<div class="relative flex gap-3 px-4">
 			<Femodal />
 
 			<EditorSettings />
 		</div>
 	</div>
 {:else if lang == 'css'}
-	<div class="w-full bg-black text-white flex justify-between items-center min-h-10">
-		<p class="bg-black px-3 py-1 flex gap-1 items-center">
+	<div class="flex min-h-10 w-full items-center justify-between bg-black text-white">
+		<p class="flex items-center gap-1 bg-black px-3 py-1">
 			<span class="text-blue-500"><Fa icon={faCss3} /></span>{$sassActive ? 'SCSS' : 'CSS'}
 		</p>
 	</div>
 {:else if lang == 'js'}
-	<div class="w-full bg-black text-white flex justify-between items-center min-h-10">
-		<p class="bg-black px-3 py-1 flex gap-1 items-center">
+	<div class="flex min-h-10 w-full items-center justify-between bg-black text-white">
+		<p class="flex items-center gap-1 bg-black px-3 py-1">
 			<span class="text-yellow-500"><Fa icon={faJs} /></span>{$babelActive
 				? `JS (babel)`
 				: $typescriptActive
-				? 'JS (Typescript)'
-				: 'JS'}
+					? 'JS (Typescript)'
+					: 'JS'}
 		</p>
 		<!-- {@html games} -->
 
-		<div class=" flex justify-between items-center">
+		<div class=" flex items-center justify-between">
 			<button
 				on:click={() => {
 					showjsConsole.set(true);
 				}}
-				class="z-50 flex gap-2 items-center hover:opacity-80"
+				class="z-50 flex items-center gap-2 hover:opacity-80"
 			>
 				console <Fa icon={faTerminal} />
 			</button>

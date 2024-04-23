@@ -7,7 +7,7 @@
 
 <SectionCard reverse={true}>
 	<div class="flex flex-col justify-center">
-		<h2 class="text-4xl md:text-5xl font-semibold mb-2 dark:text-sky-400">
+		<h2 class="mb-2 text-4xl font-semibold dark:text-sky-400 md:text-5xl">
 			Easy Code Sharing <sub class="text-[9px]">(Snippets)</sub>
 		</h2>
 		<p class="max-w-md dark:text-light">

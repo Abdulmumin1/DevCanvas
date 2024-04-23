@@ -44,7 +44,7 @@
 
 <div class="share-dropdown" role="button" tabindex="" on:mouseleave={closeShareOptions}>
 	<button
-		class="cursor-pointer flex items-center justify-center gap-2"
+		class="flex cursor-pointer items-center justify-center gap-2"
 		on:click={toggleShareOptions}
 		class:scale-90={isClicked}
 	>
@@ -59,21 +59,21 @@
 		<a
 			href="https://www.facebook.com/sharer/sharer.php?u={link}&t={urlEncode(title)}"
 			target="_blank"
-			class="share-option flex items-center gap-4 w-full"
+			class="share-option flex w-full items-center gap-4"
 		>
 			<Fa icon={faFacebook} /> Facebook</a
 		>
 		<a
 			href="https://twitter.com/intent/tweet?url={link}&text={urlEncode(title)}"
 			target="_blank"
-			class="share-option flex items-center gap-4 w-full"><span class="text-xl">𝕏</span> X</a
+			class="share-option flex w-full items-center gap-4"><span class="text-xl">𝕏</span> X</a
 		>
 		<a
 			href="https://www.linkedin.com/shareArticle?url={link}&title={urlEncode(title)}"
 			target="_blank"
-			class="share-option flex items-center gap-4 w-full"><Fa icon={faLinkedin} /> LinkedIn</a
+			class="share-option flex w-full items-center gap-4"><Fa icon={faLinkedin} /> LinkedIn</a
 		>
-		<button class="share-option flex items-center gap-4 w-full" on:click={shareCode}
+		<button class="share-option flex w-full items-center gap-4" on:click={shareCode}
 			><Fa icon={faLink} /> Copy link</button
 		>
 		<!-- Add more social media options as needed -->

@@ -32,7 +32,7 @@ CSS Flexbox is a powerful layout model that facilitates the creation of flexible
 Let's begin by setting up the HTML structure for our navigation bar. Open your HTML file and add the following code:
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html>
 	<head>
 		<title>Responsive Navigation Bar</title>

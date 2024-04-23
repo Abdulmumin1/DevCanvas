@@ -32,23 +32,23 @@
 	<title>Activate license key</title>
 </svelte:head>
 
-<div class="h-full flex flex-col">
+<div class="flex h-full flex-col">
 	<!-- <InnerNav /> -->
 
-	<div class="h-[100dvh] flex items-center justify-center">
+	<div class="flex h-[100dvh] items-center justify-center">
 		<div
-			class="w-full h-full bg-black text-white dark:bg-secondary-dark hidden gap-6 md:flex flex-col items-center justify-center"
+			class="hidden h-full w-full flex-col items-center justify-center gap-6 bg-black text-white dark:bg-secondary-dark md:flex"
 		>
 			<h1 class="text-[5rem] leading-none">Activate <br /> License <br /> Key</h1>
 			<div>
-				<a href="/dashboard" class="bg-sky-200 px-3 py-2 rounded-2xl text-black font-thin"
+				<a href="/dashboard" class="rounded-2xl bg-sky-200 px-3 py-2 font-thin text-black"
 					>Go to dashboard
 				</a>
 			</div>
 		</div>
-		<div class="flex flex-col w-full items-center gap-4">
+		<div class="flex w-full flex-col items-center gap-4">
 			<form
-				class="flex flex-col gap-4 w-full px-12"
+				class="flex w-full flex-col gap-4 px-12"
 				use:enhance={submitStatus}
 				action="?/update_license"
 				method="post"
@@ -62,10 +62,10 @@
 						name="license"
 						id="license"
 						value={license}
-						class="p-2 border-2 rounded-lg border-sky-500 w-full dark:bg-secondary-dark"
+						class="w-full rounded-lg border-2 border-sky-500 p-2 dark:bg-secondary-dark"
 					/>
 					<button
-						class="bg-sky-300 p-1 px-2 rounded-lg dark:text-black gap-2 flex items-center justify-center"
+						class="flex items-center justify-center gap-2 rounded-lg bg-sky-300 p-1 px-2 dark:text-black"
 						type="submit"
 						on:click={() => {
 							showMessage = false;
@@ -81,7 +81,7 @@
 				</div>
 			</form>
 			{#if showMessage}
-				<div in:scale class="bg-red-400 p-2 rounded-lg">{showMessage}</div>
+				<div in:scale class="rounded-lg bg-red-400 p-2">{showMessage}</div>
 			{/if}
 
 			<div class="absolute bottom-3">

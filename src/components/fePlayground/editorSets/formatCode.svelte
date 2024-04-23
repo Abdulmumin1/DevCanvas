@@ -11,10 +11,10 @@
 </script>
 
 <button
-	class="bg-sky-400 w-full px-3 py-2 rounded-lg flex gap-2 items-center
+	class="flex w-full items-center gap-2 rounded-lg bg-sky-400 px-3 py-2
                transition duration-300 ease-in-out
                hover:bg-sky-500
-               active:bg-sky-600 active:scale-95"
+               active:scale-105 active:bg-sky-600"
 	on:click={format}
 >
 	<Fa icon={faBrush} /> Format Code

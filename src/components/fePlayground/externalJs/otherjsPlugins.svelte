@@ -51,7 +51,7 @@
 	<div class="flex gap-2">
 		<input
 			type="text"
-			class="p-1 border text-black rounded-md w-full dark:bg-secondary-dark"
+			class="w-full rounded-md border p-1 text-black dark:bg-secondary-dark"
 			bind:value={tagInput}
 			on:keydown={(e) => {
 				if (e.key === 'Enter') addTag();
@@ -62,11 +62,11 @@
 		<button
 			on:click={addTag}
 			disabled={scrpts.length >= 8}
-			class="bg-sky-300 px-2 py-1 text-black rounded">Add</button
+			class="rounded bg-sky-300 px-2 py-1 text-black">Add</button
 		>
 	</div>
 
-	<div class="tags text-black flex flex-col w-full">
+	<div class="tags flex w-full flex-col text-black">
 		{#each scrpts as tag, index}
 			<div class="tag text-sm" on:click={() => removeTag(index)} clas="w-full">{tag} &times;</div>
 		{/each}

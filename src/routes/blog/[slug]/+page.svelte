@@ -116,34 +116,34 @@
 </svelte:head>
 
 <article in:scale class="mx-auto flex flex-col gap-6 md:px-2 lg:px-4">
-	<hgroup class="  dark:text-light flex rounded-lg w-full flex-col gap-3 relative">
+	<hgroup class="  relative flex w-full flex-col gap-3 rounded-lg dark:text-light">
 		<aside>
 			<a href="/blog" class="flex items-center gap-1"><Fa icon={faAngleLeft} />Back home</a>
 		</aside>
-		<div class="flex gap-4 flex-col fd">
-			<div class="flex gap-3 flex-wrap">
-				<div class="text-balance flex gap-2 items-center">
+		<div class="fd flex flex-col gap-4">
+			<div class="flex flex-wrap gap-3">
+				<div class="flex items-center gap-2 text-balance">
 					<Fa icon={faCalendar} />
 					<p class="text-sm">Published {formatDate(data.meta.date)}</p>
 				</div>
 
-				<div class="text-balance flex gap-2 items-center">
+				<div class="flex items-center gap-2 text-balance">
 					<span><Fa icon={faUser} /></span>
 					<p>Written by: Abdulmumin Yaqeen</p>
 					<a href="https://yaqeen.me/about" target="_blank"><Fa icon={faExternalLinkSquare} /></a>
 				</div>
 			</div>
-			<h1 class="text-3xl md:text-5xl title text-balance">
+			<h1 class="title text-balance text-3xl md:text-5xl">
 				{data.meta.title}
 			</h1>
 		</div>
 	</hgroup>
 
-	<div class="space-y-8 markdown-content font-light text-[#404953] dark:text-light article">
+	<div class="markdown-content article space-y-8 font-light text-[#404953] dark:text-light">
 		<svelte:component this={data.content} />
 	</div>
 
-	<div class="flex gap-3 flex-wrap">
+	<div class="flex flex-wrap gap-3">
 		Tagged with:
 		{#each data.meta.categories as tag}
 			<!-- <span class="px-3 py-1 text-light rounded-lg bg-secondary-dark font-light text-sm"
@@ -154,12 +154,12 @@
 		{/each}
 	</div>
 
-	<div class="w-full flex items-center justify-center p-3">
+	<div class="flex w-full items-center justify-center p-3">
 		<div
-			class="w-full flex justify-between max-w-md items-center border border-b-2 rounded-lg bg-primary text-light dark:border-secondary-dark p-4"
+			class="flex w-full max-w-md items-center justify-between rounded-lg border border-b-2 bg-primary p-4 text-light dark:border-secondary-dark"
 		>
 			<span>Love it? Share it!</span>
-			<div class="flex space-x-3 items-center justify-center">
+			<div class="flex items-center justify-center space-x-3">
 				<button
 					on:click={() => {
 						cp();

@@ -4,15 +4,14 @@
 </script>
 
 <div
-	class="before:he bg-skyblue-500 min-h-screen w-screen flex flex-col items-center justify-center relative"
+	class="before:he bg-skyblue-500 relative flex min-h-screen w-screen flex-col items-center justify-center"
 >
-	<div class="w-full relative z-10">
+	<div class="relative z-10 w-full">
 		<InnerNav />
 	</div>
 
-    <div class='article tos  max-w-2xl px-4 py-10 gap-4 flex flex-col'>
-
-        <slot />
-    </div>
+	<div class="article tos flex max-w-2xl flex-col gap-4 px-4 py-10">
+		<slot />
+	</div>
 </div>
 <Footer />

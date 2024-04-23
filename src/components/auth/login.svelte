@@ -21,7 +21,7 @@
 </script>
 
 {#if !$user}
-	<li class="bg-green-500 px-2 py-2 md:py-2 rounded text-primary">
+	<li class="rounded bg-green-500 px-2 py-2 text-primary md:py-2">
 		<button on:click={openModal}>
 			<!-- <span class="flex md:hidden"><Fa icon={faRightToBracket} /></span> -->
 			<span class="flex">Join</span>
@@ -29,7 +29,7 @@
 	</li>
 
 	<dialog id="loginDialog" bind:this={modal}>
-		<div class="text-xl p-6 flex justify-end">
+		<div class="flex justify-end p-6 text-xl">
 			<button on:click={closeModal} class="cursor-pointer"><Fa icon={faClose} /></button>
 		</div>
 		<iframe src="/signin" title="auth" frameborder="0" height="520px" width="450px" />

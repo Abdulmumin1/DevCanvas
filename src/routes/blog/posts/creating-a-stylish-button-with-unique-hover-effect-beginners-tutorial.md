@@ -78,7 +78,10 @@ body {
 			stroke-dasharray: 120 500;
 			stroke-dashoffset: -454;
 			stroke-width: 8px;
-			transition: stroke-width 0.9s, stroke-dashoffset 0.9s, stroke-dasharray 0.9s;
+			transition:
+				stroke-width 0.9s,
+				stroke-dashoffset 0.9s,
+				stroke-dasharray 0.9s;
 		}
 
 		.text {
@@ -164,7 +167,10 @@ This section defines styles for the button, including display, maximum width, ce
 	stroke-dasharray: 120 500;
 	stroke-dashoffset: -454;
 	stroke-width: 8px;
-	transition: stroke-width 0.9s, stroke-dashoffset 0.9s, stroke-dasharray 0.9s;
+	transition:
+		stroke-width 0.9s,
+		stroke-dashoffset 0.9s,
+		stroke-dasharray 0.9s;
 }
 ```
 

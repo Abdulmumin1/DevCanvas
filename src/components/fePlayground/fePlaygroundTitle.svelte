@@ -80,19 +80,19 @@
 	});
 </script>
 
-<div class="flex flex-col w-full">
+<div class="flex w-full flex-col">
 	{#if $isOwner}
-		<div class="flex gap-2 items-center" style="margin-bottom: -7px;">
+		<div class="flex items-center gap-2" style="margin-bottom: -7px;">
 			{#if title}
-				<div class="flex gap-1 items-center max-w-[200px] md:max-w-[400px] w-fit">
-					<p class="bg-sky-400 text-black p-[1.3px] rounded text-sm md:text-xl">Fork</p>
+				<div class="flex w-fit max-w-[200px] items-center gap-1 md:max-w-[400px]">
+					<p class="rounded bg-sky-400 p-[1.3px] text-sm text-black md:text-xl">Fork</p>
 					<p
 						contenteditable=""
 						on:keydown={handleKeyDown}
 						on:input={handleInput}
 						placeholder="Untitled Project"
 						spellcheck="false"
-						class=" focus:outline-1 min-w-[50px] font-semibold focus:outline-sky-200 text-sm md:text-xl capitalize text-white bg-inherit whitespace-nowrap truncate"
+						class=" min-w-[50px] truncate whitespace-nowrap bg-inherit text-sm font-semibold capitalize text-white focus:outline-1 focus:outline-sky-200 md:text-xl"
 					>
 						{title}
 					</p>
@@ -104,24 +104,24 @@
 					on:input={handleInput}
 					placeholder="Untitled Project"
 					spellcheck="false"
-					class="max-w-[200px] min-w-[50px] font-semibold md:max-w-[400px] w-fit focus:outline-1 focus:outline-sky-200 text-sm md:text-xl capitalize text-white bg-inherit whitespace-nowrap truncate"
+					class="w-fit min-w-[50px] max-w-[200px] truncate whitespace-nowrap bg-inherit text-sm font-semibold capitalize text-white focus:outline-1 focus:outline-sky-200 md:max-w-[400px] md:text-xl"
 				>
 					{$current_data.description}
 				</p>
 			{/if}
-			<span class="text-white text-[11px] md:text-base jello-diagonal-2 cursor-pointer">
+			<span class="jello-diagonal-2 cursor-pointer text-[11px] text-white md:text-base">
 				<Fa icon={faPen} />
 			</span>
 
 			<CanvasVisibility canvas_id={$current_data.id} publicLy={$current_data.public} />
 		</div>
 	{:else if title}
-		<div class="flex gap-1 items-center max-w-[200px] md:max-w-[400px] w-fit">
-			<p class="bg-sky-400 text-black p-[1.3px] rounded text-sm md:text-xl flex items-baseline">
+		<div class="flex w-fit max-w-[200px] items-center gap-1 md:max-w-[400px]">
+			<p class="flex items-baseline rounded bg-sky-400 p-[1.3px] text-sm text-black md:text-xl">
 				Fork
 			</p>
 			<p
-				class="max-w-[200px] md:max-w-[400px] font-semibold w-fit text-sm md:text-xl capitalize text-white bg-inherit outline-none whitespace-nowrap flex items-center gap-2 truncate"
+				class="flex w-fit max-w-[200px] items-center gap-2 truncate whitespace-nowrap bg-inherit text-sm font-semibold capitalize text-white outline-none md:max-w-[400px] md:text-xl"
 			>
 				{title}
 			</p>
@@ -129,16 +129,16 @@
 	{:else}
 		<p
 			style="margin-bottom: -7px;"
-			class="max-w-[200px] md:max-w-[400px] font-semibold w-fit text-sm md:text-xl capitalize text-white bg-inherit outline-none whitespace-nowrap flex items-center gap-2 truncate"
+			class="flex w-fit max-w-[200px] items-center gap-2 truncate whitespace-nowrap bg-inherit text-sm font-semibold capitalize text-white outline-none md:max-w-[400px] md:text-xl"
 		>
 			{$current_data.description}
 		</p>
 	{/if}
 
 	{#if profile.length > 0}
-		<div class="flex text-[.8rem] md:text-sm gap-1">
+		<div class="flex gap-1 text-[.8rem] md:text-sm">
 			<p
-				class="text-sky-400 dark:text-sky-300 outline-none focus:outline-sky-300 p-1 focus:dark:outline-sky-400 rounded-lg"
+				class="rounded-lg p-1 text-sky-400 outline-none focus:outline-sky-300 dark:text-sky-300 focus:dark:outline-sky-400"
 				spellcheck="false"
 			>
 				<span>by</span>
@@ -148,7 +148,7 @@
 		</div>
 	{:else}
 		<p
-			class="text-sky-400 dark:text-sky-300 outline-none focus:outline-sky-300 p-1 focus:dark:outline-sky-400 rounded-lg text-sm"
+			class="rounded-lg p-1 text-sm text-sky-400 outline-none focus:outline-sky-300 dark:text-sky-300 focus:dark:outline-sky-400"
 			spellcheck="false"
 		>
 			<a class="text-[.8rem] md:text-sm" href="/play">&larr;backHome</a>

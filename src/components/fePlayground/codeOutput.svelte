@@ -135,12 +135,12 @@
 	});
 </script>
 
-<div class="m-0 p-0 bg-white border-0 w-full h-full">
+<div class="m-0 h-full w-full border-0 bg-white p-0">
 	<iframe
 		bind:this={previewIframe}
 		title="preview"
 		id="preview-frame"
-		class="w-full h-full p-0 m-0"
+		class="m-0 h-full w-full p-0"
 		onload={triggerJSUpdate()}
 	/>
 </div>

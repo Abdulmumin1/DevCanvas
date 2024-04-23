@@ -87,7 +87,7 @@
 	aria-busy={loading}
 	type="submit"
 	on:click={validatePassword}
-	class="p-2 rounded-md flex items-center justify-center gap-2 bg-[#0973a5] text-white"
+	class="flex items-center justify-center gap-2 rounded-md bg-[#0973a5] p-2 text-white"
 	>{submitText}
 
 	{#if loading}

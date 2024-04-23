@@ -9,20 +9,20 @@
 			<div class="pill blue" />
 			<div class="pill green" />
 		</div>
-		<div class="search text-black bg-[#cecbcb] dark:bg-light">https://devcanvas.art</div>
+		<div class="search bg-[#cecbcb] text-black dark:bg-light">https://devcanvas.art</div>
 		<div />
 	</div>
 	<div class="box">
 		<div class="editor">
 			<div class="pane html">
-				<div class="pane-header bg-primary text-light text-sm">HTML</div>
+				<div class="pane-header bg-primary text-sm text-light">HTML</div>
 				<div class="code-input" id="html-code" placeholder="Enter HTML code here...">
 					<TypeWriterEffect />
 				</div>
 			</div>
 
 			<div class="pane css">
-				<div class="pane-header bg-primary text-light text-sm">SCSS</div>
+				<div class="pane-header bg-primary text-sm text-light">SCSS</div>
 				<div class="code-input" id="css-code" placeholder="Enter CSS code here...">
 					<TypeWriterEffect
 						text={`body{
@@ -33,12 +33,12 @@
 			</div>
 
 			<div class="pane js">
-				<div class="pane-header bg-primary text-light text-sm">JS (TypeScript)</div>
+				<div class="pane-header bg-primary text-sm text-light">JS (TypeScript)</div>
 				<div class="code-input" id="js-code" placeholder="Enter JavaScript code here..." />
 			</div>
 		</div>
 
-		<div class="preview bg-white dark:bg-light text-black font-diana"><h1>HELLO WORLD</h1></div>
+		<div class="preview bg-white font-diana text-black dark:bg-light"><h1>HELLO WORLD</h1></div>
 	</div>
 </div>
 

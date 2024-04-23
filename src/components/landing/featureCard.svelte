@@ -7,7 +7,7 @@
 	export let description;
 </script>
 
-<div class="min-h-44 w-full p-4 min-w-0 flex-col gap-2 text-white bg-black {bgColor} card">
+<div class="min-h-44 w-full min-w-0 flex-col gap-2 bg-black p-4 text-white {bgColor} card">
 	<div class="text-xl">
 		<Icon {icon} />
 	</div>
@@ -15,7 +15,7 @@
 		<!-- {icon} -->
 		{title}
 	</div>
-	<div class="font-thin font-diana">{description}</div>
+	<div class="font-diana font-thin">{description}</div>
 </div>
 
 <style>

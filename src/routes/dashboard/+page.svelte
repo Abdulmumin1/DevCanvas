@@ -101,23 +101,23 @@
 
 <div class="flex min-h-screen gap-2">
 	<NavWrapper>
-		<main class=" min-h-screen flex py-3 md:py-6 w-full flex-col">
+		<main class=" flex min-h-screen w-full flex-col py-3 md:py-6">
 			<!-- <NewSnippet /> -->
 			<UserStats {supabase} user_id={session?.user?.id} />
 			<div class="w-full px-0">
 				<div class="flex flex-col gap-2">
-					<p class="text-xl md:text-2xl font-bold pt-6">Your Collections</p>
-					<div class="bg-sky-light dark:bg-secondary-dark pt-2 px-1 rounded-md my-4">
-						<div class="w-full flex gap-2 text-primary dark:text-white text-base">
+					<p class="pt-6 text-xl font-bold md:text-2xl">Your Collections</p>
+					<div class="my-4 rounded-md bg-sky-light px-1 pt-2 dark:bg-secondary-dark">
+						<div class="flex w-full gap-2 text-base text-primary dark:text-white">
 							<button
-								class="p-1 rounded-t-md px-3"
+								class="rounded-t-md p-1 px-3"
 								on:click={toogle}
 								class:bg-white={!showOther}
 								class:dark:bg-primary={!showOther}
 								>Canvas
 							</button>
 							<button
-								class="p-1 rounded-t-md px-3"
+								class="rounded-t-md p-1 px-3"
 								on:click={toogle}
 								class:bg-white={showOther}
 								class:dark:bg-primary={showOther}>Snippets</button

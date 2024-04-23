@@ -23,8 +23,8 @@
 {#if $showLoginToSave}
 	<div in:scale class="flex items-center justify-center gap-2 text-inherit">
 		<span class="text-error"><Fa icon={faExclamationTriangle} /></span>
-		<span class="text-light flex gap-1"
-			><a href="/signin" target="_blank" class="underline text-sky-300"> Login</a>
+		<span class="flex gap-1 text-light"
+			><a href="/signin" target="_blank" class="text-sky-300 underline"> Login</a>
 			<span class="hidden md:flex">to save progress</span></span
 		>
 	</div>

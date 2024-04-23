@@ -56,10 +56,10 @@
 </script>
 
 <div class="tooltip-container relative inline-block transition-transform duration-300">
-	<h1 class="text-6xl flex">Dashboard <!--<Probadge />--></h1>
+	<h1 class="flex text-6xl">Dashboard <!--<Probadge />--></h1>
 	<button
 		on:click={showOptions}
-		class="flex gap-2 p-2 cursor-pointer text-sm rounded-lg text-secondary-dark bg-sky-400 w-fit items-center mb-2"
+		class="mb-2 flex w-fit cursor-pointer items-center gap-2 rounded-lg bg-sky-400 p-2 text-sm text-secondary-dark"
 	>
 		<Fa icon={newCodeIcon} /> New Code Snippet
 	</button>
@@ -69,21 +69,21 @@
 			method="POST"
 			action="/db/create"
 			transition:slide
-			class="tooltip-content w-full md:max-w-[500px] bg-inherit py-4 top-14 z-10 flex justify-center items-center gap-4 rounded-lg flex-col"
+			class="tooltip-content top-14 z-10 flex w-full flex-col items-center justify-center gap-4 rounded-lg bg-inherit py-4 md:max-w-[500px]"
 		>
 			<div class="w-full gap-2 dark:text-white">
-				<p class="text-black text-left w-full font-semibold dark:text-white">Enter Description</p>
+				<p class="w-full text-left font-semibold text-black dark:text-white">Enter Description</p>
 				<input
 					name="description"
 					bind:value={description}
-					class="text-black text-left border border-sky-200 rounded-lg outline-sky-200 w-full p-2 dark:bg-secondary-dark dark:outline-none dark:focus:outline-none dark:border-0 dark:text-white"
+					class="w-full rounded-lg border border-sky-200 p-2 text-left text-black outline-sky-200 dark:border-0 dark:bg-secondary-dark dark:text-white dark:outline-none dark:focus:outline-none"
 					placeholder="describe your code here (just a few words!)"
 				/>
-				<p class="text-black text-left w-full font-semibold dark:text-white">Select language:</p>
+				<p class="w-full text-left font-semibold text-black dark:text-white">Select language:</p>
 				<select
 					name="lang"
 					on:change={handleDropdownChange}
-					class="border-[.5px] w-full p-2 text-black outline-sky-200 mb-2 dark:bg-secondary-dark dark:outline-none dark:focus:outline-none dark:border-0 dark:text-white rounded-lg"
+					class="mb-2 w-full rounded-lg border-[.5px] p-2 text-black outline-sky-200 dark:border-0 dark:bg-secondary-dark dark:text-white dark:outline-none dark:focus:outline-none"
 				>
 					{#each options as option}
 						<option value={option}>{option}</option>
@@ -94,7 +94,7 @@
 				<button
 					type="submit"
 					on:click={handleClick}
-					class=" mb-2 w-full p-2 bg-sky-500 hover:bg-sky-600 transition-colors duration-200 rounded-lg shadow flex items-center justify-center gap-3 text-primary"
+					class=" mb-2 flex w-full items-center justify-center gap-3 rounded-lg bg-sky-500 p-2 text-primary shadow transition-colors duration-200 hover:bg-sky-600"
 					>Create
 					{#if clickedNew}
 						<Fa icon={faSpinner} class="animate-spin" />
@@ -103,7 +103,7 @@
 				{#if !descriptionEnter}
 					<p
 						transition:scale={{ duration: 150 }}
-						class="bg-rose-200 p-1 rounded-md text-black flex items-center justify-center gap-2"
+						class="flex items-center justify-center gap-2 rounded-md bg-rose-200 p-1 text-black"
 					>
 						<Fa icon={faExclamation} /> No description entered
 					</p>

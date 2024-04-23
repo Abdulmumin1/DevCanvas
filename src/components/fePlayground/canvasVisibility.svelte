@@ -51,7 +51,7 @@
 
 <button
 	on:click={toggleVisibility}
-	class="flex text-[10px] text-black bg-sky-100 h-fit rounded-xl p-1 px-2"
+	class="flex h-fit rounded-xl bg-sky-100 p-1 px-2 text-[10px] text-black"
 >
 	<div class="flex gap-1">
 		<Fa {icon} />

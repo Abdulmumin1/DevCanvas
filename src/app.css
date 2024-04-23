@@ -147,7 +147,7 @@
 
 		/* color: theme(colors.orang); */
 		text-transform: capitalize;
-		@apply text-3xl md:text-4xl py-2 text-black dark:text-white;
+		@apply py-2 text-3xl text-black dark:text-white md:text-4xl;
 		font-weight: 500;
 	}
 
@@ -158,7 +158,7 @@
 
 		padding-block: 1;
 		font-weight: 500;
-		@apply text-2xl md:text-3xl py-2 text-black dark:text-white;
+		@apply py-2 text-2xl text-black dark:text-white md:text-3xl;
 	}
 
 	.article h3 {
@@ -167,13 +167,13 @@
 
 		font-weight: 500;
 
-		@apply text-xl md:text-2xl py-2 text-black dark:text-white;
+		@apply py-2 text-xl text-black dark:text-white md:text-2xl;
 
 		/* color: theme(colors.orang); */
 	}
 	.article h4 {
 		/* font-family: '', serif !important; */
-		@apply text-lg md:text-xl py-2 text-black dark:text-white;
+		@apply py-2 text-lg text-black dark:text-white md:text-xl;
 
 		/* font-weight: theme(fontWeight.bold); */
 		/* color: theme(colors.orang); */

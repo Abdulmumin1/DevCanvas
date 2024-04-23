@@ -36,7 +36,9 @@
 		overflow: hidden;
 		border-right: 2px solid #000; /* Cursor effect */
 		white-space: nowrap; /* Prevent text from wrapping */
-		animation: typing 2s steps(40, end), blink-caret 0.75s step-end infinite;
+		animation:
+			typing 2s steps(40, end),
+			blink-caret 0.75s step-end infinite;
 	}
 
 	.cursor {

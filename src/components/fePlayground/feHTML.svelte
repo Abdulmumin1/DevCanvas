@@ -280,11 +280,11 @@
 </script>
 
 {#if loading}
-	<div class="h-full w-full flex justify-center items-center">
+	<div class="flex h-full w-full items-center justify-center">
 		<Loader />
 	</div>
 {:else}
-	<div class="editor-container h-full bg-primary w-full" class:bg-secondary-dark={$darkModeState}>
+	<div class="editor-container h-full w-full bg-primary" class:bg-secondary-dark={$darkModeState}>
 		<div class="h-full w-full" bind:this={editorContanier} />
 	</div>
 {/if}

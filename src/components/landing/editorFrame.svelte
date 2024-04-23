@@ -5,17 +5,17 @@
 	export let title;
 </script>
 
-<section class="w-full p-2 md:w-[90%] max-w-[1000px]">
+<section class="w-full max-w-[1000px] p-2 md:w-[90%]">
 	<header>
 		<nav>
 			<ul>
 				<li>
-					<div class="flex text-sm gap-1 flex-col">
-						<p style="margin-bottom: -7px;" class="text-sm md:text-xl capitalize text-light">
+					<div class="flex flex-col gap-1 text-sm">
+						<p style="margin-bottom: -7px;" class="text-sm capitalize text-light md:text-xl">
 							{title}
 						</p>
 						<p
-							class="text-sky-400 dark:text-sky-300 outline-none focus:outline-sky-300 p-1 focus:dark:outline-sky-400 rounded-lg"
+							class="rounded-lg p-1 text-sky-400 outline-none focus:outline-sky-300 dark:text-sky-300 focus:dark:outline-sky-400"
 							spellcheck="false"
 						>
 							<span>by</span>
@@ -26,38 +26,38 @@
 			</ul>
 		</nav>
 	</header>
-	<div id="main" class="bg-secondary dark:text-secondary dark:bg-secondary-dark">
+	<div id="main" class="bg-secondary dark:bg-secondary-dark dark:text-secondary">
 		<section id="editor">
 			<div class="flex gap-2">
-				<button class="flex gap-1 items-center justify-center p-2"
+				<button class="flex items-center justify-center gap-1 p-2"
 					><span class="text-rose-500"><Fa icon={faHtml5} /></span>HTML</button
 				>
-				<button class="flex gap-1 items-center justify-center p-2">
+				<button class="flex items-center justify-center gap-1 p-2">
 					<span class="text-blue-500"><Fa icon={faCss3} /></span>CSS
 				</button>
 
-				<button class="flex gap-1 items-center justify-center p-2">
+				<button class="flex items-center justify-center gap-1 p-2">
 					<span class="text-yellow-500"><Fa icon={faJs} /></span>JS
 				</button>
 			</div>
 
-			<div class=" p-1 h-full flex flex-col gap-2">
-				<div class="h-4 animate-pulse rounded-3xl bg-gray-300 w-[90%]" />
-				<div class="h-4 animate-pulse rounded-3xl bg-gray-300 w-[50%]" />
-				<div class="h-4 animate-pulse rounded-3xl bg-gray-300 w-[30%]" />
-				<div class="h-4 animate-pulse rounded-3xl bg-gray-300 w-[50%]" />
-				<div class="h-4 animate-pulse rounded-3xl bg-gray-300 w-[64%]" />
-				<div class="h-4 animate-pulse rounded-3xl bg-gray-300 w-[80%]" />
-				<div class="h-4 animate-pulse rounded-3xl bg-gray-300 w-[30%]" />
-				<div class="h-4 animate-pulse rounded-3xl bg-gray-300 w-[64%]" />
-				<div class="h-4 animate-pulse rounded-3xl bg-gray-300 w-[70%]" />
-				<div class="h-4 animate-pulse rounded-3xl bg-gray-300 w-[50%]" />
-				<div class="h-4 animate-pulse rounded-3xl bg-gray-300 w-[64%]" />
-				<div class="h-4 animate-pulse rounded-3xl bg-gray-300 w-[80%]" />
-				<div class="h-4 animate-pulse rounded-3xl bg-gray-300 w-[30%]" />
+			<div class=" flex h-full flex-col gap-2 p-1">
+				<div class="h-4 w-[90%] animate-pulse rounded-3xl bg-gray-300" />
+				<div class="h-4 w-[50%] animate-pulse rounded-3xl bg-gray-300" />
+				<div class="h-4 w-[30%] animate-pulse rounded-3xl bg-gray-300" />
+				<div class="h-4 w-[50%] animate-pulse rounded-3xl bg-gray-300" />
+				<div class="h-4 w-[64%] animate-pulse rounded-3xl bg-gray-300" />
+				<div class="h-4 w-[80%] animate-pulse rounded-3xl bg-gray-300" />
+				<div class="h-4 w-[30%] animate-pulse rounded-3xl bg-gray-300" />
+				<div class="h-4 w-[64%] animate-pulse rounded-3xl bg-gray-300" />
+				<div class="h-4 w-[70%] animate-pulse rounded-3xl bg-gray-300" />
+				<div class="h-4 w-[50%] animate-pulse rounded-3xl bg-gray-300" />
+				<div class="h-4 w-[64%] animate-pulse rounded-3xl bg-gray-300" />
+				<div class="h-4 w-[80%] animate-pulse rounded-3xl bg-gray-300" />
+				<div class="h-4 w-[30%] animate-pulse rounded-3xl bg-gray-300" />
 			</div>
 		</section>
-		<section id="preview" class="flex items-center justify-center h-full">
+		<section id="preview" class="flex h-full items-center justify-center">
 			<slot />
 		</section>
 	</div>

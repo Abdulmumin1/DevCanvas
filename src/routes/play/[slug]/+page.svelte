@@ -18,17 +18,12 @@
 		showLoginToSave,
 		showForkTosave,
 		showModal,
-		showEmbedModal,
-		sassActive,
-		babelActive,
-		typescriptActive,
-		userImportedJS
+		showEmbedModal
 	} from '$lib/feEditor/store.js';
-	import Femodal from '../../../components/fePlayground/femodal.svelte';
-	import JsConsole from '../../../components/fePlayground/jsConsole.svelte';
-	import EmbedModal from '../../../components/fePlayground/embedModal.svelte';
-	import ModalHigh from '../../../components/fePlayground/modalHigh.svelte';
-	import SideComponent from '../../../components/fePlayground/editorSets/sideComponent.svelte';
+	import JsConsole from '$components/fePlayground/jsConsole.svelte';
+	import EmbedModal from '$components/fePlayground/embedModal.svelte';
+	import ModalHigh from '$components/fePlayground/modalHigh.svelte';
+	import SideComponent from '$components/fePlayground/editorSets/sideComponent.svelte';
 
 	import { setInitialState } from '$lib/feEditor/stateConfig.js';
 
@@ -90,16 +85,16 @@
 	<!-- HTML Meta Tags -->
 </svelte:head>
 
-<div class="h-screen flex flex-col">
+<div class="flex h-screen flex-col">
 	<header class="w-full">
 		<FePlayGroungNav ispublic={data.details.public} />
 	</header>
-	<div class="h-full w-full overflow-hidden relative">
+	<div class="relative h-full w-full overflow-hidden">
 		<Resizable>
 			<div slot="left" class="h-full w-full">
 				<FeCodeEditor initialHTML={data.details.html} initialCSS={data.details.css} lang="html" />
 			</div>
-			<div slot="right" class="w-full h-full relative">
+			<div slot="right" class="relative h-full w-full">
 				<CodeOutput code={$current_data.html} css={$current_data.css} js={$current_data.js} />
 				<JsConsole />
 			</div>

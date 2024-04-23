@@ -55,10 +55,10 @@
 	<!-- in:fly -->
 	<div
 		transition:fly={{ x: -200 }}
-		class="absolute drop top-0 w-[300px] flex flex-col bg-white dark:bg-black h-full shadow-2xl"
+		class="drop absolute top-0 flex h-full w-[300px] flex-col bg-white shadow-2xl dark:bg-black"
 	>
 		<div class="absolute right-0 m-3">
-			<button class="p-1 text-2xl bg-sky-300 rounded text-black" on:click={closeDropdown}
+			<button class="rounded bg-sky-300 p-1 text-2xl text-black" on:click={closeDropdown}
 				><Fa icon={faClose} /></button
 			>
 		</div>
@@ -66,7 +66,7 @@
 		<ul
 			use:clickOutside
 			on:click_outside={closeDropdown}
-			class={` p-2    text-sm h-fit  dropdown-menu flex items-start gap-2 justify-start flex-col `}
+			class={` dropdown-menu    flex h-fit  flex-col items-start justify-start gap-2 p-2 text-sm `}
 		>
 			<!-- transition:fly={{ y: 200, delay: 50 }} -->
 			<li class="p-2 text-center">Applies to all editor</li>
@@ -118,7 +118,7 @@
 				<li>
 					<label
 						for=""
-						class="bg-error text-black gap-2 rounded-lg cursor-pointer w-full p-2 flex items-center justify-center transition-all duration-300 active:scale-95 hover:gap-4"
+						class="flex w-full cursor-pointer items-center justify-center gap-2 rounded-lg bg-error p-2 text-black transition-all duration-300 hover:gap-4 active:scale-95"
 						><DeleteCanvas
 							canvas_id={$current_data.project_key}
 							title={$current_data.description}
@@ -128,14 +128,14 @@
 			{/if}
 		</ul>
 
-		<ul class="flex md:hidden gap-2 flex-col text-black p-3">
-			<li class="flex gap-2 bg-gray-300 items-center justify-center rounded w-fit px-2">
+		<ul class="flex flex-col gap-2 p-3 text-black md:hidden">
+			<li class="flex w-fit items-center justify-center gap-2 rounded bg-gray-300 px-2">
 				Embed
 				<FeGetEmbed />
 			</li>
 			<li>
 				{#if !$isOwner}
-					<li class="flex gap-1 bg-green-500 items-center justify-center rounded w-fit px-2 py-1">
+					<li class="flex w-fit items-center justify-center gap-1 rounded bg-green-500 px-2 py-1">
 						Fork <FeFork />
 					</li>
 				{/if}

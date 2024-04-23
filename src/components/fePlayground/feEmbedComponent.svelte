@@ -75,9 +75,9 @@
 	let loading = true;
 </script>
 
-<div class="h-full max-h-full flex flex-col tx">
-	<div class="flex min-h-[50px] h-[50px] justify-between">
-		<div class="w-full bg-secondary-dark flex gap-2 text-white text-sm">
+<div class="tx flex h-full max-h-full flex-col">
+	<div class="flex h-[50px] min-h-[50px] justify-between">
+		<div class="flex w-full gap-2 bg-secondary-dark text-sm text-white">
 			<button
 				on:click={() => toogle('html')}
 				class:sl={showHtml}
@@ -103,11 +103,11 @@
 			>
 		</div>
 
-		<div class="w-full flex items-center justify-center bg-inherit bg-secondary-dark">
+		<div class="flex w-full items-center justify-center bg-inherit bg-secondary-dark">
 			<button
 				on:click={() => toogle('output')}
 				class:sl={showResult}
-				class="p-2 h-full"
+				class="h-full p-2"
 				class:text-light={showResult}
 			>
 				Output</button
@@ -117,7 +117,7 @@
 		<a
 			href="https://devcanvas.art/play/{details.project_key}"
 			target="_blank"
-			class="w-full text-gray-100 rounded-r p-1 flex gap-2 items-center justify-center sl px-2"
+			class="sl flex w-full items-center justify-center gap-2 rounded-r p-1 px-2 text-gray-100"
 		>
 			<span
 				><img
@@ -145,7 +145,7 @@
 			<div class:hidden={!showCSS} class="hidden h-full overflow-scroll bg-[#060521]">
 				<ReadOnlyEditor lang="css" code={details.css} />
 			</div>
-			<div class:hidden={!showJs} class="hidden h-full overflow-scroll text-sm bg-[#060521]">
+			<div class:hidden={!showJs} class="hidden h-full overflow-scroll bg-[#060521] text-sm">
 				<ReadOnlyEditor lang="javascript" code={details.js} />
 			</div>
 			<div class="h-full w-full" class:hidden={!showResult}>
@@ -162,16 +162,16 @@
 					<div class:hidden={!showHtml} class="hidden h-full overflow-scroll bg-[#060521]">
 						<ReadOnlyEditor lang="html" code={details.html} />
 					</div>
-					<div class:hidden={!showCSS} class="hidden h-full overflow-scroll text-sm bg-[#060521]">
+					<div class:hidden={!showCSS} class="hidden h-full overflow-scroll bg-[#060521] text-sm">
 						<ReadOnlyEditor lang="css" code={details.css} />
 					</div>
 
-					<div class:hidden={!showJs} class="hidden h-full overflow-scroll text-sm bg-[#060521]">
+					<div class:hidden={!showJs} class="hidden h-full overflow-scroll bg-[#060521] text-sm">
 						<ReadOnlyEditor lang="javascript" code={details.js} />
 					</div>
 				</Pane>
 				<Pane>
-					<div class="h-full w-full overflow-scroll m-0 p-0" class:hidden={!showResult}>
+					<div class="m-0 h-full w-full overflow-scroll p-0" class:hidden={!showResult}>
 						<CodeOutput htmlCode={details.html} cssCode={details.css} jsCode={details.js} />
 					</div>
 				</Pane>
@@ -180,7 +180,7 @@
 	{:else}
 		<div
 			transition:fade
-			class="h-full w-full flex items-center justify-center bg-white dark:bg-primary"
+			class="flex h-full w-full items-center justify-center bg-white dark:bg-primary"
 		>
 			<Loader />
 		</div>

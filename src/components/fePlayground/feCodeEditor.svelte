@@ -72,10 +72,10 @@
 
 <div class="h-full w-full overflow-clip">
 	{#if isVertical}
-		<div class="flex justify-between items-center">
+		<div class="flex items-center justify-between">
 			<div class="flex gap-2 text-white">
 				<button
-					class="flex gap-1 items-center justify-center p-2"
+					class="flex items-center justify-center gap-1 p-2"
 					on:click={() => {
 						showTab('html');
 					}}
@@ -83,7 +83,7 @@
 					><span class="text-rose-500"><Fa icon={faHtml5} /></span>HTML</button
 				>
 				<button
-					class="flex gap-1 items-center justify-center p-2"
+					class="flex items-center justify-center gap-1 p-2"
 					on:click={() => {
 						showTab('css');
 					}}
@@ -93,7 +93,7 @@
 				</button>
 
 				<button
-					class="flex gap-1 items-center justify-center p-2"
+					class="flex items-center justify-center gap-1 p-2"
 					on:click={() => {
 						showTab('js');
 					}}
@@ -102,20 +102,20 @@
 					<span class="text-yellow-500"><Fa icon={faJs} /></span>JS
 				</button>
 			</div>
-			<div class="p-2 flex gap-2 text-white">
+			<div class="flex gap-2 p-2 text-white">
 				<Femodal />
 				<EditorSettings />
 			</div>
 		</div>
-		<div class="w-full h-full">
-			<div class:hidden={!showHtml} class="hidden w-full h-full">
+		<div class="h-full w-full">
+			<div class:hidden={!showHtml} class="hidden h-full w-full">
 				<!-- <FeHtml {initialHTML} /> -->
 				<CodeMirrorEditor lang={'html'} code={initialHTML} />
 			</div>
-			<div class:hidden={!showCSS} class="hidden w-full h-full">
+			<div class:hidden={!showCSS} class="hidden h-full w-full">
 				<CodeMirrorEditor lang={'css'} code={initialCSS} />
 			</div>
-			<div class:hidden={!showJs} class="hidden w-full h-full">
+			<div class:hidden={!showJs} class="hidden h-full w-full">
 				<!-- <FeJs {initialJs} /> -->
 				<CodeMirrorEditor lang={'javascript'} code={initialJs} />
 			</div>
@@ -123,7 +123,7 @@
 	{:else if $layoutView == 'top'}
 		<Splitpanes horizontal={false} theme="my-theme">
 			<Pane snapSize={20} minSize={1}>
-				<div class="w-full h-full overflow-clip">
+				<div class="h-full w-full overflow-clip">
 					<EditorTitle lang="html" />
 
 					<!-- <FeHtml {initialHTML} /> -->

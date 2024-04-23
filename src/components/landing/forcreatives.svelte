@@ -6,11 +6,11 @@
 	import { dummyTitle } from '$lib/feEditor/store.js';
 </script>
 
-<div class="flex items-center justify-center gap-2 w-full">
-	<div class=" h-full w-full flex items-center justify-center gap-12 flex-col">
-		<p class="text-4xl md:text-6xl py-12 text-black dark:text-light">🎨 𝓯𝓸𝓻 𝒸𝓇𝑒𝓪𝓽𝓲𝓿𝓮𝓼</p>
+<div class="flex w-full items-center justify-center gap-2">
+	<div class=" flex h-full w-full flex-col items-center justify-center gap-12">
+		<p class="py-12 text-4xl text-black dark:text-light md:text-6xl">🎨 𝓯𝓸𝓻 𝒸𝓇𝑒𝓪𝓽𝓲𝓿𝓮𝓼</p>
 
-		<div class="flex items-center justify-between w-full flex-col h-full relative">
+		<div class="relative flex h-full w-full flex-col items-center justify-between">
 			<EditorFrame title={$dummyTitle}>
 				<!-- <ModelLanding /> -->
 				<CreativeShowcase />
@@ -61,7 +61,7 @@
 
 		<a
 			href="/play/try"
-			class="bg-sky-500 hover:bg-sky-300 px-6 py-4 rounded-lg text-primary text-xl md:text-5xl flex transition-all duration-300 hover:gap-6 gap-4"
+			class="flex gap-4 rounded-lg bg-sky-500 px-6 py-4 text-xl text-primary transition-all duration-300 hover:gap-6 hover:bg-sky-300 md:text-5xl"
 			>Launch play ground <Fa icon={faRightLong} /></a
 		>
 	</div>
@@ -133,7 +133,9 @@
 		top: 10px;
 		right: 10px;
 		background-color: #9b9091;
-		box-shadow: -12px 0 0 #9b9091, -24px 0 0 #9b9091;
+		box-shadow:
+			-12px 0 0 #9b9091,
+			-24px 0 0 #9b9091;
 	}
 
 	.coffee-medium {

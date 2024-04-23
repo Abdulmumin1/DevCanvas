@@ -3,15 +3,15 @@
 	import Fa from 'svelte-fa';
 </script>
 
-<div class="flex items-center justify-center bg-gray-100 dark:bg-[#111] py-12">
+<div class="flex items-center justify-center bg-gray-100 py-12 dark:bg-[#111]">
 	<div
-		class=" max-w-[1000px] md:flex-row-reverse w-full h-full p-4 md:pl-20 flex flex-col gap-3 items-center justify-between"
+		class=" flex h-full w-full max-w-[1000px] flex-col items-center justify-between gap-3 p-4 md:flex-row-reverse md:pl-20"
 	>
 		<div>
 			<h1 class=" text-4xl md:text-5xl">
 				<span class="text-sky-500">Showcase your work</span>
 			</h1>
-			<p class="text-black dark:text-light max-w-[500px]">
+			<p class="max-w-[500px] text-black dark:text-light">
 				Build up your public profile, and bring others along on your journey <br />
 			</p>
 		</div>
@@ -82,7 +82,7 @@
 						Super cool Google Pixel Art with Just HMTL and css 👇🏾<br />
 						<a href="">https://devcanvas.art/play/zuyrPz</a>
 					</p>
-					<div class="post-image bg-[#111111] p-4 rounded">
+					<div class="post-image rounded bg-[#111111] p-4">
 						<img
 							src="https://pbs.twimg.com/media/F6lEU2yXMAASyiD?format=png&name=medium"
 							width="100%"

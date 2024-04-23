@@ -22,7 +22,7 @@
 
 <div class="flex divide-x-2 divide-primary">
 	<button
-		class="active:scale-95 rounded-l bg-gray-300 transition-transform duration-300 cursor-pointer flex items-center justify-center gap-2 text-primary pl-2 py-2 pr-1"
+		class="flex cursor-pointer items-center justify-center gap-2 rounded-l bg-gray-300 py-2 pl-2 pr-1 text-primary transition-transform duration-300 active:scale-95"
 		on:click={showEmbedDialog}
 		aria-busy={$showEmbedModal}
 	>
@@ -33,7 +33,7 @@
 		<!-- {/if} -->
 		<span class="hidden md:flex">Embed</span>
 	</button>
-	<div class="px-2 rounded-r py-2 bg-gray-300 flex items-center justify-center">
+	<div class="flex items-center justify-center rounded-r bg-gray-300 px-2 py-2">
 		<DownloadCodeDropDown />
 	</div>
 </div>

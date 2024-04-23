@@ -134,7 +134,7 @@
 		}
 	}} -->
 	<div class="handle w-full" />
-	<div class="w-full flex justify-between">
+	<div class="flex w-full justify-between">
 		<span class="flex items-center gap-2 text-white">
 			Console <Fa icon={faTerminal} />
 		</span>
@@ -152,7 +152,7 @@
 			>
 		</div>
 	</div>
-	<div class="bg-black w-full h-full text-white overflow-scroll content divide-y divide-gray-100">
+	<div class="content h-full w-full divide-y divide-gray-100 overflow-scroll bg-black text-white">
 		{#each $consoleOutput as log}
 			<div class="w-full">
 				{log}

@@ -20,7 +20,7 @@
 </script>
 
 <div
-	class="flex border border-sky-200 w-full rounded outline-none focus-within:outline focus-within:outline-sky-300 focu"
+	class="focu flex w-full rounded border border-sky-200 outline-none focus-within:outline focus-within:outline-sky-300"
 >
 	<input
 		{name}
@@ -29,7 +29,7 @@
 		bind:value={password}
 		bind:this={el}
 		required
-		class=" p-1 w-full outline-none"
+		class=" w-full p-1 outline-none"
 	/>
 	<button type="button" on:click={toggle} class="w-fit p-1">
 		<Fa {icon} />

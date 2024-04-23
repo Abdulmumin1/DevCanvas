@@ -32,11 +32,11 @@
 
 <dialog
 	bind:this={modal}
-	class="bc w-[90%] md:w-[90%] h-[90%] md:h-[90%] max-w-[850px] max-h-[850px] dark:border border-secondary-dark bg-transparent rounded-md"
+	class="bc h-[90%] max-h-[850px] w-[90%] max-w-[850px] rounded-md border-secondary-dark bg-transparent dark:border md:h-[90%] md:w-[90%]"
 >
 	<!--class="bc absolute top-0 h-full w-full z-50"-->
 	<div
-		class="bg-white dark:bg-black dark:text-white flex justify-between p-2 sticky top-0 border-b-4 border-sky-500"
+		class="sticky top-0 flex justify-between border-b-4 border-sky-500 bg-white p-2 dark:bg-black dark:text-white"
 	>
 		<p>Embed Canvas</p>
 		<button on:click={closeModal}><Fa icon={faClose} /></button>
@@ -46,7 +46,7 @@
 		out:slide
 		use:clickOutside
 		on:click_outside={closeModal}
-		class="modal h-full bg-white dark:bg-black p-3 rounded flex flex-col gap-2"
+		class="modal flex h-full flex-col gap-2 rounded bg-white p-3 dark:bg-black"
 	>
 		<iframe
 			src={path}
@@ -56,8 +56,8 @@
 			scrolling="no"
 			class="w-full overflow-hidden rounded-xl"
 		/>
-		<div class="flex text-sm items-center justify-center gap-2">
-			<p class="bg-sky-300 text-black p-1 rounded-lg w-full">
+		<div class="flex items-center justify-center gap-2 text-sm">
+			<p class="w-full rounded-lg bg-sky-300 p-1 text-black">
 				<!-- {`
             <iframe
 			src=${path}
@@ -68,7 +68,7 @@
                 `} -->
 				{path}
 			</p>
-			<button class=" bg-primary text-light z-50 px-3 py-2 rounded-lg" on:click={CopyAction}
+			<button class=" z-50 rounded-lg bg-primary px-3 py-2 text-light" on:click={CopyAction}
 				><Fa icon={iconCopy} /></button
 			>
 		</div>

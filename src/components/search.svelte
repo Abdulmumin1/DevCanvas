@@ -11,13 +11,13 @@
 </script>
 
 <div
-	class="group w-full dark:text-white bg-gray-100 dark:bg-secondary-dark rounded-xl flex items-center px-3 py-2 transition-transform duration-300 gap-2"
+	class="group flex w-full items-center gap-2 rounded-xl bg-gray-100 px-3 py-2 transition-transform duration-300 dark:bg-secondary-dark dark:text-white"
 >
 	<Fa icon={faSearch} />
 	<form action={path} class="w-full" method="post">
 		<input
 			type="text"
-			class="outline-none bg-inherit w-full"
+			class="w-full bg-inherit outline-none"
 			placeholder="Search anything .."
 			name="query"
 			value={query}

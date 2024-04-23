@@ -3,7 +3,7 @@
 </script>
 
 <ul
-	class="flex justify-between items-center md:hidden dark:text-white bg-gray-200 p-3 rounded-md dark:bg-secondary-dark"
+	class="flex items-center justify-between rounded-md bg-gray-200 p-3 dark:bg-secondary-dark dark:text-white md:hidden"
 >
 	<li class="flex items-center justify-center">
 		<!-- <button on:click={toggleKbar} class="text-xl"><Fa icon={faBars} /></button> -->

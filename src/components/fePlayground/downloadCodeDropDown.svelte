@@ -46,9 +46,9 @@
 	}
 </script>
 
-<div class="dropdown text-primary dark:text-white relative flex flex-col text-center">
+<div class="dropdown relative flex flex-col text-center text-primary dark:text-white">
 	<button
-		class="dropdown-button text-primary flex items-center justify-end gap-2"
+		class="dropdown-button flex items-center justify-end gap-2 text-primary"
 		on:click={toggleDropdown}
 	>
 		<Fa icon={faFileZipper} />
@@ -58,14 +58,14 @@
 		<ul
 			use:clickOutside
 			on:click_outside={closeDropdown}
-			class={`mt-8 w-[200px] rounded-md p-1 absolute drop  right-0 top-0 text-sm h-fit  dropdown-menu flex items-start  justify-start flex-col bg-gray-300 dark:bg-black `}
+			class={`drop dropdown-menu absolute right-0 top-0 mt-8  flex h-fit w-[200px] flex-col  items-start justify-start rounded-md  bg-gray-300 p-1 text-sm dark:bg-black `}
 			transition:scale
 		>
 			<li class="p-2 text-center">Download Code</li>
 			<!-- <form action="?/downloadZip" method="post"> -->
 			<button
 				on:click={downloadZip}
-				class="w-full p-2 rounded-md flex items-center justify-center gap-2 bg-gray-100 dark:bg-secondary-dark"
+				class="flex w-full items-center justify-center gap-2 rounded-md bg-gray-100 p-2 dark:bg-secondary-dark"
 				>Download Zip {#if loading}
 					<Fa icon={faSpinner} class="animate-spin" />
 				{/if}</button

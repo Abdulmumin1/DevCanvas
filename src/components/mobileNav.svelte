@@ -18,7 +18,7 @@
 
 <button id="openModal" on:click={openModal}><Fa icon={faBars} /></button>
 
-<dialog id="myModal" bind:this={modal} class="dark:bg-[#191919] text-[#38bdf8]">
+<dialog id="myModal" bind:this={modal} class="text-[#38bdf8] dark:bg-[#191919]">
 	<div
 		class="flex flex-col text-base dark:bg-[#191919]"
 		use:clickOutside
@@ -35,10 +35,10 @@
 			<br /><span class="text-sm text-black dark:text-[#e5e7eb]">Create new Canvas/Editor</span>
 		</a><a href="/explore" class="py-4" on:click={closeModal}>Playground </a>
 
-		<div class="flex gap-2 items-center -center mb-4">
-			Change Theme: <div class="text-black dark:text-white px-2 py-2"><Darkmode /></div>
+		<div class="-center mb-4 flex items-center gap-2">
+			Change Theme: <div class="px-2 py-2 text-black dark:text-white"><Darkmode /></div>
 		</div>
-		<button on:click={closeModal} class="py-4 text-black rounded-lg bg-sky-400">Close Menu</button>
+		<button on:click={closeModal} class="rounded-lg bg-sky-400 py-4 text-black">Close Menu</button>
 	</div>
 </dialog>
 

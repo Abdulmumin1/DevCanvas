@@ -41,27 +41,27 @@
 	</script>
 
 	<script type="application/ld+json">
-	{
-	  "@context": "https://schema.org",
-	  "@type": "Organization",
-	  "name": "DevCanvas",
-	  "alternateName": "snippetland",
-	  "url": "https://devcanvas.art",
-	  "logo": "https://devcanvas.art/logo.png",
-	  "sameAs": "https://twitter.com/@devCanvas_"
-	}
+		{
+			"@context": "https://schema.org",
+			"@type": "Organization",
+			"name": "DevCanvas",
+			"alternateName": "snippetland",
+			"url": "https://devcanvas.art",
+			"logo": "https://devcanvas.art/logo.png",
+			"sameAs": "https://twitter.com/@devCanvas_"
+		}
 	</script>
 </svelte:head>
 
 <div
-	class="before:he bg-skyblue-500 min-h-screen w-screen flex flex-col items-center justify-center relative"
+	class="before:he bg-skyblue-500 relative flex min-h-screen w-screen flex-col items-center justify-center"
 >
-	<div class="w-full relative z-10">
+	<div class="relative z-10 w-full">
 		<InnerNav />
 	</div>
-	<div class="w-full mx-auto rounded-lg flex flex-col gap-4 justify-center items-center">
+	<div class="mx-auto flex w-full flex-col items-center justify-center gap-4 rounded-lg">
 		<!-- Add your landing page content here -->
-		<div class="h-[500px] grid">
+		<div class="grid h-[500px]">
 			<header class="w-full overflow-hidden">
 				<!-- <div
 					id="kds"

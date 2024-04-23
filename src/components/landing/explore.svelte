@@ -1,7 +1,7 @@
-<div class="w-full flex items-center justify-center">
-	<div class="flex gap-3 flex-col md:flex-row max-w-4xl">
+<div class="flex w-full items-center justify-center">
+	<div class="flex max-w-4xl flex-col gap-3 md:flex-row">
 		<div
-			class="bg-gray-50 dark:bg-secondary-dark p-4 shadow shadow-primary rounded flex flex-col gap-3"
+			class="flex flex-col gap-3 rounded bg-gray-50 p-4 shadow shadow-primary dark:bg-secondary-dark"
 		>
 			<h1 class="text-xl md:text-3xl">For CREATIVES</h1>
 			<p>
@@ -13,7 +13,7 @@
 		</div>
 
 		<div
-			class="bg-gray-50 dark:bg-secondary-dark p-4 shadow shadow-primary rounded flex flex-col gap-3"
+			class="flex flex-col gap-3 rounded bg-gray-50 p-4 shadow shadow-primary dark:bg-secondary-dark"
 		>
 			<h1 class="text-xl md:text-3xl">For EVERONE</h1>
 			<p>
