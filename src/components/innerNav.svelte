@@ -8,7 +8,7 @@
 </script>
 
 <div
-	class="top-0 flex items-center justify-center border-b border-primary bg-sky-300 py-3 dark:border-secondary-dark dark:bg-secondary-dark"
+	class="top-0 flex items-center justify-center border-b border-primary bg-sky-300 py-3 dark:border-secondary-dark"
 >
 	<div class="h-[50px] w-full max-w-[1200px] bg-inherit px-2">
 		<ul class="hidden w-full items-center justify-between md:flex">

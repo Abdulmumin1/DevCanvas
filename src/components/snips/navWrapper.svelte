@@ -37,7 +37,7 @@
 	<div class="flex h-full w-full flex-col">
 		<!-- Upper nave -->
 
-		{#if !$profile & show}
+		{#if !$profile & (show && $user)}
 			<p class="bg-primary p-2 text-center text-white dark:bg-secondary-dark">
 				<a href="/profile">Complete your profile setup</a>
 			</p>
