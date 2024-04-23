@@ -1,32 +1,24 @@
 <script>
 	import Fa from 'svelte-fa';
-	import { faExclamationCircle, faL, faSpinner } from '@fortawesome/free-solid-svg-icons';
+	import { faExclamationCircle, faSpinner } from '@fortawesome/free-solid-svg-icons';
 	import { slide } from 'svelte/transition';
 	import { enhance } from '$app/forms';
-	import PasswordModule from '$components/auth/passwordModule.svelte';
-	// let email;
-
+	let email;
 	let loading = false;
 	let completed = false;
-	let Invalid;
 	let errMessage;
 
-	const handleSubmit = ({ cancel }) => {
-		if (Invalid) {
-			cancel();
-			return;
-		}
+	const handleSubmit = () => {
 		loading = true;
+
 		return async ({ update, result }) => {
 			loading = false;
-			if (result.type == 'success') {
+			if (result.status == 200) {
 				completed = true;
 			} else {
 				errMessage = result.data.message;
-				setTimeout(() => {
-					errMessage = '';
-				}, 3000);
 			}
+			// completed = true;
 			await update();
 		};
 	};
@@ -36,41 +28,53 @@
 	<title>Forgot password - devCanvas</title>
 </svelte:head>
 
-<div class="h-screen flex flex-col items-center justify-center bg-white text-primary">
+<div class="flex h-screen flex-col items-center justify-center bg-white text-primary">
 	<!-- <InnerNav /> -->
 	<form
 		transition:slide
-		action="?/reset"
+		action="?/forgot"
 		method="post"
 		use:enhance={handleSubmit}
-		class="flex flex-col gap-4 w-full max-w-xl p-6 md:p-6 md:px-16 rounded-lg mt-2"
+		class="mt-2 flex w-full max-w-xl flex-col gap-4 rounded-lg p-6 md:p-6 md:px-16"
 	>
 		<img src="/logo.svg" class=" h-24 rounded-3xl" alt="DevCanvas Logo" />
 
-		<h2 class="text-3xl md:text-5xl text-center">Dev<span class="text-sky-500">Canvas</span></h2>
-
+		<h2 class="text-center text-3xl md:text-5xl">Dev<span class="text-sky-500">Canvas</span></h2>
 		<div class="flex flex-col gap-3">
-			<PasswordModule {loading} submitText={'Update password'} bind:message={Invalid} />
+			<div transition:slide class="flex flex-col gap-2">
+				<label for="email" class="text-sm">Email</label>
+				<input
+					name="email"
+					type="email"
+					id="email"
+					bind:value={email}
+					required
+					class="rounded border border-sky-200 p-1 outline-none focus:outline focus:outline-sky-300"
+				/>
+			</div>
+
+			<button
+				aria-busy={loading}
+				type="submit"
+				class="flex items-center justify-center gap-2 rounded-md bg-[#0973a5] p-2 text-white"
+				>Send Reset Email
+
+				{#if loading}
+					<Fa icon={faSpinner} class="animate-spin" />
+				{/if}
+			</button>
 		</div>
 
 		{#if completed}
 			<div
 				in:slide={{ axis: 'y' }}
 				out:slide
-				class="bg-green-400 w-fit py-4 text-black h-6 mt-2 rounded-md p-2 gap-2 text-sm md:text-base flex items-center justify-start"
+				class="mt-2 flex h-6 w-fit items-center justify-start gap-2 rounded-md bg-green-400 p-2 py-4 text-sm text-black md:text-base"
 			>
-				<span> <Fa icon={faExclamationCircle} /></span><span transition:slide>Password updated</span
-				>
-			</div>
-
-			<div>
-				<a href="/dashboard">Go to dashboard</a>
+				<span> <Fa icon={faExclamationCircle} /></span><span transition:slide>Email sent</span>
 			</div>
 		{/if}
 	</form>
-	{#if errMessage}
-		<p transition:slide class="bg-error p-2 rounded-md">{errMessage}</p>
-	{/if}
 </div>
 
 <style>

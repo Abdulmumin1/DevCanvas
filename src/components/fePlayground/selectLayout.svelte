@@ -30,7 +30,7 @@
 <div class="relative">
 	<div class="">
 		<button
-			class="active:scale-75 transition-transform duration-300 p-2 bg-gray-200 text-primary rounded cursor-pointer"
+			class="cursor-pointer rounded bg-gray-200 p-2 text-primary transition-transform duration-300 active:scale-75"
 			on:click={toggleDropdown}
 			title="change layout"
 		>
@@ -39,16 +39,16 @@
 
 		{#if isOpen}
 			<div
-				class=" z-50 absolute left-0 rounded bg-black flex flex-col gap-1 p-3 mt-1"
+				class=" absolute left-0 z-50 mt-1 flex flex-col gap-1 rounded bg-black p-3"
 				on:click_outside={toggleDropdown}
 				use:clickOutside
 				in:scale={{ duration: 200, transformOrigin: 'top right' }}
 				out:scale={{ duration: 200, transformOrigin: 'top right' }}
 			>
 				<span>Change View</span>
-				<div class="flex gap-2 bg-secondary-dark round">
+				<div class="round flex gap-2 bg-secondary-dark">
 					<button
-						class="py-2 px-4 hover:bg-primary cursor-pointer text-white"
+						class="cursor-pointer px-4 py-2 text-white hover:bg-primary"
 						class:bg-primary={$layoutView == 'left'}
 						on:click={() => {
 							layoutView.set('left');
@@ -66,7 +66,7 @@
 					</button>
 
 					<button
-						class="py-2 px-4 hover:bg-primary cursor-pointer text-white"
+						class="cursor-pointer px-4 py-2 text-white hover:bg-primary"
 						class:bg-primary={$layoutView == 'top'}
 						on:click={() => {
 							layoutView.set('top');
@@ -83,7 +83,7 @@
 					</button>
 
 					<button
-						class="py-2 px-4 hover:bg-primary cursor-pointer text-white"
+						class="cursor-pointer px-4 py-2 text-white hover:bg-primary"
 						class:bg-primary={$layoutView == 'right'}
 						on:click={() => {
 							layoutView.set('right');
@@ -102,7 +102,7 @@
 				</div>
 				<button
 					on:click={gotoPreview}
-					class="bg-secondary-dark text-sm p-1 flex justify-between items-center"
+					class="flex items-center justify-between bg-secondary-dark p-1 text-sm"
 					>Preview <span class="text-[9px]">/preview</span></button
 				>
 			</div>

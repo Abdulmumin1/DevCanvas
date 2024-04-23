@@ -17,7 +17,7 @@
 <div
 	in:slide={{ axis: 'y' }}
 	out:scale
-	class="fixed z-50 right-1 bottom-0 mx-auto w-fit m-2 shadow-md border-l-2 bg-white dark:bg-primary border-sky-500 p-2 rounded"
+	class="fixed bottom-0 right-1 z-50 m-2 mx-auto w-fit rounded border-l-2 border-sky-500 bg-white p-2 shadow-md dark:bg-primary"
 >
 	<div class="flex items-center justify-center gap-2">
 		{message}

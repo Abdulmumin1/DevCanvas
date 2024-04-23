@@ -39,14 +39,14 @@
 	{/if}
 </svelte:head>
 
-<article class="h-screen flex flex-col">
+<article class="flex h-screen flex-col">
 	<NavWrapper>
-		<main class="flex flex-col items-center h-full p-3">
+		<main class="flex h-full flex-col items-center p-3">
 			<div
 				id="userinfo"
-				class="flex items-center flex-col gap-3 w-full border-b-2 dark:border-secondary-dark py-2 md:py-4"
+				class="flex w-full flex-col items-center gap-3 border-b-2 py-2 dark:border-secondary-dark md:py-4"
 			>
-				<div class="h-24 w-24 bg-sky-500 rounded-xl" />
+				<div class="h-24 w-24 rounded-xl bg-sky-500" />
 				<h1 class="text-3xl capitalize">
 					{data.details.name}
 				</h1>
@@ -77,8 +77,8 @@
 			</div>
 
 			<div id="collections" class="w-full">
-				<div class="h-full flex flex-col">
-					<h2 class="text-2xl py-4">Collections</h2>
+				<div class="flex h-full flex-col">
+					<h2 class="py-4 text-2xl">Collections</h2>
 					<div class="h-full w-full">
 						<!-- <p class="text-3xl">Apologies, In Progess 😋.....</p> -->
 						<Collection data={{ supabase: data.supabase, user_id: data.details.user_id }} />

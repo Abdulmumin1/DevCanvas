@@ -1,52 +1,43 @@
 <script>
 	import Fa from 'svelte-fa';
-	import { faGithub, faWpexplorer } from '@fortawesome/free-brands-svg-icons';
 	import Darkmode from './darkmode.svelte';
-	import { faBars, faBlog, faClose, faWindowMaximize } from '@fortawesome/free-solid-svg-icons';
-	import { scale, slide } from 'svelte/transition';
-	import { clickOutside } from '$lib/index.js';
+	import { faWindowMaximize } from '@fortawesome/free-solid-svg-icons';
 	import { page } from '$app/stores';
 	import Open from './kbar/open.svelte';
 	import MobileNav from './mobileNav.svelte';
-
-	let openSideBar = false;
-
-	function toogleOpen() {
-		openSideBar = !openSideBar;
-	}
 </script>
 
 <div
-	class="flex bg-gradient-to-r from-sky-300 to-slate-200 dark:to-secondary-dark items-center justify-center py-3 top-0 border-b border-primary dark:border-secondary-dark"
+	class="top-0 flex items-center justify-center border-b border-primary bg-sky-300 py-3 dark:border-secondary-dark dark:bg-secondary-dark"
 >
-	<div class="h-[50px] px-2 w-full bg-inherit max-w-[1200px]">
-		<ul class="hidden md:flex w-full justify-between items-center">
+	<div class="h-[50px] w-full max-w-[1200px] bg-inherit px-2">
+		<ul class="hidden w-full items-center justify-between md:flex">
 			<li>
 				<a
 					href="/"
-					class="text-base group md:text-lg py-2 px-3 gap-2 text-light bg-secondary-dark flex items-center justify-center rounded-3xl"
+					class="group flex items-center justify-center gap-2 rounded-3xl bg-secondary-dark px-3 py-2 text-base text-light md:text-lg"
 				>
 					<img
 						src="/logo.svg"
-						class="h-8 w-8 group-hover:rotate-45 transition-all duration-300"
+						class="h-8 w-8 transition-all duration-300 group-hover:rotate-45"
 						alt="DevCanvas"
 					/>
 					<span>DevCanvas </span>
 				</a>
 			</li>
 			<li>
-				<ul class="flex gap-2 items-center">
-					<li class="bg-secondary-dark text-light rounded-full py-2 px-3">
+				<ul class="flex items-center gap-2">
+					<li class="rounded-full bg-secondary-dark px-3 py-2 text-light">
 						<Open />
 					</li>
-					<li class="bg-secondary-dark text-light rounded-full py-2 px-3">
-						<a class="flex gap-2 items-center justify-center" href="/play">
+					<li class="rounded-full bg-secondary-dark px-3 py-2 text-light">
+						<a class="flex items-center justify-center gap-2" href="/play">
 							Playground <Fa icon={faWindowMaximize} class="" /></a
 						>
 					</li>
 
-					<li class="bg-secondary-dark p-2 rounded-full" class:landing={$page.url.pathname == '/'}>
-						<div class="flex gap-2 items-center justify-center text-light">
+					<li class="rounded-full bg-secondary-dark p-2" class:landing={$page.url.pathname == '/'}>
+						<div class="flex items-center justify-center gap-2 text-light">
 							<Darkmode />
 						</div>
 					</li>
@@ -54,16 +45,16 @@
 			</li>
 		</ul>
 
-		<ul class="flex justify-between items-center md:hidden">
+		<ul class="flex items-center justify-between md:hidden">
 			<li
-				class="text-base md:text-lg py-2 px-3 gap-3 text-light bg-secondary-dark flex items-center justify-center rounded-3xl"
+				class="flex items-center justify-center gap-3 rounded-3xl bg-secondary-dark px-3 py-2 text-base text-light md:text-lg"
 			>
 				<img src="/logo.svg" class="h-6 w-6" alt="snippetsLand" />
 				<a href="/"> DevCanvas </a>
 			</li>
 
 			<li
-				class="flex items-center justify-center gap-4 text-xl bg-secondary-dark text-light py-2 px-3 rounded-3xl"
+				class="flex items-center justify-center gap-4 rounded-3xl bg-secondary-dark px-3 py-2 text-xl text-light"
 			>
 				<Darkmode />
 				<!-- <button on:click={toogleOpen}><Fa icon={faBars} /></button> -->

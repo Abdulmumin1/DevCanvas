@@ -61,12 +61,12 @@
 </script>
 
 {#if demo}
-	<div class="text-primary bg-green-500 rounded-md">
+	<div class="rounded-md bg-green-500 text-primary">
 		<button
 			on:click={forkData}
 			aria-busy={busy}
 			title="Save"
-			class="px-3 py-2 cursor-pointer flex gap-2 items-center justify-center active:scale-75 transition-transform duration-300"
+			class="flex cursor-pointer items-center justify-center gap-2 px-3 py-2 transition-transform duration-300 active:scale-75"
 		>
 			<Fa icon={faSave} />
 			<span class="hidden md:flex">Save</span>
@@ -82,7 +82,7 @@
 		class:hidden={demo}
 		aria-busy={busy}
 		title="Fork"
-		class="p-1 rounded-md cursor-pointer flex gap-2 items-center justify-center text-primary bg-green-500 px-3 py-2 active:scale-75 transition-transform duration-300"
+		class="flex cursor-pointer items-center justify-center gap-2 rounded-md bg-green-500 p-1 px-3 py-2 text-primary transition-transform duration-300 active:scale-75"
 	>
 		<Fa icon={faCodeFork} />
 		<span class="hidden md:flex">Fork</span>

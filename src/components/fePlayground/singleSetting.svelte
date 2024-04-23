@@ -10,17 +10,17 @@
 	export let label = 'Toggle me';
 </script>
 
-<div class="p-2 bg-white dark:bg-secondary-dark dark:text-white w-full rounded-md">
-	<label class="relative inline-flex items-center cursor-pointer w-full">
+<div class="w-full rounded-md bg-white p-2 dark:bg-gray-200 dark:text-black">
+	<label class="relative inline-flex w-full cursor-pointer items-center">
 		<input
 			type="checkbox"
 			value=""
-			class="sr-only peer"
+			class="peer sr-only"
 			bind:checked
 			on:change={dispatchCheckedEvent}
 		/>
 		<div
-			class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-primary peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white dark:after:bg-gray-100 dark:after:border-black after:border-gray-100 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-sky-400 dark:peer-checked:bg-sky-300"
+			class="peer h-6 w-11 rounded-full bg-gray-200 after:absolute after:start-[2px] after:top-[2px] after:h-5 after:w-5 after:rounded-full after:border after:border-gray-100 after:bg-white after:transition-all after:content-[''] peer-checked:bg-sky-400 peer-checked:after:translate-x-full peer-checked:after:border-white peer-focus:outline-none dark:border-gray-600 dark:bg-primary dark:after:border-black dark:after:bg-gray-100 dark:peer-checked:bg-sky-500 rtl:peer-checked:after:-translate-x-full"
 		/>
 		<span class="ms-3 text-[13px] font-medium">{label}</span>
 	</label>

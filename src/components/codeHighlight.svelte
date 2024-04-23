@@ -193,11 +193,11 @@
 </script>
 
 {#if loading}
-	<div class="h-full flex justify-center items-center">
+	<div class="flex h-full items-center justify-center">
 		<Fa icon={faSpinner} class="animate-spin text-2xl" />
 	</div>
 {:else}
-	<div class="editor-container h-full py-5 rounded-xl">
+	<div class="editor-container h-full rounded-xl py-5">
 		<div class="h-full w-full" bind:this={editorContanier} />
 	</div>
 {/if}

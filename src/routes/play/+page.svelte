@@ -136,23 +136,23 @@
 </svelte:head>
 
 <NavWrapper>
-	<article class=" h-[80vh] flex flex-col items-center justify-center">
+	<article class=" flex h-[80vh] flex-col items-center justify-center">
 		<!-- <form action="/db/fe/create" method="post"> -->
 		<!-- <input type="text" name="description" id="" value="Untitled Project" class="hidden" /> -->
 		<button
 			on:click={() => {
 				goto('/play/try');
 			}}
-			class=" bg-sky-500 hover:bg-sky-300 px-6 py-4 rounded-lg text-primary text-xl md:text-5xl flex transition-all duration-300 hover:gap-6 gap-4"
+			class=" flex gap-4 rounded-lg bg-sky-500 px-6 py-4 text-xl text-primary transition-all duration-300 hover:gap-6 hover:bg-sky-300 md:text-5xl"
 			>Launch play ground <Fa icon={faRightLong} /></button
 		>
 		<!-- </form> -->
 	</article>
-	<div class="flex items-center justify-center min-h-screen flex-col gap-2">
-		<main class=" min-h-screen flex py-3 md:py-6 w-full justify-center">
+	<div class="flex min-h-screen flex-col items-center justify-center gap-2">
+		<main class=" flex min-h-screen w-full justify-center py-3 md:py-6">
 			<div class="w-full">
 				<div>
-					<p class="text-lg md:text-xl font-bold py-6">Recent</p>
+					<p class="py-6 text-lg font-bold md:text-xl">Recent</p>
 				</div>
 				{#await loadIntialData()}
 					<!-- <CollectionDummy /> -->

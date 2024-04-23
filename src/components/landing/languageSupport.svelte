@@ -1,7 +1,7 @@
-<div class=" bg-secondary-dark h-fit mb-8 flex p-7 py-9 justify-center">
-	<div class="w-full flex flex-col md:flex-row gap-6 justify-between max-w-5xl">
-		<div class="flex justify-center flex-col">
-			<h2 class="text-4xl md:text-5xl text-light font-semibold mb-2 dark:text-sky-400">
+<div class=" mb-8 flex h-fit justify-center bg-secondary-dark p-7 py-9">
+	<div class="flex w-full max-w-5xl flex-col justify-between gap-6 md:flex-row">
+		<div class="flex flex-col justify-center">
+			<h2 class="mb-2 text-4xl font-semibold text-light dark:text-sky-400 md:text-5xl">
 				Support for
 			</h2>
 			<p class="text-light">
@@ -11,59 +11,59 @@
 		<div>
 			<ul class="grid grid-cols-3 gap-6">
 				<li
-					class="flex flex-col items-center justify-center text-center text-lg shadow p-3 rounded-md bg-white dark:bg-primary md:text-xl"
+					class="flex flex-col items-center justify-center rounded-md bg-white p-3 text-center text-lg shadow dark:bg-primary md:text-xl"
 				>
 					Babel
 					<img
-						class="w-20 h-20 md:w-24 md:h-24"
+						class="h-20 w-20 md:h-24 md:w-24"
 						src="https://cdn.svgporn.com/logos/babel.svg"
 						alt="python"
 					/>
 				</li>
 				<li
-					class="flex flex-col items-center justify-center text-center text-lg shadow p-3 rounded-md bg-white dark:bg-primary md:text-xl"
+					class="flex flex-col items-center justify-center rounded-md bg-white p-3 text-center text-lg shadow dark:bg-primary md:text-xl"
 				>
 					JavaScript
 					<img
-						class="w-20 h-20 md:w-24 md:h-24"
+						class="h-20 w-20 md:h-24 md:w-24"
 						src="https://cdn.svgporn.com/logos/javascript.svg"
 						alt="python"
 					/>
 				</li>
 				<li
-					class="flex flex-col items-center justify-center text-center text-lg shadow p-3 rounded-md bg-white dark:bg-primary md:text-xl"
+					class="flex flex-col items-center justify-center rounded-md bg-white p-3 text-center text-lg shadow dark:bg-primary md:text-xl"
 				>
 					HTML
 					<img
-						class="w-20 h-20 md:w-24 md:h-24"
+						class="h-20 w-20 md:h-24 md:w-24"
 						src="https://cdn.svgporn.com/logos/html-5.svg"
 						alt="python"
 					/>
 				</li>
 				<li
-					class="flex flex-col items-center justify-center text-center text-lg shadow p-3 rounded-md bg-white dark:bg-primary md:text-xl"
+					class="flex flex-col items-center justify-center rounded-md bg-white p-3 text-center text-lg shadow dark:bg-primary md:text-xl"
 				>
 					CSS
 					<img
-						class="w-20 h-20 md:w-24 md:h-24"
+						class="h-20 w-20 md:h-24 md:w-24"
 						src="https://cdn.svgporn.com/logos/css-3.svg"
 						alt="python"
 					/>
 				</li>
 
 				<li
-					class="flex flex-col items-center justify-center text-center text-lg shadow p-3 rounded-md bg-white dark:bg-primary md:text-xl"
+					class="flex flex-col items-center justify-center rounded-md bg-white p-3 text-center text-lg shadow dark:bg-primary md:text-xl"
 				>
 					SaSS
 					<img
-						class="w-20 h-20 md:w-24 md:h-24 dark:invert"
+						class="h-20 w-20 dark:invert md:h-24 md:w-24"
 						src="https://cdn.svgporn.com/logos/sass.svg"
 						alt="sass"
 					/>
 				</li>
 
 				<li
-					class="flex flex-col justify-center text-2lg shadow p-3 rounded-md bg-white dark:bg-primary md:text-xl"
+					class="text-2lg flex flex-col justify-center rounded-md bg-white p-3 shadow dark:bg-primary md:text-xl"
 				>
 					And<br />
 					More ..

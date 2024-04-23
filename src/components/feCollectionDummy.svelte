@@ -3,7 +3,7 @@
 	import FeDummyCard from './feDummyCard.svelte';
 </script>
 
-<div transition:fade class="customGrid gap-6 rounded-lg w-full">
+<div transition:fade class="customGrid w-full gap-6 rounded-lg">
 	{#each [1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6] as a}
 		<FeDummyCard />
 	{/each}

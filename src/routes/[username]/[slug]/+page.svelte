@@ -50,25 +50,25 @@
 	{/if}
 </svelte:head>
 
-<article class="h-screen flex flex-col">
+<article class="flex h-screen flex-col">
 	{#if data.isFound}
 		<header class="w-full">
 			<Nav />
 		</header>
 		<div class="h-full overflow-scroll p-4 dark:bg-black">
 			<!-- <Fa icon={faPen} /> -->
-			<div class="text-sm md:text-sm w-full items-center h-full flex justify-center flex-col">
-				<div class="flex flex-col items-center justify-center mb-2">
-					<h1 class="text-xl text-center">{data[0].description}</h1>
+			<div class="flex h-full w-full flex-col items-center justify-center text-sm md:text-sm">
+				<div class="mb-2 flex flex-col items-center justify-center">
+					<h1 class="text-center text-xl">{data[0].description}</h1>
 					<p>Shared by: <a href="/{username}">{username}</a></p>
 				</div>
 				<div
-					class="relative text-[11px] md:text-base w-full md:w-[90%] bg-orange-100 p-4 rounded-lg dark:bg-[#0d1117] overflow-scroll h-full"
+					class="relative h-full w-full overflow-scroll rounded-lg bg-orange-100 p-4 text-[11px] dark:bg-[#0d1117] md:w-[90%] md:text-base"
 				>
 					<div
-						class="sticky top-0 right-0 text-base md:text-xl flex items-center justify-center z-50"
+						class="sticky right-0 top-0 z-50 flex items-center justify-center text-base md:text-xl"
 					>
-						<p class="text-sm bg-orange-100 dark:bg-primary p-2 rounded">{data[0].lang}</p>
+						<p class="rounded bg-orange-100 p-2 text-sm dark:bg-primary">{data[0].lang}</p>
 						<button class="p-2" on:click={CopyAction}><Fa icon={iconCopy} /></button>
 					</div>
 					<HighlightAuto code={data[0].code} let:highlighted>
@@ -78,10 +78,10 @@
 			</div>
 		</div>
 	{:else}
-		<div class=" h-screen flex items-center justify-center flex-col">
-			<h1 class="text-4xl md:text-5xl font-bold">404</h1>
+		<div class=" flex h-screen flex-col items-center justify-center">
+			<h1 class="text-4xl font-bold md:text-5xl">404</h1>
 			<p>Not found</p>
-			<a class="bg-sky-300 rounded-md p-1" href="/dashboard">Home</a>
+			<a class="rounded-md bg-sky-300 p-1" href="/dashboard">Home</a>
 		</div>
 	{/if}
 </article>

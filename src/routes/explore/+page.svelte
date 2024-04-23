@@ -75,8 +75,8 @@
 <!-- <div class="flex min-h-screen bg-sky-300 gap-2 w-full"> -->
 <NavWrapper>
 	<!-- <FilterTags /> -->
-	<main class=" min-h-screen py-3 md:py-6 w-full flex">
-		<div class=" w-full flex flex-col gap-2">
+	<main class=" flex min-h-screen w-full py-3 md:py-6">
+		<div class=" flex w-full flex-col gap-2">
 			<!-- Code Snippet Cards -->
 			<!-- <div class="bg-sky-100 dark:bg-secondary-dark pt-2 px-1 rounded-md mt-4">
 				<div class="w-full flex gap-2 text-primary dark:text-white text-base">

@@ -20,18 +20,21 @@
 
 	onMount(() => {
 		for (const star of document.getElementsByClassName('magic-star')) {
-			setTimeout(() => {
-				animate(star);
+			setTimeout(
+				() => {
+					animate(star);
 
-				setInterval(() => animate(star), 2000);
-			}, index++ * (interval / 3));
+					setInterval(() => animate(star), 2000);
+				},
+				index++ * (interval / 3)
+			);
 		}
 	});
 </script>
 
-<div class="grid grid-cols-1 md:grid-cols-2 items-center justify-between gap-x-20 lg:gap-x-40">
+<div class="grid grid-cols-1 items-center justify-between gap-x-20 md:grid-cols-2 lg:gap-x-40">
 	<section
-		class="flex relative lg:ml-20 h-full md:mt-12 px-8 py-0 md:py-12 flex-col gap-4 w-full border-primary text-secondary-dark"
+		class="relative flex h-full w-full flex-col gap-4 border-primary px-8 py-0 text-secondary-dark md:mt-12 md:py-12 lg:ml-20"
 	>
 		<!-- <p>
 			<a
@@ -42,7 +45,7 @@
 			</a>
 		</p> -->
 		<h1
-			class="text-4xl hero-text text-primary dark:text-light md:text-6xl lg:text-[5rem] max-w-[35rem]"
+			class="hero-text max-w-[35rem] text-4xl text-primary dark:text-light md:text-6xl lg:text-[5rem]"
 		>
 			<!-- Paint Your <span class="magic">
 				<span class="magic-star">
@@ -70,7 +73,7 @@
 			</span> Idea 🚀 -->
 			The Online code Editor
 		</h1>
-		<p class="text-sm md:text-xl text-primary max-w-lg mx-1 dark:text-light font-diana">
+		<p class="mx-1 max-w-lg font-diana text-sm text-primary dark:text-light md:text-xl">
 			Effortlessly bring your boldest concepts to life. <span
 				class="text-green-500 dark:text-green-700">learn</span
 			>,
@@ -80,18 +83,18 @@
 		<div class="">
 			<a
 				href="/signin"
-				class="inline-block text-light bg-sky-600 hover:bg-sky-600 font-semibold py-2 px-4 rounded-lg"
+				class="inline-block rounded-lg bg-sky-600 px-4 py-2 font-semibold text-light hover:bg-sky-600"
 				>Get Started</a
 			>
 			<a
 				href="/explore"
-				class="inline-block bg-secondary-dark text-light font-semibold py-2 px-4 rounded-lg"
+				class="inline-block rounded-lg bg-secondary-dark px-4 py-2 font-semibold text-light"
 				>Explore</a
 			>
 		</div>
 	</section>
 
-	<section class="h-[1000px] p-12 md:h-full overflow-hidden">
+	<section class="h-[1000px] overflow-hidden p-12 md:h-full">
 		<HeroCanvas />
 	</section>
 </div>

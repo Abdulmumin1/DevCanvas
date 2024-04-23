@@ -65,7 +65,7 @@
 </script>
 
 <div class="flex flex-col gap-3">
-	<p class=" text-lg flex items-center justify-center gap-2 w-fit">
+	<p class=" flex w-fit items-center justify-center gap-2 text-lg">
 		Language:
 		{#if showEditIcon}
 			<button in:scale on:click={removePreview} class="flex items-center justify-center text-lg">
@@ -82,14 +82,14 @@
 		<div transition:slide class="space-y-2">
 			<input
 				type="text"
-				class="w-full dark:bg-primary p-1 outline-none rounded-md focus:outline-none border focus:border-2 border-sky-300 transition-all duration-100"
+				class="w-full rounded-md border border-sky-300 p-1 outline-none transition-all duration-100 focus:border-2 focus:outline-none dark:bg-primary"
 				placeholder="Search..."
 				bind:value={searchTerm}
 				on:input={filterOptions}
 			/>
 
 			<select
-				class="w-full rounded p-1 outline-none focus:outline-none dark:text-light dark:bg-primary"
+				class="w-full rounded p-1 outline-none focus:outline-none dark:bg-primary dark:text-light"
 				bind:value={selectedOption}
 				on:change={selectOption}
 			>
@@ -100,7 +100,7 @@
 		</div>
 	{/if}
 
-	<div class="bg-gray-100 dark:bg-sky-200 dark:text-black p-2 rounded-md">
+	<div class="rounded-md bg-gray-100 p-2 dark:bg-sky-200 dark:text-black">
 		<span>{language}</span>
 	</div>
 </div>

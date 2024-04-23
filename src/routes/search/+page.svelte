@@ -126,33 +126,33 @@
 
 <NavWrapper>
 	<!-- Code Snippet Cards -->
-	<div class="flex gap-2 pt-2 items-center flex-wrap">
+	<div class="flex flex-wrap items-center gap-2 pt-2">
 		Filters:
 		<button
 			class="bg-sky-light {filter == 'tags'
-				? 'dark:bg-gray-300 dark:text-black bg-stone-600 text-light'
+				? 'bg-stone-600 text-light dark:bg-gray-300 dark:text-black'
 				: 'dark:bg-secondary-dark '} rounded-md p-1 px-2"
 			class:bg-gray-400={filter == 'tags'}
 			on:click={() => changeFilter('tags')}>Tags</button
 		>
 		<button
 			class="bg-sky-light {filter == 'desc'
-				? 'dark:bg-gray-300 dark:text-black bg-stone-600 text-light'
-				: 'dark:bg-secondary-dark '} p-1 rounded-md px-2"
+				? 'bg-stone-600 text-light dark:bg-gray-300 dark:text-black'
+				: 'dark:bg-secondary-dark '} rounded-md p-1 px-2"
 			class:bg-gray-400={filter == 'desc'}
 			on:click={() => changeFilter('desc')}>Description</button
 		>
 	</div>
-	<div class="bg-sky-light dark:bg-secondary-dark pt-2 px-1 rounded-md my-4">
-		<div class="w-full flex gap-2 text-primary dark:text-white">
+	<div class="my-4 rounded-md bg-sky-light px-1 pt-2 dark:bg-secondary-dark">
+		<div class="flex w-full gap-2 text-primary dark:text-white">
 			<button
-				class="p-1 rounded-t-md px-3"
+				class="rounded-t-md p-1 px-3"
 				on:click={toogle}
 				class:bg-white={!showOther}
 				class:dark:bg-primary={!showOther}>Canvas</button
 			>
 			<button
-				class="p-1 rounded-t-md px-3"
+				class="rounded-t-md p-1 px-3"
 				on:click={toogle}
 				class:bg-white={showOther}
 				class:dark:bg-primary={showOther}>Snippets</button

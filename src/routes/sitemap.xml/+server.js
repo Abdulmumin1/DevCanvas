@@ -1,6 +1,19 @@
-export async function GET({ fetch, url }) {
+import { error } from '@sveltejs/kit';
+
+export async function GET({ fetch, url, locals: { supabase } }) {
 	const response = await fetch('blog/api/posts');
 	const posts = await response.json();
+	// const { supabase } = await parent();
+	let { data: keys, error: err } = await supabase
+		.from('htmlPlayground')
+		.select('project_key')
+		.order('created_at', { ascending: false });
+
+	console.log(keys);
+	if (err) {
+		// console.error(error);
+		throw error(500, { message: 'Internal Error' });
+	}
 	const xml = `
     <?xml version="1.0" encoding="UTF-8" ?>
     <urlset
@@ -39,6 +52,20 @@ export async function GET({ fetch, url }) {
         `
 			)
 			.join('')}
+
+    
+      ${Object.values(keys)
+				.map(
+					(index) => `
+              <url>
+                 
+                  <loc>${url.origin}/play/${index['project_key']}</loc>
+              </url>
+          `
+				)
+				.join('')}
+  
+      
     </urlset>`.trim();
 	return new Response(xml, {
 		headers: {

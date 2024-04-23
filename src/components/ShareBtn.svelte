@@ -30,7 +30,7 @@
 </script>
 
 <button
-	class="active:scale-75 transition-transform duration-300 p-1 rounded cursor-pointer flex items-center justify-center gap-2 text-primary bg-sky-300 px-3 py-2"
+	class="flex cursor-pointer items-center justify-center gap-2 rounded bg-sky-300 p-1 px-3 py-2 text-primary transition-transform duration-300 active:scale-75"
 	on:click={shareCode}
 	aria-busy={isClicked}
 >

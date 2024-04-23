@@ -47,9 +47,9 @@
 
 <NewSnippet />
 
-<div class=" flex w-full gap-4 max-w-[400px]">
+<div class=" flex w-full max-w-[400px] gap-4">
 	<div
-		class="w-full rounded-xl bg-sky-light dark:bg-secondary-dark text-center h-[150px] flex items-center justify-center flex-col"
+		class="flex h-[150px] w-full flex-col items-center justify-center rounded-xl bg-sky-light text-center dark:bg-secondary-dark"
 	>
 		<div class="text-2xl">canvas</div>
 		<div class="text-6xl">{$formatted}</div>
@@ -57,7 +57,7 @@
 	</div>
 
 	<div
-		class="w-full rounded-xl bg-sky-light dark:bg-secondary-dark text-center h-[150px] flex items-center justify-center flex-col"
+		class="flex h-[150px] w-full flex-col items-center justify-center rounded-xl bg-sky-light text-center dark:bg-secondary-dark"
 	>
 		<div class="text-2xl">Snippets</div>
 		<div class="text-6xl">{$snipCount}</div>

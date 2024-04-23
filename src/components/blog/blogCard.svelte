@@ -37,25 +37,25 @@
 	>
 </div> -->
 
-<a href={`blog/${details.slug}`} in:scale class="hover:opacity-90 w-full">
+<a href={`blog/${details.slug}`} in:scale class="w-full hover:opacity-90">
 	<div class="holder my-2">
 		<div class="ellipse" />
 		<div class="ellipse ellipse2" />
 	</div>
 
-	<div class="py-2 justify-between rounded-lg flex flex-col gap-2 dark:text-light text-black">
-		<p class="flex gap-2 items-center text-[.9rem]">
+	<div class="flex flex-col justify-between gap-2 rounded-lg py-2 text-black dark:text-light">
+		<p class="flex items-center gap-2 text-[.9rem]">
 			<span>
 				<Fa icon={faCalendar} />
 			</span>
 			Published {formatDate(details.date)}
 		</p>
-		<p class="flex gap-2 items-center text-[.9rem]">
+		<p class="flex items-center gap-2 text-[.9rem]">
 			<span class="opacity-85"> Written by: </span>
 			<span class="opacity-90">Abdulmumin Yaqeen</span>
 		</p>
 		<div class="">
-			<a href={`blog/${details.slug}`} class="text-2xl md:text-3xl x text-balance hover:opacity-80">
+			<a href={`blog/${details.slug}`} class="x text-balance text-2xl hover:opacity-80 md:text-3xl">
 				{details.title}</a
 			>
 			<!-- decoration-wavy underline underline-offset-4  -->

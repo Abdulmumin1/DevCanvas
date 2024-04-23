@@ -27,8 +27,8 @@
 	}
 </script>
 
-<div class="flex flex-col gap-2 mb-3">
-	<button on:click={expand} class="flex items-center justify-center w-fit gap-2"
+<div class="mb-3 flex flex-col gap-2">
+	<button on:click={expand} class="flex w-fit items-center justify-center gap-2"
 		>Embed link <Fa icon={s_icon} class="transition-all duration-300" /></button
 	>
 	{#if expanded}
@@ -36,12 +36,12 @@
 			<a
 				href={embed_url}
 				target="_blank"
-				class="p-2 rounded-md bg-gray-100 dark:bg-sky-200 dark:text-primary text-sm"
+				class="rounded-md bg-gray-100 p-2 text-sm dark:bg-sky-200 dark:text-primary"
 			>
 				{embed_url}
 			</a>
 			<button
-				class="w-fit bg-gray-100 dark:bg-sky-200 px-3 py-1 rounded-lg text-primary text-sm"
+				class="w-fit rounded-lg bg-gray-100 px-3 py-1 text-sm text-primary dark:bg-sky-200"
 				on:click={(e) => copyEmbedUrl(e)}>Copy</button
 			>
 		</div>

@@ -42,7 +42,7 @@
 
 <div class="mb-3">Tags</div>
 
-<div class="tags text-black mb-2">
+<div class="tags mb-2 text-black">
 	{#each tags as tag, index}
 		<div class="tag" on:click={() => removeTag(index)}>{tag} &times;</div>
 	{:else}
@@ -54,7 +54,7 @@
 	<div>
 		<input
 			type="text"
-			class="p-2 border text-black dark:text-white rounded focus:outline outline-1 focus:outline-sky-300 border-none dark:bg-secondary-dark"
+			class="rounded border border-none p-2 text-black outline-1 focus:outline focus:outline-sky-300 dark:bg-secondary-dark dark:text-white"
 			bind:value={tagInput}
 			on:keydown={(e) => {
 				if (e.key === 'Enter') addTag();
@@ -62,7 +62,7 @@
 			placeholder="Add a tag"
 			disabled={tags.length >= 8}
 		/>
-		<button on:click={addTag} disabled={tags.length >= 8} class="bg-sky-300 p-2 text-black rounded"
+		<button on:click={addTag} disabled={tags.length >= 8} class="rounded bg-sky-300 p-2 text-black"
 			>Add</button
 		>
 	</div>

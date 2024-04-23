@@ -78,16 +78,16 @@
 
 <div class=" w-full">
 	<!-- Code Snippet Cards -->
-	<div class="bg-sky-light dark:bg-secondary-dark pt-2 px-1 rounded-md my-4">
-		<div class="w-full flex gap-2 text-primary dark:text-white text-base">
+	<div class="my-4 rounded-md bg-sky-light px-1 pt-2 dark:bg-secondary-dark">
+		<div class="flex w-full gap-2 text-base text-primary dark:text-white">
 			<button
-				class="p-1 rounded-t-md px-3"
+				class="rounded-t-md p-1 px-3"
 				on:click={toogle}
 				class:bg-white={!showOther}
 				class:dark:bg-primary={!showOther}>Canvas</button
 			>
 			<button
-				class="p-1 rounded-t-md px-3"
+				class="rounded-t-md p-1 px-3"
 				on:click={toogle}
 				class:bg-white={showOther}
 				class:dark:bg-primary={showOther}>Snippets</button

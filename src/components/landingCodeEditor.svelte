@@ -64,11 +64,11 @@
 </script>
 
 {#if loading}
-	<div class="h-full flex justify-center items-center">
+	<div class="flex h-full items-center justify-center">
 		<Fa icon={faSpinner} class="animate-spin text-2xl" />
 	</div>
 {:else}
-	<div class="editor-container h-full z-50" bind:this={editorContanier} />
+	<div class="editor-container z-50 h-full" bind:this={editorContanier} />
 {/if}
 
 <style>

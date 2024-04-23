@@ -12,13 +12,13 @@
 	}
 </script>
 
-<button on:click={handleSwitchDarkMode} class="flex p-1 items-center justify-center text-inherit">
+<button on:click={handleSwitchDarkMode} class="flex items-center justify-center p-1 text-inherit">
 	{#if $darkModeState}
-		<div in:scale class=" cursor-pointer self-center hover-animate">
+		<div in:scale class=" hover-animate cursor-pointer self-center">
 			<Fa icon={faMoon} class="self-center" />
 		</div>
 	{:else}
-		<div in:scale class=" cursor-pointer self-center hover-animate">
+		<div in:scale class=" hover-animate cursor-pointer self-center">
 			<Fa icon={faSun} class="self-center" />
 		</div>
 	{/if}

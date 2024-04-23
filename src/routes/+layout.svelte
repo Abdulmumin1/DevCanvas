@@ -9,10 +9,13 @@
 		showNavigating,
 		showToast,
 		darkModeState,
-		SnippetsDescription
+		SnippetsDescription,
+		getProfile,
+		setProfile
 	} from '$lib/index.js';
 
 	setKbarState();
+	setProfile(null);
 
 	import { invalidateAll } from '$app/navigation';
 	import PageTransition from './transition.svelte';
@@ -59,11 +62,28 @@
 		showNavigating.set(false);
 	});
 
+	let profile = getProfile();
+
+	async function loadprofile(session) {
+		try {
+			const { data: d, error: err } = await supabase
+				.from('profiles')
+				.select('*')
+				.eq('user_id', session.user.id);
+			if (err) throw err;
+			$profile = d.length > 0 ? d[0] : false;
+			// console.log('Profile', $profile);
+		} catch (error) {}
+	}
+
 	let url;
 	onMount(async () => {
 		url = window.location.href.replace('www.', '');
 		const { data } = supabase.auth.onAuthStateChange((event, _session) => {
 			user.set(_session?.user);
+			if (_session?.user) {
+				loadprofile(_session);
+			}
 			if (_session?.expires_at !== session?.expires_at) {
 				invalidateAll('supabase:auth');
 			}
@@ -112,7 +132,7 @@
 		<PageLoadProgess />
 	{/if}
 {/if}
-<div class=" bg-white dark:bg-primary dark:text-white transition-colors duration-300 relative">
+<div class=" relative bg-white transition-colors duration-300 dark:bg-primary dark:text-white">
 	<slot />
 	{#if $showToast}
 		<Toast message={$showToast.message} duration={$showToast?.duration ?? 2500} />

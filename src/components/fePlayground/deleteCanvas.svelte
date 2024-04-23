@@ -49,14 +49,14 @@
 
 <dialog id="myModal" bind:this={modal}>
 	<!-- <h2>Delete Canvas</h2> -->
-	<div class="flex flex-col gap-2 items-center justify-center">
-		<p class="font-bold text-center">Are You Sure you want to delete canvas?</p>
+	<div class="flex flex-col items-center justify-center gap-2">
+		<p class="text-center font-bold">Are You Sure you want to delete canvas?</p>
 		<p>"{title}"</p>
 		<div class="flex gap-4">
-			<button class="p-2 bg-gray-300 rounded-lg" id="closeModal" on:click={closeModal}>Close</button
+			<button class="rounded-lg bg-gray-300 p-2" id="closeModal" on:click={closeModal}>Close</button
 			>
 			<button
-				class="bg-error p-2 rounded-lg flex items-center justify-center gap-2"
+				class="flex items-center justify-center gap-2 rounded-lg bg-error p-2"
 				on:click={DeleteCanvas}
 				>Delete {#if loading}
 					<Fa icon={faSpinner} class="animate-spin" />

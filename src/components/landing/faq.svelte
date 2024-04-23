@@ -2,17 +2,17 @@
 	import Accodion from './accodion.svelte';
 </script>
 
-<div class=" h-fit flex items-center justify-center p-7 py-9">
-	<div class="h-full flex flex-col gap-3 md:gap-6 items-center justify-center">
+<div class=" flex h-fit items-center justify-center p-7 py-9">
+	<div class="flex h-full flex-col items-center justify-center gap-3 md:gap-6">
 		<div class="flex flex-col items-center justify-center gap-6">
-			<h2 class="max-w-lg text-center font-semibold mb-2 text-4xl md:text-6xl dark:text-sky-400">
+			<h2 class="mb-2 max-w-lg text-center text-4xl font-semibold dark:text-sky-400 md:text-6xl">
 				Wondering?
 			</h2>
-			<p class="max-w-lg text-center text-sky-dark dark:text-light text-xl font-diana">
+			<p class="max-w-lg text-center font-diana text-xl text-sky-dark dark:text-light">
 				Here are list of question we think you might want answers for.
 			</p>
 
-			<ul class=" flex gap-6 flex-col dark:text-light">
+			<ul class=" flex flex-col gap-6 dark:text-light">
 				<Accodion
 					title="What is snippets"
 					content="Snippets is a part of devcanvas, that allows you to share code snippets easily with others"

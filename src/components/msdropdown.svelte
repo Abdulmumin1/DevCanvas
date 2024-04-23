@@ -49,14 +49,14 @@
 	});
 </script>
 
-<div class="relative flex text-left items-center justify-center dark:text-white">
+<div class="relative flex items-center justify-center text-left dark:text-white">
 	<button on:click={toggleDropdown} class="text-xl">
 		<Fa icon={faBars} class=" transition-transform duration-150 hover:scale-110" />
 	</button>
 
 	{#if isOpen}
 		<div
-			class="absolute top-5 right-0 z-10 bg-white dark:bg-primary mt-2 w-60 p-3 rounded-md shadow-lg text-left"
+			class="absolute right-0 top-5 z-10 mt-2 w-60 rounded-md bg-white p-3 text-left shadow-lg dark:bg-primary"
 			use:clickOutside
 			in:scale={{ duration: 200, transformOrigin: 'top right' }}
 			out:scale={{ duration: 200, transformOrigin: 'top right' }}
@@ -65,15 +65,15 @@
 			<ul>
 				<!-- <li class="py-2 px-4 hover:bg-blue-100 cursor-pointer">Option 1</li> -->
 
-				<li class="py-2 px-4 hover:bg-blue-100 hover:text-primary cursor-pointer rounded-lg">
-					<a class="w-full h-full text-left" href="/dashboard">Dashboard</a>
+				<li class="cursor-pointer rounded-lg px-4 py-2 hover:bg-blue-100 hover:text-primary">
+					<a class="h-full w-full text-left" href="/dashboard">Dashboard</a>
 				</li>
 				{#if showDelete}
-					<li class="py-2 px-4 hover:bg-red-100 hover:text-primary cursor-pointer">
+					<li class="cursor-pointer px-4 py-2 hover:bg-red-100 hover:text-primary">
 						<button class="w-full text-left" on:click={DeleteEntry}>Delete</button>
 					</li>
 				{/if}
-				<li class="bg-error dark:text-black px-4 m-1 py-2 rounded-xl cursor-pointer">
+				<li class="m-1 cursor-pointer rounded-xl bg-error px-4 py-2 dark:text-black">
 					<Signout />
 				</li>
 			</ul>

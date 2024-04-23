@@ -1,4 +1,5 @@
 // place files you want to import through the `$lib` alias in this folder.
+import { getContext, setContext } from 'svelte';
 import { readable, writable } from 'svelte/store';
 
 export const showNavigating = writable(false);
@@ -52,6 +53,15 @@ export function generateRandomKey() {
 	}
 
 	return randomKey;
+}
+
+let profile_key = 'profile';
+export function setProfile(value) {
+	setContext(profile_key, writable(value));
+}
+
+export function getProfile() {
+	return getContext(profile_key);
 }
 
 export function getLastPartOfUrl(url) {

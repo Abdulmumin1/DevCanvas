@@ -205,7 +205,7 @@
 />
 {#if !zoomOut}
 	<div class="absolute bottom-0 right-0 m-2 flex items-center justify-center gap-2">
-		<a href="./" class=" bg-secondary-dark flex gap-2 items-center p-2 rounded-xl">
+		<a href="./" class=" flex items-center gap-2 rounded-xl bg-secondary-dark p-2">
 			<span
 				><img
 					height="16px"
@@ -214,10 +214,10 @@
 					style="filter: grayscale(100);"
 					src="/logo.svg"
 				/></span
-			> <span class="hidden md:block text-gray-100">Editor View</span>
+			> <span class="hidden text-gray-100 md:block">Editor View</span>
 		</a>
 
-		<div class="bg-secondary-dark p-3 text-gray-100 rounded-full">
+		<div class="rounded-full bg-secondary-dark p-3 text-gray-100">
 			<ShareAct {link} title={data.details.description} />
 		</div>
 

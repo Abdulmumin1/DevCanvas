@@ -19,15 +19,15 @@
 </script>
 
 <nav class=" w-full border-b dark:border-secondary-dark">
-	<ul class="w-full rounded-lg flex justify-between items-center p-4 text-black">
-		<li class="text-lg md:text-2xl text-sky-400 px-1 py-1 gap-1 flex items-center">
+	<ul class="flex w-full items-center justify-between rounded-lg p-4 text-black">
+		<li class="flex items-center gap-1 px-1 py-1 text-lg text-sky-400 md:text-2xl">
 			<img src="/logo.svg" class="h-6 w-6" alt="devcanvas" />
 
 			<a href="/"><span class="text-secondary-dark dark:text-white">Dev</span>Canvas</a>
 		</li>
-		<ul class="flex gap-2 items-center justify-center">
+		<ul class="flex items-center justify-center gap-2">
 			{#if showEdit && !showPreview}
-				<li class="dark:text-white p-3 rounded">
+				<li class="rounded p-3 dark:text-white">
 					<a href={`${back}/edit`}><Fa icon={faPen} /></a>
 				</li>
 			{/if}

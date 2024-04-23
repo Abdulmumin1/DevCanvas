@@ -148,12 +148,12 @@
 </script>
 
 {#if collection.length > 0}
-	<div class="flex flex-col gap-6 items-center w-full" transition:fade>
-		<div class="gap-6 flex flex-col w-full bg-white dark:bg-secondary-dark">
-			<div class="grid gap-6 rounded-lg w-full">
+	<div class="flex w-full flex-col items-center gap-6" transition:fade>
+		<div class="flex w-full flex-col gap-6 bg-white dark:bg-secondary-dark">
+			<div class="grid w-full gap-6 rounded-lg">
 				{#each collection as snippet}
-					<div class="bg-white dark:bg-secondary-dark rounded-lg p-2 md:p-4 max-w-full">
-						<h3 class="text-sm px-3 py-2 my-4 bg-[#0d1117] w-fit rounded-lg text-light cool">
+					<div class="max-w-full rounded-lg bg-white p-2 dark:bg-secondary-dark md:p-4">
+						<h3 class="cool my-4 w-fit rounded-lg bg-[#0d1117] px-3 py-2 text-sm text-light">
 							{snippet.lang}
 						</h3>
 					</div>
@@ -164,7 +164,7 @@
 		</div>
 		{#if showMore}
 			<button
-				class="active:scale-75 transition-transform duration-300 bg-gray-300 dark:bg-secondary-dark shadow rounded-lg py-2 px-4 flex justify-center items-center gap-2 w-fit"
+				class="flex w-fit items-center justify-center gap-2 rounded-lg bg-gray-300 px-4 py-2 shadow transition-transform duration-300 active:scale-75 dark:bg-secondary-dark"
 				id="more"
 				on:click={more}
 			>
@@ -176,9 +176,9 @@
 		{/if}
 	</div>
 {:else}
-	<div class="flex flex-col justify-center pt-12 h-[100dvh] w-full items-center">
+	<div class="flex h-[100dvh] w-full flex-col items-center justify-center pt-12">
 		<img src="/logo.svg" alt="" width="300" style="filter: grayscale(100);" />
-		<p class="text-gray-400 text-4xl">Nothing to Show</p>
+		<p class="text-4xl text-gray-400">Nothing to Show</p>
 	</div>
 {/if}
 

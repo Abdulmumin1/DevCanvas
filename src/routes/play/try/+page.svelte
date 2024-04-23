@@ -114,14 +114,14 @@
 	<!-- HTML Meta Tags -->
 </svelte:head>
 
-<main class="h-screen flex flex-col">
+<main class="flex h-screen flex-col">
 	<FePlayGroungNav ispublic={$current_data.public} />
-	<div class="h-full flex-1 w-full relative overflow-hidden">
+	<div class="relative h-full w-full flex-1 overflow-hidden">
 		<Resizable>
 			<div slot="left" class="h-full w-full">
 				<FeCodeEditor initialHTML={'<!--HTML HERE-->'} initialCSS={'/* */'} lang="html" />
 			</div>
-			<div slot="right" class="w-full h-full relative">
+			<div slot="right" class="relative h-full w-full">
 				<CodeOutput />
 				<JsConsole />
 			</div>

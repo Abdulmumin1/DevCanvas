@@ -12,10 +12,10 @@
 	export let title;
 </script>
 
-<li class="flex flex-col gap-2 bg-gray-100 dark:bg-primary p-1 rounded-xl mb-2">
+<li class="mb-2 flex flex-col gap-2 rounded-xl bg-gray-100 p-1 dark:bg-primary">
 	<button
 		on:click={toggleAccordion}
-		class="flex gap-2 items-center text-black dark:text-white text-sm"
+		class="flex items-center gap-2 text-sm text-black dark:text-white"
 	>
 		<!-- <div></div> -->
 		<span class="p-1 px-2">{title}</span>

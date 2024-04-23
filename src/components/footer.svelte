@@ -3,15 +3,15 @@
 	import { faGithub } from '@fortawesome/free-brands-svg-icons';
 </script>
 
-<footer class="bg-gray-200 text-black px-4 py-8 border-t-2 border-black dark:border-secondary-dark">
+<footer class="border-t-2 border-black bg-gray-200 px-4 py-8 text-black dark:border-secondary-dark">
 	<div class="flex gap-2">
 		<div class="flex flex-col space-y-2">
-			<h3 class="text-2xl font-bold flex items-center gap-2">
+			<h3 class="flex items-center gap-2 text-2xl font-bold">
 				DevCanvas
 
 				<img
 					src="/logo.svg"
-					class="bg-sky-200 p-2 rounded-3xl h-10 grayscale"
+					class="h-10 rounded-3xl bg-sky-200 p-2 grayscale"
 					alt="SnippetLand Logo"
 				/>
 			</h3>
@@ -22,7 +22,7 @@
 		</div>
 	</div>
 
-	<div class="flex flex-row gap-12 mt-4">
+	<div class="mt-4 flex flex-row gap-12">
 		<div class="flex flex-col space-y-2">
 			<h4 class="text-lg font-bold">Contact Us</h4>
 			<ul class="">
@@ -51,8 +51,8 @@
 		</div>
 	</div>
 
-	<div class="flex flex-col justify-between mt-4">
-		<p class="text-sm copyright">&copy; 2023 DevCanvas. All rights reserved.</p>
+	<div class="mt-4 flex flex-col justify-between">
+		<p class="copyright text-sm">&copy; 2023 DevCanvas. All rights reserved.</p>
 		<ul class="flex flex-row space-x-2">
 			<li><a href="/privacy-policy" class=" hover:underline">Privacy Policy</a></li>
 			<li><a href="/terms-of-service" class=" hover:underline">Terms of Service</a></li>
@@ -60,7 +60,7 @@
 	</div>
 
 	<div
-		class="w-fit bg-gray-300 p-2 rounded-lg text-sky-dark text-sm text-center flex items-center justify-center"
+		class="flex w-fit items-center justify-center rounded-lg bg-gray-300 p-2 text-center text-sm text-sky-dark"
 	>
 		Stand with Palestine 🇵🇸! DO NOT BE SILENCED
 	</div>

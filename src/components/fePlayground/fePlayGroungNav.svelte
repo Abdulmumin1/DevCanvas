@@ -14,10 +14,10 @@
 	export let ispublic;
 </script>
 
-<nav class="w-full bg-black h-10 px-2 py-8 flex items-center text-white border-b border-primary">
-	<ul class="w-full flex items-center justify-between">
+<nav class="flex h-10 w-full items-center border-b border-primary bg-black px-2 py-8 text-white">
+	<ul class="flex w-full items-center justify-between">
 		<li class="w-full">
-			<div class="flex flex-col w-full">
+			<div class="flex w-full flex-col">
 				<div class="flex items-center gap-2">
 					<a href="/play" class="">
 						<img src="/logo.svg" class="h-10 w-10" alt="snippetsLand" />
@@ -39,11 +39,11 @@
 			<li class="hidden md:flex"><FeGetEmbed /></li>
 			<li><ShareBtn /></li>
 			<li
-				class="md:hidden bg-gray-300 text-black px-2 py-2 dark:bg-secondary-dark dark:text-white rounded flex items-center justify-center"
+				class="flex items-center justify-center rounded bg-gray-300 px-2 py-2 text-black dark:bg-secondary-dark dark:text-white md:hidden"
 			>
 				<MobileNav />
 			</li>
-			<li class="text-black hidden md:block">
+			<li class="hidden text-black md:block">
 				<Login />
 			</li>
 		</ul>

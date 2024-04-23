@@ -176,7 +176,9 @@ Example:
 @mixin import-fonts($font-url, $font-name: 'CustomFont') {
 	@font-face {
 		font-family: #{$font-name};
-		src: url('#{$font-url}') format('woff2'), url('#{$font-url}') format('woff');
+		src:
+			url('#{$font-url}') format('woff2'),
+			url('#{$font-url}') format('woff');
 		font-weight: normal;
 		font-style: normal;
 	}

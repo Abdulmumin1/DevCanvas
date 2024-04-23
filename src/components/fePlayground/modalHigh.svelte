@@ -79,12 +79,12 @@
 	in:fly={{ y: 100 }}
 	out:fly={{ y: 80, duration: 150 }}
 	bind:this={modal}
-	class="text-sm px-2 pb-2 w-[90%] md:w-[500px] h-[80%] md:h-[900px] dark:bg-black dark:text-white rounded-lg"
+	class="h-[80%] w-[90%] rounded-lg px-2 pb-2 text-sm dark:bg-black dark:text-white md:h-[900px] md:w-[500px]"
 >
 	<div use:clickOutside on:click_outside={closeModal} class=" flex flex-col gap-4">
 		<!-- class="modal z-50 backdrop-blur-lg absolute  inset-y-0 inset-x-0 mx-auto m-2 shadow-md border-t-4 bg-white dark:bg-black border-sky-500 p-3 rounded flex flex-col overflow-scroll gap-2" -->
 		<div
-			class="sticky flex pb-2 pt-4 items-end justify-between bg-white text-black dark:bg-black dark:text-white border-b-2 border-sky-300 top-0"
+			class="sticky top-0 flex items-end justify-between border-b-2 border-sky-300 bg-white pb-2 pt-4 text-black dark:bg-black dark:text-white"
 		>
 			<div class="flex gap-2 px-2">
 				<button on:click={showPlugin} class:border-b-2={tabPlugin}>Plugins</button>
@@ -105,29 +105,29 @@
 					cols="30"
 					rows="3"
 					placeholder="Content for the head"
-					class="bg-gray-100 dark:bg-primary w-full outline-none font-thin rounded"
+					class="w-full rounded bg-gray-100 font-thin outline-none dark:bg-primary"
 					spellcheck="false"
 					bind:value={html}
 				/>
 			</div>
 
-			<div class="w-full flex flex-col gap-2">
+			<div class="flex w-full flex-col gap-2">
 				<p>CSS Plugin</p>
 				<Csslist />
 			</div>
 
-			<div class="w-full flex gap-2 flex-col transition-transform duration-300">
+			<div class="flex w-full flex-col gap-2 transition-transform duration-300">
 				Plugins
 				<Jsplugins />
 				<OtherjsPlugins />
 			</div>
 		</div>
 
-		<div id="tabEditor" class:hidden={tabPlugin} class="flex gap-2 flex-col">
+		<div id="tabEditor" class:hidden={tabPlugin} class="flex flex-col gap-2">
 			<div>CSS PreProcessor</div>
 			<SaasProcessor />
 			<div>Javascript Processors</div>
-			<div class="bg-gray-300 rounded-lg dark:bg-primary p-2 flex flex-col gap-2">
+			<div class="flex flex-col gap-2 rounded-lg bg-gray-300 p-2 dark:bg-primary">
 				<BabelProcessor />
 				<TypescriptProcessor />
 			</div>

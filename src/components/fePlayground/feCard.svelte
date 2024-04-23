@@ -26,7 +26,7 @@
 </script>
 
 <div
-	class="bg-gray-100 card duration-300 transition-all rounded-xl p-1 dark:bg-secondary-dark h-full shadow-sm flex flex-col"
+	class="card flex h-full flex-col rounded-xl bg-gray-100 p-1 shadow-sm transition-all duration-300 dark:bg-secondary-dark"
 >
 	<!-- <div class=" rounded-xl bg-white w-full" bind:this={letsee}>
 		<img src={capturedImageUrl} alt="" srcset="" />
@@ -38,22 +38,22 @@
 		frameborder="0"
 		scrolling="no"
 		loading="lazy"
-		class="w-full h-[250px] overflow-hidden rounded-xl"
+		class="h-[250px] w-full overflow-hidden rounded-xl"
 		style="aspect-ratio: 1/1; pointer-events: none;"
 	/>
 	<!-- {#if !capturedImageUrl}
 	{/if} -->
 
-	<div class="flex flex-col p-2 items-start text-base">
+	<div class="flex flex-col items-start p-2 text-base">
 		<a href="/play/{details.project_key}" class="text-xl font-semibold hover:opacity-80"
 			>{details.description}
 		</a>
 
-		<div class="flex justify-between items-center w-full">
+		<div class="flex w-full items-center justify-between">
 			{#if details.user_id == session?.user?.id}
 				<p
 					in:fade
-					class="text-sky-400 dark:text-sky-300 outline-none focus:outline-sky-300 focus:dark:outline-sky-400 rounded-lg text-sm"
+					class="rounded-lg text-sm text-sky-400 outline-none focus:outline-sky-300 dark:text-sky-300 focus:dark:outline-sky-400"
 					spellcheck="false"
 				>
 					<a href="/{profile}">You</a>
@@ -62,18 +62,18 @@
 				<div in:fade>
 					<p>
 						<span>by</span>
-						<a class="text-sky-400 dark:text-sky-300 text-sm" href={`/${profile}`}>@{profile}</a>
+						<a class="text-sm text-sky-400 dark:text-sky-300" href={`/${profile}`}>@{profile}</a>
 					</p>
 				</div>
 			{:else}
-				<div in:fade class="flex gap-2 items-center justify-center">
+				<div in:fade class="flex items-center justify-center gap-2">
 					<span>by</span>
 					<!-- <a class="text-sky-400 dark:text-sky-300 text-sm" href={`/anon`}>Anonymous user</a> -->
-					<div class="w-12 h-4 rounded-2xl animate-pulse bg-sky-100 dark:bg-gray-400" />
+					<div class="h-4 w-12 animate-pulse rounded-2xl bg-sky-100 dark:bg-gray-400" />
 				</div>
 			{/if}
-			<div class="flex gap-2 items-center justify-center w-fit">
-				<span class="flex items-center justify-center gap-2 w-fit"
+			<div class="flex w-fit items-center justify-center gap-2">
+				<span class="flex w-fit items-center justify-center gap-2"
 					><Fa icon={faEye} />{new Object(details.view).length > 0
 						? details.view[0].views
 						: '....'}</span

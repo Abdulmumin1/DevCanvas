@@ -1,22 +1,15 @@
 <script>
-	import { user, current_data } from '$lib/index.js';
 	import Fa from 'svelte-fa';
 	import {
 		faExclamationCircle,
-		faIcons,
 		faRightLong,
 		faSpinner,
-		faUpRightAndDownLeftFromCenter,
-		faUpRightFromSquare,
-		faUserEdit
+		faUpRightFromSquare
 	} from '@fortawesome/free-solid-svg-icons';
-	import { fade, scale, slide } from 'svelte/transition';
-	import InnerNav from '../../components/innerNav.svelte';
+	import { slide } from 'svelte/transition';
 	import { enhance } from '$app/forms';
-	import { page } from '$app/stores';
-	import { invalidateAll } from '$app/navigation';
-	import NavWrapper from '../../components/snips/navWrapper.svelte';
-	import { json } from 'svelte-highlight/languages';
+	import NavWrapper from '$components/snips/navWrapper.svelte';
+
 	let loading = false;
 	let serverErr = false;
 	let email;
@@ -61,30 +54,30 @@
 </svelte:head>
 
 <NavWrapper noSearch={true}>
-	<div class="h-full flex items-center">
-		<div class="bg-white rounded px-4 md:py-9 dark:bg-primary py-12 pb-8 mb-4 max-w-[700px]">
-			<h2 class="flex gap-2 text-4xl text-gray-800 dark:text-white mb-4">
+	<div class="flex h-full items-center">
+		<div class="mb-4 max-w-[700px] rounded bg-white px-4 py-12 pb-8 dark:bg-primary md:py-9">
+			<h2 class="mb-4 flex gap-2 text-4xl text-gray-800 dark:text-white">
 				Update Your Profile <span
 					><a href="/{details?.username}"><Fa icon={faUpRightFromSquare} /></a></span
 				>
 			</h2>
 
 			<div>
-				<a href="/recovery/reset" class="flex gap-2 items-center py-4"
+				<a href="/recovery/reset" class="flex items-center gap-2 py-4"
 					>Reset password <Fa icon={faRightLong} /></a
 				>
 			</div>
 			<form action={data.action} use:enhance={handleSubmit} method="POST">
 				<!-- User Name -->
 				<div class="mb-4">
-					<label for="username" class="block text-gray-700 dark:text-white text-sm md:text-lg mb-2">
+					<label for="username" class="mb-2 block text-sm text-gray-700 dark:text-white md:text-lg">
 						Username
 					</label>
 					<input
 						type="text"
 						id="username"
 						name="username"
-						class="earance-none dark:bg-secondary-dark dark:border-0 border rounded w-full py-2 px-3 text-gray-700 dark:text-white leading-tight focus:outline-none focus:line"
+						class="earance-none focus:line w-full rounded border px-3 py-2 leading-tight text-gray-700 focus:outline-none dark:border-0 dark:bg-secondary-dark dark:text-white"
 						placeholder="Username"
 						value={details?.username}
 						class:border-error={form?.errors?.username}
@@ -95,14 +88,14 @@
 				</div>
 				<!-- Email -->
 				<div class="mb-4">
-					<label for="email" class="block text-gray-700 dark:text-white text-sm md:text-lg mb-2">
+					<label for="email" class="mb-2 block text-sm text-gray-700 dark:text-white md:text-lg">
 						<i class="fas fa-envelope mr-1" /> Email
 					</label>
 					<input
 						type="email"
 						id="email"
 						name="email"
-						class="earance-none dark:bg-secondary-dark dark:border-0 border rounded w-full py-2 px-3 text-gray-700 dark:text-white leading-tight focus:outline-none focus:line"
+						class="earance-none focus:line w-full rounded border px-3 py-2 leading-tight text-gray-700 focus:outline-none dark:border-0 dark:bg-secondary-dark dark:text-white"
 						placeholder="Email"
 						value={details?.email}
 						readonly
@@ -111,14 +104,14 @@
 
 				<!-- Full Name -->
 				<div class="mb-4">
-					<label for="fullname" class="block text-gray-700 dark:text-white text-sm md:text-lg mb-2">
+					<label for="fullname" class="mb-2 block text-sm text-gray-700 dark:text-white md:text-lg">
 						<i class="fas fa-user mr-1" /> Full Name
 					</label>
 					<input
 						type="text"
 						id="fullname"
 						name="fullname"
-						class="earance-none dark:bg-secondary-dark dark:border-0 border rounded w-full py-2 px-3 text-gray-700 dark:text-white leading-tight focus:outline-none focus:line"
+						class="earance-none focus:line w-full rounded border px-3 py-2 leading-tight text-gray-700 focus:outline-none dark:border-0 dark:bg-secondary-dark dark:text-white"
 						placeholder="Full Name"
 						value={details?.name}
 						class:border-error={form?.errors?.fullname}
@@ -129,7 +122,7 @@
 				</div>
 				<!-- Social Media Links -->
 				<div class="mb-4">
-					<span class="block text-gray-700 dark:text-white text-sm md:text-lg mb-2">
+					<span class="mb-2 block text-sm text-gray-700 dark:text-white md:text-lg">
 						<i class="fas fa-share-alt mr-1" /> Social Media Links
 					</span>
 					<div class="flex gap-2">
@@ -137,13 +130,13 @@
 						<div class="w-1/2">
 							<label
 								for="github"
-								class="block text-gray-700 dark:text-white text-sm md:text-lg mb-2">Github</label
+								class="mb-2 block text-sm text-gray-700 dark:text-white md:text-lg">Github</label
 							>
 							<input
 								type="text"
 								id="github"
 								name="github"
-								class="earance-none dark:bg-secondary-dark dark:border-0 border rounded w-full py-2 px-3 text-gray-700 dark:text-white leading-tight focus:outline-none focus:line"
+								class="earance-none focus:line w-full rounded border px-3 py-2 leading-tight text-gray-700 focus:outline-none dark:border-0 dark:bg-secondary-dark dark:text-white"
 								placeholder="Username"
 								value={details?.socials?.github}
 							/>
@@ -152,13 +145,13 @@
 						<div class="w-1/2">
 							<label
 								for="twitter"
-								class="block text-gray-700 dark:text-white text-sm md:text-lg mb-2">Twitter</label
+								class="mb-2 block text-sm text-gray-700 dark:text-white md:text-lg">Twitter</label
 							>
 							<input
 								type="text"
 								id="twitter"
 								name="twitter"
-								class="earance-none dark:bg-secondary-dark dark:border-0 border rounded w-full py-2 px-3 text-gray-700 dark:text-white leading-tight focus:outline-none focus:line"
+								class="earance-none focus:line w-full rounded border px-3 py-2 leading-tight text-gray-700 focus:outline-none dark:border-0 dark:bg-secondary-dark dark:text-white"
 								placeholder="@username"
 								value={details?.socials?.twitter}
 							/>
@@ -167,13 +160,13 @@
 						<div class="w-1/2">
 							<label
 								for="instagram"
-								class="block text-gray-700 dark:text-white text-sm md:text-lg mb-2">Instagram</label
+								class="mb-2 block text-sm text-gray-700 dark:text-white md:text-lg">Instagram</label
 							>
 							<input
 								type="text"
 								id="instagram"
 								name="instagram"
-								class="earance-none dark:bg-secondary-dark dark:border-0 border rounded w-full py-2 px-3 text-gray-700 dark:text-white leading-tight focus:outline-none focus:line"
+								class="earance-none focus:line w-full rounded border px-3 py-2 leading-tight text-gray-700 focus:outline-none dark:border-0 dark:bg-secondary-dark dark:text-white"
 								placeholder="username"
 								value={details?.socials?.instagram}
 							/>
@@ -185,7 +178,7 @@
 				<div class="flex items-center justify-between">
 					<button
 						type="submit"
-						class="bg-sky-500 text-primary hover:bg-sky-600 py-2 px-4 rounded focus:outline-none focus:line flex gap-2 items-center justify-center"
+						class="focus:line flex items-center justify-center gap-2 rounded bg-sky-500 px-4 py-2 text-primary hover:bg-sky-600 focus:outline-none"
 					>
 						{#if loading}
 							<Fa icon={faSpinner} class="animate-spin" />
@@ -197,7 +190,7 @@
 				<div
 					in:slide={{ axis: 'y' }}
 					out:slide
-					class="bg-green-400 w-fit py-4 text-black h-6 mt-2 rounded-md p-2 gap-2 text-sm md:text-base flex items-center justify-start"
+					class="mt-2 flex h-6 w-fit items-center justify-start gap-2 rounded-md bg-green-400 p-2 py-4 text-sm text-black md:text-base"
 				>
 					<span> <Fa icon={faExclamationCircle} /></span><span transition:slide
 						>profile updated</span
@@ -208,7 +201,7 @@
 				<div
 					in:slide={{ axis: 'y' }}
 					out:slide
-					class="bg-error w-fit py-4 text-black h-6 mt-2 rounded-md p-2 gap-2 text-sm md:text-base flex items-center justify-start"
+					class="mt-2 flex h-6 w-fit items-center justify-start gap-2 rounded-md bg-error p-2 py-4 text-sm text-black md:text-base"
 				>
 					<span> <Fa icon={faExclamationCircle} /></span>
 					<p>{serverErr.message}</p>

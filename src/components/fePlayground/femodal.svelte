@@ -9,6 +9,6 @@
 	}
 </script>
 
-<button on:click={openModal} class="z-50 hover:scale-105 hover:opacity-80 cursor-pointer"
+<button on:click={openModal} class="z-50 cursor-pointer hover:scale-105 hover:opacity-80"
 	><Fa icon={faGear} />
 </button>

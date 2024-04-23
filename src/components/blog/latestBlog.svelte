@@ -13,10 +13,10 @@
 	// console.log(details);
 </script>
 
-<div class=" flex flex-col justify-center gap-3 text-black dark:text-light pb-2">
+<div class=" flex flex-col justify-center gap-3 pb-2 text-black dark:text-light">
 	<a
 		href={`blog/${details.slug}`}
-		class="text-4xl md:text-6xl hover:opacity-80 text-orang dark:text-dark capitalize s"
+		class="text-orang dark:text-dark s text-4xl capitalize hover:opacity-80 md:text-6xl"
 	>
 		{details.title}</a
 	>
@@ -24,7 +24,7 @@
 
 	<a
 		href={`blog/${details.slug}`}
-		class="flex gap-2 hover:gap-4 text-base transition-all duration-300 items-center"
+		class="flex items-center gap-2 text-base transition-all duration-300 hover:gap-4"
 		><span class="sick-hover">Continue Reading</span> <Fa icon={faArrowRightLong} /></a
 	>
 </div>

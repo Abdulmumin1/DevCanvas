@@ -51,7 +51,10 @@ Next, let's style our follower using CSS to give it the appearance and behavior 
 	background-color: red;
 	position: absolute;
 	border-radius: 50%;
-	transition: top 0.1s ease, left 0.1s ease, transform 0.3s ease-out;
+	transition:
+		top 0.1s ease,
+		left 0.1s ease,
+		transform 0.3s ease-out;
 }
 ```
 

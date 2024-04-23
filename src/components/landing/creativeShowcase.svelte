@@ -33,7 +33,7 @@
 	});
 </script>
 
-<div class="carousel text-black flex flex-col gap-2">
+<div class="carousel flex flex-col gap-2 text-black">
 	<!-- <button on:click={prev}>Previous</button> -->
 	{#key currentIndex}
 		<div in:slide>
@@ -44,9 +44,9 @@
 			{/each}
 		</div>
 	{/key}
-	<div class="flex gap-2 mt-2 items-center justify-center">
+	<div class="mt-2 flex items-center justify-center gap-2">
 		{#each components as balls, i}
-			<div class="w-[10px] h-[10px] rounded-full bg-black" class:bg-sky-300={i == currentIndex} />
+			<div class="h-[10px] w-[10px] rounded-full bg-black" class:bg-sky-300={i == currentIndex} />
 		{/each}
 	</div>
 	<!-- <button on:click={next}>Next</button> -->

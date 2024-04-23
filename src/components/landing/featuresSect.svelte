@@ -51,15 +51,15 @@
 </script>
 
 <div
-	class="flex items-center justify-center w-full bg-sky-300 px-4 border-y-2 border-black dark:border-secondary-dark"
+	class="flex w-full items-center justify-center border-y-2 border-black bg-sky-300 px-4 dark:border-secondary-dark"
 >
-	<div class="min-h-[300px] max-w-[90rem] py-12 px-2 gap-3 justify-center flex flex-col anim">
-		<h1 class="text-4xl md:text-5xl font-semibold text-black">Features</h1>
-		<p class="font-thin font-diana text-xl text-stone-800">
+	<div class="anim flex min-h-[300px] max-w-[90rem] flex-col justify-center gap-3 px-2 py-12">
+		<h1 class="text-4xl font-semibold text-black md:text-5xl">Features</h1>
+		<p class="font-diana text-xl font-thin text-stone-800">
 			DevCanvas has everything you need to experiment with ideas, build and teach others how to
 			code.
 		</p>
-		<div class="grid grid-cols-2 md:flex gap-2 md:flex-wrap cs">
+		<div class="cs grid grid-cols-2 gap-2 md:flex md:flex-wrap">
 			{#each features as feat}
 				<FeatureCard icon={feat.icon} title={feat.message} description={feat.description} />
 			{/each}

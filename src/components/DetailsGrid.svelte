@@ -37,7 +37,7 @@
 
 <div>
 	<button
-		class="flex text-xl dark:text-secondary-dark sm:hidden fixed bottom-3 right-3 p-3 bg-sky-300 rounded-full transition-transform duration-300 hover:scale-105"
+		class="fixed bottom-3 right-3 flex rounded-full bg-sky-300 p-3 text-xl transition-transform duration-300 hover:scale-105 dark:text-secondary-dark sm:hidden"
 		on:click={hideShowDetails}
 	>
 		<Fa icon={faExclamationCircle} />
@@ -45,12 +45,12 @@
 </div>
 <div
 	in:slide
-	class="md:w-[24rem] flex flex-col gap-3 px-3 lg:px-4 mb-3 dark:bg-secondary-dark mx-2 md:mx-4 py-6 rounded-lg"
+	class="mx-2 mb-3 flex flex-col gap-3 rounded-lg px-3 py-6 dark:bg-secondary-dark md:mx-4 md:w-[24rem] lg:px-4"
 	class:hidden={mobileDetails}
 >
 	<DetailsEditor lang={details.lang} />
 	<button
-		class="w-fit justify-center items-center flex gap-2"
+		class="flex w-fit items-center justify-center gap-2"
 		on:click={() => {
 			showDetails = !showDetails;
 		}}>Details <Fa icon={faExclamationCircle} /></button

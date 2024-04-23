@@ -33,9 +33,9 @@
 
 <div
 	in:slide
-	class="w-full p-4 border-y dark:border-primary flex text-sm md:text-base items-center justify-between"
+	class="flex w-full items-center justify-between border-y p-4 text-sm dark:border-primary md:text-base"
 >
-	<div class="flex h-fit gap-4 w-full">
+	<div class="flex h-fit w-full gap-4">
 		<!-- <div class="min-w-[100px]">
 			<h2 class="text-sm mb-2 rounded-xl text-secondary-dark bg-light w-fit px-3 p-1 h-fit">
 				{card.lang}
@@ -44,14 +44,14 @@
 
 		{#if card?.profile}
 			<div>
-				<p class="text-lg md:text-xl font-semibold hover:opacity-80 w-full">
+				<p class="w-full text-lg font-semibold hover:opacity-80 md:text-xl">
 					<a href={`/${card.profile}/${card.project_key}`}>{card.description}</a>
 				</p>
 				<a class="hover:opacity-80" href={`/${card.profile}`}>@{card.profile}</a>
 			</div>
 		{:else}
 			<div>
-				<p class="text-lg md:text-xl font-semibold hover:opacity-80 w-full">
+				<p class="w-full text-lg font-semibold hover:opacity-80 md:text-xl">
 					<a href={`/anonymous/${card.project_key}`}>{card.description}</a>
 				</p>
 				{#if card.user_id == session?.user?.id}
@@ -67,20 +67,20 @@
 </p> -->
 
 	<div>
-		<div class="w-full flex gap-4 text-secondary-dark dark:text-white items-center">
-			<span class="flex gap-2 items-center"><Fa icon={faEye} />...</span>
-			<button class="hover:scale-105 transition-all duration-200"
+		<div class="flex w-full items-center gap-4 text-secondary-dark dark:text-white">
+			<span class="flex items-center gap-2"><Fa icon={faEye} />...</span>
+			<button class="transition-all duration-200 hover:scale-105"
 				><Fa icon={faArrowUpFromBracket} class="transition-all duration-300" /></button
 			>
 			{#if editIcons}
 				<a
 					href="/{card.profile}/{card.project_key}/edit"
-					class="hover:scale-105 transition-all duration-200"
+					class="transition-all duration-200 hover:scale-105"
 				>
 					<Fa icon={faEdit} />
 				</a>
 
-				<a href="/{card.project_key}/edit" class="hover:scale-105 transition-all duration-200">
+				<a href="/{card.project_key}/edit" class="transition-all duration-200 hover:scale-105">
 					<Fa icon={faTrash} />
 				</a>
 			{/if}

@@ -10,11 +10,11 @@
 	export let title, content;
 </script>
 
-<li class=" text-xl md:text-2xl flex flex-col gap-2 items-center justify-center">
-	<button on:click={toggleAccordion} class=" flex gap-2 items-center justify-center">
+<li class=" flex flex-col items-center justify-center gap-2 text-xl md:text-2xl">
+	<button on:click={toggleAccordion} class=" flex items-center justify-center gap-2">
 		<span class="">{title}</span>
 		<svg
-			class="w-5 h-5 transition-transform transform rotate-0"
+			class="h-5 w-5 rotate-0 transform transition-transform"
 			class:rotate-180={open}
 			xmlns="http://www.w3.org/2000/svg"
 			fill="none"
@@ -26,7 +26,7 @@
 	</button>
 	{#if open}
 		<div transition:slide>
-			<div class="p-2 text-base md:text-lg bg-white dark:bg-primary max-w-lg text-center">
+			<div class="max-w-lg bg-white p-2 text-center text-base dark:bg-primary md:text-lg">
 				{content}
 			</div>
 		</div>

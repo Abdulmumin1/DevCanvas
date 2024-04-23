@@ -76,7 +76,7 @@
 	}
 	async function fetchPaginatedRows(pageNumber, pageSize) {
 		loading = true;
-		const off = (pageNumber - 1) * pageSize;
+		// const off = (pageNumber - 1) * pageSize;
 		if (dashboard) {
 			return fetchDashboard(pageNumber, pageSize);
 		} else if (user_id) {
@@ -110,31 +110,6 @@
 		loading = false;
 	}
 
-	// async function returnDataWithProfile(collection, supabase) {
-	// 	// console.log('jlfdajkfda fda fda fda ');
-	// 	const newData = [];
-
-	// 	for (const element of collection) {
-	// 		// const views = await getViews(element.project_key, supabase);
-	// 		try {
-	// 			const user_name = await getProfile(element.user_id, supabase);
-	// 			// Assuming getProfile returns an object with a 'user_name' property
-	// 			if (new Object(user_name).length > 0) {
-	// 				newData.push({ ...element, profile: user_name[0].username });
-	// 			} else {
-	// 				newData.push({ ...element });
-	// 			}
-	// 		} catch (error) {
-	// 			newData.push({ ...element });
-	// 			console.error(`Error fetching profile for user_id ${element.user_id}: ${error.message}`);
-	// 		}
-	// 		// console.log(views);
-	// 		// newData.push({...element, views:views[0].views})
-	// 	}
-
-	// 	return newData;
-	// }
-
 	$: showMore = collection.length > 5;
 
 	onMount(async () => {
@@ -149,9 +124,9 @@
 </script>
 
 {#if collection.length > 0}
-	<div class="flex flex-col gap-6 items-center" transition:fade>
-		<div class="gap-6 flex flex-col w-full">
-			<div class="customGrid gap-6 rounded-lg w-full">
+	<div class="flex flex-col items-center gap-6" transition:fade>
+		<div class="flex w-full flex-col gap-6">
+			<div class="customGrid w-full gap-6 rounded-lg">
 				{#each collection as snippet (snippet.project_key)}
 					<FeCard details={snippet} />
 				{/each}
@@ -159,7 +134,7 @@
 		</div>
 		{#if showMore}
 			<button
-				class="active:scale-90 transition-transform duration-300 bg-gray-200 dark:bg-secondary-dark rounded-lg py-2 px-4 flex justify-center items-center gap-2 w-fit"
+				class="flex w-fit items-center justify-center gap-2 rounded-lg bg-gray-200 px-4 py-2 transition-transform duration-300 active:scale-90 dark:bg-secondary-dark"
 				id="more"
 				on:click={more}
 			>
@@ -171,9 +146,9 @@
 		{/if}
 	</div>
 {:else}
-	<div class="flex flex-col justify-center pt-12 h-[100dvh] w-full items-center">
+	<div class="flex h-[100dvh] w-full flex-col items-center justify-center pt-12">
 		<img src="/logo.svg" alt="" width="300" style="filter: grayscale(100);" />
-		<p class="text-gray-400 text-4xl">Nothing to Show</p>
+		<p class="text-4xl text-gray-400">Nothing to Show</p>
 	</div>
 {/if}
 
