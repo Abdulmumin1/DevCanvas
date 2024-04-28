@@ -20,7 +20,12 @@
 
 	const injectHtmlAndCSS = (iframeDoc) => {
 		const bodyContent = htmlCode;
+		iframeDoc.querySelector('body').innerHTML = '';
+
 		iframeDoc.body.innerHTML = bodyContent;
+		iframeDoc.querySelectorAll('style').forEach((element) => (element.textContent = ''));
+
+		iframeDoc.querySelectorAll('style').forEach((element) => element.remove());
 
 		const styleElement = iframeDoc.createElement('style');
 
@@ -126,6 +131,7 @@
 		if (previewIframe) {
 			previewIframe.contentWindow.location.reload(true);
 			previewIframe.onload = handleIframeLoad;
+			// previewIframe.onload = () => {};
 		}
 	};
 
