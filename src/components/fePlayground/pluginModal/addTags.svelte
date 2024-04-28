@@ -54,7 +54,7 @@
 	<div>
 		<input
 			type="text"
-			class="rounded border border-none p-2 text-black outline-1 focus:outline focus:outline-sky-300 dark:bg-secondary-dark dark:text-white"
+			class="rounded p-2 text-black outline-1 outline-sky-300 focus:outline-2 dark:bg-secondary-dark dark:text-white"
 			bind:value={tagInput}
 			on:keydown={(e) => {
 				if (e.key === 'Enter') addTag();

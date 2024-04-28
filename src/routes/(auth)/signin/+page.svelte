@@ -89,7 +89,7 @@
 					id="email"
 					bind:value={email}
 					required
-					class="rounded border border-sky-200 p-1 outline-none focus:outline focus:outline-sky-300"
+					class="rounded-lg border border-sky-200 px-3 py-2 outline outline-2 outline-sky-200 focus:outline-4 focus:outline-sky-300"
 				/>
 			</div>
 			{#if !usePassword}
@@ -135,7 +135,9 @@
 		<a href="recovery/forgot">Forgot password?</a>
 
 		{#if errMessage}
-			<p transition:slide class="w-full rounded-md bg-error p-2">{errMessage}</p>
+			<p transition:slide={{ duration: 200 }} class="w-full rounded-md bg-error p-2">
+				{errMessage}
+			</p>
 		{/if}
 	</form>
 </div>
