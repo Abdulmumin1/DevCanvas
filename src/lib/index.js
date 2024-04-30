@@ -15,7 +15,7 @@ export const editorSettingState = writable(false);
 export const delayPreview = writable(false);
 
 export const SnippetsDescription = readable({
-	name: 'DevCanvas',
+	name: 'DevCanvas - Super Fast Online Editor',
 	des: 'DevCanvas is an open-source online editor. It provides a simple and intuitive interface for developers to share, discover, and discuss code snippets across various programming languages and use cases.',
 	url: 'https://devcanvas.art',
 	imageUrl:

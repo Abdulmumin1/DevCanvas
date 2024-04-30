@@ -12,11 +12,13 @@
 	import Forcreators from '$components/landing/forcreators.svelte';
 	import Forcreatives from '$components/landing/forcreatives.svelte';
 	import Explore from '$components/landing/explore.svelte';
+
+	import { SnippetsDescription } from '$lib/index.js';
 </script>
 
 <svelte:head>
 	<!-- HTML Meta Tags -->
-	<title>DevCanvas</title>
+	<title>{$SnippetsDescription.name}</title>
 
 	<!-- Facebook Meta Tags -->
 	<meta property="og:title" content="DevCanvas" />
@@ -61,7 +63,7 @@
 	</div>
 	<div class="mx-auto flex w-full flex-col items-center justify-center gap-4 rounded-lg">
 		<!-- Add your landing page content here -->
-		<div class="grid h-[500px]">
+		<div class="grid max-h-[40rem] md:max-h-[35rem] lg:max-h-[50rem]">
 			<header class="w-full overflow-hidden">
 				<!-- <div
 					id="kds"
@@ -76,23 +78,16 @@
 			<!-- Add your features or benefits here -->
 			<!-- <Explore /> -->
 			<FeaturesSect />
-			<div>
-				<div class="">
-					<Forcreators />
-				</div>
-				<div class=" bg-white dark:bg-primary">
-					<!-- <Forcreatives /> -->
-				</div>
-			</div>
+
 			<!-- <Discover /> -->
 			<LanguageSupport />
 			<EmbedSection />
 			<!-- Add code editor section -->
-			<CodeEditor />
+			<!-- <CodeEditor /> -->
 			<!-- The Idea-->
 			<!-- <Idea /> -->
 			<!-- The Idea-->
-			<Faq />
+			<!-- <Faq /> -->
 		</main>
 	</div>
 </div>

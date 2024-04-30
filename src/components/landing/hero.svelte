@@ -32,9 +32,10 @@
 	});
 </script>
 
-<div class="grid grid-cols-1 items-center justify-between gap-x-20 md:grid-cols-2 lg:gap-x-40">
+<!-- grid grid-cols-1 items-end justify-between gap-x-20 md:grid-cols-2 lg:gap-x-40 -->
+<div class="flex flex-col md:flex-row lg:items-center">
 	<section
-		class="relative flex h-full w-full flex-col gap-4 border-primary px-8 py-0 text-secondary-dark md:mt-12 md:py-12 lg:ml-20"
+		class="relative flex h-full w-full min-w-[20rem] flex-col gap-4 border-primary px-8 py-0 text-secondary-dark md:mt-12 md:min-w-[30rem] md:py-12 lg:ml-20"
 	>
 		<!-- <p>
 			<a
@@ -45,37 +46,15 @@
 			</a>
 		</p> -->
 		<h1
-			class="hero-text max-w-[35rem] text-4xl text-primary dark:text-light md:text-6xl lg:text-[5rem]"
+			class="hero-text text-balance text-4xl text-primary dark:text-light md:max-w-[34rem] md:text-6xl lg:text-[5rem]"
 		>
-			<!-- Paint Your <span class="magic">
-				<span class="magic-star">
-					<svg viewBox="0 0 512 512">
-						<path
-							d="M512 255.1c0 11.34-7.406 20.86-18.44 23.64l-171.3 42.78l-42.78 171.1C276.7 504.6 267.2 512 255.9 512s-20.84-7.406-23.62-18.44l-42.66-171.2L18.47 279.6C7.406 276.8 0 267.3 0 255.1c0-11.34 7.406-20.83 18.44-23.61l171.2-42.78l42.78-171.1C235.2 7.406 244.7 0 256 0s20.84 7.406 23.62 18.44l42.78 171.2l171.2 42.78C504.6 235.2 512 244.6 512 255.1z"
-						/>
-					</svg>
-				</span>
-				<span class="magic-star">
-					<svg viewBox="0 0 512 512">
-						<path
-							d="M512 255.1c0 11.34-7.406 20.86-18.44 23.64l-171.3 42.78l-42.78 171.1C276.7 504.6 267.2 512 255.9 512s-20.84-7.406-23.62-18.44l-42.66-171.2L18.47 279.6C7.406 276.8 0 267.3 0 255.1c0-11.34 7.406-20.83 18.44-23.61l171.2-42.78l42.78-171.1C235.2 7.406 244.7 0 256 0s20.84 7.406 23.62 18.44l42.78 171.2l171.2 42.78C504.6 235.2 512 244.6 512 255.1z"
-						/>
-					</svg>
-				</span>
-				<span class="magic-star">
-					<svg viewBox="0 0 512 512">
-						<path
-							d="M512 255.1c0 11.34-7.406 20.86-18.44 23.64l-171.3 42.78l-42.78 171.1C276.7 504.6 267.2 512 255.9 512s-20.84-7.406-23.62-18.44l-42.66-171.2L18.47 279.6C7.406 276.8 0 267.3 0 255.1c0-11.34 7.406-20.83 18.44-23.61l171.2-42.78l42.78-171.1C235.2 7.406 244.7 0 256 0s20.84 7.406 23.62 18.44l42.78 171.2l171.2 42.78C504.6 235.2 512 244.6 512 255.1z"
-						/>
-					</svg>
-				</span>
-				<span class=" text-black dark:text-light">Wildest</span>
-			</span> Idea 🚀 -->
-			The Online code Editor
+			Super Fast Online Editor
 		</h1>
-		<p class="mx-1 max-w-lg font-diana text-sm text-primary dark:text-light md:text-xl">
-			Effortlessly bring your boldest concepts to life. <span
-				class="text-green-500 dark:text-green-700">learn</span
+		<p
+			class="mx-1 max-w-lg text-balance font-diana text-lg text-primary dark:text-light md:text-xl"
+		>
+			Prototype faster with a blazing fast editor <span class="text-green-500 dark:text-green-700"
+				>learn</span
 			>,
 			<span class="text-orange-400 dark:text-orange-800">share</span>, and
 			<span class="bg-sky-300 text-primary">build together</span>.
@@ -94,7 +73,7 @@
 		</div>
 	</section>
 
-	<section class="h-[1000px] overflow-hidden p-12 md:h-full">
+	<section class="h-[1000px] p-12 md:h-full">
 		<HeroCanvas />
 	</section>
 </div>

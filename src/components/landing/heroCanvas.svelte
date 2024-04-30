@@ -1,5 +1,12 @@
 <script>
+	import { onMount } from 'svelte';
 	import TypeWriterEffect from './typeWriterEffect.svelte';
+	import { fly, scale, slide } from 'svelte/transition';
+
+	let classOrange;
+	onMount(() => {
+		classOrange = 'orange';
+	});
 </script>
 
 <div class="window relative bg-secondary-dark">
@@ -9,7 +16,7 @@
 			<div class="pill blue" />
 			<div class="pill green" />
 		</div>
-		<div class="search bg-[#cecbcb] text-black dark:bg-light">https://devcanvas.art</div>
+		<div class="search bg-white text-black">https://devcanvas.art</div>
 		<div />
 	</div>
 	<div class="box">
@@ -24,11 +31,7 @@
 			<div class="pane css">
 				<div class="pane-header bg-primary text-sm text-light">SCSS</div>
 				<div class="code-input" id="css-code" placeholder="Enter CSS code here...">
-					<TypeWriterEffect
-						text={`body{
-							display:flex; }`}
-						delay="2000"
-					/>
+					<TypeWriterEffect text={`h1 { color: skyblue; }`} delay="2020" />
 				</div>
 			</div>
 
@@ -38,7 +41,13 @@
 			</div>
 		</div>
 
-		<div class="preview bg-white font-diana text-black dark:bg-light"><h1>HELLO WORLD</h1></div>
+		<div class="preview bg-white text-black">
+			{#if classOrange}
+				<h1 in:fly={{ x: 100, duration: 100, delay: 1300 }} class="text-xl font-bold {classOrange}">
+					HELLO WORLD
+				</h1>
+			{/if}
+		</div>
 	</div>
 </div>
 
@@ -47,6 +56,16 @@
 		box-sizing: content-box;
 	}
 
+	.orange {
+		/* opacity: 0; */
+		animation: changeColor 100ms forwards 1.9s;
+	}
+
+	@keyframes changeColor {
+		to {
+			color: skyblue;
+		}
+	}
 	.editor {
 		display: flex;
 		height: 500px;

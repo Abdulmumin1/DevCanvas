@@ -22,7 +22,7 @@
 		<div class="flex h-full w-full flex-col gap-4 md:gap-6">
 			<iframe
 				title="embed"
-				src="{$page.url.origin}/play/aDDzMU/embed"
+				src="{$page.url.origin}/play/gSirkj/embed"
 				frameborder="0"
 				loading="lazy"
 				class="h-[700px] rounded"
