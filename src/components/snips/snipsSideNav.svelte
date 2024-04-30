@@ -72,10 +72,6 @@
 								</div>
 							</div>
 						</FeAccordion>
-					{:else}
-						<li>
-							<a href={signinURL} class="rounded-lg bg-green-400 p-2 text-primary">Login</a>
-						</li>
 					{/if}
 				</li>
 			</ul>
