@@ -71,7 +71,9 @@
 			<!-- transition:fly={{ y: 200, delay: 50 }} -->
 
 			<li class="w-full">
-				<ul class="settings-section">
+				<ul
+					class="settings-section flex flex-col gap-1 border border-light dark:border-secondary-dark"
+				>
 					<li class="p-2">General</li>
 
 					<li class="w-full">
@@ -99,29 +101,37 @@
 				</ul>
 			</li>
 
-			<li class="settings-section flex flex-col gap-2 px-1 text-black">
+			<li
+				class="settings-section flex flex-col gap-2 border border-light px-1 text-black dark:border-secondary-dark"
+			>
 				<!-- <p></p> -->
-				Format Editors
+				<div class="dark:text-white">Format Editors</div>
 
 				<div class="w-fit">
 					<FormatCode />
 				</div>
 			</li>
 
-			<li class="settings-section flex flex-col gap-1"><AddTags owner={$isOwner} /></li>
+			<li
+				class="settings-section flex flex-col gap-1 border border-light dark:border-secondary-dark"
+			>
+				<AddTags owner={$isOwner} />
+			</li>
 		</ul>
 
-		<ul class="settings-section flex flex-col gap-2 p-3 text-black md:hidden">
-			<li class="px-2">Actions</li>
+		<ul
+			class="settings-section flex flex-col gap-2 border border-light p-3 text-black dark:border-secondary-dark md:hidden"
+		>
+			<li class="px-2 dark:text-white">Actions</li>
 			{#if $isOwner}
 				<li>
-					<label
+					<button
 						for=""
 						class="flex w-full cursor-pointer items-center justify-center gap-2 rounded-lg bg-error p-2 text-black transition-all duration-300 hover:gap-4 active:scale-95"
 						><DeleteCanvas
 							canvas_id={$current_data.project_key}
 							title={$current_data.description}
-						/> Delete Canvas</label
+						/> Delete Canvas</button
 					>
 				</li>
 			{/if}
@@ -145,7 +155,7 @@
 	}
 
 	.settings-section {
-		border: 1px solid #ddd;
+		/* border: 1px solid #ddd;		 */
 		border-radius: 4px;
 		padding: 10px;
 		margin-bottom: 1px;
