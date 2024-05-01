@@ -17,5 +17,5 @@
                active:scale-105 active:bg-sky-600"
 	on:click={format}
 >
-	<Fa icon={faBrush} /> Format Code
+	<Fa icon={faBrush} /> Format
 </button>
