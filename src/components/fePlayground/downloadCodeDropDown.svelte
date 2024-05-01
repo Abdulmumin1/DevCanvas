@@ -50,7 +50,7 @@
 	<button
 		class="dropdown-button flex items-center justify-end gap-2 text-primary"
 		on:click={toggleDropdown}
-	>
+		><span class="md:hidden">Download Zip</span>
 		<Fa icon={faFileZipper} />
 	</button>
 

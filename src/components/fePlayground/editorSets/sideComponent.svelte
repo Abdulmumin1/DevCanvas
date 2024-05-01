@@ -55,7 +55,7 @@
 	<!-- in:fly -->
 	<div
 		transition:fly={{ x: -200 }}
-		class="drop absolute top-0 flex h-full w-[300px] flex-col bg-white shadow-2xl dark:bg-black"
+		class="drop absolute top-0 flex h-full w-[300px] flex-col overflow-auto bg-white shadow-2xl dark:bg-black"
 	>
 		<div class="absolute right-0 m-3">
 			<button class="rounded bg-sky-300 p-1 text-2xl text-black" on:click={closeDropdown}
@@ -66,54 +66,53 @@
 		<ul
 			use:clickOutside
 			on:click_outside={closeDropdown}
-			class={` dropdown-menu    flex h-fit  flex-col items-start justify-start gap-2 p-2 text-sm `}
+			class={`dropdown-menu flex h-fit  flex-col items-start justify-start gap-2 p-2 text-sm `}
 		>
 			<!-- transition:fly={{ y: 200, delay: 50 }} -->
-			<li class="p-2 text-center">Applies to all editor</li>
 
 			<li class="w-full">
-				<SingleSetting on:checked={handleAutoSave} checked={$autoSavefast} label={'Auto Save'} />
+				<ul class="settings-section">
+					<li class="p-2">General</li>
+
+					<li class="w-full">
+						<SingleSetting
+							on:checked={handleAutoSave}
+							checked={$autoSavefast}
+							label={'Auto Save'}
+						/>
+					</li>
+
+					<li class="w-full">
+						<SingleSetting
+							on:checked={handleDelayChange}
+							checked={$delayPreview}
+							label={'Delay preview'}
+						/>
+					</li>
+					<li class="w-full">
+						<SingleSetting
+							label={'Word Wrap'}
+							on:checked={handleWordWrap}
+							checked={$wordWrapSetting}
+						/>
+					</li>
+				</ul>
 			</li>
 
-			<li class="w-full">
-				<SingleSetting
-					on:checked={handleDelayChange}
-					checked={$delayPreview}
-					label={'Delay preview'}
-				/>
-			</li>
-			<li class="w-full">
-				<SingleSetting label={'Word Wrap'} on:checked={handleWordWrap} checked={$wordWrapSetting} />
-			</li>
-			<!-- <li class="w-full">
-				<SingleSetting
-					label={'Smaller font size'}
-					on:checked={handleSmallerFont}
-					checked={$smallerFontSize}
-				/>
-			</li>
-			<li class="w-full">
-				<SingleSetting
-					on:checked={handleInderLines}
-					checked={$renderIndentGuidesSetting}
-					label={'Indent lines'}
-				/>
-			</li>
-			<li class="w-full">
-				<SingleSetting
-					on:checked={handleFormatOnPaste}
-					checked={$formatOnPasteSetting}
-					label={'Format on paste'}
-				/>
-			</li> -->
+			<li class="settings-section flex flex-col gap-2 px-1 text-black">
+				<!-- <p></p> -->
+				Format Editors
 
-			<!-- <li class="w-full">
-				<DownloadCodeDropDown />
-			</li> -->
-			<li class="px-1 text-black">
-				<FormatCode />
+				<div class="w-fit">
+					<FormatCode />
+				</div>
 			</li>
-			<li><AddTags owner={$isOwner} /></li>
+
+			<li class="settings-section flex flex-col gap-1"><AddTags owner={$isOwner} /></li>
+		</ul>
+
+		<ul class="settings-section flex flex-col gap-2 p-3 text-black md:hidden">
+			<li class="px-2">Actions</li>
 			{#if $isOwner}
 				<li>
 					<label
@@ -126,14 +125,10 @@
 					>
 				</li>
 			{/if}
-		</ul>
-
-		<ul class="flex flex-col gap-2 p-3 text-black md:hidden">
-			<li class="flex w-fit items-center justify-center gap-2 rounded bg-gray-300 px-2">
-				Embed
+			<li class="flex w-fit items-center justify-center gap-2 rounded px-2">
 				<FeGetEmbed />
 			</li>
-			<li>
+			<li class="px-2">
 				{#if !$isOwner}
 					<li class="flex w-fit items-center justify-center gap-1 rounded bg-green-500 px-2 py-1">
 						Fork <FeFork />
@@ -147,5 +142,14 @@
 <style>
 	.drop {
 		z-index: 9999;
+	}
+
+	.settings-section {
+		border: 1px solid #ddd;
+		border-radius: 4px;
+		padding: 10px;
+		margin-bottom: 1px;
+		width: 100%;
+		border-radius: 4px;
 	}
 </style>
