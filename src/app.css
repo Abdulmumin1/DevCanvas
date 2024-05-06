@@ -138,14 +138,12 @@
 	.article pre {
 		padding: theme(padding.3);
 		overflow: scroll;
-		font-size: theme(fontSize.sm);
+		font-size: theme(fontSize.xs);
 		@apply rounded-2xl border-sky-dark;
 	}
 
 	.article h1 {
 		font-family: 'Rubik', serif !important;
-
-		/* color: theme(colors.orang); */
 		text-transform: capitalize;
 		@apply py-2 text-3xl text-black dark:text-white md:text-4xl;
 		font-weight: 500;
@@ -189,6 +187,7 @@
 	.article pre > code {
 		background-color: inherit !important;
 		font-family: 'source code pro';
+		font-size: 13px !important;
 		@apply text-sm lg:text-base;
 	}
 

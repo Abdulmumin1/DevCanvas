@@ -3,9 +3,9 @@ title: 'CSS Box Sizing: Beginners Series'
 
 description: 'the box-sizing property profoundly influences the behavior of the CSS Box Model, impacting how elements are sized and how their dimensions are calculated. Understanding and utilizing box-sizing effectively can lead to more predictable and manageable layouts in web development projects.'
 
-date: '2024-05-14'
+date: '2024-04-14'
 
-lastmod: '2024-05-14'
+lastmod: '2024-04-14'
 
 categories:
   - CSS
