@@ -73,7 +73,7 @@
 		</div>
 	</section>
 
-	<section class="h-[1000px] p-12 md:h-full">
+	<section class="h-[1000px] overflow-y-hidden p-12 md:h-full">
 		<HeroCanvas />
 	</section>
 </div>
