@@ -13,7 +13,7 @@
 <form action={path} class="relative flex" method="post">
 	<input
 		type="text"
-		class="flex w-full items-center gap-2 rounded-lg bg-gray-300 bg-inherit px-3 py-2 outline-none transition-transform duration-300 focus:outline-2 focus:outline-sky-300 dark:bg-secondary-dark dark:text-white"
+		class="flex w-full items-center gap-2 rounded-lg bg-inherit px-3 py-2 outline-none transition-transform duration-300 focus:outline-2 focus:outline-sky-300 dark:text-white"
 		placeholder="Search anything .."
 		name="query"
 		value={query}
