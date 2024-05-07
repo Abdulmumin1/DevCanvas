@@ -125,14 +125,9 @@
 </script>
 
 <svelte:head>
-	<title>Html Playground</title>
+	<title>Launch Editor - DevCanvas</title>
 
-	<!-- Facebook Meta Tags -->
-	<meta property="og:title" content="play around with html and css (tailwind bootstap)" />
-
-	<!-- Twitter Meta Tags -->
-	<meta name="twitter:title" content="play around with html and css (tailwind bootstap)" />
-	<!-- HTML Meta Tags -->
+	<meta property="og:description" content="Launch a new html/css/js playground" />
 </svelte:head>
 
 <NavWrapper>

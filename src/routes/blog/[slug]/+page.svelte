@@ -16,7 +16,10 @@
 		faBackward,
 		faCalendar,
 		faCopy,
+		faEdit,
 		faExternalLinkSquare,
+		faPen,
+		faPenAlt,
 		faUser
 	} from '@fortawesome/free-solid-svg-icons';
 	import { scale } from 'svelte/transition';
@@ -117,26 +120,44 @@
 
 <article in:scale class="mx-auto flex flex-col gap-6 md:px-2 lg:px-4">
 	<hgroup class="  relative flex w-full flex-col gap-3 rounded-lg dark:text-light">
-		<aside>
-			<a href="/blog" class="flex items-center gap-1"><Fa icon={faAngleLeft} />Back home</a>
+		<aside class="">
+			<a href="/blog" class="mb-5 flex items-center gap-1 transition-all duration-300 hover:gap-2"
+				><span class="text-sky-500 dark:text-sky-300">
+					<Fa icon={faAngleLeft} />
+				</span>Back home</a
+			>
 		</aside>
-		<div class="fd flex flex-col gap-4">
-			<div class="flex flex-wrap gap-3">
+		<div class="fd flex flex-col">
+			<h1 class="title my-10 text-balance text-3xl md:text-5xl">
+				{data.meta.title}
+			</h1>
+			<div class="flex flex-wrap gap-4">
 				<div class="flex items-center gap-2 text-balance">
-					<Fa icon={faCalendar} />
+					<span class="text-sky-500 dark:text-sky-300">
+						<Fa icon={faCalendar} />
+					</span>
 					<p class="text-sm">Published {formatDate(data.meta.date)}</p>
 				</div>
 
 				<div class="flex items-center gap-2 text-balance">
-					<span><Fa icon={faUser} /></span>
+					<span class="text-sky-500 dark:text-sky-300"><Fa icon={faUser} /></span>
 					<p>Written by: Abdulmumin Yaqeen</p>
-					<a href="https://yaqeen.me/about" target="_blank"><Fa icon={faExternalLinkSquare} /></a>
+					<a class="text-sky-500 dark:text-sky-300" href="https://yaqeen.me/about" target="_blank"
+						><Fa icon={faExternalLinkSquare} /></a
+					>
 				</div>
 			</div>
-			<h1 class="title text-balance text-3xl md:text-5xl">
-				{data.meta.title}
-			</h1>
 		</div>
+
+		{#if data.meta.date != data.meta.lastmod}
+			<div class="mt-5 flex items-center gap-2">
+				<div class="text-sky-500 dark:text-sky-300">
+					<Fa icon={faPen} />
+				</div>
+				Last Edited:
+				{formatDate(data.meta.lastmod)}
+			</div>
+		{/if}
 	</hgroup>
 
 	<div class="markdown-content article space-y-8 font-light text-[#404953] dark:text-light">

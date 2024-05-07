@@ -59,6 +59,10 @@
 
 <svelte:head>
 	<title>Explore</title>
+	<meta
+		property="og:description"
+		content="Library of Awesome frontend creations for your inspiration!"
+	/>
 </svelte:head>
 <!-- <div class="bg-secondary-dark min-h-[50vh]">
 	<InnerNav />
