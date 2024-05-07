@@ -18,8 +18,7 @@ export const SnippetsDescription = readable({
 	name: 'DevCanvas - Super Fast Online Editor',
 	des: 'an online editor with super powers, fast preview, plugins and super cool library of cool Frontend creations for your inspiration.',
 	url: 'https://devcanvas.art',
-	imageUrl:
-		'https://raw.githubusercontent.com/Abdulmumin1/snippetLand/6643c0d26744f6231aa168bf352c27b49664ba66/static/devCanvas.png'
+	imageUrl: '/devcanvas.png'
 });
 
 export const pageCountPl = writable(12);
