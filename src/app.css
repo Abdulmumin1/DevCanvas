@@ -169,11 +169,12 @@
 
 		/* color: theme(colors.orang); */
 	}
+
 	.article h4 {
-		/* font-family: '', serif !important; */
+		font-family: 'Rubik', serif !important;
 		@apply py-2 text-lg text-black dark:text-white md:text-xl;
 
-		/* font-weight: theme(fontWeight.bold); */
+		font-weight: 500;
 		/* color: theme(colors.orang); */
 	}
 

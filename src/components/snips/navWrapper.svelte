@@ -51,12 +51,12 @@
 						<li><OverlayNav /></li>
 
 						<li
-							class="hidden w-fit rounded-xl bg-gray-100 px-3 py-2 text-sm dark:bg-secondary-dark dark:text-light md:flex"
+							class="hidden w-fit rounded-lg px-3 py-2 text-sm text-black dark:text-white md:flex"
 						>
 							<Open />
 						</li>
 
-						<li class="hidden text-black dark:text-white md:block"><Darkmode /></li>
+						<!-- <li class="hidden text-black dark:text-white md:block"><Darkmode /></li> -->
 
 						{#if !$user}
 							<li><a href={signinURL} class="rounded-lg bg-green-400 p-3">Join</a></li>

@@ -5,7 +5,7 @@ description: "Ensuring accessibility in web design is really important. It's not
 
 date: '2024-05-06'
 
-lastmod: '2024-05-06'
+lastmod: '2024-05-07'
 
 categories:
   - CSS
@@ -275,7 +275,7 @@ Incorporating accessibility considerations into web design isn't just a moral im
 
 👎🏾 Overly decorative or cursive fonts can be challenging to read for users with dyslexia or cognitive disabilities.
 
-**_"Instead of using descriptive alt text for images, I think we should just put something nice and simple like 'Image' or 'Pic.' It looks super clean that way."_**
+**_"Instead of using descriptive alt text for images, I think we should just put something nice and simple like 'Image' or 'Pic.' It not very important anyways."_**
 
 👎🏾 Providing inadequate or uninformative alternative text for images can make content inaccessible for users who rely on screen readers or have visual impairments.
 

@@ -10,22 +10,15 @@
 	let sort = 'tags';
 </script>
 
-<div
-	class="group flex w-full items-center gap-2 rounded-xl bg-gray-100 px-3 py-2 transition-transform duration-300 dark:bg-secondary-dark dark:text-white"
->
-	<Fa icon={faSearch} />
-	<form action={path} class="w-full" method="post">
-		<input
-			type="text"
-			class="w-full bg-inherit outline-none"
-			placeholder="Search anything .."
-			name="query"
-			value={query}
-		/>
-	</form>
-
-	<!-- <div>
-		<span>Search by</span>
-		<button><Fa icon={faSearch} /></button>
-	</div> -->
-</div>
+<form action={path} class="relative flex" method="post">
+	<input
+		type="text"
+		class="flex w-full items-center gap-2 rounded-lg bg-gray-300 bg-inherit px-3 py-2 outline-none transition-transform duration-300 focus:outline-2 focus:outline-sky-300 dark:bg-secondary-dark dark:text-white"
+		placeholder="Search anything .."
+		name="query"
+		value={query}
+	/>
+	<span class="absolute right-0 top-[50%] mr-2 translate-y-[-50%] dark:text-white">
+		<Fa icon={faSearch} />
+	</span>
+</form>

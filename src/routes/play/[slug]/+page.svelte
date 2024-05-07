@@ -83,6 +83,7 @@
 	<meta name="twitter:title" content={data.details.description} />
 
 	<!-- HTML Meta Tags -->
+	
 </svelte:head>
 
 <div class="flex h-screen flex-col">
