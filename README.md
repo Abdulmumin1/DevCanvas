@@ -1,8 +1,8 @@
 # DevCanvas
 
-![Snippets Logo](/static/snippetsPreview.png)
+![Snippets Logo](/static/devcanvas.png)
 
-DevCanvas is an open-source platform for sharing code snippets. It provides a simple and intuitive interface for developers to share, discover, and discuss frontend code and code snippets across various programming languages and use cases.
+An online editor with super powers, fast preview, plugins and super cool library of cool Frontend creations for your inspiration.
 
 ## Stack
 
@@ -58,8 +58,8 @@ DevCanvas is an open-source platform for sharing code snippets. It provides a si
 
 ## Installation (Locally)
 
-1. Clone the repository: `git clone https://github.com/Abdulmumin1/snippetLand.git`
-2. Navigate to the project directory: `cd SnippetLand`
+1. Clone the repository: `git clone https://github.com/Abdulmumin1/devcanvas.git`
+2. Navigate to the project directory: `cd devcanvas`
 3. Install dependencies: `npm install` or `yarn install`
 
 ## Usage
