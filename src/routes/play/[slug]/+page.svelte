@@ -29,6 +29,12 @@
 
 	export let data;
 
+	import { setReloadContext, getReload } from '$lib/feEditor/funct.js';
+
+	setReloadContext();
+
+	let reload = getReload();
+
 	// console.log(user)
 
 	let mobileDetails;
@@ -83,7 +89,6 @@
 	<meta name="twitter:title" content={data.details.description} />
 
 	<!-- HTML Meta Tags -->
-	
 </svelte:head>
 
 <div class="flex h-screen flex-col">
@@ -96,8 +101,10 @@
 				<FeCodeEditor initialHTML={data.details.html} initialCSS={data.details.css} lang="html" />
 			</div>
 			<div slot="right" class="relative h-full w-full">
-				<CodeOutput code={$current_data.html} css={$current_data.css} js={$current_data.js} />
-				<JsConsole />
+				{#key $reload}
+					<CodeOutput code={$current_data.html} css={$current_data.css} js={$current_data.js} />
+					<JsConsole />
+				{/key}
 			</div>
 		</Resizable>
 		<SideComponent />
