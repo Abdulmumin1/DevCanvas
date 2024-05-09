@@ -11,6 +11,7 @@
 	import Login from '../auth/login.svelte';
 	import SelectLayout from './selectLayout.svelte';
 	import MobileNav from '../mobileNav.svelte';
+	import ReloadEditor from './reloadEditor.svelte';
 	export let ispublic;
 </script>
 
@@ -28,6 +29,7 @@
 			</div>
 		</li>
 		<ul class="flex items-center justify-center gap-2">
+			<li><ReloadEditor /></li>
 			<li class="hidden md:flex"><SelectLayout /></li>
 			{#if $isOwner}
 				{#if $showSave}

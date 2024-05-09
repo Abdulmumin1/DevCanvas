@@ -27,15 +27,17 @@
 
 		iframeDoc.querySelectorAll('style').forEach((element) => element.remove());
 
-		const styleElement = iframeDoc.createElement('style');
+		if (!wait) {
+			const styleElement = iframeDoc.createElement('style');
 
-		if (currentCSS !== cssCode && ($sassActive || useSassEmbed)) {
-			styleElement.textContent = compiledSassCSS;
-			iframeDoc.head.appendChild(styleElement);
-			compileSassCode(iframeDoc);
-		} else if (currentCSS !== cssCode && !($sassActive || useSassEmbed)) {
-			styleElement.textContent = cssCode;
-			iframeDoc.head.appendChild(styleElement);
+			if (currentCSS !== cssCode && ($sassActive || useSassEmbed)) {
+				styleElement.textContent = compiledSassCSS;
+				iframeDoc.head.appendChild(styleElement);
+				compileSassCode(iframeDoc);
+			} else if (currentCSS !== cssCode && !($sassActive || useSassEmbed)) {
+				styleElement.textContent = cssCode;
+				iframeDoc.head.appendChild(styleElement);
+			}
 		}
 
 		injectJavascript(iframeDoc, jsCode);
@@ -48,7 +50,9 @@
 			const styleElement = iframeDoc.createElement('style');
 			styleElement.textContent = compiledSassCSS;
 			iframeDoc.head.appendChild(styleElement);
-			currentCSS = cssCode;
+			if (!wait) {
+				currentCSS = cssCode;
+			}
 		}, 1000);
 	};
 
@@ -99,15 +103,15 @@
 	const handleIframeLoad = () => {
 		updatePreview();
 
-		const cssPluginsActive = Object.values($cssPlugins).some(Boolean);
-		const jsPluginsActive = Object.values($jsPlugins).some(Boolean);
-		const userLibrariesImported = $userImportedJS ? $userImportedJS.length > 0 : false;
+		// const cssPluginsActive = Object.values($cssPlugins).some(Boolean);
+		// const jsPluginsActive = Object.values($jsPlugins).some(Boolean);
+		// const userLibrariesImported = $userImportedJS ? $userImportedJS.length > 0 : false;
 
-		if (cssPluginsActive || jsPluginsActive || userLibrariesImported) {
-			setTimeout(() => {
-				current_data.update((cur) => ({ ...cur, html: `${cur.html}  ` }));
-			}, 2000);
-		}
+		// if (!wait) {
+		setTimeout(() => {
+			current_data.update((cur) => ({ ...cur, html: `${cur.html}  ` }));
+		}, 1000);
+		// }
 	};
 
 	const triggerJSUpdate = () => {
@@ -116,18 +120,27 @@
 		}, 1000);
 	};
 
+	let wait = true;
+
+	function specialUpdate() {
+		if (!wait) {
+			updatePreview();
+		}
+	}
 	$: {
 		htmlCode = $current_data?.html ?? '';
 		cssCode = $current_data?.css ?? '';
 		jsCode = $current_data?.js ?? '';
-		updatePreview();
+		specialUpdate();
 	}
 
 	$: currentJS !== jsCode && handleIframeReload();
 
 	const handleIframeReload = () => {
 		clearTimeout(sassCompilationTimer);
-		currentJS = jsCode;
+		if (!wait) {
+			currentJS = jsCode;
+		}
 		if (previewIframe) {
 			previewIframe.contentWindow.location.reload(true);
 			previewIframe.onload = handleIframeLoad;
@@ -136,8 +149,11 @@
 	};
 
 	onMount(() => {
-		currentCSS = null;
-		currentJS = null;
+		setTimeout(() => {
+			wait = false;
+		}, 1000);
+		// currentCSS = null;
+		// currentJS = null;
 	});
 </script>
 
