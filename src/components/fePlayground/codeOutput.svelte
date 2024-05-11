@@ -1,9 +1,15 @@
 <script>
 	import { current_data } from '$lib/index.js';
-	import { cssPlugins, jsPlugins, sassActive, userImportedJS } from '$lib/feEditor/store.js';
+	import {
+		cssPlugins,
+		jsPlugins,
+		showLoginToSave,
+		sassActive,
+		userImportedJS
+	} from '$lib/feEditor/store.js';
 	import { setup_js_plugin, loadScriptFromURL, injectHeadContent } from '$lib/plugins/store.js';
 	import { injectJavascript } from '$lib/feEditor/previewUtils.js';
-	import { onMount } from 'svelte';
+	import { onDestroy, onMount } from 'svelte';
 	import { compileSassString } from '$lib/utils.js';
 
 	export let htmlCode;
@@ -28,6 +34,7 @@
 		iframeDoc.querySelectorAll('style').forEach((element) => element.remove());
 
 		if (!wait) {
+			// console.log('no wait');
 			const styleElement = iframeDoc.createElement('style');
 
 			if (currentCSS !== cssCode && ($sassActive || useSassEmbed)) {
@@ -38,6 +45,15 @@
 				styleElement.textContent = cssCode;
 				iframeDoc.head.appendChild(styleElement);
 			}
+		} else {
+			const styleElement = iframeDoc.createElement('style');
+			styleElement.textContent = `
+			*{
+				display:none !important;
+			}
+			`;
+
+			iframeDoc.head.appendChild(styleElement);
 		}
 
 		injectJavascript(iframeDoc, jsCode);
@@ -110,6 +126,7 @@
 		// if (!wait) {
 		setTimeout(() => {
 			current_data.update((cur) => ({ ...cur, html: `${cur.html}  ` }));
+			showLoginToSave.set(false);
 		}, 1000);
 		// }
 	};
@@ -117,6 +134,7 @@
 	const triggerJSUpdate = () => {
 		setTimeout(() => {
 			current_data.update((cur) => ({ ...cur, js: `${cur.js}   ` }));
+			showLoginToSave.set(false);
 		}, 1000);
 	};
 
@@ -148,12 +166,19 @@
 		}
 	};
 
+	let waitTimeout;
 	onMount(() => {
-		setTimeout(() => {
+		clearTimeout(waitTimeout);
+
+		waitTimeout = setTimeout(() => {
 			wait = false;
-		}, 1000);
+		}, 1100);
 		// currentCSS = null;
 		// currentJS = null;
+	});
+
+	onDestroy(() => {
+		clearTimeout(waitTimeout);
 	});
 </script>
 

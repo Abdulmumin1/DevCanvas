@@ -1,9 +1,9 @@
 <script>
 	import { current_data, isOwner } from '$lib/index.js';
-	import { showLoginToSave, showForkTosave } from '$lib/feEditor/store.js';
+	import { showLoginToSave } from '$lib/feEditor/store.js';
 
 	import { saveData } from '$lib/feEditor/store.js';
-	import { faLock, faLockOpen, faPen } from '@fortawesome/free-solid-svg-icons';
+	import { faPen } from '@fortawesome/free-solid-svg-icons';
 	import Fa from 'svelte-fa';
 	import { getProfile } from '$lib/utils.js';
 
@@ -14,43 +14,33 @@
 
 	let supabase = $page.data.supabase;
 	let session = $page.data.session;
-
-	let typingTimer; // Timer to track typing
-	const delay = 1000; // Adjust the delay as needed (in milliseconds)
-
-	let text = $current_data.description;
+	let typingTimer;
+	const typingDelay = 1000;
+	let description = $current_data.description;
 	let title = null;
+
 	try {
-		title = text.split('Fork:')[1];
-		console.log(title);
+		title = description.split('Fork:')[1].trim();
 	} catch (err) {
-		//
+		// Handle the case where 'Fork:' is not present
 	}
-	// Function to handle text input
+
 	function handleInput(event) {
 		if (!$isOwner) return;
-		let text = event.target.innerText;
+		let newDescription = event.target.innerText;
 		if (title) {
-			text = `Fork: ${text}`;
+			newDescription = `Fork: ${newDescription}`;
 		}
 
-		console.log(text);
-		current_data.update((cur) => {
-			// console.log(cur);
-			return { ...cur, description: text };
-		});
-		clearTimeout(typingTimer); // Clear the previous timer
+		current_data.update((cur) => ({ ...cur, description: newDescription }));
+		clearTimeout(typingTimer);
 
-		typingTimer = setTimeout(function () {
-			// This function will run after the delay (user has stopped typing)
+		typingTimer = setTimeout(() => {
 			saveToServer();
-		}, delay);
+		}, typingDelay);
 	}
 
-	// Function to save text to the server (simulated)
 	function saveToServer() {
-		// Send a request to the server with the text data
-		// You can use AJAX, Fetch API, or any other method to send data to the server
 		saveData($current_data, 'description');
 	}
 
@@ -63,48 +53,52 @@
 	$: profile = [];
 
 	onMount(async () => {
-		if ($current_data.user_id == session?.user?.id) return;
+		if ($current_data.user_id === session?.user?.id) return;
 		try {
-			let profile_data = await getProfile($current_data.user_id, supabase);
-			if (profile_data.length > 0) {
-				profile = profile_data;
+			const profileData = await getProfile($current_data.user_id, supabase);
+			if (profileData.length > 0) {
+				profile = profileData;
 			}
 		} catch (error) {
-			throw error;
+			console.error(error);
 		}
 	});
 
 	onDestroy(() => {
-		showForkTosave.set(false);
+		// showForkToSave.set(false);
 		showLoginToSave.set(false);
 	});
 </script>
 
 <div class="flex w-full flex-col">
 	{#if $isOwner}
-		<div class="flex items-center gap-2" style="margin-bottom: -7px;">
+		<div class="mb-[-7px] flex items-center gap-2">
 			{#if title}
-				<div class="flex w-fit max-w-[200px] items-center gap-1 md:max-w-[400px]">
+				<div class="flex w-fit max-w-[130px] items-center gap-1 md:max-w-[400px] xl:max-w-[600px]">
 					<p class="rounded bg-sky-400 p-[1.3px] text-sm text-black md:text-xl">Fork</p>
-					<p
-						contenteditable=""
-						on:keydown={handleKeyDown}
-						on:input={handleInput}
-						placeholder="Untitled Project"
-						spellcheck="false"
-						class=" min-w-[50px] truncate whitespace-nowrap bg-inherit text-sm font-semibold capitalize text-white focus:outline-1 focus:outline-sky-200 md:text-xl"
+					<div
+						class="min-w-[50px] max-w-[114px] truncate bg-inherit text-sm font-semibold capitalize text-white focus:outline-1 focus:outline-sky-200 md:text-xl"
 					>
-						{title}
-					</p>
+						<p
+							contenteditable
+							on:keydown={handleKeyDown}
+							on:input={handleInput}
+							placeholder="Untitled Project"
+							spellcheck="false"
+							class="truncate"
+						>
+							{title}
+						</p>
+					</div>
 				</div>
 			{:else}
 				<p
-					contenteditable=""
+					contenteditable
 					on:keydown={handleKeyDown}
 					on:input={handleInput}
 					placeholder="Untitled Project"
 					spellcheck="false"
-					class="w-fit min-w-[50px] max-w-[200px] truncate whitespace-nowrap bg-inherit text-sm font-semibold capitalize text-white focus:outline-1 focus:outline-sky-200 md:max-w-[400px] md:text-xl"
+					class="w-fit min-w-[50px] max-w-[130px] truncate bg-inherit text-sm font-semibold capitalize text-white focus:outline-1 focus:outline-sky-200 md:max-w-[400px] md:text-xl xl:max-w-[600px]"
 				>
 					{$current_data.description}
 				</p>
@@ -116,23 +110,27 @@
 			<CanvasVisibility canvas_id={$current_data.id} publicLy={$current_data.public} />
 		</div>
 	{:else if title}
-		<div class="flex w-fit max-w-[200px] items-center gap-1 md:max-w-[400px]">
+		<div class="flex w-fit max-w-[130px] items-center gap-1 md:max-w-[400px] xl:max-w-[600px]">
 			<p class="flex items-baseline rounded bg-sky-400 p-[1.3px] text-sm text-black md:text-xl">
 				Fork
 			</p>
-			<p
-				class="flex w-fit max-w-[200px] items-center gap-2 truncate whitespace-nowrap bg-inherit text-sm font-semibold capitalize text-white outline-none md:max-w-[400px] md:text-xl"
+			<div
+				class="flex w-fit max-w-[115px] items-center gap-2 bg-inherit text-sm font-semibold capitalize text-white outline-none md:max-w-[400px] md:text-xl xl:max-w-[600px]"
 			>
-				{title}
-			</p>
+				<p class="truncate">
+					{title}
+				</p>
+			</div>
 		</div>
 	{:else}
-		<p
+		<div
 			style="margin-bottom: -7px;"
-			class="flex w-fit max-w-[200px] items-center gap-2 truncate whitespace-nowrap bg-inherit text-sm font-semibold capitalize text-white outline-none md:max-w-[400px] md:text-xl"
+			class="flex w-fit max-w-[120px] items-center gap-2 bg-inherit text-sm font-semibold capitalize text-white outline-none md:max-w-[400px] md:text-xl xl:max-w-[600px]"
 		>
-			{$current_data.description}
-		</p>
+			<p class="truncate">
+				{$current_data.description}
+			</p>
+		</div>
 	{/if}
 
 	{#if profile.length > 0}

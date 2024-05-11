@@ -224,7 +224,7 @@
 		background-color: black !important;
 	}
 
-	:root {
+	.bc {
 		--scroll-bg: #2263c593;
 	}
 </style>
