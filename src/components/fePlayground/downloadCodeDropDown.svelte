@@ -1,5 +1,5 @@
 <script>
-	import { onMount } from 'svelte';
+	// import { onMount } from 'svelte';
 	import { clickOutside, current_data } from '$lib/index.js';
 	import { constructHtmlForZip } from '$lib/downloadCode/index.js';
 	// import feather from 'feather-icons';

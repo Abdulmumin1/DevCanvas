@@ -100,7 +100,7 @@
 	}
 
 	let showOther = false;
-	let filter = 'tags';
+	let filter = 'desc';
 	function toogle() {
 		showOther = !showOther;
 	}
@@ -126,7 +126,9 @@
 
 <NavWrapper>
 	<!-- Code Snippet Cards -->
-	<div class="flex flex-wrap items-center gap-2 pt-2">
+	<div
+		class="sticky top-[0px] z-50 flex flex-wrap items-center gap-2 border-b bg-white py-2 pt-2 dark:border-secondary-dark dark:bg-primary"
+	>
 		Filters:
 		<button
 			class="bg-sky-light {filter == 'tags'

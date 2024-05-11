@@ -128,7 +128,7 @@
 			>
 		</aside>
 		<div class="fd flex flex-col">
-			<h1 class="title my-10 text-balance text-3xl md:text-5xl">
+			<h1 class="title my-10 text-balance text-4xl md:text-5xl">
 				{data.meta.title}
 			</h1>
 			<div class="flex flex-wrap gap-4">

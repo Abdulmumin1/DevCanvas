@@ -16,14 +16,14 @@
 		<!-- <div class="w-40 h-3 bg-gray-200 dark:bg-gray-600" /> -->
 
 		<div class="flex w-full items-center justify-between">
-			<div class="h-7 w-40 rounded-3xl bg-gray-200 dark:bg-gray-400" />
+			<div class="h-5 w-40 rounded-3xl bg-gray-200 dark:bg-gray-400" />
 
 			<div class="flex w-fit items-center justify-center gap-2">
 				<span
-					class="flex h-5 w-10 items-center justify-center gap-2 rounded-2xl bg-gray-400 dark:bg-gray-500"
+					class="flex h-4 w-10 items-center justify-center gap-2 rounded-2xl bg-gray-400 dark:bg-gray-500"
 				/>
 				<!-- {JSON.stringify(details.view)} -->
-				<div class="h-5 w-10 rounded-2xl bg-gray-200 dark:bg-gray-400" />
+				<div class="h-4 w-10 rounded-2xl bg-gray-200 dark:bg-gray-400" />
 			</div>
 		</div>
 	</div>

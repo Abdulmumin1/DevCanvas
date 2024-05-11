@@ -47,8 +47,8 @@
 			<div class="w-full border-b px-3 py-3 text-primary dark:border-secondary-dark">
 				<ul class="flex w-full items-center justify-end gap-2">
 					<ul class="flex w-full items-center justify-center gap-2">
-						<li class="flex-1"><Search /></li>
 						<li><OverlayNav /></li>
+						<li class="flex-1"><Search /></li>
 
 						<li
 							class="hidden w-fit rounded-lg px-3 py-2 text-sm text-black dark:text-white md:flex"
