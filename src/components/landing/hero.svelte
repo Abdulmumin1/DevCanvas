@@ -35,7 +35,7 @@
 <!-- grid grid-cols-1 items-end justify-between gap-x-20 md:grid-cols-2 lg:gap-x-40 -->
 <div class="flex flex-col md:flex-row lg:items-center">
 	<section
-		class="relative flex h-full w-full min-w-[20rem] flex-col gap-4 border-primary px-8 py-0 text-secondary-dark md:mt-12 md:min-w-[30rem] md:py-12 lg:ml-20"
+		class="relative flex h-full w-full min-w-[20rem] flex-col gap-4 border-primary px-8 py-0 text-secondary-dark md:mt-12 md:min-w-[30rem] md:py-12 lg:ml-0 lg:py-0"
 	>
 		<!-- <p>
 			<a
@@ -73,7 +73,7 @@
 		</div>
 	</section>
 
-	<section class="h-[1000px] overflow-y-hidden p-12 md:h-full">
+	<section class=" h-full overflow-hidden p-12">
 		<HeroCanvas />
 	</section>
 </div>

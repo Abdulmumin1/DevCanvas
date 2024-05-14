@@ -61,15 +61,17 @@
 	<div class="relative z-10 w-full">
 		<InnerNav />
 	</div>
-	<div class="mx-auto flex w-full flex-col items-center justify-center gap-4 rounded-lg">
+	<div
+		class="mx-auto flex w-full flex-col items-center justify-center gap-4 overflow-y-hidden rounded-lg"
+	>
 		<!-- Add your landing page content here -->
-		<div class="grid max-h-[40rem] md:max-h-[35rem] lg:max-h-[50rem]">
-			<header class="w-full overflow-hidden">
+		<div class="grid max-h-[40rem] overflow-y-hidden md:max-h-[35rem] lg:max-h-[50rem]">
+			<header class="w-full overflow-y-hidden">
 				<!-- <div
 					id="kds"
 					class=" w-screen right-0 h-[612px] bg-sky-300 top-0 overflow-hidden absolute"
 				/> -->
-				<div class="mt-20">
+				<div class="mt-20 overflow-y-hidden">
 					<Hero />
 				</div>
 			</header>
