@@ -43,7 +43,7 @@ REM (Root EM) and PX (Pixels) are both units of measurement in CSS, but they hav
 
 ### Scenario 1: Responsive Typography
 
-Imagine you're designing a website where text sizes should scale proportionally with the viewport size.
+Imagine you're designing a website where text sizes should scale proportionally with the viewport size:
 
 ```css
 html {
@@ -72,7 +72,7 @@ In this scenario, using REM ensures that text sizes adjust dynamically based on 
 
 ### Scenario 2: Fixed-width Layout
 
-Suppose you're working on a design that requires fixed-width containers and elements.
+Suppose you're working on a design that requires fixed-width containers and elements:
 
 ```css
 .container {
@@ -96,7 +96,7 @@ Here, PX units are appropriate for defining fixed dimensions, ensuring elements 
 
 **Fixed layouts**: PX units are preferred when designing fixed-width layouts that do not need to adjust to different screen sizes.
 
-### Best Practices:
+### My Takes:
 
 1. Use REM for typography and layout dimensions that need to scale.
 2. Reserve PX for fixed dimensions and precise control.
