@@ -5,7 +5,7 @@ description: "Two commonly used units are REM and PX. In this tutorial, we'll ex
 
 date: '2024-03-07'
 
-lastmod: '2024-03-07'
+lastmod: '2024-05-16'
 
 categories:
   - CSS
@@ -104,4 +104,4 @@ Here, PX units are appropriate for defining fixed dimensions, ensuring elements 
 
 **Conclusion**:
 
-By mastering REM and PX units, you gain the ability to create flexible and responsive layouts while retaining precise control over element dimensions. Understanding when to use each unit empowers you to craft web designs that adapt seamlessly to various devices and user preferences.
+Understanding when to use each unit allow you more flexibility when building for various devices and user preferences.
