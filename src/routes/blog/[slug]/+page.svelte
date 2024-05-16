@@ -141,16 +141,18 @@
 
 				<div class="flex items-center gap-2 text-balance">
 					<span class="text-sky-500 dark:text-sky-300"><Fa icon={faUser} /></span>
-					<p>Written by: Abdulmumin Yaqeen</p>
-					<a class="text-sky-500 dark:text-sky-300" href="https://yaqeen.me/about" target="_blank"
-						><Fa icon={faExternalLinkSquare} /></a
+					<p class="text-sm">Written by: Abdulmumin Yaqeen</p>
+					<a
+						class="text-sky-500 dark:text-sky-300"
+						href="https://www.yaqeen.me/about"
+						target="_blank"><Fa icon={faExternalLinkSquare} /></a
 					>
 				</div>
 			</div>
 		</div>
 
 		{#if data.meta.date != data.meta.lastmod}
-			<div class="mt-5 flex items-center gap-2">
+			<div class="mt-5 flex items-center gap-2 text-sm">
 				<div class="text-sky-500 dark:text-sky-300">
 					<Fa icon={faPen} />
 				</div>
@@ -171,7 +173,7 @@
 				>&num;{tag}</span
 			> -->
 
-			{tag},&nbsp;
+			<span class="bg-sky-300 px-3 py-2 dark:bg-secondary-dark">{tag}</span>
 		{/each}
 	</div>
 
