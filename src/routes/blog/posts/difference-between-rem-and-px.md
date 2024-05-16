@@ -70,7 +70,7 @@ In this scenario, using REM ensures that text sizes adjust dynamically based on 
 
 **Consistency**: REM units promote consistency in typography and layout across the website.
 
-## Scenario 2: Fixed-width Layout
+### Scenario 2: Fixed-width Layout
 
 Suppose you're working on a design that requires fixed-width containers and elements.
 
