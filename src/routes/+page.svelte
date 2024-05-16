@@ -50,7 +50,7 @@
 			"alternateName": "snippetland",
 			"url": "https://devcanvas.art",
 			"logo": "https://devcanvas.art/logo.png",
-			"sameAs": "https://twitter.com/@devCanvas_"
+			"sameAs": "https://twitter.com/@devcanvas_"
 		}
 	</script>
 </svelte:head>
