@@ -39,7 +39,7 @@
 	{/if}
 </svelte:head>
 
-<article class="flex h-screen flex-col">
+<article class="flex min-h-screen flex-col">
 	<NavWrapper>
 		<main class="flex h-full flex-col items-center p-3">
 			<div
