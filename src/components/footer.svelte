@@ -3,66 +3,72 @@
 	import { faGithub } from '@fortawesome/free-brands-svg-icons';
 </script>
 
-<footer class="border-t-2 border-black bg-gray-200 px-4 py-8 text-black dark:border-secondary-dark">
-	<div class="flex gap-2">
-		<div class="flex flex-col space-y-2">
-			<h3 class="flex items-center gap-2 text-2xl font-bold">
-				DevCanvas
-
-				<img
-					src="/logo.svg"
-					class="h-10 rounded-3xl bg-sky-200 p-2 grayscale"
-					alt="SnippetLand Logo"
-				/>
-			</h3>
-			<p>
-				Online Editor with a collection of awesome frontend code and code snippets for developers of
-				all levels.
-			</p>
-		</div>
-	</div>
-
-	<div class="mt-4 flex flex-row gap-12">
-		<div class="flex flex-col space-y-2">
-			<h4 class="text-lg font-bold">Contact Us</h4>
-			<ul class="">
-				<li>
-					<a href="mailto:abdulmuminyqn@gmail.com" class=" hover:underline"
-						>abdulmuminyqn@gmail.com</a
-					>
-				</li>
-				<li>
-					<a href="https://twitter.com/@devcanvas_" class=" hover:underline">Twitter</a>
-				</li>
-				<li>
-					<a href="https://github.com/Abdulmumin1/devcanvas/" class=" hover:underline">GitHub</a>
-				</li>
-			</ul>
-		</div>
-
-		<div class="flex flex-col space-y-2">
-			<h4 class="text-lg">Links</h4>
-			<ul class="">
-				<li><a href="/" class=" hover:underline">Home</a></li>
-				<li><a href="/blog" class=" hover:underline">Blog</a></li>
-				<li><a href="/play" class=" hover:underline">Online Editor</a></li>
-				<li><a href="/about" class=" hover:underline">About</a></li>
-			</ul>
-		</div>
-	</div>
-
-	<div class="mt-4 flex flex-col justify-between">
-		<p class="copyright text-sm">&copy; 2023 DevCanvas. All rights reserved.</p>
-		<ul class="flex flex-row space-x-2">
-			<li><a href="/privacy-policy" class=" hover:underline">Privacy Policy</a></li>
-			<li><a href="/terms-of-service" class=" hover:underline">Terms of Service</a></li>
-		</ul>
-	</div>
-
+<footer class=" flex items-center justify-center">
 	<div
-		class="flex w-fit items-center justify-center rounded-lg bg-gray-300 p-2 text-center text-sm text-sky-dark"
+		class="bg- m-6 flex w-full max-w-[1000px] flex-wrap items-center justify-center gap-2 rounded-[50px] bg-gray-50 p-6 dark:bg-secondary-dark md:m-12"
 	>
-		Stand with Palestine 🇵🇸! DO NOT BE SILENCED
+		<div class="flex">
+			<div class="flex flex-col space-y-2">
+				<h3 class="flex items-center gap-2 text-2xl font-bold">
+					DevCanvas
+
+					<img
+						src="/logo.svg"
+						class="h-10 rounded-3xl bg-sky-200 p-2 grayscale"
+						alt="SnippetLand Logo"
+					/>
+				</h3>
+				<p class="md:max-w-[400px]">
+					Online Editor with a collection of awesome frontend code and code snippets for developers
+					of all levels.
+				</p>
+			</div>
+		</div>
+
+		<div class="mt-4 flex flex-row flex-wrap gap-2 md:gap-4">
+			<div class="flex flex-col space-y-2">
+				<h4 class="text-lg font-bold">Contact Us</h4>
+				<ul class="">
+					<li>
+						<a href="mailto:abdulmuminyqn@gmail.com" class=" hover:underline"
+							>abdulmuminyqn@gmail.com</a
+						>
+					</li>
+					<li>
+						<a href="https://twitter.com/@devcanvas_" class=" hover:underline">Twitter</a>
+					</li>
+					<li>
+						<a href="https://github.com/Abdulmumin1/devcanvas/" class=" hover:underline">GitHub</a>
+					</li>
+				</ul>
+			</div>
+
+			<div class="flex flex-col space-y-2">
+				<h4 class="text-lg">Links</h4>
+				<ul class="">
+					<li><a href="/" class=" hover:underline">Home</a></li>
+					<li><a href="/blog" class=" hover:underline">Blog</a></li>
+					<li><a href="/play" class=" hover:underline">Online Editor</a></li>
+					<li><a href="/about" class=" hover:underline">About</a></li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="flex flex-col flex-wrap gap-2">
+			<div class="mt-4 flex flex-col justify-between">
+				<p class="copyright text-sm">&copy; 2023 DevCanvas. All rights reserved.</p>
+				<ul class="flex flex-row space-x-2">
+					<li><a href="/privacy-policy" class=" hover:underline">Privacy Policy</a></li>
+					<li><a href="/terms-of-service" class=" hover:underline">Terms of Service</a></li>
+				</ul>
+			</div>
+
+			<div
+				class="flex w-fit items-center justify-center rounded-lg bg-gray-200 p-2 text-center text-sm text-sky-dark dark:bg-primary dark:text-white"
+			>
+				Stand with Palestine 🇵🇸! DO NOT BE SILENCED
+			</div>
+		</div>
 	</div>
 </footer>
 

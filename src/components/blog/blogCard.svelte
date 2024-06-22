@@ -50,12 +50,15 @@
 			</span>
 			Published {formatDate(details.date)}
 		</p>
-		<p class="flex items-center gap-2 text-[.9rem]">
+		<!-- <p class="flex items-center gap-2 text-[.9rem]">
 			<span class="opacity-85"> Written by: </span>
 			<span class="opacity-90">Abdulmumin Yaqeen</span>
-		</p>
+		</p> -->
 		<div class="">
-			<a href={`blog/${details.slug}`} class="x text-balance text-2xl hover:opacity-80 md:text-3xl">
+			<a
+				href={`blog/${details.slug}`}
+				class="text-balance text-2xl font-bold hover:opacity-80 md:text-3xl"
+			>
 				{details.title}</a
 			>
 			<!-- decoration-wavy underline underline-offset-4  -->

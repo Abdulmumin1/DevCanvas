@@ -27,7 +27,7 @@
 	});
 </script>
 
-<div class="flex h-screen min-h-screen w-full">
+<div class="flex min-h-screen w-full">
 	<div class=" h-full bg-inherit">
 		<SnipsSideNav />
 	</div>
@@ -44,7 +44,9 @@
 		{/if}
 
 		{#if !noSearch}
-			<div class="w-full border-b px-3 py-3 text-primary dark:border-secondary-dark">
+			<div
+				class="sticky top-0 z-50 w-full border-b bg-white px-3 py-3 text-primary dark:border-secondary-dark dark:bg-primary"
+			>
 				<ul class="flex w-full items-center justify-end gap-2">
 					<ul class="flex w-full items-center justify-center gap-2">
 						<li><OverlayNav /></li>
@@ -68,10 +70,7 @@
 			</div>
 		{/if}
 
-		<div
-			class="mb-4 h-full w-full overflow-y-scroll px-4 md:px-6"
-			transition:fly={{ x: 10, duration: 400 }}
-		>
+		<div class="mb-4 h-full w-full px-4 md:px-6" transition:fly={{ x: 10, duration: 400 }}>
 			<slot />
 		</div>
 	</div>

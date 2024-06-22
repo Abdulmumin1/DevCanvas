@@ -4,7 +4,6 @@
 export async function load({ fetch }) {
 	const response = await fetch('blog/api/posts');
 	const posts = await response.json();
-	console.log(posts);
 	return { posts };
 	// throw error(404, 'Not found');
 }
