@@ -46,7 +46,7 @@
 			</a>
 		</p> -->
 		<h1
-			class="hero-text text-balance text-4xl text-primary dark:text-light md:max-w-[40rem] md:text-6xl lg:text-[5rem]"
+			class="hero-text magic-text text-balance text-4xl text-primary dark:text-light md:max-w-[40rem] md:text-6xl lg:text-[5rem]"
 		>
 			The Editor <span class="font-serif font-bold">With Super Powers</span>
 		</h1>
@@ -147,19 +147,4 @@
 		/* fill: rgb(2 132 199); */
 		fill: whitesmoke;
 	}
-
-	h1 > .magic > .magic-text {
-		animation: background-pan 3s linear infinite;
-		background: linear-gradient(to right, var(--purple), var(--violet), var(--pink), var(--purple));
-		background-size: 200%;
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		white-space: nowrap;
-	}
-
-	/* .hero-text {
-		font-weight: 600;
-	} */
-
-	/* -- YouTube Link Styles -- */
 </style>

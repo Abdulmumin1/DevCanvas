@@ -51,11 +51,11 @@
 </script>
 
 <div
-	class="flex w-full items-center justify-center border-y-2 border-black bg-sky-300 px-4 dark:border-secondary-dark"
+	class="flex w-full items-center justify-center border-y-2 border-black bg-gray-50 px-4 dark:border-secondary-dark"
 >
 	<div class="anim flex min-h-[300px] max-w-[90rem] flex-col justify-center gap-3 px-2 py-12">
 		<h1 class="text-4xl font-semibold text-black md:text-5xl">Features</h1>
-		<p class="font-diana text-xl font-thin text-stone-800">
+		<p class=" mb-3 text-xl font-thin text-stone-800">
 			DevCanvas has everything you need to experiment with ideas, build and teach others how to
 			code.
 		</p>
@@ -83,4 +83,9 @@
 			scale: 1;
 		}
 	} */
+
+	.fs {
+		background: linear-gradient(to bottom, #03afff, #b3e0ff);
+		padding: 2rem;
+	}
 </style>

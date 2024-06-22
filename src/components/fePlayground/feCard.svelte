@@ -26,7 +26,7 @@
 </script>
 
 <div
-	class="card flex h-full flex-col rounded-xl bg-gray-100 p-1 shadow-sm transition-all duration-300 dark:bg-secondary-dark"
+	class="card flex h-full flex-col rounded-xl bg-gray-100 p-1 shadow-sm transition-all duration-300 dark:bg-secondary-dark md:max-w-[350px]"
 >
 	<!-- <div class=" rounded-xl bg-white w-full" bind:this={letsee}>
 		<img src={capturedImageUrl} alt="" srcset="" />
@@ -96,7 +96,7 @@
 		transform: translateY(-10px);
 		/* box-shadow: 10px 10px 0px rgba(0, 0, 0, 0.4); */
 	}
-	.card {
+	/* .card {
 		max-width: 350px;
-	}
+	} */
 </style>

@@ -5,7 +5,7 @@
 
 <footer class=" flex items-center justify-center">
 	<div
-		class="bg- m-6 flex w-full max-w-[1000px] flex-wrap items-center justify-center gap-2 rounded-[50px] bg-gray-50 p-6 dark:bg-secondary-dark md:m-12"
+		class=" m-3 flex w-full max-w-[1000px] flex-wrap items-center justify-center gap-2 rounded-[25px] bg-gray-50 p-6 dark:bg-secondary-dark md:m-12 md:rounded-[50px]"
 	>
 		<div class="flex">
 			<div class="flex flex-col space-y-2">
@@ -64,7 +64,7 @@
 			</div>
 
 			<div
-				class="flex w-fit items-center justify-center rounded-lg bg-gray-200 p-2 text-center text-sm text-sky-dark dark:bg-primary dark:text-white"
+				class="flex w-fit items-center justify-center rounded-lg bg-gray-200 p-2 text-center text-xs text-black dark:bg-primary dark:text-white md:text-sm"
 			>
 				Stand with Palestine 🇵🇸! DO NOT BE SILENCED
 			</div>
