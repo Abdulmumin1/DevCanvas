@@ -33,8 +33,8 @@
 <section class="min-h-screen">
 	<InnerNav />
 	<article class="-center flex h-full w-full flex-col items-center">
-		<h1 class="py-12 text-3xl md:text-6xl">DevCanvas Blog</h1>
-		<div class=" -center -center flex h-full w-full max-w-[1200px] flex-col gap-4 p-4 md:px-12">
+		<!-- <h1 class="py-12 text-3xl md:text-6xl">DevCanvas Blog</h1> -->
+		<div class=" mt-12 flex h-full w-full max-w-[1200px] flex-col gap-4 p-4 md:px-12">
 			<div class="mb-20 flex h-full w-full flex-col gap-4 md:min-h-[100dvh]">
 				{#if data.posts.length > 0}
 					<h1 class="text-3xl">Latest Post</h1>

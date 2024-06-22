@@ -188,7 +188,6 @@
 	.article pre > code {
 		background-color: inherit !important;
 		font-family: 'source code pro';
-		font-size: 13px !important;
 		@apply text-sm lg:text-base;
 	}
 

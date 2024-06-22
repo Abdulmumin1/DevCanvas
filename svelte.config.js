@@ -16,7 +16,7 @@ const mdsvexConf = {
 			// });
 			const html = await codeToHtml(code, {
 				lang,
-				theme: 'tokyo-night'
+				themes: { dark: 'andromeeda', light: 'catppuccin-latte' }
 			});
 			return `{@html \`${html}\`}`;
 		}

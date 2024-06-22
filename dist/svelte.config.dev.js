@@ -33,7 +33,10 @@ var mdsvexConf = {
               _context.next = 3;
               return regeneratorRuntime.awrap((0, _shiki.codeToHtml)(code, {
                 lang: lang,
-                theme: 'tokyo-night'
+                themes: {
+                  dark: 'andromeeda',
+                  light: 'catppuccin-latte'
+                }
               }));
 
             case 3:

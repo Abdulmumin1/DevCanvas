@@ -33,9 +33,9 @@
 </script>
 
 <!-- grid grid-cols-1 items-end justify-between gap-x-20 md:grid-cols-2 lg:gap-x-40 -->
-<div class="flex flex-col md:flex-row lg:items-center">
+<div class="flex flex-col md:flex-row">
 	<section
-		class="relative flex h-full w-full min-w-[20rem] flex-col gap-4 border-primary px-8 py-0 text-secondary-dark md:mt-12 md:min-w-[30rem] md:py-12 lg:ml-0 lg:py-0"
+		class="relative flex h-full w-full min-w-[20rem] flex-col gap-4 border-primary px-8 py-0 text-secondary-dark md:mt-36 md:min-w-[30rem] md:py-12 lg:ml-0 lg:py-0"
 	>
 		<!-- <p>
 			<a
@@ -46,9 +46,9 @@
 			</a>
 		</p> -->
 		<h1
-			class="hero-text text-balance text-4xl text-primary dark:text-light md:max-w-[34rem] md:text-6xl lg:text-[5rem]"
+			class="hero-text text-balance text-4xl text-primary dark:text-light md:max-w-[40rem] md:text-6xl lg:text-[5rem]"
 		>
-			Super Fast Online Editor
+			The Editor <span class="font-serif font-bold">With Super Powers</span>
 		</h1>
 		<p
 			class="mx-1 max-w-lg text-balance font-diana text-lg text-primary dark:text-light md:text-xl"

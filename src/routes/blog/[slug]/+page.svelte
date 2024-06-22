@@ -121,29 +121,27 @@
 <article in:scale class="mx-auto flex flex-col gap-6 md:px-2 lg:px-4">
 	<hgroup class="  relative flex w-full flex-col gap-3 rounded-lg dark:text-light">
 		<aside class="">
-			<a href="/blog" class="mb-5 flex items-center gap-1 transition-all duration-300 hover:gap-2"
-				><span class="text-sky-500 dark:text-sky-300">
+			<a
+				href="/blog"
+				class=" flex items-center gap-1 text-sm transition-all duration-300 hover:gap-2"
+				><span class="text-gray-800 dark:text-gray-300">
 					<Fa icon={faAngleLeft} />
 				</span>Back home</a
 			>
 		</aside>
-		<div class="fd flex flex-col">
-			<h1 class="title my-10 text-balance text-4xl md:text-5xl">
+		<div class="flex flex-col">
+			<h1 class="title mb-4 mt-5 text-balance text-5xl font-bold md:text-6xl">
 				{data.meta.title}
 			</h1>
-			<div class="flex flex-wrap gap-4">
+			<div class="flex flex-col gap-2">
 				<div class="flex items-center gap-2 text-balance">
-					<span class="text-sky-500 dark:text-sky-300">
-						<Fa icon={faCalendar} />
-					</span>
 					<p class="text-sm">Published {formatDate(data.meta.date)}</p>
 				</div>
 
 				<div class="flex items-center gap-2 text-balance">
-					<span class="text-sky-500 dark:text-sky-300"><Fa icon={faUser} /></span>
 					<p class="text-sm">Written by: Abdulmumin Yaqeen</p>
 					<a
-						class="text-sky-500 dark:text-sky-300"
+						class="text-gray-800 dark:text-gray-100"
 						href="https://www.yaqeen.me/about"
 						target="_blank"><Fa icon={faExternalLinkSquare} /></a
 					>
@@ -153,7 +151,7 @@
 
 		{#if data.meta.date != data.meta.lastmod}
 			<div class="mt-5 flex items-center gap-2 text-sm">
-				<div class="text-sky-500 dark:text-sky-300">
+				<div class="text-gray-800 dark:text-gray-100">
 					<Fa icon={faPen} />
 				</div>
 				Last Edited:
@@ -166,14 +164,14 @@
 		<svelte:component this={data.content} />
 	</div>
 
-	<div class="flex flex-wrap gap-3">
+	<div class="flex flex-wrap items-center gap-3">
 		Tagged with:
 		{#each data.meta.categories as tag}
 			<!-- <span class="px-3 py-1 text-light rounded-lg bg-secondary-dark font-light text-sm"
 				>&num;{tag}</span
 			> -->
 
-			<span class="bg-sky-300 px-3 py-2 dark:bg-secondary-dark">{tag}</span>
+			<span class="rounded-md bg-gray-100 px-2 py-1 dark:bg-secondary-dark">{tag}</span>
 		{/each}
 	</div>
 
@@ -233,7 +231,7 @@
 	/* .article > h1,
 	h2,
 	h3 {
-		@apply text-sky-500 dark:text-sky-300;
+		@apply text-gray-800 dark:text-gray-100;
 	} */
 	.article::before {
 		content: '';

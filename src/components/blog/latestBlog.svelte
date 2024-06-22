@@ -16,7 +16,7 @@
 <div class=" flex flex-col justify-center gap-3 pb-2 text-black dark:text-light">
 	<a
 		href={`blog/${details.slug}`}
-		class="text-orang dark:text-dark s text-4xl capitalize hover:opacity-80 md:text-6xl"
+		class="text-orang dark:text-dark s text-4xl font-extrabold capitalize hover:opacity-80 md:text-6xl"
 	>
 		{details.title}</a
 	>
