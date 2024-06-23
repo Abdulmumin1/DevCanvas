@@ -52,16 +52,6 @@
 		}
 	});
 
-	beforeNavigate(() => {
-		showNavigating.set(false);
-		showNavigating.set(true);
-	});
-
-	afterNavigate(() => {
-		// showNavigating.set(true);
-		showNavigating.set(false);
-	});
-
 	let profile = getProfile();
 
 	async function loadprofile(session) {
@@ -128,9 +118,9 @@
 {#if !(($page.url.pathname.endsWith('/preview') && $page.url.searchParams.get('preview') == 'preview') || $page.url.pathname.endsWith('/embed'))}
 	<AcceptCookies />
 
-	{#if $showNavigating}
-		<PageLoadProgess />
-	{/if}
+	<!-- {#if $showNavigating} -->
+	<PageLoadProgess />
+	<!-- {/if} -->
 {/if}
 <div class=" relative bg-white transition-colors duration-300 dark:bg-primary dark:text-white">
 	<slot />

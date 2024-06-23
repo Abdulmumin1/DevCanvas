@@ -33,7 +33,7 @@
 
 <div class="h-full">
 	{#if isVertical}
-		<Splitpanes horizontal={true} theme="my-theme">
+		<Splitpanes horizontal={true} theme="my-theme" class="ignore">
 			<Pane snapSize={5}>
 				<slot name="left" size={30} />
 			</Pane>

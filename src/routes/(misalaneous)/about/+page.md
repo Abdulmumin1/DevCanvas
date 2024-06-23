@@ -9,19 +9,15 @@ DevCanvas is an online platform designed to empower developers, designers, and c
 
 ### What We Offer
 
-#### 1. Collaborative Workspace:
-
-DevCanvas offers a robust collaborative workspace that allows teams to work together in real-time. Whether you're coding, designing, or brainstorming, our platform enables seamless communication.
-
-#### 2. Powerful Editor:
+#### 1. Powerful Editor:
 
 Our powerful, feature-rich editor supports a wide range of programming languages, frameworks, and markup formats. With built-in tools for code editing, previewing, and debugging, you can streamline your development workflow.
 
-#### 3. Portfolio and Showcase:
+#### 2. Portfolio and Showcase:
 
 DevCanvas profile allows you to showcase and share your work with the world, attract potential clients or employers, and gain recognition for your skills.
 
-#### 4. Community and Resources:
+#### 3. Community and Resources:
 
 Join our vibrant community of developers, designers, and creators. Collaborate, learn from others, and access a wealth of resources, including tutorials, code snippets, and design inspirations.
 

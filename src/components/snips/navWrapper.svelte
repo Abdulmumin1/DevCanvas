@@ -61,7 +61,7 @@
 						<!-- <li class="hidden text-black dark:text-white md:block"><Darkmode /></li> -->
 
 						{#if !$user}
-							<li><a href={signinURL} class="rounded-lg bg-green-400 p-3">Join</a></li>
+							<li><a href={signinURL} class="rounded-lg bg-green-400 p-3">Login</a></li>
 						{:else}
 							<li><ProfileCard /></li>
 						{/if}

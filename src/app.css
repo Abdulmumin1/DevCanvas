@@ -54,7 +54,11 @@
 	.splitpanes.my-theme .splitpanes__splitter {
 		background-color: #cccccc00;
 		position: relative;
-		@apply border-x-8 border-y-8 border-black;
+		@apply border-x-8  border-black;
+	}
+
+	.splitpanes.my-theme.ignore > .splitpanes__splitter {
+		@apply border-y-8 border-primary;
 	}
 
 	.splitpanes.my-theme .splitpanes__splitter:before {
