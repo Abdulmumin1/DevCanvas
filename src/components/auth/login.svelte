@@ -24,7 +24,7 @@
 	<li class="rounded bg-green-500 px-2 py-2 text-primary md:py-2">
 		<button on:click={openModal}>
 			<!-- <span class="flex md:hidden"><Fa icon={faRightToBracket} /></span> -->
-			<span class="flex">Join</span>
+			<span class="flex">Login</span>
 		</button>
 	</li>
 
