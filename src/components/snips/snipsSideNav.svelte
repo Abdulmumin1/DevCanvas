@@ -54,7 +54,7 @@
 			<ul class="w-full">
 				<li class="px-2 text-lg">
 					{#if $user}
-						<FeAccordion title={$profile?.name ?? 'Settings'}>
+						<FeAccordion title={$profile?.user_metadata?.name ?? 'Settings'}>
 							<div class="flex flex-col gap-2 text-sm">
 								<a href="/profile" class="flex items-center gap-2 rounded-lg bg-secondary-dark p-2"
 									><Fa icon={faUser} />Profile</a

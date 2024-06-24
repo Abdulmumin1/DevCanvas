@@ -4,7 +4,7 @@ import { redirect } from '@sveltejs/kit';
 
 /**  @type {import('./$types').PageLoad} */
 export async function load({ parent }) {
-	let { supabase, session } = await parent();
+	let { supabase, session, user } = await parent();
 	if (!session) {
 		throw redirect(302, '/signin?redirectTo=/gEtHAndShAkE?whereto=/profile');
 	}
@@ -24,6 +24,12 @@ export async function load({ parent }) {
 	// console.log(data, session.user.email);
 	if (err) throw err;
 	if (data.length > 0) {
+		if (data[0].username == user.user_metadata?.name) {
+			console.log(
+				user,
+				'hfd afd asfplaing dsajofds afdosafmed safdosahfdmsa fdsao9 fd ljsafjd safdso '
+			);
+		}
 		data[0].socials = JSON.parse(data[0].socials);
 	}
 	let action = data.length > 0 ? '?/update' : '?/create';

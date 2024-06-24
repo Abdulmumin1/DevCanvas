@@ -9,7 +9,9 @@
 	import { slide } from 'svelte/transition';
 	import { enhance } from '$app/forms';
 	import NavWrapper from '$components/snips/navWrapper.svelte';
+	import { onMount } from 'svelte';
 
+	import { getProfile } from '$lib/index.js';
 	let loading = false;
 	let serverErr = false;
 	let email;

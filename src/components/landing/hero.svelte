@@ -48,7 +48,8 @@
 		<h1
 			class="hero-text magic-text text-balance text-4xl text-primary dark:text-light md:max-w-[40rem] md:text-6xl lg:text-[5rem]"
 		>
-			The Editor <span class="font-serif font-bold">With Super Powers</span>
+			<span class="font-extrabold">The Editor</span>
+			<span class="font-serif font-bold">With Super Powers</span>
 		</h1>
 		<p
 			class="mx-1 max-w-lg text-balance font-diana text-lg text-primary dark:text-light md:text-xl"
@@ -59,15 +60,15 @@
 			<span class="text-orange-400 dark:text-orange-800">share</span>, and
 			<span class="bg-sky-300 text-primary">build together</span>.
 		</p>
-		<div class="">
+		<div class="flex items-center gap-2">
 			<a
 				href="/signin"
-				class="inline-block rounded-lg bg-sky-600 px-4 py-2 font-semibold text-light hover:bg-sky-600"
+				class="cta-button inline-block rounded-lg bg-sky-600 px-4 py-3 font-semibold text-light hover:bg-sky-600"
 				>Get Started</a
 			>
 			<a
 				href="/explore"
-				class="inline-block rounded-lg bg-secondary-dark px-4 py-2 font-semibold text-light"
+				class="explore inline-block rounded-lg border-[3px] border-sky-500 px-4 py-2 font-semibold text-black dark:border-white dark:text-white"
 				>Explore</a
 			>
 		</div>
@@ -146,5 +147,83 @@
 	h1 > .magic > .magic-star > svg > path {
 		/* fill: rgb(2 132 199); */
 		fill: whitesmoke;
+	}
+
+	.cta-button {
+		display: inline-block;
+		color: #0c4a6e;
+		background-color: white;
+		border: 2px solid #0ea5e9;
+		border-radius: 30px;
+		cursor: pointer;
+		outline: none;
+		transition: all 0.3s;
+		text-transform: uppercase;
+		letter-spacing: 1px;
+		/* box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1); */
+		position: relative;
+		overflow: hidden;
+	}
+
+	.cta-button:before {
+		content: '';
+		position: absolute;
+		top: -50%;
+		left: -50%;
+		width: 200%;
+		height: 200%;
+		background: rgba(255, 255, 255, 0.1);
+		transition: all 0.5s;
+		z-index: 1;
+		transform: rotate(45deg);
+	}
+
+	.cta-button:hover:before {
+		top: 150%;
+		left: 150%;
+	}
+
+	.cta-button:hover {
+		background-color: #eff6ff;
+		/* Lighter shade of red */
+		transform: scale(1.05) rotate(2deg);
+		/* Scale up and rotate slightly */
+		box-shadow:
+			0px 6px 20px #bae6fd,
+			0px 4px 40px #7dd3fc;
+		/* Add multiple layers of shadow */
+		transition: all 0.3s;
+	}
+
+	.explore {
+		position: relative;
+		border-radius: 40px;
+		cursor: pointer;
+		overflow: hidden;
+		transition: scale 0.3s ease-in-out;
+	}
+	.explore:hover {
+		color: black;
+		transform: scale(1);
+	}
+	.explore::before {
+		content: '';
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		width: 0;
+		height: 0;
+		background-color: #fff;
+		border-radius: 50%;
+		transform: translate(-50%, -50%);
+		transition:
+			width 0.5s ease,
+			height 0.5s ease;
+		z-index: -1;
+	}
+
+	.explore:hover::before {
+		width: 300px;
+		height: 300px;
 	}
 </style>

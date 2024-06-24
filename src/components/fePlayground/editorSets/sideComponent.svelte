@@ -55,10 +55,10 @@
 	<!-- in:fly -->
 	<div
 		transition:fly={{ x: -200 }}
-		class="drop absolute top-0 flex h-full w-[300px] flex-col overflow-auto bg-white shadow-2xl dark:bg-black"
+		class="drop absolute top-0 flex h-full w-[300px] flex-col overflow-auto bg-black text-white shadow-2xl"
 	>
 		<div class="absolute right-0 m-3">
-			<button class="rounded bg-sky-300 p-1 text-2xl text-black" on:click={closeDropdown}
+			<button class="rounded p-1 text-2xl text-white" on:click={closeDropdown}
 				><Fa icon={faClose} /></button
 			>
 		</div>
@@ -71,15 +71,14 @@
 			<!-- transition:fly={{ y: 200, delay: 50 }} -->
 
 			<li class="w-full">
-				<ul
-					class="settings-section flex flex-col gap-1 border border-light dark:border-secondary-dark"
-				>
+				<ul class="flex flex-col gap-2">
 					<li class="p-2">General</li>
 
 					<li class="w-full">
 						<SingleSetting
 							on:checked={handleAutoSave}
 							checked={$autoSavefast}
+							dark={true}
 							label={'Auto Save'}
 						/>
 					</li>
@@ -89,6 +88,7 @@
 							on:checked={handleDelayChange}
 							checked={$delayPreview}
 							label={'Delay preview'}
+							dark={true}
 						/>
 					</li>
 					<li class="w-full">
@@ -96,14 +96,13 @@
 							label={'Word Wrap'}
 							on:checked={handleWordWrap}
 							checked={$wordWrapSetting}
+							dark={true}
 						/>
 					</li>
 				</ul>
 			</li>
 
-			<li
-				class="settings-section flex flex-col gap-2 border border-light px-1 text-black dark:border-secondary-dark"
-			>
+			<li class="mb-2 flex flex-col gap-2 px-1">
 				<!-- <p></p> -->
 				<div class="dark:text-white">Format Editors</div>
 
@@ -112,9 +111,7 @@
 				</div>
 			</li>
 
-			<li
-				class="settings-section flex flex-col gap-1 border border-light dark:border-secondary-dark"
-			>
+			<li class="px-1">
 				<AddTags owner={$isOwner} />
 			</li>
 		</ul>
