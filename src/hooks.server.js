@@ -22,6 +22,19 @@ export const handle = async ({ event, resolve }) => {
 		return session;
 	};
 
+	event.locals.getUser = async () => {
+		const {
+			data: { user },
+			error
+		} = await event.locals.supabase.auth.getUser();
+		if (error) {
+			// JWT validation has failed
+			return null;
+		}
+
+		return user;
+	};
+
 	if (event.url.pathname == '/new') {
 		throw redirect(301, '/play/try');
 	}

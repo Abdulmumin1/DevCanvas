@@ -20,6 +20,12 @@
 
 	// console.log(user)
 
+	import { setReloadContext, getReload } from '$lib/feEditor/funct.js';
+
+	setReloadContext();
+
+	let reload = getReload();
+
 	let mobileDetails;
 	if (browser) {
 		mobileDetails = window.innerWidth <= 768;
@@ -122,8 +128,10 @@
 				<FeCodeEditor initialHTML={'<!--HTML HERE-->'} initialCSS={'/* */'} lang="html" />
 			</div>
 			<div slot="right" class="relative h-full w-full">
-				<CodeOutput />
-				<JsConsole />
+				{#key $reload}
+					<CodeOutput />
+					<JsConsole />
+				{/key}
 			</div>
 		</Resizable>
 		<!-- <div class="absolute top-0 w-[300px] bg-white h-full" /> -->

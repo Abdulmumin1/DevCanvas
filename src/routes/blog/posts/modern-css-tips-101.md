@@ -15,65 +15,95 @@ categories:
 published: true
 ---
 
-# Intro;
-
-Hey there! Let's talk about some cool stuff in CSS. CSS is what makes websites look pretty. These new things can help you make better websites easier!
+This article explores recent advancements in CSS that enhance web development efficiency and design capabilities. These features offer powerful tools for creating responsive, well-structured, and greatly improving developer experience.
 
 ## 1. Container Queries
 
-This is like magic boxes. You can make things inside a box change when the box gets bigger or smaller. It's super helpful!
+Container queries allow for responsive design at the component level, enabling elements to adapt based on their parent container's size rather than just the viewport.
 
 ```css
-.box {
+.container {
 	container-type: inline-size;
 }
 
 @container (min-width: 300px) {
-	.thing-inside-box {
-		font-size: big;
+	.container-child {
+		font-size: 1.2rem;
 	}
 }
 ```
 
 ## 2. Cascade Layers
 
-Think of this like putting your clothes in different drawers. You can say which drawer is more important. It helps keep your CSS neat!
+Cascade layers introduce a new way to manage the cascade and specificity in CSS, allowing developers to group and prioritize styles more effectively.
+How Cascade Layers Work:
+
+- Layers are defined using the @layer rule.
+- Styles within a layer are isolated from styles in other layers.
+- Layers are prioritized in the order they're declared, with later layers having higher priority.
+- Styles outside of any layer have the highest priority.
+
+Example:
 
 ```css
-@layer not-so-important, kinda-important, super-important;
-```
+@layer base, components, utilities;
 
-## 3. New Selectors
+@layer base {
+	h1 {
+		font-size: 2rem;
+	}
+}
 
-CSS now has some new ways to pick things to style. Like, you can style a box if it has something special inside it:
+@layer components {
+	.header h1 {
+		font-size: 2.5rem;
+	}
+}
 
-```css
-.box:has(img) {
-	border: pretty;
+@layer utilities {
+	.text-large {
+		font-size: 3rem;
+	}
 }
 ```
 
-## 4. Better Grids
-
-You can make grid layouts easier now. Things can line up better without much work:
+we can change the order to affect the specificity of the styles;
 
 ```css
-.big-grid {
+@layer base, utilities, components;
+```
+
+## 3. Advanced Selectors
+
+New selectors like `:has()` expand styling possibilities, allowing for more complex and precise element targeting.
+
+```css
+.parent:has(> img) {
+	border: 1px solid #ccc;
+}
+```
+
+## 4. Subgrid
+
+Subgrid enhances CSS Grid by allowing nested grids to inherit track sizes from their parents, facilitating more coherent layouts.
+
+```css
+.parent-grid {
 	display: grid;
 }
 
-.small-grid {
+.child-grid {
 	display: grid;
 	grid-template-columns: subgrid;
 }
 ```
 
-## 5. Smooth Scrolling
+## 5. Scroll Snap
 
-You can make pages scroll smoothly, like in phone apps:
+Scroll snap improves user experience by providing smooth, controlled scrolling behavior, particularly useful for carousels and slideshows.
 
 ```css
-.scroll-box {
+.scroll-container {
 	scroll-snap-type: x mandatory;
 }
 
@@ -82,4 +112,4 @@ You can make pages scroll smoothly, like in phone apps:
 }
 ```
 
-These cool CSS things help make websites look good on phones, tablets, and computers. They make it easier to create cool designs without needing to write lots of tricky code.
+These CSS features significantly enhance our ability to create responsive, well-structured, and interactive designs across various devices and screen sizes, while reducing the complexity of implementation.

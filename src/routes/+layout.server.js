@@ -1,6 +1,7 @@
 // src/routes/+layout.server.js
-export const load = async ({ locals: { getSession } }) => {
+export const load = async ({ locals: { getSession, getUser } }) => {
 	return {
-		session: await getSession()
+		session: await getSession(),
+		user: await getUser()
 	};
 };

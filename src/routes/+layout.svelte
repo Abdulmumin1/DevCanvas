@@ -31,8 +31,12 @@
 
 	export let data;
 
-	let { supabase, session, userInfo } = data;
-	$: ({ supabase, session, userInfo } = data);
+	let { supabase, session, user: userInfo } = data;
+	$: ({ supabase, session, user: userInfo } = data);
+
+	let profile = getProfile();
+
+	$profile = userInfo;
 
 	if (browser) {
 		darkModeState.set(
@@ -52,28 +56,32 @@
 		}
 	});
 
-	let profile = getProfile();
+	beforeNavigate(() => {
+		showNavigating.set(false);
+		showNavigating.set(true);
+	});
 
-	async function loadprofile(session) {
-		try {
-			const { data: d, error: err } = await supabase
-				.from('profiles')
-				.select('*')
-				.eq('user_id', session.user.id);
-			if (err) throw err;
-			$profile = d.length > 0 ? d[0] : false;
-			// console.log('Profile', $profile);
-		} catch (error) {}
-	}
+	afterNavigate(() => {
+		showNavigating.set(false);
+	});
+
+	// async function loadprofile(session) {
+	// 	try {
+	// 		const { data: d, error: err } = await supabase
+	// 			.from('profiles')
+	// 			.select('*')
+	// 			.eq('user_id', session.user.id);
+	// 		if (err) throw err;
+	// 		$profile = d.length > 0 ? d[0] : false;
+	// 		// console.log('Profile', $profile);
+	// 	} catch (error) {}
+	// }
 
 	let url;
 	onMount(async () => {
 		url = window.location.href.replace('www.', '');
 		const { data } = supabase.auth.onAuthStateChange((event, _session) => {
 			user.set(_session?.user);
-			if (_session?.user) {
-				loadprofile(_session);
-			}
 			if (_session?.expires_at !== session?.expires_at) {
 				invalidateAll('supabase:auth');
 			}
@@ -118,9 +126,9 @@
 {#if !(($page.url.pathname.endsWith('/preview') && $page.url.searchParams.get('preview') == 'preview') || $page.url.pathname.endsWith('/embed'))}
 	<AcceptCookies />
 
-	<!-- {#if $showNavigating} -->
-	<PageLoadProgess />
-	<!-- {/if} -->
+	{#if $showNavigating}
+		<PageLoadProgess />
+	{/if}
 {/if}
 <div class=" relative bg-white transition-colors duration-300 dark:bg-primary dark:text-white">
 	<slot />

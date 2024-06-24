@@ -56,9 +56,13 @@ export const actions = {
 				if (err.code == 23505) {
 					message = 'username already taken';
 				}
-				// console.log(message);
+
 				return fail(402, { message });
 			} else {
+				const { data: dx, error: dxerr } = await supabase.auth.updateUser({
+					data: { username, name }
+				});
+
 				return body;
 			}
 		} else {
@@ -98,6 +102,10 @@ export const actions = {
 				// console.log(profile);
 				return fail(402, { message });
 			} else {
+				const { data: dx, error: dxerr } = await supabase.auth.updateUser({
+					data: { username, name }
+				});
+
 				return body;
 			}
 		} else {

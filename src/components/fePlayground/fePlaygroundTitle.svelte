@@ -74,10 +74,10 @@
 	{#if $isOwner}
 		<div class="mb-[-7px] flex items-center gap-2">
 			{#if title}
-				<div class="flex w-fit max-w-[130px] items-center gap-1 md:max-w-[400px] xl:max-w-[600px]">
+				<div class="flex w-fit max-w-[180px] items-center gap-1 md:max-w-[400px] xl:max-w-[600px]">
 					<p class="rounded bg-sky-400 p-[1.3px] text-sm text-black md:text-xl">Fork</p>
 					<div
-						class="min-w-[50px] max-w-[114px] truncate bg-inherit text-sm font-semibold capitalize text-white focus:outline-1 focus:outline-sky-200 md:text-xl"
+						class="min-w-[50px] max-w-[160px] truncate bg-inherit text-sm font-semibold capitalize text-white focus:outline-1 focus:outline-sky-200 md:text-xl"
 					>
 						<p
 							contenteditable
@@ -98,7 +98,7 @@
 					on:input={handleInput}
 					placeholder="Untitled Project"
 					spellcheck="false"
-					class="w-fit min-w-[50px] max-w-[130px] truncate bg-inherit text-sm font-semibold capitalize text-white focus:outline-1 focus:outline-sky-200 md:max-w-[400px] md:text-xl xl:max-w-[600px]"
+					class="w-fit min-w-[50px] max-w-[180px] truncate bg-inherit text-sm font-semibold capitalize text-white focus:outline-1 focus:outline-sky-200 md:max-w-[400px] md:text-xl xl:max-w-[600px]"
 				>
 					{$current_data.description}
 				</p>
@@ -110,12 +110,12 @@
 			<CanvasVisibility canvas_id={$current_data.id} publicLy={$current_data.public} />
 		</div>
 	{:else if title}
-		<div class="flex w-fit max-w-[130px] items-center gap-1 md:max-w-[400px] xl:max-w-[600px]">
+		<div class="flex w-fit max-w-[180px] items-center gap-1 md:max-w-[400px] xl:max-w-[600px]">
 			<p class="flex items-baseline rounded bg-sky-400 p-[1.3px] text-sm text-black md:text-xl">
 				Fork
 			</p>
 			<div
-				class="flex w-fit max-w-[115px] items-center gap-2 bg-inherit text-sm font-semibold capitalize text-white outline-none md:max-w-[400px] md:text-xl xl:max-w-[600px]"
+				class="flex w-fit max-w-[160px] items-center gap-2 bg-inherit text-sm font-semibold capitalize text-white outline-none md:max-w-[400px] md:text-xl xl:max-w-[600px]"
 			>
 				<p class="truncate">
 					{title}
@@ -125,7 +125,7 @@
 	{:else}
 		<div
 			style="margin-bottom: -7px;"
-			class="flex w-fit max-w-[120px] items-center gap-2 bg-inherit text-sm font-semibold capitalize text-white outline-none md:max-w-[400px] md:text-xl xl:max-w-[600px]"
+			class="flex w-fit max-w-[180px] items-center gap-2 bg-inherit text-sm font-semibold capitalize text-white outline-none md:max-w-[400px] md:text-xl xl:max-w-[600px]"
 		>
 			<p class="truncate">
 				{$current_data.description}

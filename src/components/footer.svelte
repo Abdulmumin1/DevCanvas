@@ -5,7 +5,7 @@
 
 <footer class=" flex items-center justify-center">
 	<div
-		class=" m-3 flex w-full max-w-[1000px] flex-wrap items-center justify-center gap-2 rounded-[25px] bg-gray-50 p-6 dark:bg-secondary-dark md:m-12 md:rounded-[50px]"
+		class=" m-3 flex w-full max-w-[1000px] flex-wrap items-center justify-center gap-2 rounded-[25px] border-sky-400 bg-gray-50 p-6 dark:bg-primary md:m-12 md:rounded-[29px] md:border-[2px]"
 	>
 		<div class="flex">
 			<div class="flex flex-col space-y-2">

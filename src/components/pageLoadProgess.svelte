@@ -1,9 +1,7 @@
 <script>
-	import { onMount } from 'svelte';
 	import { cubicOut } from 'svelte/easing';
 	import { tweened } from 'svelte/motion';
 	import { showNavigating } from '$lib/index.js';
-	import { beforeNavigate, afterNavigate } from '$app/navigation';
 
 	const progress = tweened(0, {
 		duration: 3500,
@@ -17,15 +15,6 @@
 	}
 	// onMount(() => {
 	// });
-
-	beforeNavigate(() => {
-		showNavigating.set(false);
-		showNavigating.set(true);
-	});
-
-	afterNavigate(() => {
-		showNavigating.set(false);
-	});
 </script>
 
 {#if $showNavigating}

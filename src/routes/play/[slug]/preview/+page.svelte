@@ -143,6 +143,8 @@
 			}
 			// console.log(css);
 			if (zoomOut) {
+				css = css.replaceAll('animation', 'notsupported');
+				css = css.replaceAll('transition', 'notsupported');
 				styleElement.textContent = `
 				body{
 					overflow:hidden;
