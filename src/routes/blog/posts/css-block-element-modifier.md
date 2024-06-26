@@ -3,9 +3,9 @@ title: 'BEM (Block Element Modifier): CSS naming convention'
 
 description: "BEM stands for Block, Element, Modifier. It's a naming convention that makes CSS classes more meaningful and easier to understand. The main goal is to create clear, strict relationships between HTML and CSS."
 
-date: '2024-06-23'
+date: '2024-06-30'
 
-lastmod: '2024-06-23'
+lastmod: '2024-06-30'
 
 categories:
   - CSS
@@ -166,4 +166,4 @@ Seeing BEM in action can often be the best way to understand its principles and 
 
 When implemented, BEM creates a clear, hierarchical structure that mirrors the relationships defined in the HTML. This alignment between HTML and CSS is one of the key benefits of BEM, as it makes the codebase more intuitive and easier to navigate.
 
-BEM is particularly useful for larger projects where maintaining a clear structure is crucial. However, it's important to use it judiciously and in combination with other CSS best practices for optimal results.
+BEM is particularly useful for larger projects where maintaining a clear structure is crucial. However, it's important to use it mindfully, while avoiding overuse and in combination with other CSS best practices for optimal results.

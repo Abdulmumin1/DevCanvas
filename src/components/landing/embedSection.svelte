@@ -8,7 +8,7 @@
 />`;
 </script>
 
-<div class=" flex items-center justify-center bg-gradient-to-t from-sky-400 to-sky-200 p-7 py-9">
+<div class=" flex items-center justify-center bg-gradient-to-t from-sky-400 to-sky-200 p-7 py-9 border-b-2 border-black">
 	<div class="flex h-full w-full max-w-[1200px] flex-col items-center justify-between gap-6">
 		<div class="flex w-full flex-col justify-center">
 			<h2
