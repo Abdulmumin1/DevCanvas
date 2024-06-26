@@ -16,7 +16,7 @@
 	import prettierPluginBabel from 'prettier/parser-babel';
 	import prettierPluginCss from 'prettier/parser-postcss';
 
-	import { onMount, tick } from 'svelte';
+	import { onMount } from 'svelte';
 	import { coolGlow } from 'thememirror';
 	import {
 		showSave,
