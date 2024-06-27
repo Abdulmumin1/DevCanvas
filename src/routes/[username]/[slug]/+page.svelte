@@ -7,6 +7,8 @@
 	import Fa from 'svelte-fa';
 	import { faCheck, faCopy, faPen } from '@fortawesome/free-solid-svg-icons';
 	import { setContext } from 'svelte';
+	import SEO from '$components/seoComp.svelte'
+
 
 	export let data;
 	setContext('isOwner', false);
@@ -36,10 +38,9 @@
 		<title>{data['0'].description}</title>
 
 		<!-- Facebook Meta Tags -->
-		<meta property="og:title" content={data['0'].description} />
 
-		<!-- Twitter Meta Tags -->
-		<meta name="twitter:title" content={data['0'].description} />
+		<SEO title={data['0'].description} description={`${data['0'].description} - shared by ${username}`} />
+		
 	{/if}
 	<!-- HTML Meta Tags -->
 

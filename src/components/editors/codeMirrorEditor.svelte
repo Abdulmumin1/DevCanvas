@@ -11,10 +11,10 @@
 	import { css } from '@codemirror/lang-css'; // Or other language extension
 
 	// import { onDark } from '@codemirror/theme-one-dark';
-	import * as prettier from 'prettier';
-	import prettierPluginHtml from 'prettier/parser-html';
-	import prettierPluginBabel from 'prettier/parser-babel';
-	import prettierPluginCss from 'prettier/parser-postcss';
+	// import * as prettier from 'prettier';
+	// import prettierPluginHtml from 'prettier/parser-html';
+	// import prettierPluginBabel from 'prettier/parser-babel';
+	// import prettierPluginCss from 'prettier/parser-postcss';
 
 	import { onMount } from 'svelte';
 	import { coolGlow } from 'thememirror';
@@ -92,18 +92,18 @@
 
 	async function formatter(view) {
 		const cCode = view.state.doc.toString();
-		const formattedCode = await prettier.format(cCode, {
-			parser: getParser(),
-			plugins: [prettierPluginHtml, prettierPluginBabel, prettierPluginCss]
-		});
+		// const formattedCode = await prettier.format(cCode, {
+		// 	parser: getParser(),
+		// 	plugins: [prettierPluginHtml, prettierPluginBabel, prettierPluginCss]
+		// });
 
-		view.dispatch({
-			changes: {
-				from: 0,
-				to: view.state.doc.length,
-				insert: formattedCode
-			}
-		});
+		// view.dispatch({
+		// 	changes: {
+		// 		from: 0,
+		// 		to: view.state.doc.length,
+		// 		insert: formattedCode
+		// 	}
+		// });
 	}
 
 	function getParser() {

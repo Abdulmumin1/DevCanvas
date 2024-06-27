@@ -25,6 +25,8 @@
 	import { scale } from 'svelte/transition';
 	import { generateStructuredData } from '$lib/blog/utils.js';
 	import { showToast } from '$lib/index.js';
+	import SEO from '$components/seoComp.svelte'
+
 
 	// import { page } from '$app/stores';
 	// import { page } from '$app/stores';
@@ -89,33 +91,9 @@
 		rel="stylesheet"
 	/>
 
-	<meta name="description" content={data.meta?.description} />
+	
+	<SEO title={data.meta.title} description={data.meta?.description || data.meta.title} index={data.meta?.published == true} imageUrl={data.meta?.thumbnail ?? `https://devcanvas.art/og?message=${encodeURIComponent(data.meta.title)}`}/>
 
-	<!-- Facebook Meta Tags -->
-	<meta property="og:url" content="https://devcanvas.art/blog" />
-	<meta property="og:type" content="website" />
-	<meta property="og:title" content={data.meta.title} />
-	<meta property="og:description" content={data.meta?.description} />
-	<meta
-		property="og:image"
-		content={data.meta?.thumbnail ??
-			`https://devcanvas.art/og?message=${encodeURIComponent(data.meta.title)}`}
-	/>
-
-	<!-- Twitter Meta Tags -->
-	<meta name="twitter:card" content="summary_large_image" />
-	<meta property="twitter:domain" content="devcanvas.art" />
-	<meta property="twitter:url" content="https://devcanvas.art" />
-	<meta name="twitter:title" content={data.meta.title} />
-	<meta name="twitter:description" content={data.meta?.description || data.meta.title} />
-	<meta
-		name="twitter:image"
-		content={`https://devcanvas.art/og?message=${encodeURIComponent(data.meta.title)}`}
-	/>
-
-	{#if data.meta?.published}
-		<meta name="robots" content="index, follow" />
-	{/if}
 </svelte:head>
 
 <article in:scale class="mx-auto flex flex-col gap-6 md:px-2 lg:px-4">
@@ -160,7 +138,7 @@
 		{/if}
 	</hgroup>
 
-	<div class="markdown-content article space-y-8 font-light text-[#404953] dark:text-light">
+	<div class="markdown-content article font-public-sans space-y-8 font-light text-[#404953] dark:text-light">
 		<svelte:component this={data.content} />
 	</div>
 
@@ -252,9 +230,9 @@
 		width: 100%;
 		z-index: 0;
 	}
-	.article {
-		font-family: 'Dai Banna SIL';
-	}
+	/* .article {
+		font-family: 'carbon';
+	} */
 
 	.title {
 		/* font-family: Roboto slab; */

@@ -10,7 +10,7 @@
 		<InnerNav />
 	</div>
 
-	<div class="article tos flex max-w-2xl flex-col gap-4 px-4 py-10">
+	<div class="article tos flex max-w-4xl font text-[1.2rem] flex-col font-public-sans gap-2 px-4 py-10">
 		<slot />
 	</div>
 </div>

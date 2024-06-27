@@ -4,6 +4,7 @@
 	import FeCollectionPage from '$components/fePlayground/feCollectionPage.svelte';
 	import { fade } from 'svelte/transition';
 	import FeCollectionDummy from '$components/feCollectionDummy.svelte';
+	import SEO from '$components/seoComp.svelte'
 
 	export let data;
 	let supabase = data.supabase;
@@ -58,12 +59,15 @@
 </script>
 
 <svelte:head>
-	<title>Explore</title>
+	<!-- <title>Explore</title>
 	<meta
 		property="og:description"
 		content="Library of Awesome frontend creations for your inspiration!"
-	/>
+	/> -->
+	<SEO title="Explore" description="Library of Awesome frontend creations for your inspiration!" url="https://devcanvas.art/explore" />
 </svelte:head>
+
+
 <!-- <div class="bg-secondary-dark min-h-[50vh]">
 	<InnerNav />
 
