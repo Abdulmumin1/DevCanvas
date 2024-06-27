@@ -15,11 +15,11 @@ categories:
 published: false
 ---
 
-# BEM (Block Element Modifier) : CSS naming convention
+<!-- # BEM (Block Element Modifier) : CSS naming convention -->
 
-Personally, I have moved to untility classes (particularly tailwindcss), but there are lots of companies that requires you to manage the cumbersome vanilla CSS or maybe vanilla CSS seams more appealing to you. Either way, in this article, we will look at one of the most august CSS naming convention (BEM).
+Personally, I have moved to untility classes (particularly `tailwindcss`), but there are lots of companies that requires you to manage the cumbersome vanilla CSS or maybe vanilla CSS seams more appealing to you. Either way, in this article, we will look at one of the most august CSS naming convention (BEM).
 
-BEM stands for Block, Element, Modifier. It's a naming convention that makes CSS classes more meaningful and easier to understand. The main goal is to create clear, strict relationships between HTML and CSS.
+`BEM` stands for Block, Element, Modifier. It's a naming convention that makes CSS classes more meaningful and easier to understand. The main goal is to create `clear`, `strict` relationships between HTML and CSS.
 
 ## Key Concepts
 

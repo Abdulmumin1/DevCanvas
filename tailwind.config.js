@@ -36,7 +36,10 @@ export default {
 				// Add other custom colors as needed...
 			},
 			fontFamily: {
-				diana: ['Dai Banna SIL', 'serif']
+				diana: ['serif'],
+				carbon: ['carbon', 'sans-serif'],
+				"public-sans": ['public-sans', 'sans-serif'],
+				"rubik": ['rubik', 'sans-serif']
 			}
 		}
 	},

@@ -1,16 +1,14 @@
 <script>
-	import { HighlightAuto, LineNumbers } from 'svelte-highlight';
-	import Nav from '../../components/nav.svelte';
+
 	import { darkModeState } from '$lib/index.js';
-	// import { d } from 'svelte-highlight/languages/index.js';
-	import { github, githubDark, atomOneDark } from 'svelte-highlight/styles';
+	import { github, githubDark } from 'svelte-highlight/styles';
 	import Fa from 'svelte-fa';
-	import { faPen } from '@fortawesome/free-solid-svg-icons';
-	import { onMount, setContext } from 'svelte';
-	import NavWrapper from '../../components/snips/navWrapper.svelte';
+	import { onMount } from 'svelte';
+	import NavWrapper from '$components/snips/navWrapper.svelte';
 	import { faGithub, faInstagram, faTwitter } from '@fortawesome/free-brands-svg-icons';
-	import Collection from '../../components/user/collection.svelte';
+	import Collection from '$components/user/collection.svelte';
 	import { pageCountSnips, pageCountPl } from '$lib/index.js';
+	import SEO from '$components/seoComp.svelte'
 
 	export let data;
 
@@ -22,8 +20,8 @@
 
 <svelte:head>
 	{#if data.isFound}
-		<title>{data.details.name}</title>
-
+		<title></title>
+		<SEO title={data.details.name} description={`${data.details.name}'s profile on devcanvas` }/>
 		<!-- Facebook Meta Tags -->
 		<!-- <meta property="og:title" content={data['0'].description} />-->
 

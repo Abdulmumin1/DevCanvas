@@ -23,11 +23,8 @@ Join our vibrant community of developers, designers, and creators. Collaborate, 
 
 ### Our Team
 
-DevCanvas started as an indie project, by some guy who recognized the need for a comprehensive platform that caters to the diverse needs of the creative community. I'm dedicated to continuously improving the platform, adding new features, and providing unparalleled support to our users.
+DevCanvas started as an indie project (still is though 😅), by [some guy](https://www.yaqeen.me/about) who recognized the need for a comprehensive platform that caters to the diverse needs of the creative community. I'm dedicated to continuously improving the platform, adding new features, and providing unparalleled support to our users.
 
-### Get Involved
-
-Whether you're a seasoned professional or just starting your journey, DevCanvas welcomes you to our platform. Sign up today and experience the power of collaboration, creativity, and innovation.
 
 ### Stay Connected
 
@@ -36,5 +33,3 @@ Follow us on social media for the latest updates, news, and announcements:
 - Twitter: @devcanvas\_
 - Facebook: not yet!
 - Instagram: still considering :/
-
-Join the DevCanvas movement and unleash your full potential!

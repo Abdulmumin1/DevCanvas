@@ -33,7 +33,7 @@
 		<a href="/play/try" class="py-4" on:click={closeModal}
 			>+ New Canvas
 			<br /><span class="text-sm text-black dark:text-[#e5e7eb]">Create new Canvas/Editor</span>
-		</a><a href="/explore" class="py-4" on:click={closeModal}>Playground </a>
+		</a><a href="/play" class="py-4" on:click={closeModal}>Playground </a>
 
 		<div class="-center mb-4 flex items-center gap-2">
 			Change Theme: <div class="px-2 py-2 text-black dark:text-white"><Darkmode /></div>

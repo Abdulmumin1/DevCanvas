@@ -4,15 +4,15 @@
 	import { KDialog, setKbarState } from 'kbar-svelte-mini';
 	import { actions } from '$lib/kbar.js';
 	import { goto } from '$app/navigation';
-	import {
-		user,
-		showNavigating,
-		showToast,
-		darkModeState,
-		SnippetsDescription,
-		getProfile,
-		setProfile
-	} from '$lib/index.js';
+		import {
+			user,
+			showNavigating,
+			showToast,
+			darkModeState,
+			SnippetsDescription,
+			getProfile,
+			setProfile
+		} from '$lib/index.js';
 
 	setKbarState();
 	setProfile(null);
@@ -97,27 +97,15 @@
 <svelte:head>
 	<!-- HTML Meta Tags -->
 
-	<meta name="description" content={$SnippetsDescription.des} />
 
-	<!-- Facebook Meta Tags -->
-	<meta property="og:url" content={$SnippetsDescription.url} />
-	<meta property="og:type" content="website" />
-	<meta property="og:description" content={$SnippetsDescription.des} />
-	<meta property="og:image" content={$SnippetsDescription.imageUrl} />
-
-	<!-- Twitter Meta Tags -->
-	<meta name="twitter:card" content="summary_large_image" />
-	<meta property="twitter:domain" content="devcanvas.art" />
-	<meta property="twitter:url" content={$SnippetsDescription.url} />
-	<meta name="twitter:description" content={$SnippetsDescription.des} />
-	<meta name="twitter:image" content={$SnippetsDescription.imageUrl} />
+	
 	<meta
 		name="keywords"
 		content="css, html, css art, css animation, code snippet, javascript animations, animation with html/css,"
 	/>
 
 	<link rel="canonical" href={url} />
-	<meta name="robots" content="index, follow" />
+	
 </svelte:head>
 
 <!-- {#if && !(($page.url.pathname.endsWith('/preview') && $page.url.searchParams.get('preview') == 'preview') || $page.url.pathname.endsWith('/embed'))}

@@ -79,17 +79,6 @@
 	showLoginToSave.set(false);
 </script>
 
-<svelte:head>
-	<title>{$current_data.description}</title>
-
-	<!-- Facebook Meta Tags -->
-	<meta property="og:title" content={data.details.description} />
-
-	<!-- Twitter Meta Tags -->
-	<meta name="twitter:title" content={data.details.description} />
-
-	<!-- HTML Meta Tags -->
-</svelte:head>
 
 <div class="flex h-screen flex-col">
 	<header class="w-full">

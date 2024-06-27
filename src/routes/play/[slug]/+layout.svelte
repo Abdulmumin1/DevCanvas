@@ -1,5 +1,6 @@
 <script>
 	import { onMount } from 'svelte';
+	import SEO from '$components/seoComp.svelte'
 
 	export let data;
 
@@ -26,20 +27,9 @@
 </script>
 
 <svelte:head>
-	<meta
-		property="og:image"
-		content="https://og.tailgraph.com/og?fontFamily=Roboto&title={title}&titleTailwind=text-gray-800%20font-bold%20text-6xl&text=&textTailwind=text-gray-700%20text-2xl%20mt-4&logoUrl=https%3A%2F%2Fsnippet-bice.vercel.app%2Flogo.svg&logoTailwind=opacity-75%20h-40%20items-center%20justify-center%20w-full&bgTailwind=bg-white&footer=devcanvas.art&footerTailwind=text-teal-600&t=1704208668613&refresh=1"
-	/>
-	<meta
-		property="twitter:image"
-		content="https://og.tailgraph.com/og?fontFamily=Roboto&title={title}&titleTailwind=text-gray-800%20font-bold%20text-6xl&text=&textTailwind=text-gray-700%20text-2xl%20mt-4&logoUrl=https%3A%2F%2Fsnippet-bice.vercel.app%2Flogo.svg&logoTailwind=opacity-75%20h-40%20items-center%20justify-center%20w-full&bgTailwind=bg-white&footer=devcanvas.art&footerTailwind=text-teal-600&t=1704208668613&refresh=1"
-	/>
-	<meta property="og:description" content="View Demo - {data.details.description}" />
+	
+	
+<SEO title={data.details.description} description={`View project - ${data.details.description}`} imageUrl={`https://devcanvas.art/og?message=${title}`} index={ data.details?.public == true}/>
 
-	{#if data.details?.public}
-		<meta name="robots" content="index, follow" />
-	{:else}
-		<meta name="robots" content="noindex, follow" />
-	{/if}
 </svelte:head>
 <slot />

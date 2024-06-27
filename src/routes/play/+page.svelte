@@ -5,8 +5,9 @@
 	import { pageCount } from '$lib/index.js';
 	// import { onMount } from 'svelte';
 	import { goto } from '$app/navigation';
+	import SEO from '$components/seoComp.svelte'
 
-	import CollectionDummy from '$components/collectionDummy.svelte';
+
 	import FeCollectionPage from '$components/fePlayground/feCollectionPage.svelte';
 	import NavWrapper from '$components/snips/navWrapper.svelte';
 	import FeCollectionDummy from '../../components/feCollectionDummy.svelte';
@@ -125,9 +126,11 @@
 </script>
 
 <svelte:head>
-	<title>Launch Editor - DevCanvas</title>
+	<!-- <title>Launch Editor - DevCanvas</title> -->
 
-	<meta property="og:description" content="Launch a new html/css/js playground" />
+	<!-- <meta property="description" content="Launch a new html/css/js playground" /> -->
+
+	<SEO title={'Launch Editor - DevCanvas'} description={'Launch a new html/css/js playground'} url={'https://devcanvas.art/play'}/>
 </svelte:head>
 
 <NavWrapper>

@@ -22,11 +22,11 @@
 			icon: 'vscode-icons:file-type-scss',
 			description: 'SCSS enthusiast? we got you!'
 		},
-		{
-			message: 'Babel',
-			icon: 'vscode-icons:file-type-light-babel2',
-			description: 'Wanna run something backward compatible? you got it!'
-		},
+		// {
+		// 	message: 'Babel',
+		// 	icon: 'vscode-icons:file-type-light-babel2',
+		// 	description: 'Wanna run something backward compatible? you got it!'
+		// },
 		{
 			message: 'Shareable URLs',
 			icon: 'material-symbols-light:screen-share',

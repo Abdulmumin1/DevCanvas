@@ -7,6 +7,21 @@
 		border-left: 30px solid orange !important;
 	} */
 
+	@font-face {
+		font-family: 'carbon'; /* Name that you'll use to reference this font */
+		src: url('/src/lib/font/carbon-bl.otf') format('opentype'); /* Path to your .otf font file */
+	}
+
+	@font-face {
+		font-family: 'public-sans'; /* Name that you'll use to reference this font */
+		src: url('/src/lib/font/public-sans.ttf') format('truetype'); /* Path to your .otf font file */
+	}
+
+	@font-face {
+		font-family: 'rubik'; /* Name that you'll use to reference this font */
+		src: url('/src/lib/font/Rubik-VariableFont_wght.ttf') format('truetype'); /* Path to your .otf font file */
+	}
+
 	*::-webkit-scrollbar {
 		display: block;
 		width: var(--sds, 14px);
@@ -142,7 +157,7 @@
 	.article pre {
 		padding: theme(padding.3);
 		overflow: scroll;
-		font-size: theme(fontSize.xs);
+		/* font-size: theme(fontSize.xs); */
 		@apply rounded-2xl border-sky-dark;
 	}
 
@@ -184,14 +199,19 @@
 
 	.article code {
 		/* background-color: #888; */
-		@apply rounded bg-secondary-dark text-white  dark:bg-sky-100   dark:text-black;
-		font-size: 16px !important;
-		font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI Adjusted', 'Segoe UI',
-			'Liberation Sans', sans-serif;
+		@apply rounded underline decoration-sky-400 decoration-wavy underline-offset-2;
+		font-size: inherit !important;
+		
+	}
+
+	.article p{
+		line-height: 35px;
 	}
 	.article pre > code {
 		background-color: inherit !important;
 		font-family: 'source code pro';
+		text-decoration: none;
+		font-size: 20px !important;
 		@apply text-sm lg:text-base;
 	}
 
@@ -271,9 +291,20 @@
 		font-weight: bold;
 	}
 
-	.article li {
+	.article ul {
 		list-style: disc;
 		margin-left: 20px;
+		display: flex;
+		flex-direction: column;
+		gap: 16px;
+	}
+
+	.article ol {
+		list-style: decimal;
+		margin-left: 20px;
+		display: flex;
+		flex-direction: column;
+		gap: 16px;
 	}
 
 	.article a {
@@ -281,14 +312,4 @@
 		text-decoration: underline;
 	}
 
-	.tos ol {
-		display: flex;
-		flex-direction: column;
-		gap: 10px;
-	}
-	.tos ul {
-		display: flex;
-		flex-direction: column;
-		gap: 10px;
-	}
 }
