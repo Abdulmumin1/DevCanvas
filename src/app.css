@@ -211,8 +211,9 @@
 		background-color: inherit !important;
 		font-family: 'source code pro';
 		text-decoration: none;
-		font-size: 20px !important;
-		@apply text-sm lg:text-base;
+		/* font-size: 20px !important; */
+		font-weight: bold;
+		@apply text-base lg:text-xl;
 	}
 
 	.splitpanes.embed-theme .splitpanes__pane {
