@@ -7,7 +7,7 @@ export async function load({ params, parent }) {
 	let { supabase } = await parent();
 	let username = params['username'];
 	// console.log();
-	const { data, error: err } = await supabase.from('profiles').select('*').eq('username', username);
+	const { data, error: err } = await supabase.from('profiles').select('*').eq('username', username.toLowerCase());
 
 	// console.log(data, session.user.email);
 	if (err) throw err;

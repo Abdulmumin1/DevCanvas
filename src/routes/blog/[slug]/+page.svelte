@@ -26,6 +26,7 @@
 	import { generateStructuredData } from '$lib/blog/utils.js';
 	import { showToast } from '$lib/index.js';
 	import SEO from '$components/seoComp.svelte'
+	import GoUp from '$components/goUp.svelte'
 
 
 	// import { page } from '$app/stores';
@@ -205,6 +206,7 @@
 	</div>
 </article>
 
+<GoUp content=".article"/>
 <style lang="postcss">
 	/* .article > h1,
 	h2,
@@ -247,6 +249,6 @@
 		/* text-align: center; */
 	}
 	.article {
-		font-size: 1.4rem !important;
+		/* font-size: 1.4rem !important; */
 	}
 </style>

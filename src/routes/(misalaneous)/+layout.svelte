@@ -1,6 +1,8 @@
 <script>
 	import Footer from '$components/footer.svelte';
 	import InnerNav from '$components/innerNav.svelte';
+	import GoUp from '$components/goUp.svelte'
+
 </script>
 
 <div
@@ -14,4 +16,7 @@
 		<slot />
 	</div>
 </div>
+
+<GoUp content=".tos"/>
+
 <Footer />

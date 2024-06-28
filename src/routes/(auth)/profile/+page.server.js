@@ -79,6 +79,7 @@ export const actions = {
 		let user_id = session.user.id;
 		let body = Object.fromEntries(await request.formData());
 		let username = body.username;
+		username = username.toLowerCase();
 		let name = body.fullname;
 		let socials = JSON.stringify({
 			github: body.github,

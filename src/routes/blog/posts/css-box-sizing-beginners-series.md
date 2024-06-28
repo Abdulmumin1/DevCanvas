@@ -19,9 +19,17 @@ thumbnail: '/devCanvas.png'
 
 # Introduction;
 
-Box Model governs how elements are sized and spaced on a webpage. The `**box-sizing**` property allows developers to control how these dimensions are calculated, simplifying layout design.
+Box Model governs how elements are sized and spaced on a webpage. The `box-sizing` property allows developers to control how these dimensions are calculated, simplifying layout design.
 
-In this guide, we'll explore two key values of `**box-sizing**`: `**content-box**` and `**border-box**`. By grasping these concepts, you'll gain the skills to create consistent and responsive layouts for your web projects. Let's dive right into CSS Box Sizing!
+In this article, we'll take a closer look into the two key values of `box-sizing`: `content-box` and `border-box`, and more importantly, why you will find some developers dump this code snippet into every single project.
+
+```css
+* {
+ box-sizing:border-box;
+ margin:0px;
+ padding:0px;
+}
+```
 
 ## content-box;
 
@@ -73,4 +81,22 @@ Total height = content height (including padding and border)
 - **Predictable Layouts**: By using `border-box`, you can ensure that the size of an element remains consistent regardless of changes to padding or border widths.
 - **Improved Responsiveness**: `border-box` can be particularly useful in responsive design, as it allows elements to resize more intuitively when adapting to different screen sizes.
 
-In summary, the `box-sizing` property profoundly influences the behavior of the CSS Box Model, impacting how elements are sized and how their dimensions are calculated. Understanding and utilizing `box-sizing` effectively can lead to more predictable and manageable layouts in web development projects.
+
+### Why this snippet always exists for most developers?
+
+```css
+* {
+ box-sizing:border-box;
+ margin:0px;
+ padding:0px;
+}
+```
+
+This is for:
+
+**Predictable Layouts**: By using `border-box`, you can ensure that the size of an element remains consistent regardless of changes to padding or border widths. Also, different browsers have different default values for the margin and padding, hence can break your design if not carefull.
+
+
+In summary, the `box-sizing` property profoundly influences the behavior of the CSS Box Model, affecting how elements are sized and how their dimensions are calculated.
+
+Super hoped you learn something new. **Always Stay Super Awesome 🤗**
