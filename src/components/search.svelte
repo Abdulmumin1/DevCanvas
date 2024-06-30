@@ -10,7 +10,7 @@
 	let sort = 'tags';
 </script>
 
-<form action={path} class="relative flex" method="post">
+<form action={path} class="relative flex text-sm md:text-base" method="post">
 	<input
 		type="text"
 		class="flex w-full items-center gap-2 rounded-lg bg-inherit px-3 py-2 outline-none transition-transform duration-300 focus:outline-2 focus:outline-sky-300 dark:text-white"

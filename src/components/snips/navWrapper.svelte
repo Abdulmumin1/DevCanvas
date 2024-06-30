@@ -38,7 +38,7 @@
 		<!-- Upper nave -->
 
 		{#if !$profile & (show && $user)}
-			<p class="bg-primary p-2 text-center text-white dark:bg-secondary-dark">
+			<p class="bg-primary  p-2 text-center text-white dark:bg-secondary-dark">
 				<a href="/profile">Complete your profile setup</a>
 			</p>
 		{/if}
@@ -49,7 +49,10 @@
 			>
 				<ul class="flex w-full items-center justify-end gap-2">
 					<ul class="flex w-full items-center justify-center gap-2">
-						<li><OverlayNav /></li>
+						<li class="block md:hidden logo-mobile">
+			<img src="/logo.svg" class="h-8 " alt="devcanvas" />
+
+						</li>
 						<li class="flex-1"><Search /></li>
 
 						<li
@@ -63,8 +66,10 @@
 						{#if !$user}
 							<li><a href={signinURL} class="rounded-lg bg-green-400 p-3">Login</a></li>
 						{:else}
-							<li><ProfileCard /></li>
-						{/if}
+							<li class="hidden md:block"><ProfileCard /></li>
+							
+							{/if}
+							<li><OverlayNav /></li>
 					</ul>
 				</ul>
 			</div>
@@ -75,3 +80,4 @@
 		</div>
 	</div>
 </div>
+

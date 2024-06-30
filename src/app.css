@@ -164,7 +164,7 @@
 	.article h1 {
 		font-family: 'Rubik', serif !important;
 		text-transform: capitalize;
-		@apply py-2 text-3xl text-black dark:text-white md:text-4xl;
+		@apply py-1 text-3xl text-black dark:text-white md:text-4xl;
 		font-weight: 500;
 	}
 
@@ -175,7 +175,7 @@
 
 		padding-block: 1;
 		font-weight: 500;
-		@apply py-2 text-2xl text-black dark:text-white md:text-3xl;
+		@apply py-1 text-2xl text-black dark:text-white md:text-3xl;
 	}
 
 	.article h3 {
@@ -184,14 +184,14 @@
 
 		font-weight: 500;
 
-		@apply py-2 text-xl text-black dark:text-white md:text-2xl;
+		@apply py-1 text-xl text-black dark:text-white md:text-2xl;
 
 		/* color: theme(colors.orang); */
 	}
 
 	.article h4 {
 		font-family: 'Rubik', serif !important;
-		@apply py-2 text-lg text-black dark:text-white md:text-xl;
+		@apply py-1 text-lg text-black dark:text-white md:text-xl;
 
 		font-weight: 500;
 		/* color: theme(colors.orang); */
@@ -209,10 +209,10 @@
 	}
 	.article pre > code {
 		background-color: inherit !important;
-		font-family: 'source code pro';
+		font-family: 'Rubik';
 		text-decoration: none;
 		/* font-size: 20px !important; */
-		font-weight: bold;
+		font-weight: 500;
 		@apply text-base lg:text-xl;
 	}
 
