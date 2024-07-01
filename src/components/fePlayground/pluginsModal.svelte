@@ -1,7 +1,7 @@
 <script>
 	import { fly } from 'svelte/transition';
 	import Fa from 'svelte-fa';
-	import { faClose } from '@fortawesome/free-solid-svg-icons';
+	import { faClose,faGear } from '@fortawesome/free-solid-svg-icons';
 
 	import { showModal, externalStuff } from '$lib/feEditor/store.js';
 	import { clickOutside } from '$lib/index.js';
@@ -9,12 +9,12 @@
 	import Jsplugins from './externalJs/jsplugins.svelte';
 	import { onMount, tick } from 'svelte';
 	import SaasProcessor from './saasProcessor.svelte';
-	import AddTags from './pluginModal/addTags.svelte';
 	import BabelProcessor from './babelProcessor.svelte';
 	import TypescriptProcessor from './typescriptProcessor.svelte';
 	import OtherjsPlugins from './externalJs/otherjsPlugins.svelte';
 
-	let modal;
+	let modal = false;
+
 	let js = $externalStuff.js;
 	let css = $externalStuff.css;
 	let html = $externalStuff.html;
@@ -55,13 +55,9 @@
 	}
 
 	function closeModal() {
-		showModal.set(false);
-		// modal.close();
+		modal = false
 	}
 
-	onMount(() => {
-		modal.showModal();
-	});
 
 	let tabPlugin = true;
 
@@ -74,59 +70,69 @@
 	}
 </script>
 
-<dialog
+
+<button on:click={()=>{
+	modal = !modal
+}} class="cursor-pointer hover:scale-105 hover:opacity-80"
+	><Fa icon={faGear} />
+</button>
+
+
+{#if modal}
+	
+<div
 	id="pluginModal"
 	in:fly={{ y: 100 }}
 	out:fly={{ y: 80, duration: 150 }}
-	bind:this={modal}
-	class="h-[80%] w-[90%] rounded-lg px-2 pb-2 text-sm dark:bg-black dark:text-white md:h-[900px] md:w-[500px]"
+	use:clickOutside on:click_outside={closeModal}
+	class="z-50 rounded-lg px-2 pb-2 text-sm bg-white flex flex-col items-center  dark:bg-black dark:text-white md:h-[900px] md:w-[500px]"
 >
-	<div use:clickOutside on:click_outside={closeModal} class=" flex flex-col gap-4">
-		<!-- class="modal z-50 backdrop-blur-lg absolute  inset-y-0 inset-x-0 mx-auto m-2 shadow-md border-t-4 bg-white dark:bg-black border-sky-500 p-3 rounded flex flex-col overflow-scroll gap-2" -->
-		<div
-			class="sticky top-0 flex items-end justify-between border-b-2 border-sky-300 bg-white pb-2 pt-4 text-black dark:bg-black dark:text-white"
-		>
-			<div class="flex gap-2 px-2">
-				<button on:click={showPlugin} class:border-b-2={tabPlugin}>Plugins</button>
-				<button on:click={showEditor} class:border-b-2={!tabPlugin}>Editor</button>
-			</div>
+<div
+	class="sticky top-0 flex w-full items-center justify-center  border-b-4 mb-6  border-sky-300 bg-white pb-2 pt-4 text-black dark:bg-black dark:text-white"
+>
+	<div class="flex gap-2 px-2 text-xl items-center justify-center max-w-6xl  w-full ">
+		<button on:click={showPlugin} class:font-bold={tabPlugin}>Plugins</button>
+		<button on:click={showEditor} class:font-bold={!tabPlugin}>Editor</button>
+	</div>
 
-			<button class="px-2" on:click={closeModal}>
-				<Fa icon={faClose} />
-			</button>
-		</div>
+	<button class="px-2 absolute right-4 top-4" on:click={closeModal}>
+		<Fa icon={faClose} />
+	</button>
+</div>
+	<div  class="w-full max-w-6xl flex flex-col gap-4">
+		<!-- class="modal z-50 backdrop-blur-lg absolute  inset-y-0 inset-x-0 mx-auto m-2 shadow-md border-t-4 bg-white dark:bg-black border-sky-500 p-3 rounded flex flex-col overflow-scroll gap-2" -->
 
 		<div id="tabPlugins" class:hidden={!tabPlugin} class="flex flex-col gap-2">
 			<div class="w-full">
-				<p>Head</p>
+				<p class="font-semibold text-lg">Head</p>
 				<textarea
 					name=""
 					id=""
 					cols="30"
 					rows="3"
 					placeholder="Content for the head"
-					class="w-full rounded bg-gray-100 font-thin outline-none dark:bg-primary"
+					class="w-full rounded-xl p-2  bg-gray-100 font-thin outline-none dark:bg-primary"
 					spellcheck="false"
 					bind:value={html}
 				/>
 			</div>
 
 			<div class="flex w-full flex-col gap-2">
-				<p>CSS Plugin</p>
+				<p  class="font-semibold text-lg">CSS Plugins</p>
 				<Csslist />
 			</div>
 
-			<div class="flex w-full flex-col gap-2 transition-transform duration-300">
-				Plugins
+			<div class="flex  w-full flex-col gap-2 transition-transform duration-300">
+				<div  class="font-semibold text-lg">Js Plugins</div>
 				<Jsplugins />
 				<OtherjsPlugins />
 			</div>
 		</div>
 
 		<div id="tabEditor" class:hidden={tabPlugin} class="flex flex-col gap-2">
-			<div>CSS PreProcessor</div>
+			<div  class="font-semibold text-lg">CSS PreProcessor</div>
 			<SaasProcessor />
-			<div>Javascript Processors</div>
+			<div  class="font-semibold text-lg">Javascript Processors</div>
 			<div class="flex flex-col gap-2 rounded-lg bg-gray-300 p-2 dark:bg-primary">
 				<BabelProcessor />
 				<TypescriptProcessor />
@@ -134,47 +140,27 @@
 			<!-- <AddTags /> -->
 		</div>
 	</div>
-</dialog>
+</div>
+
+{/if}
 
 <style>
 	#pluginModal {
-		max-height: 600px;
+		/* max-height: 600px; */
+		position: fixed;
+		bottom: 0;
+		right: 0;
+		left: 0;
+		height: 80%;
+		width: 100%;
+		overflow: auto;
+		z-index: 99999px;
+
 	}
 	#pluginModal::-webkit-scrollbar {
 		width: 0px;
 		height: 0px;
 	}
 
-	#pluginModal[open] {
-		transform: translateY(0);
-	}
-
-	#pluginModal::backdrop {
-		backdrop-filter: blur(1px);
-	}
-
-	/* Optional styles for backdrop */
-	#pluginModal::backdrop {
-		background-color: rgba(0, 0, 0, 0.5);
-	}
-
-	@keyframes fadeIn {
-		from {
-			opacity: 0;
-		}
-
-		to {
-			opacity: 1;
-		}
-	}
-
-	@keyframes fadeOut {
-		from {
-			opacity: 1;
-		}
-
-		to {
-			opacity: 0;
-		}
-	}
+	
 </style>

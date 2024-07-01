@@ -23,9 +23,9 @@
 	// });
 </script>
 
-<div class="grid grid-cols-3 gap-2">
+<div class="grid grid-cols-3 gap-2 *:cursor-pointer">
 	<label
-		class="flex justify-between rounded bg-sky-100 p-1 text-black dark:bg-secondary-dark dark:text-white"
+		class="flex justify-between rounded bg-sky-100 p-4 text-black dark:bg-secondary-dark dark:text-white"
 		for="tailwind"
 		>TailwindCSS
 
@@ -33,14 +33,14 @@
 	</label>
 
 	<label
-		class="flex justify-between rounded bg-sky-100 p-1 text-black dark:bg-secondary-dark dark:text-white"
+		class="flex justify-between rounded bg-sky-100 p-4 text-black dark:bg-secondary-dark dark:text-white"
 		for="bootstrap"
 		>BootStrap
 
 		<input type="checkbox" class="accent-sky-200" id="bootstrap" bind:checked={state.bootstrap} />
 	</label>
 	<label
-		class="flex justify-between rounded bg-sky-100 p-1 text-black dark:bg-secondary-dark dark:text-white"
+		class="flex justify-between rounded bg-sky-100 p-4 text-black dark:bg-secondary-dark dark:text-white"
 		for="fontawesome"
 	>
 		FontAwesome
@@ -54,7 +54,7 @@
 	</label>
 
 	<label
-		class="flex justify-between rounded bg-sky-100 p-1 text-black dark:bg-secondary-dark dark:text-white"
+		class="flex justify-between rounded bg-sky-100 p-4 text-black dark:bg-secondary-dark dark:text-white"
 		for="materialicons"
 		>Material Icons
 
@@ -67,7 +67,7 @@
 	</label>
 
 	<label
-		class="flex justify-between rounded bg-sky-100 p-1 text-black dark:bg-secondary-dark dark:text-white"
+		class="flex justify-between rounded bg-sky-100 p-4 text-black dark:bg-secondary-dark dark:text-white"
 		for="googlefonts"
 		>Google Fonts
 
@@ -80,7 +80,7 @@
 	</label>
 
 	<label
-		class="flex justify-between rounded bg-sky-100 p-1 text-black dark:bg-secondary-dark dark:text-white"
+		class="flex justify-between rounded bg-sky-100 p-4 text-black dark:bg-secondary-dark dark:text-white"
 		for="bulma"
 		>Bulma
 

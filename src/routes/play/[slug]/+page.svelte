@@ -17,12 +17,11 @@
 	import {
 		showLoginToSave,
 		showForkTosave,
-		showModal,
+		
 		showEmbedModal
 	} from '$lib/feEditor/store.js';
 	import JsConsole from '$components/fePlayground/jsConsole.svelte';
 	import EmbedModal from '$components/fePlayground/embedModal.svelte';
-	import ModalHigh from '$components/fePlayground/modalHigh.svelte';
 	import SideComponent from '$components/fePlayground/editorSets/sideComponent.svelte';
 
 	import { setInitialState } from '$lib/feEditor/stateConfig.js';
@@ -97,9 +96,6 @@
 			</div>
 		</Resizable>
 		<SideComponent />
-		{#if $showModal}
-			<ModalHigh />
-		{/if}
 		{#if $showEmbedModal}
 			<EmbedModal />
 		{/if}

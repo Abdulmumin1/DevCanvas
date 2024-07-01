@@ -10,7 +10,7 @@
 		{
 			message: 'Embed',
 			icon: 'material-symbols-light:web',
-			description: 'Embed you project in websites, blogs and documentations.'
+			description: 'Embed your project in websites, blogs and documentations.'
 		},
 		{
 			message: 'Built-in Plugins',
