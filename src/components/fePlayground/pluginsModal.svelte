@@ -3,15 +3,15 @@
 	import Fa from 'svelte-fa';
 	import { faClose,faGear } from '@fortawesome/free-solid-svg-icons';
 
-	import { showModal, externalStuff } from '$lib/feEditor/store.js';
+	import {  externalStuff } from '$lib/feEditor/store.js';
 	import { clickOutside } from '$lib/index.js';
 	import Csslist from './externalCSS/csslist.svelte';
 	import Jsplugins from './externalJs/jsplugins.svelte';
-	import { onMount, tick } from 'svelte';
 	import SaasProcessor from './saasProcessor.svelte';
 	import BabelProcessor from './babelProcessor.svelte';
 	import TypescriptProcessor from './typescriptProcessor.svelte';
 	import OtherjsPlugins from './externalJs/otherjsPlugins.svelte';
+	import SideComponent from '$components/fePlayground/editorSets/sideComponent.svelte';
 
 	let modal = false;
 
@@ -88,10 +88,11 @@
 	class="z-50 rounded-lg px-2 pb-2 text-sm bg-white flex flex-col items-center  dark:bg-black dark:text-white md:h-[900px] md:w-[500px]"
 >
 <div
-	class="sticky top-0 flex w-full items-center justify-center  border-b-4 mb-6  border-sky-300 bg-white pb-2 pt-4 text-black dark:bg-black dark:text-white"
+	class="sticky top-0 flex w-full items-center justify-center  border-b-4 mb-6  z-50 border-sky-300 bg-white pb-2 pt-4 text-black dark:bg-black dark:text-white"
 >
-	<div class="flex gap-2 px-2 text-xl items-center justify-center max-w-6xl  w-full ">
+	<div class="flex gap-4 px-2 text-lg md:text-xl  items-center justify-center max-w-6xl  w-full ">
 		<button on:click={showPlugin} class:font-bold={tabPlugin}>Plugins</button>
+		<div class="font-bold text-lg">·</div>
 		<button on:click={showEditor} class:font-bold={!tabPlugin}>Editor</button>
 	</div>
 
@@ -102,9 +103,10 @@
 	<div  class="w-full max-w-6xl flex flex-col gap-4">
 		<!-- class="modal z-50 backdrop-blur-lg absolute  inset-y-0 inset-x-0 mx-auto m-2 shadow-md border-t-4 bg-white dark:bg-black border-sky-500 p-3 rounded flex flex-col overflow-scroll gap-2" -->
 
+		
 		<div id="tabPlugins" class:hidden={!tabPlugin} class="flex flex-col gap-2">
 			<div class="w-full">
-				<p class="font-semibold text-lg">Head</p>
+				<p class="font-semibold text-base">Head</p>
 				<textarea
 					name=""
 					id=""
@@ -118,21 +120,26 @@
 			</div>
 
 			<div class="flex w-full flex-col gap-2">
-				<p  class="font-semibold text-lg">CSS Plugins</p>
+				<p  class="font-semibold ">CSS Plugins</p>
 				<Csslist />
 			</div>
 
 			<div class="flex  w-full flex-col gap-2 transition-transform duration-300">
-				<div  class="font-semibold text-lg">Js Plugins</div>
+				<div  class="font-semibold ">Js Plugins</div>
 				<Jsplugins />
 				<OtherjsPlugins />
 			</div>
 		</div>
 
 		<div id="tabEditor" class:hidden={tabPlugin} class="flex flex-col gap-2">
-			<div  class="font-semibold text-lg">CSS PreProcessor</div>
-			<SaasProcessor />
-			<div  class="font-semibold text-lg">Javascript Processors</div>
+			<SideComponent/>
+
+			<div  class="font-semibold px-2 flex flex-col gap-2">CSS PreProcessor
+
+
+				<SaasProcessor />
+			</div>
+			<div  class="font-semibold px-2">Javascript Processors</div>
 			<div class="flex flex-col gap-2 rounded-lg bg-gray-300 p-2 dark:bg-primary">
 				<BabelProcessor />
 				<TypescriptProcessor />

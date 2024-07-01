@@ -11,11 +11,8 @@
 		delayPreview,
 		autoSavefast
 	} from '$lib/index.js';
-	import { fly, scale, slide } from 'svelte/transition';
 	import SingleSetting from '../singleSetting.svelte';
 	import DeleteCanvas from '../deleteCanvas.svelte';
-	import Fa from 'svelte-fa';
-	import { faBrush, faClose, faRemoveFormat } from '@fortawesome/free-solid-svg-icons';
 	import FeGetEmbed from '../feGetEmbed.svelte';
 	import FeFork from '../feFork.svelte';
 	import AddTags from '../pluginModal/addTags.svelte';
@@ -48,20 +45,17 @@
 	function handleAutoSave(event) {
 		autoSavefast.set(event.detail.status);
 	}
+
+
 </script>
 
-{#if $editorSettingState}
-	<!-- transition:slide={{ axis: 'x' }} -->
-	<!-- in:fly -->
+
+
+
 	<div
-		transition:fly={{ x: -200 }}
-		class="drop absolute top-0 flex h-full w-[300px] flex-col overflow-auto bg-black text-white shadow-2xl"
+		class="drop flex h-full w-full flex-col overflow-auto bg-black text-white shadow-2xl"
 	>
-		<div class="absolute right-0 m-3">
-			<button class="rounded p-1 text-2xl text-white" on:click={closeDropdown}
-				><Fa icon={faClose} /></button
-			>
-		</div>
+	
 
 		<ul
 			use:clickOutside
@@ -71,8 +65,11 @@
 			<!-- transition:fly={{ y: 200, delay: 50 }} -->
 
 			<li class="w-full">
-				<ul class="flex flex-col gap-2">
-					<li class="p-2">General</li>
+				<ul>
+
+					<li class="p-2 font-semibold">General</li>
+				</ul>
+				<ul class="flex flex-row flex-wrap md:*:w-[330px]  gap-2">
 
 					<li class="w-full">
 						<SingleSetting
@@ -104,7 +101,7 @@
 
 			<li class="mb-2 flex flex-col gap-2 px-1">
 				<!-- <p></p> -->
-				<div class="dark:text-white">Format Editors</div>
+				<div class="dark:text-white font-semibold">Format Editors</div>
 
 				<div class="w-fit">
 					<FormatCode />
@@ -117,9 +114,9 @@
 		</ul>
 
 		<ul
-			class="settings-section flex flex-col gap-2 border border-light p-3 text-black dark:border-secondary-dark md:hidden"
+			class="settings-section flex flex-col gap-2  border-light  text-black dark:border-secondary-dark"
 		>
-			<li class="px-2 dark:text-white">Actions</li>
+			<li class="px-2 dark:text-white font-semibold md:hidden">Actions</li>
 			{#if $isOwner}
 				<li>
 					<button
@@ -132,10 +129,10 @@
 					>
 				</li>
 			{/if}
-			<li class="flex w-fit items-center justify-center gap-2 rounded px-2">
+			<li class="flex w-fit items-center justify-center gap-2 rounded px-2 md:hidden">
 				<FeGetEmbed />
 			</li>
-			<li class="px-2">
+			<li class="px-2 md:hidden">
 				{#if !$isOwner}
 					<li class="flex w-fit items-center justify-center gap-1 rounded bg-green-500 px-2 py-1">
 						Fork <FeFork />
@@ -144,19 +141,8 @@
 			</li>
 		</ul>
 	</div>
-{/if}
+
 
 <style>
-	.drop {
-		z-index: 9999;
-	}
 
-	.settings-section {
-		/* border: 1px solid #ddd;		 */
-		border-radius: 4px;
-		padding: 10px;
-		margin-bottom: 1px;
-		width: 100%;
-		border-radius: 4px;
-	}
 </style>

@@ -46,7 +46,7 @@
 </script>
 
 <div class="flex flex-col gap-2">
-	<div>External Script</div>
+	<div class="font-semibold">External Script</div>
 
 	<div class="flex gap-2">
 		<input

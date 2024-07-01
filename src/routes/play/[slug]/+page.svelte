@@ -1,28 +1,23 @@
 <script>
-	import { current_data, user, isOwner, SnippetsDescription, showToast } from '$lib/index.js';
+	import { current_data, user, isOwner,  } from '$lib/index.js';
 	import {
 		showSave,
 		consoleOutput,
-		canvasTags,
-		canvasConfig,
-		jsPlugins
+
 	} from '$lib/feEditor/store.js';
 	import { onDestroy, onMount } from 'svelte';
-	import Toast from '../../../components/toast.svelte';
 	import { browser } from '$app/environment';
-	import FeCodeEditor from '../../../components/fePlayground/feCodeEditor.svelte';
-	import FePlayGroungNav from '../../../components/fePlayground/fePlayGroungNav.svelte';
-	import CodeOutput from '../../../components/fePlayground/codeOutput.svelte';
-	import Resizable from '../../../components/fePlayground/resizable.svelte';
+	import FeCodeEditor from '$components/fePlayground/feCodeEditor.svelte';
+	import FePlayGroungNav from '$components/fePlayground/fePlayGroungNav.svelte';
+	import CodeOutput from '$components/fePlayground/codeOutput.svelte';
+	import Resizable from '$components/fePlayground/resizable.svelte';
 	import {
 		showLoginToSave,
 		showForkTosave,
-		
 		showEmbedModal
 	} from '$lib/feEditor/store.js';
 	import JsConsole from '$components/fePlayground/jsConsole.svelte';
 	import EmbedModal from '$components/fePlayground/embedModal.svelte';
-	import SideComponent from '$components/fePlayground/editorSets/sideComponent.svelte';
 
 	import { setInitialState } from '$lib/feEditor/stateConfig.js';
 
@@ -95,7 +90,6 @@
 				{/key}
 			</div>
 		</Resizable>
-		<SideComponent />
 		{#if $showEmbedModal}
 			<EmbedModal />
 		{/if}
