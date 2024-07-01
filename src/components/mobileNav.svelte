@@ -53,7 +53,7 @@
 
 {#if modal}
 	
-<div in:slide class="vaul dark:bg-[#191919] bg-white text-sky-300"  bind:this={modal} >
+<div in:slide class="vaul z-50 dark:bg-[#191919] bg-white text-sky-300"  >
 	<div
 		class="flex flex-col  h-full text-base justify-between"
 		use:clickOutside
@@ -87,11 +87,12 @@
 .vaul{
 	/* height: 300px; */
 	/* background-color: black; */
-	z-index: 999;
+	/* z-index: 999; */
 	position: fixed;
 	bottom: 0;
 	width: 100%;
 	right: 0;
+	left: 0;
 	padding: 20px;
 	border-top-left-radius: 1rem;
 	border-top-right-radius: 1rem;
