@@ -9,14 +9,9 @@
 	import FePlayGroungNav from '$components/fePlayground/fePlayGroungNav.svelte';
 	import CodeOutput from '$components/fePlayground/codeOutput.svelte';
 	import Resizable from '$components/fePlayground/resizable.svelte';
-	import { showModal, showEmbedModal } from '$lib/feEditor/store.js';
+	import {  showEmbedModal } from '$lib/feEditor/store.js';
 	import JsConsole from '$components/fePlayground/jsConsole.svelte';
 	import EmbedModal from '$components/fePlayground/embedModal.svelte';
-
-
-	import SideComponent from '$components/fePlayground/editorSets/sideComponent.svelte';
-
-	// console.log(user)
 
 	import { setReloadContext, getReload } from '$lib/feEditor/funct.js';
 
@@ -132,8 +127,6 @@
 				{/key}
 			</div>
 		</Resizable>
-		<!-- <div class="absolute top-0 w-[300px] bg-white h-full" /> -->
-		<SideComponent />
 		
 		{#if $showEmbedModal}
 			<EmbedModal />

@@ -1,8 +1,7 @@
 <script>
-	import { faCss3, faCss3Alt, faHtml5, faJs, faSafari } from '@fortawesome/free-brands-svg-icons';
-	import { faAngleDown, faGear, faGears, faTerminal } from '@fortawesome/free-solid-svg-icons';
+	import { faCss3,  faHtml5, faJs } from '@fortawesome/free-brands-svg-icons';
+	import { faTerminal } from '@fortawesome/free-solid-svg-icons';
 	import {
-		showModal,
 		showjsConsole,
 		sassActive,
 		babelActive,
@@ -12,9 +11,7 @@
 	import EditorSettings from './editorSettings.svelte';
 	export let lang;
 
-	function showMod() {
-		showModal.set(true);
-	}
+	
 </script>
 
 <!-- <div class=""> -->
