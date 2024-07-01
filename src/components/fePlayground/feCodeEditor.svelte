@@ -103,7 +103,6 @@
 				</button>
 			</div>
 			<div class="flex gap-2 p-2 text-white">
-				<Femodal />
 				<EditorSettings />
 			</div>
 		</div>

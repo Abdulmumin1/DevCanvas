@@ -46,7 +46,7 @@
 	</div>
 </div> -->
 
-<button id="openModal" on:click={openModal}>
+<button id="openModal" class="text-xl" on:click={openModal}>
 <Fa icon={faBars} />
 
 </button>
@@ -97,65 +97,9 @@
 	border-top-right-radius: 1rem;
 	border-top: 2px solid #38bdf8;
 	height: 70%;
+	padding-bottom: 40px;
 
 	
 }
 
-	#myModal {
-		width: 300px;
-		border-radius: 8px;
-		box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-		transform: translateY(-100%);
-		transition: transform 0.3s ease-in-out;
-		box-shadow: 0px 0px 2px gray;
-		animation: fade-out 0.1s ease-out;
-		position: absolute;
-		bottom: 0;
-	}
-
-	#myModal::backdrop {
-		backdrop-filter: blur(1px);
-	}
-
-	/* Optional styles for backdrop */
-	#myModal::backdrop {
-		background-color: rgba(0, 0, 0, 0.5);
-	}
-
-	#myModal[open] {
-		animation: fade-in 0.2s ease-out;
-		transform: translateY(0);
-	}
-
-	#myModal::backdrop {
-		opacity: 0;
-	}
-
-	@keyframes fade-in {
-		0% {
-			opacity: 0;
-			scale: 1.03;
-			display: none;
-		}
-
-		100% {
-			opacity: 1;
-			scale: 1;
-			display: block;
-		}
-	}
-
-	@keyframes fade-out {
-		0% {
-			opacity: 1;
-			scale: 1.01;
-			display: block;
-		}
-
-		100% {
-			opacity: 0;
-			scale: 1;
-			display: none;
-		}
-	}
 </style>

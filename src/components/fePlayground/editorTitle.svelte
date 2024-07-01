@@ -10,7 +10,6 @@
 	} from '$lib/feEditor/store.js';
 	import Fa from 'svelte-fa';
 	import EditorSettings from './editorSettings.svelte';
-	import Femodal from './femodal.svelte';
 	export let lang;
 
 	function showMod() {
@@ -25,7 +24,6 @@
 			<span class="text-rose-500"><Fa icon={faHtml5} /></span>HTML
 		</p>
 		<div class="relative flex gap-3 px-4">
-			<Femodal />
 
 			<EditorSettings />
 		</div>
@@ -52,7 +50,7 @@
 				on:click={() => {
 					showjsConsole.set(true);
 				}}
-				class="z-50 flex items-center gap-2 hover:opacity-80"
+				class="z-10 flex items-center gap-2 hover:opacity-80"
 			>
 				console <Fa icon={faTerminal} />
 			</button>

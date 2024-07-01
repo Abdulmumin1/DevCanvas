@@ -12,9 +12,7 @@
 	import { showModal, showEmbedModal } from '$lib/feEditor/store.js';
 	import JsConsole from '$components/fePlayground/jsConsole.svelte';
 	import EmbedModal from '$components/fePlayground/embedModal.svelte';
-	import ModalHigh from '$components/fePlayground/modalHigh.svelte';
-	// import OverlayNav from '$components/overlayNav.svelte';
-	// import { showToast } from '$lib/index.js';
+
 
 	import SideComponent from '$components/fePlayground/editorSets/sideComponent.svelte';
 
@@ -136,11 +134,9 @@
 		</Resizable>
 		<!-- <div class="absolute top-0 w-[300px] bg-white h-full" /> -->
 		<SideComponent />
-		{#if $showModal}
-			<ModalHigh />
-		{/if}
+		
 		{#if $showEmbedModal}
-			<EmbedModal type={$showModal} />
+			<EmbedModal />
 		{/if}
 	</div>
 </main>
