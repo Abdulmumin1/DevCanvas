@@ -18,72 +18,72 @@
 	}
 
 	// onMount(() => {
-	// 	// Update the state of the first checkbox tclass="accent-sky-200" o be true
+	// 	// Update the state of the first checkbox tclass="accent-gray-200" o be true
 	// 	updateState('materialicons', true);
 	// });
 </script>
 
 <div class="grid grid-cols-3 gap-2 *:cursor-pointer">
 	<label
-		class="flex justify-between rounded bg-sky-100 p-2 md:p-3 text-black dark:bg-secondary-dark dark:text-white"
+		class="flex justify-between rounded bg-gray-100 text-xs md:text-base p-2 md:p-3 text-black dark:bg-secondary-dark dark:text-white"
 		for="tailwind"
 		>TailwindCSS
 
-		<input type="checkbox" class="accent-sky-200" id="tailwind" bind:checked={state.tailwind} />
+		<input type="checkbox" class="accent-gray-200" id="tailwind" bind:checked={state.tailwind} />
 	</label>
 
 	<label
-		class="flex justify-between rounded bg-sky-100 p-2 md:p-3 text-black dark:bg-secondary-dark dark:text-white"
+		class="flex justify-between rounded bg-gray-100 text-xs md:text-base p-2 md:p-3 text-black dark:bg-secondary-dark dark:text-white"
 		for="bootstrap"
 		>BootStrap
 
-		<input type="checkbox" class="accent-sky-200" id="bootstrap" bind:checked={state.bootstrap} />
+		<input type="checkbox" class="accent-gray-200" id="bootstrap" bind:checked={state.bootstrap} />
 	</label>
 	<label
-		class="flex justify-between rounded bg-sky-100 p-2 md:p-3 text-black dark:bg-secondary-dark dark:text-white"
+		class="flex justify-between rounded bg-gray-100 text-xs md:text-base p-2 md:p-3 text-black dark:bg-secondary-dark dark:text-white"
 		for="fontawesome"
 	>
 		FontAwesome
 
 		<input
 			type="checkbox"
-			class="accent-sky-200"
+			class="accent-gray-200"
 			id="fontawesome"
 			bind:checked={state.fontawesome}
 		/>
 	</label>
 
 	<label
-		class="flex justify-between rounded bg-sky-100 p-2 md:p-3 text-black dark:bg-secondary-dark dark:text-white"
+		class="flex justify-between rounded bg-gray-100 text-xs md:text-base p-2 md:p-3 text-black dark:bg-secondary-dark dark:text-white"
 		for="materialicons"
 		>Material Icons
 
 		<input
 			type="checkbox"
-			class="accent-sky-200"
+			class="accent-gray-200"
 			id="materialicons"
 			bind:checked={state.materialicons}
 		/>
 	</label>
 
 	<label
-		class="flex justify-between rounded bg-sky-100 p-2 md:p-3 text-black dark:bg-secondary-dark dark:text-white"
+		class="flex justify-between rounded bg-gray-100 text-xs md:text-base p-2 md:p-3 text-black dark:bg-secondary-dark dark:text-white"
 		for="googlefonts"
 		>Google Fonts
 
 		<input
 			type="checkbox"
-			class="accent-sky-200"
+			class="accent-gray-200"
 			id="googlefonts"
 			bind:checked={state.googlefonts}
 		/>
 	</label>
 
 	<label
-		class="flex justify-between rounded bg-sky-100 p-4 text-black dark:bg-secondary-dark dark:text-white"
+		class="flex justify-between rounded bg-gray-100 text-xs md:text-base p-4 text-black dark:bg-secondary-dark dark:text-white"
 		for="bulma"
 		>Bulma
 
-		<input type="checkbox" class="accent-sky-200" id="bulma" bind:checked={state.bulma} />
+		<input type="checkbox" class="accent-gray-200" id="bulma" bind:checked={state.bulma} />
 	</label>
 </div>

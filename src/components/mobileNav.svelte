@@ -28,7 +28,7 @@
 	
 <div in:slide class="vaul z-50 dark:bg-[#191919] bg-white text-sky-300"  >
 	<div
-		class="flex flex-col  h-full text-base justify-between"
+		class="flex flex-col  h-full text-base "
 		use:clickOutside
 		on:click_outside={closeModal}
 	>
@@ -68,7 +68,7 @@
 	border-top-right-radius: 1rem;
 	border-top: 2px solid #38bdf8;
 	height: 70%;
-	padding-bottom: 40px;
+	/* padding-bottom: 40px; */
 }
 
 </style>

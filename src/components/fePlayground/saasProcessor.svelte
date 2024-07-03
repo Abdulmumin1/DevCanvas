@@ -26,6 +26,6 @@
 	}
 </script>
 
-<div class="">
+<div class="p-2 bg-gray-200 dark:bg-primary rounded-lg">
 	<SingleSetting label={'CSS Processor (SCSS)'} checked={$sassActive} on:checked={change} />
 </div>

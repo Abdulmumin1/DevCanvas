@@ -10,6 +10,10 @@
 	let dropdownOpen = false;
 
 	function toggleDropdown() {
+		if(isVertical){
+			downloadZip()
+			return
+		}
 		dropdownOpen = !dropdownOpen;
 	}
 
@@ -44,14 +48,29 @@
 			console.error('Error creating or downloading zip file:', error);
 		}
 	}
+
+	let innerWidth = 0;
+
+	// $:console.log(innerWidth)
+
+	$: isVertical = innerWidth <= 724 
 </script>
+
+
+<svelte:window bind:innerWidth={innerWidth}/>
 
 <div class="dropdown relative flex flex-col text-center text-primary dark:text-white">
 	<button
 		class="dropdown-button flex items-center justify-end gap-2 text-primary"
 		on:click={toggleDropdown}
 		><span class="md:hidden">Download Zip</span>
+
+		{#if loading && isVertical}
+					<Fa icon={faSpinner} class="animate-spin" />
+
+		{:else}
 		<Fa icon={faFileZipper} />
+				{/if}
 	</button>
 
 	{#if dropdownOpen}

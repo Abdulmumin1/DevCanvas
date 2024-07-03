@@ -26,20 +26,13 @@ export function setup_js_plugin(name, plugins, iframeDoc) {
 		let src = cdns[name];
 		let id = `${name}DSFE4o431!!`;
 		if (!pluginHTML) {
-			// console.log('configuring plugin:', name);
-			// try {
-			// 	iframeDoc.body.appendChild(plugin);
-			// } catch (err) {
-			// 	console.log('Unable to configure plugin', name);
-			// }
-			console.log('Configured {src}', src);
+
 			loadScriptFromURL(src, iframeDoc, id)
 				.then(() => {
-					console.log('Script loaded successfully');
 					// Do something after the script is loaded
 				})
 				.catch((error) => {
-					console.error('Failed to load script:', error);
+						//
 				});
 		}
 	} else {
@@ -48,7 +41,6 @@ export function setup_js_plugin(name, plugins, iframeDoc) {
 		}
 	}
 
-	// console.log(name, plugins, iframeDoc);
 }
 
 export function injectHeadContent(plugins, iframeDoc) {
@@ -122,15 +114,6 @@ export function injectHeadContent(plugins, iframeDoc) {
 		tailwindScript.setAttribute('defer', true);
 		tailwindScript.src = 'https://cdn.tailwindcss.com';
 		tailwindScript.id = 'tailwincssDSFE4o431!!';
-
-		// loadScriptFromURL('https://cdn.tailwindcss.com', iframeDoc, 'tailwincssDSFE4o431!!')
-		// 	.then(() => {
-		// 		console.log('Script loaded successfully');
-		// 		// Do something after the script is loaded
-		// 	})
-		// 	.catch((error) => {
-		// 		console.error('Failed to load script:', error);
-		// 	});
 
 		if (!tailwindScriptHTML) {
 			iframeDoc.head.appendChild(tailwindScript);
