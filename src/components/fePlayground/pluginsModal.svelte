@@ -12,6 +12,9 @@
 	import TypescriptProcessor from './typescriptProcessor.svelte';
 	import OtherjsPlugins from './externalJs/otherjsPlugins.svelte';
 	import SideComponent from '$components/fePlayground/editorSets/sideComponent.svelte';
+	import Shortcuts from '$components/fePlayground/shortcuts.svelte';
+	import {onMount, onDestroy} from 'svelte'
+
 
 	let modal = false;
 
@@ -59,7 +62,7 @@
 	}
 
 
-	let tabPlugin = true;
+	let tabPlugin = false;
 
 	function showPlugin() {
 		tabPlugin = true;
@@ -68,11 +71,35 @@
 	function showEditor() {
 		tabPlugin = false;
 	}
+
+	function handleShortcut(event) {
+  if ((event.ctrlKey || event.metaKey) && event.key === '/') {
+    event.preventDefault();
+    // Your action here
+	modal = !modal
+  }
+}
+
+
+	onMount(()=>{
+window.addEventListener('keydown', handleShortcut)
+
+return ()=>{
+	window.removeEventListener('keydown', handleShortcut)
+
+}})
+
+
+
+
+// onDestroy(()=>{
+// })
 </script>
 
 
 <button on:click={()=>{
 	modal = !modal
+	// showEditor()
 }} class="cursor-pointer hover:scale-105 hover:opacity-80"
 	><Fa icon={faGear} />
 </button>
@@ -85,22 +112,22 @@
 	in:fly={{ y: 100 }}
 	out:fly={{ y: 80, duration: 150 }}
 	use:clickOutside on:click_outside={closeModal}
-	class="z-50 rounded-lg px-2 pb-2 text-sm bg-white flex flex-col items-center  dark:bg-black dark:text-white md:h-[900px] md:w-[500px]"
+	class="z-50 rounded-lg px-2 pb-2 text-sm bg-white text-black flex flex-col items-center  dark:bg-black dark:text-white md:h-[900px] md:w-[500px]"
 >
 <div
 	class="sticky top-0 flex w-full items-center justify-center  border-b-4 mb-6  z-50 border-sky-300 bg-white pb-2 pt-4 text-black dark:bg-black dark:text-white"
 >
-	<div class="flex gap-4 px-2 text-lg md:text-xl  items-center justify-center max-w-6xl  w-full ">
-		<button on:click={showPlugin} class:font-bold={tabPlugin}>Plugins</button>
-		<div class="font-bold text-lg">·</div>
+	<div class="flex gap-4 px-2 text-base md:text-lg  items-center justify-center max-w-6xl  w-full ">
 		<button on:click={showEditor} class:font-bold={!tabPlugin}>Editor</button>
+		<div class="font-bold text-lg">·</div>
+		<button on:click={showPlugin} class:font-bold={tabPlugin}>Plugins</button>
 	</div>
 
-	<button class="px-2 absolute right-4 top-4" on:click={closeModal}>
+	<button class="px-2 absolute right-0 top-5" on:click={closeModal}>
 		<Fa icon={faClose} />
 	</button>
 </div>
-	<div  class="w-full max-w-6xl flex flex-col gap-4">
+	<div  class="w-full max-w-6xl flex flex-col gap-4 px-1 md:px-[200px]">
 		<!-- class="modal z-50 backdrop-blur-lg absolute  inset-y-0 inset-x-0 mx-auto m-2 shadow-md border-t-4 bg-white dark:bg-black border-sky-500 p-3 rounded flex flex-col overflow-scroll gap-2" -->
 
 		
@@ -139,13 +166,15 @@
 
 				<SaasProcessor />
 			</div>
-			<div  class="font-semibold px-2">Javascript Processors</div>
+			<!-- <div  class="font-semibold px-2">Javascript Processors</div>
 			<div class="flex flex-col gap-2 rounded-lg bg-gray-300 p-2 dark:bg-primary">
 				<BabelProcessor />
 				<TypescriptProcessor />
-			</div>
+			</div> -->
 			<!-- <AddTags /> -->
 		</div>
+
+		<Shortcuts/>
 	</div>
 </div>
 

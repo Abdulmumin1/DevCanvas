@@ -53,7 +53,7 @@
 
 
 	<div
-		class="drop flex h-full w-full flex-col overflow-auto bg-black text-white shadow-2xl"
+		class="drop flex h-full w-full flex-col overflow-auto"
 	>
 	
 
@@ -71,29 +71,26 @@
 				</ul>
 				<ul class="flex flex-row flex-wrap md:*:w-[330px]  gap-2">
 
-					<li class="w-full">
+					<li class="w-full p-2 bg-gray-200 dark:bg-black rounded-lg">
 						<SingleSetting
 							on:checked={handleAutoSave}
 							checked={$autoSavefast}
-							dark={true}
 							label={'Auto Save'}
 						/>
 					</li>
 
-					<li class="w-full">
+					<li class="w-full  p-2 bg-gray-200 dark:bg-black rounded-lg">
 						<SingleSetting
 							on:checked={handleDelayChange}
 							checked={$delayPreview}
 							label={'Delay preview'}
-							dark={true}
 						/>
 					</li>
-					<li class="w-full">
+					<li class="w-full  p-2 bg-gray-200 dark:bg-black rounded-lg">
 						<SingleSetting
 							label={'Word Wrap'}
 							on:checked={handleWordWrap}
 							checked={$wordWrapSetting}
-							dark={true}
 						/>
 					</li>
 				</ul>
