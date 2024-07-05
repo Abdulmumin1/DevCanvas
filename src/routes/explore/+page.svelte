@@ -59,7 +59,8 @@
 </script>
 
 <svelte:head>
-	<!-- <title>Explore</title>
+	<title>Explore</title>
+	<!--
 	<meta
 		property="og:description"
 		content="Library of Awesome frontend creations for your inspiration!"

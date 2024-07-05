@@ -73,6 +73,9 @@
 	showLoginToSave.set(false);
 </script>
 
+<svelte:head>
+	<title>{data.details.description}</title>
+</svelte:head>
 
 <div class="flex h-screen flex-col">
 	<header class="w-full">

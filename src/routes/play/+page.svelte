@@ -126,7 +126,7 @@
 </script>
 
 <svelte:head>
-	<!-- <title>Launch Editor - DevCanvas</title> -->
+	<title>Launch Editor - DevCanvas</title>
 
 	<!-- <meta property="description" content="Launch a new html/css/js playground" /> -->
 
