@@ -25,14 +25,20 @@
 	import { scale } from 'svelte/transition';
 	import { generateStructuredData } from '$lib/blog/utils.js';
 	import { showToast } from '$lib/index.js';
-	import SEO from '$components/seoComp.svelte'
-	import GoUp from '$components/goUp.svelte'
-
-
+	import SEO from '$components/seoComp.svelte';
+	import GoUp from '$components/goUp.svelte';
+	import { Comment } from '@commentrig/svelte';
 	// import { page } from '$app/stores';
 	// import { page } from '$app/stores';
 
 	let url;
+
+	const entities = {
+		title: data.meta.title,
+		email: 'abdulmuminyqn@gmail.com',
+		domain: 'https://devcanvas.art',
+		rich: true
+	};
 
 	function cp() {
 		copyUrlToClipboard(url);
@@ -73,6 +79,7 @@
 		// console.log($page.url.pathname.startsWith('/blog/'));
 	});
 
+	let commentCount = 0;
 	function convertLinkToRequestReadable(link) {
 		// Encode the link using encodeURIComponent
 		var encodedLink = encodeURIComponent(link);
@@ -92,9 +99,13 @@
 		rel="stylesheet"
 	/>
 
-	
-	<SEO title={data.meta.title} description={data.meta?.description || data.meta.title} index={data.meta?.published == true} imageUrl={data.meta?.thumbnail ?? `https://devcanvas.art/og?message=${encodeURIComponent(data.meta.title)}`}/>
-
+	<SEO
+		title={data.meta.title}
+		description={data.meta?.description || data.meta.title}
+		index={data.meta?.published == true}
+		imageUrl={data.meta?.thumbnail ??
+			`https://devcanvas.art/og?message=${encodeURIComponent(data.meta.title)}`}
+	/>
 </svelte:head>
 
 <article in:scale class="mx-auto flex flex-col gap-6 md:px-2 lg:px-4">
@@ -139,7 +150,9 @@
 		{/if}
 	</hgroup>
 
-	<div class="markdown-content article font-public-sans space-y-8 font-light text-[#404953] dark:text-light">
+	<div
+		class="markdown-content article font-public-sans space-y-8 font-light text-[#404953] dark:text-light"
+	>
 		<svelte:component this={data.content} />
 	</div>
 
@@ -204,9 +217,12 @@
 			</div>
 		</div>
 	</div>
+	<h1 class="text-2xl md:text-3xl font-semibold">{commentCount} Comments</h1>
+	<Comment bind:commentLength={commentCount} {entities} />
 </article>
 
-<GoUp content=".article"/>
+<GoUp content=".article" />
+
 <style lang="postcss">
 	/* .article > h1,
 	h2,
