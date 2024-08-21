@@ -7,6 +7,8 @@
 		border-left: 30px solid orange !important;
 	} */
 
+
+	
 	@font-face {
 		font-family: 'carbon'; /* Name that you'll use to reference this font */
 		src: url('/src/lib/font/carbon-bl.otf') format('opentype'); /* Path to your .otf font file */
@@ -196,6 +198,7 @@
 		font-weight: 500;
 		/* color: theme(colors.orang); */
 	}
+
 
 	.article code {
 		/* background-color: #888; */
