@@ -36,7 +36,7 @@
 	const entities = {
 		title: data.meta.title,
 		email: 'abdulmuminyqn@gmail.com',
-		domain: 'https://devcanvas.art',
+		domain: 'devcanvas.art',
 		rich: true
 	};
 
