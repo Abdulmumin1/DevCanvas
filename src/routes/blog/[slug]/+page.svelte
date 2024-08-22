@@ -36,7 +36,7 @@
 	const entities = {
 		title: data.meta.title,
 		email: 'abdulmuminyqn@gmail.com',
-		domain: 'devcanvas.art',
+		domain: 'https://devcanvas.art',
 		rich: true
 	};
 
@@ -151,7 +151,7 @@
 	</hgroup>
 
 	<div
-		class="markdown-content article font-public-sans space-y-8 font-light text-[#404953] dark:text-light"
+		class="markdown-content article space-y-8 font-public-sans font-light text-[#404953] dark:text-light"
 	>
 		<svelte:component this={data.content} />
 	</div>
@@ -217,7 +217,7 @@
 			</div>
 		</div>
 	</div>
-	<h1 class="text-2xl md:text-3xl font-semibold">{commentCount} Comments</h1>
+	<h1 class="text-2xl font-semibold md:text-3xl">{commentCount} Comments</h1>
 	<Comment bind:commentLength={commentCount} {entities} />
 </article>
 
