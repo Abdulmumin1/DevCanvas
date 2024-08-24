@@ -27,7 +27,7 @@
 	import { showToast } from '$lib/index.js';
 	import SEO from '$components/seoComp.svelte';
 	import GoUp from '$components/goUp.svelte';
-	import { Comment } from '@commentrig/svelte';
+	//import { Comment } from '@commentrig/svelte';
 	// import { page } from '$app/stores';
 	// import { page } from '$app/stores';
 
@@ -151,7 +151,7 @@
 	</hgroup>
 
 	<div
-		class="markdown-content article font-public-sans space-y-8 font-light text-[#404953] dark:text-light"
+		class="markdown-content article space-y-8 font-public-sans font-light text-[#404953] dark:text-light"
 	>
 		<svelte:component this={data.content} />
 	</div>
@@ -217,8 +217,8 @@
 			</div>
 		</div>
 	</div>
-	<h1 class="text-2xl md:text-3xl font-semibold">{commentCount} Comments</h1>
-	<Comment bind:commentLength={commentCount} {entities} />
+	<h1 class="text-2xl font-semibold md:text-3xl">{commentCount} Comments</h1>
+	<!-- <Comment bind:commentLength={commentCount} {entities} /> -->
 </article>
 
 <GoUp content=".article" />
