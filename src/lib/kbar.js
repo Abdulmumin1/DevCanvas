@@ -20,7 +20,7 @@ export const actions = (goto) => {
 		},
 
 		{
-			id: 'blog',
+			id: 'dashboard',
 			title: 'Dashboard',
 			// subtitle: '',
 			callback: () => {
@@ -29,7 +29,7 @@ export const actions = (goto) => {
 		},
 
 		{
-			id: 'blog',
+			id: 'theme',
 			title: 'Change Theme',
 			// subtitle: '',
 			nested: [
@@ -66,7 +66,7 @@ export const actions = (goto) => {
 		},
 
 		{
-			id: 'newcanvas',
+			id: 'start',
 			title: 'Star us Github',
 			subtitle: 'Star ⭐ DevCanvas Github',
 			callback: () => {
