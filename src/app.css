@@ -7,8 +7,14 @@
 		border-left: 30px solid orange !important;
 	} */
 
+	.thread {
+		isolation: isolate;
+	}
 
-	
+	.thread::after {
+		z-index: -1 !important;
+	}
+
 	@font-face {
 		font-family: 'carbon'; /* Name that you'll use to reference this font */
 		src: url('/src/lib/font/carbon-bl.otf') format('opentype'); /* Path to your .otf font file */
@@ -199,15 +205,13 @@
 		/* color: theme(colors.orang); */
 	}
 
-
 	.article code {
 		/* background-color: #888; */
 		@apply rounded underline decoration-sky-400 decoration-wavy underline-offset-2;
 		font-size: inherit !important;
-		
 	}
 
-	.article p{
+	.article p {
 		line-height: 35px;
 	}
 	.article pre > code {
@@ -315,5 +319,4 @@
 		color: theme(colors.sky.400);
 		text-decoration: underline;
 	}
-
 }
