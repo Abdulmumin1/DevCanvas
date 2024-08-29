@@ -6,9 +6,23 @@
 <iframe
  src="https://devcanvas.art/v4H9dW/embed"
 />`;
+
+	/**
+	 * Resizes the given iFrame width so it fits its content
+	 * @param e The iframe to resize
+	 */
+
+	function resizeIFrameToFitContent(e) {
+		console.log('iframes ers fdss', e);
+
+		e.target.width = e.target.contentWindow.document.body.scrollWidth;
+		e.target.height = e.target.contentWindow.document.body.scrollHeight;
+	}
 </script>
 
-<div class=" flex items-center justify-center bg-gradient-to-t from-sky-400 to-sky-200 p-7 py-9 border-b-2 border-black">
+<div
+	class=" flex items-center justify-center border-b-2 border-black bg-gradient-to-t from-sky-400 to-sky-200 p-7 py-9"
+>
 	<div class="flex h-full w-full max-w-[1200px] flex-col items-center justify-between gap-6">
 		<div class="flex w-full flex-col justify-center">
 			<h2
@@ -20,13 +34,13 @@
 				<code>{c}</code>
 			</pre>
 		</div>
-		<div class="flex h-full w-full flex-col gap-4 md:gap-6">
+		<div class="flex h-full w-full flex-col gap-4 rounded-2xl md:gap-6">
 			<iframe
 				title="embed"
-				src="{$page.url.origin}/play/gSirkj/embed"
+				src="{$page.url.origin}/play/gSirkj/embed?active=css"
 				frameborder="0"
 				loading="lazy"
-				class="h-[700px] rounded"
+				class="h-[670px] rounded-2xl border-2 border-secondary-dark"
 				style="aspect-ratio: 1:1;"
 			/>
 			<!-- <iframe

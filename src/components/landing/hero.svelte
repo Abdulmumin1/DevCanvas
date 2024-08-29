@@ -33,18 +33,10 @@
 </script>
 
 <!-- grid grid-cols-1 items-end justify-between gap-x-20 md:grid-cols-2 lg:gap-x-40 -->
-<div class="flex flex-col md:flex-row">
+<div class="flex flex-col md:flex-row md:px-8">
 	<section
 		class="relative flex h-full w-full min-w-[20rem] flex-col gap-4 border-primary px-8 py-0 text-secondary-dark md:mt-36 md:min-w-[30rem] md:py-12 lg:ml-0 lg:py-0"
 	>
-		<!-- <p>
-			<a
-				href="https://github.com/Abdulmumin1/snippets"
-				class="flex items-center gap-2 rounded-3xl bg-sky-100 dark:bg-light p-2 px-4 dark:text-sky-dark w-fit"
-			>
-				Star us on github <Fa icon={faStar} />
-			</a>
-		</p> -->
 		<h1
 			class="hero-text magic-text text-balance text-4xl text-primary dark:text-light md:max-w-[40rem] md:text-6xl lg:text-[5rem]"
 		>

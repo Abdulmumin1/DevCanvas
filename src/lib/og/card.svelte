@@ -6,7 +6,7 @@
 <div>
 	<!-- <img src="https://devcanvas.art/logo.svg" alt="" /> -->
 	<p>{message}</p>
-	<footer>devcanvs.art</footer>
+	<footer>devcanvas.art</footer>
 </div>
 
 <style>
