@@ -1,91 +1,90 @@
 <script>
+	import Icon from '@iconify/svelte';
 	import FeatureCard from './featureCard.svelte';
 
-	let features = [
+	const features = [
 		{
-			message: 'Keep it private',
-			icon: 'material-symbols:lock-person',
-			description: 'Keep your canvas to yourself and only others with the link'
+			title: 'Keep it private',
+			icon: 'mdi:lock',
+			description: 'Keep your canvas to yourself and only share with others via link'
 		},
 		{
-			message: 'Embed',
-			icon: 'material-symbols-light:web',
-			description: 'Embed your project in websites, blogs and documentations.'
+			title: 'Embed',
+			icon: 'mdi:web',
+			description: 'Embed your project in websites, blogs and documentation'
 		},
 		{
-			message: 'Built-in Plugins',
-			icon: 'ph:plugs-fill',
-			description: 'Tailwindcss? Font Awesome? Gsap? - just a click away!'
+			title: 'Built-in Plugins',
+			icon: 'mdi:puzzle',
+			description: 'Tailwind CSS, Font Awesome, GSAP - just a click away!'
 		},
 		{
-			message: 'SCSS',
-			icon: 'vscode-icons:file-type-scss',
-			description: 'SCSS enthusiast? we got you!'
-		},
-		// {
-		// 	message: 'Babel',
-		// 	icon: 'vscode-icons:file-type-light-babel2',
-		// 	description: 'Wanna run something backward compatible? you got it!'
-		// },
-		{
-			message: 'Shareable URLs',
-			icon: 'material-symbols-light:screen-share',
-			description: 'Share your creations with others'
+			title: 'SCSS Support',
+			icon: 'mdi:language-css3',
+			description: "SCSS enthusiast? We've got you covered!"
 		},
 		{
-			message: 'PWA with Offline support',
-			icon: 'solar:window-frame-bold',
-			description: 'Use devcanvas like any other native app'
+			title: 'Shareable URLs',
+			icon: 'mdi:share-variant',
+			description: 'Share your creations with others easily'
 		},
 		{
-			message: 'Responsiveness',
+			title: 'PWA with Offline support',
+			icon: 'mdi:cellphone-link',
+			description: 'Use DevCanvas like any other native app, even offline'
+		},
+		{
+			title: 'Responsive Design',
 			icon: 'mdi:responsive',
-			description: 'Test how cool 😎 your project looks on different devices'
+			description: 'Test how your project looks on different devices'
 		},
 		{
-			message: 'Snippets',
-			icon: 'pajamas:snippet',
-			description: 'Share code snippets with others in 50+ supported languages'
+			title: 'Code Snippets',
+			icon: 'mdi:code-tags',
+			description: 'Share code snippets in 50+ supported languages'
 		}
 	];
 </script>
 
-<div
-	class="flex w-full items-center justify-center border-y-2 border-black bg-sky-300 px-4 dark:border-secondary-dark"
->
-	<div class="anim flex min-h-[300px] max-w-[90rem] flex-col justify-center gap-3 px-2 py-12">
-		<h1 class="text-4xl font-extrabold text-secondary-dark md:text-5xl">Features</h1>
-		<p class=" mb-3 text-xl font-thin text-stone-800">
-			DevCanvas has everything you need to experiment with ideas, build and teach others how to
-			code.
-		</p>
-		<div class="cs grid grid-cols-2 gap-2 md:flex md:flex-wrap">
-			{#each features as feat}
-				<FeatureCard icon={feat.icon} title={feat.message} description={feat.description} />
-			{/each}
-		</div>
+<section class="features-section border-t-2 border-t-secondary-dark">
+	<h2 class="mx-auto flex w-fit items-center gap-1 rounded-full bg-primary p-1 px-5 text-gray-200">
+		<Icon icon="heroicons:sparkles-20-solid" />Features
+	</h2>
+	<p class="subtitle">Everything you need to experiment, build, and teach coding</p>
+	<div class="feature-grid">
+		{#each features as feature}
+			<FeatureCard {...feature} />
+		{/each}
 	</div>
-</div>
+</section>
 
 <style>
-	/* .anim {
-		animation: fade-in both;
-		animation-timeline: view();
-		animation-range-start: contain 0vh;
-		animation-range-end: contain 20vh;
-		opacity: 0;
-		scale: 0.4;
+	.features-section {
+		padding: 4rem 2rem;
+		background-color: #7dd3fc;
 	}
 
-	@keyframes fade-in {
-		to {
-			opacity: 1;
-			scale: 1;
-		}
-	} */
+	h2 {
+		font-size: 2.5rem;
+		font-weight: 700;
+		text-align: center;
+		margin-bottom: 1rem;
+		/* color: #333; */
+	}
 
-	.fs {
-		background: linear-gradient(to bottom, #03afff, #b3e0ff);
-		padding: 2rem;
+	.subtitle {
+		font-size: 1.1rem;
+		text-align: center;
+		max-width: 600px;
+		margin: 0 auto 3rem;
+		color: #333;
+	}
+
+	.feature-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+		gap: 2rem;
+		max-width: 1200px;
+		margin: 0 auto;
 	}
 </style>

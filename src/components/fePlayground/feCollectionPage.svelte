@@ -133,16 +133,19 @@
 			</div>
 		</div>
 		{#if showMore}
-			<button
-				class="flex w-fit items-center justify-center gap-2 rounded-lg bg-gray-200 px-4 py-2 transition-transform duration-300 active:scale-90 dark:bg-secondary-dark"
-				id="more"
-				on:click={more}
-			>
-				<div class:animate-spin={loading} class:hidden={!loading}>
-					<Fa icon={faSpinner} />
-				</div>
-				More <Fa icon={faForward} /></button
-			>
+			{#if showMore}
+				<button
+					class="flex items-center justify-center gap-2 rounded-lg bg-white px-6 py-3 font-semibold text-sky-500 shadow-md transition-all duration-300 hover:bg-sky-50 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 active:scale-95 dark:bg-secondary-dark dark:text-gray-200"
+					on:click={more}
+					disabled={loading}
+				>
+					{#if loading}
+						<Fa icon={faSpinner} class="animate-spin" />
+					{/if}
+					Load More
+					<Fa icon={faForward} />
+				</button>
+			{/if}
 		{/if}
 	</div>
 {:else}

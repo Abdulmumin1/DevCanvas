@@ -17,7 +17,7 @@
 					<img
 						class="h-20 w-20 md:h-24 md:w-24"
 						src="https://cdn.svgporn.com/logos/babel.svg"
-						alt="python"
+						alt="babel svg"
 					/>
 				</li>
 				<li
@@ -27,7 +27,7 @@
 					<img
 						class="h-20 w-20 md:h-24 md:w-24"
 						src="https://cdn.svgporn.com/logos/javascript.svg"
-						alt="python"
+						alt="javascript svg"
 					/>
 				</li>
 				<li
@@ -37,7 +37,7 @@
 					<img
 						class="h-20 w-20 md:h-24 md:w-24"
 						src="https://cdn.svgporn.com/logos/html-5.svg"
-						alt="python"
+						alt="html svg"
 					/>
 				</li>
 				<li
@@ -47,7 +47,7 @@
 					<img
 						class="h-20 w-20 md:h-24 md:w-24"
 						src="https://cdn.svgporn.com/logos/css-3.svg"
-						alt="python"
+						alt="css svg"
 					/>
 				</li>
 
@@ -58,7 +58,7 @@
 					<img
 						class="h-20 w-20 dark:invert md:h-24 md:w-24"
 						src="https://cdn.svgporn.com/logos/sass.svg"
-						alt="sass"
+						alt="sass svg"
 					/>
 				</li>
 

@@ -1,19 +1,12 @@
 <script>
 	import { onMount } from 'svelte';
-	import github from 'svelte-highlight/styles/github';
 	import { Splitpanes, Pane } from 'svelte-splitpanes';
-	import { HighlightAuto, Highlight, LineNumbers } from 'svelte-highlight';
-	import { css } from 'svelte-highlight/languages';
+
 	import CodeOutput from './codeOutput.svelte';
 	import ReadOnlyEditor from './readOnlyEditor.svelte';
 	import Fa from 'svelte-fa';
 	import { faCss3, faHtml5, faJs } from '@fortawesome/free-brands-svg-icons';
-	import {
-		faArrowRightToBracket,
-		faArrowUpRightFromSquare,
-		faEdit,
-		faGears
-	} from '@fortawesome/free-solid-svg-icons';
+	// import {page} from '$app/stores'
 	import Loader from '../loader.svelte';
 	import { fade } from 'svelte/transition';
 	export let details;
@@ -70,6 +63,17 @@
 		isVertical = window.innerWidth <= 768;
 		window.addEventListener('resize', updateOrientation);
 		loading = false;
+		let sp = window.location.search;
+		let sParam = new URLSearchParams(sp);
+		// console.log(window.location.search);
+		let active = sParam.get('active');
+		if (active) {
+			toogle(active);
+			// switch (active) {
+			// 	case 'css':
+			// 		toogle('css');
+			// }
+		}
 	});
 
 	let loading = true;

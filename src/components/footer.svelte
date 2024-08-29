@@ -73,7 +73,7 @@
 				</ul>
 				<div class="mt-6">
 					<div
-						class="rounded-full bg-gray-200 p-3 text-sm text-gray-800 dark:bg-gray-800 dark:text-gray-300"
+						class="rounded-full bg-gray-200 p-3 text-sm text-gray-800 dark:bg-stone-600 dark:text-gray-300"
 					>
 						Stand with Palestine 🇵🇸! DO NOT BE SILENCED
 					</div>
