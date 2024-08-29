@@ -47,7 +47,9 @@
 </script>
 
 <section class="features-section border-t-2 border-t-secondary-dark">
-	<h2 class="mx-auto flex w-fit items-center gap-1 rounded-full bg-primary p-1 px-5 text-gray-200">
+	<h2
+		class="mx-auto flex w-fit items-center gap-1 rounded-full bg-primary px-5 py-2 text-2xl text-gray-200 md:text-4xl"
+	>
 		<Icon icon="heroicons:sparkles-20-solid" />Features
 	</h2>
 	<p class="subtitle">Everything you need to experiment, build, and teach coding</p>
@@ -65,7 +67,7 @@
 	}
 
 	h2 {
-		font-size: 2.5rem;
+		/* font-size: 2.5rem; */
 		font-weight: 700;
 		text-align: center;
 		margin-bottom: 1rem;
