@@ -71,7 +71,7 @@
 	}
 
 	function handleShortcut(event) {
-		if ((event.ctrlKey || event.metaKey) && event.key === '/') {
+		if ((event.ctrlKey || event.metaKey) && event.key === '.') {
 			event.preventDefault();
 			// Your action here
 			modal = !modal;
@@ -123,7 +123,7 @@
 				<Fa icon={faClose} />
 			</button>
 		</div>
-		<div class="flex w-full max-w-6xl flex-col gap-4 px-1 md:px-[200px]">
+		<div class="flex w-full max-w-6xl flex-col gap-4 px-1">
 			<!-- class="modal z-50 backdrop-blur-lg absolute  inset-y-0 inset-x-0 mx-auto m-2 shadow-md border-t-4 bg-white dark:bg-black border-sky-500 p-3 rounded flex flex-col overflow-scroll gap-2" -->
 
 			<div id="tabPlugins" class:hidden={!tabPlugin} class="flex flex-col gap-2">
@@ -183,6 +183,8 @@
 		left: 0;
 		height: 80%;
 		width: 100%;
+		max-width: 800px;
+		margin-inline: auto;
 		overflow: auto;
 		z-index: 99999px;
 	}

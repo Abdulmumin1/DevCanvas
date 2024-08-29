@@ -4,7 +4,7 @@
 	import Fa from 'svelte-fa';
 	let c = `
 <iframe
- src="https://devcanvas.art/v4H9dW/embed"
+ src="https://devcanvas.art/v4H9dW/embed?active=css"
 />`;
 
 	/**
@@ -20,18 +20,14 @@
 	}
 </script>
 
-<div
-	class=" flex items-center justify-center border-b-2 border-black bg-gradient-to-t from-sky-400 to-sky-200 p-7 py-9"
->
+<div class=" flex items-center justify-center bg-gradient-to-t from-sky-400 to-sky-200 p-7 py-9">
 	<div class="flex h-full w-full max-w-[1200px] flex-col items-center justify-between gap-6">
 		<div class="flex w-full flex-col justify-center">
-			<h2
-				class="mb-2 flex gap-2 text-5xl font-semibold text-black dark:text-secondary-dark md:text-6xl"
-			>
+			<h2 class="mb-2 flex gap-2 text-5xl font-semibold text-black md:text-6xl">
 				Embed <Fa icon={faCode} />
 			</h2>
-			<pre class="rounded-xl bg-secondary-dark px-4 text-[9px] text-white md:text-sm">
-				<code>{c}</code>
+			<pre class="rounded-xl bg-secondary-dark px-4 text-[9px] text-sky-300 md:text-sm">
+				<code class="font-sans">{c}</code>
 			</pre>
 		</div>
 		<div class="flex h-full w-full flex-col gap-4 rounded-2xl md:gap-6">

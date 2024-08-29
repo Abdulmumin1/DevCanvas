@@ -43,7 +43,7 @@
 			<div class="space-y-4">
 				<h4 class="text-lg font-semibold text-gray-900 dark:text-white">Quick Links</h4>
 				<ul class="space-y-2">
-					{#each ['Home', 'Blog', 'Online Editor', 'About'] as link}
+					{#each ['Explore', 'Blog', 'Online Editor', 'About'] as link}
 						<li>
 							<a
 								href="/{link.toLowerCase().replace(' ', '-')}"

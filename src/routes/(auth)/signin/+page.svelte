@@ -111,7 +111,7 @@
 			</button>
 			<label class="flex items-center justify-start gap-2 rounded-md bg-light p-3 text-sm">
 				<input type="checkbox" name="usePassword" id="" bind:checked={usePassword} />
-				Use OTP
+				Use Magik Link
 			</label>
 
 			{#if usePassword}
