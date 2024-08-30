@@ -4,20 +4,11 @@
 	import { basicSetup } from 'codemirror';
 	import { keymap } from '@codemirror/view';
 	import { indentWithTab } from '@codemirror/commands';
-	// import { formatExtension } from '@codemirror/formatting';
-	// import { EditorState } from '@codemirror/state';
 	import { javascript } from '@codemirror/lang-javascript'; // Or other language extension
 	import { html } from '@codemirror/lang-html'; // Or other language extension
 	import { css } from '@codemirror/lang-css'; // Or other language extension
 
-	// import { onDark } from '@codemirror/theme-one-dark';
-	// import * as prettier from 'prettier';
-	// import prettierPluginHtml from 'prettier/parser-html';
-	// import prettierPluginBabel from 'prettier/parser-babel';
-	// import prettierPluginCss from 'prettier/parser-postcss';
-
 	import { onMount } from 'svelte';
-	import { coolGlow } from 'thememirror';
 	import {
 		showSave,
 		saveData,
@@ -30,20 +21,18 @@
 		isOwner,
 		user,
 		saved_spinner,
-		darkModeState,
 		wordWrapSetting,
-		smallerFontSize,
-		formatOnPasteSetting,
-		renderIndentGuidesSetting,
 		delayPreview,
 		autoSavefast
 	} from '$lib/index.js';
 	import { EditorState } from '@codemirror/state';
 	import { browser } from '$app/environment';
+	import { createTheme } from '$lib/editorTheme.js';
 	// ... (reactive state and logic for the editor)
-
 	let editorView;
 	let container;
+
+	import js_beautify from 'js-beautify';
 
 	export let code;
 	export let lang;
@@ -91,26 +80,37 @@
 	}
 
 	async function formatter(view) {
-		const cCode = view.state.doc.toString();
-		// const formattedCode = await prettier.format(cCode, {
-		// 	parser: getParser(),
-		// 	plugins: [prettierPluginHtml, prettierPluginBabel, prettierPluginCss]
-		// });
+		const options = { indent_size: 2 };
+		const dataObj = view.state.doc.toString();
 
-		// view.dispatch({
-		// 	changes: {
-		// 		from: 0,
-		// 		to: view.state.doc.length,
-		// 		insert: formattedCode
-		// 	}
-		// });
-	}
-
-	function getParser() {
-		if (lang == 'html') return 'html';
-		else if (lang == 'css') return 'css';
-		else if (lang == 'javascript') return 'babel';
-		return 'html';
+		if (lang == 'html') {
+			let beatifulHtml = js_beautify.html(dataObj, options);
+			view.dispatch({
+				changes: {
+					from: 0,
+					to: view.state.doc.length,
+					insert: beatifulHtml
+				}
+			});
+		} else if (lang == 'css') {
+			let beatifulCSS = js_beautify.css(dataObj, options);
+			view.dispatch({
+				changes: {
+					from: 0,
+					to: view.state.doc.length,
+					insert: beatifulCSS
+				}
+			});
+		} else if (lang == 'js') {
+			let beatifulJS = js_beautify(dataObj, options);
+			view.dispatch({
+				changes: {
+					from: 0,
+					to: view.state.doc.length,
+					insert: beatifulJS
+				}
+			});
+		}
 	}
 
 	function handleAutoSave() {
@@ -165,7 +165,7 @@
 
 	$: {
 		if ($formatCode && editorView) {
-			console.log('formatting code', lang);
+			// console.log('formatting code', lang);
 			formatAsync();
 			// formatCode.set(false);
 			// setTimeout()
@@ -177,7 +177,9 @@
 		formatter(editorView).then(() => {});
 	}
 
-	onMount(() => {
+	onMount(async () => {
+		// console.log(js_beautify.html);
+		const customTheme = createTheme();
 		//   const container = document.querySelector('.codemirror-editor'); // Select container element
 		const fixedHeightEditor = EditorView.theme({
 			'&': { height: '100%' },
@@ -206,13 +208,18 @@
 				langFunction(),
 				changeReview,
 				lineWrapping.of(EditorView.lineWrapping),
-				coolGlow
+				customTheme
 			] // Extensions
 		});
 
+		return () => {
+			editorView.destroy();
+		};
 		// formatCode.subscribe(())
 	});
 </script>
+
+<svelte:head></svelte:head>
 
 <div bind:this={container} style="height: 100%;" class="bc" />
 

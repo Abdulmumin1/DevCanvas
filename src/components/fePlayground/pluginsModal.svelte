@@ -61,13 +61,11 @@
 	}
 
 	let tabPlugin = false;
+	let activeTab = 'editor';
 
-	function showPlugin() {
-		tabPlugin = true;
-	}
-
-	function showEditor() {
-		tabPlugin = false;
+	function setTab(tab) {
+		activeTab = tab;
+		tabPlugin = !tabPlugin;
 	}
 
 	function handleShortcut(event) {
@@ -106,20 +104,50 @@
 		out:fly={{ y: 80, duration: 150 }}
 		use:clickOutside
 		on:click_outside={closeModal}
-		class="z-50 flex flex-col items-center rounded-lg bg-white px-2 pb-2 text-sm text-black dark:bg-black dark:text-white md:h-[900px] md:w-[500px]"
+		class="z-50 flex flex-col items-center rounded-lg bg-white px-2 pb-2 text-sm text-black dark:bg-black dark:text-white md:h-[900px] md:w-[500px] md:shadow-xl"
 	>
 		<div
-			class="sticky top-0 z-50 mb-6 flex w-full items-center justify-center border-b-4 border-sky-300 bg-white pb-2 pt-4 text-black dark:bg-black dark:text-white"
+			class="sticky top-0 z-50 mb-6 flex w-full items-center justify-center border-b border-sky-300 bg-white pb-2 pt-4 text-black dark:bg-black dark:text-white"
 		>
-			<div
+			<!-- <div
 				class="flex w-full max-w-6xl items-center justify-center gap-4 px-2 text-base md:text-lg"
 			>
 				<button on:click={showEditor} class:font-bold={!tabPlugin}>Editor</button>
 				<div class="text-lg font-bold">·</div>
 				<button on:click={showPlugin} class:font-bold={tabPlugin}>Plugins</button>
+			</div> -->
+
+			<div class="w-full max-w-6xl px-2 text-base md:text-lg">
+				<div class="relative flex items-center gap-4">
+					<button
+						on:click={() => setTab('editor')}
+						class="py-2 transition-colors duration-200 {activeTab === 'editor'
+							? 'text-primary'
+							: 'text-gray-600 hover:text-sky-300'}"
+					>
+						Editor
+					</button>
+					<button
+						on:click={() => setTab('plugins')}
+						class="py-2 transition-colors duration-200 {activeTab === 'plugins'
+							? 'text-primary'
+							: 'text-gray-600 hover:text-sky-300'}"
+					>
+						Plugins
+					</button>
+					<div
+						class="absolute top-0 h-full rounded-lg bg-sky-400 px-2 transition-all duration-300"
+						style="left: {activeTab === 'editor' ? '-7px' : '63px'}; width: {activeTab === 'editor'
+							? '60px'
+							: '68px'}; z-index:-1; "
+					/>
+				</div>
 			</div>
 
-			<button class="absolute right-0 top-5 px-2" on:click={closeModal}>
+			<button
+				class="absolute right-0 top-[50%] h-[75%] translate-y-[-50%] rounded-lg bg-red-600 px-5 hover:bg-red-700"
+				on:click={closeModal}
+			>
 				<Fa icon={faClose} />
 			</button>
 		</div>
@@ -178,7 +206,7 @@
 	#pluginModal {
 		/* max-height: 600px; */
 		position: fixed;
-		bottom: 0;
+		bottom: 5px;
 		right: 0;
 		left: 0;
 		height: 80%;

@@ -4,15 +4,15 @@
 	import { KDialog, setKbarState } from 'kbar-svelte-mini';
 	import { actions } from '$lib/kbar.js';
 	import { goto } from '$app/navigation';
-		import {
-			user,
-			showNavigating,
-			showToast,
-			darkModeState,
-			SnippetsDescription,
-			getProfile,
-			setProfile
-		} from '$lib/index.js';
+	import {
+		user,
+		showNavigating,
+		showToast,
+		darkModeState,
+		SnippetsDescription,
+		getProfile,
+		setProfile
+	} from '$lib/index.js';
 
 	setKbarState();
 	setProfile(null);
@@ -22,7 +22,6 @@
 	import { browser } from '$app/environment';
 	import Toast from '../components/toast.svelte';
 
-	import { beforeNavigate, afterNavigate } from '$app/navigation';
 	import PageLoadProgess from '../components/pageLoadProgess.svelte';
 	import { page } from '$app/stores';
 	import AcceptCookies from '../components/auth/acceptCookies.svelte';
@@ -54,15 +53,6 @@
 				localStorage.setItem('theme', 'light');
 			}
 		}
-	});
-
-	beforeNavigate(() => {
-		showNavigating.set(false);
-		showNavigating.set(true);
-	});
-
-	afterNavigate(() => {
-		showNavigating.set(false);
 	});
 
 	// async function loadprofile(session) {
@@ -97,15 +87,12 @@
 <svelte:head>
 	<!-- HTML Meta Tags -->
 
-
-	
 	<meta
 		name="keywords"
 		content="css, html, css art, css animation, code snippet, javascript animations, animation with html/css,"
 	/>
 
 	<link rel="canonical" href={url} />
-	
 </svelte:head>
 
 <!-- {#if && !(($page.url.pathname.endsWith('/preview') && $page.url.searchParams.get('preview') == 'preview') || $page.url.pathname.endsWith('/embed'))}
@@ -114,9 +101,7 @@
 {#if !(($page.url.pathname.endsWith('/preview') && $page.url.searchParams.get('preview') == 'preview') || $page.url.pathname.endsWith('/embed'))}
 	<AcceptCookies />
 
-	{#if $showNavigating}
-		<PageLoadProgess />
-	{/if}
+	<PageLoadProgess />
 {/if}
 <div class=" relative bg-white transition-colors duration-300 dark:bg-primary dark:text-white">
 	<slot />
