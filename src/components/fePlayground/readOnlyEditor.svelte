@@ -72,6 +72,7 @@
 	import { javascript } from '@codemirror/lang-javascript'; // Or other language extension
 	import { html } from '@codemirror/lang-html'; // Or other language extension
 	import { css } from '@codemirror/lang-css'; // Or other language extension
+	import { createTheme } from '$lib/editorTheme.js';
 
 	// import { onDark } from '@codemirror/theme-one-dark';
 	import { onMount } from 'svelte';
@@ -104,6 +105,7 @@
 			'.cm-content': { 'margin-bottom': '100px' }
 		});
 
+		let cTheme = createTheme();
 		editorView = new EditorView({
 			parent: container,
 			doc: `${code}`, // Bind the initial code40
@@ -112,7 +114,7 @@
 				basicSetup,
 				fixedHeightEditor,
 				langFunction(),
-				coolGlow,
+				cTheme,
 				EditorView.lineWrapping
 			] // Extensions
 		});

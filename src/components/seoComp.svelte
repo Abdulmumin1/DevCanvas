@@ -1,19 +1,14 @@
 <!-- Facebook Meta Tags -->
 
 <script>
+	import { SnippetsDescription } from '$lib/index.js';
 
-import {
-
-		SnippetsDescription,
-	
-	} from '$lib/index.js';
-
-    export let title, description, imageUrl, url;
-    export let  index = true;
+	export let title, description, imageUrl, url;
+	export let index = true;
 </script>
 
 <title>{title}</title>
-<meta name="description" content={description??$SnippetsDescription.des} />
+<meta name="description" content={description ?? $SnippetsDescription.des} />
 
 <meta property="og:url" content={url ?? $SnippetsDescription.url} />
 <meta property="og:type" content="website" />
@@ -30,6 +25,5 @@ import {
 {#if index}
 	<meta name="robots" content="index, follow" />
 {:else}
-<meta name="robots" content="noindex, follow" />
-
+	<meta name="robots" content="noindex, follow" />
 {/if}

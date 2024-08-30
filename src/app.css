@@ -30,6 +30,11 @@
 		src: url('/src/lib/font/Rubik-VariableFont_wght.ttf') format('truetype'); /* Path to your .otf font file */
 	}
 
+	@font-face {
+		font-family: 'Fira Code'; /* Name that you'll use to reference this font */
+		src: url('/src/lib/font/FiraCode-VariableFont_wght.ttf') format('truetype'); /* Path to your .otf font file */
+	}
+
 	*::-webkit-scrollbar {
 		display: block;
 		width: var(--sds, 14px);
