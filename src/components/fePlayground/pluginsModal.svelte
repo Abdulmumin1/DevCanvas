@@ -104,7 +104,7 @@
 		out:fly={{ y: 80, duration: 150 }}
 		use:clickOutside
 		on:click_outside={closeModal}
-		class="z-50 flex flex-col items-center rounded-lg bg-white px-2 pb-2 text-sm text-black dark:bg-black dark:text-white md:h-[900px] md:w-[500px] md:shadow-xl"
+		class="bottom-0 z-50 flex flex-col items-center rounded-b-none rounded-t-lg bg-white px-2 pb-2 text-sm text-black dark:bg-black dark:text-white md:bottom-[5px] md:h-[900px] md:w-[500px] md:rounded-lg md:shadow-xl"
 	>
 		<div
 			class="sticky top-0 z-50 mb-6 flex w-full items-center justify-center border-b border-sky-300 bg-white pb-2 pt-4 text-black dark:bg-black dark:text-white"
@@ -184,7 +184,7 @@
 			<div id="tabEditor" class:hidden={tabPlugin} class="flex flex-col gap-2">
 				<SideComponent />
 
-				<div class="flex flex-col gap-2 px-2 font-semibold">
+				<div class="px- mt-2 flex flex-col gap-2 font-semibold">
 					CSS PreProcessor
 
 					<SaasProcessor />
@@ -206,7 +206,6 @@
 	#pluginModal {
 		/* max-height: 600px; */
 		position: fixed;
-		bottom: 5px;
 		right: 0;
 		left: 0;
 		height: 80%;
