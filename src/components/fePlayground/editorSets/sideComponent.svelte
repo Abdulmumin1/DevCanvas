@@ -78,10 +78,15 @@
 				<li class="p-2 font-semibold">General</li>
 			</ul>
 			<ul class="flex flex-row flex-wrap gap-2 md:*:w-[370px]">
-				<li class="w-full rounded-lg bg-gray-200 p-2 dark:bg-primary">
-					<SingleSetting on:checked={handleAutoSave} checked={$autoSavefast} label={'Auto Save'} />
-				</li>
-
+				{#if $isOwner}
+					<li class="w-full rounded-lg bg-gray-200 p-2 dark:bg-primary">
+						<SingleSetting
+							on:checked={handleAutoSave}
+							checked={$autoSavefast}
+							label={'Auto Save'}
+						/>
+					</li>
+				{/if}
 				<li class="w-full rounded-lg bg-gray-200 p-2 dark:bg-primary">
 					<SingleSetting
 						on:checked={handleDelayChange}

@@ -13,13 +13,13 @@ export const actions = {
 			body.tags = JSON.parse(body.tags);
 			console.log(body.tags);
 		}
-		console.log(body);
+		// console.log(body);
 		const { data, error: err } = await supabase.from('htmlPlayground').update([body]).eq('id', id);
 		if (err) {
 			console.log(err);
 			throw error(500, 'Opssie, error from our side');
 		} else {
-			console.log(data);
+			// console.log(data);
 		}
 	},
 
@@ -33,10 +33,10 @@ export const actions = {
 			.update({ public: value })
 			.eq('id', id);
 		if (err) {
-			console.log(err);
+			// console.log(err);
 			throw error(500, 'Opssie, error from our side');
 		} else {
-			console.log(data);
+			// console.log(data);
 		}
 	}
 };
