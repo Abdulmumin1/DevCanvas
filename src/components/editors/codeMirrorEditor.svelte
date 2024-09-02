@@ -7,6 +7,7 @@
 	import { javascript } from '@codemirror/lang-javascript'; // Or other language extension
 	import { html } from '@codemirror/lang-html'; // Or other language extension
 	import { css } from '@codemirror/lang-css'; // Or other language extension
+	import { editorFontSize } from '$lib/editor/settings.js';
 
 	import { onMount } from 'svelte';
 	import {
@@ -217,11 +218,18 @@
 		};
 		// formatCode.subscribe(())
 	});
+
+	$: fontSize = $editorFontSize;
 </script>
 
 <svelte:head></svelte:head>
 
-<div bind:this={container} style="height: 100%;" class="bc" />
+<div
+	bind:this={container}
+	style:--editorSize="{$editorFontSize}px"
+	style="height: 100%;"
+	class="bc"
+/>
 
 <!-- <style></style> -->
 
@@ -233,5 +241,8 @@
 
 	.bc {
 		--scroll-bg: #2263c593;
+	}
+	:global(.cm-content) {
+		font-size: var(--editorSize) !important;
 	}
 </style>
