@@ -13,7 +13,7 @@
 	} from '$lib/index.js';
 	import { saveData } from '$lib/feEditor/store.js';
 
-	import { hide_css, hide_js } from '$lib/editor/settings.js';
+	import { hide_css, hide_js, editorFontSize } from '$lib/editor/settings.js';
 
 	import SingleSetting from '../singleSetting.svelte';
 	import DeleteCanvas from '../deleteCanvas.svelte';
@@ -40,6 +40,11 @@
 	}
 	function handleInderLines(event) {
 		renderIndentGuidesSetting.set(event.detail.status);
+	}
+
+	function handleFontChange(event) {
+		// console.log(event.target.value);
+		editorFontSize.set(event.target.value);
 	}
 
 	function handleHideJS(event) {
@@ -93,7 +98,23 @@
 				</li>
 			</ul>
 		</li>
-
+		<li class="mb-2 flex flex-col gap-2 px-1">
+			<div class="font-semibold dark:text-white">Adjust FontSize</div>
+			<div class="range-wrapper">
+				<div class="range-value">{$editorFontSize}</div>
+				<input
+					type="range"
+					name="range"
+					min="14"
+					max="30"
+					value={$editorFontSize}
+					id=""
+					on:input={handleFontChange}
+					class="range-input"
+				/>
+			</div>
+			<!-- on:change={handleFontChange} -->
+		</li>
 		<li class="mb-2 flex flex-col gap-2 px-1">
 			<!-- <p></p> -->
 			<div class="font-semibold dark:text-white">Format Editors</div>
@@ -153,4 +174,48 @@
 </div>
 
 <style>
+	.range-wrapper {
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+	}
+
+	.range-input {
+		-webkit-appearance: none;
+		appearance: none;
+		width: 100%;
+		height: 1rem;
+		background-color: #e0e0e0;
+		border-radius: 0.5rem;
+		outline: none;
+		opacity: 0.7;
+		transition: opacity 0.2s;
+	}
+
+	.range-input:hover {
+		opacity: 1;
+	}
+
+	.range-input::-webkit-slider-thumb {
+		-webkit-appearance: none;
+		appearance: none;
+		width: 1.2rem;
+		height: 1.2rem;
+		background-color: #38bdf8;
+		border-radius: 50%;
+		cursor: pointer;
+	}
+
+	.range-input::-moz-range-thumb {
+		width: 1.2rem;
+		height: 1.2rem;
+		background-color: #38bdf8;
+		border-radius: 50%;
+		cursor: pointer;
+	}
+
+	.range-value {
+		font-weight: bold;
+		color: #38bdf8;
+	}
 </style>

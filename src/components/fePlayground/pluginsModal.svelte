@@ -197,7 +197,7 @@
 				<!-- <AddTags /> -->
 			</div>
 
-			<!-- <Shortcuts/> -->
+			<Shortcuts />
 		</div>
 	</div>
 {/if}
