@@ -11,6 +11,10 @@
 		delayPreview,
 		autoSavefast
 	} from '$lib/index.js';
+	import { saveData } from '$lib/feEditor/store.js';
+
+	import { hide_css, hide_js } from '$lib/editor/settings.js';
+
 	import SingleSetting from '../singleSetting.svelte';
 	import DeleteCanvas from '../deleteCanvas.svelte';
 	import FeGetEmbed from '../feGetEmbed.svelte';
@@ -38,6 +42,15 @@
 		renderIndentGuidesSetting.set(event.detail.status);
 	}
 
+	function handleHideJS(event) {
+		hide_js.set(event.detail.status);
+		saveData({ hide_js: $hide_js, id: $current_data.id });
+	}
+	function handleHideCSS(event) {
+		hide_css.set(event.detail.status);
+		saveData({ hide_css: $hide_css, id: $current_data.id });
+	}
+
 	function handleDelayChange(event) {
 		delayPreview.set(event.detail.status);
 	}
@@ -59,7 +72,7 @@
 			<ul>
 				<li class="p-2 font-semibold">General</li>
 			</ul>
-			<ul class="flex flex-row flex-wrap gap-2 md:*:w-[330px]">
+			<ul class="flex flex-row flex-wrap gap-2 md:*:w-[370px]">
 				<li class="w-full rounded-lg bg-gray-200 p-2 dark:bg-primary">
 					<SingleSetting on:checked={handleAutoSave} checked={$autoSavefast} label={'Auto Save'} />
 				</li>
@@ -94,16 +107,33 @@
 			<AddTags owner={$isOwner} />
 		</li>
 	</ul>
-
+	<li>
+		<ul>
+			<li class="mb-3 px-2 font-semibold dark:text-white">Hide Editor</li>
+		</ul>
+		<ul class="flex flex-row flex-wrap gap-2 md:*:w-[380px]">
+			<li class="w-full rounded-lg bg-gray-200 p-2 dark:bg-primary">
+				<SingleSetting
+					label={'Hide Javascript Editor'}
+					on:checked={handleHideJS}
+					checked={$hide_js}
+				/>
+			</li>
+			<li class="w-full rounded-lg bg-gray-200 p-2 dark:bg-primary">
+				<SingleSetting label={'Hide CSS Editor'} on:checked={handleHideCSS} checked={$hide_css} />
+			</li>
+		</ul>
+	</li>
 	<ul
 		class="settings-section flex flex-col gap-2 border-light text-black dark:border-secondary-dark"
 	>
 		<li class="px-2 font-semibold dark:text-white md:hidden">Actions</li>
+
 		{#if $isOwner}
 			<li>
 				<button
 					for=""
-					class="flex w-full cursor-pointer items-center justify-center gap-2 rounded-lg bg-error p-2 text-black transition-all duration-300 hover:gap-4 active:scale-95"
+					class="flex w-fit cursor-pointer items-center justify-center gap-2 rounded-lg bg-error p-2 text-black transition-all duration-300 hover:gap-4 active:scale-95"
 					><DeleteCanvas canvas_id={$current_data.project_key} title={$current_data.description} /> Delete
 					Canvas</button
 				>

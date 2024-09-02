@@ -7,6 +7,8 @@
 		sassActive,
 		userImportedJS
 	} from '$lib/feEditor/store.js';
+	import { hide_css, hide_js } from '$lib/editor/settings.js';
+
 	import { setup_js_plugin, loadScriptFromURL, injectHeadContent } from '$lib/plugins/store.js';
 	import { injectJavascript } from '$lib/feEditor/previewUtils.js';
 	import { onDestroy, onMount } from 'svelte';
@@ -33,30 +35,34 @@
 
 		iframeDoc.querySelectorAll('style').forEach((element) => element.remove());
 
-		if (!wait) {
-			// console.log('no wait');
-			const styleElement = iframeDoc.createElement('style');
+		if (!$hide_css) {
+			if (!wait) {
+				// console.log('no wait');
+				const styleElement = iframeDoc.createElement('style');
 
-			if (currentCSS !== cssCode && ($sassActive || useSassEmbed)) {
-				styleElement.textContent = compiledSassCSS;
-				iframeDoc.head.appendChild(styleElement);
-				compileSassCode(iframeDoc);
-			} else if (currentCSS !== cssCode && !($sassActive || useSassEmbed)) {
-				styleElement.textContent = cssCode;
+				if (currentCSS !== cssCode && ($sassActive || useSassEmbed)) {
+					styleElement.textContent = compiledSassCSS;
+					iframeDoc.head.appendChild(styleElement);
+					compileSassCode(iframeDoc);
+				} else if (currentCSS !== cssCode && !($sassActive || useSassEmbed)) {
+					styleElement.textContent = cssCode;
+					iframeDoc.head.appendChild(styleElement);
+				}
+			} else {
+				const styleElement = iframeDoc.createElement('style');
+				styleElement.textContent = `
+				*{
+					display:none !important;
+				}
+				`;
+
 				iframeDoc.head.appendChild(styleElement);
 			}
-		} else {
-			const styleElement = iframeDoc.createElement('style');
-			styleElement.textContent = `
-			*{
-				display:none !important;
-			}
-			`;
-
-			iframeDoc.head.appendChild(styleElement);
 		}
 
-		injectJavascript(iframeDoc, jsCode);
+		if (!$hide_js) {
+			injectJavascript(iframeDoc, jsCode);
+		}
 	};
 
 	const compileSassCode = (iframeDoc) => {

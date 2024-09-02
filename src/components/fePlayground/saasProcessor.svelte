@@ -9,7 +9,7 @@
 	function change(event) {
 		let active = event.detail.status;
 		sassActive.set(active);
-		console.log($canvasConfig);
+		// console.log($canvasConfig);
 		clearTimeout(selectMore);
 
 		canvasConfig.update((cur) => {
@@ -26,6 +26,6 @@
 	}
 </script>
 
-<div class="p-2 bg-gray-200 dark:bg-primary rounded-lg">
+<div class="rounded-lg bg-gray-200 p-2 dark:bg-primary">
 	<SingleSetting label={'CSS Processor (SCSS)'} checked={$sassActive} on:checked={change} />
 </div>

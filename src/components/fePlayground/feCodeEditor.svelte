@@ -7,6 +7,8 @@
 	import { onMount } from 'svelte';
 	import { layoutView, consoleOutput } from '$lib/feEditor/store.js';
 	import { current_data } from '$lib/index.js';
+	import { hide_css, hide_js } from '$lib/editor/settings.js';
+
 	// import FeJs from './feJS.svelte';
 	import EditorTitle from './editorTitle.svelte';
 	import Femodal from './femodal.svelte';
@@ -82,25 +84,28 @@
 					class:bg-secondary-dark={showHtml}
 					><span class="text-rose-500"><Fa icon={faHtml5} /></span>HTML</button
 				>
-				<button
-					class="flex items-center justify-center gap-1 p-2"
-					on:click={() => {
-						showTab('css');
-					}}
-					class:bg-secondary-dark={showCSS}
-				>
-					<span class="text-blue-500"><Fa icon={faCss3} /></span>CSS
-				</button>
-
-				<button
-					class="flex items-center justify-center gap-1 p-2"
-					on:click={() => {
-						showTab('js');
-					}}
-					class:bg-secondary-dark={showJs}
-				>
-					<span class="text-yellow-500"><Fa icon={faJs} /></span>JS
-				</button>
+				{#if !$hide_css}
+					<button
+						class="flex items-center justify-center gap-1 p-2"
+						on:click={() => {
+							showTab('css');
+						}}
+						class:bg-secondary-dark={showCSS}
+					>
+						<span class="text-blue-500"><Fa icon={faCss3} /></span>CSS
+					</button>
+				{/if}
+				{#if !$hide_js}
+					<button
+						class="flex items-center justify-center gap-1 p-2"
+						on:click={() => {
+							showTab('js');
+						}}
+						class:bg-secondary-dark={showJs}
+					>
+						<span class="text-yellow-500"><Fa icon={faJs} /></span>JS
+					</button>
+				{/if}
 			</div>
 			<div class="flex gap-2 p-2 text-white">
 				<EditorSettings />
@@ -111,13 +116,17 @@
 				<!-- <FeHtml {initialHTML} /> -->
 				<CodeMirrorEditor lang={'html'} code={initialHTML} />
 			</div>
-			<div class:hidden={!showCSS} class="hidden h-full w-full">
-				<CodeMirrorEditor lang={'css'} code={initialCSS} />
-			</div>
-			<div class:hidden={!showJs} class="hidden h-full w-full">
-				<!-- <FeJs {initialJs} /> -->
-				<CodeMirrorEditor lang={'javascript'} code={initialJs} />
-			</div>
+			{#if !$hide_css}
+				<div class:hidden={!showCSS} class="hidden h-full w-full">
+					<CodeMirrorEditor lang={'css'} code={initialCSS} />
+				</div>
+			{/if}
+			{#if !$hide_js}
+				<div class:hidden={!showJs} class="hidden h-full w-full">
+					<!-- <FeJs {initialJs} /> -->
+					<CodeMirrorEditor lang={'javascript'} code={initialJs} />
+				</div>
+			{/if}
 		</div>
 	{:else if $layoutView == 'top'}
 		<Splitpanes horizontal={false} theme="my-theme">
@@ -129,21 +138,25 @@
 					<CodeMirrorEditor lang={'html'} code={initialHTML} />
 				</div>
 			</Pane>
-			<Pane snapSize={10} minSize={1}>
-				<div class="h-full w-full overflow-clip">
-					<EditorTitle lang="css" />
+			{#if !$hide_css}
+				<Pane snapSize={10} minSize={1}>
+					<div class="h-full w-full overflow-clip">
+						<EditorTitle lang="css" />
 
-					<!-- <FeCss {initialCSS} /> -->
-					<CodeMirrorEditor lang={'css'} code={initialCSS} />
-				</div>
-			</Pane>
-			<Pane snapSize={10} minSize={1}>
-				<div class="h-full w-full overflow-clip">
-					<EditorTitle lang="js" />
-					<!-- <FeJs {initialJs} /> -->
-					<CodeMirrorEditor lang={'javascript'} code={initialJs} />
-				</div>
-			</Pane>
+						<!-- <FeCss {initialCSS} /> -->
+						<CodeMirrorEditor lang={'css'} code={initialCSS} />
+					</div>
+				</Pane>
+			{/if}
+			{#if !$hide_js}
+				<Pane snapSize={10} minSize={1}>
+					<div class="h-full w-full overflow-clip">
+						<EditorTitle lang="js" />
+						<!-- <FeJs {initialJs} /> -->
+						<CodeMirrorEditor lang={'javascript'} code={initialJs} />
+					</div>
+				</Pane>
+			{/if}
 		</Splitpanes>
 	{:else}
 		<Splitpanes horizontal theme="my-theme">
@@ -155,22 +168,27 @@
 					<CodeMirrorEditor lang={'html'} code={initialHTML} />
 				</div>
 			</Pane>
-			<Pane snapSize={10} minSize={6}>
-				<div class="h-full w-full overflow-clip">
-					<EditorTitle lang="css" />
 
-					<!-- <FeCss {initialCSS} /> -->
-					<CodeMirrorEditor lang={'css'} code={initialCSS} />
-				</div>
-			</Pane>
-			<Pane snapSize={10} minSize={6}>
-				<div class="h-full w-full overflow-clip">
-					<EditorTitle lang="js" />
+			{#if !$hide_css}
+				<Pane snapSize={10} minSize={6}>
+					<div class="h-full w-full overflow-clip">
+						<EditorTitle lang="css" />
 
-					<!-- <FeJs {initialJs} /> -->
-					<CodeMirrorEditor lang={'javascript'} code={initialJs} />
-				</div>
-			</Pane>
+						<!-- <FeCss {initialCSS} /> -->
+						<CodeMirrorEditor lang={'css'} code={initialCSS} />
+					</div>
+				</Pane>
+			{/if}
+			{#if !$hide_js}
+				<Pane snapSize={10} minSize={6}>
+					<div class="h-full w-full overflow-clip">
+						<EditorTitle lang="js" />
+
+						<!-- <FeJs {initialJs} /> -->
+						<CodeMirrorEditor lang={'javascript'} code={initialJs} />
+					</div>
+				</Pane>
+			{/if}
 		</Splitpanes>
 	{/if}
 </div>

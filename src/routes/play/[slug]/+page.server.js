@@ -13,6 +13,7 @@ export const actions = {
 			body.tags = JSON.parse(body.tags);
 			console.log(body.tags);
 		}
+		console.log(body);
 		const { data, error: err } = await supabase.from('htmlPlayground').update([body]).eq('id', id);
 		if (err) {
 			console.log(err);

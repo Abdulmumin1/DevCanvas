@@ -3,6 +3,7 @@
 	import Fa from 'svelte-fa';
 	import { showjsConsole, consoleOutput } from '$lib/feEditor/store.js';
 	import { spring } from 'svelte/motion';
+	import { fly, slide } from 'svelte/transition';
 
 	let currentHeight = 300; // Initial height of the overlay
 	let startY, startHeight;
@@ -122,11 +123,10 @@
 
 <div
 	class="overlay overflow-scroll"
-	bind:this={ovelay}
 	class:hidden={!$showjsConsole}
 	style="height: {currentHeight}px;"
 	id="jsconsole"
-	use:drag
+	in:fly={{ y: 100 }}
 >
 	<!-- on:dragstop={(event) => {
 		if (event.detail.x > 300) {
@@ -176,13 +176,5 @@
 
 	.content {
 		padding: 10px;
-	}
-
-	.handle {
-		width: 100%;
-		height: 30px;
-		cursor: ns-resize; /* Vertical resize cursor */
-		user-select: none; /* Prevent text selection while dragging */
-		background-color: orange;
 	}
 </style>
