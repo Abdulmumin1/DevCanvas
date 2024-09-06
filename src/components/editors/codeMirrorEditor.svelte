@@ -103,7 +103,7 @@
 				}
 			});
 		} else if (lang == 'js') {
-			let beatifulJS = js_beautify(dataObj, options);
+			let beatifulJS = js_beautify.js(dataObj, options);
 			view.dispatch({
 				changes: {
 					from: 0,
