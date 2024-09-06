@@ -10,14 +10,14 @@ export async function POST({ url, locals: { supabase, getSession }, request }) {
 	// const body = Object.fromEntries(await request.formData());
 	let key = generateRandomKey();
 	const body = Object.fromEntries(await request.formData());
-	console.log(body);
+	// console.log(body);
 	let description = body?.project_name ?? 'Untitled Project';
 
 	let user_id = session.user?.id ? session.user.id : null;
 	// console.log(session.user);
 	const { data, error: err } = await supabase
 		.from('htmlPlayground')
-		.insert([{ project_key: key, user_id, description }]);
+		.insert([{ project_key: key, public: false, user_id, description }]);
 
 	const { data: dt, error: er } = await supabase
 		.from('view')
