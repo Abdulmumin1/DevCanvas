@@ -240,7 +240,7 @@
 	}
 
 	.bc {
-		--scroll-bg: #2263c593;
+		--scroll-bg: #7dd4fc41;
 	}
 	:global(.cm-content) {
 		font-size: var(--editorSize) !important;

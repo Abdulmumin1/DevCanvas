@@ -9,10 +9,10 @@
 	import FePlayGroungNav from '$components/fePlayground/fePlayGroungNav.svelte';
 	import CodeOutput from '$components/fePlayground/codeOutput.svelte';
 	import Resizable from '$components/fePlayground/resizable.svelte';
-	import {  showEmbedModal } from '$lib/feEditor/store.js';
+	import { showEmbedModal } from '$lib/feEditor/store.js';
 	import JsConsole from '$components/fePlayground/jsConsole.svelte';
 	import EmbedModal from '$components/fePlayground/embedModal.svelte';
-
+	import { page } from '$app/stores';
 	import { setReloadContext, getReload } from '$lib/feEditor/funct.js';
 
 	setReloadContext();
@@ -24,13 +24,15 @@
 		mobileDetails = window.innerWidth <= 768;
 	}
 
+	let titleParam = $page.url.searchParams.get('name');
+	// console.log(titleParam);
 	let try_data = {
 		html: '<!-- -->',
 		css: '/* */',
 		js: '//',
 		user_id: 123,
 		project_key: 'try',
-		description: 'Untitled Canvas',
+		description: titleParam ?? 'Untitled Project',
 		public: true,
 		plugins: [
 			{
@@ -127,7 +129,7 @@
 				{/key}
 			</div>
 		</Resizable>
-		
+
 		{#if $showEmbedModal}
 			<EmbedModal />
 		{/if}

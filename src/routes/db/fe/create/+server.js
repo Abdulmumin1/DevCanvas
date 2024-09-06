@@ -2,19 +2,22 @@ import { generateRandomKey } from '$lib/index.js';
 import { fail, redirect } from '@sveltejs/kit';
 import { handleRedirectURL } from '$lib/utils';
 /** @type {import('./$types').RequestHandler} */
-export async function POST({ url, locals: { supabase, getSession } }) {
+export async function POST({ url, locals: { supabase, getSession }, request }) {
 	let session = await getSession();
 	if (!session) {
 		throw redirect(303, handleRedirectURL(url, '/play'));
 	}
 	// const body = Object.fromEntries(await request.formData());
 	let key = generateRandomKey();
-	let description = 'Untitled Project';
+	const body = Object.fromEntries(await request.formData());
+	// console.log(body);
+	let description = body?.project_name ?? 'Untitled Project';
+
 	let user_id = session.user?.id ? session.user.id : null;
 	// console.log(session.user);
 	const { data, error: err } = await supabase
 		.from('htmlPlayground')
-		.insert([{ project_key: key, user_id, description }]);
+		.insert([{ project_key: key, public: false, user_id, description }]);
 
 	const { data: dt, error: er } = await supabase
 		.from('view')
