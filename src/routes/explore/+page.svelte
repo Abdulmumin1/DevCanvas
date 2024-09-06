@@ -4,7 +4,7 @@
 	import FeCollectionPage from '$components/fePlayground/feCollectionPage.svelte';
 	import { fade } from 'svelte/transition';
 	import FeCollectionDummy from '$components/feCollectionDummy.svelte';
-	import SEO from '$components/seoComp.svelte'
+	import SEO from '$components/seoComp.svelte';
 
 	export let data;
 	let supabase = data.supabase;
@@ -34,28 +34,7 @@
 
 	// });
 
-	async function loadPlaygroundData() {
-		let { data: dt, error } = await supabase
-			.from('htmlPlayground')
-			.select('*, view (views)')
-			.order('created_at', { ascending: false })
-			.is('public', true)
-			.limit($pageCountPl);
-
-		if (error) {
-			console.error(error);
-			return;
-		}
-		// pageCount.update((cur) => {
-		// 	return cur + 6;
-		// });
-		return dt;
-	}
-
-	let showOther = false;
-	function toogle() {
-		showOther = !showOther;
-	}
+	let canvas = data.canvas;
 </script>
 
 <svelte:head>
@@ -65,9 +44,12 @@
 		property="og:description"
 		content="Library of Awesome frontend creations for your inspiration!"
 	/> -->
-	<SEO title="Explore" description="Library of Awesome frontend creations for your inspiration!" url="https://devcanvas.art/explore" />
+	<SEO
+		title="Explore"
+		description="Library of Awesome frontend creations for your inspiration!"
+		url="https://devcanvas.art/explore"
+	/>
 </svelte:head>
-
 
 <!-- <div class="bg-secondary-dark min-h-[50vh]">
 	<InnerNav />
@@ -103,40 +85,14 @@
 					>
 				</div>
 			</div> -->
-			{#await loadPlaygroundData()}
-				<FeCollectionDummy />
-			{:then userSnippets}
-				<!-- <Sm -->
-				<!-- Create New Code Snippet button -->
 
-				<!-- Code Snippet Cards -->
-				{#key showOther}
-					<div in:fade class:hidden={showOther} class="hidden h-full">
-						<FeCollectionPage
-							collection={userSnippets}
-							supabase={data.supabase}
-							session={data.session}
-						/>
-					</div>
-				{/key}
+			<!-- <Sm -->
+			<!-- Create New Code Snippet button -->
 
-				<!-- {#await loadIntialData()}
-					
-					<CollectionDummy />
-				{:then userSnippets}
-					{#key showOther}
-						<div in:fade class:hidden={!showOther} class="hidden h-full">
-							<CollectionPage
-								rawcollection={userSnippets}
-								supabase={data.supabase}
-								session={data.session}
-								showMore={userSnippets.length > 6}
-							/>
-						</div>
-					{/key}
-
-				{/await} -->
-			{/await}
+			<!-- Code Snippet Cards -->
+			<div in:fade class="h-full">
+				<FeCollectionPage collection={canvas} supabase={data.supabase} session={data.session} />
+			</div>
 		</div>
 	</main>
 </NavWrapper>

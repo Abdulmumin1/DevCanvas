@@ -45,8 +45,17 @@
 					>
 				</li>
 				<li>
-					<a href="/play" class="px-2 text-lg" class:text-sky-400={$page.url.pathname == '/play'}
-						>Online Editor</a
+					<a
+						href="/play"
+						class="px-2 text-lg"
+						class:text-sky-400={$page.url.pathname.startsWith('/play')}>Online Editor</a
+					>
+				</li>
+				<li>
+					<a
+						href="/snippets"
+						class="px-2 text-lg"
+						class:text-sky-400={$page.url.pathname.startsWith('/snippets')}>Snippets</a
 					>
 				</li>
 			</ul>

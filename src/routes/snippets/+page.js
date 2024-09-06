@@ -1,25 +1,20 @@
-async function loadPlaygroundData(supabase) {
+async function loadIntialData(supabase) {
 	let { data: dt, error } = await supabase
-		.from('htmlPlayground')
-		.select('*, view (views)')
+		.from('snips')
+		.select('*')
 		.order('created_at', { ascending: false })
-		.is('public', true)
 		.limit(12);
 
 	if (error) {
 		console.error(error);
-		return;
 	}
-	// pageCount.update((cur) => {
-	// 	return cur + 6;
-	// });
 	return dt;
 }
+
 /** @type {import('./$types').PageLoad} */
 export async function load({ parent }) {
 	let { supabase } = await parent();
+	let userSnippets = await loadIntialData(supabase);
 
-	let canvas = await loadPlaygroundData(supabase);
-
-	return { canvas };
+	return { userSnippets: userSnippets };
 }

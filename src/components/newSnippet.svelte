@@ -55,8 +55,7 @@
 	// });
 </script>
 
-<div class="tooltip-container relative inline-block transition-transform duration-300">
-	<h1 class="flex text-6xl">Dashboard <!--<Probadge />--></h1>
+<div class="tooltip-container relative inline-block w-full transition-transform duration-300">
 	<button
 		on:click={showOptions}
 		class="mb-2 flex w-fit cursor-pointer items-center gap-2 rounded-lg bg-sky-400 p-2 text-sm text-secondary-dark"
