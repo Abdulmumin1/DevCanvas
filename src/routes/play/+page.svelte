@@ -73,15 +73,15 @@
 					>+</span
 				> <span class="dark:text-white">Create new Canvas</span>
 			</div>
-			<form method="post" action="/db/fe/create" class="mt-20 flex gap-2">
-				<input
-					type="text"
-					bind:value={projectName}
-					placeholder="Project Name"
-					name="project_name"
-					class="w-full rounded-3xl border-none bg-white px-4 py-3 text-lg text-black placeholder-black placeholder-opacity-70 focus:outline-none focus:ring-2 focus:ring-sky-300 dark:bg-primary dark:text-white"
-				/>
-				{#if $user}
+			{#if $user}
+				<form method="post" action="/db/fe/create" class="mt-20 flex gap-2">
+					<input
+						type="text"
+						bind:value={projectName}
+						placeholder="Project Name"
+						name="project_name"
+						class="w-full rounded-3xl border-none bg-white px-4 py-3 text-lg text-black placeholder-black placeholder-opacity-70 focus:outline-none focus:ring-2 focus:ring-sky-300 dark:bg-primary dark:text-white"
+					/>
 					<button type="submit" class="rounded-full bg-sky-300 p-4 dark:text-black"
 						><svg
 							xmlns="http://www.w3.org/2000/svg"
@@ -99,11 +99,18 @@
 							/><path d="M6 12h16" /></svg
 						></button
 					>
-				{:else}
-					<button
-						type="button"
-						on:click={handleCreateEditor}
-						class="rounded-full bg-sky-300 p-4 dark:text-black"
+				</form>
+			{:else}
+				<div class="mt-20 flex gap-2">
+					<input
+						type="text"
+						bind:value={projectName}
+						on:submit={handleCreateEditor}
+						placeholder="Project Name"
+						name="project_name"
+						class="w-full rounded-3xl border-none bg-white px-4 py-3 text-lg text-black placeholder-black placeholder-opacity-70 focus:outline-none focus:ring-2 focus:ring-sky-300 dark:bg-primary dark:text-white"
+					/>
+					<button on:click={handleCreateEditor} class="rounded-full bg-sky-300 p-4 dark:text-black"
 						><svg
 							xmlns="http://www.w3.org/2000/svg"
 							width="24"
@@ -120,8 +127,8 @@
 							/><path d="M6 12h16" /></svg
 						></button
 					>
-				{/if}
-			</form>
+				</div>
+			{/if}
 		</div>
 	</div>
 </NavWrapper>

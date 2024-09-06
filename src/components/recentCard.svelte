@@ -1,89 +1,87 @@
 <script>
-	import { faEvernote } from '@fortawesome/free-brands-svg-icons';
 	import {
-		faArrowCircleRight,
-		faArrowLeftLong,
-		faArrowRightLong,
-		faArrowUpFromBracket,
-		faEdit,
 		faEye,
+		faShareSquare,
+		faEdit,
 		faTrash,
-		faTrashAlt,
-		faTrashArrowUp,
-		faTrashCan,
-		faTrashRestore
+		faExternalLinkAlt
 	} from '@fortawesome/free-solid-svg-icons';
-	import { user_info } from '$lib/index.js';
 	import Fa from 'svelte-fa';
-	import { scale, slide } from 'svelte/transition';
+	import { slide } from 'svelte/transition';
 	import { page } from '$app/stores';
-	import { getProfile } from '$lib/utils.js';
-	import { profile, prolog, protobuf } from 'svelte-highlight/languages';
+
 	export let card;
 	export let editIcons;
+
 	let session = $page.data.session;
-
-	// let profile = getProfile(card.user_id, supabase);
-	// console.log(profile);
-	// console.log('jfdljafdjlkafdoamda coan');
-
-	// let goto = editIcons ? `/${$user_info?.username}/${card.project_key}` : `/${card.project_key}`;
-	// let goto = `/${card.project_key}`;
+	$: isOwner = card.user_id === session?.user?.id;
+	$: profileUrl = card.profile ? `/${card.profile}` : '/profile';
+	$: projectUrl = card.profile
+		? `/${card.profile}/${card.project_key}`
+		: `/anonymous/${card.project_key}`;
 </script>
 
 <div
 	in:slide
-	class="flex w-full items-center justify-between border-y p-4 text-sm dark:border-primary md:text-base"
+	class="w-full overflow-hidden rounded-lg bg-white outline-2 outline-sky-300 hover:outline dark:bg-primary"
 >
-	<div class="flex h-fit w-full gap-4">
-		<!-- <div class="min-w-[100px]">
-			<h2 class="text-sm mb-2 rounded-xl text-secondary-dark bg-light w-fit px-3 p-1 h-fit">
-				{card.lang}
-			</h2>
-		</div> -->
-
-		{#if card?.profile}
+	<div class="p-6">
+		<div class="mb-4 flex items-start justify-between">
 			<div>
-				<p class="w-full text-lg font-semibold hover:opacity-80 md:text-xl">
-					<a href={`/${card.profile}/${card.project_key}`}>{card.description}</a>
-				</p>
-				<a class="hover:opacity-80" href={`/${card.profile}`}>@{card.profile}</a>
+				<h2
+					class="text-xl font-semibold text-gray-800 transition-colors duration-200 hover:text-sky-600 dark:text-white dark:hover:text-sky-400"
+				>
+					<a href={projectUrl}>{card.description}</a>
+				</h2>
+				<a href={profileUrl} class="text-sm text-sky-500 hover:underline dark:text-gray-300">
+					{#if card.profile}
+						@{card.profile}
+					{:else if isOwner}
+						Configure your profile
+					{:else}
+						....
+					{/if}
+				</a>
 			</div>
-		{:else}
-			<div>
-				<p class="w-full text-lg font-semibold hover:opacity-80 md:text-xl">
-					<a href={`/anonymous/${card.project_key}`}>{card.description}</a>
-				</p>
-				{#if card.user_id == session?.user?.id}
-					<a href="/profile">Configure you profile</a>
-				{:else}
-					<a class="hover:opacity-80" href="#">....</a>
+			<div class="flex items-center space-x-2 text-gray-500 dark:text-gray-400">
+				<span class=" w-fit rounded-full bg-sky-300 px-3 py-1 text-sm text-black">
+					{card.lang}
+				</span>
+				<button
+					class="rounded-full p-1 transition-colors duration-200 hover:bg-gray-100 dark:hover:bg-gray-700"
+				>
+					<Fa icon={faShareSquare} />
+				</button>
+				{#if editIcons}
+					<a
+						href={`${projectUrl}/edit`}
+						class="rounded-full p-1 transition-colors duration-200 hover:bg-gray-100 dark:hover:bg-gray-700"
+					>
+						<Fa icon={faEdit} />
+					</a>
+					<button
+						class="rounded-full p-1 transition-colors duration-200 hover:bg-gray-100 dark:hover:bg-gray-700"
+					>
+						<Fa icon={faTrash} />
+					</button>
 				{/if}
 			</div>
-		{/if}
-	</div>
-	<!-- <p class="bg-gray-100 p-2 rounded-lg overflow-hidden">
-	{card.code.slice(0, 100)}...
-</p> -->
-
-	<div>
-		<div class="flex w-full items-center gap-4 text-secondary-dark dark:text-white">
-			<span class="flex items-center gap-2"><Fa icon={faEye} />...</span>
-			<button class="transition-all duration-200 hover:scale-105"
-				><Fa icon={faArrowUpFromBracket} class="transition-all duration-300" /></button
-			>
-			{#if editIcons}
-				<a
-					href="/{card.profile}/{card.project_key}/edit"
-					class="transition-all duration-200 hover:scale-105"
-				>
-					<Fa icon={faEdit} />
-				</a>
-
-				<a href="/{card.project_key}/edit" class="transition-all duration-200 hover:scale-105">
-					<Fa icon={faTrash} />
-				</a>
-			{/if}
 		</div>
+		<div class="mt-4">
+			<div
+				class="rounded-md bg-gray-100 p-3 text-sm text-gray-600 dark:bg-secondary-dark dark:text-gray-300"
+			>
+				<code>{card.code?.slice(0, 100)}..</code>
+			</div>
+		</div>
+	</div>
+	<div class="bg-gray-50 px-6 py-3 dark:bg-secondary-dark">
+		<a
+			href={projectUrl}
+			class="flex items-center text-sm text-sky-600 hover:underline dark:text-sky-400"
+		>
+			View full smippet
+			<Fa icon={faExternalLinkAlt} class="ml-1" />
+		</a>
 	</div>
 </div>

@@ -137,9 +137,9 @@
 	}
 
 	onMount(async () => {
-		console.log('mounted', rawcollection.length);
+		// console.log('mounted', rawcollection.length);
 		collection = await returnDataWithProfile(rawcollection, supabase);
-		console.log('fetched collections', collection.length);
+		// console.log('fetched collections', collection.length);
 	});
 
 	onDestroy(() => {
@@ -149,15 +149,12 @@
 
 {#if collection.length > 0}
 	<div class="flex w-full flex-col items-center gap-6" transition:fade>
-		<div class="flex w-full flex-col gap-6 bg-white dark:bg-secondary-dark">
+		<div
+			class="flex w-full flex-col gap-6
+		"
+		>
 			<div class="grid w-full gap-6 rounded-lg">
 				{#each collection as snippet}
-					<div class="max-w-full rounded-lg bg-white p-2 dark:bg-secondary-dark md:p-4">
-						<h3 class="cool my-4 w-fit rounded-lg bg-[#0d1117] px-3 py-2 text-sm text-light">
-							{snippet.lang}
-						</h3>
-					</div>
-
 					<RecentCard card={snippet} editIcons={dashboard} />
 				{/each}
 			</div>

@@ -1,5 +1,4 @@
 <script>
-	import NewSnippet from './newSnippet.svelte';
 	import { page } from '$app/stores';
 	import { onMount } from 'svelte';
 	import { tweened } from 'svelte/motion';
@@ -44,8 +43,6 @@
 		statSnip.set(co?.length);
 	});
 </script>
-
-<NewSnippet />
 
 <div class=" flex w-full max-w-[400px] gap-4">
 	<div
