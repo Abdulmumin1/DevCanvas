@@ -12,14 +12,7 @@
 	let supabase = $page.data.supabase;
 	export let details;
 
-	let profile = '';
-
-	onMount(async () => {
-		const userProfile = await getProfile(details.user_id, supabase);
-		if (userProfile.length > 0) {
-			profile = userProfile[0].username;
-		}
-	});
+	let profile = details.profiles.username;
 </script>
 
 <div
