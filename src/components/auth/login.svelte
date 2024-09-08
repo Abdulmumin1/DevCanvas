@@ -1,7 +1,12 @@
 <script>
 	import { page } from '$app/stores';
 	import Fa from 'svelte-fa';
-	import { faCancel, faClose, faRightToBracket } from '@fortawesome/free-solid-svg-icons';
+	import {
+		faCancel,
+		faClose,
+		faFloppyDisk,
+		faRightToBracket
+	} from '@fortawesome/free-solid-svg-icons';
 
 	import { handleRedirectURL } from '$lib/utils.js';
 	import { user } from '$lib/index.js';
@@ -18,14 +23,23 @@
 	function closeModal() {
 		modal.close();
 	}
+	export let disquise;
 </script>
 
 {#if !$user}
 	<li class="rounded bg-green-500 px-2 py-2 text-primary md:py-2">
-		<button on:click={openModal}>
-			<!-- <span class="flex md:hidden"><Fa icon={faRightToBracket} /></span> -->
-			<span class="flex">Login</span>
-		</button>
+		{#if !disquise}
+			<button on:click={openModal}>
+				<!-- <span class="flex md:hidden"><Fa icon={faRightToBracket} /></span> -->
+				<span class="flex">Login</span>
+			</button>
+		{:else}
+			<button on:click={openModal} class="flex items-center gap-1">
+				<!-- <span class="flex md:hidden"><Fa icon={faRightToBracket} /></span> -->
+				<Fa icon={faFloppyDisk} />
+				<p class="hidden md:flex">Save</p>
+			</button>
+		{/if}
 	</li>
 
 	<dialog id="loginDialog" bind:this={modal}>

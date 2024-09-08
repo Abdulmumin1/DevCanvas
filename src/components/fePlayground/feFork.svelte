@@ -1,12 +1,14 @@
 <script>
 	// import { saved_spinner, saveData } from '$lib/feEditor/store.js';
-	import { current_data } from '$lib/index.js';
+	import { current_data, user } from '$lib/index.js';
 	import { faCodeFork, faSave, faSpinner } from '@fortawesome/free-solid-svg-icons';
 	import { page } from '$app/stores';
 	import Fa from 'svelte-fa';
 	import { goto, invalidateAll } from '$app/navigation';
 	import { handleRedirectURL } from '$lib/utils';
+
 	import { jsPlugins, cssPlugins, canvasConfig } from '$lib/feEditor/store.js';
+	import Login from '../auth/login.svelte';
 	let busy = false;
 
 	let demo = $page.url.pathname.endsWith('/try');
@@ -62,19 +64,25 @@
 
 {#if demo}
 	<div class="rounded-md bg-green-500 text-primary">
-		<button
-			on:click={forkData}
-			aria-busy={busy}
-			title="Save"
-			class="flex cursor-pointer items-center justify-center gap-2 px-3 py-2 transition-transform duration-300 active:scale-75"
-		>
-			<Fa icon={faSave} />
-			<span class="hidden md:flex">Save</span>
+		{#if $user}
+			<button
+				on:click={forkData}
+				aria-busy={busy}
+				title="Save"
+				class="flex cursor-pointer items-center justify-center gap-2 px-3 py-2 transition-transform duration-300 active:scale-75"
+			>
+				<Fa icon={faSave} />
+				<span class="hidden md:flex">Save</span>
 
-			{#if busy}
-				<span class="animate-spin"><Fa icon={faSpinner} /></span>
-			{/if}
-		</button>
+				{#if busy}
+					<span class="animate-spin"><Fa icon={faSpinner} /></span>
+				{/if}
+			</button>
+		{:else}
+			<div class="">
+				<Login disquise={true} />
+			</div>
+		{/if}
 	</div>
 {:else}
 	<button
