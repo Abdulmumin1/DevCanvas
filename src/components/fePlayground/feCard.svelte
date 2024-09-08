@@ -1,18 +1,14 @@
 <script>
-	import { getProfile } from '$lib/utils.js';
 	import { page } from '$app/stores';
 	import { fade } from 'svelte/transition';
 	import Fa from 'svelte-fa';
 	import { faEye } from '@fortawesome/free-solid-svg-icons';
 	import ShareAct from '../shareAct.svelte';
 	import DeleteCanvas from './deleteCanvas.svelte';
-	import { onMount } from 'svelte';
-
 	let session = $page.data.session;
-	let supabase = $page.data.supabase;
 	export let details;
 
-	let profile = details.profiles.username;
+	let profile = details?.profiles?.username;
 </script>
 
 <div
