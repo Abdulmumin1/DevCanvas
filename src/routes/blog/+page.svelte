@@ -15,19 +15,19 @@
 	<meta name="description" content="Dev Canvas - Online HTML/CSS/JS/SCSS Editor" />
 
 	<!-- Facebook Meta Tags -->
-	<meta property="og:url" content="https://www.devCanvas.art" />
+	<meta property="og:url" content="https://devcanvas.art" />
 	<meta property="og:type" content="website" />
-	<meta property="og:title" content="devCanvas" />
-	<meta property="og:description" content="Dev Canvas - Online HTML/CSS/JS/SCSS Editor" />
-	<meta property="og:image" content="/devCanvas.png" />
+	<meta property="og:title" content="Devcanvas" />
+	<meta property="og:description" content="Devcanvas - Online HTML/CSS/JS/SCSS Editor" />
+	<meta property="og:image" content="/devcanvas.png" />
 
 	<!-- Twitter Meta Tags -->
 	<meta name="twitter:card" content="summary_large_image" />
-	<meta property="twitter:domain" content="yaqeen.me" />
-	<meta property="twitter:url" content="https://www.yaqeen.me" />
-	<meta name="twitter:title" content="devCanvas" />
-	<meta name="twitter:description" content="Dev Canvas - Online HTML/CSS/JS/SCSS Editor" />
-	<meta name="twitter:image" content="/devCanvas.png" />
+	<meta property="twitter:domain" content="devcanvas.art" />
+	<meta property="twitter:url" content="https://devcanvas.art" />
+	<meta name="twitter:title" content="Devcanvas" />
+	<meta name="twitter:description" content="Devcanvas - Online HTML/CSS/JS/SCSS Editor" />
+	<meta name="twitter:image" content="/devcanvas.png" />
 </svelte:head>
 
 <section class="min-h-screen">

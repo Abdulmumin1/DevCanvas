@@ -47,6 +47,9 @@
 			"sameAs": "https://twitter.com/@devcanvas_"
 		}
 	</script>
+
+	<meta name="twitter:image" content="/devcanvas.png" />
+	<meta name="og:image" content="/devcanvas.png" />
 </svelte:head>
 
 <div
