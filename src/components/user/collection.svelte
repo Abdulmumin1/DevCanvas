@@ -6,10 +6,9 @@
 	import FeCollectionPage from '$components/fePlayground/feCollectionPage.svelte';
 	import { fade } from 'svelte/transition';
 	import FeCollectionDummy from '../feCollectionDummy.svelte';
-	// if (!$user) {
-	// 	window.location.href = '/signin';
-	// }
+
 	export let data;
+
 	let supabase = data.supabase;
 	async function loadIntialData() {
 		let { data: dt, error } = await supabase
@@ -24,19 +23,6 @@
 		}
 		return dt;
 	}
-	// onMount(() => {
-	// 	pageCount.set(6);
-	// });
-
-	// afterUpdate(() => {
-	// 	// This will handle the redirection if the user logs out on  page
-	// 	if (!$user) {
-	// 		window.location.href = '/signin';
-	// 	} else {
-	// 		loading = false;
-	// 	}
-
-	// });
 
 	async function loadPlaygroundData() {
 		let { data: dt, error } = await supabase
@@ -51,9 +37,7 @@
 			console.error(error);
 			return;
 		}
-		// pageCount.update((cur) => {
-		// 	return cur + 6;
-		// });
+
 		return dt;
 	}
 
@@ -62,19 +46,6 @@
 		showOther = !showOther;
 	}
 </script>
-
-<!-- <div class="bg-secondary-dark min-h-[50vh]">
-	<InnerNav />
-
-	<div class="text-center mb-4 flex items-center justify-center flex-col gap-8 my-5">
-		<Search />
-		<div
-			class="bg-sky-500 text-secondary-dark hover:bg-sky-600 py-3 px-3 md:px-6 rounded-lg shadow transition-all duration-300 mb-5"
-		>
-			<a href="/signin">New Snippet</a>
-		</div>
-	</div>
-</div> -->
 
 <div class=" w-full">
 	<!-- Code Snippet Cards -->
