@@ -1,5 +1,5 @@
 ---
-title: ' Embedding DevCanvas Projects'
+title: 'How to Embed your DevCanvas Projects to websites'
 
 description: 'CSS combinators are tools that allows you to create more efficient and maintainable stylesheets. With combinators, you can often ditch a bunch of extra classes and IDs in your HTML.'
 

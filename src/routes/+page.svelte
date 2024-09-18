@@ -8,6 +8,7 @@
 	import EmbedSection from '$components/landing/embedSection.svelte';
 
 	import { SnippetsDescription } from '$lib/index.js';
+	import TestimonialsGrid from '../components/landing/testimonialsGrid.svelte';
 </script>
 
 <svelte:head>
@@ -79,6 +80,7 @@
 			<!-- <Discover /> -->
 			<LanguageSupport />
 			<EmbedSection />
+			<!-- <TestimonialsGrid /> -->
 			<!-- Add code editor section -->
 			<!-- <CodeEditor /> -->
 			<!-- The Idea-->
