@@ -17,7 +17,7 @@
 				.from('view')
 				.update([{ views: view + 1 }])
 				.eq('project_key', slug);
-		}, 5000);
+		}, 100);
 	}
 
 	onMount(() => {
