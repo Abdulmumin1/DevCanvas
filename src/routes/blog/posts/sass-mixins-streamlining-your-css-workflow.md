@@ -65,9 +65,36 @@ You can also specify default values for parameters in mixins. If a value is not 
 
 In this example, if you don't specify values for `$x`, `$y`, `$blur`, or `$color` when including the mixin, the default values will be used.
 
-<div class="text-center text-black dark:text-white py-9 ">
-Wanna play with SASS?
-<a href="https://devcanvas.art/play/try" target="_blank">Try our editor.</a>
+<div class="max-w-2xl mx-auto bg-white dark:bg-primary rounded-2xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl border border-sky-100">
+  <div class="p-8 bg-gradient-to-br from-sky-300 to-sky-400">
+    <h3 class="text-2xl font-bold text-white mb-2">And hey, if you're itching to try them out</h3>
+    <p class="text-sky-100 mb-6">Fire up Devcanvas and start experimenting with Sass Mixins. It's the best way to get a feel for how they work!</p>
+    <div class="flex items-center space-x-4">
+      <a href="/play/try" class="px-6 py-3 bg-white  text-sky-500 font-semibold rounded-lg shadow-md  hover:bg-sky-50 transition-colors duration-300 flex items-center" style="text-decoration:none;">
+        Try it on Devcanvas
+      </a>
+      <a href="/" class="text-white  hover:text-sky-100 transition-colors duration-300 flex items-center">
+        Learn more
+        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+        </svg>
+      </a>
+    </div>
+  </div>
+  <div class="px-8 py-6 bg-sky-50 flex justify-between items-center">
+    <div class="flex items-center space-x-2">
+      <svg class="w-5 h-5 text-sky-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+      </svg>
+      <span class="text-sky-600 font-medium">Beginner-friendly</span>
+    </div>
+    <div class="flex items-center space-x-2">
+      <svg class="w-5 h-5 text-sky-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+      </svg>
+      <span class="text-sky-600 font-medium">Interactive Code Sandbox</span>
+    </div>
+  </div>
 </div>
 
 ## Mixins with Content Blocks;
