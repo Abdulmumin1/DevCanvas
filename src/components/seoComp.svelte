@@ -19,7 +19,10 @@
 <meta name="twitter:card" content="summary_large_image" />
 <meta property="twitter:domain" content="devcanvas.art" />
 <meta property="twitter:url" content={url ?? $SnippetsDescription.url} />
-<meta name="twitter:description" content={description ?? $SnippetsDescription.des} />
+<meta
+	name="twitter:description"
+	content={description.slice(0, 300) ?? $SnippetsDescription.des.slice(0, 300)}
+/>
 <meta name="twitter:image" content={imageUrl ?? $SnippetsDescription.imageUrl} />
 
 {#if index}

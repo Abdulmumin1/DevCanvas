@@ -1,7 +1,7 @@
 ---
-title: 'Devcanvas - The Story'
+title: 'Devcanvas - How I ended up building it'
 
-description: "Though not the coolest or hardest product to build or make money from, The process of building it was incredibly enjoyable, and using it is just as fun – hence the tagline, 'The Editor with Super Powers'"
+description: 'A platform for storing code snippets, an idea I conceived while helping someone debug their code. The platform used to be called snippetland, but after getting deep in building and also trying to establish the name and stuff, I realized that another service named Snippetland that does the same thing (even better) exists.'
 
 date: '2024-09-11'
 

@@ -55,18 +55,6 @@
 		}
 	});
 
-	// async function loadprofile(session) {
-	// 	try {
-	// 		const { data: d, error: err } = await supabase
-	// 			.from('profiles')
-	// 			.select('*')
-	// 			.eq('user_id', session.user.id);
-	// 		if (err) throw err;
-	// 		$profile = d.length > 0 ? d[0] : false;
-	// 		// console.log('Profile', $profile);
-	// 	} catch (error) {}
-	// }
-
 	let url;
 	onMount(async () => {
 		url = window.location.href.replace('www.', '');

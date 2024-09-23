@@ -1,7 +1,7 @@
 ---
 title: 'How to Embed your DevCanvas Projects to websites'
 
-description: 'CSS combinators are tools that allows you to create more efficient and maintainable stylesheets. With combinators, you can often ditch a bunch of extra classes and IDs in your HTML.'
+description: 'DevCanvas is a powerful online platform for web developers, similar to CodePen, that allows you to create, edit, and share your web projects. One of the cool features of DevCanvas just like Codepen is the ability to embed your projects in other websites.'
 
 date: '2024-09-01'
 
