@@ -47,26 +47,26 @@
 
 	onMount(() => {
 		url = window.location.href;
-		let classes = document.querySelectorAll('pre');
-		classes.forEach((element) => {
-			let div = document.createElement('div');
-			div.classList = 'sticky top-0';
-			// div.style.marginBottom = '-23px';
-			let copyButton = document.createElement('button');
-			copyButton.innerText = 'copy';
-			copyButton.classList = ' px-4 py-1 rounded-t-lg  w-fit z-9999';
-			copyButton.onclick = () => {
-				copyUrlToClipboard(element.firstElementChild.innerText);
-				copyButton.innerText = 'copied';
-				setTimeout(() => {
-					copyButton.innerText = 'copy';
-				}, 2000);
-			};
-			element.classList.add('relative');
+		// let classes = document.querySelectorAll('pre');
+		// classes.forEach((element) => {
+		// 	let div = document.createElement('div');
+		// 	div.classList = 'sticky top-0';
+		// 	// div.style.marginBottom = '-23px';
+		// 	let copyButton = document.createElement('button');
+		// 	copyButton.innerText = 'copy';
+		// 	copyButton.classList = ' px-4 py-1 rounded-t-lg  w-fit text-sm z-9999';
+		// 	copyButton.onclick = () => {
+		// 		copyUrlToClipboard(element.firstElementChild.innerText);
+		// 		copyButton.innerText = 'copied';
+		// 		setTimeout(() => {
+		// 			copyButton.innerText = 'copy';
+		// 		}, 2000);
+		// 	};
+		// 	element.classList.add('relative');
 
-			div.appendChild(copyButton);
-			element.appendChild(div);
-		});
+		// 	div.appendChild(copyButton);
+		// 	element.appendChild(div);
+		// });
 
 		let stData = generateStructuredData({
 			title: data.meta.title,

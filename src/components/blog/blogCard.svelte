@@ -1,115 +1,67 @@
 <script>
 	import { formatDate } from '$lib/utils/utils.js';
-	import {
-		faArrowAltCircleRight,
-		faArrowTrendUp,
-		faCalendar,
-		faPerson
-	} from '@fortawesome/free-solid-svg-icons';
+	import { faCalendar, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 	import Fa from 'svelte-fa';
-	import { fade, scale, slide } from 'svelte/transition';
-	// import { slide } from 'svelte/transition';
-	export let details;
+	import { fade } from 'svelte/transition';
 
-	// console.log(details);
+	export let details;
 </script>
 
-<!-- <div in:scale class="  w-full max-w-full md:max-w-[500px]">
-	<img src={details.thumbnail} alt="" class="object-fit w-full h-full" />
-
-	<div
-		class="p-4 justify-between rounded-lg h-[500px] transition-all duration-300 card flex flex-col gap-2 bg-sky-50 dark:bg-secondary-dark dark:text-white text-black"
-	>
-		<p class="flex gap-2 items-center">
-			<Fa icon={faCalendar} />{formatDate(details.date)}
-		</p>
-		<div class="">
-			<a href={`blog/${details.slug}`} class="text-2xl lg:text-4xl hover:opacity-80">
-				{details.title}</a
-			>
-			<p class="text-gray-900 dark:text-gray-300">{details.description.slice(0, 100)}...</p>
+<div
+	class="overflow-hidden rounded-lg bg-white shadow-md transition-all duration-300 hover:shadow-lg dark:bg-secondary-dark"
+	in:fade
+>
+	<img
+		src="https://devcanvas.art/og?message={encodeURIComponent(details.title)}"
+		alt={details.title}
+		class="h-48 w-full object-cover"
+	/>
+	<div class="p-6">
+		<div class="mb-4 flex items-center text-sm text-gray-600 dark:text-gray-400">
+			<Fa icon={faCalendar} class="mr-2" />
+			<time datetime={details.date}>{formatDate(details.date)}</time>
 		</div>
-	</div>
-
-	<p>{details.description}</p>
-	<a href={`blog/${details.slug}`} class="py-2 flex items-center gap-3">
-		Read more <Fa icon={faArrowTrendUp} /></a
-	>
-</div> -->
-
-<a href={`blog/${details.slug}`} in:scale class="w-full hover:opacity-90">
-	<div class="holder my-2">
-		<div class="ellipse" />
-		<div class="ellipse ellipse2" />
-	</div>
-
-	<div class="flex flex-col justify-between gap-2 rounded-lg py-2 text-black dark:text-light">
-		<p class="flex items-center gap-2 text-[.9rem]">
-			<span>
-				<Fa icon={faCalendar} />
-			</span>
-			Published {formatDate(details.date)}
-		</p>
-		<!-- <p class="flex items-center gap-2 text-[.9rem]">
-			<span class="opacity-85"> Written by: </span>
-			<span class="opacity-90">Abdulmumin Yaqeen</span>
-		</p> -->
-		<div class="">
+		<h2 class="mb-2 text-xl font-bold text-gray-900 dark:text-white">
 			<a
-				href={`blog/${details.slug}`}
-				class="text-balance text-2xl font-bold hover:opacity-80 md:text-3xl"
+				href={`/blog/${details.slug}`}
+				class="transition-colors duration-200 hover:text-sky-600 dark:hover:text-sky-400"
 			>
-				{details.title}</a
-			>
-			<!-- decoration-wavy underline underline-offset-4  -->
-			<!-- <p class="text-gray-900 dark:text-gray-300">
-				{details.description.slice(0, 200)}...
-			</p> -->
-
-			<!-- <a href={`blog/${details.slug}`}>Read ></a> -->
-		</div>
+				{details.title}
+			</a>
+		</h2>
+		<p class="mb-4 text-gray-700 dark:text-gray-300">
+			{details.description.slice(0, 150)}...
+		</p>
+		<a
+			href={`/blog/${details.slug}`}
+			class="inline-flex items-center text-sky-600 hover:underline dark:text-sky-400"
+		>
+			Read more
+			<Fa icon={faArrowRight} class="ml-2" />
+		</a>
 	</div>
-</a>
+	<div class="squiggle-border"></div>
+</div>
 
 <style>
-	/* .card:hover {
-		--tw-scale-x: 1.02;
-		--tw-scale-y: 1.02;
-		transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate))
-			skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x))
-			scaleY(var(--tw-scale-y));
+	.squiggle-border {
+		height: 8px;
+		background:
+			linear-gradient(135deg, #ffffff 25%, transparent 25%) -5px 0,
+			linear-gradient(225deg, #ffffff 25%, transparent 25%) -5px 0,
+			linear-gradient(315deg, #ffffff 25%, transparent 25%),
+			linear-gradient(45deg, #ffffff 25%, transparent 25%);
+		background-size: 10px 10px;
+		background-color: #0284c7; /* Adjust this color to match your design */
 	}
 
-	 */
-
-	.holder {
-		/* Clip edges, as some of the lines don't terminate nicely. */
-		overflow: hidden;
-		position: relative;
-		width: 100%;
-		height: 50px;
-	}
-
-	.ellipse {
-		--squiggle-color: currentColor;
-		position: absolute;
-		background: radial-gradient(
-			ellipse,
-			transparent,
-			transparent 7px,
-			var(--squiggle-color) 7px,
-			var(--squiggle-color) 10px,
-			transparent 11px
-		);
-		background-size: 36px 40px;
-		width: 100%;
-		height: 20px;
-		/* mix-blend-mode: multiply; */
-	}
-
-	.ellipse2 {
-		top: 20px;
-		left: 18px;
-		background-position: 0px -20px;
+	:global(.dark) .squiggle-border {
+		background:
+			linear-gradient(135deg, #1f2937 25%, transparent 25%) -5px 0,
+			linear-gradient(225deg, #1f2937 25%, transparent 25%) -5px 0,
+			linear-gradient(315deg, #1f2937 25%, transparent 25%),
+			linear-gradient(45deg, #1f2937 25%, transparent 25%);
+		background-size: 10px 10px;
+		background-color: #38bdf8; /* Adjust this color for dark mode */
 	}
 </style>
