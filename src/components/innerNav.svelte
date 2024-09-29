@@ -50,7 +50,7 @@
 					<Darkmode />
 				</div>
 			</div>
-			<div class="block md:hidden">
+			<div class="block text-black md:hidden">
 				<MobileNav />
 			</div>
 		</div>

@@ -33,7 +33,7 @@
 		<div class="flex h-full w-full flex-col gap-4 rounded-2xl md:gap-6">
 			<iframe
 				title="embed"
-				src="{$page.url.origin}/play/gSirkj/embed?active=css"
+				src="/play/gSirkj/embed?active=css"
 				frameborder="0"
 				loading="lazy"
 				class="h-[670px] rounded-2xl border-2 border-secondary-dark"

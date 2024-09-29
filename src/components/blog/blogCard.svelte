@@ -2,20 +2,16 @@
 	import { formatDate } from '$lib/utils/utils.js';
 	import { faCalendar, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 	import Fa from 'svelte-fa';
-	import { fade } from 'svelte/transition';
+	import { fade, fly } from 'svelte/transition';
 
 	export let details;
 </script>
 
 <div
 	class="overflow-hidden rounded-lg bg-white shadow-md transition-all duration-300 hover:shadow-lg dark:bg-secondary-dark"
-	in:fade
+	in:fly={{ y: 20 }}
 >
-	<img
-		src="https://devcanvas.art/og?message={encodeURIComponent(details.title)}"
-		alt={details.title}
-		class="h-48 w-full object-cover"
-	/>
+	<img src="/blogcard.png" alt={details.title} class="h-48 w-full object-cover" />
 	<div class="p-6">
 		<div class="mb-4 flex items-center text-sm text-gray-600 dark:text-gray-400">
 			<Fa icon={faCalendar} class="mr-2" />
