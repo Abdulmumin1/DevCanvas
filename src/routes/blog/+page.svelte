@@ -5,6 +5,8 @@
 	import InnerNav from '$components/innerNav.svelte';
 	import LatestBlog from '$components/blog/latestBlog.svelte';
 	import Pagination from '$components/blog/pagination.svelte';
+	import SEO from '$components/seoComp.svelte';
+
 	export let data;
 
 	let currentPage = 1;
@@ -29,7 +31,7 @@
 </script>
 
 <svelte:head>
-	<!-- Meta tags remain unchanged -->
+	<SEO title="Blog - Devcanvas" description="Frontend articles for beginners" />
 </svelte:head>
 
 <section class="min-h-screen">

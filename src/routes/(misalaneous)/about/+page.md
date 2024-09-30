@@ -1,3 +1,13 @@
+<script>
+    import SEO from '$components/seoComp.svelte';
+</script>
+
+<svelte:head>
+
+<SEO title="About" description="DevCanvas is an online platform designed to empower developers, designers, and creators to collaborate, build, and showcase their work. Our mission is to provide a seamless and intuitive environment where ideas can flourish and creativity can thrive."/>
+
+</svelte:head>
+
 <div class="flex items-center">
 
 <img src='/logo.svg' class="h-20">
@@ -24,7 +34,6 @@ Join our vibrant community of developers, designers, and creators. Collaborate, 
 ### Our Team
 
 DevCanvas started as an indie project (still is though 😅), by [some guy](https://www.yaqeen.me/about) who recognized the need for a comprehensive platform that caters to the diverse needs of the creative community. I'm dedicated to continuously improving the platform, adding new features, and providing unparalleled support to our users.
-
 
 ### Stay Connected
 

@@ -1,5 +1,4 @@
 <script>
-	import { fade, scale, slide } from 'svelte/transition';
 	import InnerNav from '$components/innerNav.svelte';
 </script>
 

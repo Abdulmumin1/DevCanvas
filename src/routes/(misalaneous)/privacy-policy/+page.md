@@ -1,3 +1,11 @@
+<script>
+    import SEO from '$components/seoComp.svelte';
+</script>
+
+<svelte:head>
+<SEO title="Privacy Policy" description="Devcanvas privacy policy"/>
+</svelte:head>
+
 # Privacy Policy
 
 DevCanvas understands that privacy is important and is committed to protecting your personal information. This Privacy Policy outlines how DevCanvas collects, uses, discloses, and safeguards the information you provide when using our website and services.
