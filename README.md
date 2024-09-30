@@ -1,6 +1,6 @@
 # DevCanvas
 
-![Snippets Logo](/static/devcanvas.png)
+![devcanvas Logo](/static/devcanvas.png)
 
 An online editor with super powers, fast preview, plugins and super cool library of cool Frontend creations for your inspiration.
 
@@ -42,8 +42,8 @@ An online editor with super powers, fast preview, plugins and super cool library
 - [Features](#features)
 - [Installation](#installation-locally)
 - [Usage](#usage)
-- [Collaborative Code Editor](#collaborative-code-editor)
 - [Contributing](#contributing)
+- [Getting Help](#getting-help)
 - [License](#license)
 - [Support](#support)
 
@@ -51,8 +51,8 @@ An online editor with super powers, fast preview, plugins and super cool library
 
 - Interactive Frontend Editor
 - Easy code snippet sharing (any other language).
-- Discover and explore a wide range of code snippets and beatufill creations.
-- A powerfull editor for a smooth coding experience.
+- Discover and explore a wide range of code snippets and awesome frontend creations.
+- A powerfull editor (codemirror) for a smooth coding experience.
 - Support for multiple programming languages.
 - User profiles with personal code snippet collections.
 
@@ -67,25 +67,63 @@ An online editor with super powers, fast preview, plugins and super cool library
 1. Run the development server: `npm run dev` or `yarn dev`
 2. Open your web browser and visit: `http://localhost:5173`
 
-## Collaborative Code Editor
-
-Snippets features a built-in collaborative code editor powered by Monaco Editor. Collaborate with other developers by sharing the editor link.
-
 ## Contributing
 
-We welcome contributions from the community to make Snippets even better! To contribute, follow these steps:
+We enthusiastically welcome contributions from the community to enhance DevCanvas! Here's how you can contribute:
 
-1. Fork the repository.
-2. Create a new branch for your feature or bug fix: `git checkout -b my-feature`
-3. Make your changes and commit them: `git commit -m "Add new feature"`
-4. Push your changes to your forked repository: `git push origin my-feature`
-5. Create a pull request on the original repository.
+### Types of Contributions
 
-Please adhere to the project's coding style and conventions.
+- **Frontend Improvements:** As our backend is not publicly available, most contributions should focus on frontend enhancements.
+- **Blog Posts:** We accept frontend-related articles for our blog.
+- **Documentation:** Help improve our README, inline code comments, or create user guides.
+- **Bug Reports:** If you find a bug, please create an issue with a detailed description.
+- **Feature Requests:** Have an idea? We'd love to hear it! Create an issue to propose new features.
+- **Code Improvement:** There is alot of bad code in devcanvas currently, we would your contributions that could improve that.
+
+## Contribution Process
+
+- Fork the repository.
+- Create a new branch for your feature, fix, or improvement:
+
+```bash
+git checkout -b my-contribution
+```
+
+Make your changes, ensuring they adhere to our coding style and conventions.
+
+Commit your changes with a clear, descriptive message:
+
+```bash
+git commit -m "Add new feature: Brief description"
+```
+
+Push your changes to your forked repository:
+
+```bash
+git push origin my-contribution
+```
+
+Create a pull request to the main DevCanvas repository, providing a detailed description of your changes.
+
+## Code Style and Guidelines
+
+Follow the existing code style in the project.
+Write clear, commented code to enhance readability.
+Ensure your code is properly formatted and lint-free.
+
+## Getting Help
+
+If you need assistance or have questions about contributing, please:
+
+- Check our existing issues and pull requests to see if your question has been addressed.
+
+- Create a new issue with the "question" label if you need further clarification.
+
+We appreciate your interest in improving DevCanvas and look forward to your contributions!
 
 ## License
 
-DevCanvas is licensed under the [MIT License](./LICENSE).
+DevCanvas is licensed under the [Non Commercial License](./LICENSE).
 
 ## Support
 
