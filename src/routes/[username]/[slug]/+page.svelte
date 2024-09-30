@@ -7,8 +7,7 @@
 	import Fa from 'svelte-fa';
 	import { faCheck, faCopy, faPen } from '@fortawesome/free-solid-svg-icons';
 	import { setContext } from 'svelte';
-	import SEO from '$components/seoComp.svelte'
-
+	import SEO from '$components/seoComp.svelte';
 
 	export let data;
 	setContext('isOwner', false);
@@ -35,14 +34,11 @@
 
 <svelte:head>
 	{#if data.isFound}
-		<title>{data['0'].description}</title>
-
-		<!-- Facebook Meta Tags -->
-
-		<SEO title={data['0'].description} description={`${data['0'].description} - shared by ${username}`} />
-		
+		<SEO
+			title={data['0'].description}
+			description={`${data['0'].description} - shared by ${username}`}
+		/>
 	{/if}
-	<!-- HTML Meta Tags -->
 
 	{#if $darkModeState}
 		{@html githubDark}

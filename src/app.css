@@ -3,10 +3,9 @@
 @tailwind utilities;
 
 @layer utilities {
-	/* .action-button.active {
-		border-left: 30px solid orange !important;
-	} */
-
+	dialog {
+		margin: auto !important;
+	}
 	.thread {
 		isolation: isolate;
 	}

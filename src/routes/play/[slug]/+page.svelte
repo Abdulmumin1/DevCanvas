@@ -1,21 +1,13 @@
 <script>
-	import { current_data, user, isOwner,  } from '$lib/index.js';
-	import {
-		showSave,
-		consoleOutput,
-
-	} from '$lib/feEditor/store.js';
+	import { current_data, user, isOwner } from '$lib/index.js';
+	import { showSave, consoleOutput } from '$lib/feEditor/store.js';
 	import { onDestroy, onMount } from 'svelte';
 	import { browser } from '$app/environment';
 	import FeCodeEditor from '$components/fePlayground/feCodeEditor.svelte';
 	import FePlayGroungNav from '$components/fePlayground/fePlayGroungNav.svelte';
 	import CodeOutput from '$components/fePlayground/codeOutput.svelte';
 	import Resizable from '$components/fePlayground/resizable.svelte';
-	import {
-		showLoginToSave,
-		showForkTosave,
-		showEmbedModal
-	} from '$lib/feEditor/store.js';
+	import { showLoginToSave, showForkTosave, showEmbedModal } from '$lib/feEditor/store.js';
 	import JsConsole from '$components/fePlayground/jsConsole.svelte';
 	import EmbedModal from '$components/fePlayground/embedModal.svelte';
 
@@ -72,10 +64,6 @@
 	showForkTosave.set(false);
 	showLoginToSave.set(false);
 </script>
-
-<svelte:head>
-	<title>{data.details.description}</title>
-</svelte:head>
 
 <div class="flex h-screen flex-col">
 	<header class="w-full">

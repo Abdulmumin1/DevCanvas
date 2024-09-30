@@ -3,15 +3,13 @@ import { error } from '@sveltejs/kit';
 export async function GET({ fetch, url, locals: { supabase } }) {
 	const response = await fetch('blog/api/posts');
 	const posts = await response.json();
-	// const { supabase } = await parent();
 	let { data: keys, error: err } = await supabase
 		.from('htmlPlayground')
 		.select('project_key')
-		.order('created_at', { ascending: false });
+		.order('created_at', { ascending: false })
+		.is('public', true);
 
-	console.log(keys);
 	if (err) {
-		// console.error(error);
 		throw error(500, { message: 'Internal Error' });
 	}
 	const xml = `
@@ -31,6 +29,9 @@ export async function GET({ fetch, url, locals: { supabase } }) {
     <loc>https://devcanvas.art/explore</loc>
     <lastmod>2024-01-17</lastmod>
   </url>
+   <url>
+    <loc>https://devcanvas.art/play</loc>
+  </url>
   <url>
     <loc>https://devcanvas.art/blog</loc>
   </url>
@@ -39,6 +40,15 @@ export async function GET({ fetch, url, locals: { supabase } }) {
   </url>
   <url>
     <loc>https://devcanvas.art/signin</loc>
+  </url>
+   <url>
+    <loc>https://devcanvas.art/about</loc>
+  </url>
+   <url>
+    <loc>https://devcanvas.art/privacy-policy</loc>
+  </url>
+   <url>
+    <loc>https://devcanvas.art/terms-of-service</loc>
   </url>
  
     ${posts

@@ -1,3 +1,11 @@
+<script>
+    import SEO from '$components/seoComp.svelte';
+</script>
+
+<svelte:head>
+<SEO title="Terms of Service" description="Devcanvas Terms of Service"/>
+</svelte:head>
+
 # Terms of Service
 
 Welcome to DevCanvas! These Terms of Service ("Terms") govern your access to and use of the DevCanvas website, products, and services (collectively the "Services"). By accessing or using the Services, you agree to be bound by these Terms.
@@ -16,6 +24,7 @@ Welcome to DevCanvas! These Terms of Service ("Terms") govern your access to and
 ### 3. Prohibited Conduct
 
 - 3.1 You agree not to misuse the Services, including by uploading or sharing any User Content that:
+
   - Violates laws or infringes on intellectual property rights
   - Contains hate speech, harassment, threats, defamation, or discrimination
   - Is pornographic, obscene, or sexually explicit
