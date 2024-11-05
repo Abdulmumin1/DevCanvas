@@ -14,7 +14,11 @@
 			href="https://fonts.googleapis.com/css2?family=Dai+Banna+SIL:wght@300;400;500;600;700&display=swap"
 			rel="stylesheet"
 		/> -->
-		<script defer type="text/javascript" src="https://littlestats-backend.fly.dev/embed/cnvkg2la9w6k0yx"></script>
+		<script
+			defer
+			type="text/javascript"
+			src="https://littlestats-backend.fly.dev/embed/cnvkg2la9w6k0yx"
+		></script>
 		<link rel="manifest" crossorigin="use-credentials" href="%sveltekit.assets%/manifest.json" />
 
 		<style>
@@ -59,24 +63,23 @@
 				text-decoration: var(--shiki-dark-text-decoration) !important;
 			}
 
-			.comment-box{
-		margin-bottom: 0rem !important;
-	}
+			.comment-box {
+				margin-bottom: 0rem !important;
+			}
 
+			html:not(.dark) {
+				--rig-color-primary: #0ea5e9;
+				--rig-text-color: black;
+				--rig-background-color: white;
+				--rig-inactive-color: #6b7280;
+			}
 
-html:not(.dark) {
-    --rig-color-primary: #0ea5e9;
-    --rig-text-color: black;
-    --rig-background-color: white;
-    --rig-inactive-color:#6b7280;
-  }
-  
-  /* Dark mode example */
-  html.dark {
-    --rig-text-color: #404953;
-    --rig-background-color: black;
-    --rig-color-primary: #7dd3fc;
-  }
+			/* Dark mode example */
+			html.dark {
+				--rig-text-color: #404953;
+				--rig-background-color: black;
+				--rig-color-primary: #7dd3fc;
+			}
 		</style>
 
 		<script>
@@ -88,6 +91,6 @@ html:not(.dark) {
 	</head>
 	<body data-sveltekit-preload-data="hover" class="bg-primary">
 		<div style="display: contents">%sveltekit.body%</div>
-		<script src="https://tinylytics.app/embed/_wNKvgyG8HtokjxaXGYr.js" defer></script>
+		<!-- <script src="https://tinylytics.app/embed/_wNKvgyG8HtokjxaXGYr.js" defer></script> -->
 	</body>
 </html>
