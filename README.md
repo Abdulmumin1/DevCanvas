@@ -56,11 +56,19 @@ An online editor with super powers, fast preview, plugins and super cool library
 - Support for multiple programming languages.
 - User profiles with personal code snippet collections.
 
-## Installation (Locally)
+## Installation (Local developement)
 
 1. Clone the repository: `git clone https://github.com/Abdulmumin1/devcanvas.git`
 2. Navigate to the project directory: `cd devcanvas`
 3. Install dependencies: `npm install` or `yarn install`
+4. Create and add the folowing to your .env file:
+```txt
+VITE_PUBLIC_SUPABASE_URL='http://whateverurl'
+VITE_PUBLIC_SUPABASE_ANON_KEY="whateverkeyhere"
+
+```
+
+> Note: These env variable will cause an error if not created, we're planing to make it possible to spin up our supabase instance locally pretty soon... that why only frontend contributions are possible at the moment
 
 ## Usage
 
