@@ -4,7 +4,7 @@ import { EditorView } from '@codemirror/view';
 
 let accentColor = '#7dd3fc';
 let backgroundColor = '';
-export const createTheme = (accentColor = '#7dd3fc', backgroundColor = '#000') => {
+export const createTheme = (accentColor = '#7dd3fc', backgroundColor = '#111') => {
 	const base = {
 		background: backgroundColor,
 		foreground: '#e0e0e0',

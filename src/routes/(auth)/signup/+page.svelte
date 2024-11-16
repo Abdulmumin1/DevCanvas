@@ -141,7 +141,7 @@
 					class="rounded-lg border border-sky-200 px-3 py-2 outline outline-2 outline-sky-200 focus:outline-4 focus:outline-sky-300"
 				/>
 			</div>
-			{#if !usePassword}
+			{#if usePassword}
 				<div class="flex flex-col gap-2" transition:slide>
 					<label for="password" class="text-sm">Password</label>
 					<PasswordInput bind:password id="password" />
@@ -166,10 +166,10 @@
 			</button>
 			<label class="flex items-center justify-start gap-2 rounded-md bg-light p-3 text-sm">
 				<input type="checkbox" name="usePassword" id="" bind:checked={usePassword} />
-				Use OTP
+				Use Password
 			</label>
 
-			{#if usePassword}
+			{#if !usePassword}
 				{#if !completed}
 					<span
 						class="flex items-center justify-start gap-2 rounded-md bg-sky-100 p-1 px-2 text-sm"

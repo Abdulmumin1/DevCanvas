@@ -81,8 +81,10 @@
 	}
 
 	async function formatter(view) {
+		
 		const options = { indent_size: 2 };
 		const dataObj = view.state.doc.toString();
+		console.log(dataObj, options, lang)
 
 		if (lang == 'html') {
 			let beatifulHtml = js_beautify.html(dataObj, options);
@@ -102,7 +104,7 @@
 					insert: beatifulCSS
 				}
 			});
-		} else if (lang == 'js') {
+		} else if (lang == 'javascript') {
 			let beatifulJS = js_beautify.js(dataObj, options);
 			view.dispatch({
 				changes: {

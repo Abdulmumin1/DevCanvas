@@ -118,34 +118,33 @@
 			</div> -->
 
 			<div class="w-full max-w-6xl px-2 text-base md:text-lg">
-				<div class="relative flex items-center gap-4">
+				<div class="relative flex items-center gap-6">
 					<button
 						on:click={() => setTab('editor')}
-						class="py-2 transition-colors duration-200 {activeTab === 'editor'
-							? 'text-primary'
-							: 'text-gray-600 hover:text-sky-300'}"
+						class="relative py-2 px-4 transition-all duration-200 {
+							activeTab === 'editor'
+								? 'text-primary  rounded-lg bg-gradient-to-r from-sky-400 to-sky-300 shadow-lg shadow-sky-200/20 transition-all duration-300 ease-out'
+								: 'text-gray-600 hover:text-sky-300'
+						}"
 					>
 						Editor
 					</button>
 					<button
 						on:click={() => setTab('plugins')}
-						class="py-2 transition-colors duration-200 {activeTab === 'plugins'
-							? 'text-primary'
-							: 'text-gray-600 hover:text-sky-300'}"
+						class="  relative py-2 px-4 transition-all duration-200 {
+							activeTab === 'plugins'
+								? 'text-primary rounded-lg bg-gradient-to-r from-sky-400 to-sky-300 shadow-lg shadow-sky-200/20 transition-all duration-300 ease-out'
+								: 'text-gray-600 hover:text-sky-300'
+						}"
 					>
 						Plugins
 					</button>
-					<div
-						class="absolute top-0 h-full rounded-lg bg-sky-400 px-2 transition-all duration-300"
-						style="left: {activeTab === 'editor' ? '-7px' : '63px'}; width: {activeTab === 'editor'
-							? '60px'
-							: '68px'}; z-index:-1; "
-					/>
+					
 				</div>
 			</div>
 
 			<button
-				class="absolute right-0 top-[50%] h-[75%] translate-y-[-50%] rounded-lg bg-red-600 px-5 hover:bg-red-700"
+				class="absolute right-0 top-[50%] h-[75%] translate-y-[-50%] rounded-lg px-5 text-xl"
 				on:click={closeModal}
 			>
 				<Fa icon={faClose} />
