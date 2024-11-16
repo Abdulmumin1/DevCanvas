@@ -160,6 +160,7 @@
 
 	$: currentJS !== jsCode && handleIframeReload();
 
+
 	const handleIframeReload = () => {
 		clearTimeout(sassCompilationTimer);
 		if (!wait) {

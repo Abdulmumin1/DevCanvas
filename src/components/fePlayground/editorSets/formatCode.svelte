@@ -10,7 +10,7 @@
 </script>
 
 <button
-	class="toggle-btn flex w-full items-center gap-2 rounded-lg bg-gradient-to-r from-sky-400 to-sky-600 px-4 py-2 text-sm text-white shadow-md transition-transform duration-150 ease-in-out hover:from-sky-500 hover:to-sky-700 hover:shadow-lg active:scale-95"
+	class="toggle-btn flex w-full items-center gap-2 rounded-lg bg-gradient-to-r from-sky-400 to-sky-300 shadow-sky-200/20 px-4 py-2 text-sm text-black shadow-md transition-transform duration-150 ease-in-out hover:from-sky-500 hover:to-sky-700 hover:shadow-lg active:scale-95"
 	on:click={format}
 >
 	<Fa icon={faBrush} /> Format
