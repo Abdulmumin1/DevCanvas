@@ -8,7 +8,7 @@
 	import PasswordInput from '$components/auth/passwordInput.svelte';
 
 	let email;
-	let password;
+	let password = '';
 	let cfP;
 
 	let loading = false;
@@ -58,7 +58,7 @@
 
 	const handleSubmit = ({ cancel }) => {
 		msg = validatePassword();
-		if (msg) {
+		if (msg && usePassword) {
 			cancel();
 			return;
 		}
