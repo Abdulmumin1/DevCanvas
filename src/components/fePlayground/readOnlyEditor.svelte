@@ -114,8 +114,7 @@
 				basicSetup,
 				fixedHeightEditor,
 				langFunction(),
-				cTheme,
-				EditorView.lineWrapping
+				cTheme
 			] // Extensions
 		});
 	});

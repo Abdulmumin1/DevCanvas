@@ -74,7 +74,7 @@
 			<div slot="left" class="h-full w-full">
 				<FeCodeEditor initialHTML={data.details.html} initialCSS={data.details.css} lang="html" />
 			</div>
-			<div slot="right" class="relative h-full w-full">
+			<div slot="right" class="relative h-full w-full bg-white">
 				{#key $reload}
 					<CodeOutput code={$current_data.html} css={$current_data.css} js={$current_data.js} />
 					<JsConsole />

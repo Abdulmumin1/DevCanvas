@@ -187,9 +187,39 @@
 	onDestroy(() => {
 		clearTimeout(waitTimeout);
 	});
+
+	let zoomLevel = 1;
+	let container;
+	function adjustZoom(change) {
+		// More precise zoom control
+		zoomLevel = Math.round((zoomLevel + change) * 10) / 10;
+
+		// Expanded zoom range
+		zoomLevel = Math.min(Math.max(zoomLevel, 0.1), 1);
+
+		if (previewIframe) {
+			// More comprehensive zoom styling
+			previewIframe.style.transform = `scale(${zoomLevel})`;
+			previewIframe.style.transformOrigin = 'top left';
+
+			// Adjust container to prevent scrollbars
+			const container = previewIframe.parentElement;
+			if (container) {
+				container.style.overflow = 'hidden';
+				container.style.width = `${100 / zoomLevel}%`;
+				container.style.height = `${100 / zoomLevel}%`;
+			}
+
+			// Update zoom display
+			const zoomDisplay = document.getElementById('zoom-value');
+			if (zoomDisplay) {
+				zoomDisplay.innerText = `${Math.round(zoomLevel * 100)}%`;
+			}
+		}
+	}
 </script>
 
-<div class="m-0 h-full w-full border-0 bg-white p-0">
+<div bind:this={container} class="m-0 h-full w-full border-0 bg-white p-0">
 	<iframe
 		bind:this={previewIframe}
 		title="preview"
@@ -197,4 +227,26 @@
 		class="m-0 h-full w-full p-0"
 		onload={triggerJSUpdate()}
 	/>
+</div>
+<div
+	class="zoom-control rounded border bg-gray-300/25 p-1 text-sm text-black"
+	style="position: fixed; bottom: 20px; right: 20px;  display: flex; align-items: center;"
+>
+	<button
+		id="zoom-out"
+		class="zoom-btn px-2 font-bold"
+		aria-label="Zoom out"
+		on:click={() => adjustZoom(-0.1)}
+	>
+		-
+	</button>
+	<span id="zoom-value" class="mx-4 text-xs">100%</span>
+	<button
+		id="zoom-in"
+		class="zoom-btn px-2 font-bold"
+		aria-label="Zoom in"
+		on:click={() => adjustZoom(0.1)}
+	>
+		+
+	</button>
 </div>
