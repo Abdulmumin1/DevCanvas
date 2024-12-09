@@ -211,8 +211,8 @@
 
 	.article code {
 		/* background-color: #888; */
-		@apply rounded underline decoration-sky-400 decoration-wavy underline-offset-2;
-		font-size: inherit !important;
+		@apply bg-sky-300 p-1 text-base text-primary;
+		/* font-size: inherit !important; */
 	}
 
 	.article p {

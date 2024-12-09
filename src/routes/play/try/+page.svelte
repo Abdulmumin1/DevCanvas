@@ -122,7 +122,7 @@
 			<div slot="left" class="h-full w-full">
 				<FeCodeEditor initialHTML={'<!--HTML HERE-->'} initialCSS={'/* */'} lang="html" />
 			</div>
-			<div slot="right" class="relative h-full w-full">
+			<div slot="right" class="relative h-full w-full bg-white">
 				{#key $reload}
 					<CodeOutput />
 					<JsConsole />
