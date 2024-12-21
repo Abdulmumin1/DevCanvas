@@ -44,6 +44,21 @@ export const actions = {
 		// ehre
 		// await sleep(2000);
 		// alert('Check your inbox for the magik link');
+	},
+	github: async ({url, locals: { supabase }}) => {
+		const { data, error } = await supabase.auth.signInWithOAuth({
+		  provider: 'github',
+		  options: {
+			redirectTo: `${url.origin}/code/exchange/callback`,
+		  },
+		})
+
+		if (data.url) {
+			// console.log(data.url)
+			throw redirect(302, data.url)
+		  }
+		  
+		  
 	}
 };
 

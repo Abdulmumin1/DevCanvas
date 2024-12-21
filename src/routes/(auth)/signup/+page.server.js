@@ -14,7 +14,7 @@ async function signUpNewUser(supabase, email, password, redirectTo) {
 
 /** @type {import('./$types').Actions} */
 export const actions = {
-	default: async ({ url, request, locals: { supabase } }) => {
+	signup: async ({ url, request, locals: { supabase } }) => {
 		let body = Object.fromEntries(await request.formData());
 		let email = body.email;
 		let password = body?.password;
@@ -42,6 +42,14 @@ export const actions = {
 		}
 		// await sleep(2000);
 		// alert('Check your inbox for the magik link');
+	},
+	github: async ({url, locals: { supabase }}) => {
+		const { data, error } = await supabase.auth.signInWithOAuth({
+		  provider: 'github',
+		  options: {
+			redirectTo: `${url.origin}/dashboard`,
+		  },
+		})
 	}
 };
 

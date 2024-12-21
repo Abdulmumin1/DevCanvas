@@ -1,28 +1,6 @@
-export function injectJavascript(iframeDoc, js) {
-	const scriptElement = iframeDoc.createElement('script');
-	scriptElement.id = 'mainScript12343REFDS!';
-	scriptElement.textContent = `
-
-console.log = function(message) {
-// Send the console message to the parent page
-window.parent.postMessage({ type: 'console', message: message }, '*');
-};
-
-try {
-
-${js}
-
-} catch(err){
-console.log(err); 
-
-}`;
-	iframeDoc.body.appendChild(scriptElement);
-}
-
-
 import { cdns, fontawesomeLINK, materialiconsLINK, bootstrapLINK } from '$lib/plugins/store.js';
 
-export function constructHtml(current_data) {
+function constructHtmlForZip(current_data) {
 	let jsPlugins,
 		cssPlugins = [];
 	let userImportedJS = current_data.config?.userImportedJS ?? [];
@@ -70,4 +48,31 @@ export function constructHtml(current_data) {
         </script>
 	</body>
 </html>`;
+}
+
+/** @type {import('./$types').RequestHandler} */
+export async function GET({ params, locals: { supabase } }) {
+	let slug = params['slug'];
+
+	// Fetch project data
+	const { data, error } = await supabase
+		.from('htmlPlayground')
+		.select('*')
+		.eq('project_key', slug)
+		.single();
+
+	if (error || !data) {
+		return new Response('Project not found', { status: 404 });
+	}
+    // console.log(data)
+
+	// Generate HTML from the fetched data
+	const html = constructHtmlForZip(data);
+
+	// Return the HTML as a response
+	return new Response(html, {
+		headers: {
+			'Content-Type': 'text/html'
+		}
+	});
 }

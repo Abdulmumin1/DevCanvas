@@ -29,7 +29,7 @@
 <svelte:head>
 	
 	
-<SEO title={data.details.description} description={`View project - ${data.details.description}`} imageUrl={`https://devcanvas.art/og?message=${title}`} index={ data.details?.public == true}/>
+<SEO title={data.details.description} description={`View project - ${data.details.description}`} imageUrl={`https://devcanvas.art/output/image/${$page.params.slug}?width=1200&height=630`} index={ data.details?.public == true}/>
 
 </svelte:head>
 <slot />

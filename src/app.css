@@ -6,6 +6,10 @@
 	dialog {
 		margin: auto !important;
 	}
+
+	input{
+		accent-color: theme(accentColor.sky.300) !important;
+	}
 	.thread {
 		isolation: isolate;
 	}

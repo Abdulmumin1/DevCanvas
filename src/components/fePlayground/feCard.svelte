@@ -14,8 +14,8 @@
 <div
 	class="card flex h-full flex-col rounded-xl bg-gray-100 p-1 shadow-sm transition-transform duration-300 dark:bg-secondary-dark md:max-w-[350px]"
 >
-	<iframe
-		src="{$page.url.origin}/play/{details.project_key}/preview?preview=preview"
+	<!-- <iframe
+		src="{$page.url.origin}/{details.project_key}"
 		title="Project Preview"
 		height="200"
 		frameborder="0"
@@ -23,8 +23,14 @@
 		loading="lazy"
 		class="h-[250px] w-full overflow-hidden rounded-xl"
 		style="aspect-ratio: 1/1; pointer-events: none;"
-	/>
+	/> -->
+	<img 
+	src="{$page.url.origin}/output/image/{details.project_key}"
+	loading="lazy"
 
+	class="h-[250px] w-full overflow-hidden rounded-xl object-cover"
+		style="aspect-ratio: 1/1; pointer-events: none;"
+	alt="">
 	<div class="flex flex-col items-start p-2 text-base">
 		<a href="/play/{details.project_key}" class="text-xl font-semibold hover:opacity-80">
 			{details.description}

@@ -58,6 +58,7 @@
 		"jszip": "^3.10.1",
 		"kbar-svelte-mini": "^0.1.0",
 		"loadash": "^1.0.0",
+		"puppeteer": "^23.11.1",
 		"quill": "^2.0.2",
 		"satori": "^0.10.13",
 		"satori-html": "^0.3.2",

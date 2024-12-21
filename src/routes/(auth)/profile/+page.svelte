@@ -1,6 +1,7 @@
 <script>
 	import Fa from 'svelte-fa';
 	import {
+	faArrowRight,
 		faExclamationCircle,
 		faRightLong,
 		faSpinner,
@@ -10,8 +11,10 @@
 	import { enhance } from '$app/forms';
 	import NavWrapper from '$components/snips/navWrapper.svelte';
 	import { onMount } from 'svelte';
+	import {page} from '$app/stores'
 
 	import { getProfile } from '$lib/index.js';
+
 	let loading = false;
 	let serverErr = false;
 	let email;
@@ -26,6 +29,9 @@
 			if (result.status == 200) {
 				completed = true;
 				// data = result.data;
+				if (mesa){
+					window.location.href = $page.url.searchParams.get('next') ??  '/dashboard'
+				}
 				setTimeout(() => {
 					completed = false;
 				}, 3000);
@@ -46,7 +52,7 @@
 
 	export let data;
 	export let form;
-
+	let mesa = $page.url.searchParams.get('rt')
 	let details = data.details;
 </script>
 
@@ -56,19 +62,26 @@
 </svelte:head>
 
 <NavWrapper noSearch={true}>
-	<div class="flex h-full items-center">
-		<div class="mb-4 max-w-[700px] rounded bg-white px-4 py-12 pb-8 dark:bg-primary md:py-9">
+	<div class="flex h-full flex-col items-center justify-center min-h-[90vh]">
+		{#if mesa}
+		<div class="my-12"
+	>
+		<p
+		class="flex items-center justify-start gap-2 rounded-md  p-1 px-2 text-xl"
+
+		><span class="wobble-hor-top"> <Fa icon={faExclamationCircle} /></span> Sorry to interrupt, we shipped too fast!</p>
+		<p>Manually click the <strong>"Update Profile"</strong> button to <strong>Continue</strong></p>
+		</div
+	>
+		{/if}
+		<div class="mb-4 max-w-[700px]   bg-gray-100  p-8 pt-20 dark:bg-secondary-dark rounded-2xl">
 			<h2 class="mb-4 flex gap-2 text-4xl text-gray-800 dark:text-white">
 				Update Your Profile <span
-					><a href="/{details?.username}"><Fa icon={faUpRightFromSquare} /></a></span
+					><a href="/{details?.username}"><Fa class="text-sm" icon={faUpRightFromSquare} /></a></span
 				>
 			</h2>
 
-			<div>
-				<a href="/recovery/reset" class="flex items-center gap-2 py-4"
-					>Reset password <Fa icon={faRightLong} /></a
-				>
-			</div>
+			
 			<form action={data.action} use:enhance={handleSubmit} method="POST">
 				<!-- User Name -->
 				<div class="mb-4">
@@ -79,7 +92,7 @@
 						type="text"
 						id="username"
 						name="username"
-						class="earance-none focus:line w-full rounded border px-3 py-2 leading-tight text-gray-700 focus:outline-none dark:border-0 dark:bg-secondary-dark dark:text-white"
+						class="earance-none focus:line w-full rounded border px-3 py-2 leading-tight text-gray-700 focus:outline-none dark:border-0 dark:bg-primary dark:text-white"
 						placeholder="Username"
 						value={details?.username}
 						class:border-error={form?.errors?.username}
@@ -97,7 +110,7 @@
 						type="email"
 						id="email"
 						name="email"
-						class="earance-none focus:line w-full rounded border px-3 py-2 leading-tight text-gray-700 focus:outline-none dark:border-0 dark:bg-secondary-dark dark:text-white"
+						class="earance-none focus:line w-full rounded border px-3 py-2 leading-tight text-gray-700 focus:outline-none dark:border-0 dark:bg-primary dark:text-white"
 						placeholder="Email"
 						value={details?.email}
 						readonly
@@ -113,7 +126,7 @@
 						type="text"
 						id="fullname"
 						name="fullname"
-						class="earance-none focus:line w-full rounded border px-3 py-2 leading-tight text-gray-700 focus:outline-none dark:border-0 dark:bg-secondary-dark dark:text-white"
+						class="earance-none focus:line w-full rounded border px-3 py-2 leading-tight text-gray-700 focus:outline-none dark:border-0 dark:bg-primary dark:text-white"
 						placeholder="Full Name"
 						value={details?.name}
 						class:border-error={form?.errors?.fullname}
@@ -138,7 +151,7 @@
 								type="text"
 								id="github"
 								name="github"
-								class="earance-none focus:line w-full rounded border px-3 py-2 leading-tight text-gray-700 focus:outline-none dark:border-0 dark:bg-secondary-dark dark:text-white"
+								class="earance-none focus:line w-full rounded border px-3 py-2 leading-tight text-gray-700 focus:outline-none dark:border-0 dark:bg-primary dark:text-white"
 								placeholder="Username"
 								value={details?.socials?.github}
 							/>
@@ -153,7 +166,7 @@
 								type="text"
 								id="twitter"
 								name="twitter"
-								class="earance-none focus:line w-full rounded border px-3 py-2 leading-tight text-gray-700 focus:outline-none dark:border-0 dark:bg-secondary-dark dark:text-white"
+								class="earance-none focus:line w-full rounded border px-3 py-2 leading-tight text-gray-700 focus:outline-none dark:border-0 dark:bg-primary dark:text-white"
 								placeholder="@username"
 								value={details?.socials?.twitter}
 							/>
@@ -168,7 +181,7 @@
 								type="text"
 								id="instagram"
 								name="instagram"
-								class="earance-none focus:line w-full rounded border px-3 py-2 leading-tight text-gray-700 focus:outline-none dark:border-0 dark:bg-secondary-dark dark:text-white"
+								class="earance-none focus:line w-full rounded border px-3 py-2 leading-tight text-gray-700 focus:outline-none dark:border-0 dark:bg-primary dark:text-white"
 								placeholder="username"
 								value={details?.socials?.instagram}
 							/>
@@ -209,6 +222,12 @@
 					<p>{serverErr.message}</p>
 				</div>
 			{/if}
+
+			<div class="bg-gray-50 dark:bg-primary w-fit p-3 mt-6 rounded-2xl">
+				<a href="/recovery/reset" class="flex items-center gap-2 "
+					>Reset password <Fa icon={faArrowRight} /></a
+				>
+			</div>
 		</div>
 	</div>
 </NavWrapper>

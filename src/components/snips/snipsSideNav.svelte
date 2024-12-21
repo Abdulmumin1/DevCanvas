@@ -34,7 +34,7 @@
 						href="/explore"
 						class="w-full px-2 text-lg"
 						class:text-sky-400={$page.url.pathname == '/explore'}
-						>Explore
+						>Community
 					</a>
 				</li>
 				<li>
@@ -48,16 +48,16 @@
 					<a
 						href="/play"
 						class="px-2 text-lg"
-						class:text-sky-400={$page.url.pathname.startsWith('/play')}>Online Editor</a
+						class:text-sky-400={$page.url.pathname.startsWith('/play')}>Create</a
 					>
 				</li>
-				<li>
+				<!-- <li>
 					<a
 						href="/snippets"
 						class="px-2 text-lg"
 						class:text-sky-400={$page.url.pathname.startsWith('/snippets')}>Snippets</a
 					>
-				</li>
+				</li> -->
 			</ul>
 
 			<ul class="w-full">

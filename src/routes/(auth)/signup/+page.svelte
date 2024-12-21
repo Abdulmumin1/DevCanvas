@@ -2,6 +2,7 @@
 	// import { user, current_data } from '$lib/index.js';
 	import Fa from 'svelte-fa';
 	import { faExclamationCircle, faSpinner } from '@fortawesome/free-solid-svg-icons';
+	import {faGithub} from '@fortawesome/free-brands-svg-icons'
 	import { slide } from 'svelte/transition';
 	import { enhance } from '$app/forms';
 	import { page } from '$app/stores';
@@ -112,12 +113,13 @@
 			Dev<span class="text-sky-500">Canvas</span>
 		</h2>
 	</div>
-	<form
+	<div class="flex-1  p-6 md:p-6 md:px-16 max-w-xl space-y-3">
+		<form
 		transition:slide
-		action="/signup"
+		action="?/signup"
 		method="post"
 		use:enhance={handleSubmit}
-		class="mt-2 flex w-full max-w-xl flex-1 flex-col gap-4 rounded-lg p-6 md:p-6 md:px-16"
+		class="mt-2 flex w-full  flex-1 flex-col gap-4 rounded-lg"
 	>
 		<h2 class="text-center text-2xl">Sign Up</h2>
 
@@ -157,22 +159,22 @@
 			<button
 				aria-busy={loading}
 				type="submit"
-				class="flex items-center justify-center gap-2 rounded-md bg-sky-500 p-2 text-black"
+				class="flex items-center justify-center gap-2 rounded-md bg-sky-300 p-2 text-black"
 				>SignUp
 
 				{#if loading}
 					<Fa icon={faSpinner} class="animate-spin" />
 				{/if}
 			</button>
-			<label class="flex items-center justify-start gap-2 rounded-md bg-light p-3 text-sm">
-				<input type="checkbox" name="usePassword" id="" bind:checked={usePassword} />
-				Use Password
+			<label class="flex items-center justify-start gap-2 rounded-md bg-gray-100 p-2 text-xs">
+				<input type="checkbox" name="usePassword" id="" bind:checked={usePassword} class="accne" />
+				Use Password Instead
 			</label>
 
 			{#if !usePassword}
 				{#if !completed}
 					<span
-						class="flex items-center justify-start gap-2 rounded-md bg-sky-100 p-1 px-2 text-sm"
+						class="flex items-center justify-start gap-2 rounded-md bg-gray-100 p-1 px-2 text-sm"
 					>
 						<Fa icon={faExclamationCircle} />Magik link will be sent to your inbox</span
 					>
@@ -186,8 +188,24 @@
 				{/if}
 			{/if}
 		</div>
-		<p>Account already? <a href="/signin">SignIn</a></p>
+	
+		
 	</form>
+
+	<form action="?/github" method="post">
+			
+		<div class="flex items-center gap-2 my-4">
+			<div class="flex-grow border-t border-gray-300"></div>
+			<span class="text-sm text-gray-500">OR</span>
+			<div class="flex-grow border-t border-gray-300"></div>
+		</div>
+
+		<button class="my-3 w-full flex items-center justify-center gap-2 p-2 rounded border hover:bg-black/20" type="submit" >
+			Continue with github <Fa icon={faGithub}/>
+		</button>
+	</form>
+	<p class="text-sm">Account already? <a href="/signin">SignIn</a></p>
+	</div>
 </div>
 
 <style>
