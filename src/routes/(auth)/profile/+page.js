@@ -8,11 +8,11 @@ export async function load({ parent }) {
 	if (!session) {
 		throw redirect(302, '/signin?redirectTo=/gEtHAndShAkE?whereto=/profile');
 	}
-	let socials = { github: '', twitter: '', instagram: '' };
+	let socials = { github: user.user_metadata?.user_name ?? '', twitter: '', instagram: '' };
 	let df = {
-		username: '',
+		username: user.user_metadata?.user_name ?? '',
 		email: session.user.email,
-		name: '',
+		name: user.user_metadata?.name ?? '',
 		socials
 	};
 
@@ -34,6 +34,8 @@ export async function load({ parent }) {
 	}
 	let action = data.length > 0 ? '?/update' : '?/create';
 	let details = data.length > 0 ? data[0] : df;
+	// console.log(details)
+	
 	// console.log(action);
 	return { details, action };
 }

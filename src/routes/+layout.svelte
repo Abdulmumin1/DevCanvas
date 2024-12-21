@@ -33,9 +33,9 @@
 	let { supabase, session, user: userInfo } = data;
 	$: ({ supabase, session, user: userInfo } = data);
 
-	let profile = getProfile();
+	// let profile = getProfile();
 
-	$profile = userInfo;
+	setProfile(userInfo)
 
 	if (browser) {
 		darkModeState.set(

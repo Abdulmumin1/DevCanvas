@@ -4,7 +4,8 @@
 	import { clickOutside, showToast } from '$lib/index.js';
 	import { scale } from 'svelte/transition';
 	import { layoutView } from '$lib/feEditor/store.js';
-
+	import {goto} from '$app/navigation'
+	import {page} from '$app/stores'
 	let isOpen = false;
 	let selectedOption = '';
 
@@ -23,7 +24,7 @@
 
 			return;
 		}
-		window.location.href = window.location.pathname + '/preview';
+		goto('/output/compile/'+$page.params.slug);
 	}
 </script>
 

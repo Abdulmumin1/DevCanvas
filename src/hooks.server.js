@@ -3,6 +3,8 @@ import { createSupabaseServerClient } from '@supabase/auth-helpers-sveltekit';
 import { redirect } from '@sveltejs/kit';
 // import { handleRedirect } from '$lib/utils';
 
+//https://devcanvas.art/v0/callback/github/auth
+
 let PUBLIC_SUPABASE_URL = import.meta.env.VITE_PUBLIC_SUPABASE_URL;
 let PUBLIC_SUPABASE_ANON_KEY = import.meta.env.VITE_PUBLIC_SUPABASE_ANON_KEY;
 

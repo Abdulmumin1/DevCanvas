@@ -62,7 +62,7 @@
 
 <NavWrapper>
 	<div
-		class="mx-[-30px] min-h-[10vh] overflow-hidden bg-gray-50 bg-gradient-to-br p-8 pt-20 dark:bg-primary"
+		class="mx-[-30px] min-h-[10vh] overflow-hidden  bg-gradient-to-br p-8 pt-20 dark:bg-primary"
 	>
 		<div
 			class="mx-auto flex max-w-4xl flex-col rounded-[50px] bg-gray-100 p-20 dark:bg-secondary-dark"
