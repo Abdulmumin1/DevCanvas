@@ -54,19 +54,21 @@
 		"caniuse-lite": "^1.0.30001546",
 		"codemirror": "^6.0.1",
 		"countup.js": "^2.6.0",
+		"got": "^14.4.5",
 		"js-beautify": "^1.15.1",
+		"jsdom": "^25.0.1",
 		"jszip": "^3.10.1",
 		"kbar-svelte-mini": "^0.1.0",
 		"loadash": "^1.0.0",
-		"puppeteer": "^23.11.1",
 		"quill": "^2.0.2",
-		"satori": "^0.10.13",
+		"satori": "^0.10.14",
 		"satori-html": "^0.3.2",
 		"shiki": "^1.1.7",
 		"svelte-ace": "^1.0.21",
 		"svelte-fa": "^3.0.4",
 		"svelte-markdown": "^0.4.0",
 		"svelte-splitpanes": "^0.8.0",
-		"thememirror": "^2.0.1"
+		"thememirror": "^2.0.1",
+		"wkhtmltoimage": "^0.1.5"
 	}
 }

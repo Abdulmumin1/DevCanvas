@@ -23,7 +23,7 @@
 				</a>
 			</div>
 			<div class=" hidden items-center space-x-2 md:flex">
-				{#each ['Explore', 'Blog'] as item}
+				{#each ['Community', 'Blog'] as item}
 					<a
 						href="/{item.toLowerCase()}"
 						class="nav-item {$page.url.pathname === `/${item.toLowerCase()}` ? 'active' : ''}"

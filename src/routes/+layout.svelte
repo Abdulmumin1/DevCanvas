@@ -14,8 +14,7 @@
 		setProfile
 	} from '$lib/index.js';
 
-	setKbarState();
-	setProfile(null);
+	// setProfile(null);
 
 	import { invalidateAll } from '$app/navigation';
 	import PageTransition from './transition.svelte';
@@ -35,7 +34,9 @@
 
 	// let profile = getProfile();
 
+	setKbarState();
 	setProfile(userInfo)
+
 
 	if (browser) {
 		darkModeState.set(

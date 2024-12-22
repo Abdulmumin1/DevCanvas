@@ -14,8 +14,8 @@
 <div
 	class="card flex h-full flex-col rounded-xl bg-gray-100 p-1 shadow-sm transition-transform duration-300 dark:bg-secondary-dark md:max-w-[350px]"
 >
-	<!-- <iframe
-		src="{$page.url.origin}/{details.project_key}"
+	<iframe
+		src="{$page.url.origin}/output/compile/{details.project_key}?p=1"
 		title="Project Preview"
 		height="200"
 		frameborder="0"
@@ -23,14 +23,14 @@
 		loading="lazy"
 		class="h-[250px] w-full overflow-hidden rounded-xl"
 		style="aspect-ratio: 1/1; pointer-events: none;"
-	/> -->
-	<img 
+/>
+	<!-- <img 
 	src="{$page.url.origin}/output/image/{details.project_key}"
 	loading="lazy"
 
 	class="h-[250px] w-full overflow-hidden rounded-xl object-cover"
 		style="aspect-ratio: 1/1; pointer-events: none;"
-	alt="">
+	alt=""> -->
 	<div class="flex flex-col items-start p-2 text-base">
 		<a href="/play/{details.project_key}" class="text-xl font-semibold hover:opacity-80">
 			{details.description}
@@ -38,23 +38,24 @@
 
 		<div class="mt-2 flex w-full items-center justify-between">
 			{#if details.user_id === session?.user?.id}
-				<p in:fade class="rounded-lg text-sm text-sky-400 focus:outline-none dark:text-sky-300">
+				<div in:fade class="flex items-center gap-2">
+					<div class="h-5 w-5 bg-secondary-dark dark:bg-gray-300 rounded-md"></div>
 					<a href="/{profile}">You</a>
-				</p>
+				</div>
 			{:else if profile}
-				<p in:fade>
-					<span>by</span>
-					<a class="text-sm text-sky-400 dark:text-sky-300" href={`/${profile}`}>@{profile}</a>
-				</p>
+				<div in:fade class="flex items-center gap-2">
+					<div class="h-5 w-5 bg-secondary-dark dark:bg-gray-300 rounded-md"></div>
+					<a class="text capitalize " href={`/${profile}`}>{profile}</a>
+				</div>
 			{:else}
 				<div in:fade class="flex items-center gap-2">
-					<span>by</span>
+					<div class="h-5 w-5 bg-secondary-dark dark:bg-gray-300 rounded-md"></div>
 					<div class="h-4 w-12 animate-pulse rounded-2xl bg-sky-100 dark:bg-gray-400" />
 				</div>
 			{/if}
 
 			<div class="flex items-center gap-2">
-				<span class="flex items-center gap-2">
+				<span class="flex items-center gap-1 text-xs">
 					<Fa icon={faEye} />
 					{details.view?.length > 0 ? details.view[0].views : '....'}
 				</span>
