@@ -1,6 +1,5 @@
 import { cdns, fontawesomeLINK, materialiconsLINK, bootstrapLINK } from '$lib/plugins/store.js';
 import { compileSassString } from '$lib/utils.js';
-import { preview } from 'vite';
 
 async function constructHtmlForZip(current_data, preview) {
 	let jsPlugins,
