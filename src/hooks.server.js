@@ -40,6 +40,9 @@ export const handle = async ({ event, resolve }) => {
 	if (event.url.pathname == '/new') {
 		throw redirect(301, '/play/try');
 	}
+	if (event.url.pathname == '/community') {
+		throw redirect(301, '/explore');
+	}
 	if (event.url.pathname == '/signin') {
 		let session = await event.locals.getSession();
 		if (session) {

@@ -32,7 +32,7 @@ export const pageLimit = writable(3);
 
 export const showToast = writable(false);
 
-export const wordWrapSetting = writable(true);
+export const wordWrapSetting = writable(false);
 export const autoIndentSetting = writable(true);
 export const formatOnPasteSetting = writable(true);
 export const smallerFontSize = writable(false);

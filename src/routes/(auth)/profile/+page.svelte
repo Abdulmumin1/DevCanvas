@@ -75,8 +75,8 @@
 	>
 		{/if}
 		<div class="mb-4 max-w-[700px]   bg-gray-100  p-8 pt-20 dark:bg-secondary-dark rounded-2xl">
-			<h2 class="mb-4 flex gap-2 text-4xl text-gray-800 dark:text-white">
-				Update Your Profile <span
+			<h2 class="mb-4 flex gap-2 text-4xl text-gray-800 dark:text-white font-bold">
+				Profile <span
 					><a href="/{details?.username}"><Fa class="text-sm" icon={faUpRightFromSquare} /></a></span
 				>
 			</h2>
