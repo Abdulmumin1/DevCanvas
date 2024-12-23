@@ -19,10 +19,9 @@ thumbnail: '/devCanvas.png'
 
 # Introduction;
 
-The CSS Box Model is a fundamental concept in web development. It defines how elements are structured and spaced on a web page. 
+The CSS Box Model is a fundamental concept in web development. It defines how elements are structured and spaced on a web page.
 
 This simple guide explains the CSS Box Model with simple illustrations.
-
 
 ## Box model
 
@@ -34,7 +33,6 @@ Every Box model can have the following components;
 - and Margin
 
 **Fun fact**: alot of design sucks because of inconsistencies in these variables 😅.
-
 
 ### Content;
 
@@ -98,6 +96,7 @@ Margin is the outermost layer, creating space between elements. It helps with la
 ![](https://paper-attachments.dropboxusercontent.com/s_AE6E3F0768EB08A0015C014D841AE7646498242586BFC2CF83188F93E8A228FC_1710841194107_3.png)
 
 ### Complete Box Model
+
 ![](https://paper-attachments.dropboxusercontent.com/s_AE6E3F0768EB08A0015C014D841AE7646498242586BFC2CF83188F93E8A228FC_1710841215983_4.png)
 
 The CSS Box Model combines content, padding, border, and margin to determine element sizing and spacing on a page.
@@ -114,7 +113,6 @@ The CSS Box Model combines content, padding, border, and margin to determine ele
 
 **Conclusion:**
 
-
-The box model is a must know fundamental in css, many layout issues stem from misunderstanding or inconsistent use of this fundamental concept. Super hoped you have a better understanding of it. 
+The box model is a must know fundamental in css, many layout issues stem from misunderstanding or inconsistent use of this fundamental concept. Super hoped you have a better understanding of it.
 
 **Stay super Awesome 🫶🏾**

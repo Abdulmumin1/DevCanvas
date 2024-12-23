@@ -43,13 +43,13 @@ export const actions = {
 		// await sleep(2000);
 		// alert('Check your inbox for the magik link');
 	},
-	github: async ({url, locals: { supabase }}) => {
+	github: async ({ url, locals: { supabase } }) => {
 		const { data, error } = await supabase.auth.signInWithOAuth({
-		  provider: 'github',
-		  options: {
-			redirectTo: `${url.origin}/dashboard`,
-		  },
-		})
+			provider: 'github',
+			options: {
+				redirectTo: `${url.origin}/dashboard`
+			}
+		});
 	}
 };
 

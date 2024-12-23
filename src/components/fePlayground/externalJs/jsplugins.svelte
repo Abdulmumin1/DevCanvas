@@ -38,7 +38,7 @@
 <div class="grid grid-cols-3 gap-2">
 	{#each Object.keys(state) as key (key)}
 		<label
-			class="flex justify-between rounded bg-gray-100 text-xs md:text-base p-2 md:p-3 cursor-pointer text-black dark:bg-secondary-dark dark:text-white"
+			class="flex cursor-pointer justify-between rounded bg-gray-100 p-2 text-xs text-black dark:bg-secondary-dark dark:text-white md:p-3 md:text-base"
 			for={key}
 		>
 			{key}

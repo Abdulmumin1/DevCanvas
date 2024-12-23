@@ -51,7 +51,7 @@
 	<div class="flex gap-2">
 		<input
 			type="text"
-			class="w-full rounded-md border p-1 dark:text-white text-black dark:bg-secondary-dark"
+			class="w-full rounded-md border p-1 text-black dark:bg-secondary-dark dark:text-white"
 			bind:value={tagInput}
 			on:keydown={(e) => {
 				if (e.key === 'Enter') addTag();

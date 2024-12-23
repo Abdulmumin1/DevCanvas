@@ -121,25 +121,20 @@
 				<div class="relative flex items-center gap-6">
 					<button
 						on:click={() => setTab('editor')}
-						class="relative py-2 px-4 transition-all duration-200 {
-							activeTab === 'editor'
-								? 'text-primary  rounded-lg bg-gradient-to-r from-sky-400 to-sky-300 shadow-lg shadow-sky-200/20 transition-all duration-300 ease-out'
-								: 'text-gray-600 hover:text-sky-300'
-						}"
+						class="relative px-4 py-2 transition-all duration-200 {activeTab === 'editor'
+							? 'rounded-lg  bg-gradient-to-r from-sky-400 to-sky-300 text-primary shadow-lg shadow-sky-200/20 transition-all duration-300 ease-out'
+							: 'text-gray-600 hover:text-sky-300'}"
 					>
 						Editor
 					</button>
 					<button
 						on:click={() => setTab('plugins')}
-						class="  relative py-2 px-4 transition-all duration-200 {
-							activeTab === 'plugins'
-								? 'text-primary rounded-lg bg-gradient-to-r from-sky-400 to-sky-300 shadow-lg shadow-sky-200/20 transition-all duration-300 ease-out'
-								: 'text-gray-600 hover:text-sky-300'
-						}"
+						class="  relative px-4 py-2 transition-all duration-200 {activeTab === 'plugins'
+							? 'rounded-lg bg-gradient-to-r from-sky-400 to-sky-300 text-primary shadow-lg shadow-sky-200/20 transition-all duration-300 ease-out'
+							: 'text-gray-600 hover:text-sky-300'}"
 					>
 						Plugins
 					</button>
-					
 				</div>
 			</div>
 

@@ -1,7 +1,7 @@
 <script>
 	import Fa from 'svelte-fa';
 	import { faExclamationCircle, faSpinner } from '@fortawesome/free-solid-svg-icons';
-	import {faGithub} from '@fortawesome/free-brands-svg-icons'
+	import { faGithub } from '@fortawesome/free-brands-svg-icons';
 	import { slide } from 'svelte/transition';
 	import { enhance } from '$app/forms';
 	import { page } from '$app/stores';
@@ -62,104 +62,101 @@
 		class="hidden h-full flex-col items-center justify-center bg-secondary-dark md:flex md:flex-1"
 	>
 		<img src="/logo.svg" class=" h-24 rounded-3xl" alt="DevCanvas Logo" />
-		<h2 class="text-center text-3xl text-white md:text-5xl">
+		<a href="/" class="text-center text-3xl text-white md:text-5xl">
 			Dev<span class="text-sky-500">Canvas</span>
-		</h2>
+		</a>
 	</div>
-	<div class="flex-1  p-6 md:p-6 md:px-16 max-w-xl space-y-3">
+	<div class="max-w-xl flex-1 space-y-3 p-6 md:p-6 md:px-16">
 		<form
-		transition:slide
-		action="?/signin"
-		method="post"
-		use:enhance={handleSubmit}
-		class="mt-2 flex w-full  flex-1 flex-col gap-4 rounded-lg"
-	>
-		<h2 class="text-center text-2xl">Sign In</h2>
+			transition:slide
+			action="?/signin"
+			method="post"
+			use:enhance={handleSubmit}
+			class="mt-2 flex w-full flex-1 flex-col gap-4 rounded-lg"
+		>
+			<h2 class="text-center text-2xl">Sign In</h2>
 
 			<div class="flex flex-col gap-3">
-			<input
-				type="text"
-				name="redirectTo"
-				value={$page.url.searchParams.get('redirectTo')}
-				readonly
-				class="hidden"
-			/>
-			<div transition:slide class="flex flex-col gap-2">
-				<label for="email" class="text-sm">Email</label>
 				<input
-					name="email"
-					type="email"
-					id="email"
-					bind:value={email}
-					required
-					class="rounded-lg border border-sky-200 px-3 py-2 outline outline-2 outline-sky-200 focus:outline-4 focus:outline-sky-300"
+					type="text"
+					name="redirectTo"
+					value={$page.url.searchParams.get('redirectTo')}
+					readonly
+					class="hidden"
 				/>
-			</div>
-			{#if usePassword}
-				<div class="flex flex-col gap-2" transition:slide>
-					<label for="password" class="text-sm">Password</label>
-					<!-- <PasswordInput/ -->
-					<PasswordInput id="password" bind:password />
+				<div transition:slide class="flex flex-col gap-2">
+					<label for="email" class="text-sm">Email</label>
+					<input
+						name="email"
+						type="email"
+						id="email"
+						bind:value={email}
+						required
+						class="rounded-lg border border-sky-200 px-3 py-2 outline outline-2 outline-sky-200 focus:outline-4 focus:outline-sky-300"
+					/>
 				</div>
-			{/if}
+				{#if usePassword}
+					<div class="flex flex-col gap-2" transition:slide>
+						<label for="password" class="text-sm">Password</label>
+						<!-- <PasswordInput/ -->
+						<PasswordInput id="password" bind:password />
+					</div>
+				{/if}
+				<button
+					aria-busy={loading}
+					type="submit"
+					class="flex items-center justify-center gap-2 rounded-md bg-sky-300 p-2 text-black"
+					>Login
+
+					{#if loading}
+						<Fa icon={faSpinner} class="animate-spin" />
+					{/if}
+				</button>
+				<label class="flex items-center justify-start gap-2 rounded-md bg-gray-100 p-2 text-xs">
+					<input type="checkbox" name="usePassword" id="" bind:checked={usePassword} />
+					Use Password Instead
+				</label>
+
+				{#if !usePassword}
+					{#if !completed}
+						<span class="flex items-center justify-start gap-2 rounded-md bg-gray-100 p-2 text-sm">
+							<Fa icon={faExclamationCircle} />Magik link will be sent to your inbox</span
+						>
+					{:else}
+						<span
+							class="flex items-center justify-start gap-2 rounded-md bg-green-400 p-1 px-2 text-sm"
+						>
+							<span class="wobble-hor-top"> <Fa icon={faExclamationCircle} /></span> Magik link sent
+							to your inbox</span
+						>
+					{/if}
+				{/if}
+			</div>
+		</form>
+
+		<form action="?/github" method="post">
+			<div class="my-4 flex items-center gap-2">
+				<div class="flex-grow border-t border-gray-300"></div>
+				<span class="text-sm text-gray-500">OR</span>
+				<div class="flex-grow border-t border-gray-300"></div>
+			</div>
+
 			<button
-				aria-busy={loading}
+				class="my-3 flex w-full items-center justify-center gap-2 rounded border p-2 hover:bg-black/20"
 				type="submit"
-				class="flex items-center justify-center gap-2 rounded-md bg-sky-300 p-2 text-black"
-				>Login
-
-				{#if loading}
-					<Fa icon={faSpinner} class="animate-spin" />
-				{/if}
+			>
+				Continue with github <Fa icon={faGithub} />
 			</button>
-			<label class="flex items-center justify-start gap-2 rounded-md bg-gray-100 p-2 text-xs">
-				<input type="checkbox" name="usePassword" id="" bind:checked={usePassword} />
-				Use Password Instead
-			</label>
+		</form>
 
-			{#if !usePassword}
-				{#if !completed}
-					<span
-						class="flex items-center justify-start gap-2 rounded-md bg-gray-100 p-2  text-sm"
-					>
-						<Fa icon={faExclamationCircle} />Magik link will be sent to your inbox</span
-					>
-				{:else}
-					<span
-						class="flex items-center justify-start gap-2 rounded-md bg-green-400 p-1 px-2 text-sm"
-					>
-						<span class="wobble-hor-top"> <Fa icon={faExclamationCircle} /></span> Magik link sent to
-						your inbox</span
-					>
-				{/if}
-			{/if}
-		</div>
+		<p class="text-sm">Don't have an account? <a href="/signup">Sign Up</a></p>
+		<a class="text-sm" href="recovery/forgot">Forgot password?</a>
 
-	</form>
-
-	
-	<form action="?/github" method="post">
-			
-		<div class="flex items-center gap-2 my-4">
-			<div class="flex-grow border-t border-gray-300"></div>
-			<span class="text-sm text-gray-500">OR</span>
-			<div class="flex-grow border-t border-gray-300"></div>
-		</div>
-
-		<button class="my-3 w-full flex items-center justify-center gap-2 p-2 rounded border hover:bg-black/20" type="submit" >
-			Continue with github <Fa icon={faGithub}/>
-		</button>
-	</form>
-	
-
-	<p class="text-sm">Don't have an account? <a href="/signup">Sign Up</a></p>
-	<a class="text-sm" href="recovery/forgot">Forgot password?</a>
-
-	{#if errMessage}
-		<p transition:slide={{ duration: 200 }} class="w-full rounded-md bg-error p-2">
-			{errMessage}
-		</p>
-	{/if}
+		{#if errMessage}
+			<p transition:slide={{ duration: 200 }} class="w-full rounded-md bg-error p-2">
+				{errMessage}
+			</p>
+		{/if}
 	</div>
 </div>
 

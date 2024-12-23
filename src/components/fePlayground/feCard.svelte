@@ -23,7 +23,7 @@
 		loading="lazy"
 		class="h-[250px] w-full overflow-hidden rounded-xl"
 		style="aspect-ratio: 1/1; pointer-events: none;"
-/>
+	/>
 	<!-- <img 
 	src="{$page.url.origin}/output/image/{details.project_key}"
 	loading="lazy"
@@ -39,17 +39,17 @@
 		<div class="mt-2 flex w-full items-center justify-between">
 			{#if details.user_id === session?.user?.id}
 				<div in:fade class="flex items-center gap-2">
-					<div class="h-5 w-5 bg-secondary-dark dark:bg-gray-300 rounded-md"></div>
+					<div class="h-5 w-5 rounded-md bg-secondary-dark dark:bg-gray-300"></div>
 					<a href="/{profile}">You</a>
 				</div>
 			{:else if profile}
 				<div in:fade class="flex items-center gap-2">
-					<div class="h-5 w-5 bg-secondary-dark dark:bg-gray-300 rounded-md"></div>
-					<a class="text capitalize " href={`/${profile}`}>{profile}</a>
+					<div class="h-5 w-5 rounded-md bg-secondary-dark dark:bg-gray-300"></div>
+					<a class="text capitalize" href={`/${profile}`}>{profile}</a>
 				</div>
 			{:else}
 				<div in:fade class="flex items-center gap-2">
-					<div class="h-5 w-5 bg-secondary-dark dark:bg-gray-300 rounded-md"></div>
+					<div class="h-5 w-5 rounded-md bg-secondary-dark dark:bg-gray-300"></div>
 					<div class="h-4 w-12 animate-pulse rounded-2xl bg-sky-100 dark:bg-gray-400" />
 				</div>
 			{/if}

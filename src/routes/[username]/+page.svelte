@@ -1,5 +1,4 @@
 <script>
-
 	import { darkModeState } from '$lib/index.js';
 	import { github, githubDark } from 'svelte-highlight/styles';
 	import Fa from 'svelte-fa';
@@ -8,7 +7,7 @@
 	import { faGithub, faInstagram, faTwitter } from '@fortawesome/free-brands-svg-icons';
 	import Collection from '$components/user/collection.svelte';
 	import { pageCountSnips, pageCountPl } from '$lib/index.js';
-	import SEO from '$components/seoComp.svelte'
+	import SEO from '$components/seoComp.svelte';
 
 	export let data;
 
@@ -21,7 +20,7 @@
 <svelte:head>
 	{#if data.isFound}
 		<title></title>
-		<SEO title={data.details.name} description={`${data.details.name}'s profile on devcanvas` }/>
+		<SEO title={data.details.name} description={`${data.details.name}'s profile on devcanvas`} />
 		<!-- Facebook Meta Tags -->
 		<!-- <meta property="og:title" content={data['0'].description} />-->
 

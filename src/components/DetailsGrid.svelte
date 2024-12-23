@@ -1,5 +1,7 @@
 <script>
-	import { faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
+	import { current_data, user, clickOutside, goto } from '$lib/index.js';
+
+	import { faExclamationCircle, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 	import Fa from 'svelte-fa';
 	import Shortcuts from './shortcuts.svelte';
 	import { slide } from 'svelte/transition';
@@ -32,42 +34,51 @@
 		mobileDetails = !mobileDetails;
 	}
 
+	async function DeleteEntry() {
+		let formData = new FormData();
+
+		formData.append('id', $current_data.id);
+		formData.append('user_id', $current_data.user_id);
+		const response = await fetch('/db/delete', {
+			method: 'POST',
+			body: formData
+		});
+
+		if (response.ok) {
+			// Handle save success
+			window.location.href = '/dashboard';
+		} else {
+			// Handle save failed
+			console.log('failed');
+		}
+	}
+
 	export let details;
 </script>
 
-<div>
-	<button
-		class="fixed bottom-3 right-3 flex rounded-full bg-sky-300 p-3 text-xl transition-transform duration-300 hover:scale-105 dark:text-secondary-dark sm:hidden"
-		on:click={hideShowDetails}
-	>
-		<Fa icon={faExclamationCircle} />
-	</button>
-</div>
-<div
-	in:slide
-	class="mx-2 mb-3 flex flex-col gap-3 rounded-lg px-3 py-6 dark:bg-secondary-dark md:mx-4 md:w-[24rem] lg:px-4"
-	class:hidden={mobileDetails}
->
+<div in:slide class="mx-2 mb-3 flex flex-col gap-3 rounded-lg px-3 py-6 lg:px-4">
 	<DetailsEditor lang={details.lang} />
-	<button
-		class="flex w-fit items-center justify-center gap-2"
-		on:click={() => {
-			showDetails = !showDetails;
-		}}>Details <Fa icon={faExclamationCircle} /></button
-	>
-	{#if showDetails}
-		<div transition:slide>
-			<p class="">Last Edited:</p>
-			<p class="text-gray-700 dark:text-gray-400">
-				{formatDate(details.created_at)}
-			</p>
-			<p class="">Description:</p>
-			<p class="text-gray-700 dark:text-gray-400">
-				{details.description}
-			</p>
-		</div>
-	{/if}
-	<Shortcuts />
+
+	<div transition:slide class="flex flex-col gap-2">
+		<p class="">Last Edited:</p>
+		<p class="text-xs text-gray-700 dark:text-gray-400">
+			{formatDate(details.created_at)}
+		</p>
+		<p class="">Description:</p>
+		<p class="text-xs text-gray-700 dark:text-gray-400">
+			{details.description}
+		</p>
+	</div>
+
+	<div class="cursor-pointer">
+		<button
+			class="flex w-fit items-center gap-2 rounded bg-red-600 p-2 text-left text-black"
+			on:click={DeleteEntry}
+		>
+			<Fa icon={faTrashAlt} />Delete</button
+		>
+	</div>
+	<!-- <Shortcuts /> -->
 
 	<GetEmbedCode />
 </div>

@@ -25,9 +25,9 @@ In this article, we'll take a closer look into the two key values of `box-sizing
 
 ```css
 * {
- box-sizing:border-box;
- margin:0px;
- padding:0px;
+	box-sizing: border-box;
+	margin: 0px;
+	padding: 0px;
 }
 ```
 
@@ -81,21 +81,19 @@ Total height = content height (including padding and border)
 - **Predictable Layouts**: By using `border-box`, you can ensure that the size of an element remains consistent regardless of changes to padding or border widths.
 - **Improved Responsiveness**: `border-box` can be particularly useful in responsive design, as it allows elements to resize more intuitively when adapting to different screen sizes.
 
-
 ### Why this snippet always exists for most developers?
 
 ```css
 * {
- box-sizing:border-box;
- margin:0px;
- padding:0px;
+	box-sizing: border-box;
+	margin: 0px;
+	padding: 0px;
 }
 ```
 
 This is for:
 
 **Predictable Layouts**: By using `border-box`, you can ensure that the size of an element remains consistent regardless of changes to padding or border widths. Also, different browsers have different default values for the margin and padding, hence can break your design if not carefull.
-
 
 In summary, the `box-sizing` property profoundly influences the behavior of the CSS Box Model, affecting how elements are sized and how their dimensions are calculated.
 

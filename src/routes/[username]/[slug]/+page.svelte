@@ -8,7 +8,7 @@
 	import { faCheck, faCopy, faPen } from '@fortawesome/free-solid-svg-icons';
 	import { setContext } from 'svelte';
 	import SEO from '$components/seoComp.svelte';
-
+	
 	export let data;
 	setContext('isOwner', false);
 	if (data.isFound && data.session) {
@@ -30,13 +30,14 @@
 		}, 1000);
 		showToast.set({ message: 'Code copied to clipboard' });
 	}
+	
 </script>
 
 <svelte:head>
 	{#if data.isFound}
 		<SEO
 			title={data['0'].description}
-			description={`${data['0'].description} - shared by ${username}`}
+			description={`${data[0].description.slice(0, 300)} - shared by ${username}`}
 		/>
 	{/if}
 
@@ -56,21 +57,28 @@
 			<!-- <Fa icon={faPen} /> -->
 			<div class="flex h-full w-full flex-col items-center justify-center text-sm md:text-sm">
 				<div class="mb-2 flex flex-col items-center justify-center">
-					<h1 class="text-center text-xl">{data[0].description}</h1>
+					<h1 class="pt-3 text-center text-2xl font-semibold">{data[0].description}</h1>
 					<p>Shared by: <a href="/{username}">{username}</a></p>
 				</div>
 				<div
-					class="relative h-full w-full overflow-scroll rounded-lg bg-orange-100 p-4 text-[11px] dark:bg-[#0d1117] md:w-[90%] md:text-base"
+					class="relative h-full w-full overflow-scroll rounded-lg p-4 text-[11px] md:w-[90%] md:text-base"
 				>
 					<div
-						class="sticky right-0 top-0 z-50 flex items-center justify-center text-base md:text-xl"
+						class="absolute right-10 top-10 flex items-center justify-center text-base md:text-xl"
 					>
-						<p class="rounded bg-orange-100 p-2 text-sm dark:bg-primary">{data[0].lang}</p>
+						<p class="rounded bg-gray-100 p-2 text-sm dark:bg-primary">{data[0].lang}</p>
 						<button class="p-2" on:click={CopyAction}><Fa icon={iconCopy} /></button>
 					</div>
 					<HighlightAuto code={data[0].code} let:highlighted>
 						<LineNumbers {highlighted} hideBorder />
 					</HighlightAuto>
+
+					<div
+						class="prose mt-6 max-w-full dark:prose-invert prose-headings:w-fit prose-headings:bg-sky-300 prose-headings:text-black"
+					>
+					{JSON.stringify(data[0].markdown)}
+						{@html data[0].markdown }
+					</div>
 				</div>
 			</div>
 		</div>

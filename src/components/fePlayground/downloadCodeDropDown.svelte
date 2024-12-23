@@ -10,9 +10,9 @@
 	let dropdownOpen = false;
 
 	function toggleDropdown() {
-		if(isVertical){
-			downloadZip()
-			return
+		if (isVertical) {
+			downloadZip();
+			return;
 		}
 		dropdownOpen = !dropdownOpen;
 	}
@@ -53,11 +53,10 @@
 
 	// $:console.log(innerWidth)
 
-	$: isVertical = innerWidth <= 724 
+	$: isVertical = innerWidth <= 724;
 </script>
 
-
-<svelte:window bind:innerWidth={innerWidth}/>
+<svelte:window bind:innerWidth />
 
 <div class="dropdown relative flex flex-col text-center text-primary dark:text-white">
 	<button
@@ -66,11 +65,10 @@
 		><span class="md:hidden">Download Zip</span>
 
 		{#if loading && isVertical}
-					<Fa icon={faSpinner} class="animate-spin" />
-
+			<Fa icon={faSpinner} class="animate-spin" />
 		{:else}
-		<Fa icon={faFileZipper} />
-				{/if}
+			<Fa icon={faFileZipper} />
+		{/if}
 	</button>
 
 	{#if dropdownOpen}

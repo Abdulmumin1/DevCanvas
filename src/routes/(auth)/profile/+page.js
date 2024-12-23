@@ -35,7 +35,7 @@ export async function load({ parent }) {
 	let action = data.length > 0 ? '?/update' : '?/create';
 	let details = data.length > 0 ? data[0] : df;
 	// console.log(details)
-	
+
 	// console.log(action);
 	return { details, action };
 }

@@ -10,7 +10,7 @@ export const actions = {
 		if (err) {
 			throw error(500, 'Opsie, error from our side');
 		} else {
-			console.log(data);
+			console.log(body);
 		}
 	}
 };

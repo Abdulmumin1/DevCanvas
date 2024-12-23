@@ -2,15 +2,14 @@ import { cdns, fontawesomeLINK, materialiconsLINK, bootstrapLINK } from '$lib/pl
 import { compileSassString } from '$lib/utils.js';
 
 async function constructHtmlForZip(current_data, preview) {
-	let jsPlugins,
-		cssPlugins = [];
-	let userImportedJS = current_data.config?.userImportedJS ?? [];
+	let jsPlugins = [];
+	let cssPlugins = [];
+	let userImportedJS = current_data?.config?.userImportedJS ?? [];
 
 	if (current_data?.plugins?.length > 0) {
 		jsPlugins = current_data.plugins[0].js;
 		cssPlugins = current_data.plugins[0].css;
 	}
-
 	let cssPlist = [];
 	Object.keys(cssPlugins).forEach((element) => {
 		if (cssPlugins.fontawesome) {
@@ -29,7 +28,7 @@ async function constructHtmlForZip(current_data, preview) {
 
 	let css = current_data.css;
 
-	if (current_data.config?.cssProcessor) {
+	if (current_data?.config?.cssProcessor) {
 		css = await compileSassString(css);
 	}
 	// console.log(css);
@@ -97,12 +96,23 @@ export async function GET({ url, params, locals: { supabase } }) {
 
 	// Generate HTML from the fetched data
 
-	const html = await constructHtmlForZip(data, preview);
+	try {
+		const html = await constructHtmlForZip(data, preview);
+		// Return the HTML as a response
+		return new Response(html, {
+			headers: {
+				'Content-Type': 'text/html'
+			}
+		});
+	} catch (error) {
+		const html = '<>';
+		console.log('Error Processing', data.description, data);
 
-	// Return the HTML as a response
-	return new Response(html, {
-		headers: {
-			'Content-Type': 'text/html'
-		}
-	});
+		// Return the HTML as a response
+		return new Response(html, {
+			headers: {
+				'Content-Type': 'text/html'
+			}
+		});
+	}
 }

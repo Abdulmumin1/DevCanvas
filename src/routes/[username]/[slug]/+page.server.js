@@ -1,8 +1,23 @@
 import { error, redirect } from '@sveltejs/kit';
 // import { current_data } from '$lib/index.js';
+import { compile } from 'mdsvex';
+import { codeToHtml } from 'shiki';
 
-export async function load({ url, params, parent }) {
-	const { supabase } = await parent();
+let options = {
+	highlight: {
+		highlighter: async (code, lang = 'text') => {
+			// const highlighter = await shiki.getHighlighter({
+			// 	theme: 'github-dark'
+			// });
+			const html = await codeToHtml(code, {
+				lang,
+				themes: { dark: 'andromeeda', light: 'catppuccin-latte' }
+			});
+			return `{@html \`${html}\`}`;
+		}
+	}
+}
+export async function load({ url, params, locals:{supabase} }) {
 	let slug = params['slug'];
 	console.log(slug);
 	let { data, error: err } = await supabase.from('snips').select('*').eq('project_key', slug);
@@ -31,5 +46,12 @@ export async function load({ url, params, parent }) {
 			console.log('valide url');
 		}
 	}
+
+	 let rendered = await compile(data[0].markdown, options)
+	
+    
+	data[0]['markdown']  = rendered.code.replace(/{@html `<pre/g, '<pre')
+	.replace(/<\/code><\/pre>`}/g, '</code></pre>');
+
 	return { ...data, isFound: data.length > 0, username };
 }

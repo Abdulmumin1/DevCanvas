@@ -38,10 +38,10 @@ export default {
 			fontFamily: {
 				diana: ['serif'],
 				carbon: ['carbon', 'sans-serif'],
-				"public-sans": ['public-sans', 'sans-serif'],
-				"rubik": ['rubik', 'sans-serif']
+				'public-sans': ['public-sans', 'sans-serif'],
+				rubik: ['rubik', 'sans-serif']
 			}
 		}
 	},
-	plugins: []
+	plugins: [require('@tailwindcss/typography')]
 };
