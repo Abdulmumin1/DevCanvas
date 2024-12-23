@@ -64,7 +64,6 @@
 		"satori": "^0.10.14",
 		"satori-html": "^0.3.2",
 		"shiki": "^1.1.7",
-		"simplemde": "^1.11.2",
 		"svelte-ace": "^1.0.21",
 		"svelte-fa": "^3.0.4",
 		"svelte-markdown": "^0.4.0",
