@@ -110,7 +110,7 @@
 				<input
 					type="range"
 					name="range"
-					min="14"
+					min="13"
 					max="30"
 					value={$editorFontSize}
 					id=""

@@ -62,6 +62,7 @@ An online editor with super powers, fast preview, plugins and super cool library
 2. Navigate to the project directory: `cd devcanvas`
 3. Install dependencies: `npm install` or `yarn install`
 4. Create and add the folowing to your .env file:
+
 ```txt
 VITE_PUBLIC_SUPABASE_URL='http://whateverurl'
 VITE_PUBLIC_SUPABASE_ANON_KEY="whateverkeyhere"

@@ -1,7 +1,7 @@
 <script>
 	import { onMount } from 'svelte';
-	import SEO from '$components/seoComp.svelte'
-	import {page} from '$app/stores'
+	import SEO from '$components/seoComp.svelte';
+	import { page } from '$app/stores';
 	export let data;
 
 	let supabase = data.supabase;
@@ -27,9 +27,11 @@
 </script>
 
 <svelte:head>
-	
-	
-<SEO title={data.details.description} description={`View project - ${data.details.description}`} imageUrl={`https://devcanvas.art/output/image/${$page.params.slug}?width=1200&height=630`} index={ data.details?.public == true}/>
-
+	<SEO
+		title={data.details.description}
+		description={`View project - ${data.details.description}`}
+		imageUrl={`https://devcanvas.art/output/image/${$page.params.slug}?width=1200&height=630`}
+		index={data.details?.public == true}
+	/>
 </svelte:head>
 <slot />

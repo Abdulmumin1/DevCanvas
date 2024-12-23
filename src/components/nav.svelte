@@ -20,10 +20,10 @@
 
 <nav class=" w-full border-b dark:border-secondary-dark">
 	<ul class="flex w-full items-center justify-between rounded-lg p-4 text-black">
-		<li class="flex items-center gap-1 px-1 py-1 text-lg text-sky-400 md:text-2xl">
+		<li class="flex items-center gap-1 px-1 py-1 text-lg text-sky-300 md:text-2xl">
 			<img src="/logo.svg" class="h-6 w-6" alt="devcanvas" />
 
-			<a href="/"><span class="text-secondary-dark dark:text-white">Dev</span>Canvas</a>
+			<a href="/"><span class="text-secondary-dark dark:text-white">Dev</span>canvas</a>
 		</li>
 		<ul class="flex items-center justify-center gap-2">
 			{#if showEdit && !showPreview}
@@ -36,9 +36,7 @@
 					<a href={back.replace('/edit', '')}>Preview</a>
 				</li>
 			{/if}
-			<li>
-				<FeGetEmbed />
-			</li>
+
 			<li>
 				<ShareBtn />
 			</li>
@@ -47,13 +45,8 @@
 					<Save />
 				{/if}
 			</li>
-			<li>
+			<li class="dark:text-white">
 				<Darkmode />
-			</li>
-			<li>
-				{#if $user}
-					<Msdropdown />
-				{/if}
 			</li>
 			<li>
 				<Login />

@@ -4,12 +4,12 @@ import { error, redirect } from '@sveltejs/kit';
 export async function load({ url, params, parent }) {
 	const { supabase, session } = await parent();
 	let slug = params['slug'];
-	console.log(url);
+	// console.log(url);
 	if (!session) {
 		// redirect unauthenticated users back to the preview if they try to edit
 		throw redirect(302, `${url.pathname.replace('/edit', '')}`);
 	}
-	console.log(slug);
+	// console.log(slug);
 	let { data, error: err } = await supabase.from('snips').select('*').eq('project_key', slug);
 	if (err) throw err;
 	if (data.length <= 0) {

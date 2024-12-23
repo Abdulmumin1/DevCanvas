@@ -23,7 +23,7 @@
 
 <div
 	in:slide
-	class="w-full overflow-hidden rounded-lg bg-white outline-2 outline-sky-300 hover:outline dark:bg-primary"
+	class="w-full overflow-hidden rounded-lg bg-gray-100 outline-2 outline-sky-300 hover:outline dark:bg-secondary-dark"
 >
 	<div class="p-6">
 		<div class="mb-4 flex items-start justify-between">
@@ -69,7 +69,7 @@
 		</div>
 		<div class="mt-4">
 			<div
-				class="rounded-md bg-gray-100 p-3 text-sm text-gray-600 dark:bg-secondary-dark dark:text-gray-300"
+				class="rounded-md bg-gray-50 p-3 text-sm text-gray-600 dark:bg-primary dark:text-gray-300"
 			>
 				<code>{card.code?.slice(0, 100)}..</code>
 			</div>

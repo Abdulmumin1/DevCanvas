@@ -62,7 +62,7 @@ export const actions = {
 				const { data: dx, error: dxerr } = await supabase.auth.updateUser({
 					data: { username, name, profileComplete : true }
 				});
-				await supabase.auth.refreshSession();
+				// await supabase.auth.refreshSession();
 				return body;
 			}
 		} else {
@@ -106,7 +106,7 @@ export const actions = {
 				const { data: dx, error: dxerr } = await supabase.auth.updateUser({
 					data: { username, name, profileComplete: true }
 				});
-				await supabase.auth.refreshSession();
+				// await supabase.auth.refreshSession();
 				return body;
 			}
 		} else {

@@ -19,7 +19,6 @@ console.log(err);
 	iframeDoc.body.appendChild(scriptElement);
 }
 
-
 import { cdns, fontawesomeLINK, materialiconsLINK, bootstrapLINK } from '$lib/plugins/store.js';
 
 export function constructHtml(current_data) {

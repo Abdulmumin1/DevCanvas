@@ -36,8 +36,15 @@
 	<title>Forgot password - devCanvas</title>
 </svelte:head>
 
-<div class="flex h-screen flex-col items-center justify-center bg-white text-primary">
-	<!-- <InnerNav /> -->
+<div class="flex h-screen items-center justify-center bg-white text-primary">
+	<div
+		class="hidden h-full flex-col items-center justify-center bg-secondary-dark md:flex md:flex-1"
+	>
+		<img src="/logo.svg" class=" h-24 rounded-3xl" alt="DevCanvas Logo" />
+		<a href="/" class="text-center text-3xl text-white md:text-5xl">
+			Dev<span class="text-sky-500">Canvas</span>
+		</a>
+	</div>
 	<form
 		transition:slide
 		action="?/reset"
@@ -45,9 +52,9 @@
 		use:enhance={handleSubmit}
 		class="mt-2 flex w-full max-w-xl flex-col gap-4 rounded-lg p-6 md:p-6 md:px-16"
 	>
-		<img src="/logo.svg" class=" h-24 rounded-3xl" alt="DevCanvas Logo" />
+		<!-- <img src="/logo.svg" class=" h-24 rounded-3xl" alt="DevCanvas Logo" /> -->
 
-		<h2 class="text-center text-3xl md:text-5xl">Dev<span class="text-sky-500">Canvas</span></h2>
+		<h2 class="mb-12 text-center text-3xl md:text-3xl">Reset Password</h2>
 
 		<div class="flex flex-col gap-3">
 			<PasswordModule {loading} submitText={'Update password'} bind:message={Invalid} />

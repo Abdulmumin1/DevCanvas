@@ -14,7 +14,7 @@
 		if (previewIframe) {
 			const iframeDoc = previewIframe.contentDocument || previewIframe.contentWindow.document;
 			iframeDoc.open();
-			
+
 			iframeDoc.write(constructHtml($current_data));
 			iframeDoc.close();
 		}
@@ -24,18 +24,15 @@
 	onMount(() => {
 		unsubscribe = current_data.subscribe((data) => {
 			// Only update dynamically after initial load
-			if (!useSrc ) {
+			if (!useSrc) {
 				updateIframeContent(data);
 				// return;
-			}else if (attempts < 1){
+			} else if (attempts < 1) {
 				attempts += 1;
-			}else{
-
+			} else {
 				useSrc = false; // Switch to dynamic updates
 				updateIframeContent(data);
-
 			}
-
 		});
 	});
 

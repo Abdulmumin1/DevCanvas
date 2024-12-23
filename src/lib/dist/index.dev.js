@@ -1,7 +1,7 @@
-"use strict";
+'use strict';
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
+Object.defineProperty(exports, '__esModule', {
+	value: true
 });
 exports.generateRandomKey = generateRandomKey;
 exports.setProfile = setProfile;
@@ -12,11 +12,36 @@ exports.getFromLocalStorage = getFromLocalStorage;
 exports.clickOutside = clickOutside;
 exports.saveData = saveData;
 exports.copyTextToClipboard = copyTextToClipboard;
-exports.supportedLanguages = exports["goto"] = exports.renderIndentGuidesSetting = exports.smallerFontSize = exports.formatOnPasteSetting = exports.autoIndentSetting = exports.wordWrapSetting = exports.showToast = exports.pageLimit = exports.pageCount = exports.isOwner = exports.saved_spinner = exports.pageCountSnips = exports.pageCountPl = exports.SnippetsDescription = exports.delayPreview = exports.editorSettingState = exports.autoSavefast = exports.dashboardLoading = exports.previewMode = exports.user = exports.current_data = exports.darkModeState = exports.user_info = exports.showNavigating = void 0;
+exports.supportedLanguages =
+	exports['goto'] =
+	exports.renderIndentGuidesSetting =
+	exports.smallerFontSize =
+	exports.formatOnPasteSetting =
+	exports.autoIndentSetting =
+	exports.wordWrapSetting =
+	exports.showToast =
+	exports.pageLimit =
+	exports.pageCount =
+	exports.isOwner =
+	exports.saved_spinner =
+	exports.pageCountSnips =
+	exports.pageCountPl =
+	exports.SnippetsDescription =
+	exports.delayPreview =
+	exports.editorSettingState =
+	exports.autoSavefast =
+	exports.dashboardLoading =
+	exports.previewMode =
+	exports.user =
+	exports.current_data =
+	exports.darkModeState =
+	exports.user_info =
+	exports.showNavigating =
+		void 0;
 
-var _svelte = require("svelte");
+var _svelte = require('svelte');
 
-var _store = require("svelte/store");
+var _store = require('svelte/store');
 
 // place files you want to import through the `$lib` alias in this folder.
 var showNavigating = (0, _store.writable)(false);
@@ -40,10 +65,10 @@ exports.editorSettingState = editorSettingState;
 var delayPreview = (0, _store.writable)(false);
 exports.delayPreview = delayPreview;
 var SnippetsDescription = (0, _store.readable)({
-  name: 'DevCanvas - Super Fast Online Editor',
-  des: 'an online editor with super powers, fast preview, plugins and super cool library of cool Frontend creations for your inspiration.',
-  url: 'https://devcanvas.art',
-  imageUrl: '/devcanvas.png'
+	name: 'DevCanvas - Super Fast Online Editor',
+	des: 'an online editor with super powers, fast preview, plugins and super cool library of cool Frontend creations for your inspiration.',
+	url: 'https://devcanvas.art',
+	imageUrl: '/devcanvas.png'
 });
 exports.SnippetsDescription = SnippetsDescription;
 var pageCountPl = (0, _store.writable)(12);
@@ -72,153 +97,224 @@ var renderIndentGuidesSetting = (0, _store.writable)(false);
 exports.renderIndentGuidesSetting = renderIndentGuidesSetting;
 
 function generateRandomKey() {
-  // Define the characters to be used in the random key
-  var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-  var keyLength = 6; // You can adjust the length of the key as per your requirement
+	// Define the characters to be used in the random key
+	var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+	var keyLength = 6; // You can adjust the length of the key as per your requirement
 
-  var randomKey; // Generate a random key
+	var randomKey; // Generate a random key
 
-  randomKey = '';
+	randomKey = '';
 
-  for (var i = 0; i < keyLength; i++) {
-    var randomIndex = Math.floor(Math.random() * characters.length);
-    randomKey += characters[randomIndex];
-  }
+	for (var i = 0; i < keyLength; i++) {
+		var randomIndex = Math.floor(Math.random() * characters.length);
+		randomKey += characters[randomIndex];
+	}
 
-  return randomKey;
+	return randomKey;
 }
 
 var profile_key = 'profile';
 
 function setProfile(value) {
-  (0, _svelte.setContext)(profile_key, (0, _store.writable)(value));
+	(0, _svelte.setContext)(profile_key, (0, _store.writable)(value));
 }
 
 function getProfile() {
-  return (0, _svelte.getContext)(profile_key);
+	return (0, _svelte.getContext)(profile_key);
 }
 
 function getLastPartOfUrl(url) {
-  var parts = url.split('/');
-  return parts[parts.length - 1];
+	var parts = url.split('/');
+	return parts[parts.length - 1];
 }
 
 function saveToLocalStorage(itemsArray) {
-  localStorage.setItem('owner', JSON.stringify(itemsArray));
+	localStorage.setItem('owner', JSON.stringify(itemsArray));
 }
 
 function getFromLocalStorage() {
-  try {
-    var savedItems = JSON.parse(localStorage.getItem('owner'));
-    return savedItems;
-  } catch (_unused) {
-    return [];
-  }
+	try {
+		var savedItems = JSON.parse(localStorage.getItem('owner'));
+		return savedItems;
+	} catch (_unused) {
+		return [];
+	}
 }
 /** Dispatch event on click outside of node */
 
-
 function clickOutside(node) {
-  var handleClick = function handleClick(event) {
-    if (node && !node.contains(event.target) && !event.defaultPrevented) {
-      node.dispatchEvent(new CustomEvent('click_outside', node));
-    }
-  };
+	var handleClick = function handleClick(event) {
+		if (node && !node.contains(event.target) && !event.defaultPrevented) {
+			node.dispatchEvent(new CustomEvent('click_outside', node));
+		}
+	};
 
-  document.addEventListener('click', handleClick, true);
-  return {
-    destroy: function destroy() {
-      document.removeEventListener('click', handleClick, true);
-    }
-  };
+	document.addEventListener('click', handleClick, true);
+	return {
+		destroy: function destroy() {
+			document.removeEventListener('click', handleClick, true);
+		}
+	};
 }
 
 var _goto = function _goto(path) {
-  window.location.href = path;
+	window.location.href = path;
 };
 
-exports["goto"] = _goto;
+exports['goto'] = _goto;
 
 function appendJSONToFormData(json, formData, which) {
-  for (var key in json) {
-    if (which == key || which == true) {
-      formData.append(key, json[key]);
-    }
-  }
+	for (var key in json) {
+		if (which == key || which == true) {
+			formData.append(key, json[key]);
+		}
+	}
 
-  formData.append('id', json['id']);
+	formData.append('id', json['id']);
 }
 
 function saveData(json_data) {
-  var all,
-      formData,
-      response,
-      _args = arguments;
-  return regeneratorRuntime.async(function saveData$(_context) {
-    while (1) {
-      switch (_context.prev = _context.next) {
-        case 0:
-          all = _args.length > 1 && _args[1] !== undefined ? _args[1] : true;
-          formData = new FormData();
-          saved_spinner.set(true);
-          previewMode.set(false);
-          appendJSONToFormData(json_data, formData, all);
-          _context.next = 7;
-          return regeneratorRuntime.awrap(fetch('?/update', {
-            method: 'POST',
-            body: formData
-          }));
+	var all,
+		formData,
+		response,
+		_args = arguments;
+	return regeneratorRuntime.async(function saveData$(_context) {
+		while (1) {
+			switch ((_context.prev = _context.next)) {
+				case 0:
+					all = _args.length > 1 && _args[1] !== undefined ? _args[1] : true;
+					formData = new FormData();
+					saved_spinner.set(true);
+					previewMode.set(false);
+					appendJSONToFormData(json_data, formData, all);
+					_context.next = 7;
+					return regeneratorRuntime.awrap(
+						fetch('?/update', {
+							method: 'POST',
+							body: formData
+						})
+					);
 
-        case 7:
-          response = _context.sent;
+				case 7:
+					response = _context.sent;
 
-          if (response.ok) {
-            // Handle save success
-            console.log('full');
-          } else {
-            // Handle save failed
-            console.log('failed');
-          }
+					if (response.ok) {
+						// Handle save success
+						console.log('full');
+					} else {
+						// Handle save failed
+						console.log('failed');
+					}
 
-          saved_spinner.set(false);
-          previewMode.set(true);
+					saved_spinner.set(false);
+					previewMode.set(true);
 
-        case 11:
-        case "end":
-          return _context.stop();
-      }
-    }
-  });
+				case 11:
+				case 'end':
+					return _context.stop();
+			}
+		}
+	});
 }
 
-var supportedLanguages = ['javascript', 'python', 'html', 'css', 'java', 'ruby', 'swift', 'typescript', 'csharp', 'php', 'go', 'rust', 'kotlin', 'sql', 'shell/bash', 'json', 'yaml', 'markdown', 'xml', 'r', 'perl', 'objective-c', 'dart', 'scala', 'haskell', 'lua', 'matlab', 'powershell', 'groovy', 'coffeescript', 'elixir', 'fsharp', 'vb.net', 'crystal', 'julia', 'typescriptreact', 'jsx', 'kotlinandroid', 'swiftios', 'matlab', 'matlabsession', 'ini', 'toml', 'perl6', 'swiftpm', 'yaml', 'diff', 'http', 'makefile', 'rubyirb', 'docker', 'raku', 'rspec', 'http', 'haskellcabal', 'apacheconf', 'nginx', 'smalltalk', 'cmake', 'webassembly', 'glsl', 'shellsession', 'shell', 'plaintext', 'c', 'cpp'].sort();
+var supportedLanguages = [
+	'javascript',
+	'python',
+	'html',
+	'css',
+	'java',
+	'ruby',
+	'swift',
+	'typescript',
+	'csharp',
+	'php',
+	'go',
+	'rust',
+	'kotlin',
+	'sql',
+	'shell/bash',
+	'json',
+	'yaml',
+	'markdown',
+	'xml',
+	'r',
+	'perl',
+	'objective-c',
+	'dart',
+	'scala',
+	'haskell',
+	'lua',
+	'matlab',
+	'powershell',
+	'groovy',
+	'coffeescript',
+	'elixir',
+	'fsharp',
+	'vb.net',
+	'crystal',
+	'julia',
+	'typescriptreact',
+	'jsx',
+	'kotlinandroid',
+	'swiftios',
+	'matlab',
+	'matlabsession',
+	'ini',
+	'toml',
+	'perl6',
+	'swiftpm',
+	'yaml',
+	'diff',
+	'http',
+	'makefile',
+	'rubyirb',
+	'docker',
+	'raku',
+	'rspec',
+	'http',
+	'haskellcabal',
+	'apacheconf',
+	'nginx',
+	'smalltalk',
+	'cmake',
+	'webassembly',
+	'glsl',
+	'shellsession',
+	'shell',
+	'plaintext',
+	'c',
+	'cpp'
+].sort();
 exports.supportedLanguages = supportedLanguages;
 
 function copyTextToClipboard(text) {
-  if (!navigator.clipboard) {
-    // Fallback for browsers that do not support the Clipboard API
-    var textArea = document.createElement('textarea');
-    textArea.value = text;
-    textArea.style.position = 'fixed'; // Ensure it's off-screen
+	if (!navigator.clipboard) {
+		// Fallback for browsers that do not support the Clipboard API
+		var textArea = document.createElement('textarea');
+		textArea.value = text;
+		textArea.style.position = 'fixed'; // Ensure it's off-screen
 
-    document.body.appendChild(textArea);
-    textArea.select();
+		document.body.appendChild(textArea);
+		textArea.select();
 
-    try {
-      var successful = document.execCommand('copy');
-      var message = successful ? 'Copied to clipboard' : 'Unable to copy to clipboard';
-      alert(message);
-    } catch (err) {
-      console.error('Error copying text: ', err);
-    } finally {
-      document.body.removeChild(textArea);
-    }
-  } else {
-    // Use the Clipboard API if available
-    navigator.clipboard.writeText(text).then(function () {
-      console.log('Text copied to clipboard');
-    })["catch"](function (err) {
-      console.error('Error copying text: ', err);
-    });
-  }
+		try {
+			var successful = document.execCommand('copy');
+			var message = successful ? 'Copied to clipboard' : 'Unable to copy to clipboard';
+			alert(message);
+		} catch (err) {
+			console.error('Error copying text: ', err);
+		} finally {
+			document.body.removeChild(textArea);
+		}
+	} else {
+		// Use the Clipboard API if available
+		navigator.clipboard
+			.writeText(text)
+			.then(function () {
+				console.log('Text copied to clipboard');
+			})
+			['catch'](function (err) {
+				console.error('Error copying text: ', err);
+			});
+	}
 }

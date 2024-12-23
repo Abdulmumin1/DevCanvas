@@ -26,13 +26,12 @@ export function setup_js_plugin(name, plugins, iframeDoc) {
 		let src = cdns[name];
 		let id = `${name}DSFE4o431!!`;
 		if (!pluginHTML) {
-
 			loadScriptFromURL(src, iframeDoc, id)
 				.then(() => {
 					// Do something after the script is loaded
 				})
 				.catch((error) => {
-						//
+					//
 				});
 		}
 	} else {
@@ -40,7 +39,6 @@ export function setup_js_plugin(name, plugins, iframeDoc) {
 			pluginHTML.remove();
 		}
 	}
-
 }
 
 export function injectHeadContent(plugins, iframeDoc) {

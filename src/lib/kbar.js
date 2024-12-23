@@ -4,8 +4,8 @@ export const actions = (goto) => {
 	return [
 		{
 			id: 'explore',
-			title: 'Home',
-			subtitle: 'Explore cool stuff',
+			title: 'Community',
+			subtitle: 'Explore awesome creations by the community',
 			callback: () => {
 				goto('/explore');
 			}

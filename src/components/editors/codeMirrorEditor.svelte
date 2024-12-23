@@ -81,10 +81,9 @@
 	}
 
 	async function formatter(view) {
-		
 		const options = { indent_size: 2 };
 		const dataObj = view.state.doc.toString();
-		console.log(dataObj, options, lang)
+		console.log(dataObj, options, lang);
 
 		if (lang == 'html') {
 			let beatifulHtml = js_beautify.html(dataObj, options);

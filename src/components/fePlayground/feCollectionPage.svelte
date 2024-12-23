@@ -2,7 +2,7 @@
 	import { fade } from 'svelte/transition';
 	import FeCard from './feCard.svelte';
 	import { pageCountPl } from '$lib/index.js';
-	import { faForward, faForwardFast, faSpinner } from '@fortawesome/free-solid-svg-icons';
+	import { faForward, faForwardFast, faRandom, faSpinner } from '@fortawesome/free-solid-svg-icons';
 	import Fa from 'svelte-fa';
 	import { onDestroy, onMount } from 'svelte';
 
@@ -127,7 +127,7 @@
 	<div class="flex flex-col items-center gap-6" transition:fade>
 		<div class="flex w-full flex-col gap-6">
 			<div class="customGrid w-full gap-6 rounded-lg">
-				{#each collection as snippet (snippet.project_key)}
+				{#each collection as snippet (crypto.randomUUID())}
 					<FeCard details={snippet} />
 				{/each}
 			</div>

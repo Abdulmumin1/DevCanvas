@@ -56,33 +56,32 @@
 </script>
 
 <div class="tooltip-container relative inline-block w-full transition-transform duration-300">
-	<button
-		on:click={showOptions}
-		class="mb-2 flex w-fit cursor-pointer items-center gap-2 rounded-lg bg-sky-400 p-2 text-sm text-secondary-dark"
+	<form
+		method="POST"
+		action="/db/create"
+		transition:slide
+		class="  mb-8 rounded-2xl bg-gray-100 p-8 dark:bg-secondary-dark"
 	>
-		<Fa icon={newCodeIcon} /> New Code Snippet
-	</button>
-
-	{#if isTooltipVisible}
-		<form
-			method="POST"
-			action="/db/create"
-			transition:slide
-			class="tooltip-content top-14 z-10 flex w-full flex-col items-center justify-center gap-4 rounded-lg bg-inherit py-4 md:max-w-[500px]"
-		>
-			<div class="w-full gap-2 dark:text-white">
-				<p class="w-full text-left font-semibold text-black dark:text-white">Enter Description</p>
-				<input
-					name="description"
-					bind:value={description}
-					class="w-full rounded-lg border border-sky-200 p-2 text-left text-black outline-sky-200 dark:border-0 dark:bg-secondary-dark dark:text-white dark:outline-none dark:focus:outline-none"
-					placeholder="describe your code here (just a few words!)"
-				/>
-				<p class="w-full text-left font-semibold text-black dark:text-white">Select language:</p>
+		<div class="flex w-full flex-col gap-4 dark:text-white">
+			<div class="flex items-center gap-2 text-3xl">
+				<span
+					class="flex aspect-square h-12 items-center justify-center rounded-full bg-sky-300 dark:text-black"
+					>+</span
+				> <span class="dark:text-white">New Snippet</span>
+			</div>
+			<p class="w-full text-left font-semibold text-black dark:text-white">Enter Description</p>
+			<input
+				name="description"
+				bind:value={description}
+				class="w-full rounded-lg border border-sky-200 p-4 text-left text-black outline-sky-200 dark:border-0 dark:bg-primary dark:text-white dark:outline-none dark:focus:outline-none"
+				placeholder="Description / Title"
+			/>
+			<p class="w-full text-left font-semibold text-black dark:text-white">Select language:</p>
+			<div class="flex gap-2">
 				<select
 					name="lang"
 					on:change={handleDropdownChange}
-					class="mb-2 w-full rounded-lg border-[.5px] p-2 text-black outline-sky-200 dark:border-0 dark:bg-secondary-dark dark:text-white dark:outline-none dark:focus:outline-none"
+					class="mb-2 w-full rounded-lg border-[.5px] p-2 text-black outline-sky-200 dark:border-0 dark:bg-primary dark:text-white dark:outline-none dark:focus:outline-none"
 				>
 					{#each options as option}
 						<option value={option}>{option}</option>
@@ -93,23 +92,39 @@
 				<button
 					type="submit"
 					on:click={handleClick}
-					class=" mb-2 flex w-full items-center justify-center gap-3 rounded-lg bg-sky-500 p-2 text-primary shadow transition-colors duration-200 hover:bg-sky-600"
-					>Create
+					class=" mb-2 flex w-fit items-center justify-center gap-3 rounded-full bg-sky-300 p-4 text-primary shadow transition-colors duration-200 hover:bg-sky-400"
+				>
 					{#if clickedNew}
 						<Fa icon={faSpinner} class="animate-spin" />
+					{:else}
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							width="24"
+							height="24"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							class="lucide lucide-send-horizontal"
+							><path
+								d="M3.714 3.048a.498.498 0 0 0-.683.627l2.843 7.627a2 2 0 0 1 0 1.396l-2.842 7.627a.498.498 0 0 0 .682.627l18-8.5a.5.5 0 0 0 0-.904z"
+							/><path d="M6 12h16" /></svg
+						>
 					{/if}
 				</button>
-				{#if !descriptionEnter}
-					<p
-						transition:scale={{ duration: 150 }}
-						class="flex items-center justify-center gap-2 rounded-md bg-rose-200 p-1 text-black"
-					>
-						<Fa icon={faExclamation} /> No description entered
-					</p>
-				{/if}
 			</div>
-		</form>
-	{/if}
+			{#if !descriptionEnter}
+				<p
+					transition:scale={{ duration: 150 }}
+					class="flex items-center justify-center gap-2 rounded-md bg-rose-200 p-1 text-black"
+				>
+					<Fa icon={faExclamation} /> No description entered
+				</p>
+			{/if}
+		</div>
+	</form>
 </div>
 
 <style>

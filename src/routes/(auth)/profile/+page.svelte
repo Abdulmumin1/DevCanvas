@@ -1,7 +1,7 @@
 <script>
 	import Fa from 'svelte-fa';
 	import {
-	faArrowRight,
+		faArrowRight,
 		faExclamationCircle,
 		faRightLong,
 		faSpinner,
@@ -11,7 +11,7 @@
 	import { enhance } from '$app/forms';
 	import NavWrapper from '$components/snips/navWrapper.svelte';
 	import { onMount } from 'svelte';
-	import {page} from '$app/stores'
+	import { page } from '$app/stores';
 
 	import { getProfile } from '$lib/index.js';
 
@@ -29,8 +29,9 @@
 			if (result.status == 200) {
 				completed = true;
 				// data = result.data;
-				if (mesa){
-					window.location.href = $page.url.searchParams.get('next') ??  '/dashboard'
+				if (mesa) {
+					console.log($page.url.searchParams.get('next'));
+					window.location.href = $page.url.searchParams.get('next') ?? '/dashboard';
 				}
 				setTimeout(() => {
 					completed = false;
@@ -52,7 +53,7 @@
 
 	export let data;
 	export let form;
-	let mesa = $page.url.searchParams.get('rt')
+	let mesa = $page.url.searchParams.get('rt');
 	let details = data.details;
 </script>
 
@@ -62,26 +63,26 @@
 </svelte:head>
 
 <NavWrapper noSearch={true}>
-	<div class="flex h-full flex-col items-center justify-center min-h-[90vh]">
+	<div class="flex h-full min-h-[90vh] flex-col items-center justify-center">
 		{#if mesa}
-		<div class="my-12"
-	>
-		<p
-		class="flex items-center justify-start gap-2 rounded-md  p-1 px-2 text-xl"
-
-		><span class="wobble-hor-top"> <Fa icon={faExclamationCircle} /></span> Sorry to interrupt, we shipped too fast!</p>
-		<p>Manually click the <strong>"Update Profile"</strong> button to <strong>Continue</strong></p>
-		</div
-	>
+			<div class="my-12">
+				<p class="flex items-center justify-start gap-2 rounded-md p-1 px-2 text-xl">
+					<span class="wobble-hor-top"> <Fa icon={faExclamationCircle} /></span> Sorry to interrupt,
+					we shipped too fast!
+				</p>
+				<p>
+					Manually click the <strong>"Update Profile"</strong> button to <strong>Continue</strong>
+				</p>
+			</div>
 		{/if}
-		<div class="mb-4 max-w-[700px]   bg-gray-100  p-8 pt-20 dark:bg-secondary-dark rounded-2xl">
-			<h2 class="mb-4 flex gap-2 text-4xl text-gray-800 dark:text-white font-bold">
+		<div class="mb-4 max-w-[700px] rounded-2xl bg-gray-100 p-8 pt-20 dark:bg-secondary-dark">
+			<h2 class="mb-4 flex gap-2 text-4xl font-bold text-gray-800 dark:text-white">
 				Profile <span
-					><a href="/{details?.username}"><Fa class="text-sm" icon={faUpRightFromSquare} /></a></span
+					><a href="/{details?.username}"><Fa class="text-sm" icon={faUpRightFromSquare} /></a
+					></span
 				>
 			</h2>
 
-			
 			<form action={data.action} use:enhance={handleSubmit} method="POST">
 				<!-- User Name -->
 				<div class="mb-4">
@@ -223,8 +224,8 @@
 				</div>
 			{/if}
 
-			<div class="bg-gray-50 dark:bg-primary w-fit p-3 mt-6 rounded-2xl">
-				<a href="/recovery/reset" class="flex items-center gap-2 "
+			<div class="mt-6 w-fit rounded-2xl bg-gray-50 p-3 dark:bg-primary">
+				<a href="/recovery/reset" class="flex items-center gap-2"
 					>Reset password <Fa icon={faArrowRight} /></a
 				>
 			</div>

@@ -61,15 +61,13 @@
 </script>
 
 <NavWrapper>
-	<div
-		class="mx-[-30px] min-h-[10vh] overflow-hidden  bg-gradient-to-br p-8 pt-20 dark:bg-primary"
-	>
+	<div class="mx-[-30px] min-h-[10vh] overflow-hidden bg-gradient-to-br p-8 pt-20 dark:bg-primary">
 		<div
-			class="mx-auto flex max-w-4xl flex-col rounded-[50px] bg-gray-100 p-20 dark:bg-secondary-dark"
+			class="mx-auto flex max-w-4xl flex-col rounded-[50px] bg-gray-100 p-6 dark:bg-secondary-dark md:p-20"
 		>
-			<div class="flex items-center gap-2 text-4xl">
+			<div class="flex items-center gap-2 text-2xl md:text-4xl">
 				<span
-					class="flex aspect-square h-16 items-center justify-center rounded-full bg-sky-300 text-5xl dark:text-black"
+					class="flex aspect-square h-10 items-center justify-center rounded-full bg-sky-300 text-3xl dark:text-black md:h-16 md:text-5xl"
 					>+</span
 				> <span class="dark:text-white">Create new Canvas</span>
 			</div>

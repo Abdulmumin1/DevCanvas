@@ -197,8 +197,11 @@
 		<Fa icon={faSpinner} class="animate-spin text-2xl" />
 	</div>
 {:else}
-	<div class="editor-container h-full rounded-xl py-5">
-		<div class="h-full w-full" bind:this={editorContanier} />
+	<div class="editor-container h-full rounded-xl">
+		<div
+			class="h-full w-full rounded-xl bg-white p-6 dark:bg-primary"
+			bind:this={editorContanier}
+		/>
 	</div>
 {/if}
 

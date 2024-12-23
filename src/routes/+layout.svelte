@@ -35,8 +35,7 @@
 	// let profile = getProfile();
 
 	setKbarState();
-	setProfile(userInfo)
-
+	setProfile(userInfo);
 
 	if (browser) {
 		darkModeState.set(
