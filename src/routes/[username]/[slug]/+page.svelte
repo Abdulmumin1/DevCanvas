@@ -76,7 +76,7 @@
 					<div
 						class="prose mt-6 max-w-full dark:prose-invert prose-headings:w-fit prose-headings:bg-sky-300 prose-headings:text-black"
 					>
-					{JSON.stringify(data[0].markdown)}
+					<!-- {JSON.stringify(data[0].markdown)} -->
 						{@html data[0].markdown }
 					</div>
 				</div>
