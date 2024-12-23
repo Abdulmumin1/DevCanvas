@@ -1,6 +1,6 @@
 <script>
 	import SnipsSideNav from './snipsSideNav.svelte';
-	import { user, getProfile } from '$lib/index.js';
+	import { user } from '$lib/index.js';
 	import Darkmode from '../darkmode.svelte';
 	import { page } from '$app/stores';
 	import { handleRedirectURL } from '$lib/utils.js';
@@ -16,7 +16,6 @@
 	export let noSearch = false;
 	// export let data;
 
-	let profile = getProfile();
 
 	let show = false;
 
@@ -37,11 +36,7 @@
 	<div class="flex h-full w-full flex-col">
 		<!-- Upper nave -->
 
-		{#if !$profile && show && $user}
-			<p class="bg-primary p-2 text-center text-white dark:bg-secondary-dark">
-				<a href="/profile">Complete your profile setup</a>
-			</p>
-		{/if}
+
 
 		{#if !noSearch}
 			<div
