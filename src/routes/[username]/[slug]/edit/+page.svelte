@@ -14,11 +14,8 @@
 	import { browser } from '$app/environment';
 	import DetailsGrid from '../../../../components/DetailsGrid.svelte';
 
-	import { Carta, MarkdownEditor } from 'carta-md';
-	import 'carta-md/default.css'; /* Default theme */
-	import { code } from '@cartamd/plugin-code';
-	import '@cartamd/plugin-code/default.css';
-	import { markdown } from 'svelte-highlight/languages';
+	import { marked } from 'marked';
+
 
 	export let data;
 
@@ -48,17 +45,6 @@
 
 	previewMode.set(true);
 
-	const carta = new Carta({
-		// Remember to use a sanitizer to prevent XSS attacks!
-		// More on that below
-		// sanitizer: ...
-		theme: 'github-dark',
-		extensions: [
-			code({
-				theme: 'ayu-light'
-			})
-		]
-	});
 
 	let value = '';
 	// editor.addAction(saveAction);
@@ -92,11 +78,20 @@
 			handleAutoSave();
 		}
 	}
+
 	onMount(() => {
 		current_data.set(data['0']);
 		value = data['0']?.markdown;
 		// getUser()
+
 	});
+
+	let activeTab = 'edit'
+	function setTab(tab) {
+		activeTab = tab
+	}
+
+
 </script>
 
 <svelte:head>
@@ -118,14 +113,42 @@
 		<div class="relative flex h-full flex-col p-0 md:flex-row md:p-3">
 			<div class="h-full w-2/3">
 				<CodeText inputContent={data['0'].code} lang={data['0'].lang} />
-				<h3 class="p-2 py-4 text-xl font-semibold">Explanation</h3>
+				<h3 class="p-2 py-4 text-xl font-semibold">Explanation <sup>(supports markdown)</sup></h3>
 				<div class="rounded-xl bg-gray-100 p-4 *:border-none dark:bg-secondary-dark">
-					<MarkdownEditor
-						{carta}
-						bind:value
-						placeholder="Write some explanation here (helps with SEO alot)"
-						class="article rounded-xl"
-					/>
+					<div class="mb-4">
+						<button
+						on:click={() => setTab('edit')}
+						class="relative px-4 py-2 transition-all duration-200 {activeTab === 'edit'
+							? 'rounded-lg  bg-gradient-to-r from-sky-400 to-sky-300 text-primary shadow-lg shadow-sky-200/20 transition-all duration-300 ease-out'
+							: 'text-gray-600 hover:text-sky-300'}"
+					>
+						Editor
+					</button>
+					<button
+						on:click={() => setTab('preview')}
+						class="  relative px-4 py-2 transition-all duration-200 {activeTab === 'preview'
+							? 'rounded-lg bg-gradient-to-r from-sky-400 to-sky-300 text-primary shadow-lg shadow-sky-200/20 transition-all duration-300 ease-out'
+							: 'text-gray-600 hover:text-sky-300'}"
+					>
+						Preview
+					</button>
+
+					</div>
+					{#if activeTab == 'edit'}
+						
+					<textarea  bind:value={value} class="dark:bg-secondary-dark p-4 rounded-xl border-none outline-none  w-full min-h-[800px]" spellcheck="false "/>
+					{:else}
+					<div>
+						{#await marked(value)}
+							loading
+						{:then html}
+							<div class="prose dark:prose-invert max-w-full">
+								{@html html} 
+							</div>
+							
+						{/await}
+					</div>
+					{/if}
 				</div>
 			</div>
 

@@ -8,9 +8,7 @@
 	import { faCheck, faCopy, faPen } from '@fortawesome/free-solid-svg-icons';
 	import { setContext } from 'svelte';
 	import SEO from '$components/seoComp.svelte';
-	import { Carta } from 'carta-md';
-	import { markdown } from 'svelte-highlight/languages';
-
+	
 	export let data;
 	setContext('isOwner', false);
 	if (data.isFound && data.session) {
@@ -32,21 +30,14 @@
 		}, 1000);
 		showToast.set({ message: 'Code copied to clipboard' });
 	}
-	const carta = new Carta({
-		/* ... */
-	});
-
-	let hml;
-	if (data.isFound) {
-		hml = carta.renderSSR(data[0].markdown);
-	}
+	
 </script>
 
 <svelte:head>
 	{#if data.isFound}
 		<SEO
 			title={data['0'].description}
-			description={`${hml.slice(0, 300)} - shared by ${username}`}
+			description={`${data[0].description.slice(0, 300)} - shared by ${username}`}
 		/>
 	{/if}
 
@@ -85,7 +76,8 @@
 					<div
 						class="prose mt-6 max-w-full dark:prose-invert prose-headings:w-fit prose-headings:bg-sky-300 prose-headings:text-black"
 					>
-						{@html hml}
+					{JSON.stringify(data[0].markdown)}
+						{@html data[0].markdown }
 					</div>
 				</div>
 			</div>
