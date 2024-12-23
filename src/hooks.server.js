@@ -1,65 +1,57 @@
-// src/hooks.server.ts
 import { createSupabaseServerClient } from '@supabase/auth-helpers-sveltekit';
 import { redirect } from '@sveltejs/kit';
-// import { handleRedirect } from '$lib/utils';
 
-//https://devcanvas.art/v0/callback/github/auth
-
-let PUBLIC_SUPABASE_URL = import.meta.env.VITE_PUBLIC_SUPABASE_URL;
-let PUBLIC_SUPABASE_ANON_KEY = import.meta.env.VITE_PUBLIC_SUPABASE_ANON_KEY;
+const PUBLIC_SUPABASE_URL = import.meta.env.VITE_PUBLIC_SUPABASE_URL;
+const PUBLIC_SUPABASE_ANON_KEY = import.meta.env.VITE_PUBLIC_SUPABASE_ANON_KEY;
 
 export const handle = async ({ event, resolve }) => {
-	event.locals.supabase = createSupabaseServerClient({
-		supabaseUrl: PUBLIC_SUPABASE_URL,
-		supabaseKey: PUBLIC_SUPABASE_ANON_KEY,
-		event
-	});
-	/**
-	 * A convenience helper so we can just call await getSession() instead const { data: { session } } = await supabase.auth.getSession()
-	 */
-	event.locals.getSession = async () => {
-		const {
-			data: { session }
-		} = await event.locals.supabase.auth.getSession();
-		return session;
-	};
+    // Create Supabase client
+    event.locals.supabase = createSupabaseServerClient({
+        supabaseUrl: PUBLIC_SUPABASE_URL,
+        supabaseKey: PUBLIC_SUPABASE_ANON_KEY,
+        event
+    });
 
-	event.locals.getUser = async () => {
-		const {
-			data: { user },
-			error
-		} = await event.locals.supabase.auth.getUser();
-		if (error) {
-			// JWT validation has failed
-			return null;
-		}
+    // Convenience helpers for session and user retrieval
+    event.locals.getSession = async () => {
+        const {
+            data: { session }
+        } = await event.locals.supabase.auth.getSession();
+        return session;
+    };
 
-		return user;
-	};
+    event.locals.getUser = async () => {
+        const {
+            data: { user },
+            error
+        } = await event.locals.supabase.auth.getUser();
+        if (error) {
+            return null; // JWT validation failed
+        }
+        return user;
+    };
 
-	if (event.url.pathname == '/new') {
-		throw redirect(301, '/play/try');
-	}
-	if (event.url.pathname == '/community') {
-		throw redirect(301, '/explore');
-	}
-	if (event.url.pathname == '/signin') {
-		let session = await event.locals.getSession();
-		if (session) {
-			throw redirect(307, '/dashboard');
-		}
-	}
-	if (
-		event.url.pathname.startsWith('/html-playground') ||
-		event.url.pathname == '/html-playground'
-	) {
-		throw redirect(307, event.url.pathname.replace('/html-playground', '/play'));
-	}
+    // Handle redirects
+    const session = await event.locals.getSession(); // Ensure this is resolved early
+    const pathname = event.url.pathname;
 
-	// console.log(event.url);
-	return resolve(event, {
-		filterSerializedResponseHeaders(name) {
-			return name === 'content-range';
-		}
-	});
+    if (pathname === '/new') {
+        throw redirect(301, '/play/try');
+    }
+    if (pathname === '/community') {
+        throw redirect(301, '/explore');
+    }
+    if (pathname === '/signin' && session) {
+        throw redirect(307, '/dashboard');
+    }
+    if (pathname.startsWith('/html-playground') || pathname === '/html-playground') {
+        throw redirect(307, pathname.replace('/html-playground', '/play'));
+    }
+
+    // Resolve the response
+    return resolve(event, {
+        filterSerializedResponseHeaders(name) {
+            return name === 'content-range'; // Pass through specific headers
+        }
+    });
 };

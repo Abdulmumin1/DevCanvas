@@ -16,7 +16,8 @@
 		console.log(data.session.user.id == data[0].user_id);
 	}
 
-	let username = data.username.length > 0 ? data.username[0].username : 'unknown user';
+	// console.log(data[0])
+	let username = data[0].profiles.username
 	// console.log(data.username.length);
 
 	let copied = false;
