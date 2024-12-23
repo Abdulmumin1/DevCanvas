@@ -9,9 +9,11 @@ export async function GET({ fetch, url, locals: { supabase } }) {
 		.order('created_at', { ascending: false })
 		.is('public', true);
 
-	if (err) {
-		throw error(500, { message: 'Internal Error' });
-	}
+	let { data: snips, error: errSnipps } = await supabase
+		.from('snips')
+		.select('project_key, profiles (username)').order('created_at', { ascending: false });
+
+    console.log(keys,snips)
 	const xml = `
     <?xml version="1.0" encoding="UTF-8" ?>
     <urlset
@@ -75,7 +77,17 @@ export async function GET({ fetch, url, locals: { supabase } }) {
 				)
 				.join('')}
   
-      
+        ${Object.values(snips)
+					.map(
+						(index) => `
+              <url>
+                 
+                  <loc>${url.origin}/${index.profiles.username}/${index['project_key']}</loc>
+              </url>
+          `
+					)
+					.join('')}
+  
     </urlset>`.trim();
 	return new Response(xml, {
 		headers: {

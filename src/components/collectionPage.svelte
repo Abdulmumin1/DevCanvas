@@ -20,7 +20,7 @@
 	async function fetchExplore(pageNumber, pageSize) {
 		const { data, error } = await supabase
 			.from('snips')
-			.select('*')
+			.select('*, profiles (username)')
 			.order('created_at', { ascending: false }) // Optional: Ordering the results
 			.range(pageNumber, pageSize);
 
@@ -34,7 +34,7 @@
 	async function fetchDashboard(pageNumber, pageSize) {
 		const { data, error } = await supabase
 			.from('snips')
-			.select('*')
+			.select('*, profiles (username)')
 			.eq('user_id', session.user.id)
 			.order('created_at', { ascending: false }) // Optional: Ordering the results
 			.range(pageNumber, pageSize);
@@ -48,7 +48,7 @@
 	async function fetchUserCollection(pageNumber, pageSize) {
 		const { data, error } = await supabase
 			.from('snips')
-			.select('*')
+			.select('*, profiles (username)')
 			.eq('user_id', user_id)
 			.order('created_at', { ascending: false }) // Optional: Ordering the results
 			.range(pageNumber, pageSize);
@@ -63,7 +63,7 @@
 	async function fetchSearchRows(pageNumber, pageSize) {
 		const { data, error } = await supabase
 			.from('snips')
-			.select('*')
+			.select('*, profiles (username)')
 			.ilike('description', `%${query}%`)
 			.order('created_at', { ascending: false }) // Optional: Ordering the results
 			.range(pageNumber, pageSize);
@@ -114,26 +114,8 @@
 
 	async function returnDataWithProfile(arr, supabase) {
 		// console.log('jlfdajkfda fda fda fda ');
-		const newData = [];
-
-		for (const element of arr) {
-			// console.log(element);
-			try {
-				const user_name = await getProfile(element.user_id, supabase);
-				// Assuming getProfile returns an object with a 'user_name' property
-				// console.log(user_name);
-				if (new Object(user_name).length > 0) {
-					newData.push({ ...element, profile: user_name[0].username });
-				} else {
-					newData.push({ ...element });
-				}
-			} catch (error) {
-				newData.push({ ...element });
-				console.error(`Error fetching profile for user_id ${element.user_id}: ${error.message}`);
-			}
-		}
-
-		return newData;
+		
+		return arr;
 	}
 
 	onMount(async () => {

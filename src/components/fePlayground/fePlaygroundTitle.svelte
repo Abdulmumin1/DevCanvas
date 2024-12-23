@@ -50,19 +50,19 @@
 		}
 	}
 
-	$: profile = [];
-
-	onMount(async () => {
-		if ($current_data.user_id === session?.user?.id) return;
-		try {
-			const profileData = await getProfile($current_data.user_id, supabase);
-			if (profileData.length > 0) {
-				profile = profileData;
-			}
-		} catch (error) {
-			console.error(error);
-		}
-	});
+	let profile = $current_data.profiles.username;
+	console.log($current_data)
+	// onMount(async () => {
+	// 	if ($current_data.user_id === session?.user?.id) return;
+	// 	try {
+	// 		const profileData = await getProfile($current_data.user_id, supabase);
+	// 		if (profileData.length > 0) {
+	// 			profile = profileData;
+	// 		}
+	// 	} catch (error) {
+	// 		console.error(error);
+	// 	}
+	// });
 
 	onDestroy(() => {
 		// showForkToSave.set(false);
@@ -133,14 +133,14 @@
 		</div>
 	{/if}
 
-	{#if profile.length > 0}
+	{#if profile}
 		<div class="flex gap-1 text-[.8rem] md:text-sm">
 			<p
 				class="rounded-lg p-1 text-sky-400 outline-none focus:outline-sky-300 dark:text-sky-300 focus:dark:outline-sky-400"
 				spellcheck="false"
 			>
 				<span>by</span>
-				<a class="font-semibold" href={`/${profile[0].username}`}>@{profile[0].username}</a>
+				<a class="font-semibold" href={`/${profile}`}>@{profile}</a>
 			</p>
 			<ShowLoginOrforkBanner />
 		</div>

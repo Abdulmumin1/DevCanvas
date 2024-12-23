@@ -23,7 +23,7 @@
 		<li class="flex items-center gap-1 px-1 py-1 text-lg text-sky-300 md:text-2xl">
 			<img src="/logo.svg" class="h-6 w-6" alt="devcanvas" />
 
-			<a href="/"><span class="text-secondary-dark dark:text-white">Dev</span>canvas</a>
+			<a href="/snippets"><span class="text-secondary-dark dark:text-white">Dev</span>canvas</a>
 		</li>
 		<ul class="flex items-center justify-center gap-2">
 			{#if showEdit && !showPreview}

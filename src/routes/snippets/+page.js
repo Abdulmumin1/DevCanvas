@@ -1,7 +1,7 @@
 async function loadIntialData(supabase) {
 	let { data: dt, error } = await supabase
 		.from('snips')
-		.select('*')
+		.select('*, profiles (username)')
 		.order('created_at', { ascending: false })
 		.limit(12);
 

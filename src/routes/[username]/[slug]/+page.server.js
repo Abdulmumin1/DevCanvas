@@ -19,8 +19,8 @@ let options = {
 }
 export async function load({ url, params, locals:{supabase} }) {
 	let slug = params['slug'];
-	console.log(slug);
-	let { data, error: err } = await supabase.from('snips').select('*').eq('project_key', slug);
+	// console.log(slug);
+	let { data, error: err } = await supabase.from('snips').select('*, profiles (username)').eq('project_key', slug);
 	if (err) throw err;
 
 	if (data.length <= 0) {
@@ -29,23 +29,23 @@ export async function load({ url, params, locals:{supabase} }) {
 		throw error(404, 'Enhance your calm');
 	}
 
-	let { data: username, error: er } = await supabase
-		.from('profiles')
-		.select('username')
-		.eq('user_id', data[0].user_id);
+	// let { data: username, error: er } = await supabase
+	// 	.from('profiles')
+	// 	.select('username')
+	// 	.eq('user_id', data[0].user_id);
 
-	if (er) throw er;
+	// if (er) throw er;
 	// console.log(username, data[0].user_id);
-	if (new Object(username).length > 0) {
+	
 		// let fullurl = `${url.origin}/xi1w/${slug}`;
-		let fullurl = `${url.origin}/${username[0].username}/${slug}`;
+		let fullurl = `${url.origin}/${data[0].profiles.username}/${slug}`;
 		if (url.origin + url.pathname != fullurl) {
 			console.log('invalide url');
-			throw redirect(307, `/${username[0].username}/${slug}`);
+			throw redirect(307, `/${data[0].profiles.username}/${slug}`);
 		} else {
 			console.log('valide url');
 		}
-	}
+	
 
 	 let rendered = await compile(data[0].markdown, options)
 	
@@ -53,5 +53,5 @@ export async function load({ url, params, locals:{supabase} }) {
 	data[0]['markdown']  = rendered.code.replace(/{@html `<pre/g, '<pre')
 	.replace(/<\/code><\/pre>`}/g, '</code></pre>');
 
-	return { ...data, isFound: data.length > 0, username };
+	return { ...data, isFound: data.length > 0 };
 }

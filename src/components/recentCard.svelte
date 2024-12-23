@@ -15,9 +15,9 @@
 
 	let session = $page.data.session;
 	$: isOwner = card.user_id === session?.user?.id;
-	$: profileUrl = card.profile ? `/${card.profile}` : '/profile';
-	$: projectUrl = card.profile
-		? `/${card.profile}/${card.project_key}`
+	$: profileUrl = card.profiles.username ? `/${card.profiles.username}` : '/profile';
+	$: projectUrl = card.profiles.username
+		? `/${card.profiles.username}/${card.project_key}`
 		: `/anonymous/${card.project_key}`;
 </script>
 
@@ -34,8 +34,8 @@
 					<a href={projectUrl}>{card.description}</a>
 				</h2>
 				<a href={profileUrl} class="text-sm text-sky-500 hover:underline dark:text-gray-300">
-					{#if card.profile}
-						@{card.profile}
+					{#if card.profiles.username}
+						@{card.profiles.username}
 					{:else if isOwner}
 						Configure your profile
 					{:else}
