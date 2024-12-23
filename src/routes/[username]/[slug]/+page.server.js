@@ -11,7 +11,7 @@ let options = {
 			// });
 			const html = await codeToHtml(code, {
 				lang,
-				themes: { dark: 'andromeeda', light: 'catppuccin-latte' }
+				themes: { dark: 'github-dark', light: 'catppuccin-latte' }
 			});
 			return `{@html \`${html}\`}`;
 		}
