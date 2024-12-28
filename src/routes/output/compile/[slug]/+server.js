@@ -67,9 +67,9 @@ async function constructHtmlForZip(current_data, preview) {
 	<body>
 		${current_data.html}
         ${Object.keys(Object.fromEntries(Object.entries(jsPlugins).filter(([k, v]) => v)))
-					.map((plugin) => `<script src=${cdns[plugin]}></script>`)
+					.map((plugin) => `<script src=${cdns[plugin]}></script>\n`)
 					.join('')}
-        ${userImportedJS.map((src) => `<script src=${src}></script>`).join('')}
+        ${userImportedJS.map((src) => `<script src=${src}></script>\n`).join('')}
         <script>
             ${preview ? '' : current_data.js}
         </script>
@@ -90,7 +90,21 @@ export async function GET({ url, params, locals: { supabase } }) {
 		.single();
 
 	if (error || !data) {
-		return new Response('Project not found', { status: 404 });
+		return new Response(`<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Untitled Canvas</title>
+</head>
+<body>
+    
+</body>
+</html>`, {
+			headers: {
+				'Content-Type': 'text/html'
+			}
+		});
 	}
 	// console.log(data)
 

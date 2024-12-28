@@ -4,7 +4,7 @@ async function loadPlaygroundData(supabase) {
 		.select('*, view (views), profiles (username)')
 		.order('created_at', { ascending: false })
 		.is('public', true)
-		.limit(12);
+		.limit(24);
 
 	if (error) {
 		console.error(error);

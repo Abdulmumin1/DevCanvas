@@ -26,23 +26,23 @@
 	});
 </script>
 
-<div class="flex min-h-screen w-full">
+<div class="flex min-h-screen w-full ">
 	<div class=" h-full bg-inherit">
 		<SnipsSideNav />
 	</div>
 
 	<!-- second part -->
 
-	<div class="flex h-full w-full flex-col">
+	<div class="flex h-full w-full flex-col ">
 		<!-- Upper nave -->
 
 
 
 		{#if !noSearch}
 			<div
-				class="sticky top-0 z-50 w-full border-b bg-white px-3 py-3 text-primary dark:border-secondary-dark dark:bg-primary"
+				class=" border-sky-500 md:border-gray-100 border-b-4 sticky top-0 z-50 w-full md:border-b bg-white px-3 py-3 text-primary dark:md:border-secondary-dark dark:bg-primary"
 			>
-				<ul class="flex w-full items-center justify-end gap-2">
+				<ul class="flex w-full items-center justify-end gap-2 ">
 					<ul class="flex w-full items-center justify-center gap-2">
 						<li class="logo-mobile block md:hidden">
 							<img src="/logo.svg" class="h-8" alt="devcanvas" />

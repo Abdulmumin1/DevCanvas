@@ -30,6 +30,7 @@
 						>Explore awesome creations by the community</span
 					>
 				</a>
+				<a href="/snippets" class="py-4" on:click={closeModal}>Snippets </a>
 				<a href="/blog" class="py-4" on:click={closeModal}>Blog </a>
 				<a href="/dashboard" class="py-4" on:click={closeModal}>Dashboard </a>
 				<a href="/play/try" class="py-4" on:click={closeModal}

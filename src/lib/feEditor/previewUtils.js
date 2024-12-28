@@ -43,7 +43,12 @@ export function constructHtml(current_data) {
 			cssPlist.push(materialiconsLINK);
 		}
 		if (cssPlugins.tailwind) {
-			cssPlist.push('<script src="https://cdn.tailwindcss.com" defer></script>');
+			cssPlist.push('<script src="https://cdn.tailwindcss.com"></script>');
+			// script = fetch('https://cdn.tailwindcss.com').then((data) => {
+			// 	data.text().then((dt) => {
+			// 		cssPlist.push(`<script>${dt}</script>`);
+			// 	});
+			// });
 		}
 	});
 
