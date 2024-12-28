@@ -89,15 +89,15 @@
 	}
 	async function more() {
 		console.log('current page count', $pageCountPl);
-		let result = await fetchPaginatedRows($pageCountPl, $pageCountPl + 12 - 1);
+		let result = await fetchPaginatedRows($pageCountPl, $pageCountPl + 24 - 1);
 
 		if (result.length == 0) {
 			showMore = false;
 			console.log('no more');
 			return;
-		} else if (result.length < 12) {
+		} else if (result.length < 24) {
 			showMore = false;
-			console.log('is less than 12');
+			console.log('is less than 24');
 		}
 
 		console.log('I got through using->', result.length);
@@ -105,7 +105,7 @@
 		collection = [...collection, ...result];
 
 		pageCountPl.update((cur) => {
-			return cur + 12;
+			return cur + 24;
 		});
 		loading = false;
 	}
@@ -113,13 +113,13 @@
 	$: showMore = collection.length > 5;
 
 	onMount(async () => {
-		if (collection.length < 12) {
+		if (collection.length < 24) {
 			showMore = false;
 		}
 	});
 
 	onDestroy(() => {
-		pageCountPl.set(12);
+		pageCountPl.set(24);
 	});
 </script>
 

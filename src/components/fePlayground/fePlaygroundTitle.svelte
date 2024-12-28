@@ -50,8 +50,8 @@
 		}
 	}
 
-	let profile = $current_data.profiles.username;
-	console.log($current_data)
+	let profile = $current_data?.profiles?.username;
+	// console.log($current_data)
 	// onMount(async () => {
 	// 	if ($current_data.user_id === session?.user?.id) return;
 	// 	try {

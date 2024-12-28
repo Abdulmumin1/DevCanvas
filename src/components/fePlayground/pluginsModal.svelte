@@ -104,7 +104,7 @@
 		out:fly={{ y: 80, duration: 150 }}
 		use:clickOutside
 		on:click_outside={closeModal}
-		class="bottom-0 z-50 flex flex-col items-center rounded-b-none rounded-t-lg bg-white px-2 pb-2 text-sm text-black dark:bg-black dark:text-white md:bottom-[5px] md:h-[900px] md:w-[500px] md:rounded-lg md:shadow-xl"
+		class="bottom-0 z-50 flex flex-col items-center  shadow-sky-300 bg-white px-2 pb-2 text-sm text-black dark:bg-primary dark:text-white md:bottom-[5px] md:h-[900px] md:w-[500px] md:rounded-lg md:shadow-xl"
 	>
 		<div
 			class="sticky top-0 z-50 mb-6 flex w-full items-center justify-center border-b border-sky-300 bg-white pb-2 pt-4 text-black dark:bg-black dark:text-white"
@@ -123,7 +123,7 @@
 						on:click={() => setTab('editor')}
 						class="relative px-4 py-2 transition-all duration-200 {activeTab === 'editor'
 							? 'rounded-lg  bg-gradient-to-r from-sky-400 to-sky-300 text-primary shadow-lg shadow-sky-200/20 transition-all duration-300 ease-out'
-							: 'text-gray-600 hover:text-sky-300'}"
+							: 'text-gray-400 hover:text-sky-300'}"
 					>
 						Editor
 					</button>
@@ -131,7 +131,7 @@
 						on:click={() => setTab('plugins')}
 						class="  relative px-4 py-2 transition-all duration-200 {activeTab === 'plugins'
 							? 'rounded-lg bg-gradient-to-r from-sky-400 to-sky-300 text-primary shadow-lg shadow-sky-200/20 transition-all duration-300 ease-out'
-							: 'text-gray-600 hover:text-sky-300'}"
+							: 'text-gray-400 hover:text-sky-300'}"
 					>
 						Plugins
 					</button>

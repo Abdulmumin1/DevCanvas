@@ -21,7 +21,7 @@
 	async function loadIntialData() {
 		let { data: dt, error } = await supabase
 			.from('snips')
-			.select('*')
+			.select('*, profiles (username)')
 			.ilike('description', `%${query}%`)
 			.order('created_at', { ascending: false })
 			.eq('user_id', session.user.id)
@@ -53,7 +53,7 @@
 		if (f == 't' || filter == 'tags') {
 			let { data: dt, error } = await supabase
 				.from('htmlPlayground')
-				.select('project_key, user_id, description, view (views)')
+				.select('project_key, user_id, description, view (views), profiles (username)')
 				// .or('tags.@>.{' + query + '}');
 
 				// .filter('tags', 'cs', '{"css","html"}')
@@ -79,7 +79,7 @@
 		} else if ((f = 'd' || filter == 'desc')) {
 			let { data: dt, error } = await supabase
 				.from('htmlPlayground')
-				.select('project_key, user_id, description, view (views)')
+				.select('project_key, user_id, description, view (views), profiles (username)')
 				// .or('tags.@>.{' + query + '}');
 
 				// .filter('tags', 'cs', '{"css","html"}')

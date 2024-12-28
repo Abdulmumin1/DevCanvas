@@ -41,7 +41,7 @@
 						<span class="rounded px-2 py-1 font-mono text-[#444] dark:text-gray-200"
 							>{formatKey(key)}</span
 						>
-						<span class="text-gray-600">{description}</span>
+						<span class="text-white/50">{description}</span>
 					</li>
 				{/each}
 			</ul>
