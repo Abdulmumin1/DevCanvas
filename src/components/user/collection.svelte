@@ -13,7 +13,7 @@
 	async function loadIntialData() {
 		let { data: dt, error } = await supabase
 			.from('snips')
-			.select('*')
+			.select('*, profiles (username)')
 			.eq('user_id', data.user_id)
 			.order('created_at', { ascending: false })
 			.limit($pageCountSnips);

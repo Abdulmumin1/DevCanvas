@@ -1,28 +1,10 @@
-export function injectJavascript(iframeDoc, js) {
-	const scriptElement = iframeDoc.createElement('script');
-	scriptElement.id = 'mainScript12343REFDS!';
-	scriptElement.textContent = `
-
-console.log = function(message) {
-// Send the console message to the parent page
-window.parent.postMessage({ type: 'console', message: message }, '*');
-};
-
-try {
-
-${js}
-
-} catch(err){
-console.log(err); 
-
-}`;
-	iframeDoc.body.appendChild(scriptElement);
-}
 
 import { cdns, fontawesomeLINK, materialiconsLINK, bootstrapLINK } from '$lib/plugins/store.js';
-import { compileSassString } from '$lib/utils.js';
+import { compileSassString } from '$lib/utils';
+// import { compileSassString } from '$lib/utils.js';
 
-export async function constructHtml(current_data, preview=false) {
+
+export function constructHtml(current_data, preview=false) {
 	let jsPlugins = [];
 	let cssPlugins = [];
 	let userImportedJS = current_data?.config?.userImportedJS ?? [];
@@ -54,7 +36,7 @@ export async function constructHtml(current_data, preview=false) {
 	let css = current_data.css;
 
 	if (current_data?.config?.cssProcessor) {
-		css = await compileSassString(css);
+		css =  compileSassString(css);
 	}
 	// console.log(css);
 	if (preview) {
@@ -116,3 +98,14 @@ export async function constructHtml(current_data, preview=false) {
 	</body>
 </html>`;
 }
+
+
+onmessage = function(e) {
+    console.log('Worker: Message received from main script');
+    const data = e.data
+    let htmlContent = constructHtml(data)
+    const blob = new Blob([htmlContent], { type: 'text/html' });
+	const blobURL = URL.createObjectURL(blob);
+    postMessage({htmlContent, blobURL});
+    
+  }

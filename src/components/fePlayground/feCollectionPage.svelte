@@ -32,7 +32,7 @@
 		const { data, error } = await supabase
 			.from('htmlPlayground')
 			.select('project_key, user_id, description, view (views), profiles (username)')
-			.eq('user_id', session.user.id)
+			.eq('user_id', user_id)
 			.order('created_at', { ascending: false }) // Optional: Ordering the results
 			.range(pageNumber, pageSize);
 

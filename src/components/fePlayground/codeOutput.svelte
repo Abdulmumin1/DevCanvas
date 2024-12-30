@@ -3,15 +3,18 @@
 	import { constructHtml } from '$lib/feEditor/previewUtils.js';
 	import { onDestroy, onMount } from 'svelte';
 	import { page } from '$app/stores';
-	import { fade } from 'svelte/transition';
+	import { crossfade, fade } from 'svelte/transition';
 	import { canvasConfig, jsPlugins, cssPlugins } from '$lib/feEditor/store.js';
 	import { faUsersRays } from '@fortawesome/free-solid-svg-icons';
+
+	import Worker from '$lib/feEditor/worker_script.js?worker';
 
 	let previewIframe;
 	let unsubscribe;
 	let useSrc = true; // Initially load from src
 	let initialSrc = `${$page.url.origin}/output/compile/${$page.params.slug}`;
 	let attempts = 0;
+	let isVisible = true;
 
 	// Throttle function to limit execution frequency
 	function throttle(func, limit) {
@@ -25,28 +28,74 @@
 		};
 	}
 
+	function InlineWorker(source) {
+		let blob = new Blob([source], { type: 'text/javascript' });
+		let url = URL.createObjectURL(blob);
+
+		let worker = new Worker(url);
+
+		URL.revokeObjectURL(url);
+
+		return worker;
+	}
+
+	let worker_service;
+
+	// if (typeof window !== 'undefined') {
+
+	// }
+
+	function UpdatePreview(params) {
+		const htmlContent = InlineWorker(String((async () => await constructHtml(data))()));
+		// console.log(htmlContent)
+		const blob = new Blob([htmlContent], { type: 'text/html' });
+		const blobURL = URL.createObjectURL(blob);
+
+		// Set the iframe src to the Blob URL
+		previewIframe.src = blobURL;
+
+		// Cleanup the Blob URL when it's no longer needed
+		previewIframe.onload = () => {
+			URL.revokeObjectURL(blobURL);
+		};
+	}
+
 	function updateIframeContent(data) {
-		if (previewIframe) {
-			const htmlContent = constructHtml(data);
-			const blob = new Blob([htmlContent], { type: 'text/html' });
-			const blobURL = URL.createObjectURL(blob);
-
-			// Set the iframe src to the Blob URL
-			previewIframe.src = blobURL;
-
-			// Cleanup the Blob URL when it's no longer needed
-			previewIframe.onload = () => {
-				URL.revokeObjectURL(blobURL);
-			};
+		if (previewIframe && worker_service) {
+			worker_service.postMessage(data);
+			// console.log(data)
 		}
 	}
 
 	// Throttle the update function to limit updates to once every 1000ms
-	const throttledUpdateIframeContent = throttle(updateIframeContent, 100);
+	const throttledUpdateIframeContent = throttle(updateIframeContent, 200);
 
 	// Subscribe to the current_data store
 	onMount(async () => {
-		const htm = await fetch(initialSrc);
+		// Only initialize the worker in the browser
+		worker_service = new Worker();
+		// console.log(worker_service)
+		worker_service.onmessage = (event) => {
+			const { htmlContent, blobURL } = event.data;
+			// const htmlContent = InlineWorker(String( (async()=>await constructHtml(data))()));
+			// console.log(htmlContent)
+			// const blob = new Blob([htmlContent], { type: 'text/html' });
+			// const blobURL = URL.createObjectURL(blob);
+
+			// Set the iframe src to the Blob URL
+
+			if (previewIframe) {
+				previewIframe.src = blobURL;
+
+				// Cleanup the Blob URL when it's no longer needed
+				previewIframe.onload = () => {
+					URL.revokeObjectURL(blobURL);
+					// isVisible = !isVisible
+				};
+			}
+		};
+
+		// const htm = await fetch(initialSrc);
 		unsubscribe = current_data.subscribe((data) => {
 			if (useSrc) {
 				// if (constructHtml(data) != htm) {
@@ -93,7 +142,11 @@
 	// Clean up the subscription when the component is destroyed
 	onDestroy(() => {
 		if (unsubscribe) unsubscribe();
+		if (worker_service) {
+			worker_service.terminate();
+		}
 	});
+	const [send, receive] = crossfade({ duration: 1500 });
 </script>
 
 <div bind:this={container} class="preview-container m-0 h-full w-full border-0 bg-white p-0">
@@ -109,12 +162,16 @@
 		<!-- <div class="absolute top-0 bg-green-400 text-4xl text-black">Using SRC directy</div> -->
 	{:else}
 		<!-- Switch to dynamic updates -->
-		<iframe
-			bind:this={previewIframe}
-			id="preview-frame"
-			class="preview-frame m-0 h-full w-full p-0"
-			title="Live Preview"
-		></iframe>
+		{#key isVisible}
+			<!-- out:receive -->
+			<iframe
+				bind:this={previewIframe}
+				id="preview-frame"
+				in:fade
+				class="preview-frame m-0 h-full w-full p-0"
+				title="Live Preview"
+			></iframe>
+		{/key}
 		<!-- <div class="absolute top-0 bg-yellow-400 text-4xl text-black">Using Iframe Updates</div> -->
 	{/if}
 

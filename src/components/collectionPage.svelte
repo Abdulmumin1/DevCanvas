@@ -35,7 +35,7 @@
 		const { data, error } = await supabase
 			.from('snips')
 			.select('*, profiles (username)')
-			.eq('user_id', session.user.id)
+			.eq('user_id', user_id)
 			.order('created_at', { ascending: false }) // Optional: Ordering the results
 			.range(pageNumber, pageSize);
 
