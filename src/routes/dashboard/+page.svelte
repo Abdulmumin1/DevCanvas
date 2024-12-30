@@ -46,7 +46,7 @@
 	async function loadIntialData() {
 		let { data: dt, error } = await supabase
 			.from('snips')
-			.select('*')
+			.select('*, profiles (username)')
 			.eq('user_id', session.user.id)
 			.order('created_at', { ascending: false })
 			.limit($pageCountSnips);
@@ -133,9 +133,10 @@
 						<!-- Code Snippet Cards -->
 						<div transition:fade class:hidden={showOther} class="hidden h-full">
 							<FeCollectionPage
-								user_id={data.session.id}
+								user_id={data.session.user.id}
 								collection={userSnippets}
 								supabase={data.supabase}
+								dashboard={true}
 							/>
 						</div>
 
@@ -150,8 +151,10 @@
 								<CollectionPage
 									rawcollection={userSnippets}
 									supabase={data.supabase}
+								dashboard={true}
+
 									showMore={userSnippets.length > 6}
-									user_id={data.session.id}
+									user_id={data.session.user.id}
 								/>
 							</div>
 

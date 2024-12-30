@@ -44,7 +44,7 @@
 
 <div class="tags mb-2 text-black">
 	{#each tags as tag, index}
-		<div class="tag" on:click={() => removeTag(index)}>{tag} &times;</div>
+		<div class="tag" role="button" on:click={() => removeTag(index)}>{tag} &times;</div>
 	{:else}
 		<p class="text-gray-300 mb-2">Canvas not Tagged!</p>
 	{/each}
@@ -54,7 +54,7 @@
 	<div>
 		<input
 			type="text"
-			class="rounded border border-sky-300 p-2 text-black outline-none focus:outline-1 focus:outline-offset-0 focus:outline-sky-300 dark:bg-secondary-dark dark:text-white"
+			class="w-full rounded-xl border-2 border-sky-300 p-2 text-black dark:border-gray-700 dark:bg-secondary-dark dark:text-white"
 			bind:value={tagInput}
 			on:keydown={(e) => {
 				if (e.key === 'Enter') addTag();
@@ -62,8 +62,10 @@
 			placeholder="Add a tag"
 			disabled={tags.length >= 8}
 		/>
-		<button on:click={addTag} disabled={tags.length >= 8} class="rounded bg-sky-300 p-2 text-black"
-			>Add</button
+		<button
+			on:click={addTag}
+			disabled={tags.length >= 8}
+			class="rounded-xl bg-sky-300 px-6 py-1 text-black">Add</button
 		>
 	</div>
 {/if}
