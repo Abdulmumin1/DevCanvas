@@ -47,9 +47,14 @@ export const actions = {
 		const { data, error } = await supabase.auth.signInWithOAuth({
 			provider: 'github',
 			options: {
-				redirectTo: `${url.origin}/dashboard`
+				redirectTo: `${url.origin}/code/exchange/callback`
 			}
 		});
+
+		if (data.url) {
+			// console.log(data.url)
+			throw redirect(302, data.url);
+		}
 	}
 };
 
