@@ -14,7 +14,7 @@
 <div
 	class="card flex h-full flex-col rounded-xl bg-gray-100 p-1 shadow-sm transition-transform duration-300 dark:bg-secondary-dark md:max-w-[350px]"
 >
-	<!-- <iframe
+	<iframe
 		src="{$page.url.origin}/output/compile/{details.project_key}?p=1"
 		title="Project Preview"
 		height="200"
@@ -23,7 +23,7 @@
 		loading="lazy"
 		class="h-[250px] w-full overflow-hidden rounded-xl"
 		style="aspect-ratio: 1/1; pointer-events: none;"
-	/> -->
+	/>
 	<!-- <img 
 	src="{$page.url.origin}/output/image/{details.project_key}"
 	loading="lazy"
