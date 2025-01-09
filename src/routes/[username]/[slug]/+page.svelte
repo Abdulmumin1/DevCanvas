@@ -28,7 +28,7 @@
 	import { faCheck } from '@fortawesome/free-solid-svg-icons';
 	import { onMount, setContext } from 'svelte';
 	import SEO from '$components/seoComp.svelte';
-	import Footer from '$components/footer.svelte'
+	import Footer from '$components/footer.svelte';
 	export let data;
 	setContext('isOwner', false);
 	if (data.isFound && data.session) {
@@ -37,7 +37,7 @@
 	}
 
 	// console.log(data[0])
-	let username = data[0].profiles.username
+	let username = data[0].profiles.username;
 	// console.log(data.username.length);
 
 	let copied = false;
@@ -61,12 +61,10 @@
 
 	let encodedTitle = convertLinkToRequestReadable(data['0'].description);
 
-	let url
-	onMount(()=>{
+	let url;
+	onMount(() => {
 		url = window.location.href;
-
-	})
-	
+	});
 </script>
 
 <svelte:head>
@@ -96,9 +94,7 @@
 					<h1 class="pt-3 text-center text-2xl font-semibold">{data[0].description}</h1>
 					<p>Shared by: <a href="/{username}">{username}</a></p>
 				</div>
-				<div
-					class="relative h-full w-full rounded-lg p-4 text-[11px] md:w-[90%] md:text-base"
-				>
+				<div class="relative h-full w-full rounded-lg p-4 text-[11px] md:w-[90%] md:text-base">
 					<div
 						class="absolute right-10 top-10 flex items-center justify-center text-base md:text-xl"
 					>
@@ -106,22 +102,21 @@
 						<button class="p-2" on:click={CopyAction}><Fa icon={iconCopy} /></button>
 					</div>
 					<div>
-
 						<HighlightAuto code={data[0].code} let:highlighted>
 							<LineNumbers {highlighted} hideBorder />
 						</HighlightAuto>
 					</div>
 
 					<div
-						class="prose flex flex-col gap-2 prose-lg mt-6 max-w-full dark:prose-invert prose-headings:w-fit prose-headings:underline prose-headings:underline-offset-2 "
+						class="prose prose-lg mt-6 flex max-w-full flex-col gap-2 dark:prose-invert prose-headings:w-fit prose-headings:underline prose-headings:underline-offset-2"
 					>
-					<!-- {JSON.stringify(data[0].markdown)} -->
-						{@html data[0].markdown }
+						<!-- {JSON.stringify(data[0].markdown)} -->
+						{@html data[0].markdown}
 					</div>
 				</div>
 			</div>
 		</div>
-		<div class="flex w-full items-center justify-center p-3 my-8">
+		<div class="my-8 flex w-full items-center justify-center p-3">
 			<div
 				class="flex w-full max-w-md items-center justify-between rounded-lg border border-b-2 bg-primary p-4 text-light dark:border-secondary-dark"
 			>
@@ -158,7 +153,11 @@
 					>
 						<Fa icon={faHackerNews} />
 					</a>
-					<a href="https://www.facebook.com/sharer/sharer.php?u={url}" target="_blank" rel="noopener">
+					<a
+						href="https://www.facebook.com/sharer/sharer.php?u={url}"
+						target="_blank"
+						rel="noopener"
+					>
 						<Fa icon={faFacebook} />
 					</a>
 					<a
@@ -179,7 +178,8 @@
 		</div>
 	{/if}
 </article>
-<Footer/>
+<Footer />
+
 <style>
 	/* Hide the vertical scrollbar */
 	::-webkit-scrollbar {

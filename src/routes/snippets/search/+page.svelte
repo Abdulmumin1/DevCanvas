@@ -6,14 +6,19 @@
 	import CollectionDummy from '$components/collectionDummy.svelte';
 	import { fade } from 'svelte/transition';
 	import CollectionPage from '$components/collectionPage.svelte';
+	import SEO from '$components/seoComp.svelte';
 
 	export let data;
 	let userSnippets = data.userSnippets;
-	console.log(data);
+	// console.log(data);
 </script>
 
 <svelte:head>
-	<meta name="robots" content="index, follow" />
+	<SEO
+		title="Snippets"
+		description="Collection of useful snippets and explanations"
+		url="https://devcanvas.art/explore"
+	/>
 </svelte:head>
 
 <NavWrapper>

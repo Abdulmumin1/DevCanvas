@@ -19,7 +19,7 @@
 
 <svelte:head>
 	{#if data.isFound}
-		<title></title>
+		<!-- <title></title> -->
 		<SEO title={data.details.name} description={`${data.details.name}'s profile on devcanvas`} />
 		<!-- Facebook Meta Tags -->
 		<!-- <meta property="og:title" content={data['0'].description} />-->

@@ -79,7 +79,7 @@
 					<div
 						class="min-w-[50px] max-w-[160px] truncate bg-inherit text-sm font-semibold capitalize text-white focus:outline-1 focus:outline-sky-200 md:text-xl"
 					>
-						<p
+						<h1
 							contenteditable
 							on:keydown={handleKeyDown}
 							on:input={handleInput}
@@ -88,11 +88,11 @@
 							class="truncate"
 						>
 							{title}
-						</p>
+						</h1>
 					</div>
 				</div>
 			{:else}
-				<p
+				<h1
 					contenteditable
 					on:keydown={handleKeyDown}
 					on:input={handleInput}
@@ -101,7 +101,7 @@
 					class="w-fit min-w-[50px] max-w-[180px] truncate bg-inherit text-sm font-semibold capitalize text-white focus:outline-1 focus:outline-sky-200 md:max-w-[400px] md:text-xl xl:max-w-[600px]"
 				>
 					{$current_data.description}
-				</p>
+				</h1>
 			{/if}
 			<span class="jello-diagonal-2 cursor-pointer text-[11px] text-white md:text-base">
 				<Fa icon={faPen} />
@@ -117,9 +117,9 @@
 			<div
 				class="flex w-fit max-w-[160px] items-center gap-2 bg-inherit text-sm font-semibold capitalize text-white outline-none md:max-w-[400px] md:text-xl xl:max-w-[600px]"
 			>
-				<p class="truncate">
+				<h1 class="truncate">
 					{title}
-				</p>
+				</h1>
 			</div>
 		</div>
 	{:else}
@@ -127,9 +127,9 @@
 			style="margin-bottom: -7px;"
 			class="flex w-fit max-w-[180px] items-center gap-2 bg-inherit text-sm font-semibold capitalize text-white outline-none md:max-w-[400px] md:text-xl xl:max-w-[600px]"
 		>
-			<p class="truncate">
+			<h1 class="truncate">
 				{$current_data.description}
-			</p>
+			</h1>
 		</div>
 	{/if}
 

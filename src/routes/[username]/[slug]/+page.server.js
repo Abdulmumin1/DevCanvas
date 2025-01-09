@@ -16,11 +16,14 @@ let options = {
 			return `{@html \`${html}\`}`;
 		}
 	}
-}
-export async function load({ url, params, locals:{supabase} }) {
+};
+export async function load({ url, params, locals: { supabase } }) {
 	let slug = params['slug'];
 	// console.log(slug);
-	let { data, error: err } = await supabase.from('snips').select('*, profiles (username)').eq('project_key', slug);
+	let { data, error: err } = await supabase
+		.from('snips')
+		.select('*, profiles (username)')
+		.eq('project_key', slug);
 	if (err) throw err;
 
 	if (data.length <= 0) {
@@ -36,22 +39,21 @@ export async function load({ url, params, locals:{supabase} }) {
 
 	// if (er) throw er;
 	// console.log(username, data[0].user_id);
-	
-		// let fullurl = `${url.origin}/xi1w/${slug}`;
-		let fullurl = `${url.origin}/${data[0].profiles.username}/${slug}`;
-		if (url.origin + url.pathname != fullurl) {
-			console.log('invalide url');
-			throw redirect(307, `/${data[0].profiles.username}/${slug}`);
-		} else {
-			console.log('valide url');
-		}
-	
 
-	 let rendered = await compile(data[0].markdown, options)
-	
-    
-	data[0]['markdown']  = rendered.code.replace(/{@html `<pre/g, '<pre')
-	.replace(/<\/code><\/pre>`}/g, '</code></pre>');
+	// let fullurl = `${url.origin}/xi1w/${slug}`;
+	let fullurl = `${url.origin}/${data[0].profiles.username}/${slug}`;
+	if (url.origin + url.pathname != fullurl) {
+		console.log('invalide url');
+		throw redirect(307, `/${data[0].profiles.username}/${slug}`);
+	} else {
+		console.log('valide url');
+	}
+
+	let rendered = await compile(data[0].markdown, options);
+
+	data[0]['markdown'] = rendered.code
+		.replace(/{@html `<pre/g, '<pre')
+		.replace(/<\/code><\/pre>`}/g, '</code></pre>');
 
 	return { ...data, isFound: data.length > 0 };
 }

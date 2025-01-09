@@ -16,7 +16,6 @@
 
 	import { marked } from 'marked';
 
-
 	export let data;
 
 	// function handleContentChange(event) {
@@ -44,7 +43,6 @@
 	}
 
 	previewMode.set(true);
-
 
 	let value = '';
 	// editor.addAction(saveAction);
@@ -83,15 +81,12 @@
 		current_data.set(data['0']);
 		value = data['0']?.markdown;
 		// getUser()
-
 	});
 
-	let activeTab = 'edit'
+	let activeTab = 'edit';
 	function setTab(tab) {
-		activeTab = tab
+		activeTab = tab;
 	}
-
-
 </script>
 
 <svelte:head>
@@ -117,37 +112,38 @@
 				<div class="rounded-xl bg-gray-100 p-4 *:border-none dark:bg-secondary-dark">
 					<div class="mb-4">
 						<button
-						on:click={() => setTab('edit')}
-						class="relative px-4 py-2 transition-all duration-200 {activeTab === 'edit'
-							? 'rounded-lg  bg-gradient-to-r from-sky-400 to-sky-300 text-primary shadow-lg shadow-sky-200/20 transition-all duration-300 ease-out'
-							: 'text-gray-600 hover:text-sky-300'}"
-					>
-						Editor
-					</button>
-					<button
-						on:click={() => setTab('preview')}
-						class="  relative px-4 py-2 transition-all duration-200 {activeTab === 'preview'
-							? 'rounded-lg bg-gradient-to-r from-sky-400 to-sky-300 text-primary shadow-lg shadow-sky-200/20 transition-all duration-300 ease-out'
-							: 'text-gray-600 hover:text-sky-300'}"
-					>
-						Preview
-					</button>
-
+							on:click={() => setTab('edit')}
+							class="relative px-4 py-2 transition-all duration-200 {activeTab === 'edit'
+								? 'rounded-lg  bg-gradient-to-r from-sky-400 to-sky-300 text-primary shadow-lg shadow-sky-200/20 transition-all duration-300 ease-out'
+								: 'text-gray-600 hover:text-sky-300'}"
+						>
+							Editor
+						</button>
+						<button
+							on:click={() => setTab('preview')}
+							class="  relative px-4 py-2 transition-all duration-200 {activeTab === 'preview'
+								? 'rounded-lg bg-gradient-to-r from-sky-400 to-sky-300 text-primary shadow-lg shadow-sky-200/20 transition-all duration-300 ease-out'
+								: 'text-gray-600 hover:text-sky-300'}"
+						>
+							Preview
+						</button>
 					</div>
 					{#if activeTab == 'edit'}
-						
-					<textarea  bind:value={value} class="dark:bg-secondary-dark p-4 rounded-xl border-none outline-none  w-full min-h-[800px]" spellcheck="false "/>
+						<textarea
+							bind:value
+							class="min-h-[800px] w-full rounded-xl border-none p-4 outline-none dark:bg-secondary-dark"
+							spellcheck="false "
+						/>
 					{:else}
-					<div>
-						{#await marked(value)}
-							loading
-						{:then html}
-							<div class="prose dark:prose-invert max-w-full">
-								{@html html} 
-							</div>
-							
-						{/await}
-					</div>
+						<div>
+							{#await marked(value)}
+								loading
+							{:then html}
+								<div class="prose max-w-full dark:prose-invert">
+									{@html html}
+								</div>
+							{/await}
+						</div>
 					{/if}
 				</div>
 			</div>

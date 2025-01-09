@@ -11,9 +11,10 @@ export async function GET({ fetch, url, locals: { supabase } }) {
 
 	let { data: snips, error: errSnipps } = await supabase
 		.from('snips')
-		.select('project_key, profiles (username)').order('created_at', { ascending: false });
+		.select('project_key, profiles (username)')
+		.order('created_at', { ascending: false });
 
-    console.log(keys,snips)
+	console.log(keys, snips);
 	const xml = `
     <?xml version="1.0" encoding="UTF-8" ?>
     <urlset

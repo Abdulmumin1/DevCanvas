@@ -1,10 +1,8 @@
-
 import { cdns, fontawesomeLINK, materialiconsLINK, bootstrapLINK } from '$lib/plugins/store.js';
 import { compileSassString } from '$lib/utils';
 // import { compileSassString } from '$lib/utils.js';
 
-
-export function constructHtml(current_data, preview=false) {
+export function constructHtml(current_data, preview = false) {
 	let jsPlugins = [];
 	let cssPlugins = [];
 	let userImportedJS = current_data?.config?.userImportedJS ?? [];
@@ -15,20 +13,20 @@ export function constructHtml(current_data, preview=false) {
 	}
 	let cssPlist = [];
 	// console.log(cssPlugins)
-	let setf = new Set(Object.keys(cssPlugins))
+	let setf = new Set(Object.keys(cssPlugins));
 	// console.log("Plugins", setf)
 	setf.forEach((element) => {
 		// console.log(element)
-		if (element == "fontawesome" && cssPlugins.fontawesome) {
+		if (element == 'fontawesome' && cssPlugins.fontawesome) {
 			cssPlist.push(fontawesomeLINK);
 		}
-		if (element == "bootstrap" && cssPlugins.bootstrap) {
+		if (element == 'bootstrap' && cssPlugins.bootstrap) {
 			cssPlist.push(bootstrapLINK);
 		}
-		if (element == "materialicons" && cssPlugins.materialicons) {
+		if (element == 'materialicons' && cssPlugins.materialicons) {
 			cssPlist.push(materialiconsLINK);
 		}
-		if (element == "tailwind" && cssPlugins.tailwind) {
+		if (element == 'tailwind' && cssPlugins.tailwind) {
 			cssPlist.push('<script src="https://cdn.tailwindcss.com" defer></script>');
 		}
 	});
@@ -36,7 +34,7 @@ export function constructHtml(current_data, preview=false) {
 	let css = current_data.css;
 
 	if (current_data?.config?.cssProcessor) {
-		css =  compileSassString(css);
+		css = compileSassString(css);
 	}
 	// console.log(css);
 	if (preview) {
@@ -99,13 +97,11 @@ export function constructHtml(current_data, preview=false) {
 </html>`;
 }
 
-
-onmessage = function(e) {
-    console.log('Worker: Message received from main script');
-    const data = e.data
-    let htmlContent = constructHtml(data)
-    const blob = new Blob([htmlContent], { type: 'text/html' });
+onmessage = function (e) {
+	console.log('Worker: Message received from main script');
+	const data = e.data;
+	let htmlContent = constructHtml(data);
+	const blob = new Blob([htmlContent], { type: 'text/html' });
 	const blobURL = URL.createObjectURL(blob);
-    postMessage({htmlContent, blobURL});
-    
-  }
+	postMessage({ htmlContent, blobURL });
+};

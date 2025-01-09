@@ -14,6 +14,7 @@
 	import EmbedModal from '$components/fePlayground/embedModal.svelte';
 	import { page } from '$app/stores';
 	import { setReloadContext, getReload } from '$lib/feEditor/funct.js';
+	import SEO from '$components/seoComp.svelte';
 
 	setReloadContext();
 
@@ -104,15 +105,11 @@
 </script>
 
 <svelte:head>
-	<title>{'Try DevCanvas'}</title>
-
-	<!-- Facebook Meta Tags -->
-	<meta property="og:title" content={'Try DevCanvas'} />
-
-	<!-- Twitter Meta Tags -->
-	<meta name="twitter:title" content={'Try DevCanvas'} />
-
-	<!-- HTML Meta Tags -->
+	<SEO
+		title="Try DevCanvas"
+		description="Online html/css/js sandbox"
+		url="https://devcanvas.art/explore"
+	/>
 </svelte:head>
 
 <main class="flex h-screen flex-col">

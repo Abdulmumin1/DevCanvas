@@ -13,7 +13,8 @@ export async function GET({ url, params, locals: { supabase } }) {
 		.single();
 
 	if (error || !data) {
-		return new Response(`<!DOCTYPE html>
+		return new Response(
+			`<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -23,11 +24,13 @@ export async function GET({ url, params, locals: { supabase } }) {
 <body>
     
 </body>
-</html>`, {
-			headers: {
-				'Content-Type': 'text/html'
+</html>`,
+			{
+				headers: {
+					'Content-Type': 'text/html'
+				}
 			}
-		});
+		);
 	}
 	// console.log(data)
 

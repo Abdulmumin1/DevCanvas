@@ -151,8 +151,7 @@
 								<CollectionPage
 									rawcollection={userSnippets}
 									supabase={data.supabase}
-								dashboard={true}
-
+									dashboard={true}
 									showMore={userSnippets.length > 6}
 									user_id={data.session.user.id}
 								/>
