@@ -100,7 +100,7 @@
 
 	<SEO
 		title={data.meta.title}
-		description={data.meta?.description || data.meta.title}
+		description={data.meta?.description.slice(0, 250) || data.meta.title}
 		index={data.meta?.published == true}
 		imageUrl={data.meta?.thumbnail ??
 			`https://devcanvas.art/og?message=${encodeURIComponent(data.meta.title)}`}

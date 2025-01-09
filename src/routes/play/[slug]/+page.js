@@ -5,7 +5,7 @@ import { getProfile, getViews } from '$lib/utils.js';
 /** @type {import('./$types').PageLoad} */
 export async function load({ params, parent }) {
 	let { details, supabase } = await parent();
-	console.log('Prefetching page', details)
+	console.log('Prefetching page', details);
 
 	// try {
 	// 	const user_name = await getProfile(details.user_id, supabase);
@@ -21,7 +21,6 @@ export async function load({ params, parent }) {
 	// }
 
 	details = { ...details, profile: details.profiles.username, views: details.view[0]?.views };
-
 
 	return { details };
 }

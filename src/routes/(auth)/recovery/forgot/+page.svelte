@@ -3,6 +3,8 @@
 	import { faExclamationCircle, faSpinner } from '@fortawesome/free-solid-svg-icons';
 	import { slide } from 'svelte/transition';
 	import { enhance } from '$app/forms';
+	import SEO from '$components/seoComp.svelte';
+
 	let email;
 	let loading = false;
 	let completed = false;
@@ -25,7 +27,11 @@
 </script>
 
 <svelte:head>
-	<title>Forgot password - devCanvas</title>
+	<SEO
+		title="Forgot Password - DevCanvas"
+		description="Online html/css/js sandbox"
+		url="https://devcanvas.art/recovery/forgot"
+	/>
 </svelte:head>
 
 <div class="flex h-screen items-center justify-center bg-white text-primary">

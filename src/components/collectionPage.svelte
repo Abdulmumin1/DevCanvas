@@ -114,7 +114,7 @@
 
 	async function returnDataWithProfile(arr, supabase) {
 		// console.log('jlfdajkfda fda fda fda ');
-		
+
 		return arr;
 	}
 

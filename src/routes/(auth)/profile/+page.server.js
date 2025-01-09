@@ -60,7 +60,7 @@ export const actions = {
 				return fail(402, { message });
 			} else {
 				const { data: dx, error: dxerr } = await supabase.auth.updateUser({
-					data: { username, name, profileComplete : true }
+					data: { username, name, profileComplete: true }
 				});
 				// await supabase.auth.refreshSession();
 				return body;

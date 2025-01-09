@@ -121,7 +121,7 @@
 			use:enhance={handleSubmit}
 			class="mt-2 flex w-full flex-1 flex-col gap-4 rounded-lg"
 		>
-			<h2 class="text-center text-2xl">Sign Up</h2>
+			<h1 class="text-center text-2xl">Sign Up</h1>
 
 			<div class="flex flex-col gap-3">
 				<input

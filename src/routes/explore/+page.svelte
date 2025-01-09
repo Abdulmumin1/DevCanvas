@@ -38,7 +38,7 @@
 </script>
 
 <svelte:head>
-	<title>Explore</title>
+	<!-- <title>Exp	lore</title> -->
 	<!--
 	<meta
 		property="og:description"

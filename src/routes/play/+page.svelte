@@ -3,6 +3,7 @@
 	import { goto } from '$app/navigation';
 	import NavWrapper from '$components/snips/navWrapper.svelte';
 	import { user } from '$lib/index.js';
+	import SEO from '$components/seoComp.svelte';
 
 	let projectName = 'Untitled Project';
 	let currentTip = '';
@@ -59,6 +60,20 @@
 		await goto(`play/try?name=${projectName}`);
 	}
 </script>
+
+<svelte:head>
+	<!-- <title>Exp	lore</title> -->
+	<!--
+	<meta
+		property="og:description"
+		content="Library of Awesome frontend creations for your inspiration!"
+	/> -->
+	<SEO
+		title="Explore"
+		description="Library of Awesome frontend creations for your inspiration!"
+		url="https://devcanvas.art/play"
+	/>
+</svelte:head>
 
 <NavWrapper>
 	<div class="mx-[-30px] min-h-[10vh] overflow-hidden bg-gradient-to-br p-8 pt-20 dark:bg-primary">
