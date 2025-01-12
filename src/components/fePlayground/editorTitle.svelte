@@ -13,7 +13,7 @@
 		<p class="flex items-center gap-1 bg-black px-3 py-1">
 			<span class="text-rose-500"><Fa icon={faHtml5} /></span>HTML
 		</p>
-		<div class="relative flex gap-3 px-4">
+		<div class="relative flex gap-3 ">
 			<EditorSettings />
 		</div>
 	</div>

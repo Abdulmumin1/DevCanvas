@@ -69,6 +69,7 @@
 
 	// Throttle the update function to limit updates to once every 1000ms
 	const throttledUpdateIframeContent = throttle(updateIframeContent, 200);
+	let tryDC = $page.url.pathname == '/play/try'
 
 	// Subscribe to the current_data store
 	onMount(async () => {
@@ -97,7 +98,7 @@
 
 		// const htm = await fetch(initialSrc);
 		unsubscribe = current_data.subscribe((data) => {
-			if (useSrc) {
+			if (useSrc && !tryDC) {
 				// if (constructHtml(data) != htm) {
 				// 	useSrc = false;
 				// 	throttledUpdateIframeContent(data);
@@ -150,7 +151,7 @@
 </script>
 
 <div bind:this={container} class="preview-container m-0 h-full w-full border-0 bg-white p-0">
-	{#if useSrc}
+	{#if useSrc && !tryDC}
 		<!-- Load initial preview via src -->
 		<iframe
 			bind:this={previewIframe}

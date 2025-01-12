@@ -51,7 +51,7 @@
 </div>
 
 {#if owner}
-	<div>
+	<div class="flex gap-2">
 		<input
 			type="text"
 			class="w-full rounded-xl border-2 border-sky-300 p-2 text-black dark:border-gray-700 dark:bg-secondary-dark dark:text-white"

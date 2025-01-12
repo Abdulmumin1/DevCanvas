@@ -43,9 +43,33 @@
 	function removeTag(index) {
 		scrpts = scrpts.filter((_, i) => i !== index);
 	}
+
+
+	let searchResult = []
+
+	async function searchCdnjs(e) {
+		let query = e.target.value;
+
+		let searchUrl = `https://api.cdnjs.com/libraries?search=${query}&limit=10`
+
+		let response = await fetch(searchUrl)
+		let jsonRes = await response.json()
+
+		// console.log(jsonRes.results)
+		searchResult = jsonRes.results
+	}
+
+	let delayt = 300
+	let setTimeoutT = null;
+	const searchCdnjsThrottle = (e)=>{
+		clearTimeout(setTimeoutT)
+		setTimeout(async ()=>{
+			await searchCdnjs(e)
+		}, delayt)
+	}
 </script>
 
-<div class="flex flex-col gap-2">
+<div class="flex flex-col gap-2 relative">
 	<div class="font-semibold">External Script</div>
 
 	<div class="flex gap-2">
@@ -56,7 +80,7 @@
 			on:keydown={(e) => {
 				if (e.key === 'Enter') addTag();
 			}}
-			placeholder="Enter src url"
+			on:input={searchCdnjsThrottle}			placeholder="Enter src url / Search cdnjs"
 			disabled={scrpts.length >= 8}
 		/>
 		<button
@@ -65,6 +89,18 @@
 			class="rounded-xl bg-sky-300 px-6 py-1 text-black">Add</button
 		>
 	</div>
+	{#if searchResult.length > 0 && tagInput}
+		<div  class="absolute top-[73px] bg-gray-200 text-black flex flex-col p-1 rounded-lg w-full items-start">
+			{#each [...searchResult].slice(0, 10) as result}
+			<button
+			class="px-2 hover:bg-gray-300 w-full py-1 text-left rounded-lg"
+			 on:click={()=>{
+				tagInput = result.latest;
+				addTag()
+			}}>{result.name} - {result.latest}</button>
+		{/each}
+		</div>
+	{/if}
 
 	<div class="tags flex w-full flex-col text-black">
 		{#each scrpts as tag, index}
