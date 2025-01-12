@@ -10,14 +10,14 @@ export async function POST({ locals: { supabase, getSession }, request }) {
 		throw error(400, { message: ' unable to complete action' });
 	}
 	let key = generateRandomKey();
+	let save = body?.save;
 	let html = body.html;
 	let css = body.css;
 	let js = body.js;
 	let plugins = [JSON.parse(body.plugins)];
 	let config = JSON.parse(body.config);
 
-	let description =
-		body.description == 'Untitled Canvas' ? body.description : `Fork: ${body.description}`;
+	let description = save ? body.description : `Fork: ${body.description}`;
 	let user_id = session.user.id;
 	// console.log(session.user);
 	const { data, error: err } = await supabase

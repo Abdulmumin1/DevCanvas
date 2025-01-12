@@ -11,6 +11,7 @@ export let dummyTitle = writable('Hover Animation');
 export let babelActive = writable(false);
 export let typescriptActive = writable(false);
 export let formatCode = writable(false);
+export let tabsView = writable(false);
 // export let setFormatCode =
 function appendJSONToFormData(json, formData, which) {
 	for (const key in json) {

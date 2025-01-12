@@ -69,7 +69,7 @@
 		content="Library of Awesome frontend creations for your inspiration!"
 	/> -->
 	<SEO
-		title="Explore"
+		title="Create - Devcanvas"
 		description="Library of Awesome frontend creations for your inspiration!"
 		url="https://devcanvas.art/play"
 	/>

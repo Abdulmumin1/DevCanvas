@@ -21,7 +21,7 @@
 		<ul class="flex h-full w-full flex-col gap-4 pl-3">
 			<ul class="flex h-full w-full flex-col gap-4 transition-all duration-200">
 				<li class="border-b px-2 py-12 dark:border-primary">
-					<img src="/logo.svg" alt="" width="100" />
+					<a href="/"><img src="/logo.svg" alt="" width="100" /></a>
 					<a href="/dashboard" class="text-2xl text-sky-400"
 						><span class="text-white dark:text-light">Dev</span>Canvas
 					</a><br />

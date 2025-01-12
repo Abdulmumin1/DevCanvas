@@ -21,6 +21,7 @@
 		formData.append('css', $current_data.css);
 		formData.append('html', $current_data.html);
 		formData.append('description', $current_data.description);
+		formData.append('save', demo);
 		formData.append(
 			'plugins',
 			JSON.stringify({

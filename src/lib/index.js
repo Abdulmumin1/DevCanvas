@@ -12,8 +12,8 @@ export const dashboardLoading = writable(true);
 export const autoSavefast = writable(true);
 
 export const editorSettingState = writable(false);
-export const delayPreview = writable(false);
-
+export const delayPreview = writable(true);
+// tabsView
 export const SnippetsDescription = readable({
 	name: 'DevCanvas - Super Fast Online Editor',
 	des: 'an online editor with super powers, fast preview, plugins and super cool library of cool Frontend creations for your inspiration.',

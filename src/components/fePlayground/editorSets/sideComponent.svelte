@@ -11,7 +11,7 @@
 		delayPreview,
 		autoSavefast
 	} from '$lib/index.js';
-	import { saveData } from '$lib/feEditor/store.js';
+	import { saveData, tabsView } from '$lib/feEditor/store.js';
 
 	import { hide_css, hide_js, editorFontSize } from '$lib/editor/settings.js';
 
@@ -63,6 +63,9 @@
 	function handleAutoSave(event) {
 		autoSavefast.set(event.detail.status);
 	}
+	function handleTabView(event) {
+		tabsView.set(event.detail.status);
+	}
 </script>
 
 <div class="drop flex h-full w-full flex-col overflow-auto">
@@ -99,6 +102,13 @@
 						label={'Word Wrap'}
 						on:checked={handleWordWrap}
 						checked={$wordWrapSetting}
+					/>
+				</li>
+				<li class="w-full rounded-lg bg-gray-200 p-2 dark:bg-primary">
+					<SingleSetting
+						label={'Tabs View'}
+						on:checked={handleTabView}
+						checked={$tabsView}
 					/>
 				</li>
 			</ul>
@@ -156,7 +166,7 @@
 		<li class="px-2 font-semibold dark:text-white md:hidden">Actions</li>
 
 		{#if $isOwner}
-			<li>
+			<li class="p-2">
 				<button
 					for=""
 					class="flex w-fit cursor-pointer items-center justify-center gap-2 rounded-lg bg-error p-2 text-black transition-all duration-300 hover:gap-4 active:scale-95"
