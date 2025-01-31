@@ -107,7 +107,7 @@
 		class="bottom-0 z-50 flex flex-col items-center bg-white px-2 pb-2 text-sm text-black shadow-sky-300 dark:bg-primary dark:text-white md:bottom-[5px] md:h-[900px] md:w-[500px] md:rounded-lg md:shadow-xl"
 	>
 		<div
-			class="sticky top-0 z-50 mb-6 flex w-full items-center justify-center border-b border-sky-300 bg-white pb-2 pt-4 text-black dark:bg-secondary-dark dark:text-white"
+			class="sticky top-0 z-50 mb-6 flex w-full items-center justify-center border-b border-sky-300 bg-white pb-2 pt-4 text-black dark:bg-primary dark:text-white"
 		>
 			<!-- <div
 				class="flex w-full max-w-6xl items-center justify-center gap-4 px-2 text-base md:text-lg"
