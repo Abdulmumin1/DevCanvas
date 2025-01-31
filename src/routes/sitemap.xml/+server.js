@@ -14,7 +14,8 @@ export async function GET({ fetch, url, locals: { supabase } }) {
 		.select('project_key, profiles (username)')
 		.order('created_at', { ascending: false });
 
-	console.log(keys, snips);
+	// console.log(keys, snips);
+  
 	const xml = `
     <?xml version="1.0" encoding="UTF-8" ?>
     <urlset
@@ -58,9 +59,7 @@ export async function GET({ fetch, url, locals: { supabase } }) {
 			.map(
 				(post) => `
             <url>
-               
-                <loc>${url.origin}/blog/${post.slug}</loc>
-                <lastmod>${post?.lastmod}</lastmod>
+                <loc>${url.origin}/blog/${post.slug}</loc> 
             </url>
         `
 			)
