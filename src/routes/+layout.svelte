@@ -24,6 +24,7 @@
 	import PageLoadProgess from '../components/pageLoadProgess.svelte';
 	import { page } from '$app/stores';
 	import AcceptCookies from '../components/auth/acceptCookies.svelte';
+	import Page from './(auth)/signin/+page.svelte';
 
 	// console.log(supabase.auth.getUser());
 
@@ -59,6 +60,11 @@
 	onMount(async () => {
 		url = window.location.href.replace('www.', '');
 		const { data } = supabase.auth.onAuthStateChange((event, _session) => {
+			if (_session?.user) {
+				if (window.name == 'authPopup') {
+					window.close();
+				}
+			}
 			user.set(_session?.user);
 			if (_session?.expires_at !== session?.expires_at) {
 				invalidateAll('supabase:auth');

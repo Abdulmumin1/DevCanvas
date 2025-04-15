@@ -9,7 +9,7 @@
 	import { css } from '@codemirror/lang-css'; // Or other language extension
 	import { editorFontSize } from '$lib/editor/settings.js';
 
-	import { onMount } from 'svelte';
+	import { getContext, onMount } from 'svelte';
 	import {
 		showSave,
 		saveData,
@@ -37,6 +37,8 @@
 
 	export let code;
 	export let lang;
+
+	let lockEditor = getContext('generating');
 	let updateDelayTm;
 	let typingTimer;
 	let delay = 1000;
@@ -80,10 +82,37 @@
 		showSave.set(true);
 	}
 
+	$: {
+		if (code && editorView) {
+			editorView.dispatch({
+				changes: {
+					from: 0,
+					to: editorView.state.doc.length,
+					insert: code.length > 200 ? `${code}\n\n\n` : code
+				}
+			});
+
+			const end = editorView.state.doc.length;
+			editorView.dispatch({
+				selection: { anchor: end },
+				scrollIntoView: true
+			});
+		}
+	}
+	function toggleReadOnly(isReadOnly) {
+		// console.log(isReadOnly	)
+		if (editorView) {
+			editorView.dispatch({
+				effects: readOnlyCompartment.reconfigure(EditorState.readOnly.of(isReadOnly))
+			});
+		}
+	}
+
+	$: toggleReadOnly($lockEditor);
 	async function formatter(view) {
 		const options = { indent_size: 2 };
 		const dataObj = view.state.doc.toString();
-		console.log(dataObj, options, lang);
+		// console.log(dataObj, options, lang);
 
 		if (lang == 'html') {
 			let beatifulHtml = js_beautify.html(dataObj, options);
@@ -153,6 +182,7 @@
 	}
 
 	let lineWrapping = new Compartment();
+	const readOnlyCompartment = new Compartment();
 
 	$: {
 		let state = $wordWrapSetting;
@@ -165,18 +195,21 @@
 		}
 	}
 
-	$: {
-		if ($formatCode && editorView) {
-			// console.log('formatting code', lang);
-			formatAsync();
-			// formatCode.set(false);
-			// setTimeout()
-			// tick().then(setTimeout(formatCode.set(false), 2000));
+	function handleformat(e) {
+		let details = e.detail;
+
+		if (details.lang == lang || details.lang == 'all'){
+			formatter(editorView).then(() => {});
 		}
 	}
 
-	function formatAsync() {
-		formatter(editorView).then(() => {});
+	function handleCodeSwap(e) {
+		if ($lockEditor) return;
+		let details = e.detail;
+		let update = details.code
+		if (details.lang == lang && update) {
+			code = update;
+		}
 	}
 
 	onMount(async () => {
@@ -210,12 +243,18 @@
 				langFunction(),
 				changeReview,
 				lineWrapping.of(EditorView.lineWrapping),
+				readOnlyCompartment.of(EditorState.readOnly.of(false)),
 				customTheme
 			] // Extensions
 		});
 
+		window.addEventListener('codeSwap', handleCodeSwap);
+		window.addEventListener('formatCode', handleformat);
+
 		return () => {
 			editorView.destroy();
+			window.removeEventListener('myCustomEvent', handleCodeSwap);
+			window.removeEventListener('formatCode', handleformat);
 		};
 		// formatCode.subscribe(())
 	});
@@ -229,7 +268,7 @@
 	bind:this={container}
 	style:--editorSize="{$editorFontSize}px"
 	style="height: 100%;"
-	class="bc"
+	class="bc {$lockEditor && 'cursor-progress'}"
 />
 
 <!-- <style></style> -->

@@ -43,10 +43,10 @@ export async function load({ url, params, locals: { supabase } }) {
 	// let fullurl = `${url.origin}/xi1w/${slug}`;
 	let fullurl = `${url.origin}/${data[0].profiles.username}/${slug}`;
 	if (url.origin + url.pathname != fullurl) {
-		console.log('invalide url');
+		// console.log('invalide url');
 		throw redirect(307, `/${data[0].profiles.username}/${slug}`);
 	} else {
-		console.log('valide url');
+		// console.log('valide url');
 	}
 
 	let rendered = await compile(data[0].markdown, options);

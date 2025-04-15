@@ -6,10 +6,10 @@ export async function POST({ locals: { supabase }, request }) {
 	// console.log('fdjfdsljfd fd lafdjlkaf dkjaf dsalkf dsakfdjsafdksaf dsaf dsakl fdjsaklfdjksaf');
 	const { error: err } = await supabase.from('htmlPlayground').delete().eq('project_key', body.id);
 	if (err) {
-		console.log(err);
+		// console.log(err);
 		return json({ message: 'failed' }, { status: 400 });
 	} else {
-		console.log('sucs');
+		// console.log('sucs');
 		return json({ body }, { status: 201 });
 	}
 }

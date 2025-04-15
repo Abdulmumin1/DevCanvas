@@ -29,7 +29,7 @@ export function copyUrlToClipboard(url) {
 	navigator.clipboard
 		.writeText(url)
 		.then(() => {
-			console.log('URL copied to clipboard:', url);
+			// console.log('URL copied to clipboard:', url);
 		})
 		.catch((error) => {
 			console.error('Failed to copy URL to clipboard:', error);

@@ -115,7 +115,7 @@
 		try {
 			monacoModel.editor.setTheme(theme);
 		} catch (error) {
-			console.log(error);
+			// console.log(error);
 		}
 	}
 
@@ -209,7 +209,7 @@
 					// console.log('g'));
 					handleContentChange(editor.getValue());
 				} catch {
-					console.log('err');
+					// console.log('err');
 				}
 			});
 			var saveAction = {
@@ -248,7 +248,7 @@
 			var formatAction = editor.getAction('editor.action.formatDocument');
 			formatAction.run().then(function () {
 				// The code has been formatted
-				console.log('document formated');
+				// console.log('document formated');
 			});
 		});
 

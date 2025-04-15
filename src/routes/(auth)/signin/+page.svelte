@@ -1,11 +1,14 @@
 <script>
 	import Fa from 'svelte-fa';
 	import { faExclamationCircle, faSpinner } from '@fortawesome/free-solid-svg-icons';
-	import { faGithub } from '@fortawesome/free-brands-svg-icons';
+	import { faGithub, faGoogle } from '@fortawesome/free-brands-svg-icons';
 	import { slide } from 'svelte/transition';
 	import { enhance } from '$app/forms';
 	import { page } from '$app/stores';
 	import PasswordInput from '$components/auth/passwordInput.svelte';
+
+	import {  deserialize } from '$app/forms';
+
 	let email;
 	let password;
 	let loading = false;
@@ -21,7 +24,7 @@
 		return async ({ update, result }) => {
 			loading = false;
 			completed = true;
-			console.log(result);
+			// console.log(result);
 			if (result.status == 400) {
 				errMessage = result.data.message;
 				setTimeout(() => {
@@ -31,6 +34,34 @@
 			await update();
 		};
 	};
+	function openAuthPopup(url, name = "authPopup", width = 500, height = 600) {
+  const left = (screen.width / 2) - (width / 2);
+  const top = (screen.height / 2) - (height / 2);
+
+  const popup = window.open(
+    url,
+    name,
+    `width=${width},height=${height},top=${top},left=${left},resizable,scrollbars=yes,status=1`
+  );
+
+  if (!popup) {
+    alert("Please allow popups for this site.");
+    return;
+  }
+
+
+  popup.focus();
+
+  
+  return popup;
+}
+
+	const handleOauth = async (path)=>{
+
+		const response = await fetch(path, {method:'post', body: new FormData()});
+		let dat = deserialize(await response.text())
+		openAuthPopup(dat.data.url)
+	}
 </script>
 
 <svelte:head>
@@ -134,7 +165,7 @@
 			</div>
 		</form>
 
-		<form action="?/github" method="post">
+		<div >
 			<div class="my-4 flex items-center gap-2">
 				<div class="flex-grow border-t border-gray-300"></div>
 				<span class="text-sm text-gray-500">OR</span>
@@ -143,13 +174,31 @@
 
 			<button
 				class="my-3 flex w-full items-center justify-center gap-2 rounded border p-2 hover:bg-black/20"
-				type="submit"
+				on:click={()=>handleOauth('?/github')}
 			>
-				Continue with github <Fa icon={faGithub} />
+				Continue with Github <Fa icon={faGithub} />
 			</button>
-		</form>
+		</div>
 
-		<p class="text-sm">Don't have an account? <a href="/signup">Sign Up</a></p>
+		<div>
+	
+
+			<button
+				class="my-3 flex w-full items-center justify-center gap-2 rounded border p-2 hover:bg-black/20"
+				on:click={()=>handleOauth('?/google')}
+			>
+				Continue with Google <Fa icon={faGoogle} />
+			</button>
+
+			<div class="my-4 flex items-center gap-2">
+				<div class="flex-grow border-t border-gray-300"></div>
+				<span class="text-sm text-gray-500">OR</span>
+				<div class="flex-grow border-t border-gray-300"></div>
+			</div>
+
+		</div>
+
+		<!-- <p class="text-sm">Don't have an account? <a href="/signup">Sign Up</a></p> -->
 		<a class="text-sm" href="recovery/forgot">Forgot password?</a>
 
 		{#if errMessage}

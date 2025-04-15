@@ -64,13 +64,13 @@
 </script>
 
 {#if demo}
-	<div class="rounded-md bg-green-500 text-primary">
+	<div class="rounded-md h-[35px] bg-green-500 text-primary flex items-center justify-center">
 		{#if $user}
 			<button
 				on:click={forkData}
 				aria-busy={busy}
 				title="Save"
-				class="flex cursor-pointer items-center justify-center gap-2 px-3 py-2 transition-transform duration-300 active:scale-75"
+				class="flex cursor-pointer items-center justify-center gap-2 px-3 py-1 transition-transform duration-300 active:scale-75"
 			>
 				<Fa icon={faSave} />
 				<span class="hidden md:flex">Save</span>

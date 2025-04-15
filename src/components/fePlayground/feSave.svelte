@@ -7,7 +7,7 @@
 
 <button
 	type="submit"
-	class="flex cursor-pointer items-center justify-center gap-2 rounded bg-sky-400 px-3 py-2 text-primary"
+	class="flex  h-[35px] cursor-pointer items-center justify-center gap-2 rounded bg-gradient-to-r from-sky-400 to-sky-300 px-3 py-2 text-primary"
 	on:click={() => {
 		saveData($current_data);
 	}}

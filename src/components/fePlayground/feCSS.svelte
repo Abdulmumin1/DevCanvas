@@ -153,17 +153,17 @@
 
 	$: {
 		let active = $sassActive;
-		console.log(active);
+		// console.log(active);
 		if (monacoModel) {
 			// console.log(monacoModel);
 			// let model = monacoModel.getModel();
 			// console.log(model);
 			if ($sassActive) {
 				monacoModel.editor.setModelLanguage(model, 'scss');
-				console.log('lang just changed', 'SCSS');
+				// console.log('lang just changed', 'SCSS');
 			} else {
 				monacoModel.editor.setModelLanguage(model, 'css');
-				console.log('lang just changed', 'CSS');
+				// console.log('lang just changed', 'CSS');
 			}
 		}
 	}
@@ -217,7 +217,7 @@
 					// console.log(editor.getValue());
 					handleContentChange(editor.getValue());
 				} catch (err) {
-					console.log(err);
+					// console.log(err);
 				}
 			});
 			var saveAction = {

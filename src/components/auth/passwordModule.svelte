@@ -13,7 +13,7 @@
 	let message;
 
 	function validatePassword(event) {
-		console.log(password, confirmPassword);
+		// console.log(password, confirmPassword);
 		message = null;
 		if (password !== confirmPassword) {
 			message = 'Passwords must match! ';

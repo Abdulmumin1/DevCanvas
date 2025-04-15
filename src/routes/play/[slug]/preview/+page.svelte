@@ -99,16 +99,16 @@
 			}
 		}
 
-		console.log('inject output');
+		// console.log('inject output');
 	}
 	function injectJSPlugins(iframeDoc, jsPluginsVar) {
 		let array = Object.keys(jsPluginsVar);
-		console.log(array);
+		// console.log(array);
 		// console.log(array);
 		for (let index = 0; index < array.length; index++) {
 			setup_js_plugin(array[index], jsPluginsVar, iframeDoc);
 		}
-		console.log('done with the plugins');
+		// console.log('done with the plugins');
 	}
 
 	function injectUserImportedPlugins(iframeDoc, userImportedJSVar) {

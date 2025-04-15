@@ -27,7 +27,7 @@
 </script>
 
 {#if !$user}
-	<li class="rounded bg-green-500 px-2 py-2 text-primary md:py-2">
+	<li class="rounded bg-green-500 px-2 py-1 text-primary text-xs">
 		{#if !disquise}
 			<button on:click={openModal}>
 				<!-- <span class="flex md:hidden"><Fa icon={faRightToBracket} /></span> -->

@@ -21,7 +21,7 @@
 			window.location.href = '/dashboard';
 		} else {
 			// Handle save failed
-			console.log('failed');
+			// console.log('failed');
 		}
 	}
 	$: showDelete = false;

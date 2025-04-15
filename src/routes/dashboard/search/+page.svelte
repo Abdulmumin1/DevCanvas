@@ -17,7 +17,7 @@
 	let query = $page.url.searchParams.get('query');
 	let f = $page.url.searchParams.get('f');
 
-	console.log(query);
+	// console.log(query);
 	async function loadIntialData() {
 		let { data: dt, error } = await supabase
 			.from('snips')

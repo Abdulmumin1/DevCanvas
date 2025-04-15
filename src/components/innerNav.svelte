@@ -7,104 +7,89 @@
 	import { page } from '$app/stores';
 	import Open from './kbar/open.svelte';
 	import MobileNav from './mobileNav.svelte';
-</script>
-
-<nav class="z-50 w-full border-b border-b-primary bg-sky-300">
-	<div class="mx-auto max-w-7xl px-4 py-1 sm:px-6 lg:px-8">
-		<div class="flex h-16 items-center justify-between">
-			<div class="flex items-center">
-				<a href="/" class="active tex flex items-center space-x-3 px-3 py-2">
-					<img
-						src="/logo.svg"
-						alt="DevCanvas"
-						class="h-8 w-8 transition-all duration-300 hover:rotate-45"
-					/>
-					<span class="text-xl font-semibold text-white">DevCanvas</span>
-				</a>
-			</div>
-			<div class=" hidden items-center space-x-2 md:flex">
-				{#each ['Community', 'Blog'] as item}
-					<a
-						href="/{item.toLowerCase()}"
-						class="nav-item {$page.url.pathname === `/${item.toLowerCase()}` ? 'active' : ''}"
-					>
-						{item}
-					</a>
-				{/each}
-				<a href="/play/try" class="new-canvas-btn">
-					<Fa icon={faPlus} class="mr-2" />
-					New Canvas
-				</a>
-				<!-- <a
-					href="https://github.com/Abdulmumin1/devcanvas"
-					target="_blank"
-					rel="noopener noreferrer"
-					class="icon-link"
-				>
-					<Fa icon={faStar} />
-				</a>
-				<a href="/play" class="icon-link">
-					<Fa icon={faWindowMaximize} />
-				</a> -->
-				<div class="active ml-3 flex aspect-square items-center justify-center p-1">
-					<Darkmode />
-				</div>
-			</div>
-			<div class="block text-black md:hidden">
-				<MobileNav />
-			</div>
+  </script>
+  
+  <nav class="z-50 w-full md:w-fit mx-auto  p-2 py-3 ">
+	<div class="mx-auto max-w-7xl bg-sky-300/65 rounded-full px-2 py-0 ">
+	  <div class="flex h-16 items-center gap-8 justify-between">
+		<div class="flex items-center">
+		  <a href="/" class="flex items-center space-x-2 rounded-full bg-black px-3 py-2 text-white">
+			<img
+			  src="/logo.svg"
+			  alt="DevCanvas"
+			  class="size-[1.8rem] transition-all duration-300 hover:rotate-45"
+			/>
+			<span class="text-lg font-semibold ">Devcanvas</span>
+		  </a>
 		</div>
+		
+		<div class="hidden items-center md:flex text-sm">
+		  <div class="flex items-center rounded-full bg-white/20 p-1.5">
+			{#each ['Community', 'Blog'] as item}
+			  <a
+				href="/{item.toLowerCase()}"
+				class="nav-item {$page.url.pathname === `/${item.toLowerCase()}` ? 'active' : ''}"
+			  >
+				{item}
+			  </a>
+			{/each}
+			
+			<a href="/play/try" class="new-canvas-btn">
+			  <Fa icon={faPlus} class="mr-2" />
+			  New Canvas
+			</a>
+			
+			<div class="ml-2 flex aspect-square items-center justify-center rounded-full p-1 text-black">
+			  <Darkmode />
+			</div>
+		  </div>
+		</div>
+		
+		<div class="flex items-center text-black   p-2 md:hidden">
+		  <MobileNav />
+		</div>
+	  </div>
 	</div>
-</nav>
-
-<style>
+  </nav>
+  
+  <style>
 	.nav-item {
-		color: #0e0e0e;
-		padding: 0.5rem 0.75rem;
-		border-radius: 0.375rem;
-		font-size: 0.875rem;
-		font-weight: 500;
-		/* transition: color 0.2s; */
-		position: relative;
+	  color: #0e0e0e;
+	  padding: 0.5rem 0.75rem;
+	  border-radius: 9999px;
+	  font-size: 0.875rem;
+	  font-weight: 500;
+	  position: relative;
+	  margin: 0 0.25rem;
+	  transition: all 0.2s ease;
 	}
-
+	
 	.nav-item:hover {
-		color: white; /* sky-900 for darker text on hover */
-		background-color: #0e0e0e;
-		border-radius: 9999px;
+	  color: white;
+	  background-color: #0e0e0e;
 	}
-
+	
 	.active {
-		color: white; /* sky-900 for darker text on hover */
-		background-color: #0e0e0e;
-		border-radius: 9999px;
+	  color: white;
+	  background-color: #0e0e0e;
 	}
-
+	
 	.new-canvas-btn {
-		background-color: #0e0e0e;
-		color: white; /* sky-500 for better contrast */
-		padding: 0.5rem 1rem;
-		border-radius: 9999px;
-		font-size: 0.875rem;
-		font-weight: 500;
-		display: flex;
-		align-items: center;
-		transition:
-			background-color 0.2s,
-			color 0.2s;
+	  background-color: #0e0e0e;
+	  color: white;
+	  padding: 0.5rem 1rem;
+	  border-radius: 9999px;
+	  font-size: 0.875rem;
+	  font-weight: 500;
+	  display: flex;
+	  align-items: center;
+	  margin: 0 0.25rem;
+	  transition: all 0.2s ease;
 	}
-
+	
 	.new-canvas-btn:hover {
-		background-color: #0e0e0e; /* sky-900 */
-		color: white;
+	  background-color: #1a1a1a;
+	  transform: translateY(-1px);
+	  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 	}
-
-	.icon-link {
-		color: #0e0e0e;
-		transition: color 0.2s;
-	}
-
-	.icon-link:hover {
-		color: #0e0e0e; /* sky-900 */
-	}
-</style>
+  </style>

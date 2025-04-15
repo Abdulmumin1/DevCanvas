@@ -28,7 +28,7 @@
 
 	// Simulate mouseout after a delay (for demonstration purposes)
 	onMount(() => {
-		console.log('moutent');
+		// console.log('moutent');
 		simulateHover();
 		setTimeout(simulateMouseOut, 2000);
 	});

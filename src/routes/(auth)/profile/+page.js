@@ -25,10 +25,10 @@ export async function load({ parent }) {
 	if (err) throw err;
 	if (data.length > 0) {
 		if (data[0].username == user.user_metadata?.name) {
-			console.log(
-				user,
-				'hfd afd asfplaing dsajofds afdosafmed safdosahfdmsa fdsao9 fd ljsafjd safdso '
-			);
+			// console.log(
+			// 	user,
+			// 	'hfd afd asfplaing dsajofds afdosafmed safdosahfdmsa fdsao9 fd ljsafjd safdso '
+			// );
 		}
 		data[0].socials = JSON.parse(data[0].socials);
 	}

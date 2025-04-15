@@ -35,16 +35,16 @@
 		});
 		if (response.ok) {
 			// Handle save success
-			console.log('visibility saved');
+			// console.log('visibility saved');
 		} else {
 			// Handle save failed
-			console.log('failed');
+			// console.log('failed');
 		}
 	}
 
 	async function toggleVisibility() {
 		isPublic = !isPublic;
-		console.log(canvas_id);
+		// console.log(canvas_id);
 		await saveVisibility();
 	}
 </script>

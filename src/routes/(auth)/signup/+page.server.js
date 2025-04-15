@@ -19,13 +19,13 @@ export const actions = {
 		let email = body.email;
 		let password = body?.password;
 		let redirectTo;
-		console.log('body', body);
+		// console.log('body', body);
 		if (body.redirectTo) {
 			redirectTo = `${url.origin}${body.redirectTo}`;
 		} else {
 			redirectTo = body?.password ? `${url.origin}${'/profile'}` : `${url.origin}${'/'}`;
 		}
-		console.log(redirectTo);
+		// console.log(redirectTo);
 		if (!email) return 'no mail';
 		if (!password) {
 			const { error } = await supabase.auth.signInWithOtp({

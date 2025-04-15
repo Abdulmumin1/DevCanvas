@@ -41,7 +41,7 @@
 
 <div class="navigation-loader-container" style="--height: {height}px">
 	<div
-		class="navigation-loader-loading-bar {currentState}"
+		class="navigation-loader-loading-bar {currentState} shadow-lg"
 		style="background-color: {color}; --duration: {animationDuration}ms"
 	/>
 </div>

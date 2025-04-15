@@ -25,12 +25,12 @@
 		return async ({ update, result }) => {
 			// console.log(result);
 			loading = false;
-			console.log(result.status);
+			// console.log(result.status);
 			if (result.status == 200) {
 				completed = true;
 				// data = result.data;
 				if (mesa) {
-					console.log($page.url.searchParams.get('next'));
+					// console.log($page.url.searchParams.get('next'));
 					window.location.href = $page.url.searchParams.get('next') ?? '/dashboard';
 				}
 				setTimeout(() => {

@@ -92,12 +92,12 @@
 	let showMore = collection.length > 5;
 	// console.log();
 	async function more() {
-		console.log($pageCountSnips);
+		// console.log($pageCountSnips);
 		let result = await fetchPaginatedRows($pageCountSnips, $pageCountSnips + 6 - 1);
 		// console.log(result);
 		if (result.length == 0) {
 			showMore = false;
-			console.log('no more');
+			// console.log('no more');
 			return;
 		}
 		// console.log(result.length);

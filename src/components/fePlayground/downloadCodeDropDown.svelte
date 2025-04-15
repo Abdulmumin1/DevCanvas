@@ -58,11 +58,11 @@
 
 <svelte:window bind:innerWidth />
 
-<div class="dropdown relative flex flex-col text-center text-primary dark:text-white">
+<div class="dropdown relative flex flex-col text-center text-white">
 	<button
-		class="dropdown-button flex items-center justify-end gap-2 text-primary"
+		class="dropdown-button flex items-center justify-end gap-2 "
 		on:click={toggleDropdown}
-		><span class="md:hidden">Download Zip</span>
+		><span class="">Download Zip</span>
 
 		{#if loading && isVertical}
 			<Fa icon={faSpinner} class="animate-spin" />

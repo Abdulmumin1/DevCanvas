@@ -13,7 +13,7 @@
 	 */
 
 	function resizeIFrameToFitContent(e) {
-		console.log('iframes ers fdss', e);
+		// console.log('iframes ers fdss', e);
 
 		e.target.width = e.target.contentWindow.document.body.scrollWidth;
 		e.target.height = e.target.contentWindow.document.body.scrollHeight;

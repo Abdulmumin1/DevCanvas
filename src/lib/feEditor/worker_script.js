@@ -58,23 +58,7 @@ export function constructHtml(current_data, preview = false) {
 				`;
 	}
 
-	return `
-<html lang="en">
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>${current_data.description}</title>
-		<style>
-            ${css}
-        </style>
-        ${cssPlist.join('\n')}
-	</head>
-	<body>
-		${current_data.html}
-        ${Object.keys(Object.fromEntries(Object.entries(jsPlugins).filter(([k, v]) => v)))
-					.map((plugin) => `<script src=${cdns[plugin]}></script>\n`)
-					.join('')}
-        ${userImportedJS.map((src) => `<script src=${src}></script>\n`).join('')}
+	let previewScript = `
 		<script>
 		(()=> {
 			if (window.location === window.parent.location){
@@ -90,15 +74,35 @@ export function constructHtml(current_data, preview = false) {
 			
 		
 		</script>
-        <script>
-            ${preview ? '' : current_data.js}
+	`
+	return `
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>${current_data.description}</title>
+		<style>
+            ${css}
+        </style>
+        ${cssPlist.join('\n')}
+		   ${Object.keys(Object.fromEntries(Object.entries(jsPlugins).filter(([k, v]) => v)))
+					.map((plugin) => `<script src=${cdns[plugin]}></script>\n`)
+					.join('')}
+        ${userImportedJS.map((src) => `<script src=${src}></script>\n`).join('')}
+		
+	</head>
+	<body>
+		${current_data.html}
+		 <script>
+            ${preview ? previewScript : current_data.js}
         </script>
 	</body>
+	
 </html>`;
 }
 
 onmessage = function (e) {
-	console.log('Worker: Message received from main script');
+	// console.log('Worker: Message received from main script');
 	const data = e.data;
 	let htmlContent = constructHtml(data);
 	const blob = new Blob([htmlContent], { type: 'text/html' });

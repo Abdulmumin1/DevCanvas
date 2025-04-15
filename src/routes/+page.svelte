@@ -9,6 +9,8 @@
 
 	import { SnippetsDescription } from '$lib/index.js';
 	import TestimonialsGrid from '../components/landing/testimonialsGrid.svelte';
+	import AiLanding from '../components/landing/aiLanding.svelte';
+	import BackgroundGrid from '../components/landing/backgroundGrid.svelte';
 </script>
 
 <svelte:head>
@@ -54,40 +56,36 @@
 </svelte:head>
 
 <div
-	class="before:he bg-skyblue-500 relative flex min-h-screen w-screen flex-col items-center justify-center"
+	class="before:he bg-skyblue-500 relative flex h-screen w-screen flex-col items-center "
 >
-	<div class="relative z-10 w-full">
-		<InnerNav />
+
+
+<div class="relative w-full">
+	<InnerNav />
+</div>
+	<!-- <div class="relative z-10 w-full">
 	</div>
 	<div class="mx-auto flex w-full flex-col items-center justify-center gap-4 overflow-y-hidden">
-		<!-- Add your landing page content here -->
 		<div class="grid max-h-[40rem] overflow-y-hidden md:max-h-[35rem] lg:max-h-[50rem]">
 			<header class="w-full overflow-y-hidden">
-				<!-- <div
-					id="kds"
-					class=" w-screen right-0 h-[612px] bg-sky-300 top-0 overflow-hidden absolute"
-				/> -->
 				<div class="mt-20 overflow-y-hidden">
 					<Hero />
 				</div>
 			</header>
 		</div>
 		<main class="w-full">
-			<!-- Add your features or benefits here -->
-			<!-- <Explore /> -->
 			<FeaturesSect />
-
-			<!-- <Discover /> -->
 			<LanguageSupport />
 			<EmbedSection />
-			<!-- <TestimonialsGrid /> -->
-			<!-- Add code editor section -->
-			<!-- <CodeEditor /> -->
-			<!-- The Idea-->
-			<!-- <Idea /> -->
-			<!-- The Idea-->
-			<!-- <Faq /> -->
+			
 		</main>
+	</div> -->
+
+	
+
+	<div class="mt-44 relative">
+		<AiLanding/>
 	</div>
+	<BackgroundGrid/>
 </div>
-<Footer />
+<!-- <Footer /> -->

@@ -6,7 +6,7 @@ function validateForm(body) {
 	// gather errors
 	let username = String(body.username);
 	let name = String(body.fullname);
-	console.log(username);
+	// console.log(username);
 	const errors = {};
 
 	if (!username || typeof username !== 'string') {
@@ -26,7 +26,7 @@ function validateForm(body) {
 			data: body,
 			errors
 		};
-		console.log(data);
+		// console.log(data);
 		return ['failed', data];
 	}
 	return ['success'];

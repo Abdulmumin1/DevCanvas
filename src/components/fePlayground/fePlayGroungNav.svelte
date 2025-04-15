@@ -12,6 +12,7 @@
 	import SelectLayout from './selectLayout.svelte';
 	import MobileNav from '../mobileNav.svelte';
 	import ReloadEditor from './reloadEditor.svelte';
+	import AiButton from './editorSets/aiButton.svelte';
 	export let ispublic;
 </script>
 
@@ -29,7 +30,9 @@
 			</div>
 		</li>
 		<ul class="flex items-center justify-center gap-2">
-			<li><ReloadEditor /></li>
+
+			<!-- <li><ReloadEditor /></li> -->
+			<AiButton/>
 			<li class="hidden md:flex"><SelectLayout /></li>
 			{#if $isOwner}
 				{#if $showSave}
@@ -38,7 +41,8 @@
 			{:else if ispublic}
 				<li class="hidden md:flex"><FeFork /></li>
 			{/if}
-			<li class="hidden md:flex"><FeGetEmbed /></li>
+			
+			<!-- <li class="hidden md:flex"><FeGetEmbed /></li> -->
 			<li><ShareBtn /></li>
 			<li
 				class="flex items-center justify-center rounded bg-gray-300 px-2 py-2 text-black dark:bg-secondary-dark dark:text-white md:hidden"

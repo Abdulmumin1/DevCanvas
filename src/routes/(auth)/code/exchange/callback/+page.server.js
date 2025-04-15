@@ -1,6 +1,7 @@
 import { redirect } from '@sveltejs/kit';
 
-export const GET = async (event) => {
+/** @type {import('./$types').PageLoad} */
+export const load = async (event) => {
 	const {
 		url,
 		locals: { supabase }

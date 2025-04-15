@@ -1,11 +1,12 @@
 <script>
 	import Fa from 'svelte-fa';
 	import { faBrush } from '@fortawesome/free-solid-svg-icons';
-	import { formatCode } from '$lib/feEditor/store.js';
 
 	function format() {
-		formatCode.set(true);
-		setTimeout(() => formatCode.set(false), 2000);
+		const myEvent = new CustomEvent('formatCode', {
+			detail: { lang: 'all' }
+		});
+		window.dispatchEvent(myEvent);
 	}
 </script>
 

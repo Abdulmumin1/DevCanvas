@@ -200,10 +200,10 @@ function saveData(json_data) {
 
 					if (response.ok) {
 						// Handle save success
-						console.log('full');
+						// console.log('full');
 					} else {
 						// Handle save failed
-						console.log('failed');
+						// console.log('failed');
 					}
 
 					saved_spinner.set(false);
@@ -311,7 +311,7 @@ function copyTextToClipboard(text) {
 		navigator.clipboard
 			.writeText(text)
 			.then(function () {
-				console.log('Text copied to clipboard');
+				// console.log('Text copied to clipboard');
 			})
 			['catch'](function (err) {
 				console.error('Error copying text: ', err);

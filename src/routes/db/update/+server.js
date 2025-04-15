@@ -9,6 +9,6 @@ export async function POST({ locals: { supabase }, request }) {
 	if (err) {
 		fail(400, { error: ' unable to complete action' });
 	} else {
-		console.log(data);
+		// console.log(data);
 	}
 }
