@@ -10,6 +10,7 @@
 </script>
 
 <button
+class="text-black"
 	on:click={() => {
 		$reload = !$reload;
 	}}

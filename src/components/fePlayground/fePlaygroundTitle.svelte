@@ -142,7 +142,7 @@
 				<span>by</span>
 				<a class="font-semibold" href={`/${profile}`}>@{profile}</a>
 			</p>
-			<ShowLoginOrforkBanner />
+			<!-- <ShowLoginOrforkBanner /> -->
 		</div>
 	{:else}
 		<p

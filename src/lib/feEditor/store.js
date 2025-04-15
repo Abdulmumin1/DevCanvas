@@ -11,7 +11,7 @@ export let dummyTitle = writable('Hover Animation');
 export let babelActive = writable(false);
 export let typescriptActive = writable(false);
 export let formatCode = writable(false);
-export let tabsView = writable(false);
+export let tabsView = writable(true);
 // export let setFormatCode =
 function appendJSONToFormData(json, formData, which) {
 	for (const key in json) {
@@ -36,10 +36,10 @@ export async function saveData(json_data, which = true) {
 
 	if (response.ok) {
 		// Handle save success
-		console.log('full');
+		// console.log('full');
 	} else {
 		// Handle save failed
-		console.log('failed');
+		// console.log('failed');
 	}
 	saved_spinner.set(false);
 	showSave.set(false);
@@ -57,10 +57,10 @@ export async function savePlugins(json_data, id) {
 	});
 	if (response.ok) {
 		// Handle save success
-		console.log('plugin saved');
+		// console.log('plugin saved');
 	} else {
 		// Handle save failed
-		console.log('failed');
+		// console.log('failed');
 	}
 }
 export async function saveConfig(json_data, id) {
@@ -75,10 +75,10 @@ export async function saveConfig(json_data, id) {
 	});
 	if (response.ok) {
 		// Handle save success
-		console.log('config saved');
+		// console.log('config saved');
 	} else {
 		// Handle save failed
-		console.log('failed');
+		// console.log('failed');
 	}
 }
 
@@ -94,10 +94,10 @@ export async function saveTags(json_data, id) {
 	});
 	if (response.ok) {
 		// Handle save success
-		console.log('Tags saved');
+		// console.log('Tags saved');
 	} else {
 		// Handle save failed
-		console.log('failed');
+		// console.log('failed');
 	}
 }
 

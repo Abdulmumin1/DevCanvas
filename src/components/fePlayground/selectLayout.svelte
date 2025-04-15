@@ -40,7 +40,7 @@
 
 		{#if isOpen}
 			<div
-				class=" absolute left-0 z-50 mt-1 flex flex-col gap-1 rounded bg-black p-3"
+				class=" absolute right-0 z-50 mt-1 flex flex-col gap-1 rounded bg-black p-3"
 				on:click_outside={toggleDropdown}
 				use:clickOutside
 				in:scale={{ duration: 200, transformOrigin: 'top right' }}

@@ -257,7 +257,7 @@
 			var formatAction = editor.getAction('editor.action.formatDocument');
 			formatAction.run().then(function () {
 				// The code has been formatted
-				console.log('document formated');
+				// console.log('document formated');
 			});
 		});
 

@@ -33,7 +33,7 @@
 	setContext('isOwner', false);
 	if (data.isFound && data.session) {
 		setContext('isOwner', data.session.user.id == data[0].user_id);
-		console.log(data.session.user.id == data[0].user_id);
+		// console.log(data.session.user.id == data[0].user_id);
 	}
 
 	// console.log(data[0])

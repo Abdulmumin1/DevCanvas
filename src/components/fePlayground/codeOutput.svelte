@@ -1,13 +1,14 @@
 <script>
 	import { current_data } from '$lib/index.js';
 	import { constructHtml } from '$lib/feEditor/previewUtils.js';
-	import { onDestroy, onMount } from 'svelte';
+	import { getContext, onDestroy, onMount } from 'svelte';
 	import { page } from '$app/stores';
 	import { crossfade, fade } from 'svelte/transition';
 	import { canvasConfig, jsPlugins, cssPlugins } from '$lib/feEditor/store.js';
 	import { faUsersRays } from '@fortawesome/free-solid-svg-icons';
 
 	import Worker from '$lib/feEditor/worker_script.js?worker';
+	import ReloadEditor from './reloadEditor.svelte';
 
 	let previewIframe;
 	let unsubscribe;
@@ -15,6 +16,7 @@
 	let initialSrc = `${$page.url.origin}/output/compile/${$page.params.slug}`;
 	let attempts = 0;
 	let isVisible = true;
+	let lockEditor = getContext('generating');
 
 	// Throttle function to limit execution frequency
 	function throttle(func, limit) {
@@ -150,7 +152,7 @@
 	const [send, receive] = crossfade({ duration: 1500 });
 </script>
 
-<div bind:this={container} class="preview-container m-0 h-full w-full border-0 bg-white p-0">
+<div bind:this={container} class="preview-container m-0 h-full w-full border-0 bg-white p-0 {$lockEditor && 'cursor-progress'}">
 	{#if useSrc && !tryDC}
 		<!-- Load initial preview via src -->
 		<iframe
@@ -176,9 +178,18 @@
 		<!-- <div class="absolute top-0 bg-yellow-400 text-4xl text-black">Using Iframe Updates</div> -->
 	{/if}
 
+
+
 	<div
+	class="flex items-center gap-2"
+	style="position: fixed; bottom: 20px; right: 20px;  display: flex; align-items: center;"
+	
+	>
+	<div class="bg-gray-50 rounded-full size-8 items-center justify-center flex hover:-rotate-45 transition-transform duration-200">
+		<ReloadEditor/>
+	</div>
+		<div
 		class="zoom-control rounded border bg-gray-100 p-1 text-sm text-black"
-		style="position: fixed; bottom: 20px; right: 20px;  display: flex; align-items: center;"
 	>
 		<button
 			id="zoom-out"
@@ -197,6 +208,10 @@
 		>
 			+
 		</button>
+
+		
+	</div>
+		
 	</div>
 </div>
 

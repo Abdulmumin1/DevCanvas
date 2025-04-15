@@ -2,40 +2,30 @@
 	import { onMount } from 'svelte';
 	import { Pane, Splitpanes } from 'svelte-splitpanes';
 	import { layoutView } from '$lib/feEditor/store.js';
-	let isVertical = true;
+
+	let innerWidth;
+
+	$: isVertical = innerWidth <= 768  ;
+	let loaded = false;
 	// if (browser) {
 	// 	 // Change the breakpoint as needed
 	// }
-	$: splitpaneOptions = {
-		horizontal: !isVertical
-		// Other options for your Splitpanes component
-	};
-
-	// Function to update isVertical based on window width
-	const updateOrientation = () => {
-		isVertical = window.innerWidth <= 768; // Change the breakpoint as needed
-		splitpaneOptions = {
-			horizontal: !isVertical
-		};
-
-		console.log(isVertical);
-	};
+	
 
 	onMount(() => {
 		// Listen for window resize events and update orientation accordingly
-		isVertical = window.innerWidth <= 768;
-		window.addEventListener('resize', updateOrientation);
-		console.log('mounted editor window');
+		loaded = true;
 	});
 
 	// console.log('isvertialcs');
 </script>
 
+<svelte:window bind:innerWidth={innerWidth}/>
 <div class="h-full">
 	{#if isVertical}
 		<Splitpanes horizontal={true} theme="my-theme" class="ignore">
-			<Pane snapSize={5} class="bg-white">
-				<slot name="left" size={30} />
+			<Pane snapSize={5} size={40} class="bg-white">
+				<slot name="left"  />
 			</Pane>
 			<Pane snapSize={5} class="bg-white">
 				<slot name="right" />
@@ -43,7 +33,7 @@
 		</Splitpanes>
 	{:else if $layoutView == 'left'}
 		<Splitpanes horizontal={false} theme="my-theme">
-			<Pane snapSize={5} size="30" class="bg-white">
+			<Pane snapSize={5} size={35} class="bg-white">
 				<slot name="left" />
 			</Pane>
 			<Pane snapSize={5} class="bg-white">
@@ -52,10 +42,10 @@
 		</Splitpanes>
 	{:else if $layoutView == 'top'}
 		<Splitpanes horizontal={true} theme="my-theme">
-			<Pane snapSize={5} class="bg-white">
+			<Pane snapSize={5}  class="bg-white">
 				<slot name="left" />
 			</Pane>
-			<Pane snapSize={5} class="bg-white">
+			<Pane snapSize={5}  class="bg-white">
 				<slot name="right" />
 			</Pane>
 		</Splitpanes>
@@ -64,7 +54,7 @@
 			<Pane snapSize={5} class="bg-white">
 				<slot name="right" />
 			</Pane>
-			<Pane snapSize={5} size="40" class="bg-white">
+			<Pane snapSize={5} size={34} class="bg-white">
 				<slot name="left" />
 			</Pane>
 		</Splitpanes>

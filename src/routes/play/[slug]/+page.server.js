@@ -11,12 +11,14 @@ export const actions = {
 			body.config = JSON.parse(body.config);
 		} else if (body.tags) {
 			body.tags = JSON.parse(body.tags);
-			console.log(body.tags);
+			// console.log(body.tags);
+		} else if (body.messages){
+			body.messages = JSON.parse(body.messages)
 		}
 		// console.log(body);
 		const { data, error: err } = await supabase.from('htmlPlayground').update([body]).eq('id', id);
 		if (err) {
-			console.log(err);
+			// console.log(err);
 			throw error(500, 'Opssie, error from our side');
 		} else {
 			// console.log(data);

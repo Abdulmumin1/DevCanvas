@@ -45,7 +45,7 @@
 
 	function selectOption(event) {
 		const _selectedOption = event.target.value;
-		console.log('Selected Option:', _selectedOption);
+		// console.log('Selected Option:', _selectedOption);
 		language = _selectedOption;
 		current_data.update((cur) => {
 			return { ...cur, lang: _selectedOption };

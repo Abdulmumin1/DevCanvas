@@ -78,24 +78,7 @@ export async function constructHtml(current_data, preview = false) {
 				`;
 	}
 
-	return `
-<html lang="en">
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>${current_data.description}</title>
-		<style>
-            ${css}
-        </style>
-        ${cssPlist.join('\n')}
-	</head>
-	<body>
-		${current_data.html}
-        ${Object.keys(Object.fromEntries(Object.entries(jsPlugins).filter(([k, v]) => v)))
-					.map((plugin) => `<script src=${cdns[plugin]}></script>\n`)
-					.join('')}
-        ${userImportedJS.map((src) => `<script src=${src}></script>\n`).join('')}
-		<script>
+	let previewjs = `
 		(()=> {
 			if (window.location === window.parent.location){
 				const urlParams = new URLSearchParams(window.location.search);
@@ -106,13 +89,34 @@ export async function constructHtml(current_data, preview = false) {
 			}
 
 })()
+	`
 
-			
+	return `
+	<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>${current_data.description}</title>
+		<style>
+            ${css}
+        </style>
+		${Object.keys(Object.fromEntries(Object.entries(jsPlugins).filter(([k, v]) => v)))
+			.map((plugin) => `<script src=${cdns[plugin]}></script>\n`)
+			.join('')}
+${userImportedJS.map((src) => `<script src=${src}></script>\n`).join('')}
+        ${cssPlist.join('\n')}
+	</head>
+	<body>
+		${current_data.html}
 		
-		</script>
         <script>
-            ${preview ? '' : current_data.js}
+            ${preview ? previewjs : current_data.js}
         </script>
 	</body>
 </html>`;
 }
+/**
+ * 
+ * 
+ */

@@ -5,7 +5,7 @@ export function constructHtmlForZip(current_data) {
 		cssPlugins = [];
 	let userImportedJS = current_data.config?.userImportedJS ?? [];
 
-	console.log(userImportedJS);
+	// console.log(userImportedJS);
 	if (current_data.plugins.length > 0) {
 		jsPlugins = current_data.plugins[0].js;
 		cssPlugins = current_data.plugins[0].css;

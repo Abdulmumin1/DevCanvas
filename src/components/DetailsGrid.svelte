@@ -16,7 +16,7 @@
 	}
 
 	const setPreview = (user) => {
-		console.log(user.id, data['0'].user_id);
+		// console.log(user.id, data['0'].user_id);
 
 		if (user.id == data['0'].user_id) {
 			previewMode.set(false);
@@ -49,7 +49,7 @@
 			window.location.href = '/dashboard';
 		} else {
 			// Handle save failed
-			console.log('failed');
+			// console.log('failed');
 		}
 	}
 

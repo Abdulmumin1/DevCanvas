@@ -41,7 +41,7 @@
 				showHtml = isVertical ? false : !showCSS;
 				showJs = isVertical ? false : !showJs;
 				showResult = true;
-				console.log('showJds');
+				// console.log('showJds');
 				break;
 			default:
 				break;

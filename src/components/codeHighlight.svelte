@@ -84,7 +84,7 @@
 		try {
 			monacoModel.editor.setTheme(theme);
 		} catch (error) {
-			console.log(error);
+			// console.log(error);
 		}
 	}
 
@@ -94,11 +94,11 @@
 				previewMode.set(false);
 				return true;
 			} else {
-				console.log('lier');
+				// console.log('lier');
 				return false;
 			}
 		} catch (error) {
-			console.log('err');
+			// console.log('err');
 		}
 	}
 	function handleContentChange(data) {
@@ -156,7 +156,7 @@
 					// console.log(editor.getValue());
 					handleContentChange(editor.getValue());
 				} catch {
-					console.log('err');
+					// console.log('err');
 				}
 			});
 			var saveAction = {

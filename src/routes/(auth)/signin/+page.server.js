@@ -55,7 +55,20 @@ export const actions = {
 
 		if (data.url) {
 			// console.log(data.url)
-			throw redirect(302, data.url);
+			return {url: data.url} 
+		}
+	},
+	google: async ({ url, locals: { supabase } }) => {
+		const { data, error } = await supabase.auth.signInWithOAuth({
+			provider: 'google',
+			options: {
+				redirectTo: `${url.origin}/code/exchange/google/callback`
+			}
+		});
+
+		if (data.url) {
+			// console.log(data.url)
+			return {url: data.url} 
 		}
 	}
 };

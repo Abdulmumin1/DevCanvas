@@ -2,7 +2,7 @@
 	import { Splitpanes, Pane } from 'svelte-splitpanes';
 	import Fa from 'svelte-fa';
 	import { faCss3, faHtml5, faJs } from '@fortawesome/free-brands-svg-icons';
-	import { onDestroy, onMount } from 'svelte';
+	import { getContext, onDestroy, onMount } from 'svelte';
 	import { layoutView, tabsView } from '$lib/feEditor/store.js';
 	import { current_data } from '$lib/index.js';
 	import { hide_css, hide_js } from '$lib/editor/settings.js';
@@ -11,11 +11,12 @@
 	import CodeMirrorEditor from '../editors/codeMirrorEditor.svelte';
 	
 	import { showjsConsole, sassActive, babelActive, typescriptActive } from '$lib/feEditor/store.js';
-
+	
 	// Initialize editor content
-	let initialHTML = $current_data.html;
-	let initialCSS = $current_data.css;
-	let initialJs = $current_data.js;
+	export let initialHTML = $current_data.html;
+	export let initialCSS = $current_data.css;
+	export let initialJs = $current_data.js;
+	let lockEditor = getContext('generating');
 
 	// State for tab visibility
 	let showHtml = true;
@@ -30,18 +31,27 @@
 		isVertical = window.innerWidth <= 768; // Adjust breakpoint as needed
 	};
 
+
 	// Set initial orientation and listen for window resize
-	onMount(() => {
-		updateOrientation()
+	onMount(async () => {
+		updateOrientation();
 		window.addEventListener('resize', updateOrientation);
 		window.addEventListener('keydown', handleKeyDown);
 
-		
-		return () =>{
-		
-			window.removeEventListener('keydown', handleKeyDown);
-		}
+		// let content = await response.json();
+		// console.log(content);
+		// let html = content.ai;
+		// // console.log(html)
+		// setTimeout(() => {
+		// 	current_data.update((cur) => {
+		// 		// console.log(cur);
+		// 		return { ...cur, html: html };
+		// 	});
+		// }, 400);
 
+		return () => {
+			window.removeEventListener('keydown', handleKeyDown);
+		};
 	});
 
 	// Function to switch between tabs
@@ -73,12 +83,14 @@
 
 	// Handle keyboard shortcuts
 	const handleKeyDown = (event) => {
-		if (event.ctrlKey && event.key === 'Tab') {
+		// console.log(event.ctrlKey, event.key);
+		if (event.ctrlKey && event.key == 'm') {
 			event.preventDefault(); // Prevent default browser behavior
 			cycleTab(); // Cycle through tabs
 		}
 	};
 
+	// $: console.log($layoutView);
 </script>
 
 <div class="h-full w-full overflow-clip">
@@ -120,16 +132,16 @@
 		<!-- Tab content -->
 		<div class="h-full w-full">
 			<div class:hidden={!showHtml} class="h-full w-full">
-				<CodeMirrorEditor lang="html" code={initialHTML} />
+				<CodeMirrorEditor lang="html" bind:code={initialHTML} />
 			</div>
 			{#if !$hide_css}
 				<div class:hidden={!showCSS} class="h-full w-full">
-					<CodeMirrorEditor lang="css" code={initialCSS} />
+					<CodeMirrorEditor lang="css" bind:code={initialCSS} />
 				</div>
 			{/if}
 			{#if !$hide_js}
 				<div class:hidden={!showJs} class="h-full w-full">
-					<CodeMirrorEditor lang="javascript" code={initialJs} />
+					<CodeMirrorEditor lang="javascript" bind:code={initialJs} />
 				</div>
 			{/if}
 		</div>

@@ -16,7 +16,7 @@
 	}
 </script>
 
-<button id="openModal" class="text-xl" on:click={openModal}>
+<button id="openModal" class="text-xl " on:click={openModal}>
 	<Fa icon={faBars} />
 </button>
 

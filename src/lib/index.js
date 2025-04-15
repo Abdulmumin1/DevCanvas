@@ -105,7 +105,9 @@ export const goto = (path) => {
 function appendJSONToFormData(json, formData, which) {
 	for (const key in json) {
 		if (which == key || which == true) {
-			formData.append(key, json[key]);
+			let value = json[key];
+			let d = typeof(value === 'object') ? JSON.stringify(value) : value
+			formData.append(key, d);
 		}
 	}
 	formData.append('id', json['id']);
@@ -125,10 +127,10 @@ export async function saveData(json_data, all = true) {
 
 	if (response.ok) {
 		// Handle save success
-		console.log('full');
+		// console.log('full');
 	} else {
 		// Handle save failed
-		console.log('failed');
+		// console.log('failed');
 	}
 	saved_spinner.set(false);
 	previewMode.set(true);
@@ -226,7 +228,7 @@ export function copyTextToClipboard(text) {
 		navigator.clipboard
 			.writeText(text)
 			.then(() => {
-				console.log('Text copied to clipboard');
+				// console.log('Text copied to clipboard');
 			})
 			.catch((err) => {
 				console.error('Error copying text: ', err);

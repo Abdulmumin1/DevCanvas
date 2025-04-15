@@ -6,7 +6,7 @@
 	let tags = $canvasTags;
 	if (!tags) {
 		tags = [];
-		console.log(tags, $canvasTags);
+		// console.log(tags, $canvasTags);
 	}
 	let tagInput = '';
 

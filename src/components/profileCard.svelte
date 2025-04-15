@@ -23,7 +23,7 @@
 			window.location.href = '/dashboard';
 		} else {
 			// Handle save failed
-			console.log('failed');
+			// console.log('failed');
 		}
 	}
 	$: showDelete = false;
@@ -54,7 +54,7 @@
 <div class="relative flex items-center justify-center text-left dark:text-white">
 	<div>
 		<button
-			class="flex h-8 w-8 items-center justify-center rounded-full bg-gray-300 text-primary dark:bg-secondary-dark dark:text-white"
+			class="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-r from-sky-400 to-sky-300  text-black"
 			on:click={toggleDropdown}
 		>
 			<span class=" uppercase">{$user.email.slice(0, 2)}</span>

@@ -16,7 +16,7 @@ async function loadIntialData(supabase, query) {
 export async function load({ locals: { supabase }, request, url }) {
 	let query = url.searchParams.get('query');
 	let userSnippets = await loadIntialData(supabase, query);
-	console.log(url, query, userSnippets);
+	// console.log(url, query, userSnippets);
 
 	return { userSnippets: userSnippets };
 }

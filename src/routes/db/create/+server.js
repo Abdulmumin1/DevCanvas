@@ -16,7 +16,7 @@ export async function POST({ locals: { supabase, getSession }, request }) {
 		.insert([{ code, lang, project_key: key, user_id, description }]);
 
 	if (err) {
-		console.log(data);
+		// console.log(data);
 		fail(400, { error: ' unable to complete action' });
 	}
 
@@ -28,7 +28,7 @@ export async function POST({ locals: { supabase, getSession }, request }) {
 	if (er) throw er;
 	if (new Object(username).length > 0) {
 		// let fullurl = `${url.origin}/xi1w/${slug}`;
-		console.log(username);
+		// console.log(username);
 
 		throw redirect(303, `/${username[0].username}/${key}/edit`);
 	} else {

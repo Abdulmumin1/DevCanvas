@@ -4,7 +4,7 @@ import { error } from '@sveltejs/kit';
 export async function load({ params, parent }) {
 	const { supabase } = await parent();
 	let slug = params['slug'];
-	console.log(slug);
+	// console.log(slug);
 	let { data, error: err } = await supabase.from('snips').select('*').eq('project_key', slug);
 
 	if (data.length <= 0) {
