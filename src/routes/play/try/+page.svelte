@@ -19,6 +19,7 @@
 	import FeAiBox from '../../../components/fePlayground/feAIBox.svelte';
 	import { writable } from 'svelte/store';
 	import { fly } from 'svelte/transition';
+	import {PUBLIC_AI_GATEWAY} from '$env/static/public'
 
 	setReloadContext();
 
@@ -116,7 +117,7 @@
 
 			messages = [...messages, m];
 
-			const response = await fetch('/db/create/ai', {
+			const response = await fetch(PUBLIC_AI_GATEWAY, {
 				method: 'post',
 				body: JSON.stringify(messages)
 			});
@@ -129,7 +130,7 @@
 				let htmlBuffer = '';
 				let result = '';
 				const startTag = '<DEVCANVAS_START>';
-				const endTag = '</DEVCANVAS_END>';
+				const endTag = '</DEVCANVAS_START>';
 
 				try {
 					while (fetchResponse) {
