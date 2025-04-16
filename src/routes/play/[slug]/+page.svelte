@@ -23,6 +23,8 @@
 	import { fly } from 'svelte/transition';
 	import { writable } from 'svelte/store';
 
+	import {PUBLIC_AI_GATEWAY} from '$env/static/public'
+
 	setReloadContext();
 
 	let reload = getReload();
@@ -104,7 +106,7 @@
 
 			messages = [...messages, m];
 
-			const response = await fetch('/db/create/ai', {
+			const response = await fetch(PUBLIC_AI_GATEWAY, {
 				method: 'post',
 				body: JSON.stringify(messages)
 			});
