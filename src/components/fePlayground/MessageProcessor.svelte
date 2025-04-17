@@ -9,7 +9,7 @@
 
 		// Check for code blocks
 		const startTags = '<DEVCANVAS_START>';
-		const endTags = '</DEVCANVAS_END>';
+		const endTags = '</DEVCANVAS_START>';
 
 		if (!content.includes(startTags)) {
 			return { parts: [content], hasCodeBlock: false };
