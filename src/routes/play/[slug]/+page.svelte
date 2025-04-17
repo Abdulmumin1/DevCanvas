@@ -236,12 +236,12 @@
 		const endTags = '</DEVCANVAS_START>';
 		let m = [
 			{
-				messageId: crypto.randomUUID(),
+				messageId: 'DEVCANVAS_INITIAL_MESSAGE',
 				role: 'user',
 				content: 'This is my current code'
 			},
 			{
-				messageId: crypto.randomUUID(),
+				messageId: 'DEVCANVAS_INITIAL_CODE',
 				role: 'user',
 				content: `${startTags}${html}${endTags}`
 			}
