@@ -13,7 +13,7 @@
 	<div class="mx-auto max-w-7xl bg-sky-300/65 rounded-full px-1 py-0 ">
 	  <div class="flex h-12 items-center gap-8 justify-between">
 		<div class="flex items-center">
-		  <a href="/" class="flex items-center space-x-2 rounded-full bg-black px-3 py-1 text-white">
+		  <a href="/" class="flex items-center space-x-2 rounded-full bg-black px-2 py-1.5 text-white">
 			<img
 			  src="/logo.svg"
 			  alt="DevCanvas"

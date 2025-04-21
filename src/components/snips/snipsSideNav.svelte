@@ -22,7 +22,7 @@
 			<ul class="flex h-full w-full flex-col gap-4 transition-all duration-200">
 				<li class="border-b px-2 py-12 border-black/15 dark:border-primary">
 					<a href="/" ><img src="/logo.svg" class="bg-white/50 dark:bg-primary/50 dark:text-white rounded-full" alt="" width="100" /></a>
-					<a href="/dashboard" class="text-lg text-sky-900"
+					<a href="/dashboard" class="text-lg text-sky-900 dark:text-sky-600"
 						><span class="text-black dark:text-white ">Dev</span>Canvas
 					</a><br />
 					<span class="rounded text-xs bg-white/50 dark:bg-primary/50 dark:text-white p-1 text-primary">
