@@ -20,6 +20,11 @@ export async function GET({ url, params, locals: { supabase } }) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Untitled Canvas</title>
+	<script
+			defer
+			type="text/javascript"
+			src="https://cdn.littlestats.click/embed/cnvkg2la9w6k0yx"
+		></script>
 </head>
 <body>
     

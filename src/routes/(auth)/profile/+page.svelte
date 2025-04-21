@@ -63,20 +63,19 @@
 </svelte:head>
 
 <NavWrapper noSearch={true}>
-	<div class="flex h-full min-h-[90vh] flex-col items-center justify-center">
+	<div class="flex h-full min-h-[90vh] pt-12 flex-col items-center justify-center">
 		{#if mesa}
 			<div class="my-12">
 				<p class="flex items-center justify-start gap-2 rounded-md p-1 px-2 text-xl">
-					<span class="wobble-hor-top"> <Fa icon={faExclamationCircle} /></span> Sorry to interrupt,
-					we shipped too fast!
+					<span class="wobble-hor-top"> <Fa icon={faExclamationCircle} /></span> Complete your profile.
 				</p>
 				<p>
-					Manually click the <strong>"Update Profile"</strong> button to <strong>Continue</strong>
+					 Click <strong>"Update Profile"</strong> to <strong>Continue with defaults.</strong>
 				</p>
 			</div>
 		{/if}
-		<div class="mb-4 max-w-[700px] rounded-2xl bg-gray-100 p-8 pt-20 dark:bg-secondary-dark">
-			<h2 class="mb-4 flex gap-2 text-4xl font-bold text-gray-800 dark:text-white">
+		<div class="mb-4  max-w-[700px] rounded-2xl bg-neutral-100 p-8 pt-20 dark:bg-secondary-dark">
+			<h2 class="mb-4 flex gap-2 text-4xl font-bold text-neutral-800 dark:text-white">
 				Profile <span
 					><a href="/{details?.username}"><Fa class="text-sm" icon={faUpRightFromSquare} /></a
 					></span
@@ -86,14 +85,14 @@
 			<form action={data.action} use:enhance={handleSubmit} method="POST">
 				<!-- User Name -->
 				<div class="mb-4">
-					<label for="username" class="mb-2 block text-sm text-gray-700 dark:text-white md:text-lg">
+					<label for="username" class="mb-2 block text-sm text-neutral-700 dark:text-white md:text-lg">
 						Username
 					</label>
 					<input
 						type="text"
 						id="username"
 						name="username"
-						class="earance-none focus:line w-full rounded border px-3 py-2 leading-tight text-gray-700 focus:outline-none dark:border-0 dark:bg-primary dark:text-white"
+						class="earance-none focus:line w-full rounded border px-3 py-2 leading-tight text-neutral-700 focus:outline-none dark:border-0 dark:bg-primary dark:text-white"
 						placeholder="Username"
 						value={details?.username}
 						class:border-error={form?.errors?.username}
@@ -104,14 +103,14 @@
 				</div>
 				<!-- Email -->
 				<div class="mb-4">
-					<label for="email" class="mb-2 block text-sm text-gray-700 dark:text-white md:text-lg">
+					<label for="email" class="mb-2 block text-sm text-neutral-700 dark:text-white md:text-lg">
 						<i class="fas fa-envelope mr-1" /> Email
 					</label>
 					<input
 						type="email"
 						id="email"
 						name="email"
-						class="earance-none focus:line w-full rounded border px-3 py-2 leading-tight text-gray-700 focus:outline-none dark:border-0 dark:bg-primary dark:text-white"
+						class="earance-none focus:line w-full rounded border px-3 py-2 leading-tight text-neutral-700 focus:outline-none dark:border-0 dark:bg-primary dark:text-white"
 						placeholder="Email"
 						value={details?.email}
 						readonly
@@ -120,14 +119,14 @@
 
 				<!-- Full Name -->
 				<div class="mb-4">
-					<label for="fullname" class="mb-2 block text-sm text-gray-700 dark:text-white md:text-lg">
+					<label for="fullname" class="mb-2 block text-sm text-neutral-700 dark:text-white md:text-lg">
 						<i class="fas fa-user mr-1" /> Full Name
 					</label>
 					<input
 						type="text"
 						id="fullname"
 						name="fullname"
-						class="earance-none focus:line w-full rounded border px-3 py-2 leading-tight text-gray-700 focus:outline-none dark:border-0 dark:bg-primary dark:text-white"
+						class="earance-none focus:line w-full rounded border px-3 py-2 leading-tight text-neutral-700 focus:outline-none dark:border-0 dark:bg-primary dark:text-white"
 						placeholder="Full Name"
 						value={details?.name}
 						class:border-error={form?.errors?.fullname}
@@ -138,7 +137,7 @@
 				</div>
 				<!-- Social Media Links -->
 				<div class="mb-4">
-					<span class="mb-2 block text-sm text-gray-700 dark:text-white md:text-lg">
+					<span class="mb-2 block text-sm text-neutral-700 dark:text-white md:text-lg">
 						<i class="fas fa-share-alt mr-1" /> Social Media Links
 					</span>
 					<div class="flex gap-2">
@@ -146,13 +145,13 @@
 						<div class="w-1/2">
 							<label
 								for="github"
-								class="mb-2 block text-sm text-gray-700 dark:text-white md:text-lg">Github</label
+								class="mb-2 block text-sm text-neutral-700 dark:text-white md:text-lg">Github</label
 							>
 							<input
 								type="text"
 								id="github"
 								name="github"
-								class="earance-none focus:line w-full rounded border px-3 py-2 leading-tight text-gray-700 focus:outline-none dark:border-0 dark:bg-primary dark:text-white"
+								class="earance-none focus:line w-full rounded border px-3 py-2 leading-tight text-neutral-700 focus:outline-none dark:border-0 dark:bg-primary dark:text-white"
 								placeholder="Username"
 								value={details?.socials?.github}
 							/>
@@ -161,13 +160,13 @@
 						<div class="w-1/2">
 							<label
 								for="twitter"
-								class="mb-2 block text-sm text-gray-700 dark:text-white md:text-lg">Twitter</label
+								class="mb-2 block text-sm text-neutral-700 dark:text-white md:text-lg">Twitter</label
 							>
 							<input
 								type="text"
 								id="twitter"
 								name="twitter"
-								class="earance-none focus:line w-full rounded border px-3 py-2 leading-tight text-gray-700 focus:outline-none dark:border-0 dark:bg-primary dark:text-white"
+								class="earance-none focus:line w-full rounded border px-3 py-2 leading-tight text-neutral-700 focus:outline-none dark:border-0 dark:bg-primary dark:text-white"
 								placeholder="@username"
 								value={details?.socials?.twitter}
 							/>
@@ -176,13 +175,13 @@
 						<div class="w-1/2">
 							<label
 								for="instagram"
-								class="mb-2 block text-sm text-gray-700 dark:text-white md:text-lg">Instagram</label
+								class="mb-2 block text-sm text-neutral-700 dark:text-white md:text-lg">Instagram</label
 							>
 							<input
 								type="text"
 								id="instagram"
 								name="instagram"
-								class="earance-none focus:line w-full rounded border px-3 py-2 leading-tight text-gray-700 focus:outline-none dark:border-0 dark:bg-primary dark:text-white"
+								class="earance-none focus:line w-full rounded border px-3 py-2 leading-tight text-neutral-700 focus:outline-none dark:border-0 dark:bg-primary dark:text-white"
 								placeholder="username"
 								value={details?.socials?.instagram}
 							/>
@@ -224,7 +223,7 @@
 				</div>
 			{/if}
 
-			<div class="mt-6 w-fit rounded-2xl bg-gray-50 p-3 dark:bg-primary">
+			<div class="mt-6 w-fit rounded-2xl bg-neutral-50 p-3 dark:bg-primary">
 				<a href="/recovery/reset" class="flex items-center gap-2"
 					>Reset password <Fa icon={faArrowRight} /></a
 				>

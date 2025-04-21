@@ -134,7 +134,7 @@
 		{#if showMore}
 			<nav aria-label="Pagination">
 				<button
-					class="flex items-center justify-center gap-2 rounded-lg bg-white px-6 py-3 font-semibold text-sky-500 shadow-md transition-all duration-300 hover:bg-sky-50 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 active:scale-95 dark:bg-secondary-dark dark:text-gray-200"
+					class="flex items-center justify-center gap-2 rounded-lg bg-white px-6 py-3 font-semibold  transition-all duration-300 hover:bg-sky-50 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 active:scale-95 dark:bg-secondary-dark dark:text-gray-200"
 					on:click={more}
 					disabled={loading}
 					aria-label="Load more content"
@@ -158,6 +158,6 @@
 <style>
 	.customGrid {
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 	}
 </style>

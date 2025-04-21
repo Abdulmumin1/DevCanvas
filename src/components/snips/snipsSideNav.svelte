@@ -16,7 +16,7 @@
 
 <div class="h-full md:w-[250px] ">
 	<div
-		class="fixed hidden h-full w-[250px] bg-inherit  bg-light dark:bg-secondary-dark  text-black dark:text-white md:flex"
+		class="fixed hidden h-full w-[250px] bg-inherit  bg-neutral-200 dark:bg-secondary-dark  text-black dark:text-white md:flex"
 	>
 		<ul class="flex h-full w-full flex-col gap-4 pl-3">
 			<ul class="flex h-full w-full flex-col gap-4 transition-all duration-200">

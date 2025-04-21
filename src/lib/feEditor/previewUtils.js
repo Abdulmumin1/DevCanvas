@@ -101,6 +101,11 @@ export async function constructHtml(current_data, preview = false) {
 		<style>
             ${css}
         </style>
+		<script
+			defer
+			type="text/javascript"
+			src="https://cdn.littlestats.click/embed/cnvkg2la9w6k0yx"
+		></script>
 		${Object.keys(Object.fromEntries(Object.entries(jsPlugins).filter(([k, v]) => v)))
 			.map((plugin) => `<script src=${cdns[plugin]}></script>\n`)
 			.join('')}

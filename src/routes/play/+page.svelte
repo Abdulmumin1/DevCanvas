@@ -85,7 +85,7 @@
 				> <span class="dark:text-white">Create new Canvas</span>
 			</div>
 			<div
-				class="mx-auto w-full flex max-w-4xl flex-col rounded-[50px] bg-gray-100 p-6 dark:bg-secondary-dark "
+				class="mx-auto w-full flex max-w-4xl flex-col rounded-[50px] bg-neutral-100 p-6 dark:bg-secondary-dark "
 			>
 				
 				{#if $user}

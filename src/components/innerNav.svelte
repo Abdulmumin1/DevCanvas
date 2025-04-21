@@ -10,21 +10,21 @@
   </script>
   
   <nav class="z-50 w-full md:w-fit mx-auto  p-2 py-3 ">
-	<div class="mx-auto max-w-7xl bg-sky-300/65 rounded-full px-2 py-0 ">
-	  <div class="flex h-16 items-center gap-8 justify-between">
+	<div class="mx-auto max-w-7xl bg-sky-300/65 rounded-full px-1 py-0 ">
+	  <div class="flex h-12 items-center gap-8 justify-between">
 		<div class="flex items-center">
-		  <a href="/" class="flex items-center space-x-2 rounded-full bg-black px-3 py-2 text-white">
+		  <a href="/" class="flex items-center space-x-2 rounded-full bg-black px-3 py-1 text-white">
 			<img
 			  src="/logo.svg"
 			  alt="DevCanvas"
-			  class="size-[1.8rem] transition-all duration-300 hover:rotate-45"
+			  class="size-[1.5rem] transition-all duration-300 hover:rotate-45"
 			/>
 			<span class="text-lg font-semibold ">Devcanvas</span>
 		  </a>
 		</div>
 		
 		<div class="hidden items-center md:flex text-sm">
-		  <div class="flex items-center rounded-full bg-white/20 p-1.5">
+		  <div class="flex items-center rounded-full bg-white/20 p-1">
 			{#each ['Community', 'Blog'] as item}
 			  <a
 				href="/{item.toLowerCase()}"
