@@ -6,6 +6,7 @@
 	import { aibox, aiprompt } from '$lib/feEditor/aiFunctions.js';
 
 	import Loader from '../loader.svelte';
+	import { fade } from 'svelte/transition';
 
 	let loading = false;
 
@@ -47,7 +48,7 @@
 </script>
 
 {#if loading}
-	<div class="fixed inset-0 z-50 flex items-center justify-center">
+	<div transition:fade class="fixed inset-0 z-50 flex items-center justify-center bg-gradient-to-r from-sky-300 to-sky-400">
 		<Loader />
 	</div>
 {/if}

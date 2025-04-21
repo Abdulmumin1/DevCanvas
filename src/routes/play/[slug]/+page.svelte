@@ -198,6 +198,8 @@
 			// console.log(error);
 		} finally {
 			$generating = false;
+			debouncedSaveMessagesToDB(messages, data.details);
+
 		}
 	}
 
