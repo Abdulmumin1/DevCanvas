@@ -98,79 +98,10 @@
 		</a>
 	</div>
 	<div class="max-w-xl flex-1 space-y-3 p-6 md:p-6 md:px-16">
-		<form
-			transition:slide
-			action="?/signin"
-			method="post"
-			use:enhance={handleSubmit}
-			class="mt-2 flex w-full flex-1 flex-col gap-4 rounded-lg"
-		>
-			<h1 class="text-center text-2xl">Sign In</h1>
-
-			<div class="flex flex-col gap-3">
-				<input
-					type="text"
-					name="redirectTo"
-					value={$page.url.searchParams.get('redirectTo')}
-					readonly
-					class="hidden"
-				/>
-				<div transition:slide class="flex flex-col gap-2">
-					<label for="email" class="text-sm">Email</label>
-					<input
-						name="email"
-						type="email"
-						id="email"
-						bind:value={email}
-						required
-						class="rounded-lg border border-sky-200 px-3 py-2 outline outline-2 outline-sky-200 focus:outline-4 focus:outline-sky-300"
-					/>
-				</div>
-				{#if usePassword}
-					<div class="flex flex-col gap-2" transition:slide>
-						<label for="password" class="text-sm">Password</label>
-						<!-- <PasswordInput/ -->
-						<PasswordInput id="password" bind:password />
-					</div>
-				{/if}
-				<button
-					aria-busy={loading}
-					type="submit"
-					class="flex items-center justify-center gap-2 rounded-md bg-sky-300 p-2 text-black"
-					>Login
-
-					{#if loading}
-						<Fa icon={faSpinner} class="animate-spin" />
-					{/if}
-				</button>
-				<label class="flex items-center justify-start gap-2 rounded-md bg-gray-100 p-2 text-xs">
-					<input type="checkbox" name="usePassword" id="" bind:checked={usePassword} />
-					Use Password Instead
-				</label>
-
-				{#if !usePassword}
-					{#if !completed}
-						<span class="flex items-center justify-start gap-2 rounded-md bg-gray-100 p-2 text-sm">
-							<Fa icon={faExclamationCircle} />Magik link will be sent to your inbox</span
-						>
-					{:else}
-						<span
-							class="flex items-center justify-start gap-2 rounded-md bg-green-400 p-1 px-2 text-sm"
-						>
-							<span class="wobble-hor-top"> <Fa icon={faExclamationCircle} /></span> Magik link sent
-							to your inbox</span
-						>
-					{/if}
-				{/if}
-			</div>
-		</form>
+		
 
 		<div >
-			<div class="my-4 flex items-center gap-2">
-				<div class="flex-grow border-t border-gray-300"></div>
-				<span class="text-sm text-gray-500">OR</span>
-				<div class="flex-grow border-t border-gray-300"></div>
-			</div>
+			
 
 			<button
 				class="my-3 flex w-full items-center justify-center gap-2 rounded border p-2 hover:bg-black/20"
@@ -179,7 +110,11 @@
 				Continue with Github <Fa icon={faGithub} />
 			</button>
 		</div>
-
+		<div class="my-4 flex items-center gap-2">
+			<div class="flex-grow border-t border-gray-300"></div>
+			<span class="text-sm text-gray-500">OR</span>
+			<div class="flex-grow border-t border-gray-300"></div>
+		</div>
 		<div>
 	
 
@@ -190,11 +125,11 @@
 				Continue with Google <Fa icon={faGoogle} />
 			</button>
 
-			<div class="my-4 flex items-center gap-2">
+			<!-- <div class="my-4 flex items-center gap-2">
 				<div class="flex-grow border-t border-gray-300"></div>
 				<span class="text-sm text-gray-500">OR</span>
 				<div class="flex-grow border-t border-gray-300"></div>
-			</div>
+			</div> -->
 
 		</div>
 
