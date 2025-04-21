@@ -134,7 +134,7 @@
 		</div>
 
 		<!-- <p class="text-sm">Don't have an account? <a href="/signup">Sign Up</a></p> -->
-		<a class="text-sm" href="recovery/forgot">Forgot password?</a>
+		<!-- <a class="text-sm" href="recovery/forgot">Forgot password?</a> -->
 
 		{#if errMessage}
 			<p transition:slide={{ duration: 200 }} class="w-full rounded-md bg-error p-2">

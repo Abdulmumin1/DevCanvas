@@ -23,7 +23,7 @@
 	import { fly } from 'svelte/transition';
 	import { writable } from 'svelte/store';
 
-	import {PUBLIC_AI_GATEWAY} from '$env/static/public'
+	import { PUBLIC_AI_GATEWAY } from '$env/static/public';
 
 	setReloadContext();
 
@@ -60,20 +60,35 @@
 	let mounted = false;
 	$: fetchResponse = true;
 
-	const debouncedSaveMessagesToDB = debounce((data, details) => {
+	let debounceMessageTimer = null;
+
+	const debouncedSaveMessagesToDB = (data, details) => {
 		if (!mounted) return;
-		saveData({ messages: data, id: details.id }).then(() => {});
-	}, 2000); // adjust delay as needed
+		clearTimeout(debounceMessageTimer);
+		debounceMessageTimer = setTimeout(() => {
+			saveData({ messages: data, id: details.id }).then(() => {});
+		}, 2000);
+	};
 
 	async function promptAI(message) {
 		// console.log('fdsfds');
+		let debounceEditorUpdateTimer = null;
 
+		// const debouncedUpdate = (html) => {
+		// 	clearTimeout(debounceMessageTimer);
+		// 	debounceEditorUpdateTimer = setTimeout(() => {
+		// 		current_data.update((cur) => ({
+		// 			...cur,
+		// 			html: html.trim()
+		// 		}));
+		// 	}, 1000);
+		// }; // adjust delay as needed
 		const debouncedUpdate = debounce((html) => {
 			current_data.update((cur) => ({
 				...cur,
 				html: html.trim()
 			}));
-		}, 700); // adjust delay as needed
+		}, 300); // adjust delay as needed
 
 		function findEndTagIndex(htmlBuffer, endTag) {
 			const fullIndex = htmlBuffer.indexOf(endTag);
@@ -199,7 +214,6 @@
 		} finally {
 			$generating = false;
 			debouncedSaveMessagesToDB(messages, data.details);
-
 		}
 	}
 
@@ -249,12 +263,12 @@
 			}
 		];
 		try {
-			console.log(data.details.messages)
+			console.log(data.details.messages);
 
 			let storedChat = data.details.messages;
 
-			if (typeof(storedChat) == 'string'){
-				throw new Error()
+			if (typeof storedChat == 'string') {
+				throw new Error();
 			}
 
 			messages = storedChat.length ? storedChat : [...messages, ...m];
