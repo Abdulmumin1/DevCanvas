@@ -66,7 +66,7 @@
 		if (!mounted) return;
 		clearTimeout(debounceMessageTimer);
 		debounceMessageTimer = setTimeout(() => {
-			saveSingle(data, 'messages', details.id).then(() => {});
+			saveSingle(JSON.stringify(data), 'messages', details.id).then(() => {});
 		}, 2000);
 	};
 
