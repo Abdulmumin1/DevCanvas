@@ -45,6 +45,32 @@ export async function saveData(json_data, which = true) {
 	showSave.set(false);
 }
 
+
+
+export async function saveSingle(data, name, id) {
+	let formData = new FormData();
+
+	saved_spinner.set(true);
+	previewMode.set(false);
+
+	formData.append(name, data)
+	formData.append('id', id)
+	const response = await fetch('?/update', {
+		method: 'POST',
+		body: formData
+	});
+
+	if (response.ok) {
+		// Handle save success
+		// console.log('full');
+	} else {
+		// Handle save failed
+		// console.log('failed');
+	}
+	saved_spinner.set(false);
+	previewMode.set(true);
+}
+
 export async function savePlugins(json_data, id) {
 	let formData = new FormData();
 	saved_spinner.set(true);
