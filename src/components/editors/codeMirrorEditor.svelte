@@ -12,7 +12,7 @@
 	import { getContext, onMount } from 'svelte';
 	import {
 		showSave,
-		saveData,
+		saveSingle,
 		showLoginToSave,
 		showForkTosave,
 		formatCode
@@ -70,11 +70,11 @@
 		saved_spinner.set(true);
 		if (verifyUser()) {
 			if (lang == 'html') {
-				saveData($current_data, 'html');
+				await saveSingle($current_data.html, 'html', $current_data.id);
 			} else if (lang == 'css') {
-				saveData($current_data, 'css');
+				await saveSingle($current_data.css, 'css', $current_data.id);
 			} else if (lang == 'javascript') {
-				saveData($current_data, 'js');
+				await saveSingle($current_data.js, 'js', $current_data.id);
 			}
 		}
 		saved = true;

@@ -1,5 +1,5 @@
 <script>
-	import { current_data, user, isOwner, saveData } from '$lib/index.js';
+	import { current_data, user, isOwner, saveSingle } from '$lib/index.js';
 	import { showSave, consoleOutput } from '$lib/feEditor/store.js';
 	import { getContext, onDestroy, onMount, setContext } from 'svelte';
 	import { browser } from '$app/environment';
@@ -66,7 +66,7 @@
 		if (!mounted) return;
 		clearTimeout(debounceMessageTimer);
 		debounceMessageTimer = setTimeout(() => {
-			saveData({ messages: data, id: details.id }).then(() => {});
+			saveSingle(data, 'messages', details.id).then(() => {});
 		}, 2000);
 	};
 
