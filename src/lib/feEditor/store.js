@@ -51,7 +51,7 @@ export async function saveSingle(data, name, id) {
 	let formData = new FormData();
 
 	saved_spinner.set(true);
-	previewMode.set(false);
+	// showSave.set(true);
 
 	formData.append(name, data)
 	formData.append('id', id)
@@ -68,7 +68,7 @@ export async function saveSingle(data, name, id) {
 		// console.log('failed');
 	}
 	saved_spinner.set(false);
-	previewMode.set(true);
+	showSave.set(false);
 }
 
 export async function savePlugins(json_data, id) {
