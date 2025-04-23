@@ -1,6 +1,6 @@
 <script>
-	import { current_data, user, isOwner, saveSingle } from '$lib/index.js';
-	import { showSave, consoleOutput } from '$lib/feEditor/store.js';
+	import { current_data, user, isOwner } from '$lib/index.js';
+	import { showSave, consoleOutput, saveSingle } from '$lib/feEditor/store.js';
 	import { getContext, onDestroy, onMount, setContext } from 'svelte';
 	import { browser } from '$app/environment';
 	import FeCodeEditor from '$components/fePlayground/feCodeEditor.svelte';
@@ -62,17 +62,17 @@
 
 	let debounceMessageTimer = null;
 
-	const debouncedSaveMessagesToDB = (data, details) => {
+	const debouncedSaveMessagesToDB = (messages, details) => {
 		if (!mounted) return;
 		clearTimeout(debounceMessageTimer);
 		debounceMessageTimer = setTimeout(() => {
 			
-			let messagesx = JSON.stringify(data);
+			let messagesx = JSON.stringify(messages);
 			current_data.update((cur) => {
 				return { ...cur, messages: messagesx };
 			});
-			console.log(messagesx);
-			saveSingle(messagesx, 'messages', details.id)
+			console.log();
+			saveSingle(data.supabase, messagesx, 'messages', details.id)
 				.then(() => {})
 				.catch((err) => {
 					console.error('Error saving messages: ', err);

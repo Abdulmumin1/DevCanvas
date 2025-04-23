@@ -10,6 +10,8 @@
 	import { editorFontSize } from '$lib/editor/settings.js';
 
 	import { getContext, onMount } from 'svelte';
+	import {page} from '$app/stores'
+	
 	import {
 		showSave,
 		saveSingle,
@@ -70,11 +72,11 @@
 		saved_spinner.set(true);
 		if (verifyUser()) {
 			if (lang == 'html') {
-				await saveSingle($current_data.html, 'html', $current_data.id);
+				await saveSingle($page.data.supabase, $current_data.html, 'html', $current_data.id);
 			} else if (lang == 'css') {
-				await saveSingle($current_data.css, 'css', $current_data.id);
+				await saveSingle($page.data.supabase, $current_data.css, 'css', $current_data.id);
 			} else if (lang == 'javascript') {
-				await saveSingle($current_data.js, 'js', $current_data.id);
+				await saveSingle($page.data.supabase, $current_data.js, 'js', $current_data.id);
 			}
 		}
 		saved = true;

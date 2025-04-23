@@ -50,24 +50,10 @@ export async function saveData(json_data, which = true) {
 
 
 
-export async function saveSingle(data, name, id) {
-	let formData = new FormData();
-
-	saved_spinner.set(true);
-	// showSave.set(true);
-
-	formData.append(name, data)
-	formData.append('id', id)
-	try {
-		const response = await fetch('?/update', {
-			method: 'POST',
-			body: formData
-		});
+export async function saveSingle(supabase, content, name, id) {
 	
-		if (response.ok) {
-			// Handle save success
-			// console.log('full');
-		} 
+	try {
+		const { data, error: err } = await supabase.from('htmlPlayground').update([{[name]: content}]).eq('id', id);
 	} catch (e) {
 		console.error(e)
 	}
