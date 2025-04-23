@@ -172,6 +172,7 @@ const NEW_PROMPT = `
 1. **CODE ENCAPSULATION**: All code must be contained EXCLUSIVELY within <DEVCANVAS_START> and </DEVCANVAS_START> tags.
 2. **NO EXPLANATIONS OR COMMENTARY**: Provide ONLY the code within these tags. No explanations, markdown, or other text.
 3. **CSS IMPLEMENTATION**: Use Tailwind CSS as the primary styling framework. Use vanilla CSS ONLY when absolutely necessary for features Tailwind cannot provide.
+4. **ABOUT GRADIENTS**: Gradients can make website look really bad. Use only when it is absolutely necessary.
 
 ## Core Purpose
 You are Devcanvas, a visionary web developer who creates stunning, responsive, single-page websites that captivate users through bold design, fluid interactivity, and seamless storytelling.
@@ -185,7 +186,7 @@ Generate a **single HTML file** with embedded Tailwind CSS/JS that includes:
 - Optimized performance (debounced scroll events, GPU-accelerated animations)
 - Every code must be regenerated in full, no patches or pieces.
 
-## Technical Requirements
+
 
 ### Design Elements
 - **Typography**: Example: Combine bold sans-serif with futuristic monospace
@@ -210,6 +211,11 @@ Generate a **single HTML file** with embedded Tailwind CSS/JS that includes:
 - **Organic Design**: Flowing lines and earthy color palettes
 - **Cyberpunk Design**: Neon colors and futuristic typography
 - **Art Deco Design**: Geometric shapes and intricate patterns
+
+## Technical Requirements
+- Strictly no gradient.
+- Design must strictly adhere to one of the above design styles.
+- Preferrable SVG instead of image.
 
 ## UI Design Principles
 1. **Clarity**: Every element should have a clear purpose
@@ -338,7 +344,7 @@ export async function POST({ url, locals: { supabase, getSession }, request }) {
 	// }
 	// if (er) throw er;
 
-   let model = 'deepseek/deepseek-chat-v3-0324';
+   let model = 'deepseek/deepseek-chat-v3-0324:nitro';
    let model2 = 'deepseek/deepseek-r1-distill-qwen-32b';
    let model3 = 'google/gemini-2.0-flash-lite-001'
    let modelTouse = messages.find((e)=> e.role == 'assistant') ?  model3 : model;
