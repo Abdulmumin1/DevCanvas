@@ -77,7 +77,7 @@
    
 		 <!-- Action buttons -->
 		 <div class="flex items-center gap-3">
-		   <span class="flex items-center gap-1 rounded-md bg-gray-100 px-2 py-1 text-xs dark:bg-gray-800">
+		   <span class="flex items-center gap-1 rounded-md bg-neutral-100 px-2 py-1 text-xs dark:bg-neutral-800">
 			 <Fa icon={faEye} class="" />
 			 <span>{details.view?.length > 0 ? details.view[0].views : '0'}</span>
 		   </span>

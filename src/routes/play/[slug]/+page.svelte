@@ -66,10 +66,11 @@
 		if (!mounted) return;
 		clearTimeout(debounceMessageTimer);
 		debounceMessageTimer = setTimeout(() => {
-			current_data.update((cur) => {
-				return { ...cur, messages: data };
-			});
+			
 			let messagesx = JSON.stringify(data);
+			current_data.update((cur) => {
+				return { ...cur, messages: messagesx };
+			});
 			console.log(messagesx);
 			saveSingle(messagesx, 'messages', details.id)
 				.then(() => {})
@@ -272,12 +273,12 @@
 			}
 		];
 		try {
-			console.log(data.details.messages);
+			// console.log(data.details.messages);
 
 			let storedChat = data.details.messages;
 
 			if (typeof storedChat == 'string') {
-				throw new Error();
+				storedChat = JSON.parse(storedChat)
 			}
 
 			messages = storedChat.length ? storedChat : [...messages, ...m];

@@ -24,11 +24,11 @@ export const actions = {
 			body.tags = JSON.parse(body.tags);
 		}
 
-		if (body.messages && body.messages !== undefined && body.messages !== '') {
+		// if (body.messages && body.messages !== undefined && body.messages !== '') {
 			// console.log("messages", body.messages)
 
-			body.messages = JSON.parse(body.messages);
-		}
+			// body.messages = JSON.parse(body.messages);
+		// }
 		// console.log(body);
 		
 		const { data, error: err } = await supabase.from('htmlPlayground').update([body]).eq('id', id);
