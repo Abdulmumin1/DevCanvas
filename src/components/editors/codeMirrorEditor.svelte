@@ -79,7 +79,7 @@
 		}
 		saved = true;
 		saved_spinner.set(false);
-		showSave.set(true);
+		showSave.set(false);
 	}
 
 	$: {

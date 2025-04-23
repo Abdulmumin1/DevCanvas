@@ -104,9 +104,9 @@ export const goto = (path) => {
 
 function appendJSONToFormData(json, formData, which) {
 	for (const key in json) {
-		if (which == key || which == true) {
-			let value = json[key];
-			let d = typeof(value === 'object') ? JSON.stringify(value) : value
+		if (which === key || which === true) {
+			const value = json[key];
+			const d = (value !== null && typeof value === 'object') ? JSON.stringify(value) : value;
 			formData.append(key, d);
 		}
 	}

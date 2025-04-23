@@ -66,7 +66,16 @@
 		if (!mounted) return;
 		clearTimeout(debounceMessageTimer);
 		debounceMessageTimer = setTimeout(() => {
-			saveSingle(JSON.stringify(data), 'messages', details.id).then(() => {});
+			current_data.update((cur) => {
+				return { ...cur, messages: data };
+			});
+			let messagesx = JSON.stringify(data);
+			console.log(messagesx);
+			saveSingle(messagesx, 'messages', details.id)
+				.then(() => {})
+				.catch((err) => {
+					console.error('Error saving messages: ', err);
+				});
 		}, 2000);
 	};
 
@@ -84,10 +93,10 @@
 		// 	}, 1000);
 		// }; // adjust delay as needed
 		const debouncedUpdate = debounce((html) => {
-			current_data.update((cur) => ({
-				...cur,
-				html: html.trim()
-			}));
+			// current_data.update((cur) => ({
+			// 	...cur,
+			// 	html: html.trim()
+			// }));
 		}, 300); // adjust delay as needed
 
 		function findEndTagIndex(htmlBuffer, endTag) {

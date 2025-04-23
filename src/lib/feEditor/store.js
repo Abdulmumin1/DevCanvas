@@ -15,12 +15,15 @@ export let tabsView = writable(true);
 // export let setFormatCode =
 function appendJSONToFormData(json, formData, which) {
 	for (const key in json) {
-		if (which == key || which == true) {
-			formData.append(key, json[key]);
+		if (which === key || which === true) {
+			const value = json[key];
+			const d = (value !== null && typeof value === 'object') ? JSON.stringify(value) : value;
+			formData.append(key, d);
 		}
 	}
 	formData.append('id', json['id']);
 }
+
 
 export async function saveData(json_data, which = true) {
 	let formData = new FormData();
@@ -55,20 +58,21 @@ export async function saveSingle(data, name, id) {
 
 	formData.append(name, data)
 	formData.append('id', id)
-	const response = await fetch('?/update', {
-		method: 'POST',
-		body: formData
-	});
-
-	if (response.ok) {
-		// Handle save success
-		// console.log('full');
-	} else {
-		// Handle save failed
-		// console.log('failed');
+	try {
+		const response = await fetch('?/update', {
+			method: 'POST',
+			body: formData
+		});
+	
+		if (response.ok) {
+			// Handle save success
+			// console.log('full');
+		} 
+	} catch (e) {
+		console.error(e)
 	}
 	saved_spinner.set(false);
-	showSave.set(false);
+	// showSave.set(false);
 }
 
 export async function savePlugins(json_data, id) {
