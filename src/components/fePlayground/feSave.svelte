@@ -17,6 +17,9 @@
 		filtered = Object.fromEntries(
 			Object.entries(filtered).filter(([key]) => key !== 'views')
 		);
+		filtered = Object.fromEntries(
+			Object.entries(filtered).filter(([key]) => key !== 'user_id')
+		);
 
 		console.log(filtered)
 		await saveData(filtered);
