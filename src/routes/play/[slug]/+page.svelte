@@ -71,7 +71,7 @@
 			current_data.update((cur) => {
 				return { ...cur, messages: messagesx };
 			});
-			console.log();
+			// console.log();
 			saveSingle(data.supabase, messagesx, 'messages', details.id)
 				.then(() => {})
 				.catch((err) => {

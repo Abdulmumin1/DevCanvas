@@ -20,6 +20,8 @@ export async function GET({ url, params, locals: { supabase } }) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Untitled Canvas</title>
+	<meta name="robots" content="noindex, nofollow">
+	<meta name="googlebot" content="noindex, nofollow">
 	<script
 			defer
 			type="text/javascript"

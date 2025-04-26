@@ -23,12 +23,12 @@
 		  </a>
 		</div>
 		
-		<div class="hidden items-center md:flex text-sm">
-		  <div class="flex items-center rounded-full bg-white/20 p-1">
+		<div class="hidden items-center md:flex text-sm p-0">
+		  <div class="flex items-center rounded-full bg-white/20 p-0.5">
 			{#each ['Community', 'Blog'] as item}
 			  <a
 				href="/{item.toLowerCase()}"
-				class="nav-item {$page.url.pathname === `/${item.toLowerCase()}` ? 'active' : ''}"
+				class="nav-item px-2 py-1 {$page.url.pathname === `/${item.toLowerCase()}` ? 'active' : ''}"
 			  >
 				{item}
 			  </a>
@@ -39,7 +39,7 @@
 			  New Canvas
 			</a>
 			
-			<div class="ml-2 flex aspect-square items-center justify-center rounded-full p-1 text-black">
+			<div class="flex aspect-square items-center justify-center rounded-full p-0.5 text-black">
 			  <Darkmode />
 			</div>
 		  </div>
@@ -55,7 +55,6 @@
   <style>
 	.nav-item {
 	  color: #0e0e0e;
-	  padding: 0.5rem 0.75rem;
 	  border-radius: 9999px;
 	  font-size: 0.875rem;
 	  font-weight: 500;

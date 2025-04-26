@@ -24,7 +24,7 @@
 
 			return;
 		}
-		goto('/output/compile/' + $page.params.slug);
+		goto('/play/' + $page.params.slug+'/preview/');
 	}
 </script>
 

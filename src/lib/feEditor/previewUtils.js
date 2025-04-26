@@ -101,6 +101,8 @@ export async function constructHtml(current_data, preview = false) {
 		<style>
             ${css}
         </style>
+		<meta name="robots" content="noindex, nofollow">
+		<meta name="googlebot" content="noindex, nofollow">
 		<script
 			defer
 			type="text/javascript"
