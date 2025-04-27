@@ -4,6 +4,7 @@
 	import { slide } from 'svelte/transition';
 	import { showToast } from '$lib/index.js';
 	import { faFacebook, faLinkedin, faTwitter } from '@fortawesome/free-brands-svg-icons';
+	import {Share2} from 'lucide-svelte'
 	let isClicked = false;
 
 	export let link;
@@ -50,7 +51,7 @@
 	>
 		<!-- {#if isClicked} -->
 		<div transition:slide class:scale-110={isClicked} class="transition-all duration-300">
-			<Fa icon={faArrowUpFromBracket} class="transition-all duration-300" />
+			<Share2 size={16} class="transition-all duration-300" />
 		</div>
 		<!-- {/if} -->
 	</button>

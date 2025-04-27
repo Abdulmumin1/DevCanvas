@@ -60,7 +60,7 @@
 		method="POST"
 		action="/db/create"
 		transition:slide
-		class="  mb-8 rounded-2xl bg-gray-100 p-8 dark:bg-secondary-dark"
+		class="  mb-8 rounded-2xl bg-neutral-100 p-8 dark:bg-secondary-dark"
 	>
 		<div class="flex w-full flex-col gap-4 dark:text-white">
 			<div class="flex items-center gap-2 text-3xl">

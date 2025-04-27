@@ -46,7 +46,7 @@ class="flex h-[35px] cursor-pointer items-center justify-center md:gap-0 md:divi
 	<!-- {/if} -->
 	<span class="hidden md:flex">Share</span>
 </button>
-<div class="flex h items-center h-full justify-center rounded bg-gray-300 px-0 py-1 md:rounded-l-none">
+<div class="flex  items-center h-full justify-center rounded-r bg-gray-300 px-0 py-1 md:rounded-r">
 	<FeSettingsDropdown />
 </div>
 

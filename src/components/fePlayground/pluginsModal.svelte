@@ -204,7 +204,7 @@
 		left: 0;
 		height: 80%;
 		width: 100%;
-		max-width: 800px;
+		max-width: 900px;
 		margin-inline: auto;
 		overflow: auto;
 		z-index: 99999px;

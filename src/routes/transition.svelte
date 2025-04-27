@@ -4,11 +4,12 @@
 	export let url;
 </script>
 
-{#key url}
-	<div in:fly={{ duration: 1000 }}>
-		<slot />
-	</div>
-{/key}
+<!-- {#key url} -->
+<!-- <div in:fly={{ duration: 1000 }}> -->
+<slot />
+
+<!-- </div> -->
+<!-- {/key} -->
 
 <style>
 </style>

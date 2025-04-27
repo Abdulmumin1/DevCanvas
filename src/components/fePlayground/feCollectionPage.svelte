@@ -1,10 +1,9 @@
 <script>
 	import { fade } from 'svelte/transition';
 	import FeCard from './feCard.svelte';
-	import { pageCountPl } from '$lib/index.js';
 	import { faForward, faSpinner } from '@fortawesome/free-solid-svg-icons';
 	import Fa from 'svelte-fa';
-	import { onDestroy, onMount } from 'svelte';
+	import { onMount } from 'svelte';
 
 	export let supabase;
 	export let collection;
@@ -15,108 +14,101 @@
 	let loading = false;
 	let showMore = false;
 
-	async function fetchExplore(pageNumber, pageSize) {
+	async function fetchExplore(start, end) {
 		const { data, error } = await supabase
 			.from('htmlPlayground')
 			.select('project_key, user_id, description, view (views), profiles (username)')
 			.order('created_at', { ascending: false })
-			.range(pageNumber, pageSize)
+			.range(start, end)
 			.is('public', true);
 
 		if (error) {
 			console.error('Error fetching data:', error.message);
-			return;
+			return [];
 		}
 		return data;
 	}
 
-	async function fetchDashboard(pageNumber, pageSize) {
+	async function fetchDashboard(start, end) {
 		const { data, error } = await supabase
 			.from('htmlPlayground')
 			.select('project_key, user_id, description, view (views), profiles (username)')
 			.eq('user_id', user_id)
 			.order('created_at', { ascending: false })
-			.range(pageNumber, pageSize);
+			.range(start, end);
 
 		if (error) {
 			console.error('Error fetching data:', error.message);
-			return;
+			return [];
 		}
 		return data;
 	}
 
-	async function fetchUserCollection(pageNumber, pageSize) {
+	async function fetchUserCollection(start, end) {
 		const { data, error } = await supabase
 			.from('htmlPlayground')
 			.select('project_key, user_id, description, view (views), profiles (username)')
 			.eq('user_id', user_id)
 			.order('created_at', { ascending: false })
-			.range(pageNumber, pageSize)
+			.range(start, end)
 			.is('public', true);
 
 		if (error) {
 			console.error('Error fetching data:', error.message);
-			return;
+			return [];
 		}
 		return data;
 	}
 
-	async function fetchSearchRows(pageNumber, pageSize) {
+	async function fetchSearchRows(start, end) {
 		const { data, error } = await supabase
 			.from('htmlPlayground')
 			.select('project_key, user_id, description, view (views), profiles (username)')
 			.or(`tags.cs.{"${query}"}`)
 			.order('created_at', { ascending: false })
-			.range(pageNumber, pageSize)
+			.range(start, end)
 			.is('public', true);
 
 		if (error) {
 			console.error('Error fetching data:', error.message);
-			return;
+			return [];
 		}
 		return data;
 	}
 
-	async function fetchPaginatedRows(pageNumber, pageSize) {
+	async function fetchPaginatedRows(start, end) {
 		loading = true;
 		let result;
 		if (dashboard) {
-			result = await fetchDashboard(pageNumber, pageSize);
+			result = await fetchDashboard(start, end);
 		} else if (user_id) {
-			result = await fetchUserCollection(pageNumber, pageSize);
+			result = await fetchUserCollection(start, end);
 		} else if (query) {
-			result = await fetchSearchRows(pageNumber, pageSize);
+			result = await fetchSearchRows(start, end);
 		} else {
-			result = await fetchExplore(pageNumber, pageSize);
+			result = await fetchExplore(start, end);
 		}
 		loading = false;
-		return result;
+		return result || [];
 	}
 
 	async function more() {
-		let result = await fetchPaginatedRows($pageCountPl, $pageCountPl + 24 - 1);
+		const start = collection.length;
+		const end = start + 23; // Fetch next 24 items (inclusive range)
+		const result = await fetchPaginatedRows(start, end);
 
-		if (result.length === 0) {
-			showMore = false;
-			return;
-		} else if (result.length < 24) {
+		if (result.length > 0) {
+			collection = [...collection, ...result];
+			showMore = result.length === 24;
+		} else {
 			showMore = false;
 		}
-
-		collection = [...collection, ...result];
-		pageCountPl.update((cur) => cur + 24);
 	}
 
-	$: showMore = collection.length > 5;
-
-	onMount(async () => {
-		if (collection.length < 24) {
-			showMore = false;
-		}
-	});
-
-	onDestroy(() => {
-		pageCountPl.set(24);
+	onMount(() => {
+		// Show "Load More" if initial collection is a multiple of 24 (indicating possible more data)
+		// console.log(collection.length)
+		showMore = collection.length > 0 && collection.length % 24 === 0;
 	});
 </script>
 

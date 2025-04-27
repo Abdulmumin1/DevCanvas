@@ -30,7 +30,7 @@
 	<SEO
 		title={data.details.description}
 		description={`View project - ${data.details.description}`}
-		imageUrl={`https://devcanvas.art/output/image/${$page.params.slug}?width=1200&height=630`}
+		imageUrl={`/images/${data.details.project_key}`}
 		index={data.details?.public == true}
 	/>
 </svelte:head>

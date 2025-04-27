@@ -8,8 +8,7 @@
 	let generating = getContext('generating');
 
 	let inputContainer = $aiprompt;
-	let inputbackup;
-
+	let inputbackup =null;
 	const dispatch = createEventDispatcher();
 
 	function handleSend() {
@@ -53,7 +52,8 @@
 	});
 	let expand = false;
 	let auto = 'auto';
-	$: heat = $generating || messages.length > 2 ? (expand ? 500 : 80) : 0;
+	$: heat = $generating || messages.length > 2 ? (expand ? 500 : auto) : 0;
+	// $:console.log(heat);
 </script>
 
 <div>
@@ -61,13 +61,14 @@
 		style="height: {heat}{heat !== auto && 'px'};"
 		class="relative {$generating || messages.length > 2
 			? '  p-2'
-			: ' overflow-hidden'} z-50 mx-auto flex w-[90%] flex-col rounded-t border-sky-950 bg-primary text-white transition-all duration-200"
+			: ' overflow-hidden'} z-50 mx-auto flex w-[80%] md:w-[90%] flex-col rounded-t border-sky-950 bg-primary text-white transition-all duration-200"
 	>
 		<div class="absolute -top-6 right-0 flex w-full items-end justify-end gap-1">
 			<button
 				class="rounded bg-primary p-1"
 				on:click={() => {
 					expand = !expand;
+					// heat = 0;
 				}}
 			>
 				{#if expand}
@@ -88,7 +89,7 @@
 					<div class="mr-1.5 size-4 rounded-full bg-gradient-to-r from-sky-400 to-sky-300"></div>
 					<div class="text-xs font-medium">you</div>
 				</div>
-				<p class="text-xs truncate">{inputbackup}</p>
+				<p class="text-xs text-wrap">{inputbackup}</p>
 			</div>
 		{:else}
 			<div class="w-full max-w-full rounded-lg bg-text-secondary p-1 text-sm text-white">
@@ -97,7 +98,7 @@
 		{/if}
 	</div>
 	<div
-		class="shadow-glow relative w-[300px] rounded-full border-2 border-sky-950 bg-primary transition-shadow duration-200 md:w-[700px]"
+		class="shadow-glow relative w-full min-w-[350px] rounded-full border-2 border-sky-950 bg-primary transition-shadow duration-200 md:w-[700px]"
 	>
 		<div class="flex items-center px-2 py-2">
 			{#if $generating}

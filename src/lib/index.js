@@ -21,7 +21,7 @@ export const SnippetsDescription = readable({
 	imageUrl: '/devcanvas.png'
 });
 
-export const pageCountPl = writable(12);
+export const pageCountPl = writable(24);
 export const pageCountSnips = writable(6);
 
 export const saved_spinner = writable(false);
