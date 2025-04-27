@@ -3,12 +3,15 @@
 	import { faSpinner, faTrash } from '@fortawesome/free-solid-svg-icons';
 	import Fa from 'svelte-fa';
 	import { invalidateAll, goto } from '$app/navigation';
+	import { createEventDispatcher } from 'svelte';
 
+	
 	export let canvas_id;
 	export let user_id;
 	export let title;
 	let modal;
 	let loading;
+	const dispatch = createEventDispatcher();
 
 	function openModal() {
 		modal.showModal();
@@ -38,6 +41,7 @@
 					modal.close();
 				});
 			});
+			dispatch('deleted', {id: canvas_id})
 		} else {
 			// Handle save failed
 			console.log('failed');

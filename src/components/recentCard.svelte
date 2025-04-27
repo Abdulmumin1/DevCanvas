@@ -23,17 +23,17 @@
 
 <div
 	in:slide
-	class="w-full overflow-hidden rounded-lg bg-gray-100 outline-2 outline-sky-300 hover:outline dark:bg-secondary-dark"
+	class="w-full overflow-hidden rounded-lg bg-neutral-100 outline-2 outline-sky-300 hover:outline dark:bg-secondary-dark"
 >
 	<div class="p-6">
 		<div class="mb-4 flex items-start justify-between">
 			<div>
 				<h2
-					class="text-xl font-semibold text-gray-800 transition-colors duration-200 hover:text-sky-600 dark:text-white dark:hover:text-sky-400"
+					class="text-xl font-semibold text-neutral-800 transition-colors duration-200 hover:text-sky-600 dark:text-white dark:hover:text-sky-400"
 				>
 					<a href={projectUrl}>{card.description}</a>
 				</h2>
-				<a href={profileUrl} class="text-sm text-sky-500 hover:underline dark:text-gray-300">
+				<a href={profileUrl} class="text-sm text-sky-500 hover:underline dark:text-neutral-300">
 					{#if card.profiles.username}
 						@{card.profiles.username}
 					{:else if isOwner}
@@ -43,24 +43,24 @@
 					{/if}
 				</a>
 			</div>
-			<div class="flex items-center space-x-2 text-gray-500 dark:text-gray-400">
+			<div class="flex items-center space-x-2 text-neutral-500 dark:text-neutral-400">
 				<span class=" w-fit rounded-full bg-sky-300 px-3 py-1 text-sm text-black">
 					{card.lang}
 				</span>
 				<button
-					class="rounded-full p-1 transition-colors duration-200 hover:bg-gray-100 dark:hover:bg-gray-700"
+					class="rounded-full p-1 transition-colors duration-200 hover:bg-neutral-100 dark:hover:bg-neutral-700"
 				>
 					<Fa icon={faShareSquare} />
 				</button>
 				{#if editIcons}
 					<a
 						href={`${projectUrl}/edit`}
-						class="rounded-full p-1 transition-colors duration-200 hover:bg-gray-100 dark:hover:bg-gray-700"
+						class="rounded-full p-1 transition-colors duration-200 hover:bg-neutral-100 dark:hover:bg-neutral-700"
 					>
 						<Fa icon={faEdit} />
 					</a>
 					<button
-						class="rounded-full p-1 transition-colors duration-200 hover:bg-gray-100 dark:hover:bg-gray-700"
+						class="rounded-full p-1 transition-colors duration-200 hover:bg-neutral-100 dark:hover:bg-neutral-700"
 					>
 						<Fa icon={faTrash} />
 					</button>
@@ -69,13 +69,13 @@
 		</div>
 		<div class="mt-4">
 			<div
-				class="rounded-md bg-gray-50 p-3 text-sm text-gray-600 dark:bg-primary dark:text-gray-300"
+				class="rounded-md bg-neutral-50 p-3 text-sm text-neutral-600 dark:bg-primary dark:text-neutral-300"
 			>
 				<code>{card.code?.slice(0, 100)}..</code>
 			</div>
 		</div>
 	</div>
-	<div class="bg-gray-50 px-6 py-3 dark:bg-secondary-dark">
+	<div class="bg-neutral-50 px-6 py-3 dark:bg-secondary-dark">
 		<a
 			href={projectUrl}
 			class="flex items-center text-sm text-sky-600 hover:underline dark:text-sky-400"

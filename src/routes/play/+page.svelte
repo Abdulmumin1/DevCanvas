@@ -76,7 +76,7 @@
 </svelte:head>
 
 <NavWrapper>
-	<div class="h-[90vh] overflow-hidden bg-gradient-to-br p-8 pt-20 dark:bg-primary flex md:pt-56 items-end md:items-start w-full">
+	<div class="h-[90vh] overflow-hidden bg-gradient-to-br p-8 pt-20 dark:bg-primary flex md:pt-36 items-end md:items-start w-full">
 		<div class='w-full flex flex-col gap-12'>
 			<div class="flex items-center mx-auto gap-2 text-2xl md:text-4xl">
 				<span

@@ -143,7 +143,7 @@
 		</div>
 		{#if showMore}
 			<button
-				class="flex w-fit items-center justify-center gap-2 rounded-lg bg-gray-300 px-4 py-2 shadow transition-transform duration-300 active:scale-75 dark:bg-secondary-dark"
+				class="flex w-fit items-center justify-center gap-2 rounded-lg bg-neutral-300 px-4 py-2 shadow transition-transform duration-300 active:scale-75 dark:bg-secondary-dark"
 				id="more"
 				on:click={more}
 			>
@@ -157,7 +157,7 @@
 {:else}
 	<div class="flex h-[100dvh] w-full flex-col items-center justify-center pt-12">
 		<img src="/logo.svg" alt="" width="300" style="filter: grayscale(100);" />
-		<p class="text-4xl text-gray-400">Nothing to Show</p>
+		<p class="text-4xl text-neutral-400">Nothing to Show</p>
 	</div>
 {/if}
 
