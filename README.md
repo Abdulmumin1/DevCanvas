@@ -2,7 +2,7 @@
 
 ![devcanvas Logo](/static/devcanvas.png)
 
-An online editor with super powers, fast preview, plugins and super cool library of cool Frontend creations for your inspiration.
+An online AI editor with super powers, fast preview, plugins and super cool library of cool Frontend creations for your inspiration.
 
 ## Stack
 
