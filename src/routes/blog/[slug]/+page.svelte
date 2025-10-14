@@ -27,7 +27,7 @@
 	import { showToast } from '$lib/index.js';
 	import SEO from '$components/seoComp.svelte';
 	import GoUp from '$components/goUp.svelte';
-	import { Comment } from '@commentrig/svelte';
+	// import { Comment } from '@commentrig/svelte';
 	// import { page } from '$app/stores';
 	// import { page } from '$app/stores';
 
@@ -216,11 +216,6 @@
 			</div>
 		</div>
 	</div>
-
-	{#key data}
-		<h1 class="text-2xl font-semibold md:text-3xl">{commentCount} Comments</h1>
-		<Comment bind:commentLength={commentCount} {entities} />
-	{/key}
 </article>
 
 <GoUp content=".article" />

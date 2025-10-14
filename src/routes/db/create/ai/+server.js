@@ -5,18 +5,18 @@ import { MockLanguageModelV1 } from 'ai/test';
 import { simulateReadableStream } from 'ai';
 
 import { createOpenRouter } from '@openrouter/ai-sdk-provider';
-import { OPEN_R_API,GEMINI_API_KEY } from '$env/static/private';
+import { env } from '$env/dynamic/private';
 import { generateText } from 'ai';
 import { json } from '@sveltejs/kit';
 import { streamText } from 'ai';
 
 import { createGoogleGenerativeAI } from '@ai-sdk/google';
 const google = createGoogleGenerativeAI({
-   apiKey: GEMINI_API_KEY
+   apiKey: env.GEMINI_API_KEY
  });
 
 const openrouter = createOpenRouter({
-	apiKey: OPEN_R_API
+	apiKey: env.OPEN_R_API
 });
 
 let SYSTEM_PROMPT = `

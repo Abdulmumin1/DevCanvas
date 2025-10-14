@@ -23,7 +23,7 @@
 	import { fly } from 'svelte/transition';
 	import { writable } from 'svelte/store';
 
-	import { PUBLIC_AI_GATEWAY } from '$env/static/public';
+	import { env } from '$env/dynamic/public';
 
 	setReloadContext();
 
@@ -131,7 +131,7 @@
 
 			messages = [...messages, m];
 
-			const response = await fetch(PUBLIC_AI_GATEWAY, {
+			const response = await fetch(env.PUBLIC_AI_GATEWAY, {
 				method: 'post',
 				body: JSON.stringify(messages)
 			});
