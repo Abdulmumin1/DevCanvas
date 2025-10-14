@@ -16,7 +16,7 @@
 			<div class="pill blue" />
 			<div class="pill green" />
 		</div>
-		<div class="search bg-white text-black">https://devcanvas.art</div>
+		<div class="search bg-white text-black">https://devcanvas.dev</div>
 		<div />
 	</div>
 	<div class="box">

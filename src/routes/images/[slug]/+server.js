@@ -1,10 +1,8 @@
-import {PUBLIC_IMAGE_GATEWAY} from '$env/static/public'
 
 /** @type {import('./$types').RequestHandler} */
 export async function GET({ params }) {
-	const api = PUBLIC_IMAGE_GATEWAY;
-	const targetUrl = `https://devcanvas.dev/output/compile/${params.slug}`;
-	const screenshotApiUrl = `${api}?url=${encodeURIComponent(targetUrl)}`;
+	const targetUrl = `/output/compile/${params.slug}`;
+	const screenshotApiUrl = `https://browser-worker.abdulmuminyqn.workers.dev?path=${targetUrl}`;
 
 	const res = await fetch(screenshotApiUrl);
 

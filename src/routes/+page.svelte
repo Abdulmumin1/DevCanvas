@@ -63,9 +63,9 @@
 <div class="relative w-full">
 	<InnerNav />
 </div>
-	<!-- <div class="relative z-10 w-full">
+	<div class="relative z-10 w-full">
 	</div>
-	<div class="mx-auto flex w-full flex-col items-center justify-center gap-4 overflow-y-hidden">
+	<div class="mx-auto flex w-full flex-col items-center justify-center gap-4 ">
 		<div class="grid max-h-[40rem] overflow-y-hidden md:max-h-[35rem] lg:max-h-[50rem]">
 			<header class="w-full overflow-y-hidden">
 				<div class="mt-20 overflow-y-hidden">
@@ -73,19 +73,19 @@
 				</div>
 			</header>
 		</div>
-		<main class="w-full">
+		<!-- <main class="w-full">
 			<FeaturesSect />
 			<LanguageSupport />
 			<EmbedSection />
 			
-		</main>
-	</div> -->
+		</main> -->
+	</div>
 
 	
 
-	<div class="mt-44 relative">
+	<!-- <div class="mt-44 relative">
 		<AiLanding/>
-	</div>
+	</div> -->
 	<BackgroundGrid/>
 </div>
 <!-- <Footer /> -->

@@ -9,7 +9,7 @@ export async function load({ params, parent }) {
 	const { data, error: err } = await supabase
 		.from('profiles')
 		.select('*')
-		.eq('username', username.toLowerCase());
+		.ilike('username', username);
 
 	if (err) throw err;
 	if (data.length > 0) {
