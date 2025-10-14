@@ -26,22 +26,23 @@
 	import { currentTheme } from '$lib/utils/utils.js';
 	import { browser } from '$app/environment';
 	import Fa from 'svelte-fa';
-	import editorWorker from 'monaco-editor/esm/vs/editor/editor.worker?worker';
-	import jsonWorker from 'monaco-editor/esm/vs/language/json/json.worker?worker';
-	import cssWorker from 'monaco-editor/esm/vs/language/css/css.worker?worker';
-	import htmlWorker from 'monaco-editor/esm/vs/language/html/html.worker?worker';
-	import tsWorker from 'monaco-editor/esm/vs/language/typescript/ts.worker?worker';
+	import { EditorView } from '@codemirror/view';
+	import { Compartment } from '@codemirror/state';
+	import { basicSetup } from 'codemirror';
+	import { keymap } from '@codemirror/view';
+	import { indentWithTab } from '@codemirror/commands';
+	import { javascript } from '@codemirror/lang-javascript';
+	import { EditorState } from '@codemirror/state';
+	import { createTheme } from '$lib/editorTheme.js';
 	import Loader from '../loader.svelte';
 
-	let editorContanier;
-	let editor;
+	let editorContainer;
+	let editorView;
 	let loading = true;
 	export let lang = 'javascript';
 
 	// Define the initial code content
 	export let initialJs = `//`;
-	let monacoModel;
-	let model;
 
 	let saved = true;
 	let typingTimer; // Timer to track typing
@@ -101,54 +102,15 @@
 		}
 	}
 
-	function setEditorTheme() {
-		const theme = $darkModeState ? 'newTheme' : 'vs-code'; // Adjust theme names accordingly
-
-		// Set the theme in Monaco Editor
-		try {
-			monacoModel.editor.setTheme(theme);
-		} catch (error) {
-			console.log(error);
-		}
-	}
+	let lineWrapping = new Compartment();
+	let readOnlyCompartment = new Compartment();
 
 	$: {
-		if (browser && editor) {
-			let value = $wordWrapSetting ? 'on' : 'off';
-			editor.updateOptions({ wordWrap: value });
-			// console.log(value);
-		}
-	}
-
-	$: {
-		if (browser && editor) {
-			let value = $smallerFontSize;
-			if (value) {
-				editor.updateOptions({ fontSize: 14 });
-			} else {
-				editor.updateOptions({ fontSize: 16 });
-			}
-			// console.log(value);
-		}
-	}
-
-	$: {
-		if (browser && editor) {
-			let value = $formatOnPasteSetting;
-
-			editor.updateOptions({ formatOnPaste: value });
-
-			// console.log(value);
-		}
-	}
-
-	$: {
-		if (browser && editor) {
-			let value = $renderIndentGuidesSetting;
-
-			editor.updateOptions({ renderIndentGuides: value });
-
-			// console.log(value);
+		let state = $wordWrapSetting;
+		if (browser && editorView) {
+			editorView.dispatch({
+				effects: lineWrapping.reconfigure(!state ? [] : EditorView.lineWrapping)
+			});
 		}
 	}
 	$: {
@@ -168,123 +130,52 @@
 		}
 	}
 	onMount(async () => {
-		self.MonacoEnvironment = {
-			getWorker: function (_moduleId, label) {
-				if (label === 'json') {
-					return new jsonWorker();
-				}
-				if (label === 'css' || label === 'scss' || label === 'less') {
-					return new cssWorker();
-				}
-				if (label === 'html' || label === 'handlebars' || label === 'razor') {
-					return new htmlWorker();
-				}
-				if (label === 'typescript' || label === 'javascript') {
-					return new tsWorker();
-				}
-				return new editorWorker();
+		const customTheme = createTheme();
+		const fixedHeightEditor = EditorView.theme({
+			'&': { height: '100%' },
+			'.cm-scroller': { overflow: 'auto' },
+			'.cm-content': { 'padding-bottom': '55px', 'padding-right': '20px' }
+		});
+
+		let changeReview = EditorView.updateListener.of((v) => {
+			if (v.docChanged) {
+				handleContentChange(v.state.doc.toString());
 			}
-		};
-		import('monaco-editor').then((monaco) => {
-			monacoModel = monaco;
-			monacoModel.editor.defineTheme('newTheme', currentTheme);
+		});
 
-			// Use monaco here...
-			setEditorTheme();
-			// Initialize the editor
-			editor = monacoModel.editor.create(editorContanier, editorConfig);
-			// Register the HTML language with Monaco Editor
-
-			monacoModel.languages.register({
-				id: 'html'
-			});
-
-			// Import and configure the emmet-monaco-es package
-			import('emmet-monaco-es').then((emmet) => {
-				const dispose = emmet.emmetJSX(
-					// monaco-editor it self. If not provided, will use window.monaco instead.
-					// This could make the plugin support both ESM and AMD loaded monaco-editor
-					monacoModel
-					// languages needs to support html markup emmet, should be lower case.
-				);
-			});
-
-			// if ($darkModeState) {
-			// 	monaco.editor.setTheme('myTheme');
-			// }
-			// Attach an event listener for changes in the code
-			editor.onDidChangeModelContent(() => {
-				try {
-					// console.log(editor.getValue());
-					handleContentChange(editor.getValue());
-				} catch {
-					console.log('err');
-				}
-			});
-			var saveAction = {
-				id: 'saveAction',
-				label: 'Save',
-				keybindings: [
-					monacoModel.KeyMod.CtrlCmd | monacoModel.KeyCode.KeyS // Ctrl + S
-				],
-				precondition: null,
-				keybindingContext: null,
-				contextMenuGroupId: 'navigation',
-				contextMenuOrder: 1.5,
-				run: function (ed, editor, context) {
-					// Prevent the default browser behavior (e.g., save dialog)
-					// Define the behavior of the save action here
-					saveDocument(); // Call your save function here
-				}
-			};
-
-			// // Register a completion item provider for HTML
-			// monaco.languages.registerCompletionItemProvider('html', {
-			// 	provideCompletionItems: (model, position) => {
-			// 		return {
-			// 			suggestions: customTags(monaco)
-			// 		};
-			// 	}
-			// });
-
-			editor.addAction(saveAction);
-
-			model = monacoModel.editor.createModel(initialJs, lang);
-
-			editor.setModel(model);
-
-			// Format the HTML code
-			var formatAction = editor.getAction('editor.action.formatDocument');
-			formatAction.run().then(function () {
-				// The code has been formatted
-				// console.log('document formated');
-			});
+		editorView = new EditorView({
+			parent: editorContainer,
+			doc: initialJs,
+			extensions: [
+				basicSetup,
+				keymap.of([indentWithTab]),
+				fixedHeightEditor,
+				javascript(),
+				changeReview,
+				lineWrapping.of(EditorView.lineWrapping),
+				readOnlyCompartment.of(EditorState.readOnly.of(false)),
+				customTheme
+			]
 		});
 
 		window.addEventListener('resize', () => {
-			if (editor) {
-				editor.layout();
+			if (editorView) {
+				editorView.requestMeasure();
 			}
 		});
 
 		loading = false;
 
-		editor.updateOptions({ tabSize: 1 });
-
 		return () => {
-			editor.dispose();
+			editorView.destroy();
 		};
 	});
 	// Cleanup when the component is destroyed
 	onDestroy(() => {
 		// Dispose of the editor to prevent memory leaks
-		if (editor) {
-			editor.dispose();
+		if (editorView) {
+			editorView.destroy();
 		}
-	});
-
-	afterUpdate(() => {
-		setEditorTheme();
 	});
 </script>
 
@@ -294,7 +185,7 @@
 	</div>
 {:else}
 	<div class="editor-container h-full w-full bg-primary" class:bg-secondary-dark={$darkModeState}>
-		<div class="h-full w-full" bind:this={editorContanier} />
+		<div class="h-full w-full" bind:this={editorContainer} />
 	</div>
 {/if}
 

@@ -4,12 +4,16 @@
 	import { current_data, previewMode, user, saved_spinner } from '$lib/index.js';
 	import { browser } from '$app/environment';
 	import Fa from 'svelte-fa';
-	// import * as monaco from 'monaco-editor';
+	import { EditorView } from '@codemirror/view';
+	import { basicSetup } from 'codemirror';
+	import { javascript } from '@codemirror/lang-javascript';
+	import { python } from '@codemirror/lang-python';
+	import { EditorState } from '@codemirror/state';
 
 	import { supabase } from '$lib/supabase.js';
 
-	let editorContanier;
-	let editor;
+	let editorContainer;
+	let editorView;
 	let loading = true;
 	export let lang = 'javascript';
 
@@ -38,25 +42,34 @@
 
     def size(self):
         return len(self.items)`;
-	let editorConfig;
-	if (browser) {
-		editorConfig = {
-			value: initialCode,
-			language: lang,
-			minimap: { enabled: false },
-			...(window.innerWidth <= 600 && { fontSize: 10 })
-		};
-	}
+
+	const getLanguageExtension = () => {
+		if (lang === 'python') {
+			return python();
+		}
+		return javascript();
+	};
+
 	onMount(() => {
-		import('monaco-editor').then((monaco) => {
-			// Use monaco here...
-			// Initialize the editor
-			editor = monaco.editor.create(editorContanier, editorConfig);
-		});
+		if (browser) {
+			const fontSize = window.innerWidth <= 600 ? 10 : 14;
+			editorView = new EditorView({
+				parent: editorContainer,
+				doc: initialCode,
+				extensions: [
+					basicSetup,
+					getLanguageExtension(),
+					EditorView.theme({
+						'&': { height: '100%' },
+						'.cm-content': { fontSize: `${fontSize}px` }
+					})
+				]
+			});
+		}
 
 		window.addEventListener('resize', () => {
-			if (editor) {
-				editor.layout();
+			if (editorView) {
+				editorView.requestMeasure();
 			}
 		});
 		loading = false;
@@ -68,7 +81,7 @@
 		<Fa icon={faSpinner} class="animate-spin text-2xl" />
 	</div>
 {:else}
-	<div class="editor-container z-50 h-full" bind:this={editorContanier} />
+	<div class="editor-container z-50 h-full" bind:this={editorContainer} />
 {/if}
 
 <style>
