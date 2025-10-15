@@ -13,7 +13,7 @@
 	import JsConsole from '$components/features/playground/jsConsole.svelte';
 	import EmbedModal from '$components/features/playground/embedModal.svelte';
 	import SEO from '$components/ui/seoComp.svelte';
-	import FeAiBox from '../../../components/features/playground/feAIBox.svelte';
+	import FeAiBox from '$components/features/playground/feAIBox.svelte';
 	import { writable } from 'svelte/store';
 	import { fly } from 'svelte/transition';
 	import { env } from '$env/dynamic/public';
