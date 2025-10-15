@@ -1,4 +1,4 @@
-import { compileStringAsync } from 'sass';
+// import { compileStringAsync } from 'sass';
 
 export function handleRedirect(event) {
 	const redirectTo = event.url.pathname + event.url.search;
@@ -28,12 +28,16 @@ export async function getViews(slug, supabase) {
 	return data;
 }
 
-export async function compileSassString(sassString) {
-	return compileStringAsync(sassString).then(({ css }) => {
-		return css.toString();
-	});
-}
+// export async function compileSassString(sassString) {
+// 	return compileStringAsync(sassString).then(({ css }) => {
+// 		return css.toString();
+// 	});
+// }
 
+
+export async function compileSassString(sassString) {
+	return sassString
+}
 // export function hashString(inputString) {
 // 	const hash = crypto.createHash('sha256');
 // 	hash.update(inputString);

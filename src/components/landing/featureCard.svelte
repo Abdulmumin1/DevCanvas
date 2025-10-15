@@ -1,6 +1,6 @@
 <script>
 	import { fade, fly } from 'svelte/transition';
-	import Icon from '@iconify/svelte';
+	// import Icon from '@iconify/svelte';
 	export let title;
 	export let icon;
 	export let description;
@@ -38,7 +38,7 @@
 	on:mouseleave={handleMouseLeave}
 >
 	<div class="icon-wrapper" in:fly={{ y: 20, duration: 300, delay: 150 }}>
-		<Icon {icon} />
+		<!-- <Icon {icon} /> -->
 	</div>
 	<h3 class="text-[#333] dark:text-gray-100">{title}</h3>
 	<p class="text-[#666] dark:text-[#999]">{description}</p>

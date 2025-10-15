@@ -1,5 +1,5 @@
 <script>
-	import Icon from '@iconify/svelte';
+	// import Icon from '@iconify/svelte';
 	import FeatureCard from './featureCard.svelte';
 
 	const features = [
@@ -50,7 +50,7 @@
 	<h2
 		class="mx-auto flex w-fit items-center gap-1 rounded-full bg-primary px-5 py-2 text-2xl text-gray-200 md:text-4xl"
 	>
-		<Icon icon="heroicons:sparkles-20-solid" />Features
+		<!-- <Icon icon="heroicons:sparkles-20-solid" />Features -->
 	</h2>
 	<p class="subtitle">Everything you need to experiment, build, and teach coding</p>
 	<div class="feature-grid">
