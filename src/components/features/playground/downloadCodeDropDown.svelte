@@ -7,7 +7,7 @@
 	import Fa from 'svelte-fa';
 	import { faFileZipper, faSpinner } from '@fortawesome/free-solid-svg-icons';
 
-	let dropdownOpen = false;
+	let dropdownOpen = $state(false);
 
 	function toggleDropdown() {
 		if (isVertical) {
@@ -23,7 +23,7 @@
 
 	import JSZip from 'jszip';
 
-	let loading;
+	let loading = $state();
 
 	async function downloadZip() {
 		try {
@@ -49,17 +49,17 @@
 		}
 	}
 
-	let innerWidth = 0;
+	let innerWidth = $state(0);
 
 	// $:console.log(innerWidth)
 
-	$: isVertical = innerWidth <= 724;
+	let isVertical = $derived(innerWidth <= 724);
 </script>
 
 <svelte:window bind:innerWidth />
 
 <div class="dropdown relative flex flex-col text-center text-white">
-	<button class="dropdown-button flex items-center justify-end gap-2" on:click={toggleDropdown}
+	<button class="dropdown-button flex items-center justify-end gap-2" onclick={toggleDropdown}
 		><span class="">Download Zip</span>
 
 		{#if loading && isVertical}
@@ -72,14 +72,14 @@
 	{#if dropdownOpen}
 		<ul
 			use:clickOutside
-			on:click_outside={closeDropdown}
+			onclick_outside={closeDropdown}
 			class={`drop dropdown-menu absolute right-0 top-0 mt-8  flex h-fit w-[200px] flex-col  items-start justify-start rounded-md  bg-gray-300 p-1 text-sm dark:bg-black `}
 			transition:scale
 		>
 			<li class="p-2 text-center">Download Code</li>
 			<!-- <form action="?/downloadZip" method="post"> -->
 			<button
-				on:click={downloadZip}
+				onclick={downloadZip}
 				class="flex w-full items-center justify-center gap-2 rounded-md bg-gray-100 p-2 dark:bg-secondary-dark"
 				>Download Zip {#if loading}
 					<Fa icon={faSpinner} class="animate-spin" />

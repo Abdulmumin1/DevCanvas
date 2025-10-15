@@ -5,8 +5,7 @@
 	import { derived } from 'svelte/store';
 	import { quintOut } from 'svelte/easing';
 
-	export let supabase;
-	export let user_id;
+	let { supabase, user_id } = $props();
 	async function statsCanvas(pageNumber, pageSize) {
 		const { data, error } = await supabase
 			.from('htmlPlayground')

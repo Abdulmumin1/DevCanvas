@@ -9,7 +9,7 @@
 	import { pageCountSnips, pageCountPl } from '$lib/stores/index.js';
 	import SEO from '$components/ui/seoComp.svelte';
 
-	export let data;
+	let { data } = $props();
 
 	onMount(() => {
 		pageCountPl.set(12);
@@ -43,7 +43,7 @@
 				id="userinfo"
 				class="flex w-full flex-col items-center gap-3 border-b-2 py-2 dark:border-secondary-dark md:py-4"
 			>
-				<div class="h-24 w-24 rounded-xl bg-sky-500" />
+				<div class="h-24 w-24 rounded-xl bg-sky-500"></div>
 				<h1 class="text-3xl capitalize">
 					{data.details.name}
 				</h1>

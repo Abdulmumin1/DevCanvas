@@ -2,7 +2,7 @@
 	import { onMount } from 'svelte';
 	import SEO from '$components/ui/seoComp.svelte';
 	import { page } from '$app/stores';
-	export let data;
+	let { data, children } = $props();
 
 	let supabase = data.supabase;
 	let slug = data.details.project_key;
@@ -34,4 +34,4 @@
 		index={data.details?.public == true}
 	/>
 </svelte:head>
-<slot />
+{@render children?.()}

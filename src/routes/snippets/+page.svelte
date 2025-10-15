@@ -8,7 +8,7 @@
 	import { pageCountSnips, pageCountPl } from '$lib/stores/index.js';
 	import NewSnippet from '$components/ui/newSnippet.svelte';
 
-	export let data;
+	let { data } = $props();
 	let supabase = data.supabase;
 	let userSnippets = data.userSnippets;
 </script>

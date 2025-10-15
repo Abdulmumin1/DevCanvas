@@ -1,6 +1,6 @@
 <script>
 	import { faL, faSpinner } from '@fortawesome/free-solid-svg-icons';
-	import { afterUpdate, onMount } from 'svelte';
+	import { onMount } from 'svelte';
 	import {
 		current_data,
 		previewMode,
@@ -19,15 +19,21 @@
 	import { EditorState } from '@codemirror/state';
 	import { createTheme } from '$lib/config/editorTheme.js';
 
-	let editorContainer;
+	let editorContainer = $state();
 	let editorView;
-	let loading = true;
-	export let lang = 'javascript';
+	let loading = $state(true);
 
-	// Define the initial code content
-	export let initialCode = `function greet(name) {
+	
+	/**
+	 * @typedef {Object} Props
+	 * @property {string} [lang]
+	 * @property {any} [initialCode] - Define the initial code content
+	 */
+
+	/** @type {Props} */
+	let { lang = 'javascript', initialCode = `function greet(name) {
 	return 'Hello, ' + name + '!';
-}`;
+}` } = $props();
 	if (browser) {
 		editorConfig = {
 			value: initialCode,
@@ -145,7 +151,7 @@
 		<div
 			class="h-full w-full rounded-xl bg-white p-6 dark:bg-primary"
 			bind:this={editorContainer}
-		/>
+		></div>
 	</div>
 {/if}
 

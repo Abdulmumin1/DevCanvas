@@ -1,5 +1,5 @@
 <script>
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 	import { faCode } from '@fortawesome/free-solid-svg-icons';
 	import Fa from 'svelte-fa';
 	let c = `
@@ -38,10 +38,10 @@
 				loading="lazy"
 				class="h-[670px] rounded-2xl border-2 border-secondary-dark"
 				style="aspect-ratio: 1:1;"
-			/>
+			></iframe>
 			<!-- <iframe
 				title="embed"
-				src="{$page.url.origin}/anonymous/ovUiK7/embed"
+				src="{page.url.origin}/anonymous/ovUiK7/embed"
 				frameborder="0"
 				class="w-full rounded h-[600px] md:pl-10"
 			/> -->

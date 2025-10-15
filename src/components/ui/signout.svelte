@@ -2,7 +2,7 @@
 	import { enhance } from '$app/forms';
 	import { invalidateAll } from '$app/navigation';
 	import { user } from '$lib/stores/index.js';
-	let loading = false;
+	let loading = $state(false);
 	const handleSubmit = () => {
 		loading = true;
 

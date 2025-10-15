@@ -7,7 +7,7 @@
 <button
 	type="submit"
 	class="flex cursor-pointer items-center justify-center gap-2 rounded-md bg-sky-400 px-3 py-2"
-	on:click={() => {
+	onclick={() => {
 		saveData($current_data);
 	}}
 >

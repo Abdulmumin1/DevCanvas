@@ -1,5 +1,5 @@
 <script>
-	let showOptions = false;
+	let showOptions = $state(false);
 
 	function toggleShareOptions() {
 		showOptions = !showOptions;
@@ -10,8 +10,8 @@
 	}
 </script>
 
-<div class="share-dropdown" on:mouseleave={closeShareOptions}>
-	<button class="share-button" on:click={toggleShareOptions}>Share</button>
+<div class="share-dropdown" onmouseleave={closeShareOptions}>
+	<button class="share-button" onclick={toggleShareOptions}>Share</button>
 	<div class="share-options absolute bottom-0 right-0" class:hidden={!showOptions}>
 		<a href="#" class="share-option">Facebook</a>
 		<a href="#" class="share-option">Twitter</a>

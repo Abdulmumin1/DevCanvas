@@ -2,10 +2,18 @@
 	import { onMount } from 'svelte';
 	import { Pane, Splitpanes } from 'svelte-splitpanes';
 	import { layoutView } from '$lib/stores/playground.js';
+	/**
+	 * @typedef {Object} Props
+	 * @property {import('svelte').Snippet} [left]
+	 * @property {import('svelte').Snippet} [right]
+	 */
 
-	let innerWidth;
+	/** @type {Props} */
+	let { left, right } = $props();
 
-	$: isVertical = innerWidth <= 768;
+	let innerWidth = $state();
+
+	let isVertical = $derived(innerWidth <= 768);
 	let loaded = false;
 	// if (browser) {
 	// 	 // Change the breakpoint as needed
@@ -24,37 +32,37 @@
 	{#if isVertical}
 		<Splitpanes horizontal={true} theme="my-theme" class="ignore">
 			<Pane snapSize={5} size={40} class="bg-white">
-				<slot name="left" />
+				{@render left?.()}
 			</Pane>
 			<Pane snapSize={5} class="bg-white">
-				<slot name="right" />
+				{@render right?.()}
 			</Pane>
 		</Splitpanes>
 	{:else if $layoutView == 'left'}
 		<Splitpanes horizontal={false} theme="my-theme">
 			<Pane snapSize={5} size={35} class="bg-white">
-				<slot name="left" />
+				{@render left?.()}
 			</Pane>
 			<Pane snapSize={5} class="bg-white">
-				<slot name="right" />
+				{@render right?.()}
 			</Pane>
 		</Splitpanes>
 	{:else if $layoutView == 'top'}
 		<Splitpanes horizontal={true} theme="my-theme">
 			<Pane snapSize={5} class="bg-white">
-				<slot name="left" />
+				{@render left?.()}
 			</Pane>
 			<Pane snapSize={5} class="bg-white">
-				<slot name="right" />
+				{@render right?.()}
 			</Pane>
 		</Splitpanes>
 	{:else if $layoutView == 'right'}
 		<Splitpanes horizontal={false} theme="my-theme">
 			<Pane snapSize={5} class="bg-white">
-				<slot name="right" />
+				{@render right?.()}
 			</Pane>
 			<Pane snapSize={5} size={34} class="bg-white">
-				<slot name="left" />
+				{@render left?.()}
 			</Pane>
 		</Splitpanes>
 	{/if}

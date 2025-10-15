@@ -5,17 +5,17 @@
 	import { faGithub } from '@fortawesome/free-brands-svg-icons';
 	import { slide } from 'svelte/transition';
 	import { enhance } from '$app/forms';
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 	import PasswordInput from '$components/auth/passwordInput.svelte';
 
-	let email;
-	let password = '';
-	let cfP;
+	let email = $state();
+	let password = $state('');
+	let cfP = $state();
 
-	let loading = false;
-	let completed = false;
-	let usePassword = false;
-	let msg;
+	let loading = $state(false);
+	let completed = $state(false);
+	let usePassword = $state(false);
+	let msg = $state();
 
 	function validatePassword() {
 		// console.log(password, confirmPassword);
@@ -128,7 +128,7 @@
 					type="text"
 					name="redirectTo"
 					tabindex="-1"
-					value={$page.url.searchParams.get('redirectTo')}
+					value={page.url.searchParams.get('redirectTo')}
 					readonly
 					class="hidden"
 				/>

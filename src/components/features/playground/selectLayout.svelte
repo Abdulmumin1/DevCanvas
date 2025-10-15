@@ -5,8 +5,8 @@
 	import { scale } from 'svelte/transition';
 	import { layoutView } from '$lib/stores/playground.js';
 	import { goto } from '$app/navigation';
-	import { page } from '$app/stores';
-	let isOpen = false;
+	import { page } from '$app/state';
+	let isOpen = $state(false);
 	let selectedOption = '';
 
 	function toggleDropdown() {
@@ -24,7 +24,7 @@
 
 			return;
 		}
-		goto('/play/' + $page.params.slug + '/preview/');
+		goto('/play/' + page.params.slug + '/preview/');
 	}
 </script>
 
@@ -32,7 +32,7 @@
 	<div class="">
 		<button
 			class="cursor-pointer rounded bg-gray-200 p-2 text-primary transition-transform duration-300 active:scale-75"
-			on:click={toggleDropdown}
+			onclick={toggleDropdown}
 			title="change layout"
 		>
 			<Fa icon={faLayerGroup} />
@@ -41,7 +41,7 @@
 		{#if isOpen}
 			<div
 				class=" absolute right-0 z-50 mt-1 flex flex-col gap-1 rounded bg-black p-3"
-				on:click_outside={toggleDropdown}
+				onclick_outside={toggleDropdown}
 				use:clickOutside
 				in:scale={{ duration: 200, transformOrigin: 'top right' }}
 				out:scale={{ duration: 200, transformOrigin: 'top right' }}
@@ -51,7 +51,7 @@
 					<button
 						class="cursor-pointer px-4 py-2 text-white hover:bg-primary"
 						class:bg-primary={$layoutView == 'left'}
-						on:click={() => {
+						onclick={() => {
 							layoutView.set('left');
 						}}
 					>
@@ -69,7 +69,7 @@
 					<button
 						class="cursor-pointer px-4 py-2 text-white hover:bg-primary"
 						class:bg-primary={$layoutView == 'top'}
-						on:click={() => {
+						onclick={() => {
 							layoutView.set('top');
 						}}
 					>
@@ -86,7 +86,7 @@
 					<button
 						class="cursor-pointer px-4 py-2 text-white hover:bg-primary"
 						class:bg-primary={$layoutView == 'right'}
-						on:click={() => {
+						onclick={() => {
 							layoutView.set('right');
 						}}
 					>
@@ -102,7 +102,7 @@
 					</button>
 				</div>
 				<button
-					on:click={gotoPreview}
+					onclick={gotoPreview}
 					class="flex items-center justify-between bg-secondary-dark p-1 text-sm"
 					>Preview <span class="text-[9px]">/preview</span></button
 				>

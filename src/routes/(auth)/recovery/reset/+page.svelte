@@ -6,10 +6,10 @@
 	import PasswordModule from '$components/auth/passwordModule.svelte';
 	// let email;
 
-	let loading = false;
-	let completed = false;
-	let Invalid;
-	let errMessage;
+	let loading = $state(false);
+	let completed = $state(false);
+	let Invalid = $state();
+	let errMessage = $state();
 
 	const handleSubmit = ({ cancel }) => {
 		if (Invalid) {

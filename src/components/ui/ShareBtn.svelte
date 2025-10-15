@@ -4,13 +4,13 @@
 	import { slide } from 'svelte/transition';
 	import { browser } from '$app/environment';
 	import { showToast } from '$lib/stores/index.js';
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 	import FeSettingsDropdown from '../features/playground/feSettingsDropdown.svelte';
-	let isClicked = false;
+	let isClicked = $state(false);
 
-	let showPreview = $page.url.pathname.endsWith('/edit');
+	let showPreview = page.url.pathname.endsWith('/edit');
 	function shareCode(event) {
-		let fullUrl = `${$page.url.origin}${$page.url.pathname.replace('/edit', '')}`;
+		let fullUrl = `${page.url.origin}${page.url.pathname.replace('/edit', '')}`;
 		event.target.disabled = true;
 		isClicked = true;
 
@@ -35,7 +35,7 @@
 >
 	<button
 		class="flex h-full items-center gap-1 rounded-l bg-gradient-to-r from-sky-400 to-sky-300 py-1 pl-2 pr-1 transition-transform duration-300 active:scale-75"
-		on:click={shareCode}
+		onclick={shareCode}
 		aria-busy={isClicked}
 	>
 		<!-- {#if isClicked} -->

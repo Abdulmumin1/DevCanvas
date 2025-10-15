@@ -1,13 +1,13 @@
 <script>
 	import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 	import Fa from 'svelte-fa';
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 
 	import { onMount } from 'svelte';
 	import { redirect } from '@sveltejs/kit';
 	import Loader from '$components/ui/loader.svelte';
 	import { goto } from '$app/navigation';
-	let whereTo = $page.url.searchParams.get('whereto');
+	let whereTo = page.url.searchParams.get('whereto');
 	if (!['/dashboard', '/profile'].includes(whereTo)) {
 		whereTo = '/';
 	}

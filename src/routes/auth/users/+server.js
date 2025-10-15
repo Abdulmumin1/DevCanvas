@@ -9,7 +9,7 @@ export async function GET({ locals: { supabase } }) {
 	// console.log(users);
 	if (err) {
 		console.error(err);
-		throw error(500, 'Unable to complete action');
+		error(500, 'Unable to complete action');
 	}
 	return new Response({ users });
 }

@@ -1,4 +1,6 @@
 <script>
+	import { run } from 'svelte/legacy';
+
 	import { EditorView } from '@codemirror/view';
 	import { Compartment } from '@codemirror/state';
 	import { basicSetup } from 'codemirror';
@@ -32,13 +34,12 @@
 	import { browser } from '$app/environment';
 	import { createTheme } from '$lib/config/editorTheme.js';
 	// ... (reactive state and logic for the editor)
-	let editorView;
-	let container;
+	let editorView = $state();
+	let container = $state();
 
 	import js_beautify from 'js-beautify';
 
-	export let code;
-	export let lang;
+	let { code = $bindable(), lang } = $props();
 
 	let lockEditor = getContext('generating');
 	let updateDelayTm;
@@ -84,7 +85,7 @@
 		showSave.set(false);
 	}
 
-	$: {
+	run(() => {
 		if (code && editorView) {
 			editorView.dispatch({
 				changes: {
@@ -100,7 +101,7 @@
 				scrollIntoView: true
 			});
 		}
-	}
+	});
 	function toggleReadOnly(isReadOnly) {
 		// console.log(isReadOnly	)
 		if (editorView) {
@@ -110,7 +111,9 @@
 		}
 	}
 
-	$: toggleReadOnly($lockEditor);
+	run(() => {
+		toggleReadOnly($lockEditor);
+	});
 	async function formatter(view) {
 		const options = { indent_size: 2 };
 		const dataObj = view.state.doc.toString();
@@ -186,7 +189,7 @@
 	let lineWrapping = new Compartment();
 	const readOnlyCompartment = new Compartment();
 
-	$: {
+	run(() => {
 		let state = $wordWrapSetting;
 		if (browser && editorView) {
 			// console.log(state);
@@ -195,7 +198,7 @@
 			});
 			// console.log(editorView.state.doc.extension);
 		}
-	}
+	});
 
 	function handleformat(e) {
 		let details = e.detail;
@@ -261,7 +264,7 @@
 		// formatCode.subscribe(())
 	});
 
-	$: fontSize = $editorFontSize;
+	let fontSize = $derived($editorFontSize);
 </script>
 
 <svelte:head></svelte:head>
@@ -271,7 +274,7 @@
 	style:--editorSize="{$editorFontSize}px"
 	style="height: 100%;"
 	class="bc {$lockEditor && 'cursor-progress'}"
-/>
+></div>
 
 <!-- <style></style> -->
 

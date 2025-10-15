@@ -29,7 +29,7 @@ export async function load({ url, params, locals: { supabase } }) {
 	if (data.length <= 0) {
 		// console.error(error);
 		// console.log('erejrejlreo rea fljsa fdoaf dsaf ');
-		throw error(404, 'Enhance your calm');
+		error(404, 'Enhance your calm');
 	}
 
 	// let { data: username, error: er } = await supabase
@@ -44,7 +44,7 @@ export async function load({ url, params, locals: { supabase } }) {
 	let fullurl = `${url.origin}/${data[0].profiles.username}/${slug}`;
 	if (url.origin + url.pathname != fullurl) {
 		// console.log('invalide url');
-		throw redirect(307, `/${data[0].profiles.username}/${slug}`);
+		redirect(307, `/${data[0].profiles.username}/${slug}`);
 	} else {
 		// console.log('valide url');
 	}

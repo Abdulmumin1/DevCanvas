@@ -21,6 +21,6 @@ export async function load({ params }) {
 		// 	meta: params.meta
 		// };
 	} catch (e) {
-		throw error('404', `could not find the page you're lokking for!`);
+		error('404', `could not find the page you're lokking for!`);
 	}
 }

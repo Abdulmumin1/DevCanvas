@@ -1,4 +1,6 @@
 <script>
+	import { run } from 'svelte/legacy';
+
 	import '../app.css';
 	import { onMount, setContext } from 'svelte';
 	import { KDialog, setKbarState } from 'kbar-svelte-mini';
@@ -26,12 +28,21 @@
 	import AcceptCookies from '../components/auth/acceptCookies.svelte';
 	import Page from './(auth)/signin/+page.svelte';
 
-	// console.log(supabase.auth.getUser());
+	
 
-	export let data;
+	/**
+	 * @typedef {Object} Props
+	 * @property {any} data - console.log(supabase.auth.getUser());
+	 * @property {import('svelte').Snippet} [children]
+	 */
 
-	let { supabase, session, user: userInfo } = data;
-	$: ({ supabase, session, user: userInfo } = data);
+	/** @type {Props} */
+	let { data, children } = $props();
+
+	let { supabase, session, user: userInfo } = $state(data);
+	run(() => {
+		({ supabase, session, user: userInfo } = data);
+	});
 
 	// let profile = getProfile();
 
@@ -44,19 +55,21 @@
 				(!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
 		);
 	}
-	$: ({
-		if(browser) {
-			if ($darkModeState) {
-				document.documentElement.classList.add('dark');
-				localStorage.setItem('theme', 'dark');
-			} else {
-				document.documentElement.classList.remove('dark');
-				localStorage.setItem('theme', 'light');
+	run(() => {
+		({
+			if(browser) {
+				if ($darkModeState) {
+					document.documentElement.classList.add('dark');
+					localStorage.setItem('theme', 'dark');
+				} else {
+					document.documentElement.classList.remove('dark');
+					localStorage.setItem('theme', 'light');
+				}
 			}
-		}
+		});
 	});
 
-	let url;
+	let url = $state();
 	onMount(async () => {
 		url = window.location.href.replace('www.', '');
 		const { data } = supabase.auth.onAuthStateChange((event, _session) => {
@@ -74,8 +87,8 @@
 	});
 
 	let a = actions(goto);
-	$: kbarbg = $darkModeState ? '#191919' : 'white';
-	$: kbarSecondary = $darkModeState ? '#e5e7eb' : 'black';
+	let kbarbg = $derived($darkModeState ? '#191919' : 'white');
+	let kbarSecondary = $derived($darkModeState ? '#e5e7eb' : 'black');
 </script>
 
 <svelte:head>
@@ -98,7 +111,7 @@
 	<PageLoadProgess />
 {/if}
 <div class=" relative bg-white transition-colors duration-300 dark:bg-primary dark:text-white">
-	<slot />
+	{@render children?.()}
 	{#if $showToast}
 		<Toast message={$showToast.message} duration={$showToast?.duration ?? 2500} />
 	{/if}

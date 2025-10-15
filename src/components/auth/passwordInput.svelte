@@ -3,12 +3,18 @@
 	import Fa from 'svelte-fa';
 	import { fly, scale } from 'svelte/transition';
 
-	let el;
-	let show = false;
-	$: icon = show ? faEyeSlash : faEye;
-	export let password;
-	export let id;
-	export let name = 'password';
+	let el = $state();
+	let show = $state(false);
+	let icon = $derived(show ? faEyeSlash : faEye);
+	/**
+	 * @typedef {Object} Props
+	 * @property {any} password
+	 * @property {any} id
+	 * @property {string} [name]
+	 */
+
+	/** @type {Props} */
+	let { password = $bindable(), id, name = 'password' } = $props();
 
 	function toggle() {
 		show = !show;
@@ -33,7 +39,7 @@
 		class=" w-full px-3 py-2 outline-none"
 	/>
 	{#key icon}
-		<button in:scale={{ start: -2 }} type="button" on:click={toggle} class="w-fit px-3 py-2">
+		<button in:scale={{ start: -2 }} type="button" onclick={toggle} class="w-fit px-3 py-2">
 			<Fa {icon} />
 		</button>
 	{/key}

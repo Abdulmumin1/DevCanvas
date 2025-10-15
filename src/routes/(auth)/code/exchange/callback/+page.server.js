@@ -12,10 +12,10 @@ export const load = async (event) => {
 	if (code) {
 		const { error } = await supabase.auth.exchangeCodeForSession(code);
 		if (!error) {
-			throw redirect(303, `/${next.slice(1)}`);
+			redirect(303, `/${next.slice(1)}`);
 		}
 	}
 
 	// return the user to an error page with instructions
-	throw redirect(303, '/signin');
+	redirect(303, '/signin');
 };

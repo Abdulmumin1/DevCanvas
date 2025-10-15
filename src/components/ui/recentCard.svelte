@@ -10,15 +10,14 @@
 	import { slide } from 'svelte/transition';
 	import { page } from '$app/stores';
 
-	export let card;
-	export let editIcons;
+	let { card, editIcons } = $props();
 
 	let session = $page.data.session;
-	$: isOwner = card.user_id === session?.user?.id;
-	$: profileUrl = card.profiles.username ? `/${card.profiles.username}` : '/profile';
-	$: projectUrl = card.profiles.username
+	let isOwner = $derived(card.user_id === session?.user?.id);
+	let profileUrl = $derived(card.profiles.username ? `/${card.profiles.username}` : '/profile');
+	let projectUrl = $derived(card.profiles.username
 		? `/${card.profiles.username}/${card.project_key}`
-		: `/anonymous/${card.project_key}`;
+		: `/anonymous/${card.project_key}`);
 </script>
 
 <div

@@ -1,17 +1,17 @@
 <script>
 	import { scale, slide } from 'svelte/transition';
 
-	let open = false;
+	let open = $state(false);
 
 	function toggleAccordion() {
 		open = !open;
 	}
 
-	export let title, content;
+	let { title, content } = $props();
 </script>
 
 <li class=" flex flex-col items-center justify-center gap-2 text-xl md:text-2xl">
-	<button on:click={toggleAccordion} class=" flex items-center justify-center gap-2">
+	<button onclick={toggleAccordion} class=" flex items-center justify-center gap-2">
 		<span class="">{title}</span>
 		<svg
 			class="h-5 w-5 rotate-0 transform transition-transform"

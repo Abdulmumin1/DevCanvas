@@ -29,7 +29,7 @@
 	import { onMount, setContext } from 'svelte';
 	import SEO from '$components/ui/seoComp.svelte';
 	import Footer from '$components/ui/footer.svelte';
-	export let data;
+	let { data } = $props();
 	setContext('isOwner', false);
 	if (data.isFound && data.session) {
 		setContext('isOwner', data.session.user.id == data[0].user_id);
@@ -40,8 +40,8 @@
 	let username = data[0].profiles.username;
 	// console.log(data.username.length);
 
-	let copied = false;
-	$: iconCopy = copied ? faCheck : faCopy;
+	let copied = $state(false);
+	let iconCopy = $derived(copied ? faCheck : faCopy);
 
 	function CopyAction() {
 		copied = true;
@@ -61,7 +61,7 @@
 
 	let encodedTitle = convertLinkToRequestReadable(data['0'].description);
 
-	let url;
+	let url = $state();
 	onMount(() => {
 		url = window.location.href;
 	});
@@ -99,12 +99,14 @@
 						class="absolute right-10 top-10 flex items-center justify-center text-base md:text-xl"
 					>
 						<p class="rounded bg-gray-100 p-2 text-sm dark:bg-primary">{data[0].lang}</p>
-						<button class="p-2" on:click={CopyAction}><Fa icon={iconCopy} /></button>
+						<button class="p-2" onclick={CopyAction}><Fa icon={iconCopy} /></button>
 					</div>
 					<div>
-						<HighlightAuto code={data[0].code} let:highlighted>
-							<LineNumbers {highlighted} hideBorder />
-						</HighlightAuto>
+						<HighlightAuto code={data[0].code} >
+							{#snippet children({ highlighted })}
+														<LineNumbers {highlighted} hideBorder />
+																				{/snippet}
+												</HighlightAuto>
 					</div>
 
 					<div
@@ -123,7 +125,7 @@
 				<span>Love it? Share it!</span>
 				<div class="flex items-center justify-center space-x-3">
 					<button
-						on:click={() => {
+						onclick={() => {
 							cp();
 						}}><Fa icon={faCopy} /></button
 					>

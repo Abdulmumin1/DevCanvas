@@ -4,7 +4,7 @@
 	import { faGithub, faGoogle } from '@fortawesome/free-brands-svg-icons';
 	import { slide } from 'svelte/transition';
 	import { enhance } from '$app/forms';
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 	import PasswordInput from '$components/auth/passwordInput.svelte';
 
 	import { deserialize } from '$app/forms';
@@ -14,7 +14,7 @@
 	let loading = false;
 	let completed = false;
 	let usePassword = false;
-	let errMessage;
+	let errMessage = $state();
 
 	// export let form;
 
@@ -98,7 +98,7 @@
 		<div>
 			<button
 				class="my-3 flex w-full items-center justify-center gap-2 rounded border p-2 hover:bg-black/20"
-				on:click={() => handleOauth('?/github')}
+				onclick={() => handleOauth('?/github')}
 			>
 				Continue with Github <Fa icon={faGithub} />
 			</button>
@@ -111,7 +111,7 @@
 		<div>
 			<button
 				class="my-3 flex w-full items-center justify-center gap-2 rounded border p-2 hover:bg-black/20"
-				on:click={() => handleOauth('?/google')}
+				onclick={() => handleOauth('?/google')}
 			>
 				Continue with Google <Fa icon={faGoogle} />
 			</button>

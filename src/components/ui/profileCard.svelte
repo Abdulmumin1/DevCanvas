@@ -26,8 +26,9 @@
 			// console.log('failed');
 		}
 	}
-	$: showDelete = false;
-	let isOpen = false;
+	let showDelete = $state(false);
+	
+	let isOpen = $state(false);
 
 	const toggleDropdown = () => {
 		isOpen = !isOpen;
@@ -55,7 +56,7 @@
 	<div>
 		<button
 			class="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-r from-sky-400 to-sky-300 text-black"
-			on:click={toggleDropdown}
+			onclick={toggleDropdown}
 		>
 			<span class=" uppercase">{$user.email.slice(0, 2)}</span>
 		</button>
@@ -67,7 +68,7 @@
 			use:clickOutside
 			in:scale={{ duration: 200, transformOrigin: 'top right' }}
 			out:scale={{ duration: 200, transformOrigin: 'top right' }}
-			on:click_outside={closeDropdown}
+			onclick_outside={closeDropdown}
 		>
 			<ul>
 				<!-- <li class="py-2 px-4 hover:bg-blue-100 cursor-pointer">Option 1</li> -->

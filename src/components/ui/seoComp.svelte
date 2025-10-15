@@ -3,8 +3,23 @@
 <script>
 	import { SnippetsDescription } from '$lib/stores/index.js';
 	import { page } from '$app/stores';
-	export let title, description, imageUrl, url;
-	export let index = true;
+	/**
+	 * @typedef {Object} Props
+	 * @property {any} title
+	 * @property {any} description
+	 * @property {any} imageUrl
+	 * @property {any} url
+	 * @property {boolean} [index]
+	 */
+
+	/** @type {Props} */
+	let {
+		title,
+		description,
+		imageUrl,
+		url,
+		index = true
+	} = $props();
 </script>
 
 {#key $page}

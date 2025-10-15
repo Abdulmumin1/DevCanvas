@@ -5,12 +5,11 @@
 	import { slide } from 'svelte/transition';
 	import PasswordInput from './passwordInput.svelte';
 
-	let password;
-	let confirmPassword;
-	export let loading;
-	export let submitText;
+	let password = $state();
+	let confirmPassword = $state();
+	let { loading, submitText } = $props();
 
-	let message;
+	let message = $state();
 
 	function validatePassword(event) {
 		// console.log(password, confirmPassword);
@@ -86,7 +85,7 @@
 <button
 	aria-busy={loading}
 	type="submit"
-	on:click={validatePassword}
+	onclick={validatePassword}
 	class="flex items-center justify-center gap-2 rounded-md bg-sky-300 p-2 text-black"
 	>{submitText}
 

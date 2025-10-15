@@ -6,7 +6,7 @@ export const load = async ({ locals: { getSession, getUser }, url }) => {
 
 	// console.log(user.?user_metadata)
 	if (user && !user.user_metadata?.profileComplete && url.pathname != '/profile') {
-		throw redirect(301, `/profile?rt=303&next=${url.pathname}`);
+		redirect(301, `/profile?rt=303&next=${url.pathname}`);
 	}
 	return {
 		session: await getSession(),

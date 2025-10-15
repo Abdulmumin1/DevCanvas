@@ -2,16 +2,16 @@
 	// import { saved_spinner, saveData } from '$lib/stores/playground.js';
 	import { current_data, user } from '$lib/stores/index.js';
 	import { faCodeFork, faSave, faSpinner } from '@fortawesome/free-solid-svg-icons';
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 	import Fa from 'svelte-fa';
 	import { goto, invalidateAll } from '$app/navigation';
 	import { handleRedirectURL } from '$lib/utils';
 
 	import { jsPlugins, cssPlugins, canvasConfig } from '$lib/stores/playground.js';
 	import Login from '$components/auth/login.svelte';
-	let busy = false;
+	let busy = $state(false);
 
-	let demo = $page.url.pathname.endsWith('/try');
+	let demo = page.url.pathname.endsWith('/try');
 
 	async function forkData() {
 		busy = true;
@@ -38,7 +38,7 @@
 			})
 		);
 
-		formData.append('url', $page.url.pathname);
+		formData.append('url', page.url.pathname);
 
 		const response = await fetch('/db/fe/fork', {
 			method: 'POST',
@@ -57,7 +57,7 @@
 			// window.l
 		} else {
 			if (response.status == 400) {
-				goto(handleRedirectURL($page.url));
+				goto(handleRedirectURL(page.url));
 			}
 		}
 	}
@@ -67,7 +67,7 @@
 	<div class="flex h-[35px] items-center justify-center rounded-md bg-green-500 text-primary">
 		{#if $user}
 			<button
-				on:click={forkData}
+				onclick={forkData}
 				aria-busy={busy}
 				title="Save"
 				class="flex cursor-pointer items-center justify-center gap-2 px-3 py-1 transition-transform duration-300 active:scale-75"
@@ -87,7 +87,7 @@
 	</div>
 {:else}
 	<button
-		on:click={forkData}
+		onclick={forkData}
 		class:hidden={demo}
 		aria-busy={busy}
 		title="Fork"

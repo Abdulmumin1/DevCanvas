@@ -1,4 +1,6 @@
 <script>
+	import { run } from 'svelte/legacy';
+
 	import InnerNav from '$components/ui/innerNav.svelte';
 	import { page } from '$app/stores';
 	import { enhance } from '$app/forms';
@@ -6,10 +8,10 @@
 	import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 	import { scale } from 'svelte/transition';
 
-	export let form;
+	let { form } = $props();
 
-	let submitted = false;
-	let showMessage = false;
+	let submitted = $state(false);
+	let showMessage = $state(false);
 
 	const submitStatus = () => {
 		submitted = true;
@@ -19,12 +21,14 @@
 		};
 	};
 
-	$: if (form?.errors) {
-		let interval = 100;
-		form.errors.forEach((err) => {
-			showMessage = err.message;
-		});
-	}
+	run(() => {
+		if (form?.errors) {
+			let interval = 100;
+			form.errors.forEach((err) => {
+				showMessage = err.message;
+			});
+		}
+	});
 	let license = $page.url.searchParams.get('license');
 </script>
 
@@ -67,7 +71,7 @@
 					<button
 						class="flex items-center justify-center gap-2 rounded-lg bg-sky-300 p-1 px-2 dark:text-black"
 						type="submit"
-						on:click={() => {
+						onclick={() => {
 							showMessage = false;
 						}}
 					>

@@ -5,9 +5,9 @@
 	import { enhance } from '$app/forms';
 	import SEO from '$components/ui/seoComp.svelte';
 
-	let email;
-	let loading = false;
-	let completed = false;
+	let email = $state();
+	let loading = $state(false);
+	let completed = $state(false);
 	let errMessage;
 
 	const handleSubmit = () => {

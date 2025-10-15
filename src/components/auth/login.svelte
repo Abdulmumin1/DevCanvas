@@ -14,7 +14,7 @@
 	import ProfileCard from '$components/ui/profileCard.svelte';
 
 	let signinURL = handleRedirectURL($page.url);
-	let modal;
+	let modal = $state();
 
 	function openModal() {
 		modal.showModal();
@@ -23,18 +23,18 @@
 	function closeModal() {
 		modal.close();
 	}
-	export let disquise;
+	let { disquise } = $props();
 </script>
 
 {#if !$user}
 	<li class="rounded bg-green-500 px-2 py-1 text-xs text-primary">
 		{#if !disquise}
-			<button on:click={openModal}>
+			<button onclick={openModal}>
 				<!-- <span class="flex md:hidden"><Fa icon={faRightToBracket} /></span> -->
 				<span class="flex">Login</span>
 			</button>
 		{:else}
-			<button on:click={openModal} class="flex items-center gap-1">
+			<button onclick={openModal} class="flex items-center gap-1">
 				<!-- <span class="flex md:hidden"><Fa icon={faRightToBracket} /></span> -->
 				<Fa icon={faFloppyDisk} />
 				<p class="hidden md:flex">Save</p>
@@ -44,9 +44,9 @@
 
 	<dialog id="loginDialog" bind:this={modal}>
 		<div class="flex justify-end p-6 text-xl">
-			<button on:click={closeModal} class="cursor-pointer"><Fa icon={faClose} /></button>
+			<button onclick={closeModal} class="cursor-pointer"><Fa icon={faClose} /></button>
 		</div>
-		<iframe src="/signin" title="auth" frameborder="0" height="520px" width="450px" />
+		<iframe src="/signin" title="auth" frameborder="0" height="520px" width="450px"></iframe>
 	</dialog>
 {:else}
 	<li>

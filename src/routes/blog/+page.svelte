@@ -1,4 +1,6 @@
 <script>
+	import { run } from 'svelte/legacy';
+
 	import { scale, slide } from 'svelte/transition';
 	import { onMount } from 'svelte';
 	import BlogCard from '$components/blog/blogCard.svelte';
@@ -7,19 +9,19 @@
 	import Pagination from '$components/blog/pagination.svelte';
 	import SEO from '$components/ui/seoComp.svelte';
 
-	export let data;
+	let { data } = $props();
 
-	let currentPage = 1;
+	let currentPage = $state(1);
 	let postsPerPage = 9;
-	let totalPages;
-	let paginatedPosts = [];
+	let totalPages = $state();
+	let paginatedPosts = $state([]);
 
-	$: {
+	run(() => {
 		totalPages = Math.ceil((data.posts.length - 1) / postsPerPage);
 		paginatedPosts = data.posts
 			.slice(1)
 			.slice((currentPage - 1) * postsPerPage, currentPage * postsPerPage);
-	}
+	});
 
 	function handlePageChange(newPage) {
 		currentPage = newPage;

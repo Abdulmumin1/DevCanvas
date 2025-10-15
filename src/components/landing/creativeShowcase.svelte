@@ -8,7 +8,7 @@
 	import { scale, slide } from 'svelte/transition';
 	import { dummyTitle } from '$lib/stores/playground.js';
 
-	let currentIndex = 0;
+	let currentIndex = $state(0);
 	const components = [CarouselComp2, DummyComponent, CarouselComp3];
 
 	function next() {
@@ -46,7 +46,7 @@
 	{/key}
 	<div class="mt-2 flex items-center justify-center gap-2">
 		{#each components as balls, i}
-			<div class="h-[10px] w-[10px] rounded-full bg-black" class:bg-sky-300={i == currentIndex} />
+			<div class="h-[10px] w-[10px] rounded-full bg-black" class:bg-sky-300={i == currentIndex}></div>
 		{/each}
 	</div>
 	<!-- <button on:click={next}>Next</button> -->

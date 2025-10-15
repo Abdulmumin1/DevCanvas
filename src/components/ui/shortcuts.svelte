@@ -7,8 +7,9 @@
 	import Fa from 'svelte-fa';
 	import { slide } from 'svelte/transition';
 
-	$: expanded = false;
-	$: s_icon = expanded ? faAngleDown : faAngleRight;
+	let expanded = $state(false);
+	
+	let s_icon = $derived(expanded ? faAngleDown : faAngleRight);
 
 	function expand() {
 		expanded = !expanded;
@@ -16,7 +17,7 @@
 </script>
 
 <div class="flex flex-col gap-2">
-	<button on:click={expand} class="flex w-fit items-center justify-center gap-2"
+	<button onclick={expand} class="flex w-fit items-center justify-center gap-2"
 		>Shortcuts <Fa icon={s_icon} class="transition-all duration-300" /></button
 	>
 	{#if expanded}

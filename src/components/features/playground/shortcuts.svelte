@@ -16,7 +16,7 @@
 	import Fa from 'svelte-fa';
 	import { scale, slide } from 'svelte/transition';
 
-	let open = false;
+	let open = $state(false);
 
 	function toggleAccordion() {
 		open = !open;
@@ -25,7 +25,7 @@
 
 <li class="mb-2 flex flex-col gap-2 rounded-xl bg-gray-100 p-1 dark:bg-primary">
 	<button
-		on:click={toggleAccordion}
+		onclick={toggleAccordion}
 		class="flex items-center gap-2 px-2 py-2 text-sm text-[#777] dark:text-gray-200"
 	>
 		<!-- <div></div> -->

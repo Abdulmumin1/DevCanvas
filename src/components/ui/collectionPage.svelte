@@ -7,15 +7,28 @@
 	import { onDestroy, onMount } from 'svelte';
 	import { getProfile } from '$lib/utils.js';
 
-	export let supabase;
-	export let session;
-	export let rawcollection;
-	export let dashboard = false;
-	export let user_id = false;
-	export let query = false;
+	/**
+	 * @typedef {Object} Props
+	 * @property {any} supabase
+	 * @property {any} session
+	 * @property {any} rawcollection
+	 * @property {boolean} [dashboard]
+	 * @property {boolean} [user_id]
+	 * @property {boolean} [query]
+	 */
 
-	let collection = rawcollection;
-	let loading = false;
+	/** @type {Props} */
+	let {
+		supabase,
+		session,
+		rawcollection,
+		dashboard = false,
+		user_id = false,
+		query = false
+	} = $props();
+
+	let collection = $state(rawcollection);
+	let loading = $state(false);
 
 	async function fetchExplore(pageNumber, pageSize) {
 		const { data, error } = await supabase
@@ -89,7 +102,7 @@
 		}
 	}
 
-	let showMore = collection.length > 5;
+	let showMore = $state(collection.length > 5);
 	// console.log();
 	async function more() {
 		// console.log($pageCountSnips);
@@ -145,7 +158,7 @@
 			<button
 				class="flex w-fit items-center justify-center gap-2 rounded-lg bg-neutral-300 px-4 py-2 shadow transition-transform duration-300 active:scale-75 dark:bg-secondary-dark"
 				id="more"
-				on:click={more}
+				onclick={more}
 			>
 				<div class:animate-spin={loading} class:hidden={!loading}>
 					<Fa icon={faSpinner} />

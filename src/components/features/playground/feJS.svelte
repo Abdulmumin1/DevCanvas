@@ -1,6 +1,8 @@
 <script>
+	import { run } from 'svelte/legacy';
+
 	import { faSpinner } from '@fortawesome/free-solid-svg-icons';
-	import { afterUpdate, onDestroy, onMount } from 'svelte';
+	import { onDestroy, onMount } from 'svelte';
 	import {
 		showSave,
 		saveData,
@@ -36,13 +38,19 @@
 	import { createTheme } from '$lib/config/editorTheme.js';
 	import Loader from '../loader.svelte';
 
-	let editorContainer;
-	let editorView;
-	let loading = true;
-	export let lang = 'javascript';
+	let editorContainer = $state();
+	let editorView = $state();
+	let loading = $state(true);
 
-	// Define the initial code content
-	export let initialJs = `//`;
+	
+	/**
+	 * @typedef {Object} Props
+	 * @property {string} [lang]
+	 * @property {any} [initialJs] - Define the initial code content
+	 */
+
+	/** @type {Props} */
+	let { lang = 'javascript', initialJs = `//` } = $props();
 
 	let saved = true;
 	let typingTimer; // Timer to track typing
@@ -105,15 +113,15 @@
 	let lineWrapping = new Compartment();
 	let readOnlyCompartment = new Compartment();
 
-	$: {
+	run(() => {
 		let state = $wordWrapSetting;
 		if (browser && editorView) {
 			editorView.dispatch({
 				effects: lineWrapping.reconfigure(!state ? [] : EditorView.lineWrapping)
 			});
 		}
-	}
-	$: {
+	});
+	run(() => {
 		let active = $typescriptActive;
 		console.log(active);
 		if (monacoModel) {
@@ -128,7 +136,7 @@
 				console.log('lang just changed', 'javascript');
 			}
 		}
-	}
+	});
 	onMount(async () => {
 		const customTheme = createTheme();
 		const fixedHeightEditor = EditorView.theme({
@@ -185,7 +193,7 @@
 	</div>
 {:else}
 	<div class="editor-container h-full w-full bg-primary" class:bg-secondary-dark={$darkModeState}>
-		<div class="h-full w-full" bind:this={editorContainer} />
+		<div class="h-full w-full" bind:this={editorContainer}></div>
 	</div>
 {/if}
 

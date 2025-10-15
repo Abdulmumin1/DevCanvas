@@ -1,4 +1,6 @@
 <script>
+	import { run } from 'svelte/legacy';
+
 	import { pageCountSnips, pageCountPl } from '$lib/stores/index.js';
 
 	import NavWrapper from '$components/features/snippets/navWrapper.svelte';
@@ -9,7 +11,7 @@
 	import FeCollectionDummy from '$components/ui/feCollectionDummy.svelte';
 	import { fade } from 'svelte/transition';
 
-	export let data;
+	let { data } = $props();
 	let supabase = data.supabase;
 
 	let query = $page.url.searchParams.get('query');
@@ -97,8 +99,8 @@
 		}
 	}
 
-	let showOther = false;
-	let filter = 'desc';
+	let showOther = $state(false);
+	let filter = $state('desc');
 	function toogle() {
 		showOther = !showOther;
 	}
@@ -107,7 +109,7 @@
 		filter = fil;
 	}
 
-	$: {
+	run(() => {
 		if (browser) {
 			if (filter == 'tags') {
 				goto(`/search?query=${query}&f=t`);
@@ -115,7 +117,7 @@
 				goto(`/search?query=${query}&f=d`);
 			}
 		}
-	}
+	});
 </script>
 
 <svelte:head>
@@ -133,27 +135,27 @@
 				? 'bg-stone-600 text-light dark:bg-gray-300 dark:text-black'
 				: 'dark:bg-secondary-dark '} rounded-md p-1 px-2"
 			class:bg-gray-400={filter == 'tags'}
-			on:click={() => changeFilter('tags')}>Tags</button
+			onclick={() => changeFilter('tags')}>Tags</button
 		>
 		<button
 			class="bg-sky-light {filter == 'desc'
 				? 'bg-stone-600 text-light dark:bg-gray-300 dark:text-black'
 				: 'dark:bg-secondary-dark '} rounded-md p-1 px-2"
 			class:bg-gray-400={filter == 'desc'}
-			on:click={() => changeFilter('desc')}>Description</button
+			onclick={() => changeFilter('desc')}>Description</button
 		>
 	</div>
 	<div class="my-4 rounded-md bg-sky-light px-1 pt-2 dark:bg-secondary-dark">
 		<div class="flex w-full gap-2 text-primary dark:text-white">
 			<button
 				class="rounded-t-md p-1 px-3"
-				on:click={toogle}
+				onclick={toogle}
 				class:bg-white={!showOther}
 				class:dark:bg-primary={!showOther}>Canvas</button
 			>
 			<button
 				class="rounded-t-md p-1 px-3"
-				on:click={toogle}
+				onclick={toogle}
 				class:bg-white={showOther}
 				class:dark:bg-primary={showOther}>Snippets</button
 			>

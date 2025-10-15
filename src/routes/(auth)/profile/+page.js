@@ -6,7 +6,7 @@ import { redirect } from '@sveltejs/kit';
 export async function load({ parent }) {
 	let { supabase, session, user } = await parent();
 	if (!session) {
-		throw redirect(302, '/signin?redirectTo=/gEtHAndShAkE?whereto=/profile');
+		redirect(302, '/signin?redirectTo=/gEtHAndShAkE?whereto=/profile');
 	}
 	let socials = { github: user.user_metadata?.user_name ?? '', twitter: '', instagram: '' };
 	let df = {

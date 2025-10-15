@@ -1,8 +1,14 @@
 <script>
 
-	export let version = 1;
-	export let inProgress = false;
-	export let codeBlock;
+	/**
+	 * @typedef {Object} Props
+	 * @property {number} [version]
+	 * @property {boolean} [inProgress]
+	 * @property {any} codeBlock
+	 */
+
+	/** @type {Props} */
+	let { version = 1, inProgress = false, codeBlock } = $props();
 
 	function handleClick() {
 		const myEvent = new CustomEvent('codeSwap', {
@@ -14,7 +20,7 @@
 </script>
 
 <span
-	on:click={handleClick}
+	onclick={handleClick}
 	class="inline-block w-full cursor-pointer rounded-xl border border-sky-200 bg-sky-50 bg-gradient-to-r from-sky-400 to-sky-300 px-2 py-4 transition-all duration-300 hover:rounded-2xl"
 >
 	Code Artifact {inProgress ? ' (in progress)' : ''}

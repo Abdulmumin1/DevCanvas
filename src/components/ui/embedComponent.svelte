@@ -6,9 +6,9 @@
 	import { faCheck, faCopy, faExpand } from '@fortawesome/free-solid-svg-icons';
 	import Fa from 'svelte-fa';
 
-	let copied = false;
-	$: iconCopy = copied ? faCheck : faCopy;
-	export let details;
+	let copied = $state(false);
+	let iconCopy = $derived(copied ? faCheck : faCopy);
+	let { details } = $props();
 	function CopyAction() {
 		copied = true;
 		copyTextToClipboard(code);
@@ -45,14 +45,16 @@
 				<Fa icon={faExpand} />
 			</a>
 
-			<button class=" z-50 rounded-lg bg-primary px-3 py-2 text-light" on:click={CopyAction}
+			<button class=" z-50 rounded-lg bg-primary px-3 py-2 text-light" onclick={CopyAction}
 				><Fa icon={iconCopy} /></button
 			>
 		</div>
 	</div>
 	<div class="mt-12 bg-white py-4 text-sm md:text-base">
-		<HighlightAuto {code} let:highlighted>
-			<LineNumbers {highlighted} hideBorder />
-		</HighlightAuto>
+		<HighlightAuto {code} >
+			{#snippet children({ highlighted })}
+						<LineNumbers {highlighted} hideBorder />
+								{/snippet}
+				</HighlightAuto>
 	</div>
 </div>

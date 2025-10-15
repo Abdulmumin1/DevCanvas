@@ -5,14 +5,26 @@
 	import Fa from 'svelte-fa';
 	import { onMount } from 'svelte';
 
-	export let supabase;
-	export let collection;
-	export let dashboard = false;
-	export let user_id = false;
-	export let query = false;
+	/**
+	 * @typedef {Object} Props
+	 * @property {any} supabase
+	 * @property {any} collection
+	 * @property {boolean} [dashboard]
+	 * @property {boolean} [user_id]
+	 * @property {boolean} [query]
+	 */
 
-	let loading = false;
-	let showMore = false;
+	/** @type {Props} */
+	let {
+		supabase,
+		collection = $bindable(),
+		dashboard = false,
+		user_id = false,
+		query = false
+	} = $props();
+
+	let loading = $state(false);
+	let showMore = $state(false);
 
 	async function fetchExplore(start, end) {
 		const { data, error } = await supabase
@@ -127,7 +139,7 @@
 			<nav aria-label="Pagination">
 				<button
 					class="flex items-center justify-center gap-2 rounded-lg bg-white px-6 py-3 font-semibold transition-all duration-300 hover:bg-sky-50 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 active:scale-95 dark:bg-secondary-dark dark:text-gray-200"
-					on:click={more}
+					onclick={more}
 					disabled={loading}
 					aria-label="Load more content"
 				>

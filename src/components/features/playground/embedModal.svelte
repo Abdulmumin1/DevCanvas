@@ -9,10 +9,10 @@
 	function closeModal() {
 		showEmbedModal.set(false);
 	}
-	let modal;
-	let copied = false;
+	let modal = $state();
+	let copied = $state(false);
 	let path = `${$page.url.origin}${$page.url.pathname}/embed`;
-	$: iconCopy = copied ? faCheck : faCopy;
+	let iconCopy = $derived(copied ? faCheck : faCopy);
 	function CopyAction() {
 		copied = true;
 		copyTextToClipboard(path);
@@ -39,13 +39,13 @@
 		class="sticky top-0 flex justify-between border-b-4 border-sky-500 bg-white p-2 dark:bg-black dark:text-white"
 	>
 		<p>Embed Canvas</p>
-		<button on:click={closeModal}><Fa icon={faClose} /></button>
+		<button onclick={closeModal}><Fa icon={faClose} /></button>
 	</div>
 	<div
 		in:fly
 		out:slide
 		use:clickOutside
-		on:click_outside={closeModal}
+		onclick_outside={closeModal}
 		class="modal flex h-full flex-col gap-2 rounded bg-white p-3 dark:bg-black"
 	>
 		<iframe
@@ -55,7 +55,7 @@
 			frameborder="0"
 			scrolling="no"
 			class="w-full overflow-hidden rounded-xl"
-		/>
+		></iframe>
 		<div class="flex items-center justify-center gap-2 text-sm">
 			<p class="w-full rounded-lg bg-sky-300 p-1 text-black">
 				<!-- {`
@@ -68,7 +68,7 @@
                 `} -->
 				{path}
 			</p>
-			<button class=" z-50 rounded-lg bg-primary px-3 py-2 text-light" on:click={CopyAction}
+			<button class=" z-50 rounded-lg bg-primary px-3 py-2 text-light" onclick={CopyAction}
 				><Fa icon={iconCopy} /></button
 			>
 		</div>

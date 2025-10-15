@@ -8,7 +8,7 @@ export const actions = {
 		delete body['id'];
 		const { data, error: err } = await supabase.from('snips').update([body]).eq('id', id);
 		if (err) {
-			throw error(500, 'Opsie, error from our side');
+			error(500, 'Opsie, error from our side');
 		} else {
 			// console.log(body);
 		}

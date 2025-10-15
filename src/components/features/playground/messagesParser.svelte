@@ -1,7 +1,7 @@
 <script>
 	import MessageProcessor from './MessageProcessor.svelte';
 
-	export let messages = [];
+	let { messages = [] } = $props();
 	let versionCount = 0;
 
 	// Process content to replace code blocks with version indicators

@@ -3,13 +3,19 @@
 	import { navigating } from '$app/stores';
 	import { onMount } from 'svelte';
 
-	export let animationDuration = 250;
 	let accentColor = '#7dd3fc';
 
-	export let color = accentColor;
-	export let height = 4;
+	/**
+	 * @typedef {Object} Props
+	 * @property {number} [animationDuration]
+	 * @property {any} [color]
+	 * @property {number} [height]
+	 */
 
-	let currentState = 'waiting';
+	/** @type {Props} */
+	let { animationDuration = 250, color = accentColor, height = 4 } = $props();
+
+	let currentState = $state('waiting');
 
 	let resetTimeout = undefined;
 
@@ -43,7 +49,7 @@
 	<div
 		class="navigation-loader-loading-bar {currentState} shadow-lg"
 		style="background-color: {color}; --duration: {animationDuration}ms"
-	/>
+	></div>
 </div>
 
 <style>

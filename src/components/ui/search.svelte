@@ -2,11 +2,11 @@
 	import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
 	import Fa from 'svelte-fa';
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 	import { faSearchengin } from '@fortawesome/free-brands-svg-icons';
 
-	let query = $page.url.searchParams.get('query');
-	let path = $page.url.pathname.endsWith('/dashboard') ? '/dashboard/search/?/search' : '?/search';
+	let query = page.url.searchParams.get('query');
+	let path = page.url.pathname.endsWith('/dashboard') ? '/dashboard/search/?/search' : '?/search';
 	let sort = 'tags';
 </script>
 

@@ -11,7 +11,7 @@
 
 <button
 	class="text-black"
-	on:click={() => {
+	onclick={() => {
 		$reload = !$reload;
 	}}
 >

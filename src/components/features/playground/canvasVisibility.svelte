@@ -8,13 +8,12 @@
 	import SingleSetting from './singleSetting.svelte';
 
 	let dropdownOpen = false;
-	export let canvas_id;
-	export let publicLy;
+	let { canvas_id, publicLy } = $props();
 
-	$: isPublic = publicLy;
+	let isPublic = $derived(publicLy);
 
-	$: icon = isPublic ? faLockOpen : faLock;
-	$: text = isPublic ? 'Public' : 'Private';
+	let icon = $derived(isPublic ? faLockOpen : faLock);
+	let text = $derived(isPublic ? 'Public' : 'Private');
 
 	function toggleDropdown() {
 		dropdownOpen = !dropdownOpen;
@@ -50,7 +49,7 @@
 </script>
 
 <button
-	on:click={toggleVisibility}
+	onclick={toggleVisibility}
 	class="flex h-fit rounded-xl bg-sky-100 p-1 px-2 text-[10px] text-black"
 >
 	<div class="flex gap-1">

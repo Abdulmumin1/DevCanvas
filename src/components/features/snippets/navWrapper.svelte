@@ -12,7 +12,14 @@
 
 	let signinURL = handleRedirectURL($page.url);
 
-	export let noSearch = false;
+	/**
+	 * @typedef {Object} Props
+	 * @property {boolean} [noSearch]
+	 * @property {import('svelte').Snippet} [children]
+	 */
+
+	/** @type {Props} */
+	let { noSearch = false, children } = $props();
 	// export let data;
 
 	let show = false;
@@ -65,7 +72,7 @@
 		{/if}
 
 		<div class="mb-4 h-full w-full px-4 md:px-6" transition:fly={{ x: 10, duration: 400 }}>
-			<slot />
+			{@render children?.()}
 		</div>
 	</div>
 </div>

@@ -7,7 +7,7 @@ export async function POST({ locals: { supabase, getSession }, request }) {
 	let session = await getSession();
 	const body = Object.fromEntries(await request.formData());
 	if (!session) {
-		throw error(400, { message: ' unable to complete action' });
+		error(400, { message: ' unable to complete action' });
 	}
 	let key = generateRandomKey();
 	let save = body?.save;
@@ -28,7 +28,7 @@ export async function POST({ locals: { supabase, getSession }, request }) {
 
 	if (err) {
 		console.log(data);
-		throw error(400, { message: ' unable to complete action' });
+		error(400, { message: ' unable to complete action' });
 	}
 	const { data: _, error: er } = await supabase
 		.from('view')
@@ -36,7 +36,7 @@ export async function POST({ locals: { supabase, getSession }, request }) {
 
 	console.log(_);
 	if (er) {
-		throw error(400, { message: 'unable to complete action' });
+		error(400, { message: 'unable to complete action' });
 	}
 
 	return new Response(JSON.stringify({ url: `/play/${key}` }));

@@ -6,6 +6,6 @@ export const actions = {
 		// const { supabase } = await parent();
 		let body = Object.fromEntries(await request.formData());
 		// console.log(body);
-		throw redirect(303, `?query=${body.query}`);
+		redirect(303, `?query=${body.query}`);
 	}
 };

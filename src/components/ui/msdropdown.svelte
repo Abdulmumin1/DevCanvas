@@ -24,8 +24,9 @@
 			// console.log('failed');
 		}
 	}
-	$: showDelete = false;
-	let isOpen = false;
+	let showDelete = $state(false);
+	
+	let isOpen = $state(false);
 
 	const toggleDropdown = () => {
 		isOpen = !isOpen;
@@ -50,7 +51,7 @@
 </script>
 
 <div class="relative flex items-center justify-center text-left dark:text-white">
-	<button on:click={toggleDropdown} class="text-xl">
+	<button onclick={toggleDropdown} class="text-xl">
 		<Fa icon={faBars} class=" transition-transform duration-150 hover:scale-110" />
 	</button>
 
@@ -60,7 +61,7 @@
 			use:clickOutside
 			in:scale={{ duration: 200, transformOrigin: 'top right' }}
 			out:scale={{ duration: 200, transformOrigin: 'top right' }}
-			on:click_outside={closeDropdown}
+			onclick_outside={closeDropdown}
 		>
 			<ul>
 				<!-- <li class="py-2 px-4 hover:bg-blue-100 cursor-pointer">Option 1</li> -->
@@ -70,7 +71,7 @@
 				</li>
 				{#if showDelete}
 					<li class="cursor-pointer px-4 py-2 hover:bg-red-100 hover:text-primary">
-						<button class="w-full text-left" on:click={DeleteEntry}>Delete</button>
+						<button class="w-full text-left" onclick={DeleteEntry}>Delete</button>
 					</li>
 				{/if}
 				<li class="m-1 cursor-pointer rounded-xl bg-error px-4 py-2 dark:text-black">

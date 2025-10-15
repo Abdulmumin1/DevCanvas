@@ -36,16 +36,16 @@ export const handle = async ({ event, resolve }) => {
 	const pathname = event.url.pathname;
 
 	if (pathname === '/new') {
-		throw redirect(301, '/play/try');
+		redirect(301, '/play/try');
 	}
 	if (pathname === '/community') {
-		throw redirect(301, '/explore');
+		redirect(301, '/explore');
 	}
 	if (pathname === '/signin' && session) {
-		throw redirect(307, '/dashboard');
+		redirect(307, '/dashboard');
 	}
 	if (pathname.startsWith('/html-playground') || pathname === '/html-playground') {
-		throw redirect(307, pathname.replace('/html-playground', '/play'));
+		redirect(307, pathname.replace('/html-playground', '/play'));
 	}
 
 	// Resolve the response

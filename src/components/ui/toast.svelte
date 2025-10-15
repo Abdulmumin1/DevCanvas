@@ -4,8 +4,14 @@
 	import { showToast } from '$lib/stores/index.js';
 	import Fa from 'svelte-fa';
 	import { faClose } from '@fortawesome/free-solid-svg-icons';
-	export let message;
-	export let duration = 2500;
+	/**
+	 * @typedef {Object} Props
+	 * @property {any} message
+	 * @property {number} [duration]
+	 */
+
+	/** @type {Props} */
+	let { message, duration = 2500 } = $props();
 
 	onMount(() => {
 		setTimeout(() => {
@@ -23,7 +29,7 @@
 		{message}
 
 		<button
-			on:click={() => {
+			onclick={() => {
 				showToast.set(false);
 			}}
 		>

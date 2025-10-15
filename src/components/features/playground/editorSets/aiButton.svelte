@@ -9,7 +9,7 @@
 </script>
 
 <button
-	on:click={handleClick}
+	onclick={handleClick}
 	class="flex items-center justify-center rounded-full bg-gradient-to-r from-sky-400 to-sky-300 px-2 py-2"
 >
 	<svg

@@ -1,4 +1,6 @@
 <script>
+	import { run } from 'svelte/legacy';
+
 	import Nav from '../../../../components/ui/nav.svelte';
 	import CodeText from '../../../../components/ui/codeText.svelte';
 	import {
@@ -16,7 +18,7 @@
 
 	import { marked } from 'marked';
 
-	export let data;
+	let { data } = $props();
 
 	// function handleContentChange(event) {
 	// 	current_data.update((cur) => {
@@ -44,7 +46,7 @@
 
 	previewMode.set(true);
 
-	let value = '';
+	let value = $state('');
 	// editor.addAction(saveAction);
 	let saved = true;
 	let typingTimer; // Timer to track typing
@@ -71,11 +73,11 @@
 		saved_spinner.set(false);
 	}
 
-	$: {
+	run(() => {
 		if (value) {
 			handleAutoSave();
 		}
-	}
+	});
 
 	onMount(() => {
 		current_data.set(data['0']);
@@ -83,7 +85,7 @@
 		// getUser()
 	});
 
-	let activeTab = 'edit';
+	let activeTab = $state('edit');
 	function setTab(tab) {
 		activeTab = tab;
 	}
@@ -112,7 +114,7 @@
 				<div class="rounded-xl bg-gray-100 p-4 *:border-none dark:bg-secondary-dark">
 					<div class="mb-4">
 						<button
-							on:click={() => setTab('edit')}
+							onclick={() => setTab('edit')}
 							class="relative px-4 py-2 transition-all duration-200 {activeTab === 'edit'
 								? 'rounded-lg  bg-gradient-to-r from-sky-400 to-sky-300 text-primary shadow-lg shadow-sky-200/20 transition-all duration-300 ease-out'
 								: 'text-gray-600 hover:text-sky-300'}"
@@ -120,7 +122,7 @@
 							Editor
 						</button>
 						<button
-							on:click={() => setTab('preview')}
+							onclick={() => setTab('preview')}
 							class="  relative px-4 py-2 transition-all duration-200 {activeTab === 'preview'
 								? 'rounded-lg bg-gradient-to-r from-sky-400 to-sky-300 text-primary shadow-lg shadow-sky-200/20 transition-all duration-300 ease-out'
 								: 'text-gray-600 hover:text-sky-300'}"
@@ -133,7 +135,7 @@
 							bind:value
 							class="min-h-[800px] w-full rounded-xl border-none p-4 outline-none dark:bg-secondary-dark"
 							spellcheck="false "
-						/>
+						></textarea>
 					{:else}
 						<div>
 							{#await marked(value)}

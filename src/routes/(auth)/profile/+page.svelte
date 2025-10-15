@@ -15,10 +15,10 @@
 
 	import { getProfile } from '$lib/stores/index.js';
 
-	let loading = false;
-	let serverErr = false;
+	let loading = $state(false);
+	let serverErr = $state(false);
 	let email;
-	let completed = false;
+	let completed = $state(false);
 	const handleSubmit = () => {
 		loading = true;
 
@@ -51,8 +51,7 @@
 		};
 	};
 
-	export let data;
-	export let form;
+	let { data, form = $bindable() } = $props();
 	let mesa = $page.url.searchParams.get('rt');
 	let details = data.details;
 </script>
@@ -107,7 +106,7 @@
 				<!-- Email -->
 				<div class="mb-4">
 					<label for="email" class="mb-2 block text-sm text-neutral-700 dark:text-white md:text-lg">
-						<i class="fas fa-envelope mr-1" /> Email
+						<i class="fas fa-envelope mr-1"></i> Email
 					</label>
 					<input
 						type="email"
@@ -126,7 +125,7 @@
 						for="fullname"
 						class="mb-2 block text-sm text-neutral-700 dark:text-white md:text-lg"
 					>
-						<i class="fas fa-user mr-1" /> Full Name
+						<i class="fas fa-user mr-1"></i> Full Name
 					</label>
 					<input
 						type="text"
@@ -144,7 +143,7 @@
 				<!-- Social Media Links -->
 				<div class="mb-4">
 					<span class="mb-2 block text-sm text-neutral-700 dark:text-white md:text-lg">
-						<i class="fas fa-share-alt mr-1" /> Social Media Links
+						<i class="fas fa-share-alt mr-1"></i> Social Media Links
 					</span>
 					<div class="flex gap-2">
 						<!-- Facebook -->

@@ -1,4 +1,6 @@
 <script>
+	import { run } from 'svelte/legacy';
+
 	import { fly } from 'svelte/transition';
 	import Fa from 'svelte-fa';
 	import { faClose, faGear } from '@fortawesome/free-solid-svg-icons';
@@ -15,17 +17,17 @@
 	import Shortcuts from '$components/features/playground/shortcuts.svelte';
 	import { onMount, onDestroy } from 'svelte';
 
-	let modal = false;
+	let modal = $state(false);
 
 	let js = $externalStuff.js;
 	let css = $externalStuff.css;
-	let html = $externalStuff.html;
+	let html = $state($externalStuff.html);
 
-	$: {
+	run(() => {
 		externalStuff.update((cur) => {
 			return { html, css, js };
 		});
-	}
+	});
 
 	let inputField;
 	function addMoreJs() {
@@ -60,8 +62,8 @@
 		modal = false;
 	}
 
-	let tabPlugin = false;
-	let activeTab = 'editor';
+	let tabPlugin = $state(false);
+	let activeTab = $state('editor');
 
 	function setTab(tab) {
 		activeTab = tab;
@@ -89,7 +91,7 @@
 </script>
 
 <button
-	on:click={() => {
+	onclick={() => {
 		modal = !modal;
 		// showEditor()
 	}}
@@ -103,7 +105,7 @@
 		in:fly={{ y: 100 }}
 		out:fly={{ y: 80, duration: 150 }}
 		use:clickOutside
-		on:click_outside={closeModal}
+		onclick_outside={closeModal}
 		class="bottom-0 z-50 flex flex-col items-center bg-white px-2 pb-2 text-sm text-black shadow-sky-300 dark:bg-primary dark:text-white md:bottom-[5px] md:h-[900px] md:w-[500px] md:rounded-lg md:shadow-xl"
 	>
 		<div
@@ -120,7 +122,7 @@
 			<div class="w-full max-w-6xl px-2 text-base md:text-lg">
 				<div class="relative flex items-center gap-6">
 					<button
-						on:click={() => setTab('editor')}
+						onclick={() => setTab('editor')}
 						class="relative px-4 py-2 transition-all duration-200 {activeTab === 'editor'
 							? 'rounded-lg  bg-gradient-to-r from-sky-400 to-sky-300 text-primary shadow-lg shadow-sky-200/20 transition-all duration-300 ease-out'
 							: 'text-gray-400 hover:text-sky-300'}"
@@ -128,7 +130,7 @@
 						Editor
 					</button>
 					<button
-						on:click={() => setTab('plugins')}
+						onclick={() => setTab('plugins')}
 						class="  relative px-4 py-2 transition-all duration-200 {activeTab === 'plugins'
 							? 'rounded-lg bg-gradient-to-r from-sky-400 to-sky-300 text-primary shadow-lg shadow-sky-200/20 transition-all duration-300 ease-out'
 							: 'text-gray-400 hover:text-sky-300'}"
@@ -140,7 +142,7 @@
 
 			<button
 				class="absolute right-0 top-[50%] h-[75%] translate-y-[-50%] rounded-lg px-5 text-xl"
-				on:click={closeModal}
+				onclick={closeModal}
 			>
 				<Fa icon={faClose} />
 			</button>
@@ -160,7 +162,7 @@
 						class="w-full rounded-xl bg-gray-100 p-2 font-thin outline-none dark:bg-primary"
 						spellcheck="false"
 						bind:value={html}
-					/>
+					></textarea>
 				</div>
 
 				<div class="flex w-full flex-col gap-2">

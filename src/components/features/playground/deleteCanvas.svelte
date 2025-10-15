@@ -5,11 +5,9 @@
 	import { invalidateAll, goto } from '$app/navigation';
 	import { createEventDispatcher } from 'svelte';
 
-	export let canvas_id;
-	export let user_id;
-	export let title;
-	let modal;
-	let loading;
+	let { canvas_id, user_id, title } = $props();
+	let modal = $state();
+	let loading = $state();
 	const dispatch = createEventDispatcher();
 
 	function openModal() {
@@ -48,7 +46,7 @@
 	}
 </script>
 
-<button on:click={openModal}><Fa icon={faTrash} /> </button>
+<button onclick={openModal}><Fa icon={faTrash} /> </button>
 
 <dialog id="myModal" bind:this={modal}>
 	<!-- <h2>Delete Canvas</h2> -->
@@ -56,11 +54,11 @@
 		<p class="text-center font-bold">Are You Sure you want to delete canvas?</p>
 		<p>"{title}"</p>
 		<div class="flex gap-4">
-			<button class="rounded-lg bg-gray-300 p-2" id="closeModal" on:click={closeModal}>Close</button
+			<button class="rounded-lg bg-gray-300 p-2" id="closeModal" onclick={closeModal}>Close</button
 			>
 			<button
 				class="flex items-center justify-center gap-2 rounded-lg bg-error p-2"
-				on:click={DeleteCanvas}
+				onclick={DeleteCanvas}
 				>Delete {#if loading}
 					<Fa icon={faSpinner} class="animate-spin" />
 				{/if}</button

@@ -4,7 +4,7 @@
 	import Fa from 'svelte-fa';
 	import { fade, scale } from 'svelte/transition';
 
-	export let details;
+	let { details } = $props();
 </script>
 
 <div

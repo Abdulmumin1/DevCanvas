@@ -82,9 +82,9 @@
 	}
 	isOwner.set(false);
 
-	export let data;
-	let initialHTML = '<!-- -->';
-	let initialCSS = '/* */';
+	let { data } = $props();
+	let initialHTML = $state('<!-- -->');
+	let initialCSS = $state('/* */');
 	let initialJs = '//';
 	let fetchResponse = true;
 
@@ -93,9 +93,9 @@
 
 	// $: console.log(data)
 
-	let messages = [
+	let messages = $state([
 		
-	];
+	]);
 
 	async function promptAI(message) {
 		// console.log('fdsfds');
@@ -269,15 +269,19 @@
 	<FePlayGroungNav ispublic={$current_data.public} />
 	<div class="relative h-full w-full flex-1 overflow-hidden">
 		<Resizable>
-			<div slot="left" class="h-full w-full">
-				<FeCodeEditor bind:initialHTML bind:initialCSS lang="html" />
-			</div>
-			<div slot="right" class="relative h-full w-full bg-white">
-				{#key $reload}
-					<CodeOutput />
-					<JsConsole />
-				{/key}
-			</div>
+			{#snippet left()}
+						<div  class="h-full w-full">
+					<FeCodeEditor bind:initialHTML bind:initialCSS lang="html" />
+				</div>
+					{/snippet}
+			{#snippet right()}
+						<div  class="relative h-full w-full bg-white">
+					{#key $reload}
+						<CodeOutput />
+						<JsConsole />
+					{/key}
+				</div>
+					{/snippet}
 		</Resizable>
 
 		{#if $showEmbedModal}

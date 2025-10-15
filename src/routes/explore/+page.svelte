@@ -6,7 +6,7 @@
 	import SEO from '$components/ui/seoComp.svelte';
 	import { fade } from 'svelte/transition';
 
-	export let data;
+	let { data } = $props();
 	let supabase = data.supabase;
 	async function loadIntialData() {
 		let { data: dt, error } = await supabase

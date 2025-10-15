@@ -1,5 +1,7 @@
 <script>
-	import { afterUpdate, onDestroy, onMount } from 'svelte';
+	import { run } from 'svelte/legacy';
+
+	import { onDestroy, onMount } from 'svelte';
 	import { browser } from '$app/environment';
 	import { EditorView } from '@codemirror/view';
 	import { Compartment } from '@codemirror/state';
@@ -34,13 +36,19 @@
 	} from '$lib/stores/index.js';
 	import Loader from '../loader.svelte';
 
-	let editorContainer;
-	let editorView;
-	let loading = true;
-	export let lang = 'css';
+	let editorContainer = $state();
+	let editorView = $state();
+	let loading = $state(true);
 
-	// Define the initial code content
-	export let initialCSS = `/* css here */`;
+	
+	/**
+	 * @typedef {Object} Props
+	 * @property {string} [lang]
+	 * @property {any} [initialCSS] - Define the initial code content
+	 */
+
+	/** @type {Props} */
+	let { lang = 'css', initialCSS = `/* css here */` } = $props();
 	let model;
 
 	let saved = true;
@@ -105,16 +113,16 @@
 	let lineWrapping = new Compartment();
 	let readOnlyCompartment = new Compartment();
 
-	$: {
+	run(() => {
 		let state = $wordWrapSetting;
 		if (browser && editorView) {
 			editorView.dispatch({
 				effects: lineWrapping.reconfigure(!state ? [] : EditorView.lineWrapping)
 			});
 		}
-	}
+	});
 
-	$: {
+	run(() => {
 		let active = $sassActive;
 		// console.log(active);
 		if (monacoModel) {
@@ -129,7 +137,7 @@
 				// console.log('lang just changed', 'CSS');
 			}
 		}
-	}
+	});
 
 	onMount(async () => {
 		const customTheme = createTheme();
@@ -187,7 +195,7 @@
 	</div>
 {:else}
 	<div class="editor-container h-full w-full bg-primary" class:bg-secondary-dark={$darkModeState}>
-		<div class="h-full w-full" bind:this={editorContainer} />
+		<div class="h-full w-full" bind:this={editorContainer}></div>
 	</div>
 {/if}
 

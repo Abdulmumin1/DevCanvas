@@ -1,7 +1,7 @@
 <script>
 	import Save from './save.svelte';
 	import { previewMode, user } from '$lib/stores/index.js';
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 	import ShareBtn from './ShareBtn.svelte';
 	import { faPen } from '@fortawesome/free-solid-svg-icons';
 	import Fa from 'svelte-fa';
@@ -11,8 +11,8 @@
 	// import logo from '$lib/logo.png';
 	import Login from '$components/auth/login.svelte';
 
-	let showPreview = $page.url.pathname.endsWith('/edit');
-	let back = `${$page.url.pathname}`;
+	let showPreview = page.url.pathname.endsWith('/edit');
+	let back = `${page.url.pathname}`;
 	let showEdit = getContext('isOwner');
 </script>
 

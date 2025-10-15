@@ -2,12 +2,12 @@
 	import { current_data } from '$lib/stores/index.js';
 	import { saveConfig, canvasConfig, userImportedJS } from '$lib/stores/playground.js';
 
-	let scrpts = $userImportedJS ?? [];
+	let scrpts = $state($userImportedJS ?? []);
 	// if (!scrpts) {
 	// 	scrpts = [];
 	// 	console.log(scrpts, $userImportedJS);
 	// }
-	let tagInput = '';
+	let tagInput = $state('');
 
 	let selectMore;
 	let delay = 1000;
@@ -44,7 +44,7 @@
 		scrpts = scrpts.filter((_, i) => i !== index);
 	}
 
-	let searchResult = [];
+	let searchResult = $state([]);
 
 	async function searchCdnjs(e) {
 		let query = e.target.value;
@@ -76,15 +76,15 @@
 			type="text"
 			class="w-full rounded-xl border-2 border-sky-300 p-2 text-black dark:border-gray-700 dark:bg-secondary-dark dark:text-white"
 			bind:value={tagInput}
-			on:keydown={(e) => {
+			onkeydown={(e) => {
 				if (e.key === 'Enter') addTag();
 			}}
-			on:input={searchCdnjsThrottle}
+			oninput={searchCdnjsThrottle}
 			placeholder="Enter src url / Search cdnjs"
 			disabled={scrpts.length >= 8}
 		/>
 		<button
-			on:click={addTag}
+			onclick={addTag}
 			disabled={scrpts.length >= 8}
 			class="rounded-xl bg-sky-300 px-6 py-1 text-black">Add</button
 		>
@@ -96,7 +96,7 @@
 			{#each [...searchResult].slice(0, 10) as result}
 				<button
 					class="w-full rounded-lg px-2 py-1 text-left hover:bg-gray-300"
-					on:click={() => {
+					onclick={() => {
 						tagInput = result.latest;
 						addTag();
 					}}>{result.name} - {result.latest}</button
@@ -107,7 +107,7 @@
 
 	<div class="tags flex w-full flex-col text-black">
 		{#each scrpts as tag, index}
-			<div class="tag text-sm" on:click={() => removeTag(index)} clas="w-full">{tag} &times;</div>
+			<div class="tag text-sm" onclick={() => removeTag(index)} clas="w-full">{tag} &times;</div>
 		{/each}
 	</div>
 </div>

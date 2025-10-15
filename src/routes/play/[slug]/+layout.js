@@ -16,7 +16,7 @@ export async function load({ params, parent }) {
 	if (data.length <= 0) {
 		// console.error(error);
 		// console.log('erejrejlreo rea fljsa fdoaf dsaf ');
-		throw error(404, 'Enhance your calm');
+		error(404, 'Enhance your calm');
 	}
 	data = data[0];
 

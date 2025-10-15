@@ -7,17 +7,17 @@
 	import Fa from 'svelte-fa';
 	import { getProfile } from '$lib/utils.js';
 
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 	import { onDestroy, onMount } from 'svelte';
 	import ShowLoginOrforkBanner from './showLoginOrforkBanner.svelte';
 	import CanvasVisibility from './canvasVisibility.svelte';
 
-	let supabase = $page.data.supabase;
-	let session = $page.data.session;
+	let supabase = page.data.supabase;
+	let session = page.data.session;
 	let typingTimer;
 	const typingDelay = 1000;
 	let description = $current_data.description;
-	let title = null;
+	let title = $state(null);
 
 	try {
 		title = description.split('Fork:')[1].trim();
@@ -81,8 +81,8 @@
 					>
 						<h1
 							contenteditable
-							on:keydown={handleKeyDown}
-							on:input={handleInput}
+							onkeydown={handleKeyDown}
+							oninput={handleInput}
 							placeholder="Untitled Project"
 							spellcheck="false"
 							class="truncate"
@@ -94,8 +94,8 @@
 			{:else}
 				<h1
 					contenteditable
-					on:keydown={handleKeyDown}
-					on:input={handleInput}
+					onkeydown={handleKeyDown}
+					oninput={handleInput}
 					placeholder="Untitled Project"
 					spellcheck="false"
 					class="w-fit min-w-[50px] max-w-[180px] truncate bg-inherit text-sm font-semibold capitalize text-white focus:outline-1 focus:outline-sky-200 md:max-w-[400px] md:text-xl xl:max-w-[600px]"

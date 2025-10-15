@@ -6,7 +6,7 @@ import { json } from '@sveltejs/kit';
 export async function POST({ url, locals: { supabase, getSession }, request }) {
 	let session = await getSession();
 	if (!session) {
-		throw redirect(303, handleRedirectURL(url, '/play'));
+		redirect(303, handleRedirectURL(url, '/play'));
 	}
 	// const body = Object.fromEntries(await request.formData());
 	let key = generateRandomKey();
@@ -34,5 +34,5 @@ export async function POST({ url, locals: { supabase, getSession }, request }) {
 		return json({ key });
 	}
 
-	throw redirect(303, `/play/${key}`);
+	redirect(303, `/play/${key}`);
 }

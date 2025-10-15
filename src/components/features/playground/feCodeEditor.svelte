@@ -17,19 +17,25 @@
 		typescriptActive
 	} from '$lib/stores/playground.js';
 
-	// Initialize editor content
-	export let initialHTML = $current_data.html;
-	export let initialCSS = $current_data.css;
-	export let initialJs = $current_data.js;
+	
+	/**
+	 * @typedef {Object} Props
+	 * @property {any} [initialHTML] - Initialize editor content
+	 * @property {any} [initialCSS]
+	 * @property {any} [initialJs]
+	 */
+
+	/** @type {Props} */
+	let { initialHTML = $bindable($current_data.html), initialCSS = $bindable($current_data.css), initialJs = $bindable($current_data.js) } = $props();
 	let lockEditor = getContext('generating');
 
 	// State for tab visibility
-	let showHtml = true;
-	let showCSS = false;
-	let showJs = false;
+	let showHtml = $state(true);
+	let showCSS = $state(false);
+	let showJs = $state(false);
 
 	// State for splitpane orientation
-	let isVertical = false;
+	let isVertical = $state(false);
 
 	// Update splitpane orientation based on window width
 	const updateOrientation = () => {
@@ -104,7 +110,7 @@
 			<div class="flex gap-2 text-white">
 				<button
 					class="flex items-center justify-center gap-1 p-2"
-					on:click={() => showTab('html')}
+					onclick={() => showTab('html')}
 					class:bg-secondary-dark={showHtml}
 				>
 					<span class="text-rose-500"><Fa icon={faHtml5} /></span>HTML
@@ -112,7 +118,7 @@
 				{#if !$hide_css}
 					<button
 						class="flex items-center justify-center gap-1 p-2"
-						on:click={() => showTab('css')}
+						onclick={() => showTab('css')}
 						class:bg-secondary-dark={showCSS}
 					>
 						<span class="text-blue-500"><Fa icon={faCss3} /></span>{$sassActive ? 'SCSS' : 'CSS'}
@@ -121,7 +127,7 @@
 				{#if !$hide_js}
 					<button
 						class="flex items-center justify-center gap-1 p-2"
-						on:click={() => showTab('js')}
+						onclick={() => showTab('js')}
 						class:bg-secondary-dark={showJs}
 					>
 						<span class="text-yellow-500"><Fa icon={faJs} /></span>JS

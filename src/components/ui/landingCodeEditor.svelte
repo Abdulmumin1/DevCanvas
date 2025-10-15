@@ -12,13 +12,19 @@
 
 	import { supabase } from '$lib/services/supabase.js';
 
-	let editorContainer;
+	let editorContainer = $state();
 	let editorView;
-	let loading = true;
-	export let lang = 'javascript';
+	let loading = $state(true);
 
-	// Define the initial code content
-	export let initialCode = `class Stack:
+	
+	/**
+	 * @typedef {Object} Props
+	 * @property {string} [lang]
+	 * @property {any} [initialCode] - Define the initial code content
+	 */
+
+	/** @type {Props} */
+	let { lang = 'javascript', initialCode = `class Stack:
     def __init__(self):
         self.items = []
 
@@ -41,7 +47,7 @@
         return len(self.items) == 0
 
     def size(self):
-        return len(self.items)`;
+        return len(self.items)` } = $props();
 
 	const getLanguageExtension = () => {
 		if (lang === 'python') {
@@ -81,7 +87,7 @@
 		<Fa icon={faSpinner} class="animate-spin text-2xl" />
 	</div>
 {:else}
-	<div class="editor-container z-50 h-full" bind:this={editorContainer} />
+	<div class="editor-container z-50 h-full" bind:this={editorContainer}></div>
 {/if}
 
 <style>

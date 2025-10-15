@@ -7,16 +7,18 @@
 
 	const options = supportedLanguages;
 
-	let searchTerm = '';
-	let filteredOptions = options;
-	let selectedOption = 'javascript';
-	export let lang;
-	$: language = lang;
-	$: editIcon = faEdit;
-	let notEditable = true;
-	$: showEditIcon = false;
+	let searchTerm = $state('');
+	let filteredOptions = $state(options);
+	let selectedOption = $state('javascript');
+	let { lang } = $props();
+	let language = $derived(lang);
+	let editIcon = $derived(faEdit);
+	let notEditable = $state(true);
+	let showEditIcon = $state(false);
+	
 
-	$: spinner = false;
+	let spinner = $state(false);
+	
 	async function save() {
 		spinner = true;
 		saveData($current_data, 'lang');
@@ -68,7 +70,7 @@
 	<p class=" flex w-fit items-center justify-center gap-2 text-lg">
 		Language:
 		{#if showEditIcon}
-			<button in:scale on:click={removePreview} class="flex items-center justify-center text-lg">
+			<button in:scale onclick={removePreview} class="flex items-center justify-center text-lg">
 				<div class="flex items-center justify-center gap-2">
 					<Fa icon={editIcon} class="transition-transform duration-150 hover:scale-110" />
 					{#if spinner}
@@ -85,13 +87,13 @@
 				class="w-full rounded-md border border-sky-300 p-1 outline-none transition-all duration-100 focus:border-2 focus:outline-none dark:bg-primary"
 				placeholder="Search..."
 				bind:value={searchTerm}
-				on:input={filterOptions}
+				oninput={filterOptions}
 			/>
 
 			<select
 				class="w-full rounded p-1 outline-none focus:outline-none dark:bg-primary dark:text-light"
 				bind:value={selectedOption}
-				on:change={selectOption}
+				onchange={selectOption}
 			>
 				{#each filteredOptions as option}
 					<option value={option}>{option}</option>

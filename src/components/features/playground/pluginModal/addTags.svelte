@@ -2,13 +2,19 @@
 	import { saveTags, canvasTags } from '$lib/stores/playground.js';
 	import { current_data } from '$lib/stores/index.js';
 
-	export let owner = false;
-	let tags = $canvasTags;
+	/**
+	 * @typedef {Object} Props
+	 * @property {boolean} [owner]
+	 */
+
+	/** @type {Props} */
+	let { owner = false } = $props();
+	let tags = $state($canvasTags);
 	if (!tags) {
 		tags = [];
 		// console.log(tags, $canvasTags);
 	}
-	let tagInput = '';
+	let tagInput = $state('');
 
 	let selectMore;
 	let delay = 1000;
@@ -44,7 +50,7 @@
 
 <div class="tags mb-2 text-black">
 	{#each tags as tag, index}
-		<div class="tag" role="button" on:click={() => removeTag(index)}>{tag} &times;</div>
+		<div class="tag" role="button" onclick={() => removeTag(index)}>{tag} &times;</div>
 	{:else}
 		<p class="text-gray-300 mb-2">Canvas not Tagged!</p>
 	{/each}
@@ -56,14 +62,14 @@
 			type="text"
 			class="w-full rounded-xl border-2 border-sky-300 p-2 text-black dark:border-gray-700 dark:bg-secondary-dark dark:text-white"
 			bind:value={tagInput}
-			on:keydown={(e) => {
+			onkeydown={(e) => {
 				if (e.key === 'Enter') addTag();
 			}}
 			placeholder="Add a tag"
 			disabled={tags.length >= 8}
 		/>
 		<button
-			on:click={addTag}
+			onclick={addTag}
 			disabled={tags.length >= 8}
 			class="rounded-xl bg-sky-300 px-6 py-1 text-black">Add</button
 		>

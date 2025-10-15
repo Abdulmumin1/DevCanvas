@@ -30,9 +30,9 @@ export async function POST({ locals: { supabase, getSession }, request }) {
 		// let fullurl = `${url.origin}/xi1w/${slug}`;
 		// console.log(username);
 
-		throw redirect(303, `/${username[0].username}/${key}/edit`);
+		redirect(303, `/${username[0].username}/${key}/edit`);
 	} else {
-		throw redirect(303, `/anon/${key}/edit`);
+		redirect(303, `/anon/${key}/edit`);
 	}
 
 	// throw redirect(303, `/anything/${key}/edit`);

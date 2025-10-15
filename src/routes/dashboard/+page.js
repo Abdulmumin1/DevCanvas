@@ -27,6 +27,6 @@ export async function load({ parent }) {
 	let user = new Object(userInfo);
 	// console.log(user.length);
 	if (!session) {
-		throw redirect(302, '/signin?redirectTo=/gEtHAndShAkE?whereto=/profile');
+		redirect(302, '/signin?redirectTo=/gEtHAndShAkE?whereto=/profile');
 	}
 }

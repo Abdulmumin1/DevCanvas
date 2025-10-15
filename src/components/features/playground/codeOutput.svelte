@@ -2,7 +2,7 @@
 	import { current_data } from '$lib/stores/index.js';
 	import { constructHtml } from '$lib/playground/previewUtils.js';
 	import { getContext, onDestroy, onMount } from 'svelte';
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 	import { crossfade, fade } from 'svelte/transition';
 	import { canvasConfig, jsPlugins, cssPlugins } from '$lib/stores/playground.js';
 	import { faUsersRays } from '@fortawesome/free-solid-svg-icons';
@@ -10,10 +10,10 @@
 	import Worker from '$lib/playground/worker_script.js?worker';
 	import ReloadEditor from './reloadEditor.svelte';
 
-	let previewIframe;
+	let previewIframe = $state();
 	let unsubscribe;
-	let useSrc = true; // Initially load from src
-	let initialSrc = `${$page.url.origin}/output/compile/${$page.params.slug}`;
+	let useSrc = $state(true); // Initially load from src
+	let initialSrc = `${page.url.origin}/output/compile/${page.params.slug}`;
 	let attempts = 0;
 	let isVisible = true;
 	let lockEditor = getContext('generating');
@@ -71,7 +71,7 @@
 
 	// Throttle the update function to limit updates to once every 1000ms
 	const throttledUpdateIframeContent = throttle(updateIframeContent, 200);
-	let tryDC = $page.url.pathname == '/play/try';
+	let tryDC = page.url.pathname == '/play/try';
 
 	// Subscribe to the current_data store
 	onMount(async () => {
@@ -118,7 +118,7 @@
 	});
 
 	let zoomLevel = 1;
-	let container;
+	let container = $state();
 	function adjustZoom(change) {
 		// More precise zoom control
 		zoomLevel = Math.round((zoomLevel + change) * 10) / 10;
@@ -196,16 +196,16 @@
 				id="zoom-out"
 				class="zoom-btn px-2 font-bold"
 				aria-label="Zoom out"
-				on:click={() => adjustZoom(-0.1)}
+				onclick={() => adjustZoom(-0.1)}
 			>
 				-
 			</button>
-			<button id="zoom-value" class="mx-4 text-xs" on:click={() => adjustZoom(1)}>100%</button>
+			<button id="zoom-value" class="mx-4 text-xs" onclick={() => adjustZoom(1)}>100%</button>
 			<button
 				id="zoom-in"
 				class="zoom-btn px-2 font-bold"
 				aria-label="Zoom in"
-				on:click={() => adjustZoom(0.1)}
+				onclick={() => adjustZoom(0.1)}
 			>
 				+
 			</button>

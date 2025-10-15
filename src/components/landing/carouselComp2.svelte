@@ -2,7 +2,7 @@
 	import { onMount } from 'svelte';
 
 	// Get the target element
-	var element;
+	var element = $state();
 
 	// Function to simulate hover effect
 	function simulateHover() {

@@ -4,6 +4,6 @@ import { redirect } from '@sveltejs/kit';
 export const actions = {
 	search: async ({ request }) => {
 		let body = Object.fromEntries(await request.formData());
-		throw redirect(303, `/snippets/search?query=${body.query}&w=s`);
+		redirect(303, `/snippets/search?query=${body.query}&w=s`);
 	}
 };

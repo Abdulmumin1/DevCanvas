@@ -133,7 +133,7 @@
 			currentHeight = event.details.x;
 		}
 	}} -->
-	<div class="handle w-full" />
+	<div class="handle w-full"></div>
 	<div class="flex w-full justify-between">
 		<span class="flex items-center gap-2 text-white">
 			Console <Fa icon={faTerminal} />
@@ -141,12 +141,12 @@
 
 		<div class="flex gap-2 text-white">
 			<button
-				on:click={() => {
+				onclick={() => {
 					consoleOutput.set([]);
 				}}>Clear</button
 			>
 			<button
-				on:click={() => {
+				onclick={() => {
 					showjsConsole.set(false);
 				}}>Close</button
 			>

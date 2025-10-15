@@ -80,10 +80,9 @@
 	// ... (reactive state and logic for the editor)
 
 	let editorView;
-	let container;
+	let container = $state();
 
-	export let code;
-	export let lang;
+	let { code, lang } = $props();
 
 	const langFunction = () => {
 		if (lang == 'html') {
@@ -119,7 +118,7 @@
 	});
 </script>
 
-<div bind:this={container} style="height: 100%;" />
+<div bind:this={container} style="height: 100%;"></div>
 
 <!-- <style></style> -->
 

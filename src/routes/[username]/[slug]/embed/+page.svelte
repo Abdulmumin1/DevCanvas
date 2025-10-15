@@ -3,7 +3,7 @@
 	import EmbedComponent from '../../../../components/ui/embedComponent.svelte';
 	// import Nav from '../../../components/nav.svelte';
 	import { page } from '$app/stores';
-	export let data;
+	let { data } = $props();
 
 	let dark = $page.url.searchParams.get('theme');
 </script>

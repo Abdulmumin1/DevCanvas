@@ -1,4 +1,6 @@
 <script>
+	import { run } from 'svelte/legacy';
+
 	import { onMount } from 'svelte';
 	import { Splitpanes, Pane } from 'svelte-splitpanes';
 
@@ -9,12 +11,12 @@
 	// import {page} from '$app/stores'
 	import Loader from '$components/ui/loader.svelte';
 	import { fade } from 'svelte/transition';
-	export let details;
+	let { details } = $props();
 
-	let showHtml;
-	let showCSS;
-	let showResult;
-	let showJs;
+	let showHtml = $state();
+	let showCSS = $state();
+	let showResult = $state();
+	let showJs = $state();
 
 	function toogle(which) {
 		switch (which) {
@@ -49,9 +51,13 @@
 		// console.log(showResult);
 	}
 
-	let isVertical = false;
-	$: showHtml = isVertical ? false : true;
-	$: showResult = isVertical ? true : true;
+	let isVertical = $state(false);
+	run(() => {
+		showHtml = isVertical ? false : true;
+	});
+	run(() => {
+		showResult = isVertical ? true : true;
+	});
 	// if (browser) {
 	// 	 // Change the breakpoint as needed
 	// }
@@ -76,14 +82,14 @@
 		}
 	});
 
-	let loading = true;
+	let loading = $state(true);
 </script>
 
 <div class="tx flex h-full max-h-full flex-col">
 	<div class="flex h-[50px] min-h-[50px] justify-between">
 		<div class="flex w-full gap-2 bg-secondary-dark text-sm text-white">
 			<button
-				on:click={() => toogle('html')}
+				onclick={() => toogle('html')}
 				class:sl={showHtml}
 				class:text-light={showHtml}
 				class="flex items-center justify-center gap-2 p-2"
@@ -91,7 +97,7 @@
 			>
 			<button
 				class="flex items-center justify-center gap-2 p-2"
-				on:click={() => toogle('css')}
+				onclick={() => toogle('css')}
 				class:sl={showCSS}
 				class:text-light={showCSS}
 			>
@@ -99,7 +105,7 @@
 			>
 			<button
 				class="flex items-center justify-center gap-2 p-2"
-				on:click={() => toogle('js')}
+				onclick={() => toogle('js')}
 				class:sl={showJs}
 				class:text-light={showJs}
 			>
@@ -109,7 +115,7 @@
 
 		<div class="flex w-full items-center justify-center bg-inherit bg-secondary-dark">
 			<button
-				on:click={() => toogle('output')}
+				onclick={() => toogle('output')}
 				class:sl={showResult}
 				class="h-full p-2"
 				class:text-light={showResult}

@@ -8,7 +8,7 @@
 	import SEO from '$components/ui/seoComp.svelte';
 	import { fade } from 'svelte/transition';
 
-	export let data;
+	let { data } = $props();
 	let userSnippets = data.userSnippets;
 	// console.log(data);
 </script>

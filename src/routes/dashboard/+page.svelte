@@ -8,7 +8,7 @@
 	import { fade } from 'svelte/transition';
 	import NavWrapper from '$components/features/snippets/navWrapper.svelte';
 
-	export let data;
+	let { data } = $props();
 
 	let supabase = data.supabase;
 	let session = data.session;
@@ -87,7 +87,7 @@
 	// 	}
 	// });
 
-	let showOther = false;
+	let showOther = $state(false);
 	function toogle() {
 		showOther = !showOther;
 	}
@@ -111,14 +111,14 @@
 						<div class="flex w-full gap-2 text-base text-primary dark:text-white">
 							<button
 								class="rounded-t-md p-1 px-3"
-								on:click={toogle}
+								onclick={toogle}
 								class:bg-white={!showOther}
 								class:dark:bg-primary={!showOther}
 								>Canvas
 							</button>
 							<button
 								class="rounded-t-md p-1 px-3"
-								on:click={toogle}
+								onclick={toogle}
 								class:bg-white={showOther}
 								class:dark:bg-primary={showOther}>Snippets</button
 							>

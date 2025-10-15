@@ -34,7 +34,7 @@ export const actions = {
 		const { data, error: err } = await supabase.from('htmlPlayground').update([body]).eq('id', id);
 		if (err) {
 			console.log(err);
-			throw error(500, 'Opssie, error from our side');
+			error(500, 'Opssie, error from our side');
 		} else {
 			// console.log(data);
 		}
@@ -51,7 +51,7 @@ export const actions = {
 			.eq('id', id);
 		if (err) {
 			console.log(err);
-			throw error(500, 'Opssie, error from our side');
+			error(500, 'Opssie, error from our side');
 		} else {
 			// console.log(data);
 		}

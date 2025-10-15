@@ -4,7 +4,7 @@
 	import Fa from 'svelte-fa';
 	import Darkmode from './darkmode.svelte';
 	import { faWindowMaximize, faPlus, faStar } from '@fortawesome/free-solid-svg-icons';
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 	import Open from './open.svelte';
 	import MobileNav from './mobileNav.svelte';
 </script>
@@ -31,7 +31,7 @@
 					{#each ['Community', 'Blog'] as item}
 						<a
 							href="/{item.toLowerCase()}"
-							class="nav-item px-3 py-2 {$page.url.pathname === `/${item.toLowerCase()}`
+							class="nav-item px-3 py-2 {page.url.pathname === `/${item.toLowerCase()}`
 								? 'active'
 								: ''}"
 						>

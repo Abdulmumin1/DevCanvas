@@ -2,9 +2,9 @@
 	import { onMount } from 'svelte';
 	import ShareAct from '$components/ui/shareAct.svelte';
 
-	let iframe = null;
-	let link = null;
-	export let data;
+	let iframe = $state(null);
+	let link = $state(null);
+	let { data } = $props();
 	onMount(() => {
 		link = window.location.href;
 	});
@@ -21,7 +21,7 @@
 	title="preview"
 	frameborder="0"
 	bind:this={iframe}
-/>
+></iframe>
 
 <div class="fixed bottom-0 right-0 m-2 flex items-center justify-center gap-2">
 	<a href="./" class=" flex items-center gap-2 rounded-xl bg-secondary-dark p-2">

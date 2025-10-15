@@ -1,4 +1,6 @@
 <script>
+	import { run } from 'svelte/legacy';
+
 	import { current_data, user, isOwner } from '$lib/stores/index.js';
 	import { showSave, consoleOutput, saveSingle } from '$lib/stores/playground.js';
 	import { getContext, onDestroy, onMount, setContext } from 'svelte';
@@ -16,7 +18,6 @@
 	import debounce from 'lodash.debounce';
 	import { showEmbedModal, showForkTosave,showLoginToSave } from '$lib/stores/playground.js';
 
-	export let data;
 
 	import { setReloadContext, getReload } from '$lib/playground/funct.js';
 	import FeAiBox from '../../../components/features/playground/feAIBox.svelte';
@@ -24,6 +25,7 @@
 	import { writable } from 'svelte/store';
 
 	import { env } from '$env/dynamic/public';
+	let { data } = $props();
 
 	setReloadContext();
 
@@ -52,13 +54,14 @@
 		}
 	}
 
-	let messages = [];
+	let messages = $state([]);
 
-	let initialHTML = data.details.html;
-	let initialCSS = data.details.css;
+	let initialHTML = $state(data.details.html);
+	let initialCSS = $state(data.details.css);
 	let initialJs = data.details.js;
 	let mounted = false;
-	$: fetchResponse = true;
+	let fetchResponse = $state(true);
+	
 
 	let debounceMessageTimer = null;
 
@@ -241,7 +244,9 @@
 		$generating = false;
 	}
 
-	$: debouncedSaveMessagesToDB(messages, data.details);
+	run(() => {
+		debouncedSaveMessagesToDB(messages, data.details);
+	});
 
 	onMount(async () => {
 		// getUser()
@@ -305,15 +310,19 @@
 	</header>
 	<div class="relative h-full w-full overflow-hidden">
 		<Resizable>
-			<div slot="left" class="h-full w-full">
-				<FeCodeEditor bind:initialHTML bind:initialCSS lang="html" />
-			</div>
-			<div slot="right" class="relative h-full w-full bg-white">
-				{#key $reload}
-					<CodeOutput code={$current_data.html} css={$current_data.css} js={$current_data.js} />
-					<JsConsole />
-				{/key}
-			</div>
+			{#snippet left()}
+						<div  class="h-full w-full">
+					<FeCodeEditor bind:initialHTML bind:initialCSS lang="html" />
+				</div>
+					{/snippet}
+			{#snippet right()}
+						<div  class="relative h-full w-full bg-white">
+					{#key $reload}
+						<CodeOutput code={$current_data.html} css={$current_data.css} js={$current_data.js} />
+						<JsConsole />
+					{/key}
+				</div>
+					{/snippet}
 		</Resizable>
 		{#if $showEmbedModal}
 			<EmbedModal />

@@ -10,7 +10,7 @@
 	import SelectLayout from './selectLayout.svelte';
 	import MobileNav from '$components/ui/mobileNav.svelte';
 	import AiButton from './editorSets/aiButton.svelte';
-	export let ispublic;
+	let { ispublic } = $props();
 </script>
 
 <nav class="flex h-10 w-full items-center border-b border-primary bg-black px-2 py-8 text-white">

@@ -2,6 +2,13 @@
 	import Footer from '$components/ui/footer.svelte';
 	import InnerNav from '$components/ui/innerNav.svelte';
 	import GoUp from '$components/ui/goUp.svelte';
+	/**
+	 * @typedef {Object} Props
+	 * @property {import('svelte').Snippet} [children]
+	 */
+
+	/** @type {Props} */
+	let { children } = $props();
 </script>
 
 <div
@@ -12,7 +19,7 @@
 	</div>
 
 	<div class="article tos flex max-w-4xl flex-col space-y-6 px-4 py-10 font-sans text-[1.2rem]">
-		<slot />
+		{@render children?.()}
 	</div>
 </div>
 

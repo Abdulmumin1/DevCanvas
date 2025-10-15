@@ -3,9 +3,15 @@
 	import { previewMode } from '$lib/stores/index.js';
 	import CodeHighlight from './codeHighlight.svelte';
 
-	// Create a writable store to hold the input content
-	export let inputContent;
-	export let lang;
+	
+	/**
+	 * @typedef {Object} Props
+	 * @property {any} inputContent - Create a writable store to hold the input content
+	 * @property {any} lang
+	 */
+
+	/** @type {Props} */
+	let { inputContent = $bindable(), lang } = $props();
 	const dispatch = createEventDispatcher();
 
 	// Function to handle input changes

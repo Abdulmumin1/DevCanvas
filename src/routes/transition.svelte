@@ -1,12 +1,12 @@
 <script lang="ts">
 	import { fade, fly, scale, slide } from 'svelte/transition';
 
-	export let url;
+	let { url, children } = $props();
 </script>
 
 <!-- {#key url} -->
 <!-- <div in:fly={{ duration: 1000 }}> -->
-<slot />
+{@render children?.()}
 
 <!-- </div> -->
 <!-- {/key} -->

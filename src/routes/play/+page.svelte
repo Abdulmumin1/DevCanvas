@@ -5,7 +5,7 @@
 	import { user } from '$lib/stores/index.js';
 	import SEO from '$components/ui/seoComp.svelte';
 
-	let projectName = 'Untitled Project';
+	let projectName = $state('Untitled Project');
 	let currentTip = '';
 	let tipIndex = 0;
 
@@ -123,13 +123,13 @@
 						<input
 							type="text"
 							bind:value={projectName}
-							on:submit={handleCreateEditor}
+							onsubmit={handleCreateEditor}
 							placeholder="Project Name"
 							name="project_name"
 							class="w-full rounded-3xl border-none bg-white px-4 py-3 text-lg text-black placeholder-black placeholder-opacity-70 focus:outline-none focus:ring-2 focus:ring-sky-300 dark:bg-primary dark:text-white"
 						/>
 						<button
-							on:click={handleCreateEditor}
+							onclick={handleCreateEditor}
 							class="rounded-full bg-gradient-to-r from-sky-400 to-sky-300 p-4 dark:text-black"
 							><svg
 								xmlns="http://www.w3.org/2000/svg"

@@ -5,7 +5,7 @@
 		<div><span class="save">Save <strong>$18 </strong></span> with annual billing</div>
 		<label>
 			<input id="check" type="checkbox" />
-			<div class="check-deal" />
+			<div class="check-deal"></div>
 		</label>
 	</div>
 

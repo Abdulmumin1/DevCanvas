@@ -5,7 +5,7 @@ import { error } from '@sveltejs/kit';
 export async function POST({ locals: { supabase } }) {
 	const { error: err } = await supabase.auth.signOut();
 	if (err) {
-		throw error(500, 'Unable to complete action');
+		error(500, 'Unable to complete action');
 	}
 	return new Response({ message: 'sucsess' });
 }

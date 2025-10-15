@@ -4,10 +4,9 @@
 	import { slide } from 'svelte/transition';
 	import { showToast } from '$lib/stores/index.js';
 	import { faFacebook, faLinkedin, faTwitter } from '@fortawesome/free-brands-svg-icons';
-	let isClicked = false;
+	let isClicked = $state(false);
 
-	export let link;
-	export let title;
+	let { link, title } = $props();
 
 	function shareCode(event) {
 		event.target.disabled = true;
@@ -29,7 +28,7 @@
 		}
 	}
 
-	let showOptions = false;
+	let showOptions = $state(false);
 
 	function toggleShareOptions() {
 		showOptions = !showOptions;
@@ -42,10 +41,10 @@
 	const urlEncode = (text) => encodeURIComponent(text);
 </script>
 
-<div class="share-dropdown" role="button" tabindex="" on:mouseleave={closeShareOptions}>
+<div class="share-dropdown" role="button" tabindex="" onmouseleave={closeShareOptions}>
 	<button
 		class="flex cursor-pointer items-center justify-center gap-2"
-		on:click={toggleShareOptions}
+		onclick={toggleShareOptions}
 		class:scale-90={isClicked}
 	>
 		<!-- {#if isClicked} -->
@@ -73,7 +72,7 @@
 			target="_blank"
 			class="share-option flex w-full items-center gap-4"><Fa icon={faLinkedin} /> LinkedIn</a
 		>
-		<button class="share-option flex w-full items-center gap-4" on:click={shareCode}
+		<button class="share-option flex w-full items-center gap-4" onclick={shareCode}
 			><Fa icon={faLink} /> Copy link</button
 		>
 		<!-- Add more social media options as needed -->

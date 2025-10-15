@@ -5,14 +5,14 @@
 		faRightToBracket
 	} from '@fortawesome/free-solid-svg-icons';
 	import Fa from 'svelte-fa';
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 	import { handleRedirectURL } from '$lib/utils.js';
 
 	import { showLoginToSave, showForkTosave } from '$lib/stores/playground.js';
 	import { onDestroy } from 'svelte';
 	import { scale } from 'svelte/transition';
 
-	let signinURL = handleRedirectURL($page.url);
+	let signinURL = handleRedirectURL(page.url);
 
 	onDestroy(() => {
 		showForkTosave.set(false);

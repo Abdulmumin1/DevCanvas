@@ -9,8 +9,9 @@
 	import { page } from '$app/stores';
 	import { copyTextToClipboard, current_data } from '$lib/stores/index.js';
 
-	$: expanded = false;
-	$: s_icon = expanded ? faAngleDown : faAngleRight;
+	let expanded = $state(false);
+	
+	let s_icon = $derived(expanded ? faAngleDown : faAngleRight);
 
 	function expand() {
 		expanded = !expanded;
@@ -28,7 +29,7 @@
 </script>
 
 <div class="mb-3 flex flex-col gap-2">
-	<button on:click={expand} class="flex w-fit items-center justify-center gap-2"
+	<button onclick={expand} class="flex w-fit items-center justify-center gap-2"
 		>Embed link <Fa icon={s_icon} class="transition-all duration-300" /></button
 	>
 	{#if expanded}
@@ -42,7 +43,7 @@
 			</a>
 			<button
 				class="w-fit rounded-lg bg-gray-100 px-3 py-1 text-sm text-primary dark:bg-sky-200"
-				on:click={(e) => copyEmbedUrl(e)}>Copy</button
+				onclick={(e) => copyEmbedUrl(e)}>Copy</button
 			>
 		</div>
 	{/if}

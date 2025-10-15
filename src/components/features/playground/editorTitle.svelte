@@ -9,7 +9,7 @@
 	} from '$lib/stores/playground.js';
 	import Fa from 'svelte-fa';
 	import EditorSettings from './editorSettings.svelte';
-	export let lang;
+	let { lang } = $props();
 </script>
 
 <!-- <div class=""> -->
@@ -45,7 +45,7 @@
 
 		<div class=" flex items-center justify-between">
 			<button
-				on:click={() => {
+				onclick={() => {
 					showjsConsole.set(true);
 				}}
 				class="z-10 flex items-center gap-2 hover:opacity-80"

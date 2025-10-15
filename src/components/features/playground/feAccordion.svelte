@@ -3,18 +3,18 @@
 	import Fa from 'svelte-fa';
 	import { scale, slide } from 'svelte/transition';
 
-	let open = false;
+	let open = $state(false);
 
 	function toggleAccordion() {
 		open = !open;
 	}
 
-	export let title;
+	let { title, children } = $props();
 </script>
 
 <li class="mb-2 flex flex-col gap-2 rounded-xl bg-gray-100 p-1 dark:bg-primary">
 	<button
-		on:click={toggleAccordion}
+		onclick={toggleAccordion}
 		class="flex items-center gap-2 text-sm text-black dark:text-white"
 	>
 		<!-- <div></div> -->
@@ -23,7 +23,7 @@
 	</button>
 	{#if open}
 		<div transition:slide class="p-1">
-			<slot />
+			{@render children?.()}
 		</div>
 	{/if}
 </li>

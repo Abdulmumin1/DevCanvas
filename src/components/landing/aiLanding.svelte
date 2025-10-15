@@ -7,7 +7,7 @@
 	import Loader from '../ui/loader.svelte';
 	import { fade } from 'svelte/transition';
 
-	let loading = false;
+	let loading = $state(false);
 
 	async function handlePrompt(e) {
 		if (!$user) {
@@ -35,7 +35,7 @@
 		}
 	}
 
-	let modal;
+	let modal = $state();
 
 	function openModal() {
 		modal.showModal();
@@ -70,8 +70,8 @@
 {#if !$user}
 	<dialog id="loginDialog" bind:this={modal}>
 		<div class="flex justify-end p-6 text-xl">
-			<button on:click={closeModal} class="cursor-pointer"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x-icon lucide-x"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button>
+			<button onclick={closeModal} class="cursor-pointer"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x-icon lucide-x"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button>
 		</div>
-		<iframe src="/signin" title="auth" frameborder="0" height="520px" width="450px" />
+		<iframe src="/signin" title="auth" frameborder="0" height="520px" width="450px"></iframe>
 	</dialog>
 {/if}

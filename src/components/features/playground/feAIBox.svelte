@@ -3,11 +3,11 @@
 	import MessagesParser from './messagesParser.svelte';
 	import { aibox, aiprompt } from '$lib/playground/aiFunctions.js';
 
-	export let messages = [];
+	let { messages = [] } = $props();
 	let generating = getContext('generating');
 
-	let inputContainer = $aiprompt;
-	let inputbackup = null;
+	let inputContainer = $state($aiprompt);
+	let inputbackup = $state(null);
 	const dispatch = createEventDispatcher();
 
 	function handleSend() {
@@ -40,7 +40,7 @@
 			handleSend();
 		}
 	}
-	let inputx;
+	let inputx = $state();
 
 	onMount(() => {
 		if (inputContainer) {
@@ -49,9 +49,9 @@
 		}
 		inputx.focus();
 	});
-	let expand = false;
+	let expand = $state(false);
 	let auto = 'auto';
-	$: heat = $generating || messages.length > 2 ? (expand ? 500 : auto) : 0;
+	let heat = $derived($generating || messages.length > 2 ? (expand ? 500 : auto) : 0);
 	// $:console.log(heat);
 </script>
 
@@ -65,7 +65,7 @@
 		<div class="absolute -top-6 right-0 flex w-full items-end justify-end gap-1">
 			<button
 				class="rounded bg-primary p-1"
-				on:click={() => {
+				onclick={() => {
 					expand = !expand;
 					// heat = 0;
 				}}
@@ -76,7 +76,7 @@
 					<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-maximize2-icon lucide-maximize-2"><path d="M15 3h6v6"/><path d="m21 3-7 7"/><path d="m3 21 7-7"/><path d="M9 21H3v-6"/></svg>
 				{/if}
 			</button>
-			<button class="rounded bg-primary p-1" on:click={handleClose}>
+			<button class="rounded bg-primary p-1" onclick={handleClose}>
 				<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x-icon lucide-x"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
 			</button>
 		</div>
@@ -110,14 +110,14 @@
 				placeholder={$generating ? 'cooking...' : 'make'}
 				bind:value={inputContainer}
 				bind:this={inputx}
-				on:keydown={handleKeyDown}
+				onkeydown={handleKeyDown}
 				disabled={$generating}
 				class="flex-1 bg-transparent p-2 text-sm text-gray-200 placeholder-gray-500 outline-none disabled:opacity-80"
 			/>
 			<div class="ml-2 flex items-center space-x-2">
 				{#if $generating}
 					<button
-						on:click={handleStop}
+						onclick={handleStop}
 						class="rounded-full bg-gradient-to-r from-sky-400 to-sky-300 p-2 transition-colors {inputContainer.trim()
 							? 'text-black'
 							: 'text-black'}"
@@ -126,7 +126,7 @@
 					</button>
 				{:else}
 					<button
-						on:click={handleSend}
+						onclick={handleSend}
 						class="rounded-full bg-gradient-to-r from-sky-400 to-sky-300 p-2 transition-colors {inputContainer.trim()
 							? 'text-black'
 							: 'text-black'}"

@@ -15,7 +15,7 @@ export async function load({ params, parent }) {
 	if (data.length > 0) {
 		data[0].socials = JSON.parse(data[0].socials);
 	} else {
-		throw error(404, 'Not Found');
+		error(404, 'Not Found');
 	}
 	let details = data.length > 0 ? data[0] : data;
 	return { details, isFound: data.length > 0 };

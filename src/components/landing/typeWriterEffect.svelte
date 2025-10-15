@@ -1,13 +1,19 @@
 <script>
 	import { onMount } from 'svelte';
 
-	export let text = '<h1> Hello world </h1>';
-	export let delay = 0;
-	export let speed = 50; // New variable for typing speed
+	/**
+	 * @typedef {Object} Props
+	 * @property {string} [text]
+	 * @property {number} [delay]
+	 * @property {number} [speed] - New variable for typing speed
+	 */
 
-	let textElement;
+	/** @type {Props} */
+	let { text = '<h1> Hello world </h1>', delay = 0, speed = 50 } = $props();
+
+	let textElement = $state();
 	let index = 0;
-	let isTyping = false; // New variable to track typing state
+	let isTyping = $state(false); // New variable to track typing state
 
 	function typeWriter() {
 		if (index < text.length && isTyping) {
@@ -29,7 +35,7 @@
 </script>
 
 <div class="typing-animation">
-	<span class="text-white" bind:this={textElement} /> &nbsp;<span
+	<span class="text-white" bind:this={textElement}></span> &nbsp;<span
 		class={isTyping ? `cursor` : 'hidden'}>&#124;</span
 	>
 </div>

@@ -38,7 +38,7 @@ export const actions = {
 			let { dt, error } = await signUpNewUser(supabase, email, password, redirectTo);
 
 			if (error) throw error;
-			throw redirect(307, redirectTo);
+			redirect(307, redirectTo);
 		}
 		// await sleep(2000);
 		// alert('Check your inbox for the magik link');
@@ -53,7 +53,7 @@ export const actions = {
 
 		if (data.url) {
 			// console.log(data.url)
-			throw redirect(302, data.url);
+			redirect(302, data.url);
 		}
 	}
 };

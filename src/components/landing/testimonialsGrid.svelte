@@ -41,7 +41,7 @@
 		}
 	];
 
-	let animatedTestimonials = [];
+	let animatedTestimonials = $state([]);
 
 	onMount(() => {
 		// Double the testimonials to create a seamless loop

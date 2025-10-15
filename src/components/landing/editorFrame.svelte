@@ -2,7 +2,7 @@
 	import { faCss3, faHtml5, faJs } from '@fortawesome/free-brands-svg-icons';
 	import Fa from 'svelte-fa';
 
-	export let title;
+	let { title, children } = $props();
 </script>
 
 <section class="w-full max-w-[1000px] p-2 md:w-[90%]">
@@ -42,23 +42,23 @@
 			</div>
 
 			<div class=" flex h-full flex-col gap-2 p-1">
-				<div class="h-4 w-[90%] animate-pulse rounded-3xl bg-gray-300" />
-				<div class="h-4 w-[50%] animate-pulse rounded-3xl bg-gray-300" />
-				<div class="h-4 w-[30%] animate-pulse rounded-3xl bg-gray-300" />
-				<div class="h-4 w-[50%] animate-pulse rounded-3xl bg-gray-300" />
-				<div class="h-4 w-[64%] animate-pulse rounded-3xl bg-gray-300" />
-				<div class="h-4 w-[80%] animate-pulse rounded-3xl bg-gray-300" />
-				<div class="h-4 w-[30%] animate-pulse rounded-3xl bg-gray-300" />
-				<div class="h-4 w-[64%] animate-pulse rounded-3xl bg-gray-300" />
-				<div class="h-4 w-[70%] animate-pulse rounded-3xl bg-gray-300" />
-				<div class="h-4 w-[50%] animate-pulse rounded-3xl bg-gray-300" />
-				<div class="h-4 w-[64%] animate-pulse rounded-3xl bg-gray-300" />
-				<div class="h-4 w-[80%] animate-pulse rounded-3xl bg-gray-300" />
-				<div class="h-4 w-[30%] animate-pulse rounded-3xl bg-gray-300" />
+				<div class="h-4 w-[90%] animate-pulse rounded-3xl bg-gray-300"></div>
+				<div class="h-4 w-[50%] animate-pulse rounded-3xl bg-gray-300"></div>
+				<div class="h-4 w-[30%] animate-pulse rounded-3xl bg-gray-300"></div>
+				<div class="h-4 w-[50%] animate-pulse rounded-3xl bg-gray-300"></div>
+				<div class="h-4 w-[64%] animate-pulse rounded-3xl bg-gray-300"></div>
+				<div class="h-4 w-[80%] animate-pulse rounded-3xl bg-gray-300"></div>
+				<div class="h-4 w-[30%] animate-pulse rounded-3xl bg-gray-300"></div>
+				<div class="h-4 w-[64%] animate-pulse rounded-3xl bg-gray-300"></div>
+				<div class="h-4 w-[70%] animate-pulse rounded-3xl bg-gray-300"></div>
+				<div class="h-4 w-[50%] animate-pulse rounded-3xl bg-gray-300"></div>
+				<div class="h-4 w-[64%] animate-pulse rounded-3xl bg-gray-300"></div>
+				<div class="h-4 w-[80%] animate-pulse rounded-3xl bg-gray-300"></div>
+				<div class="h-4 w-[30%] animate-pulse rounded-3xl bg-gray-300"></div>
 			</div>
 		</section>
 		<section id="preview" class="flex h-full items-center justify-center">
-			<slot />
+			{@render children?.()}
 		</section>
 	</div>
 </section>

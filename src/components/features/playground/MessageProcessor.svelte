@@ -1,7 +1,13 @@
 <script>
 	import CodeVersionBadge from './CodeVersionBadge.svelte';
 
-	export let content = '';
+	/**
+	 * @typedef {Object} Props
+	 * @property {string} [content]
+	 */
+
+	/** @type {Props} */
+	let { content = '' } = $props();
 
 	function processedContent(content) {
 		// If no content, return empty string
@@ -35,7 +41,7 @@
 		return r;
 	}
 
-	$: processed = processedContent(content);
+	let processed = $derived(processedContent(content));
 	// $: console.log(processed)
 </script>
 

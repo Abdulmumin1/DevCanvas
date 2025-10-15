@@ -5,9 +5,15 @@
 
 	import { onMount, onDestroy } from 'svelte';
 
-	export let content = 'body';
+	/**
+	 * @typedef {Object} Props
+	 * @property {string} [content]
+	 */
 
-	let up = 0;
+	/** @type {Props} */
+	let { content = 'body' } = $props();
+
+	let up = $state(0);
 
 	function reportScroll() {
 		const h = document.documentElement,
@@ -43,7 +49,7 @@
 {#if up > 15}
 	<button
 		transition:fly={{ x: 10 }}
-		on:click={scrollto}
+		onclick={scrollto}
 		class="fixed bottom-4 right-4 rounded border-2 border-primary bg-sky-400 p-1 font-bold text-primary"
 	>
 		<Fa icon={faAngleUp} />

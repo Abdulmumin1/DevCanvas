@@ -10,10 +10,10 @@
 
 	const options = supportedLanguages;
 	let selectedValue = 'javascript';
-	let clickedNew = false;
-	let description = '';
+	let clickedNew = $state(false);
+	let description = $state('');
 
-	let descriptionEnter = true;
+	let descriptionEnter = $state(true);
 	const dispatch = createEventDispatcher();
 
 	const handleClick = (event) => {
@@ -80,7 +80,7 @@
 			<div class="flex gap-2">
 				<select
 					name="lang"
-					on:change={handleDropdownChange}
+					onchange={handleDropdownChange}
 					class="mb-2 w-full rounded-lg border-[.5px] p-2 text-black outline-sky-200 dark:border-0 dark:bg-primary dark:text-white dark:outline-none dark:focus:outline-none"
 				>
 					{#each options as option}
@@ -91,7 +91,7 @@
 				<!-- <input type="text" name="user_id" value="{user}"> -->
 				<button
 					type="submit"
-					on:click={handleClick}
+					onclick={handleClick}
 					class=" mb-2 flex w-fit items-center justify-center gap-3 rounded-full bg-sky-300 p-4 text-primary shadow transition-colors duration-200 hover:bg-sky-400"
 				>
 					{#if clickedNew}

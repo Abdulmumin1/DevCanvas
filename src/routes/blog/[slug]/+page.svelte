@@ -1,6 +1,5 @@
 <script>
 	import { onMount } from 'svelte';
-	export let data;
 	import { formatDate, copyUrlToClipboard } from '$lib/utils/utils.js';
 	import Fa from 'svelte-fa';
 	import {
@@ -27,11 +26,12 @@
 	import { showToast } from '$lib/stores/index.js';
 	import SEO from '$components/ui/seoComp.svelte';
 	import GoUp from '$components/ui/goUp.svelte';
+	let { data } = $props();
 	// import { Comment } from '@commentrig/svelte';
 	// import { page } from '$app/stores';
 	// import { page } from '$app/stores';
 
-	let url;
+	let url = $state();
 
 	const entities = {
 		title: data.meta.title,
@@ -152,7 +152,7 @@
 	<div
 		class="markdown-content article space-y-8 font-public-sans font-light text-[#404953] dark:text-light"
 	>
-		<svelte:component this={data.content} />
+		<data.content />
 	</div>
 
 	<div class="flex flex-wrap items-center gap-3">
@@ -173,7 +173,7 @@
 			<span>Love it? Share it!</span>
 			<div class="flex items-center justify-center space-x-3">
 				<button
-					on:click={() => {
+					onclick={() => {
 						cp();
 					}}><Fa icon={faCopy} /></button
 				>

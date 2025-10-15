@@ -6,7 +6,7 @@
 		// Add more items as needed
 	];
 
-	let selectedFilters = [];
+	let selectedFilters = $state([]);
 
 	function toggleFilter(type) {
 		if (selectedFilters.includes(type)) {
@@ -27,7 +27,7 @@
 <main>
 	<div class="filter-chips">
 		{#each ['snack', 'electronics', 'baking'] as type}
-			<div class:active={selectedFilters.includes(type)} on:click={() => toggleFilter(type)}>
+			<div class:active={selectedFilters.includes(type)} onclick={() => toggleFilter(type)}>
 				{type}
 			</div>
 		{/each}

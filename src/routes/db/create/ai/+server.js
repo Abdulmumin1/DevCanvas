@@ -319,7 +319,7 @@ export async function POST({ url, locals: { supabase, getSession }, request }) {
 	// console.log(messages);
 	let session = await getSession();
 	if (!session) {
-		throw redirect(303, handleRedirectURL(url, '/play'));
+		redirect(303, handleRedirectURL(url, '/play'));
 	}
 	// const body = Object.fromEntries(await request.formData());
 	// let key = generateRandomKey();

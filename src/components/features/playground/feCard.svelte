@@ -1,3 +1,5 @@
+<!-- @migration-task Error while migrating Svelte code: Event attribute must be a JavaScript expression, not a string
+https://svelte.dev/e/attribute_invalid_event_handler -->
 <script>
 	import { page } from '$app/stores';
 	import { fade, fly } from 'svelte/transition';
@@ -21,8 +23,8 @@
 <div
 	bind:this={compRef}
 	class="group flex aspect-video w-full flex-col rounded-xl transition-all duration-300"
-	on:mouseenter={() => (isHovered = true)}
-	on:mouseleave={() => (isHovered = false)}
+	onmouseenter={() => (isHovered = true)}
+	onmouseleave={() => (isHovered = false)}
 >
 	<div class="relative overflow-hidden rounded-xl">
 		<!-- HD Image Container with proper aspect ratio -->
@@ -46,7 +48,9 @@
 				loading="lazy"
 				class="absolute inset-0 h-full w-full"
 				style="pointer-events: none; display: none;"
-				onError="this.style.display='block'; this.previousElementSibling.style.display='none';"
+				onError={()=>{
+					this.style.display='block'; this.previousElementSibling.style.display='none';
+				}}
 			></iframe>
 		</div>
 

@@ -53,7 +53,7 @@
 		}
 	}
 
-	export let details;
+	let { details } = $props();
 </script>
 
 <div in:slide class="mx-2 mb-3 flex flex-col gap-3 rounded-lg px-3 py-6 lg:px-4">
@@ -73,7 +73,7 @@
 	<div class="cursor-pointer">
 		<button
 			class="flex w-fit items-center gap-2 rounded bg-red-600 p-2 text-left text-black"
-			on:click={DeleteEntry}
+			onclick={DeleteEntry}
 		>
 			<Fa icon={faTrashAlt} />Delete</button
 		>

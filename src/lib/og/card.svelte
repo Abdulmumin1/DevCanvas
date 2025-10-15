@@ -1,6 +1,12 @@
 <script>
-	export let message = 'Blog - DevCanvas';
-	// import logo from '$lib/assets/logo.svg';
+	/**
+	 * @typedef {Object} Props
+	 * @property {string} [message] - import logo from '$lib/assets/logo.svg';
+	 */
+
+	/** @type {Props} */
+	let { message = 'Blog - DevCanvas' } = $props();
+	
 </script>
 
 <div>

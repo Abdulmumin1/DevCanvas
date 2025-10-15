@@ -1,9 +1,15 @@
 <script>
 	import { fade, fly } from 'svelte/transition';
-	// import Icon from '@iconify/svelte';
-	export let title;
-	export let icon;
-	export let description;
+	
+	/**
+	 * @typedef {Object} Props
+	 * @property {any} title - import Icon from '@iconify/svelte';
+	 * @property {any} icon
+	 * @property {any} description
+	 */
+
+	/** @type {Props} */
+	let { title, icon, description } = $props();
 	let isHovered = false;
 
 	function handleMouseMove(event) {
@@ -33,9 +39,9 @@
 <div
 	class="feature-card bg-white dark:bg-secondary-dark"
 	in:fade={{ duration: 300 }}
-	on:mousemove={handleMouseMove}
-	on:mouseenter={handleMouseEnter}
-	on:mouseleave={handleMouseLeave}
+	onmousemove={handleMouseMove}
+	onmouseenter={handleMouseEnter}
+	onmouseleave={handleMouseLeave}
 >
 	<div class="icon-wrapper" in:fly={{ y: 20, duration: 300, delay: 150 }}>
 		<!-- <Icon {icon} /> -->

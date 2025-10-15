@@ -3,7 +3,7 @@
 	import TypeWriterEffect from './typeWriterEffect.svelte';
 	import { fly, scale, slide } from 'svelte/transition';
 
-	let classOrange;
+	let classOrange = $state();
 	onMount(() => {
 		classOrange = 'orange';
 	});
@@ -12,12 +12,12 @@
 <div class="window relative bg-secondary-dark">
 	<div class="window-title">
 		<div class="pills">
-			<div class="pill red" />
-			<div class="pill blue" />
-			<div class="pill green" />
+			<div class="pill red"></div>
+			<div class="pill blue"></div>
+			<div class="pill green"></div>
 		</div>
 		<div class="search bg-white text-black">https://devcanvas.dev</div>
-		<div />
+		<div></div>
 	</div>
 	<div class="box">
 		<div class="editor">
@@ -37,7 +37,7 @@
 
 			<div class="pane js">
 				<div class="pane-header bg-primary text-sm text-light">JS (TypeScript)</div>
-				<div class="code-input" id="js-code" placeholder="Enter JavaScript code here..." />
+				<div class="code-input" id="js-code" placeholder="Enter JavaScript code here..."></div>
 			</div>
 		</div>
 

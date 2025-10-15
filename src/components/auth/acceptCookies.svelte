@@ -1,7 +1,7 @@
 <script>
 	import { onMount } from 'svelte';
 	import { fly } from 'svelte/transition';
-	let showBanner;
+	let showBanner = $state();
 
 	const acceptCookies = () => {
 		localStorage.setItem('cookieConsent', 'true');
@@ -29,7 +29,7 @@
 		</p>
 		<button
 			class="w-fit rounded bg-sky-400 px-4 py-2 font-bold text-black hover:bg-sky-300"
-			on:click={acceptCookies}>Accept</button
+			onclick={acceptCookies}>Accept</button
 		>
 	</div>
 {/if}

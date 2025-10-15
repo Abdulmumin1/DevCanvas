@@ -5,6 +5,6 @@ export async function load({ parent }) {
 	// console.log(url);
 	const { session } = await parent();
 	if (session) {
-		throw redirect(303, '/dashboard');
+		redirect(303, '/dashboard');
 	}
 }

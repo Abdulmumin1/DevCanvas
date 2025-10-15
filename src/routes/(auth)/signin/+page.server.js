@@ -37,7 +37,7 @@ export const actions = {
 
 			if (error) return fail(400, { message: 'Invalid Credentials' });
 			else {
-				throw redirect(307, redirectTo);
+				redirect(307, redirectTo);
 			}
 		}
 

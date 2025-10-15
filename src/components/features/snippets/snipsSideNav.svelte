@@ -1,10 +1,10 @@
 <script>
 	import { user } from '$lib/stores/index.js';
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 	import FeAccordion from '$components/features/playground/feAccordion.svelte';
 	import { handleRedirectURL } from '$lib/utils.js';
 	import Signout from '$components/ui/signout.svelte';
-	let signinURL = handleRedirectURL($page.url);
+	let signinURL = handleRedirectURL(page.url);
 
 	// Define navigation items for cleaner rendering
 	const navItems = [
@@ -38,7 +38,7 @@
 						<span
 							class="max-w-full truncate rounded-full bg-neutral-200 px-3 py-1 font-mono text-xs text-neutral-600 dark:bg-neutral-800 dark:text-neutral-300"
 						>
-							{$page.url.pathname}
+							{page.url.pathname}
 						</span>
 					</div>
 				</div>
@@ -51,7 +51,7 @@
 								<a
 									href={item.href}
 									class="flex items-center gap-3 px-4 py-2.5 transition-colors duration-200 hover:bg-sky-300/10
-					  {$page.url.pathname.startsWith(item.pathMatch)
+					  {page.url.pathname.startsWith(item.pathMatch)
 										? 'bg-gradient-to-r from-sky-300 to-sky-400 font-medium text-black'
 										: 'text-neutral-700 dark:text-neutral-300'}"
 								>

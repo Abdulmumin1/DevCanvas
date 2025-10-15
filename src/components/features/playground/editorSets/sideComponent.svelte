@@ -71,7 +71,7 @@
 <div class="drop flex h-full w-full flex-col overflow-auto">
 	<ul
 		use:clickOutside
-		on:click_outside={closeDropdown}
+		onclick_outside={closeDropdown}
 		class={`dropdown-menu flex h-fit  flex-col items-start justify-start gap-2 p-2 text-sm `}
 	>
 		<!-- transition:fly={{ y: 200, delay: 50 }} -->
@@ -120,7 +120,7 @@
 					max="30"
 					value={$editorFontSize}
 					id=""
-					on:input={handleFontChange}
+					oninput={handleFontChange}
 					class="range-input"
 				/>
 			</div>
