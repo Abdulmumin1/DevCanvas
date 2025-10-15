@@ -1,25 +1,25 @@
 <script>
-	import { current_data, user, isOwner } from '$lib/index.js';
-	import { showSave, consoleOutput, saveSingle } from '$lib/feEditor/store.js';
+	import { current_data, user, isOwner } from '$lib/stores/index.js';
+	import { showSave, consoleOutput, saveSingle } from '$lib/stores/playground.js';
 	import { getContext, onDestroy, onMount, setContext } from 'svelte';
 	import { browser } from '$app/environment';
-	import FeCodeEditor from '$components/fePlayground/feCodeEditor.svelte';
-	import FePlayGroungNav from '$components/fePlayground/fePlayGroungNav.svelte';
-	import CodeOutput from '$components/fePlayground/codeOutput.svelte';
-	import Resizable from '$components/fePlayground/resizable.svelte';
-	import { showLoginToSave, showForkTosave, showEmbedModal } from '$lib/feEditor/store.js';
-	import JsConsole from '$components/fePlayground/jsConsole.svelte';
-	import EmbedModal from '$components/fePlayground/embedModal.svelte';
-	import { aibox, aiprompt } from '$lib/feEditor/aiFunctions.js';
+	import FeCodeEditor from '$components/features/playground/feCodeEditor.svelte';
+	import FePlayGroungNav from '$components/features/playground/fePlayGroungNav.svelte';
+	import CodeOutput from '$components/features/playground/codeOutput.svelte';
+	import Resizable from '$components/features/playground/resizable.svelte';
+	import JsConsole from '$components/features/playground/jsConsole.svelte';
+	import EmbedModal from '$components/features/playground/embedModal.svelte';
+	import { aibox, aiprompt } from '$lib/playground/aiFunctions.js';
 
-	import { setInitialState } from '$lib/feEditor/stateConfig.js';
-	import { constructHtml } from '$lib/feEditor/previewUtils.js';
+	import { setInitialState } from '$lib/playground/stateConfig.js';
+	import { constructHtml } from '$lib/playground/previewUtils.js';
 	import debounce from 'lodash.debounce';
+	import { showEmbedModal, showForkTosave,showLoginToSave } from '$lib/stores/playground.js';
 
 	export let data;
 
-	import { setReloadContext, getReload } from '$lib/feEditor/funct.js';
-	import FeAiBox from '../../../components/fePlayground/feAIBox.svelte';
+	import { setReloadContext, getReload } from '$lib/playground/funct.js';
+	import FeAiBox from '../../../components/features/playground/feAIBox.svelte';
 	import { fly } from 'svelte/transition';
 	import { writable } from 'svelte/store';
 
@@ -66,7 +66,6 @@
 		if (!mounted) return;
 		clearTimeout(debounceMessageTimer);
 		debounceMessageTimer = setTimeout(() => {
-			
 			let messagesx = JSON.stringify(messages);
 			current_data.update((cur) => {
 				return { ...cur, messages: messagesx };
@@ -278,7 +277,7 @@
 			let storedChat = data.details.messages;
 
 			if (typeof storedChat == 'string') {
-				storedChat = JSON.parse(storedChat)
+				storedChat = JSON.parse(storedChat);
 			}
 
 			messages = storedChat.length ? storedChat : [...messages, ...m];

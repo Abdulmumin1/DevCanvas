@@ -1,11 +1,11 @@
 <script>
-	import FeAiBox from '../fePlayground/feAIBox.svelte';
+	import FeAiBox from '../features/playground/feAIBox.svelte';
 	import { goto } from '$app/navigation';
-	import { user } from '$lib/index.js';
+	import { user } from '$lib/stores/index.js';
 	import { X } from 'lucide-svelte';
-	import { aibox, aiprompt } from '$lib/feEditor/aiFunctions.js';
+	import { aibox, aiprompt } from '$lib/playground/aiFunctions.js';
 
-	import Loader from '../loader.svelte';
+	import Loader from '../ui/loader.svelte';
 	import { fade } from 'svelte/transition';
 
 	let loading = false;
@@ -48,7 +48,10 @@
 </script>
 
 {#if loading}
-	<div transition:fade class="fixed inset-0 z-50 flex items-center justify-center bg-gradient-to-r from-sky-300 to-sky-400">
+	<div
+		transition:fade
+		class="fixed inset-0 z-50 flex items-center justify-center bg-gradient-to-r from-sky-300 to-sky-400"
+	>
 		<Loader />
 	</div>
 {/if}

@@ -1,4 +1,4 @@
-import { generateRandomKey } from '$lib/index.js';
+import { generateRandomKey } from '$lib/stores/index.js';
 import { error } from '@sveltejs/kit';
 // import { handleRedirectURL } from '$lib/utils';
 

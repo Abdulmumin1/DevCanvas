@@ -2,10 +2,10 @@
 	import { scale, slide } from 'svelte/transition';
 	import { onMount } from 'svelte';
 	import BlogCard from '$components/blog/blogCard.svelte';
-	import InnerNav from '$components/innerNav.svelte';
+	import InnerNav from '$components/ui/innerNav.svelte';
 	import LatestBlog from '$components/blog/latestBlog.svelte';
 	import Pagination from '$components/blog/pagination.svelte';
-	import SEO from '$components/seoComp.svelte';
+	import SEO from '$components/ui/seoComp.svelte';
 
 	export let data;
 

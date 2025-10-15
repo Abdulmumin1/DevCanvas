@@ -92,8 +92,9 @@
 		font-size: 4em;
 		text-decoration: none;
 		line-height: 1em;
-		font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,
-			'Open Sans', 'Helvetica Neue', sans-serif;
+		font-family:
+			-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans',
+			'Helvetica Neue', sans-serif;
 		font-weight: 900;
 		text-transform: uppercase;
 		color: transparent;

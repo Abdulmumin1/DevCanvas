@@ -3,7 +3,7 @@
 	import Fa from 'svelte-fa';
 	import EditorFrame from './editorFrame.svelte';
 	import CreativeShowcase from './creativeShowcase.svelte';
-	import { dummyTitle } from '$lib/feEditor/store.js';
+	import { dummyTitle } from '$lib/stores/playground.js';
 </script>
 
 <div class="flex w-full items-center justify-center gap-2">

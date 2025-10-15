@@ -7,18 +7,18 @@
 	import { javascript } from '@codemirror/lang-javascript'; // Or other language extension
 	import { html } from '@codemirror/lang-html'; // Or other language extension
 	import { css } from '@codemirror/lang-css'; // Or other language extension
-	import { editorFontSize } from '$lib/editor/settings.js';
+	import { editorFontSize } from '$lib/config/settings.js';
 
 	import { getContext, onMount } from 'svelte';
-	import {page} from '$app/stores'
-	
+	import { page } from '$app/stores';
+
 	import {
 		showSave,
 		saveSingle,
 		showLoginToSave,
 		showForkTosave,
 		formatCode
-	} from '$lib/feEditor/store.js';
+	} from '$lib/stores/playground.js';
 	import {
 		current_data,
 		isOwner,
@@ -27,10 +27,10 @@
 		wordWrapSetting,
 		delayPreview,
 		autoSavefast
-	} from '$lib/index.js';
+	} from '$lib/stores/index.js';
 	import { EditorState } from '@codemirror/state';
 	import { browser } from '$app/environment';
-	import { createTheme } from '$lib/editorTheme.js';
+	import { createTheme } from '$lib/config/editorTheme.js';
 	// ... (reactive state and logic for the editor)
 	let editorView;
 	let container;
@@ -200,7 +200,7 @@
 	function handleformat(e) {
 		let details = e.detail;
 
-		if (details.lang == lang || details.lang == 'all'){
+		if (details.lang == lang || details.lang == 'all') {
 			formatter(editorView).then(() => {});
 		}
 	}
@@ -208,7 +208,7 @@
 	function handleCodeSwap(e) {
 		if ($lockEditor) return;
 		let details = e.detail;
-		let update = details.code
+		let update = details.code;
 		if (details.lang == lang && update) {
 			code = update;
 		}

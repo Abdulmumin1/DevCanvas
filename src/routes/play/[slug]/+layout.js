@@ -1,6 +1,6 @@
 import { error } from '@sveltejs/kit';
 // import { getProfile } from '$lib/utils.js';
-// import { current_data } from '$lib/index.js';
+// import { current_data } from '$lib/stores/index.js';
 
 export async function load({ params, parent }) {
 	const { supabase } = await parent();

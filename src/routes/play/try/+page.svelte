@@ -1,25 +1,22 @@
 <script>
-	import { current_data, isOwner, showToast } from '$lib/index.js';
-	import { consoleOutput } from '$lib/feEditor/store.js';
-	import { setInitialState } from '$lib/feEditor/stateConfig.js';
-	import { aibox, aiprompt } from '$lib/feEditor/aiFunctions.js';
+	import { current_data, isOwner, showToast } from '$lib/stores/index.js';
+	import { consoleOutput } from '$lib/stores/playground.js';
+	import { setInitialState } from '$lib/playground/stateConfig.js';
+	import { aibox, aiprompt } from '$lib/playground/aiFunctions.js';
 
 	import { getContext, onDestroy, onMount, setContext, tick } from 'svelte';
 	import { browser } from '$app/environment';
-	import FeCodeEditor from '$components/fePlayground/feCodeEditor.svelte';
-	import FePlayGroungNav from '$components/fePlayground/fePlayGroungNav.svelte';
-	import CodeOutput from '$components/fePlayground/codeOutput.svelte';
-	import Resizable from '$components/fePlayground/resizable.svelte';
-	import { showEmbedModal } from '$lib/feEditor/store.js';
-	import JsConsole from '$components/fePlayground/jsConsole.svelte';
-	import EmbedModal from '$components/fePlayground/embedModal.svelte';
-	import { page } from '$app/stores';
-	import { setReloadContext, getReload } from '$lib/feEditor/funct.js';
-	import SEO from '$components/seoComp.svelte';
-	import FeAiBox from '../../../components/fePlayground/feAIBox.svelte';
+	import FeCodeEditor from '$components/features/playground/feCodeEditor.svelte';
+	import FePlayGroungNav from '$components/features/playground/fePlayGroungNav.svelte';
+	import CodeOutput from '$components/features/playground/codeOutput.svelte';
+	import Resizable from '$components/features/playground/resizable.svelte';
+	import JsConsole from '$components/features/playground/jsConsole.svelte';
+	import EmbedModal from '$components/features/playground/embedModal.svelte';
+	import SEO from '$components/ui/seoComp.svelte';
+	import FeAiBox from '../../../components/features/playground/feAIBox.svelte';
 	import { writable } from 'svelte/store';
 	import { fly } from 'svelte/transition';
-	import {env} from '$env/dynamic/public'
+	import { env } from '$env/dynamic/public';
 
 	setReloadContext();
 
@@ -159,7 +156,6 @@
 						else if (insideCustomBlock) {
 							htmlBuffer += chunk;
 
-
 							// Check if we've reached the end tag
 							const tempEndIndex = htmlBuffer.indexOf(endTag);
 							// console.log(result)
@@ -187,10 +183,7 @@
 									html: htmlBuffer.trim()
 								}));
 								initialHTML = htmlBuffer;
-
 							}
-
-
 						}
 
 						// Update the message regardless of custom block status
@@ -227,16 +220,13 @@
 		await promptAI(prompt.message);
 	}
 
-
 	async function handleStop(e) {
 		let data = e.detail;
 		// console.log(messages)
 		// return;
 		fetchResponse = false;
-		$generating  = false;
+		$generating = false;
 	}
-
-
 
 	onMount(async () => {
 		await tick();
@@ -296,9 +286,12 @@
 		{/if}
 
 		{#if $aibox}
-		<div transition:fly={{y:40, duration:200}}  class="fixed bottom-12 left-1/2 -translate-x-1/2 transform">
-			<FeAiBox on:ai={handlePrompt} on:stop={handleStop} {messages} />
-		</div>
+			<div
+				transition:fly={{ y: 40, duration: 200 }}
+				class="fixed bottom-12 left-1/2 -translate-x-1/2 transform"
+			>
+				<FeAiBox on:ai={handlePrompt} on:stop={handleStop} {messages} />
+			</div>
 		{/if}
 	</div>
 </main>

@@ -1,6 +1,6 @@
 <script>
 	import { onMount } from 'svelte';
-	import SEO from '$components/seoComp.svelte';
+	import SEO from '$components/ui/seoComp.svelte';
 	import { page } from '$app/stores';
 	export let data;
 

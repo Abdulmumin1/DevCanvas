@@ -55,7 +55,7 @@ export const actions = {
 
 		if (data.url) {
 			// console.log(data.url)
-			return {url: data.url} 
+			return { url: data.url };
 		}
 	},
 	google: async ({ url, locals: { supabase } }) => {
@@ -68,7 +68,7 @@ export const actions = {
 
 		if (data.url) {
 			// console.log(data.url)
-			return {url: data.url} 
+			return { url: data.url };
 		}
 	}
 };

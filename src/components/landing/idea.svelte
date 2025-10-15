@@ -2,7 +2,7 @@
 	import Fa from 'svelte-fa';
 	import { faRightLong } from '@fortawesome/free-solid-svg-icons';
 	import idea from '$lib/idea.gif';
-	import { darkModeState } from '$lib/index.js';
+	import { darkModeState } from '$lib/stores/index.js';
 </script>
 
 <div class=" flex h-fit items-center gap-6 bg-secondary-dark p-7 py-9 md:h-[500px]">

@@ -1,7 +1,7 @@
 <script>
-	import { onMount } from "svelte";
+	import { onMount } from 'svelte';
 
-    onMount(()=>{
-        window.close()
-    })
+	onMount(() => {
+		window.close();
+	});
 </script>

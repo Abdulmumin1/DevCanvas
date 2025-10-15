@@ -1,4 +1,4 @@
-import { generateRandomKey } from '$lib/index.js';
+import { generateRandomKey } from '$lib/stores/index.js';
 import { fail, redirect } from '@sveltejs/kit';
 /** @type {import('./$types').RequestHandler} */
 export async function POST({ locals: { supabase, getSession }, request }) {

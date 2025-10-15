@@ -2,7 +2,7 @@
 	import SectionCard from './sectionCard.svelte';
 	import CodeSharingJpeg from '$lib/codeShare.gif';
 	import CodeSharingDark from '$lib/codeShareDark.gif';
-	import { darkModeState } from '$lib/index.js';
+	import { darkModeState } from '$lib/stores/index.js';
 </script>
 
 <SectionCard reverse={true}>

@@ -1,6 +1,6 @@
 <script>
 	export let message = 'Blog - DevCanvas';
-	// import logo from '$lib/logo.svg';
+	// import logo from '$lib/assets/logo.svg';
 </script>
 
 <div>

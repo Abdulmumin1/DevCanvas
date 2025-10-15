@@ -1,5 +1,5 @@
 <script>
-	import InnerNav from '$components/innerNav.svelte';
+	import InnerNav from '$components/ui/innerNav.svelte';
 </script>
 
 <div class="relative z-50">

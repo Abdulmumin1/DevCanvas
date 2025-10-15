@@ -36,10 +36,10 @@ export default {
 				// Add other custom colors as needed...
 			},
 			fontFamily: {
-				diana: ['serif'],
-				carbon: ['carbon', 'sans-serif'],
-				'public-sans': ['public-sans', 'sans-serif'],
-				rubik: ['rubik', 'sans-serif']
+				diana: ['DM Serif Display', 'serif'],
+				carbon: ['Dm Sans', 'sans-serif'],
+				'public-sans': ['Dm Sans', 'sans-serif'],
+				rubik: ['Rubik', 'sans-serif']
 			}
 		}
 	},

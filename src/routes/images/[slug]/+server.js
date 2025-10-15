@@ -1,4 +1,3 @@
-
 /** @type {import('./$types').RequestHandler} */
 export async function GET({ params }) {
 	const targetUrl = `/output/compile/${params.slug}`;

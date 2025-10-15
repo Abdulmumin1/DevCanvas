@@ -9,8 +9,8 @@ export const actions = {
 		if (body.plugins && body.plugins !== undefined && body.plugins !== '') {
 			// console.log("plugins", body.plugins)
 			body.plugins = JSON.parse(body.plugins);
-		}else{
-			body.plugins = []
+		} else {
+			body.plugins = [];
 		}
 
 		if (body.config && body.config !== undefined && body.config !== '') {
@@ -25,12 +25,12 @@ export const actions = {
 		}
 
 		// if (body.messages && body.messages !== undefined && body.messages !== '') {
-			// console.log("messages", body.messages)
+		// console.log("messages", body.messages)
 
-			// body.messages = JSON.parse(body.messages);
+		// body.messages = JSON.parse(body.messages);
 		// }
 		// console.log(body);
-		
+
 		const { data, error: err } = await supabase.from('htmlPlayground').update([body]).eq('id', id);
 		if (err) {
 			console.log(err);

@@ -23,10 +23,10 @@
 		faUser
 	} from '@fortawesome/free-solid-svg-icons';
 	import { scale } from 'svelte/transition';
-	import { generateStructuredData } from '$lib/blog/utils.js';
-	import { showToast } from '$lib/index.js';
-	import SEO from '$components/seoComp.svelte';
-	import GoUp from '$components/goUp.svelte';
+	import { generateStructuredData } from '$lib/utils/blog.js';
+	import { showToast } from '$lib/stores/index.js';
+	import SEO from '$components/ui/seoComp.svelte';
+	import GoUp from '$components/ui/goUp.svelte';
 	// import { Comment } from '@commentrig/svelte';
 	// import { page } from '$app/stores';
 	// import { page } from '$app/stores';

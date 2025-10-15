@@ -1,7 +1,7 @@
 <script>
-	import Footer from '$components/footer.svelte';
-	import InnerNav from '$components/innerNav.svelte';
-	import GoUp from '$components/goUp.svelte';
+	import Footer from '$components/ui/footer.svelte';
+	import InnerNav from '$components/ui/innerNav.svelte';
+	import GoUp from '$components/ui/goUp.svelte';
 </script>
 
 <div

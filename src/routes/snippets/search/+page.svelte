@@ -1,12 +1,12 @@
 <script>
-	import { pageCountSnips, pageCountPl } from '$lib/index.js';
+	import { pageCountSnips, pageCountPl } from '$lib/stores/index.js';
 
-	import NavWrapper from '$components/snips/navWrapper.svelte';
+	import NavWrapper from '$components/features/snippets/navWrapper.svelte';
 	import { page } from '$app/stores';
-	import CollectionDummy from '$components/collectionDummy.svelte';
+	import CollectionDummy from '$components/ui/collectionDummy.svelte';
+	import CollectionPage from '$components/ui/collectionPage.svelte';
+	import SEO from '$components/ui/seoComp.svelte';
 	import { fade } from 'svelte/transition';
-	import CollectionPage from '$components/collectionPage.svelte';
-	import SEO from '$components/seoComp.svelte';
 
 	export let data;
 	let userSnippets = data.userSnippets;

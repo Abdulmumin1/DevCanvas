@@ -8,7 +8,7 @@
 </script>
 
 <div
-	class="latest-post mb-2 rounded-lg bg-gradient-to-r from-sky-100 to-sky-200 p-8 shadow"
+	class="latest-post mb-2 rounded-lg bg-gradient-to-r from-sky-100 to-sky-200 p-8 border border-sky-800"
 	in:scale={{ duration: 300, start: 0.95 }}
 	out:fade
 >

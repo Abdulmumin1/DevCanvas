@@ -9,9 +9,9 @@
 	} from '@fortawesome/free-solid-svg-icons';
 
 	import { handleRedirectURL } from '$lib/utils.js';
-	import { user } from '$lib/index.js';
+	import { user } from '$lib/stores/index.js';
 
-	import ProfileCard from '../profileCard.svelte';
+	import ProfileCard from '$components/ui/profileCard.svelte';
 
 	let signinURL = handleRedirectURL($page.url);
 	let modal;
@@ -27,7 +27,7 @@
 </script>
 
 {#if !$user}
-	<li class="rounded bg-green-500 px-2 py-1 text-primary text-xs">
+	<li class="rounded bg-green-500 px-2 py-1 text-xs text-primary">
 		{#if !disquise}
 			<button on:click={openModal}>
 				<!-- <span class="flex md:hidden"><Fa icon={faRightToBracket} /></span> -->

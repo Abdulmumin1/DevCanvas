@@ -3,7 +3,7 @@
 	import { faExclamationCircle, faSpinner } from '@fortawesome/free-solid-svg-icons';
 	import { slide } from 'svelte/transition';
 	import { enhance } from '$app/forms';
-	import SEO from '$components/seoComp.svelte';
+	import SEO from '$components/ui/seoComp.svelte';
 
 	let email;
 	let loading = false;

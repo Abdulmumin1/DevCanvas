@@ -2,7 +2,7 @@
 	import '../app.css';
 	import { onMount, setContext } from 'svelte';
 	import { KDialog, setKbarState } from 'kbar-svelte-mini';
-	import { actions } from '$lib/kbar.js';
+	import { actions } from '$lib/utils/kbar.js';
 	import { goto } from '$app/navigation';
 	import {
 		user,
@@ -12,16 +12,16 @@
 		SnippetsDescription,
 		getProfile,
 		setProfile
-	} from '$lib/index.js';
+	} from '$lib/stores/index.js';
 
 	// setProfile(null);
 
 	import { invalidateAll } from '$app/navigation';
 	import PageTransition from './transition.svelte';
 	import { browser } from '$app/environment';
-	import Toast from '../components/toast.svelte';
+	import Toast from '$components/ui/toast.svelte';
 
-	import PageLoadProgess from '../components/pageLoadProgess.svelte';
+	import PageLoadProgess from '$components/ui/pageLoadProgess.svelte';
 	import { page } from '$app/stores';
 	import AcceptCookies from '../components/auth/acceptCookies.svelte';
 	import Page from './(auth)/signin/+page.svelte';

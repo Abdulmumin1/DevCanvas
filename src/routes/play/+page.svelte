@@ -1,9 +1,9 @@
 <script>
 	import { onMount } from 'svelte';
 	import { goto } from '$app/navigation';
-	import NavWrapper from '$components/snips/navWrapper.svelte';
-	import { user } from '$lib/index.js';
-	import SEO from '$components/seoComp.svelte';
+	import NavWrapper from '$components/features/snippets/navWrapper.svelte';
+	import { user } from '$lib/stores/index.js';
+	import SEO from '$components/ui/seoComp.svelte';
 
 	let projectName = 'Untitled Project';
 	let currentTip = '';
@@ -76,18 +76,19 @@
 </svelte:head>
 
 <NavWrapper>
-	<div class="h-[90vh] overflow-hidden bg-gradient-to-br p-8 pt-20 dark:bg-primary flex md:pt-36 items-end md:items-start w-full">
-		<div class='w-full flex flex-col gap-12'>
-			<div class="flex items-center mx-auto gap-2 text-2xl md:text-4xl">
+	<div
+		class="flex h-[90vh] w-full items-end overflow-hidden bg-gradient-to-br p-8 pt-20 dark:bg-primary md:items-start md:pt-36"
+	>
+		<div class="flex w-full flex-col gap-12">
+			<div class="mx-auto flex items-center gap-2 text-2xl md:text-4xl">
 				<span
-					class="flex aspect-square h-10 items-center justify-center rounded-full bg-gradient-to-r from-sky-400 to-sky-300  text-3xl dark:text-black md:h-16 md:text-5xl"
+					class="flex aspect-square h-10 items-center justify-center rounded-full bg-gradient-to-r from-sky-400 to-sky-300 text-3xl dark:text-black md:h-16 md:text-5xl"
 					>+</span
 				> <span class="dark:text-white">Create new Canvas</span>
 			</div>
 			<div
-				class="mx-auto w-full flex max-w-4xl flex-col rounded-[50px] bg-neutral-100 p-6 dark:bg-secondary-dark "
+				class="mx-auto flex w-full max-w-4xl flex-col rounded-[50px] bg-neutral-100 p-6 dark:bg-secondary-dark"
 			>
-				
 				{#if $user}
 					<form method="post" action="/db/fe/create" class=" flex gap-2">
 						<input
@@ -97,7 +98,9 @@
 							name="project_name"
 							class="w-full rounded-3xl border-none bg-white px-4 py-3 text-lg text-black placeholder-black placeholder-opacity-70 focus:outline-none focus:ring-2 focus:ring-sky-300 dark:bg-primary dark:text-white"
 						/>
-						<button type="submit" class="rounded-full bg-gradient-to-r from-sky-400 to-sky-300  p-4 dark:text-black"
+						<button
+							type="submit"
+							class="rounded-full bg-gradient-to-r from-sky-400 to-sky-300 p-4 dark:text-black"
 							><svg
 								xmlns="http://www.w3.org/2000/svg"
 								width="24"
@@ -125,7 +128,9 @@
 							name="project_name"
 							class="w-full rounded-3xl border-none bg-white px-4 py-3 text-lg text-black placeholder-black placeholder-opacity-70 focus:outline-none focus:ring-2 focus:ring-sky-300 dark:bg-primary dark:text-white"
 						/>
-						<button on:click={handleCreateEditor} class="rounded-full bg-gradient-to-r from-sky-400 to-sky-300  p-4 dark:text-black"
+						<button
+							on:click={handleCreateEditor}
+							class="rounded-full bg-gradient-to-r from-sky-400 to-sky-300 p-4 dark:text-black"
 							><svg
 								xmlns="http://www.w3.org/2000/svg"
 								width="24"

@@ -1,13 +1,13 @@
 <script>
-	import { darkModeState } from '$lib/index.js';
+	import { darkModeState } from '$lib/stores/index.js';
 	import { github, githubDark } from 'svelte-highlight/styles';
 	import Fa from 'svelte-fa';
 	import { onMount } from 'svelte';
-	import NavWrapper from '$components/snips/navWrapper.svelte';
+	import NavWrapper from '$components/features/snippets/navWrapper.svelte';
 	import { faGithub, faInstagram, faTwitter } from '@fortawesome/free-brands-svg-icons';
 	import Collection from '$components/user/collection.svelte';
-	import { pageCountSnips, pageCountPl } from '$lib/index.js';
-	import SEO from '$components/seoComp.svelte';
+	import { pageCountSnips, pageCountPl } from '$lib/stores/index.js';
+	import SEO from '$components/ui/seoComp.svelte';
 
 	export let data;
 

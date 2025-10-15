@@ -1,6 +1,6 @@
 <script>
-	import Nav from '../../../../components/nav.svelte';
-	import CodeText from '../../../../components/codeText.svelte';
+	import Nav from '../../../../components/ui/nav.svelte';
+	import CodeText from '../../../../components/ui/codeText.svelte';
 	import {
 		current_data,
 		user,
@@ -9,10 +9,10 @@
 		showToast,
 		saved_spinner,
 		saveData
-	} from '$lib/index.js';
+	} from '$lib/stores/index.js';
 	import { onMount } from 'svelte';
 	import { browser } from '$app/environment';
-	import DetailsGrid from '../../../../components/DetailsGrid.svelte';
+	import DetailsGrid from '../../../../components/ui/DetailsGrid.svelte';
 
 	import { marked } from 'marked';
 

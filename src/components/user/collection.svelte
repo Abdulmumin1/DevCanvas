@@ -1,11 +1,11 @@
 <script>
-	import { pageCountSnips, pageCountPl } from '$lib/index.js';
+	import { pageCountSnips, pageCountPl } from '$lib/stores/index.js';
 
-	import CollectionPage from '$components/collectionPage.svelte';
-	import CollectionDummy from '$components/collectionDummy.svelte';
-	import FeCollectionPage from '$components/fePlayground/feCollectionPage.svelte';
+	import CollectionPage from '$components/ui/collectionPage.svelte';
+	import CollectionDummy from '$components/ui/collectionDummy.svelte';
+	import FeCollectionPage from '$components/features/playground/feCollectionPage.svelte';
 	import { fade } from 'svelte/transition';
-	import FeCollectionDummy from '../feCollectionDummy.svelte';
+	import FeCollectionDummy from '$components/ui/feCollectionDummy.svelte';
 
 	export let data;
 

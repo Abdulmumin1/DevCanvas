@@ -1,7 +1,7 @@
 <script>
 	import { HighlightAuto, LineNumbers } from 'svelte-highlight';
-	import Nav from '../../../components/nav.svelte';
-	import { darkModeState, copyTextToClipboard, showToast } from '$lib/index.js';
+	import Nav from '../../../components/ui/nav.svelte';
+	import { darkModeState, copyTextToClipboard, showToast } from '$lib/stores/index.js';
 	// import { d } from 'svelte-highlight/languages/index.js';
 	import { github, githubDark, atomOneDark } from 'svelte-highlight/styles';
 	import Fa from 'svelte-fa';
@@ -27,8 +27,8 @@
 	} from '@fortawesome/free-solid-svg-icons';
 	import { faCheck } from '@fortawesome/free-solid-svg-icons';
 	import { onMount, setContext } from 'svelte';
-	import SEO from '$components/seoComp.svelte';
-	import Footer from '$components/footer.svelte';
+	import SEO from '$components/ui/seoComp.svelte';
+	import Footer from '$components/ui/footer.svelte';
 	export let data;
 	setContext('isOwner', false);
 	if (data.isFound && data.session) {

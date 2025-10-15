@@ -1,15 +1,13 @@
 <script>
-	import { pageCountSnips, pageCountPl } from '$lib/index.js';
+	import { pageCountSnips, pageCountPl } from '$lib/stores/index.js';
 
-	import NavWrapper from '$components/snips/navWrapper.svelte';
+	import NavWrapper from '$components/features/snippets/navWrapper.svelte';
 	import { page } from '$app/stores';
-	import CollectionDummy from '$components/collectionDummy.svelte';
+	import CollectionDummy from '$components/ui/collectionDummy.svelte';
+	import FeCollectionPage from '$components/features/playground/feCollectionPage.svelte';
+	import CollectionPage from '$components/ui/collectionPage.svelte';
+	import FeCollectionDummy from '$components/ui/feCollectionDummy.svelte';
 	import { fade } from 'svelte/transition';
-	import FeCollectionPage from '$components/fePlayground/feCollectionPage.svelte';
-	import CollectionPage from '$components/collectionPage.svelte';
-	import { goto } from '$app/navigation';
-	import { browser } from '$app/environment';
-	import FeCollectionDummy from '$components/feCollectionDummy.svelte';
 
 	export let data;
 	let supabase = data.supabase;

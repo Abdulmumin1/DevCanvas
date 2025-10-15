@@ -1,4 +1,4 @@
-import { constructHtml } from '../../../../lib/feEditor/previewUtils';
+import { constructHtml } from '../../../../lib/playground/previewUtils';
 
 /** @type {import('./$types').RequestHandler} */
 export async function GET({ url, params, locals: { supabase } }) {

@@ -1,4 +1,4 @@
-import { generateRandomKey } from '$lib/index.js';
+import { generateRandomKey } from '$lib/stores/index.js';
 import { fail, redirect } from '@sveltejs/kit';
 import { handleRedirectURL } from '$lib/utils';
 import { MockLanguageModelV1 } from 'ai/test';
@@ -12,8 +12,8 @@ import { streamText } from 'ai';
 
 import { createGoogleGenerativeAI } from '@ai-sdk/google';
 const google = createGoogleGenerativeAI({
-   apiKey: env.GEMINI_API_KEY
- });
+	apiKey: env.GEMINI_API_KEY
+});
 
 const openrouter = createOpenRouter({
 	apiKey: env.OPEN_R_API
@@ -244,25 +244,25 @@ Create something unforgettable with innovative transitions (like page sections t
 
 ## FINAL REMINDER
 Remember to deliver ONLY the code within <DEVCANVAS_START> and </DEVCANVAS_START> tags with no additional commentary.
-`
+`;
 
 // ## MANDATORY OUTPUT REQUIREMENTS
 // **THESE REQUIREMENTS MUST BE STRICTLY FOLLOWED:**
 
-// 1. **CODE ENCAPSULATION**  
+// 1. **CODE ENCAPSULATION**
 //    All returned code must be wrapped inside:
 //    <DEVCANVAS_START>
 //    <!-- your code here -->
 //    </DEVCANVAS_START>
 
-// 2. **NO EXPLANATIONS OR COMMENTARY**  
+// 2. **NO EXPLANATIONS OR COMMENTARY**
 //    Only return raw code inside the encapsulation tags — no markdown, comments, or extra text.
 
-// 3. **CSS IMPLEMENTATION**  
-//    Use **Tailwind CSS** as the primary styling system.  
+// 3. **CSS IMPLEMENTATION**
+//    Use **Tailwind CSS** as the primary styling system.
 //    Use **vanilla CSS only** inside <DEVCANVAS_STYLE> for styling that Tailwind cannot handle (e.g. :focus, keyframes, etc.).
 
-// 4. **FLAT SECTIONAL WRAPPING**  
+// 4. **FLAT SECTIONAL WRAPPING**
 //    Code must be split across these four flat tags in this exact order:
 //    - <DEVCANVAS_HEAD>
 //    - <DEVCANVAS_STYLE>
@@ -311,7 +311,6 @@ Remember to deliver ONLY the code within <DEVCANVAS_START> and </DEVCANVAS_START
 // </DEVCANVAS_SCRIPT>
 // </DEVCANVAS_START>
 
-
 // ---
 
 /** @type {import('./$types').RequestHandler} */
@@ -344,53 +343,53 @@ export async function POST({ url, locals: { supabase, getSession }, request }) {
 	// }
 	// if (er) throw er;
 
-   let model = 'deepseek/deepseek-chat-v3-0324:nitro';
-   let model2 = 'deepseek/deepseek-r1-distill-qwen-32b';
-   let model3 = 'google/gemini-2.0-flash-lite-001'
-   let modelTouse = messages.find((e)=> e.role == 'assistant') ?  model3 : model;
+	let model = 'deepseek/deepseek-chat-v3-0324:nitro';
+	let model2 = 'deepseek/deepseek-r1-distill-qwen-32b';
+	let model3 = 'google/gemini-2.0-flash-lite-001';
+	let modelTouse = messages.find((e) => e.role == 'assistant') ? model3 : model;
 
-   // console.log(messages)
-   // return
-	const {textStream} = streamText({
+	// console.log(messages)
+	// return
+	const { textStream } = streamText({
 		system: NEW_PROMPT,
 		model: openrouter.chat(modelTouse),
 		messages: messages
 	});
-   // console.log(textStream)
-    return new Response(textStream, {
-        headers: {
-          'Content-Type': 'text/plain',
-          'Transfer-Encoding': 'chunked',
-        },
-      });
+	// console.log(textStream)
+	return new Response(textStream, {
+		headers: {
+			'Content-Type': 'text/plain',
+			'Transfer-Encoding': 'chunked'
+		}
+	});
 
-    // const {textStream} = streamText({
-    //     model: new MockLanguageModelV1({
-    //       doStream: async () => ({
-    //         stream: simulateReadableStream({
-    //           chunks: [
-    //             { type: 'text-delta', textDelta: 'Hello' },
-    //             { type: 'text-delta', textDelta: ', ' },
-    //             { type: 'text-delta', textDelta: `world!` },
-    //             {
-    //               type: 'finish',
-    //               finishReason: 'stop',
-    //               logprobs: undefined,
-    //               usage: { completionTokens: 10, promptTokens: 3 },
-    //             },
-    //           ],
-    //         }),
-    //         rawCall: { rawPrompt: null, rawSettings: {} },
-    //       }),
-    //     }),
-    //     prompt: 'Hello, test!',
-    //   });
-    //   return new Response(textStream, {
-    //     headers: {
-    //       'Content-Type': 'text/plain',
-    //       'Transfer-Encoding': 'chunked',
-    //     },
-    //   });
+	// const {textStream} = streamText({
+	//     model: new MockLanguageModelV1({
+	//       doStream: async () => ({
+	//         stream: simulateReadableStream({
+	//           chunks: [
+	//             { type: 'text-delta', textDelta: 'Hello' },
+	//             { type: 'text-delta', textDelta: ', ' },
+	//             { type: 'text-delta', textDelta: `world!` },
+	//             {
+	//               type: 'finish',
+	//               finishReason: 'stop',
+	//               logprobs: undefined,
+	//               usage: { completionTokens: 10, promptTokens: 3 },
+	//             },
+	//           ],
+	//         }),
+	//         rawCall: { rawPrompt: null, rawSettings: {} },
+	//       }),
+	//     }),
+	//     prompt: 'Hello, test!',
+	//   });
+	//   return new Response(textStream, {
+	//     headers: {
+	//       'Content-Type': 'text/plain',
+	//       'Transfer-Encoding': 'chunked',
+	//     },
+	//   });
 
 	// return textStream;
 }

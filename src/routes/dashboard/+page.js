@@ -1,5 +1,5 @@
 // import { error } from '@sveltejs/kit';
-// import { current_data } from '$lib/index.js';
+// import { current_data } from '$lib/stores/index.js';
 // export async function load({ parent }) {
 // 	// let session = await getSession();
 // 	const { supabase, session } = await parent();

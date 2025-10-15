@@ -9,11 +9,11 @@
 	} from '@fortawesome/free-solid-svg-icons';
 	import { slide } from 'svelte/transition';
 	import { enhance } from '$app/forms';
-	import NavWrapper from '$components/snips/navWrapper.svelte';
+	import NavWrapper from '$components/features/snippets/navWrapper.svelte';
 	import { onMount } from 'svelte';
 	import { page } from '$app/stores';
 
-	import { getProfile } from '$lib/index.js';
+	import { getProfile } from '$lib/stores/index.js';
 
 	let loading = false;
 	let serverErr = false;
@@ -63,18 +63,18 @@
 </svelte:head>
 
 <NavWrapper noSearch={true}>
-	<div class="flex h-full min-h-[90vh] pt-12 flex-col items-center justify-center">
+	<div class="flex h-full min-h-[90vh] flex-col items-center justify-center pt-12">
 		{#if mesa}
 			<div class="my-12">
 				<p class="flex items-center justify-start gap-2 rounded-md p-1 px-2 text-xl">
 					<span class="wobble-hor-top"> <Fa icon={faExclamationCircle} /></span> Complete your profile.
 				</p>
 				<p>
-					 Click <strong>"Update Profile"</strong> to <strong>Continue with defaults.</strong>
+					Click <strong>"Update Profile"</strong> to <strong>Continue with defaults.</strong>
 				</p>
 			</div>
 		{/if}
-		<div class="mb-4  max-w-[700px] rounded-2xl bg-neutral-100 p-8 pt-20 dark:bg-secondary-dark">
+		<div class="mb-4 max-w-[700px] rounded-2xl bg-neutral-100 p-8 pt-20 dark:bg-secondary-dark">
 			<h2 class="mb-4 flex gap-2 text-4xl font-bold text-neutral-800 dark:text-white">
 				Profile <span
 					><a href="/{details?.username}"><Fa class="text-sm" icon={faUpRightFromSquare} /></a
@@ -85,7 +85,10 @@
 			<form action={data.action} use:enhance={handleSubmit} method="POST">
 				<!-- User Name -->
 				<div class="mb-4">
-					<label for="username" class="mb-2 block text-sm text-neutral-700 dark:text-white md:text-lg">
+					<label
+						for="username"
+						class="mb-2 block text-sm text-neutral-700 dark:text-white md:text-lg"
+					>
 						Username
 					</label>
 					<input
@@ -119,7 +122,10 @@
 
 				<!-- Full Name -->
 				<div class="mb-4">
-					<label for="fullname" class="mb-2 block text-sm text-neutral-700 dark:text-white md:text-lg">
+					<label
+						for="fullname"
+						class="mb-2 block text-sm text-neutral-700 dark:text-white md:text-lg"
+					>
 						<i class="fas fa-user mr-1" /> Full Name
 					</label>
 					<input
@@ -160,7 +166,8 @@
 						<div class="w-1/2">
 							<label
 								for="twitter"
-								class="mb-2 block text-sm text-neutral-700 dark:text-white md:text-lg">Twitter</label
+								class="mb-2 block text-sm text-neutral-700 dark:text-white md:text-lg"
+								>Twitter</label
 							>
 							<input
 								type="text"
@@ -175,7 +182,8 @@
 						<div class="w-1/2">
 							<label
 								for="instagram"
-								class="mb-2 block text-sm text-neutral-700 dark:text-white md:text-lg">Instagram</label
+								class="mb-2 block text-sm text-neutral-700 dark:text-white md:text-lg"
+								>Instagram</label
 							>
 							<input
 								type="text"

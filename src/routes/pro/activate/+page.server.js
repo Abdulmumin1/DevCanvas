@@ -1,4 +1,4 @@
-// import { lsqz } from '$lib/lemonsq';
+// import { lsqz } from '$lib/services/lemonsq.js';
 import { fail, redirect } from '@sveltejs/kit';
 import { kStringMaxLength } from 'buffer';
 

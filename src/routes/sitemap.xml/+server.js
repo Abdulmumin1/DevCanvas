@@ -15,7 +15,7 @@ export async function GET({ fetch, url, locals: { supabase } }) {
 		.order('created_at', { ascending: false });
 
 	// console.log(keys, snips);
-  
+
 	const xml = `
     <?xml version="1.0" encoding="UTF-8" ?>
     <urlset

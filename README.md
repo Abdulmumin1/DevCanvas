@@ -56,6 +56,31 @@ An online AI editor with super powers, fast preview, plugins and super cool libr
 - Support for multiple programming languages.
 - User profiles with personal code snippet collections.
 
+## Codebase Structure
+
+DevCanvas is organized into clear, logical modules to facilitate contributions:
+
+### Components (`src/components/`)
+
+- **ui/**: Reusable UI components (buttons, loaders, navigation, modals)
+- **features/**: Feature-specific components
+  - **auth/**: Authentication components
+  - **blog/**: Blog-related components
+  - **playground/**: Frontend editor components
+  - **snippets/**: Code snippet components
+  - **user/**: User profile components
+- **landing/**: Landing page components
+
+### Lib (`src/lib/`)
+
+- **stores/**: State management (global stores, playground stores, CDN links)
+- **utils/**: Utility functions (formatting, helpers, blog utils)
+- **assets/**: Static assets (images, fonts, templates)
+- **config/**: Configuration (editor settings, themes)
+- **services/**: External services (Supabase, Lemon Squeezy)
+
+This structure ensures related code is grouped together, making it easier for contributors to navigate and maintain.
+
 ## Installation (Local developement)
 
 1. Clone the repository: `git clone https://github.com/Abdulmumin1/devcanvas.git`
@@ -115,6 +140,25 @@ git push origin my-contribution
 Create a pull request to the main DevCanvas repository, providing a detailed description of your changes.
 
 ## Code Style and Guidelines
+
+- Follow the existing codebase structure when adding new components or utilities.
+- Place reusable UI components in `src/components/ui/`.
+- Feature-specific components go in `src/components/features/[feature]/`.
+- State management in `src/lib/stores/`, utilities in `src/lib/utils/`.
+- Run `npm run lint` and `npm run format` before committing.
+- Write clear, descriptive commit messages.
+- Add comments for complex logic.
+
+## Codebase Structure Guidelines
+
+When contributing code:
+
+- **Components**: Ensure new components are placed in the appropriate folder (`ui/` for reusable, `features/` for specific).
+- **Lib**: Add utilities to `utils/`, stores to `stores/`, services to `services/`.
+- **Imports**: Use the `$lib/` alias for lib imports.
+- **Naming**: Use kebab-case for files (e.g., `my-component.svelte`), camelCase for functions/variables.
+
+## Installation (Local developement)
 
 Follow the existing code style in the project.
 Write clear, commented code to enhance readability.

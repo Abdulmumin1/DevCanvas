@@ -1,13 +1,12 @@
 <script>
 	import { onMount } from 'svelte';
 	import { goto } from '$app/navigation';
-	import NavWrapper from '$components/snips/navWrapper.svelte';
-	import { user } from '$lib/index.js';
-	import CollectionPage from '../../components/collectionPage.svelte';
-	import CollectionDummy from '$components/collectionDummy.svelte';
+	import NavWrapper from '$components/features/snippets/navWrapper.svelte';
+	import { user } from '$lib/stores/index.js';
+	import CollectionPage from '$components/ui/collectionPage.svelte';
 	import { fade } from 'svelte/transition';
-	import { pageCountSnips, pageCountPl } from '$lib/index.js';
-	import NewSnippet from '$components/newSnippet.svelte';
+	import { pageCountSnips, pageCountPl } from '$lib/stores/index.js';
+	import NewSnippet from '$components/ui/newSnippet.svelte';
 
 	export let data;
 	let supabase = data.supabase;

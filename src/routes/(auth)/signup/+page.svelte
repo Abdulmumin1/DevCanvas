@@ -1,5 +1,5 @@
 <script>
-	// import { user, current_data } from '$lib/index.js';
+	// import { user, current_data } from '$lib/stores/index.js';
 	import Fa from 'svelte-fa';
 	import { faExclamationCircle, faSpinner } from '@fortawesome/free-solid-svg-icons';
 	import { faGithub } from '@fortawesome/free-brands-svg-icons';

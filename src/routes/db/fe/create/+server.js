@@ -1,4 +1,4 @@
-import { generateRandomKey } from '$lib/index.js';
+import { generateRandomKey } from '$lib/stores/index.js';
 import { fail, redirect } from '@sveltejs/kit';
 import { handleRedirectURL } from '$lib/utils';
 import { json } from '@sveltejs/kit';
@@ -30,10 +30,9 @@ export async function POST({ url, locals: { supabase, getSession }, request }) {
 		return fail(400, { error: 'unable to complete action' });
 	}
 	if (er) throw er;
-	if (returnKey){
-		return json({key})
+	if (returnKey) {
+		return json({ key });
 	}
-	
-	throw redirect(303, `/play/${key}`);
 
+	throw redirect(303, `/play/${key}`);
 }

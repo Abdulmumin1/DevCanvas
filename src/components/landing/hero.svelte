@@ -35,13 +35,13 @@
 <!-- grid grid-cols-1 items-end justify-between gap-x-20 md:grid-cols-2 lg:gap-x-40 -->
 <div class="flex flex-col md:flex-row md:px-8">
 	<section
-		class="relative flex h-full w-full min-w-[20rem] flex-col gap-4 border-primary px-8 py-0 text-secondary-dark md:mt-36 md:min-w-[30rem] md:py-12 lg:ml-0 lg:py-0 md:pl-12"
+		class="relative flex h-full w-full min-w-[20rem] flex-col gap-4 border-primary px-8 py-0 text-secondary-dark md:mt-36 md:min-w-[30rem] md:py-12 md:pl-12 lg:ml-0 lg:py-0"
 	>
 		<h1
-			class="hero-text magic-text text-balance text-4xl text-primary dark:text-light md:max-w-[40rem] md:text-6xl lg:text-[5rem] md:mt-12 "
+			class="hero-text magic-text text-balance text-4xl text-primary dark:text-light md:mt-12 md:max-w-[40rem] md:text-6xl lg:text-[5rem]"
 		>
 			<span class="font-extrabold">The Editor</span>
-			<span class="font-diana italic font-extrabold">For <span class=" " >Experimeting</span></span>
+			<span class="font-diana font-extrabold italic">For <span class=" ">Experimeting</span></span>
 		</h1>
 		<p class="mx-1 max-w-3xl text-balance text-lg text-primary dark:text-light md:text-xl">
 			An online frontend editor, providing an easy sandbox to write and share html/css/js code
@@ -49,7 +49,7 @@
 		<div class="flex items-center gap-2">
 			<a
 				href="/signin"
-				class="cta-button inline-block rounded-full border border-primary hover:bg-gradient-to-bl bg-gradient-to-r from-sky-400 to-sky-300 px-4 py-2 font-semibold text-primary hover:bg-white"
+				class="cta-button inline-block rounded-full border border-primary bg-gradient-to-r from-sky-400 to-sky-300 px-4 py-2 font-semibold text-primary hover:bg-white hover:bg-gradient-to-bl"
 				>Get Started</a
 			>
 			<a

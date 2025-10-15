@@ -1,5 +1,5 @@
 <script>
-	import InnerNav from '$components/innerNav.svelte';
+	import InnerNav from '$components/ui/innerNav.svelte';
 	import { page } from '$app/stores';
 	import { enhance } from '$app/forms';
 	import Fa from 'svelte-fa';

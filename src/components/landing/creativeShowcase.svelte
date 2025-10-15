@@ -6,7 +6,7 @@
 
 	import DummyComponent from './modelLanding.svelte';
 	import { scale, slide } from 'svelte/transition';
-	import { dummyTitle } from '$lib/feEditor/store.js';
+	import { dummyTitle } from '$lib/stores/playground.js';
 
 	let currentIndex = 0;
 	const components = [CarouselComp2, DummyComponent, CarouselComp3];

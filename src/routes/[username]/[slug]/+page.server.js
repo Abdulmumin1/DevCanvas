@@ -1,5 +1,5 @@
 import { error, redirect } from '@sveltejs/kit';
-// import { current_data } from '$lib/index.js';
+// import { current_data } from '$lib/stores/index.js';
 import { compile } from 'mdsvex';
 import { codeToHtml } from 'shiki';
 

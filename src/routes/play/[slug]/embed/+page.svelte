@@ -1,6 +1,6 @@
 <script>
-	import FeEmbedComponent from '../../../../components/fePlayground/feEmbedComponent.svelte';
-	import { current_data } from '$lib/index.js';
+	import FeEmbedComponent from '../../../../components/features/playground/feEmbedComponent.svelte';
+	import { current_data } from '$lib/stores/index.js';
 	export let data;
 
 	current_data.set(data.details);

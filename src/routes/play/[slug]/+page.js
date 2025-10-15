@@ -1,6 +1,6 @@
 // import { error } from '@sveltejs/kit';
 import { getProfile, getViews } from '$lib/utils.js';
-// import { current_data } from '$lib/index.js';
+// import { current_data } from '$lib/stores/index.js';
 
 /** @type {import('./$types').PageLoad} */
 export async function load({ params, parent }) {
