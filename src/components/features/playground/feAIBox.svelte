@@ -1,6 +1,5 @@
 <script>
 	import { createEventDispatcher, getContext, onMount } from 'svelte';
-	import { SendHorizontal, Loader2, Square, Maximize2, Minimize2, X } from 'lucide-svelte';
 	import MessagesParser from './messagesParser.svelte';
 	import { aibox, aiprompt } from '$lib/playground/aiFunctions.js';
 
@@ -72,13 +71,13 @@
 				}}
 			>
 				{#if expand}
-					<Minimize2 size={14} />
+				<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-minimize2-icon lucide-minimize-2"><path d="m14 10 7-7"/><path d="M20 10h-6V4"/><path d="m3 21 7-7"/><path d="M4 14h6v6"/></svg>
 				{:else}
-					<Maximize2 size={14} />
+					<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-maximize2-icon lucide-maximize-2"><path d="M15 3h6v6"/><path d="m21 3-7 7"/><path d="m3 21 7-7"/><path d="M9 21H3v-6"/></svg>
 				{/if}
 			</button>
 			<button class="rounded bg-primary p-1" on:click={handleClose}>
-				<X size={14} />
+				<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x-icon lucide-x"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
 			</button>
 		</div>
 		{#if expand}
@@ -103,7 +102,7 @@
 		<div class="flex items-center px-2 py-2">
 			{#if $generating}
 				<div class="animate-pulse p-2 text-cyan-400">
-					<Loader2 class="animate-spin" size={20} />
+					<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" class="animate-spin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg>
 				</div>
 			{/if}
 			<input
@@ -123,7 +122,7 @@
 							? 'text-black'
 							: 'text-black'}"
 					>
-						<Square size={20} />
+						<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-square-icon lucide-square"><rect width="18" height="18" x="3" y="3" rx="2"/></svg>
 					</button>
 				{:else}
 					<button
@@ -132,7 +131,7 @@
 							? 'text-black'
 							: 'text-black'}"
 					>
-						<SendHorizontal size={20} />
+						<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-send-horizontal-icon lucide-send-horizontal"><path d="M3.714 3.048a.498.498 0 0 0-.683.627l2.843 7.627a2 2 0 0 1 0 1.396l-2.842 7.627a.498.498 0 0 0 .682.627l18-8.5a.5.5 0 0 0 0-.904z"/><path d="M6 12h16"/></svg>
 					</button>
 				{/if}
 			</div>

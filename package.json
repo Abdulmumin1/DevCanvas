@@ -49,7 +49,6 @@
 		"@commentrig/svelte": "^0.1.2",
 		"@fortawesome/free-brands-svg-icons": "^6.4.0",
 		"@fortawesome/free-solid-svg-icons": "^6.4.0",
-		"@lemonsqueezy/lemonsqueezy.js": "^1.2.4",
 		"@lezer/highlight": "^1.2.1",
 		"@openrouter/ai-sdk-provider": "^0.4.5",
 		"@supabase/auth-helpers-sveltekit": "^0.10.1",
@@ -65,17 +64,11 @@
 		"kbar-svelte-mini": "^0.1.0",
 		"loadash": "^1.0.0",
 		"lodash.debounce": "^4.0.8",
-		"lucide-svelte": "^0.487.0",
 		"marked": "^15.0.4",
-		"quill": "^2.0.2",
-		"satori": "^0.10.14",
-		"satori-html": "^0.3.2",
 		"shiki": "^1.1.7",
-		"svelte-ace": "^1.0.21",
 		"svelte-fa": "^3.0.4",
 		"svelte-markdown": "^0.4.0",
 		"svelte-splitpanes": "^8.0.9",
-		"thememirror": "^2.0.1",
 		"zod": "^3.24.2"
 	}
 }

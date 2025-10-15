@@ -17,6 +17,9 @@
 	import { writable } from 'svelte/store';
 	import { fly } from 'svelte/transition';
 	import { env } from '$env/dynamic/public';
+	import { page } from '$app/stores';
+	import { showEmbedModal } from '$lib/stores/playground.js';
+	import { setReloadContext, getReload } from '$lib/playground/funct.js';
 
 	setReloadContext();
 
@@ -91,11 +94,7 @@
 	// $: console.log(data)
 
 	let messages = [
-		{
-			messageId: crypto.randomUUID(),
-			role: 'user',
-			content: 'create nice interactive button that says submit '
-		}
+		
 	];
 
 	async function promptAI(message) {

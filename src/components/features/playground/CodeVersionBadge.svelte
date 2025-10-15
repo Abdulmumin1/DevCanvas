@@ -1,5 +1,4 @@
 <script>
-	import { Loader2 } from 'lucide-svelte';
 
 	export let version = 1;
 	export let inProgress = false;

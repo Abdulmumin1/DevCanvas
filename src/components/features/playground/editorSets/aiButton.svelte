@@ -1,5 +1,4 @@
 <script>
-	import { Star, Sparkles } from 'lucide-svelte';
 	import { aibox } from '$lib/playground/aiFunctions.js';
 
 	function handleClick() {

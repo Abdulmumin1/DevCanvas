@@ -76,7 +76,6 @@
 
 	// import { onDark } from '@codemirror/theme-one-dark';
 	import { onMount } from 'svelte';
-	import { coolGlow } from 'thememirror';
 
 	// ... (reactive state and logic for the editor)
 
