@@ -33,7 +33,7 @@
 
 			<!-- Main image with lazy loading -->
 			<img
-				src="{env.PUBLIC_SS_URL}?url=${encodeURIComponent(`https://${window.location.host}/output/compile/${details.project_key}`)}"
+				src="{env.PUBLIC_SS_URL}?url=${encodeURIComponent(`https://${page.url.hostname}/output/compile/${details.project_key}`)}"
 				loading="lazy"
 				class=" aspect-video w-full transition-transform duration-500"
 				class:scale-110={isHovered}
