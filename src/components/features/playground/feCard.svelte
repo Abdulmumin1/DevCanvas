@@ -1,18 +1,17 @@
-<!-- @migration-task Error while migrating Svelte code: Event attribute must be a JavaScript expression, not a string
-https://svelte.dev/e/attribute_invalid_event_handler -->
 <script>
-	import { page } from '$app/stores';
-	import { fade, fly } from 'svelte/transition';
-	import Fa from 'svelte-fa';
-	import { faEye, faHeart } from '@fortawesome/free-solid-svg-icons';
+	import { page } from '$app/state';
+	import { fade } from 'svelte/transition';
+	import {env} from '$env/dynamic/public'
 	import ShareAct from '$components/ui/shareAct.svelte';
 	import DeleteCanvas from '$components/features/playground/deleteCanvas.svelte';
 
-	let session = $page.data.session;
-	export let details;
-	let profile = details?.profiles?.username;
-	let isHovered = false;
-	let compRef;
+	let session = $derived(page.data.session);
+
+	let {details} = $props();
+
+	let profile = $derived(details?.profiles?.username);
+	let isHovered = $state(false);
+	let compRef = $state(null);
 
 	function handleDelete() {
 		compRef.$destroy;
@@ -34,7 +33,7 @@ https://svelte.dev/e/attribute_invalid_event_handler -->
 
 			<!-- Main image with lazy loading -->
 			<img
-				src="/images/{details.project_key}"
+				src="{env.PUBLIC_SS_URL}?url=${encodeURIComponent(`https://${window.location.host}/output/compile/${details.project_key}`)}"
 				loading="lazy"
 				class=" aspect-video w-full transition-transform duration-500"
 				class:scale-110={isHovered}
