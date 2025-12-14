@@ -33,7 +33,7 @@
 
 			<!-- Main image with lazy loading -->
 			<img
-				src="{env.PUBLIC_SS_URL}?url=${encodeURIComponent(`https://${page.url.hostname}/output/compile/${details.project_key}`)}"
+				src="{env.PUBLIC_SS_URL}?url=${encodeURIComponent(`${page.url.origin}/output/compile/${details.project_key}`)}"
 				loading="lazy"
 				class=" aspect-video w-full transition-transform duration-500"
 				class:scale-110={isHovered}
@@ -100,11 +100,11 @@
 		   </span> -->
 
 				<ShareAct
-					link="{$page.url.origin}/play/{details.project_key}"
+					link="{page.url.origin}/play/{details.project_key}"
 					title={details.description}
 				/>
 
-				{#if details.user_id === session?.user?.id && $page.url.pathname === '/dashboard'}
+				{#if details.user_id === session?.user?.id && page.url.pathname === '/dashboard'}
 					<DeleteCanvas
 						on:deleted={handleDelete}
 						canvas_id={details.project_key}
